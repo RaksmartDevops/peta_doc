@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工作负载 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/work_load/</link>
+    <description>Recent content in 工作负载 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/work_load/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工作负载概述</title>
+      <link>/v6.1/container/qke_plus/manual/work_load/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/work_load/introduction/</guid>
+      <description>什么是工作负载 工作负载是在 Kubernetes 上运行的应用程序，您可以在 Kubernetes 上的一组或多组 Pod 中运行它。工作负载是对 Pod 组的抽象模型，用于描述容器化应用的实际运行载体。
+工作负载类型 工作负载包括以下类型：
+无状态工作负载：即 Kubernetes 中的 “Deployment”，支持弹性伸缩与滚动升级。适用于运行完全独立、功能相同的场景。
+有状态工作负载：即 Kubernetes 中的 “StatefulSet”，支持实例有序部署和删除，支持持久化存储，适用于实例间存在互访的场景。
+守护进程：即 Kubernetes 中的 “DaemonSet”，确保全部（或者某些）节点上运行一个 Pod。DaemonSet 会在指定的节点上都部署定义的 Pod，确保这些节点都运行守护进程 Pod。适用集群的日志、监控等部署场景。
+任务：即 Kubernetes 中的 “Job”，指运行一次性的任务。使用场景为在创建工作负载前，执行任务，将镜像上传至镜像仓库。
+定时任务：即 Kubernetes 中的 “CronJob”，指根据指定时间周期性运行的任务。适用于执行数据备份或者发送邮件的场景。</description>
+    </item>
+    
+    <item>
+      <title>管理工作负载</title>
+      <link>/v6.1/container/qke_plus/manual/work_load/mgt_workload/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/work_load/mgt_workload/</guid>
+      <description>工作负载创建后，您可以在 QKE 控制台进行查看及更新。
+创建工作负载 具体操作，请参见创建工作负载。
+查看工作负载 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 工作负载，进入工作负载页面。
+页面展示了工作负载的名称、所属命名空间、状态及最近一次更新的时间。
+点击选项卡，可分别查看无状态工作负载、有状态工作负载、守护进程、任务及定时任务。
+在状态列进行条件过滤，可分别查看处于活跃、异常或更新中的工作负载。
+可在搜索栏输入名称或命名空间查找符合条件的工作负载。
+更新工作负载 可通过编辑工作负载的 YAML 文件进行工作负载更新。本文以有守护进程为例说明如何在线编辑 YAML。
+登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 工作负载，进入工作负载页面。
+点击守护进程页签，进入守护进程展示页面。
+点击操作列的编辑 yaml，弹出编辑 yaml 文件窗口。
+在文件编辑窗口中，修改配置。
+关于工作负载详细配置介绍，请参考 kubernetes 官方文档。
+点击确认。</description>
+    </item>
+    
+  </channel>
+</rss>

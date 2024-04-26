@@ -1,0 +1,2860 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云平台, AppCenter, 实例管理, 集群]">
+
+
+
+<meta name="description" content="介绍如何在 AppCenter 中管理集群整个生命周期。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>实例生命周期 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/appcenter/dev-platform/">
+          
+            应用开发平台
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/introduction/">简介</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/architechure/">系统架构</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >服务商入驻</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/prerequisite/">入驻须知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/contracts/">入驻流程</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >快速入门</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/cluster/">云应用入门指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/quick_start_saas/">SaaS 应用入门指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >云应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/management/">应用管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/version_management/">应用版本管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/build/">镜像制作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/metadata-service/">Metadata 服务</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/basic-specifications/">开发模板规范 - 基础版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/specifications/">开发模板规范 - 完整版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/lifecycle/">实例生命周期</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/user_management/">用户管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/instance_management/">实例管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/log/">日志管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/debug/">调试指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_license/">License 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SaaS 应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/saas-flow/">接入流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台账户对接</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_flow/">调用流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_auth_code/">获取授权码</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_token/">获取 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/check_token/">校验 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/login_console/">免密登录控制台</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SPI 接口开发</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_overview/">接口概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_convention/">接口约定</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_reload/">接口重试机制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_security/">安全设计</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/release/">应用上架</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_api_app/">API 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/finance/">财务管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/order/">订单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/tickets/">工单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/notification/">通知中心</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-faqs/">常见问题</a>
+          </li>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform" data-url="/v6.1/appcenter/dev-platform">应用开发平台</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/management/" data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide">云应用开发指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/lifecycle" data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide/lifecycle">实例生命周期</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    实例生命周期</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_创建集群">创建集群</a></li>
+    <li><a href="#_删除集群">删除集群</a></li>
+    <li><a href="#_关闭集群">关闭集群</a></li>
+    <li><a href="#_启动恢复集群">启动/恢复集群</a></li>
+    <li><a href="#_增加节点">增加节点</a></li>
+    <li><a href="#_删除节点">删除节点</a></li>
+    <li><a href="#_纵向扩容更改云服务器类型">纵向扩容/更改云服务器类型</a></li>
+    <li><a href="#_切换网络">切换网络</a></li>
+    <li><a href="#_交换预留_ip">交换预留 IP</a></li>
+    <li><a href="#_备份集群">备份集群</a></li>
+    <li><a href="#_备份恢复集群">备份恢复集群</a></li>
+    <li><a href="#_并行升级">并行升级</a></li>
+    <li><a href="#_并行升级失败恢复">并行升级失败恢复</a></li>
+    <li><a href="#_滚动升级">滚动升级</a></li>
+    <li><a href="#_滚动升级失败恢复">滚动升级失败恢复</a></li>
+    <li><a href="#_原地升级">原地升级</a></li>
+    <li><a href="#_原地升级失败恢复">原地升级失败恢复</a></li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p>本文介绍了应用实例（即集群）的一些主要操作的实现流程。</p>
+</div>
+<div class="sect1">
+<h2 id="_创建集群">创建集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_02.png" alt="创建集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>创建当前集群所有节点的资源，如云服务器、硬盘、IP 地址等。</p>
+</li>
+<li>
+<p>将本集群中所有信息注册到 <a href="../metadata-service">metadata service</a> 中。</p>
+</li>
+<li>
+<p>启动所有节点的 confd agent，监控 metadata service 中本集群信息的变化并按照 <code>/etc/confd</code> 下的模板（toml、tmpl）定义刷新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则执行该命令。</p>
+</li>
+<li>
+<p>执行 init 和 start 中定义的 cmd，按照 init 中 <a href="../specifications#_init">post_start_service</a> 定义的顺序执行。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果 post_start_service 为 true，则表示 init 在 start 后执行。</p>
+</li>
+<li>
+<p>不同 role 节点相同命令的执行顺序，按照 order 的定义从小到大依次执行，默认为 0（最早执行），相同 order 的节点并行执行。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除集群">删除集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_03.png" alt="删除集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>如果待删除的节点定义了 destroy service，则从第 3 步开始执行；如果没有，则执行第 2 步和最后一步。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 stop cmd。</p>
+</li>
+<li>
+<p>如果待删除节点 destroy service 里定义了 post_stop_service 为 False，则从第 5 步开始执行；否则，执行第 4 步和最后一步。</p>
+</li>
+<li>
+<p>待删除的不同角色按照 order 升序执行 stop cmd，然后按照 order 升序执行 destroy cmd。</p>
+</li>
+<li>
+<p>待删除的不同角色按照 order 升序执行 destroy cmd，依据返回值正常（0）或非正常（非０）决定下一步。</p>
+<div class="paragraph">
+<p>此处如此设置是为了提供一种保护措施，您可以在 destroy 命令里查看能否删除该节点或集群，以防数据丢失。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果 destroy cmd 返回非正常且用户不选择强行删除，则此任务失败且终止。</p>
+</li>
+<li>
+<p>如果 destroy cmd 返回正常或者在不正常情况下用户选择强行删除，则不同角色节点按照 order 升序执行 stop cmd。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>删除当前集群所有资源，并且将本集群中所有信息从 metadata service 中注销。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_关闭集群">关闭集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_04.png" alt="关闭集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>不同角色节点按照 order 升序执行 stop cmd。</p>
+</li>
+<li>
+<p>关闭每个节点的 confd agent。</p>
+</li>
+<li>
+<p>关闭节点虚拟机。</p>
+</li>
+<li>
+<p>将本集群中所有信息从 metadata service 中注销。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_启动恢复集群">启动/恢复集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_05.png" alt="启动/恢复集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>启动节点虚拟机。</p>
+</li>
+<li>
+<p>将集群信息注册到 metadata service。</p>
+</li>
+<li>
+<p>启动集群每个节点的 confd agent。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 start cmd。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_增加节点">增加节点</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_06.png" alt="增加节点"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>新增角色节点需支持横向伸缩，即定义了 scale_horizontal 的 advanced_actions，参见 <a href="../specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>创建新增节点的资源，如云服务器、硬盘、IP 地址等。</p>
+</li>
+<li>
+<p>注册新增节点的信息到 metadata service 中（即 <code>/hosts</code> 目录下），同时注册到 <code>/adding-hosts</code> 这个临时目录下。</p>
+<div class="paragraph">
+<p>应用的云服务器可以从 <code>/adding-hosts</code> 目录获取信息并执行横向扩容之前预处理操作等。</p>
+</div>
+</li>
+<li>
+<p>由于 metadata service 中集群信息发生改变，因此非新增节点可能会同时更新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则执行该命令。</p>
+</li>
+<li>
+<p>启动新增节点的 confd agent，同时更新自身配置信息并执行 reload_cmd。</p>
+</li>
+<li>
+<p>执行新增节点 init 和 start 中定义的 cmd，按照 init 中 post_start_service 的定义顺序执行。</p>
+<div class="paragraph">
+<p>不同角色节点相同命令的执行顺序，按照 order 的定义从小到大依次执行，默认为 0（最早执行），相同 order 的节点并行执行。</p>
+</div>
+</li>
+<li>
+<p>执行非新增节点（即集群中除新增节点外的其他节点，通过nodes_to_execute_on 指定在某几个节点上执行）scale_out 中定义的 cmd。</p>
+</li>
+<li>
+<p>删除 metadata service 中 <code>/adding-hosts</code> 这个临时目录下的内容。</p>
+</li>
+<li>
+<p>由于 metadata service 中集群信息发生改变，因此各个节点可能会同时更新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则执行该命令。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除节点">删除节点</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_07.png" alt="删除节点"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待删除角色节点需支持横向伸缩，即定义了 scale_horizontal 的 advanced_actions。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>注册待删除节点的信息到 metadata service 的 <code>/deleting-hosts</code> 临时目录下。</p>
+</li>
+<li>
+<p>由于 metadata service 中集群信息发生改变，因此所有节点可能会同时更新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则执行该命令。</p>
+</li>
+<li>
+<p>若待删除节点定义了 destroy service，则从第 ５ 步开始执行操作；否则，执行第 4 步和最后三步。</p>
+</li>
+<li>
+<p>非删除节点不同角色按照 order 升序执行 scale_in cmd，然后待删除节点不同角色按照 order 升序执行 stop_cmd。</p>
+</li>
+<li>
+<p>如果待删除节点 destroy service 里定义了 post_stop_service 为 False，则从第 7 步开始执行；否则，执行第 6 步和最后三步。</p>
+</li>
+<li>
+<p>非删除节点不同角色按照 order 升序执行scale_in cmd，然后待删除节点不同角色按照 order 升序执行 stop cmd，再按照 order 升序执行 destroy cmd。</p>
+</li>
+<li>
+<p>待删除的不同角色按照 order 升序执行 destroy cmd，依据返回值正常 （0） 或非正常（非０）决定下一步。</p>
+<div class="paragraph">
+<p>此处如此设置是为了提供一种保护措施，您可以在 destroy 命令里查看能否删除该节点，以防数据丢失。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果 destroy cmd 返回非正常且用户不选择强行删除，则此任务失败且终止，同时删除 metadata service 临时目录 <code>/deleting-hosts</code> 下信息。</p>
+</li>
+<li>
+<p>如果 destroy cmd 返回正常或者在不正常情况下用户选择强行删除，则不同角色节点按照 order 升序执行 scale_in cmd，然后各节点按 order 升序执行 stop cmd。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>删除集群中这些节点资源。</p>
+</li>
+<li>
+<p>将删除了的节点信息从 metadata service 中注销并且删除 <code>/deleting-hosts</code> 临时目录下信息。</p>
+</li>
+<li>
+<p>由于 metadata service 中集群信息发生改变，因此剩余所有节点可能会同时更新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则执行该命令。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_纵向扩容更改云服务器类型">纵向扩容/更改云服务器类型</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_08.png" alt="纵向扩容/更改云服务器类型"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>注册扩容角色到 vertical-scaling-roles。</p>
+</li>
+<li>
+<p>如果只扩容硬盘则直接并行执行在线扩容，然后执行最后两步。</p>
+</li>
+<li>
+<p>如果待扩容节点定义了 stop service，则执行第 4 步和最后两步；否则，执行第 5 步和最后两步。</p>
+</li>
+<li>
+<p>按照 vertical_scaling_policy 的定义顺序执行（sequential）或并行执行（parallel）以下操作：待扩容节点上执行 stop cmd；待扩容节点上执行扩容操作；扩容节点上执行 start cmd。</p>
+</li>
+<li>
+<p>非扩容节点上执行 stop cmd，然后待扩容节点上执行扩容操作，最后非扩容节点上执行 start cmd。</p>
+</li>
+<li>
+<p>更新扩容节点的信息到 metadata service 中，并删除 vertical-scaling-roles。</p>
+<table class="tableblock frame-all grid-all stretch admon attention">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>如果扩容过程中发生异常，vertical-scaling-roles 也会被删除。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>由于 metadata service 中集群信息发生改变，因此所有节点可能会同时更新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更，则执行该命令。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_切换网络">切换网络</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_09.png" alt="切换网络"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将 change-vxnet-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 change_vxnet_pre_check 脚本。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回异常（非0），执行步骤 3。</p>
+</li>
+<li>
+<p>如果返回 0，执行步骤 4。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>删除注册到 metadata service 内部的 change-vxnet-audit 数据，返回失败，操作结束。</p>
+</li>
+<li>
+<p>停止服务，不同角色节点按照 order 升序执行 stop cmd 脚本。</p>
+</li>
+<li>
+<p>从 metadata service 中注销集群数据。</p>
+</li>
+<li>
+<p>关闭每个节点的 confd agent 服务。</p>
+</li>
+<li>
+<p>切换网络（修改集群 vpc/vxnet 信息，为集群节点分配新 IP）。</p>
+</li>
+<li>
+<p>重新注册集群信息到 metadata service。</p>
+</li>
+<li>
+<p>将 change-vxnet-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>启动集群每个节点的 confd agent 服务。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 start cmd 脚本。</p>
+</li>
+<li>
+<p>删除注册到 metadata service 内部的 change-vxnet-audit 数据。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_交换预留_ip">交换预留 IP</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_10.png" alt="交换预留 IP"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>local 集群：表示当前操作集群。</p>
+</li>
+<li>
+<p>remote 集群：表示和当前集群交换 IP 的集群。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将 exchange-reserved-ips-audit 注册到 remote 集群的 metadata service 内。</p>
+</li>
+<li>
+<p>将 exchange-reserved-ips-audit 注册到 local 集群的 metadata service 内。</p>
+</li>
+<li>
+<p>remote 集群不同角色节点按 order 升序执行 exchange-reserved-ips pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果执行报错（返回非 0），执行步骤 4。</p>
+</li>
+<li>
+<p>如果执行正常（返回 0），执行步骤 5。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>删除 remote 和 local 注册到 metadata service 的 exchange-reserved-ips-audit 数据，退出流程，操作结束。</p>
+</li>
+<li>
+<p>local 集群不同角色节点按 order 升序执行 exchange-reserved-ips pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果执行报错（返回非 0），执行步骤 6。</p>
+</li>
+<li>
+<p>如果执行正常（返回 0），执行步骤 7。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>删除 local 和 remote 注册到 metadata service 的 exchange-reserved-ips-audit 数据，退出流程，操作结束。</p>
+</li>
+<li>
+<p>local 集群不同角色节点按 order 升序执行 stop cmd 脚本。</p>
+</li>
+<li>
+<p>remote 集群不同角色节点按 order 升序执行 stop cmd 脚本。</p>
+</li>
+<li>
+<p>交换两个集群的预留 IP，更新数据库相关记录。</p>
+</li>
+<li>
+<p>将交换后的预留 IP 注册到 local 集群 metadata service 的 /endpoints 中。</p>
+</li>
+<li>
+<p>local 集群不同角色节点按 order 升序执行 start cmd。</p>
+</li>
+<li>
+<p>将交换后的预留 IP 注册到 remote 集群 metadata service 的 /endpoints 中。</p>
+</li>
+<li>
+<p>remote 集群不同角色节点按 order 升序执行 start cmd。</p>
+</li>
+<li>
+<p>删除 local 和 remote 注册到 metadata service 的 exchange-reserved-ips-audit 数据，流程完成。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_备份集群">备份集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_11.png" alt="备份集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>如果配置包定义 backup selector：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>执行 backup selector 获取集群中支持备份的节点列表。</p>
+</li>
+<li>
+<p>不同角色的非 replica 节点按照 order 升序排列，执行 backup cmd 脚本。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>如果配置包未定义 backup selector：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>如果未定义 backup with replica，集群节点过滤，排除掉 replica 节点，否则使用全部节点。</p>
+</li>
+<li>
+<p>按照 order 升序排列，执行 backup cmd 脚本。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>节点的硬盘做快照备份（kvm 备份挂载盘，lxc 备份主机），默认增量备份，同时校验备份链长度和个数。</p>
+</li>
+<li>
+<p>备份完成，不同角色节点按照 order 升序执行 backup cleanup 脚本。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_备份恢复集群">备份恢复集群</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_12.png" alt="备份恢复集群"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>如果配置包中 backup_policy 定义为 device：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>根据备份时集群的配置信息（cpu、内存、硬盘、环境变量等）创建集群。</p>
+</li>
+<li>
+<p>注册集群信息到 metadata service。</p>
+</li>
+<li>
+<p>启动每个节点的 confd agent 服务。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>如果配置包中 backup_policy 定义不是 device，不同角色的节点按照 order 升序执行 stop cmd 脚本。</p>
+</li>
+<li>
+<p>如果定义了 restore cmd，不同角色的节点按照 order 升序执行 restore cmd 脚本。</p>
+</li>
+<li>
+<p>如果没有定义 restore cmd，不同角色的节点按照 order 升序执行 start cmd 脚本。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_并行升级">并行升级</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_13.png" alt="并行升级"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>关闭集群节点。</p>
+</li>
+<li>
+<p>以新版本镜像启动节点。</p>
+</li>
+<li>
+<p>启动所有节点的 confd agent，监控 metadata service 中本集群信息的变化并按照 /etc/confd 下的模板（toml、tmpl）定义刷新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则相应地执行该命令。</p>
+</li>
+<li>
+<p>执行 start 和 upgrade 中定义的 cmd，按照 upgrade 中 post_start_service 的定义顺序执行。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果 post_start_service 为 true，则表示 upgrade 在 start 后执行。</p>
+</li>
+<li>
+<p>不同 role 节点相同命令的执行顺序，按照 order 的定义从小到大依次执行，默认为 0（最早执行），相同 order 的节点并行执行。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>如果第 4 步中的命令执行后的返回值非 0，则此次升级任务失败，需要手动关闭集群并执行第 6 步降级操作。</p>
+</li>
+<li>
+<p>集群节点以旧版本镜像启动。</p>
+</li>
+<li>
+<p>启动所有节点的 confd agent，监控 metadata service 中本集群信息的变化并按照 /etc/confd 下的模板（toml、tmpl）定义刷新配置。如果 toml 文件里定义 reload_cmd 且配置确实发生变更则相应地执行该命令。</p>
+</li>
+<li>
+<p>不同的角色节点按 order 升序执行 start 中定义的 cmd。</p>
+</li>
+</ol>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>第 1 步到第 4 步的流程，按照 upgrading_policy 的定义， 顺序执行 (sequential) 或 并行执行 (parallel)。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_并行升级失败恢复">并行升级失败恢复</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_14.png" alt="并行升级失败恢复"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>手动关闭集群。</p>
+</li>
+<li>
+<p>如果不支持 rollback，再次启动集群，会使用高版本镜像启动虚拟机，启动成功后升级完成。</p>
+</li>
+<li>
+<p>如果支持 rollback，关闭集群时进行降级。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>集群版本修改为旧版本。</p>
+</li>
+<li>
+<p>集群节点虚拟机镜像改为旧版本镜像。</p>
+</li>
+<li>
+<p>恢复旧版环境变量。</p>
+</li>
+<li>
+<p>再次启动集群，降级完成。</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_滚动升级">滚动升级</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_15.png" alt="滚动升级"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将 upgrade-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 upgrade_pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回异常（非 0），升级失败，删除 upgrade-audit，退出升级流程。</p>
+</li>
+<li>
+<p>如果返回 0，继续执行步骤 3。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>执行 get_nodes_order 脚本，获取角色对应的节点升级顺序。</p>
+</li>
+<li>
+<p>每个节点按照顺序依次执行如下操作：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>执行 upgrade pre_cmd 脚本:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回报错（非 0），升级失败，删除 upgrade-audit，退出升级流程。</p>
+</li>
+<li>
+<p>如果返回 0，继续执行。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>执行 stop_cmd 脚本，关闭服务。</p>
+</li>
+<li>
+<p>关闭 confd agent 服务。</p>
+</li>
+<li>
+<p>关闭节点虚拟机，替换新版本镜像并启动虚拟机。</p>
+</li>
+<li>
+<p>是否配置 post_start_service：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>是，先执行 start cmd 脚本，再执行 upgrade  cmd 脚本。</p>
+</li>
+<li>
+<p>否，先执行 upgrade cmd 脚本，再执行 start cmd 脚本。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>如果有任一节点 start/upgrade cmd 执行失败，升级失败，删除 upgrade-audit，退出升级流程。</p>
+</li>
+<li>
+<p>如果所有节点 start/upgrade cmd 执行成功，升级成功，删除 upgrade-audit。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_滚动升级失败恢复">滚动升级失败恢复</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_16.png" alt="滚动升级失败恢复"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>配置包中是否支持 rollback：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>若不支持，则关闭集群，然后使用旧版本镜像再次启动集群，退出流程，操作结束。</p>
+</li>
+<li>
+<p>若支持，继续执行步骤 2。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>将 upgrade-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 upgrade_pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回报错（非 0），降级失败，删除 upgrade-audit，退出流程，操作结束。</p>
+</li>
+<li>
+<p>如果返回 0，继续执行步骤 4。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>执行 get_nodes_order 脚本，获取角色对应的节点降级顺序。</p>
+</li>
+<li>
+<p>每个节点按照顺序依次执行如下操作：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>执行 stop_cmd 脚本，关闭服务。</p>
+</li>
+<li>
+<p>关闭 confd agent 服务。</p>
+</li>
+<li>
+<p>关闭节点虚拟机，替换旧版本镜像并启动虚拟机，启动 confd agent 服务。</p>
+</li>
+<li>
+<p>执行 start cmd，启动服务。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>所有节点降级成功后，删除注册到 metadata service 中的 upgrade-audit 数据，降级恢复完成。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_原地升级">原地升级</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_17.png" alt="原地升级"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将 upgrade-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 upgrade pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回报错（非 0），升级失败，删除 upgrade-audit，退出流程，操作结束。</p>
+</li>
+<li>
+<p>如果返回 0，继续执行步骤 3。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>使用配置包中定义的 snapshot 创建硬盘并挂载到正在运行的节点虚拟机上。</p>
+</li>
+<li>
+<p>根据升级策略并行或者串行执行 upgrade cmd 脚本。</p>
+</li>
+<li>
+<p>解绑新挂载的硬盘并销毁。</p>
+</li>
+<li>
+<p>删除注册到 metadata service 中的 upgrade-audit 数据。</p>
+</li>
+<li>
+<p>根据步骤 4 的执行结果判断升级是否成功：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回报错（非 0），升级失败。</p>
+</li>
+<li>
+<p>如果返回 0，升级完成。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_原地升级失败恢复">原地升级失败恢复</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/appcenter_c_18.png" alt="原地升级失败恢复"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>配置包中是否支持 rollback：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>若不支持，则关闭集群，然后使用旧版本镜像再次启动集群，退出流程，操作结束。</p>
+</li>
+<li>
+<p>若支持，继续执行步骤 2。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>将 upgrade-audit 注册到 metadata service。</p>
+</li>
+<li>
+<p>不同角色节点按照 order 升序执行 upgrade pre_check 脚本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如果返回报错（非 0），降级失败，删除 upgrade-audit，退出流程，操作结束。</p>
+</li>
+<li>
+<p>如果返回 0，继续执行步骤 4。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>根据升级策略并行或者串行执行 rollback cmd 脚本。</p>
+</li>
+<li>
+<p>删除注册到 metadata service 中的 upgrade-audit 数据，降级恢复完成。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_创建集群">创建集群</a></li>
+    <li><a href="#_删除集群">删除集群</a></li>
+    <li><a href="#_关闭集群">关闭集群</a></li>
+    <li><a href="#_启动恢复集群">启动/恢复集群</a></li>
+    <li><a href="#_增加节点">增加节点</a></li>
+    <li><a href="#_删除节点">删除节点</a></li>
+    <li><a href="#_纵向扩容更改云服务器类型">纵向扩容/更改云服务器类型</a></li>
+    <li><a href="#_切换网络">切换网络</a></li>
+    <li><a href="#_交换预留_ip">交换预留 IP</a></li>
+    <li><a href="#_备份集群">备份集群</a></li>
+    <li><a href="#_备份恢复集群">备份恢复集群</a></li>
+    <li><a href="#_并行升级">并行升级</a></li>
+    <li><a href="#_并行升级失败恢复">并行升级失败恢复</a></li>
+    <li><a href="#_滚动升级">滚动升级</a></li>
+    <li><a href="#_滚动升级失败恢复">滚动升级失败恢复</a></li>
+    <li><a href="#_原地升级">原地升级</a></li>
+    <li><a href="#_原地升级失败恢复">原地升级失败恢复</a></li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

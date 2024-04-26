@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产品简介 on 用户指南</title>
+    <link>/v6.1/operation/tools/intro/</link>
+    <description>Recent content in 产品简介 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/operation/tools/intro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>标签</title>
+      <link>/v6.1/operation/tools/intro/label/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/intro/label/</guid>
+      <description>标签（Tag）可以对云资源进行分类分组，以便于日常管理。
+随着业务的增长，使用的资源也是日益的增多，资源检索会成为日常的需求。因此，标签功能可以根据实际情形来过滤各种基础设施资源。</description>
+    </item>
+    
+    <item>
+      <title>操作日志</title>
+      <link>/v6.1/operation/tools/intro/operation_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/intro/operation_log/</guid>
+      <description>操作日志会记录最近一段时间的所有操作历史。云平台支持全球区域。因此，用户的操作可以分为两种类型：
+本区操作日志：记录本区域内的操作历史。
+全局操作日志：记录跨区域的操作历史，即全局。</description>
+    </item>
+    
+    <item>
+      <title>定时器</title>
+      <link>/v6.1/operation/tools/intro/scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/intro/scheduler/</guid>
+      <description>定时器概念 定时器（Scheduler）功能可用来定期执行一系列任务，比如定时开关云服务器、创建备份、调整带宽等。可在指定的周期重复执行，也可仅执行一次，且每个任务支持多个资源批量操作。任务执行后会发出通知到用户指定的通知列表并保留近期执行的历史记录。
+每种任务都可支持最多 5 个资源批量操作，如若不够可通过多个任务将资源分组执行。
+定时器的资源操作是基于 API 实现。默认情况下每个用户每小时最多调用 API 2000 次。
+目前支持的定时任务有：
+开启云服务器
+关闭云服务器
+重启云服务器
+创建备份
+跨区复制备份
+调整公网 IP 带宽上限（每天每个公网 IP 带宽调整次数最多 100 次）
+调整公网 IP 计费模式
+开启 VPC 网络
+关闭 VPC 网络
+启动负载均衡器
+关闭负载均衡器
+启用防火墙规则
+禁用防火墙规则</description>
+    </item>
+    
+    <item>
+      <title>回收站</title>
+      <link>/v6.1/operation/tools/intro/recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/intro/recycle_bin/</guid>
+      <description>删除的资源会在回收站中保留 2 个小时，包括云服务器、硬盘、备份、自有镜像等。在这期间可以对删除的内容进行恢复操作。2 个小时后，资源会被彻底销毁，不可恢复。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1487 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云计算, 文件存储, QFS]">
+
+
+<meta name="description" content="这里是企业云文档页面">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>文件系统 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/storage/qfs/">
+          
+            文件存储 QFS
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/qfs/intro/introduction/">产品概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/qfs/intro/keyword_list/">术语说明</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/qfs/manual/auth/">权限组管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/storage/qfs/manual/file_system/">文件系统</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/qfs/manual/use/">客户端使用</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/qfs" data-url="/v6.1/storage/qfs">文件存储 QFS</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/storage/qfs/manual/auth/" data-url="/v6.1/storage/qfs/manual">操作指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/qfs/manual/file_system" data-url="/v6.1/storage/qfs/manual/file_system">文件系统</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    文件系统</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/storage/qfs/manual">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_文件系统列表">文件系统列表</a></li>
+    <li><a href="#_创建文件系统">创建文件系统</a></li>
+    <li><a href="#_删除文件系统">删除文件系统</a></li>
+    <li><a href="#_修改文件系统">修改文件系统</a></li>
+    <li><a href="#_挂载点">挂载点</a>
+      <ul>
+        <li><a href="#_创建挂载点">创建挂载点</a></li>
+        <li><a href="#_删除挂载点">删除挂载点</a></li>
+        <li><a href="#_修改挂载点">修改挂载点</a></li>
+      </ul>
+    </li>
+    <li><a href="#_查看文件系统">查看文件系统</a>
+      <ul>
+        <li><a href="#_共享信息">共享信息</a></li>
+        <li><a href="#_资源监控">资源监控</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p>文件存储 QFS 服务为多租户文件系统，以租户为粒度进行规划、分配统一管理的存储资源，不同租户文件系统之间的数据逻辑隔离，从而保障数据安全。文件系统挂载后在客户端体现为不同的目录。</p>
+</div>
+<div class="sect1">
+<h2 id="_文件系统列表">文件系统列表</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>用户可在该页面查看当前环境中已创建的所有文件系统的状态、容量使用情况等概览信息。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>登录云平台的管理控制台。</p>
+</li>
+<li>
+<p>点击<strong>产品与服务</strong> &gt; <strong>存储服务</strong> &gt; <strong>文件存储 QFS</strong>，默认进入<strong>文件系统</strong>主页面。当前创建的所有文件系统，均在此列表显示。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_list.png" alt="file_system_list" width="100%"/>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建文件系统">创建文件系统</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>使用文件存储 QFS 服务的第一步，就是需要用户创建一个文件系统，操作步骤如下：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击<strong> + 创建文件系统</strong>。</p>
+</li>
+<li>
+<p>弹出<strong>创建文件系统</strong>对话框，用户根据页面提示信息填写相关参数后，点击<strong>确定</strong>。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_create.png" alt="file_system_create" width="60%"/>
+</div>
+</div>
+</li>
+<li>
+<p>成功创建的文件系统在<a href="#_文件系统列表">文件系统列表页面</a>显示。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除文件系统">删除文件系统</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>对使用中的文件系统进行删除操作，系统会返回操作失败。因此，删除文件系统前，用户需确保该文件系统内无数据存储。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统的<strong>删除</strong>操作。</p>
+</li>
+<li>
+<p>在弹出的确认对话框内，确认操作无误后，点击<strong>删除</strong>即可完成删除操作。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_修改文件系统">修改文件系统</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>对已成功创建的文件系统，系统仅支持对描述信息进行修改。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统的<strong>修改描述</strong>操作。</p>
+</li>
+<li>
+<p>在弹出的<strong>修改描述</strong>对话框内，根据实际情况，修改描述后，点击<strong>确定</strong>即可完成修改操作。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_modify.png" alt="file_system_modify" width="60%"/>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_挂载点">挂载点</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>待用户成功创建一个文件系统后，需针对该文件系统创建挂载点，再通过挂载点路径，将文件系统挂载至用户环境开始使用存储服务。删除挂载点后使用该挂载点路径挂载文件系统的客户端将不能继续对文件系统中的数据进行访问和操作，不会影响已写入的数据。</p>
+</div>
+<div class="sect2">
+<h3 id="_创建挂载点">创建挂载点</h3>
+<div class="paragraph">
+<p>待用户成功创建一个文件系统后，需针对该文件系统创建挂载点。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统名称。</p>
+</li>
+<li>
+<p>默认进入挂载点列表页面。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_mount_list.png" alt="file_system_mount_list" width="100%"/>
+</div>
+</div>
+</li>
+<li>
+<p>点击<strong> + 创建挂载点</strong>，弹出<strong>创建挂载点</strong>对话框，用户根据页面提示信息填写相关参数后，点击<strong>确定</strong>。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_mount_create.png" alt="file_system_mount_create" width="60%"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>协议类型</strong>：是指用户通过哪种协议将该文件系统挂载至客户端。云平台建议，若客户端为 Windows 操作系统，使用 SMB 协议；若客户端为 Linux 操作系统，使用 NFS 协议；若客户端为 MAC，则使用 NFS 协议。</p>
+</li>
+<li>
+<p><strong>权限组</strong>：创建挂载点时，需指定权限组。系统默认提供 NFS 和 SMB 两个权限组，如无特殊权限要求，用户可直接使用该默认权限组。用户也可提前创建所需<a href="../auth/#_创建权限组">权限组</a>后再创建共享，并使用该权限组。</p>
+</li>
+<li>
+<p><strong>共享目录</strong>： 填写 <code>/</code> 即表示将整个文件系统作为一个大目录进行共享，挂载后用户可以看到这个文件系统下所有的子目录和文件；填写 <code>/test</code> 等目录，即将文件系统下的 <code>/test</code> 目录进行共享，挂载后用户只能看到 <code>/test</code> 目录下的所有子目录和文件。若同一个目录通过不同的协议挂载到不同的客户端，用户则可以同时通过 NFS 和 SMB 协议访问到该目录的数据。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>成功创建的挂载点，在挂载点列表页面显示。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_删除挂载点">删除挂载点</h3>
+<div class="paragraph">
+<p>删除挂载点，即删除文件系统的共享链接。挂载点删除后，使用该共享路径挂载文件系统的客户端将不能继续对文件系统中的数据进行访问和操作，但是存储于该文件系统内的数据，仍然存在。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统名称，默认进入挂载点列表页面。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_mount_list.png" alt="file_system_mount_list" width="100%"/>
+</div>
+</div>
+</li>
+<li>
+<p>点击目标挂载点的<strong>删除</strong>操作，在弹出的确认对话框内，确认操作无误后，点击<strong>删除</strong>，即可完成删除操作。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_修改挂载点">修改挂载点</h3>
+<div class="paragraph">
+<p>对于已创建的挂载点，目前仅支持对其权限组进行修改。权限组的修改，立马生效。如：当前客户端正在写，若此时修改权限为 <code>只读</code>，则当前正在进行中的 <code>写</code> 操作，会立马中断。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统名称，默认进入挂载点列表页面。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_mount_list.png" alt="file_system_mount_list" width="100%"/>
+</div>
+</div>
+</li>
+<li>
+<p>点击目标挂载点的<strong>修改</strong>操作，在弹出的<strong>修改挂载点</strong>对话框内，修改权限组后，点击<strong>确定</strong>，即可完成修改操作。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查看文件系统">查看文件系统</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>对于已创建的文件系统，用户可对其进行查看。同时，系统还对其容量使用情况等进行监控，方便用户了解近期容量的使用情形。</p>
+</div>
+<div class="sect2">
+<h3 id="_共享信息">共享信息</h3>
+<div class="paragraph">
+<p>用户在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统名称，进入挂载点列表页面，查看指定文件系统当前已创建的共享信息，包括挂载路径、协议类型、当前状态等。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_mount_list.png" alt="file_system_mount_list" width="100%"/>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_资源监控">资源监控</h3>
+<div class="paragraph">
+<p>系统对文件系统的容量以及流量进行监控。用户可以在管理控制台相关页面查看监控详情。操作如下：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在<a href="#_文件系统列表">文件系统列表</a>页面，点击目标文件系统名称，进入文件系统详情页面。</p>
+</li>
+<li>
+<p>在文件系统详情页面，点击<strong>资源监控</strong>标签，进入<strong>资源监控</strong>页面。页面支持用户查看若干周期内的监控数据。用户可根据需求自行选择。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/qfs/file_system_monitor.png" alt="file_system_monitor" width="100%"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当前文件系统流量统计值为 15 分钟内的平均值。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_文件系统列表">文件系统列表</a></li>
+    <li><a href="#_创建文件系统">创建文件系统</a></li>
+    <li><a href="#_删除文件系统">删除文件系统</a></li>
+    <li><a href="#_修改文件系统">修改文件系统</a></li>
+    <li><a href="#_挂载点">挂载点</a>
+      <ul>
+        <li><a href="#_创建挂载点">创建挂载点</a></li>
+        <li><a href="#_删除挂载点">删除挂载点</a></li>
+        <li><a href="#_修改挂载点">修改挂载点</a></li>
+      </ul>
+    </li>
+    <li><a href="#_查看文件系统">查看文件系统</a>
+      <ul>
+        <li><a href="#_共享信息">共享信息</a></li>
+        <li><a href="#_资源监控">资源监控</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

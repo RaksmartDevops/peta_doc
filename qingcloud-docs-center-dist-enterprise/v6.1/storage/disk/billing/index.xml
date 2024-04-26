@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计费指南 on 用户指南</title>
+    <link>/v6.1/storage/disk/billing/</link>
+    <description>Recent content in 计费指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/disk/billing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计费说明</title>
+      <link>/v6.1/storage/disk/billing/price/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/billing/price/</guid>
+      <description>计费模式 硬盘支持包年包月和按需计费两种模式：
+包年包月：预付费，按月或按年收费，享有大幅的优惠折扣，有效期越长，折扣力度越大。
+按需计费：按秒计费，按小时扣费，不足 1 小时的将会以实际使用时间进行扣费。
+计费详情 硬盘费用根据硬盘类型、硬盘容量及使用时长进行计算。
+开始计费：硬盘从创建成功后开始计费。
+停止计费：
+按包年包月收费的硬盘在退订成功后，直接删除资源并停止计费；
+按需计费的硬盘，在资源被删除成功后停止计费。
+价格计算：详情可参考价格计算器。
+变更计费模式 包年包月转按需：使用包年包月计费方式的硬盘，开启 到期转按需 设置之后，硬盘资源将不允许续费。对于未生效的计费模式，可撤销该变更计费模式的设定；
+按需转包年包月：使用按需计费方式的硬盘，转为包年包月计费，会生成新的计费订单，用户需补充相应的费用。
+历史计费模式 预留合约：预付费方式，仅对以往签署预留合约并且合约状态处于 生效中 或 OPEN 期 的用户可见。</description>
+    </item>
+    
+  </channel>
+</rss>

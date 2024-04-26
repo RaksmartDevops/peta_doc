@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>常见问题 on 用户指南</title>
+    <link>/v6.1/storage/object_storage/faq/</link>
+    <description>Recent content in 常见问题 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/object_storage/faq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CIDR 地址划分</title>
+      <link>/v6.1/storage/object_storage/faq/cidr_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/faq/cidr_ip/</guid>
+      <description>概述 CIDR(Classless Inter Domain Routing，无类别域间路由) 是在路由表中增加了子网掩码 (Subnet Masking)，从而可以灵活的将某个范围的 IP 地址分配给某个网络。
+对象存储的防盗链设置中，使用 CIDR 格式的 IP 地址。现对该格式的地址填写方式，加以说明。
+CIDR 格式说明 CIDR 格式为：IP 地址/网络 ID 的位数。例如 IP 地址：202.194.20.138/19，其中 202.194.20.138 为 IP 地址，19 为网络 ID 的位数，表示 IP 地址 202.194.20.138 的前 19 位为网络前缀，后 13 位为主机号。
+整个计算过程如下：
+首先，我们将该 IP 地址 202.194.20.138 用二进制表示，内容如下：
+11001010 11000010 00010100 10001010 此 IP 地址中 /19，表示前 19 位为网络前缀，其余为主机号。则该地址 202.194.20.138 所在 CIDR 地址块中最小的地址为，网络地址：
+二进制为：
+11001010 11000010 00000000 00000000 十进制为：
+202.194.0.0 该地址 202.194.20.138 所在 CIDR 地址块中最大的地址为，即为广播地址：</description>
+    </item>
+    
+    <item>
+      <title>FAQ</title>
+      <link>/v6.1/storage/object_storage/faq/object-faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/faq/object-faq/</guid>
+      <description>如何提高对象存储的 Bucket 配额？ 每个用户的默认 Bucket 配额为 2 个，用户可以通过提交工单申请提高 Bucket 配额。对象存储不推荐单个用户创建太多的 Bucket。
+对象存储的 Bucket 有文件数量和类型的限制吗？ 对象存储是面向海量非结构化数据的通用存储，没有针对文件数量和类型的限制。
+如何同步本地目录到对象存储？ 可以使用高级命令行工具 qsctl，其中的 sync 命令支持将本地目录和对象存储目录进行同步，详情请参考 qsctl 文档。
+对象存储的 Bucket 是否可以创建文件夹？ 对象存储的 Bucket 本质上是一个平级结构，但 管理控制台界面会根据 / 来模拟文件系统的层级结构。
+对象存储是否有针对文件夹操作的接口？ 有的，具体可参考对象存储的 API 文档中的 Put Object 接口。
+对象存储是否有 API 请求频率限制？ 对象存储不对 API 请求频率做限制。
+对象存储是否兼容 AWS S3 的上传工具？ 对象存储兼容 AWS S3 的主要 API，用户可以直接使用 AWS S3 相关的上传工具上传数据到对象存储，兼容工具列表可以参考对象存储的开发者文档。
+对象存储的 Bucket 能否像 AWS S3 一样 Mount 到云服务器上？ 可以使用 s3fs 挂载对象存储的 Bucket 作为后端存储 。</description>
+    </item>
+    
+  </channel>
+</rss>

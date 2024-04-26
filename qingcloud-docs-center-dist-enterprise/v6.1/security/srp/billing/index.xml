@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计费指南 on 用户指南</title>
+    <link>/v6.1/security/srp/billing/</link>
+    <description>Recent content in 计费指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/security/srp/billing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计费说明</title>
+      <link>/v6.1/security/srp/billing/price/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/security/srp/billing/price/</guid>
+      <description>计费规则 仅支持包年包月的购买方式。
+购买时长支持选择1 个月或1 年，满一年可享受 8 折优惠，您需要在购买时一次性完成预付费。
+计费项 计费版本 价格（元/月） 日志审计
+基础版
+2500（元/月）
+标准版
+5000（元/月）
+高级版
+7500（元/月）
+旗舰版
+10000（元/月）
+专业版
+11250（元/月）
+云防火墙
+基础版
+2500（元/月）
+标准版
+3750（元/月）
+高级版
+5000（元/月）
+旗舰版
+7500（元/月）
+Web 应用防护防火墙
+基础版
+2500（元/月）
+标准版
+5000（元/月）
+高级版
+7500（元/月）
+旗舰版
+10000（元/月）
+专业版
+11250（元/月）
+堡垒机
+基础版
+2500（元/月）
+标准版
+5000（元/月）
+高级版
+7500（元/月）
+旗舰版
+10000（元/月）
+专业版
+11250（元/月）
+漏洞扫描
+基础版
+2500（元/月）
+标准版
+5000（元/月）
+高级版
+7500（元/月）
+旗舰版
+10000（元/月）
+专业版
+11250（元/月）
+数据库审计
+基础版
+2500（元/月）
+标准版
+5000（元/月）</description>
+    </item>
+    
+  </channel>
+</rss>

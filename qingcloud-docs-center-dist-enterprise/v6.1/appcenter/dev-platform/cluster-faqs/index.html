@@ -1,0 +1,3687 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云平台, AppCenter, 云应用开发]">
+
+
+
+<meta name="description" content="介绍 AppCenter 云应用开发的常见问题。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>常见问题 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/appcenter/dev-platform/">
+          
+            应用开发平台
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/introduction/">简介</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/architechure/">系统架构</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >服务商入驻</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/prerequisite/">入驻须知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/contracts/">入驻流程</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >快速入门</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/cluster/">云应用入门指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/quick_start_saas/">SaaS 应用入门指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >云应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/management/">应用管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/version_management/">应用版本管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/build/">镜像制作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/metadata-service/">Metadata 服务</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/basic-specifications/">开发模板规范 - 基础版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/specifications/">开发模板规范 - 完整版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/lifecycle/">实例生命周期</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/user_management/">用户管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/instance_management/">实例管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/log/">日志管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/debug/">调试指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_license/">License 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SaaS 应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/saas-flow/">接入流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台账户对接</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_flow/">调用流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_auth_code/">获取授权码</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_token/">获取 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/check_token/">校验 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/login_console/">免密登录控制台</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SPI 接口开发</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_overview/">接口概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_convention/">接口约定</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_reload/">接口重试机制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_security/">安全设计</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/release/">应用上架</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_api_app/">API 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/finance/">财务管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/order/">订单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/tickets/">工单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/notification/">通知中心</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/appcenter/dev-platform/cluster-faqs/">常见问题</a>
+          </li>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform" data-url="/v6.1/appcenter/dev-platform">应用开发平台</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform/cluster-faqs" data-url="/v6.1/appcenter/dev-platform/cluster-faqs">常见问题</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    常见问题</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/appcenter/dev-platform/cluster-faqs">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_1_作为新手如何从一个最简单的例子入手">1. 作为新手，如何从一个最简单的例子入手？</a></li>
+    <li><a href="#_2_app_ggent_是什么如何安装_app_ggent">2. App Ggent 是什么？如何安装 App Ggent？</a></li>
+    <li><a href="#_3_如何创建_toml_和_tmpl_的模板文件">3. 如何创建 toml 和 tmpl 的模板文件？</a></li>
+    <li><a href="#_4_什么是_metadata_服务如何查询_metadata_上的值">4. 什么是 Metadata 服务，如何查询 Metadata 上的值？</a></li>
+    <li><a href="#_5_如何查看日志">5. 如何查看日志？</a></li>
+    <li><a href="#_6_如何理解数据持久化和挂盘如何配置如何检查数据持久化是否配置成功">6. 如何理解数据持久化和挂盘？如何配置？如何检查数据持久化是否配置成功？</a></li>
+    <li><a href="#_7_如何写健康检查的配置和脚本">7. 如何写健康检查的配置和脚本？</a></li>
+    <li><a href="#_8_如何写监控数据的配置和脚本">8. 如何写监控数据的配置和脚本？</a></li>
+    <li><a href="#_9_如何写自定义服务的脚本">9. 如何写自定义服务的脚本？</a></li>
+    <li><a href="#_10_如何设置应用自身的配置参数">10. 如何设置应用自身的配置参数？</a></li>
+    <li><a href="#_11_用户输入参数如何做校验如何支持正则表达式">11. 用户输入参数如何做校验,如何支持正则表达式？</a></li>
+    <li><a href="#_12_如何展示节点的其他信息">12. 如何展示节点的其他信息？</a></li>
+    <li><a href="#_13_如何开放vnc给用户允许用户访问节点">13. 如何开放VNC给用户，允许用户访问节点？</a></li>
+    <li><a href="#_14_如何备份">14. 如何备份？</a></li>
+    <li><a href="#_15_如何升级如何支持应用的大版本升级">15. 如何升级，如何支持应用的大版本升级？</a></li>
+    <li><a href="#_16_如何设置集群的_vip">16. 如何设置集群的 VIP？</a></li>
+    <li><a href="#_17_如何支持用户下载和查看应用的日志">17. 如何支持用户下载和查看应用的日志？</a></li>
+    <li><a href="#_18_如何语言国际化">18. 如何语言国际化？</a></li>
+    <li><a href="#_19_应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题">19. 应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题？</a></li>
+    <li><a href="#_20_如何配置依赖其他集群的服务">20. 如何配置依赖其他集群的服务？</a></li>
+    <li><a href="#_21_执行操作失败时如何展示给用户错误提示">21. 执行操作失败时如何展示给用户错误提示？</a></li>
+    <li><a href="#_22_如何配置横向扩容">22. 如何配置横向扩容？</a></li>
+    <li><a href="#_23_如何支持集群切换私网网络">23. 如何支持集群切换私网网络？</a></li>
+    <li><a href="#_24_如何将角色的某个节点直接绑定公网_ip">24. 如何将角色的某个节点直接绑定公网 IP？</a></li>
+    <li><a href="#_25_如何获取依赖其他集群的服务的_appid_和_appversionid">25. 如何获取依赖其他集群的服务的 AppID 和 AppVersionID？</a></li>
+    <li><a href="#_26_能否提供一些_confd_templates即_tmpl_文件的使用例子">26. 能否提供一些 confd templates（即 tmpl 文件）的使用例子？</a></li>
+    <li><a href="#_27_confd_日志显示_key_找不到的错误信息">27. confd 日志显示 key 找不到的错误信息</a></li>
+    <li><a href="#_28_上传配置包时报错配置验证失败报config_json_not_valid_json错误">28. 上传配置包时报错：配置验证失败,报[config.json] Not valid json错误？</a></li>
+    <li><a href="#_29_我在测试的时候发现设置的服务价格没起作用原因是什么">29. 我在测试的时候发现设置的服务价格没起作用，原因是什么？</a></li>
+    <li><a href="#_30_节点的启动停止命令执行出错请确保命令写完整的全路径">30. 节点的启动/停止命令执行出错，请确保命令写完整的全路径。</a></li>
+    <li><a href="#_31_使用_kvm_作为镜像模板时应用创建资源失败">31. 使用 kvm 作为镜像模板时，应用创建资源失败</a></li>
+    <li><a href="#_32_使用说明和服务条款的_markdown_语法说明">32. 使用说明和服务条款的 Markdown 语法说明</a></li>
+    <li><a href="#_33_如果只想用云应用开发框架管理纯云服务器集群">33. 如果只想用云应用开发框架管理纯云服务器集群</a></li>
+    <li><a href="#_34_如何使用环境变量里的_accesskey_类型数据">34. 如何使用环境变量里的 accesskey 类型数据？</a></li>
+    <li><a href="#_35_环境变量里如何支持层级联动关系">35. 环境变量里如何支持层级联动关系？</a></li>
+    <li><a href="#_36_如何定义原地升级方式">36. 如何定义原地升级方式？</a></li>
+    <li><a href="#_37_升级操作时如何给用户弹出提示">37. 升级操作时如何给用户弹出提示？</a></li>
+    <li><a href="#_38_串行纵向扩容或滚动升级时如何按照一定顺序进行操作">38. 串行纵向扩容或滚动升级时，如何按照一定顺序进行操作？</a></li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="sect1">
+<h2 id="_1_作为新手如何从一个最简单的例子入手">1. 作为新手，如何从一个最简单的例子入手？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>我们在 <a href="https://github.com/QingCloudAppcenter/">GitHub</a> 上提供了大量的基于 AppCenter 开发的实例代码和配置文件，
+作为新手我们建议从 <a href="https://github.com/QingCloudAppcenter/Zookeeper">Zookeeper</a> 或者
+<a href="https://github.com/QingCloudAppcenter/Redis-standalone">Redis</a> 入手。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_app_ggent_是什么如何安装_app_ggent">2. App Ggent 是什么？如何安装 App Ggent？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>下载云平台提供的 App Ggent：<a href="https://s4.qingcloud.com/files/2022/12/app-agent-linux-amd64.tar.gz" target="_blank" rel="noopener">Linux 版本</a> 与 <a href="https://s4.qingcloud.com/files/2022/12/app-agent-windows-386.zip" target="_blank" rel="noopener">Windows 版本</a>。解压后运行 ./install.sh (Windows 下双击 install.bat)。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_如何创建_toml_和_tmpl_的模板文件">3. 如何创建 toml 和 tmpl 的模板文件？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>可参考文档 <a href="../cluster-developer-guide/build/#_创建模板文件">创建模板文件</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_什么是_metadata_服务如何查询_metadata_上的值">4. 什么是 Metadata 服务，如何查询 Metadata 上的值？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>云平台 AppCenter 的 metadata service 是在 etcd 基础之上进行了二次开发，主要增加了 self 属性，即每个节点只能从该服务获取到自身相关的信息，如本机 IP、server ID 等，此项目已在 github 上开源。</p>
+</div>
+<div class="paragraph">
+<p>在创建好一个集群后，登录到任意一个节点，查看文件 <code>/etc/confd/confd.toml</code> 里 <code>nodes</code> 这一行，这一行定义的是 metadata server 的 IP 地址，任取其中一个 IP，运行下面命令即可看到所有信息。由于同一 VPC 里所有集群的 <code>/etc/confd/confd.toml</code> 文件内容相同，因此登录任一节点查看即可。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">curl http://[IP]/self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>或者直接访问</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">curl http://metadata/self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/metadata-service">Metadata 服务</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_如何查看日志">5. 如何查看日志？</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>查看集群云服务器里的 confd 日志</p>
+<div class="ulist">
+<ul>
+<li>
+<p>启动时的日志文件：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">/opt/qingcloud/app-agent/log/confd-onetime.log</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>修改了 confd 相关的 <code>.toml</code> 和 <code>.tmpl</code> 文件后，执行了 <code>service confd restart</code> 命令之后重新生成新的 confd 相关的日志文件：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">/opt/qingcloud/app-agent/log/confd.log</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>查看应用本身服务调用的日志</p>
+<div class="paragraph">
+<p>应用本身服务的初始化、启动、停止等指令，在 AppCenter 云应用开发平台上可以查到相关日志。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_applog.png" alt="faq_applog"/>
+</div>
+</div>
+</li>
+<li>
+<p>查看监控日志</p>
+<div class="paragraph">
+<p>监控日志主要是指用户开发的健康检查和监控命令调用的日志。在 AppCenter 云应用开发平台上可以查到相关日志。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_appmonitorlog.png" alt="faq_appmonitorlog"/>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_如何理解数据持久化和挂盘如何配置如何检查数据持久化是否配置成功">6. 如何理解数据持久化和挂盘？如何配置？如何检查数据持久化是否配置成功？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>持久化数据</strong>是指跟具体用户有关的数据，如 session、用户自己的数据如用户的数据库信息、用户设置的参数、日志等。
+而应用程序，比如数据库应用程序本身不是持久化数据，因为它可以无差别的重复部署而不影响服务。</p>
+</div>
+<div class="paragraph">
+<p>基于 AppCenter 开发的应用实例如果不配置挂载盘是不会保存用户需要持久化的数据的，在实例重启之后数据都会清空。
+因此需要在 config 文件中配置挂盘，配置挂载盘之后，每次实例重新启动后会从该挂载盘的路径下读取用户持久化的数据。
+具体参数配置如下所示：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"># cluster.json.mustache 文件
+
+&#34;nodes&#34;: [
+  {
+    &#34;role&#34;: &#34;tomcat_nodes&#34;,
+    &#34;container&#34;: {
+            &#34;type&#34;: &#34;kvm&#34;,
+            &#34;zone&#34;: &#34;pek3a&#34;,
+            &#34;image&#34;: &#34;img-h73eih5e&#34;
+    },
+    &#34;loadbalancer&#34;: {{cluster.tomcat_nodes.loadbalancer}},
+    &#34;instance_class&#34;: {{cluster.tomcat_nodes.instance_class}},
+    &#34;count&#34;: {{cluster.tomcat_nodes.count}},
+    &#34;cpu&#34;: {{cluster.tomcat_nodes.cpu}},
+    &#34;memory&#34;: {{cluster.tomcat_nodes.memory}},
+    &#34;volume&#34;: {
+        &#34;size&#34;: {{cluster.tomcat_nodes.volume_size}},
+        &#34;mount_point&#34;: &#34;/data&#34;,  ***请注意这里!!!
+        &#34;mount_options&#34;: &#34;defaults,noatime&#34;,
+        &#34;filesystem&#34;: &#34;ext4&#34;
+    }
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通常如果配置了数据持久化处理，在配置文件的 init 脚本中需要编写脚本，将应用的默认的数据路径下的数据复制到挂载盘下。
+init 脚本在创建集群的时候调用，并且只在创建集群的时候调用一次。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"># cluster.json.mustache 文件
+
+&#34;services&#34;: {
+    &#34;init&#34;: {
+        &#34;cmd&#34;: &#34;systemctl restart rsyslog;mkdir -p /data/webapps;rsync -aqxP /opt/apache-tomcat-7.0.78/webapps/ /data/webapps&#34;
+    },    ***请注意这里!!!
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如何检查数据持久化是否配置成功？
+关闭集群，再启动集群，打开应用实例查看数据是否还在。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_如何写健康检查的配置和脚本">7. 如何写健康检查的配置和脚本？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"># cluster.json.mustache 文件
+
+&#34;health_check&#34;: {
+    &#34;enable&#34;: true,
+    &#34;interval_sec&#34;: 60,
+    &#34;timeout_sec&#34;: 10,
+    &#34;action_timeout_sec&#34;: 30,
+    &#34;healthy_threshold&#34;: 3,
+    &#34;unhealthy_threshold&#34;: 3,
+    &#34;check_cmd&#34;: &#34;/opt/myapp/bin/check.sh&#34;,
+    &#34;action_cmd&#34;: &#34;/opt/myapp/bin/action.sh&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上会展示各个节点的服务状态是否健康。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_healthcheck.png" alt="faq_healthcheck"/>
+</div>
+</div>
+<div class="paragraph">
+<p>check_cmd 的内容为根据你的应用自己编写的脚本，appcenter 会根据 exit code 判断是否健康，
+exit code 为 0 则健康，非 0 则不健康。action_cmd 的内容为在服务不健康的情况下需要做的动作。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_如何写监控数据的配置和脚本">8. 如何写监控数据的配置和脚本？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;monitor&#34;: {
+    &#34;enable&#34;: true,
+    &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pgmonitor.py&#34;,
+    &#34;items&#34;: {
+        &#34;connCnt&#34;: {
+            &#34;unit&#34;: &#34;&#34;,
+            &#34;value_type&#34;: &#34;int&#34;,
+            &#34;statistics_type&#34;: &#34;latest&#34;,
+            &#34;scale_factor_when_display&#34;: 1
+        },
+        &#34;commitCnt&#34;: {
+            &#34;unit&#34;: &#34;&#34;,
+            &#34;value_type&#34;: &#34;int&#34;,
+            &#34;statistics_type&#34;: &#34;latest&#34;,
+            &#34;scale_factor_when_display&#34;: 1
+        }
+    },
+    &#34;groups&#34;: {
+        &#34;connCntGrp&#34;: [&#34;connCnt&#34;],
+        &#34;commitCntGrp&#34;: [&#34;commitCnt&#34;]
+    },
+    &#34;display&#34;: [&#34;connCntGrp&#34;,&#34;commitCntGrp&#34;],
+    &#34;alarm&#34;: [&#34;connCnt&#34;]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上会展示各个节点的具体监控数据的值。
+image::/images/cloud_service/appcenter/faq_monitor.png[faq_monitor]</p>
+</div>
+<div class="paragraph">
+<p>cmd的内容为根据你的应用自己编写的脚本，其返回结果是特定格式的json。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：monitor</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_如何写自定义服务的脚本">9. 如何写自定义服务的脚本？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;services&#34;: {
+    &#34;init&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pginit.sh&#34;
+    },
+    &#34;start&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pgstart.sh&#34;
+    },
+    &#34;restart&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pgrestart.sh&#34;
+    },
+    &#34;RebuildStandby&#34;: {
+        &#34;type&#34;: &#34;custom&#34;,
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pgrebuildstandby.sh&#34;,
+        &#34;timeout&#34;: 86400
+    }
+},</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上会展示各个节点的具体监控数据的值。
+image::/images/cloud_service/appcenter/faq_customservice.png[faq_customservice]</p>
+</div>
+<div class="paragraph">
+<p>cmd 的内容为根据你的应用自己编写的脚本，自定义服务的内容。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：&#34;type&#34;: &#34;custom&#34;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_如何设置应用自身的配置参数">10. 如何设置应用自身的配置参数？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>首先在 config.json 文件中定义定义用户在创建应用的时候需填入的参数信息，参数包括资源信息如 CPU、内存、节点数等，
+还包括应用本身配置参数以及外面依赖集群信息等。 这些信息有集群级别的全局设置，也有基于角色节点级别的信息设置。
+其次，定义好参数信息，在c luster.json.mustache 文件中可以引用这些变量。</p>
+</div>
+<div class="paragraph">
+<p>示例（应用全局级别）如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># config.json 文件
+
+{
+    &#34;key&#34;: &#34;env&#34;,
+    &#34;description&#34;: &#34;application configuration properties&#34;,
+    &#34;type&#34;: &#34;array&#34;,
+    &#34;properties&#34;: [
+        {
+            &#34;key&#34;: &#34;DBname&#34;,
+            &#34;label&#34;: &#34;DBname&#34;,
+            &#34;description&#34;: &#34;DB name to create&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;cloud&#34;,
+            &#34;required&#34;: &#34;yes&#34;,
+            &#34;changeable&#34;: false
+        },
+        {
+            &#34;key&#34;: &#34;max_connections&#34;,
+            &#34;label&#34;: &#34;max_connections&#34;,
+            &#34;description&#34;: &#34;Sets the maximum number of concurrent connections.&#34;,
+            &#34;type&#34;: &#34;integer&#34;,
+            &#34;default&#34;: 256,
+            &#34;min&#34;: 0,
+            &#34;max&#34;: 65536,
+            &#34;required&#34;: &#34;no&#34;
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+&#34;env&#34;: {
+    &#34;DBname&#34;: {{env.DBname}},
+    &#34;max_connections&#34;: {{env.max_connections}}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>同时定义好应用的配置参数，在 confd 的 .tmpl 文件中可以使用这些参数。例如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">max_connections= {{getv &#34;/env/max_connections&#34;}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>也可以使用 shell 脚本在 metadata server 上获取改值。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">curl http://metadata/self/cluster/endpoints/reserved_ips/vip/value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台集群列表的<code>配置参数</code>tab页可以查看具体配置信息。
+image::/images/cloud_service/appcenter/faq_params.png[faq_params]</p>
+</div>
+<div class="paragraph">
+<p>角色节点级别的示例和具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：env</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_用户输入参数如何做校验如何支持正则表达式">11. 用户输入参数如何做校验,如何支持正则表达式？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># config.json 文件
+
+{
+    &#34;key&#34;: &#34;env&#34;,
+    &#34;description&#34;: &#34;Tomcat cluster service properties&#34;,
+    &#34;type&#34;: &#34;array&#34;,
+    &#34;properties&#34;: [
+      {
+        &#34;key&#34;: &#34;tomcat_user&#34;,
+        &#34;label&#34;: &#34;User name to access Tomcat manager GUI&#34;,
+        &#34;description&#34;: &#34;User name to access Tomcat manager GUI, avoid to set it as &#39;tomcat&#39; because it&#39;s already predefined with role &#39;manager_script&#39;&#34;,
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;qingAdmin&#34;,
+        &#34;pattern&#34;: &#34;^(？!.*？[tT][oO][mM][cC][aA][tT]).*$&#34;,
+        &#34;required&#34;: &#34;yes&#34;
+      }
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，输入非法数据，在提交创建应用的时候会提示错误信息。
+image::/images/cloud_service/appcenter/faq_pattern.png[faq_pattern]</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：pattern</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_如何展示节点的其他信息">12. 如何展示节点的其他信息？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;display_tabs&#34;: {
+    &#34;node_details&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pgnodedetails.sh&#34;,
+        &#34;timeout&#34;: 10,
+        &#34;description&#34;: &#34;&#34;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台集群列表会多出一个tab页可以查看具体配置信息。
+image::/images/cloud_service/appcenter/faq_nodedetails.png[faq_nodedetails]
+cmd内容为采集的数据需执行的命令，必填项。
+采集的数据以 JSON Object 的方式输出，例如：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+    &#34;labels&#34;: [&#34;节点ID&#34;,&#34;节点IP&#34;, &#34;角色&#34;],
+    &#34;data&#34;: [
+        [&#34;cln-ydozfe18&#34;,&#34;192.168.100.2&#34;, &#34;Master&#34;],
+        [&#34;cln-fq788j27&#34;,&#34;192.168.100.6&#34;, &#34;Standby&#34;]
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回结果会以表格的形式展示在集群详情页自定义标题的tab页下，其中 &#34;labels&#34; 和 &#34;data&#34; 是固定key。
+labels 表示表格第一行的标题，是个 list，最多可定义5列；
+data标示表格里面每行数据，要求data是个list，list下是多个子list，最多255个。
+其中每个子list标示一行数据，元素个数需和labels中一致。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：display_tabs</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_如何开放vnc给用户允许用户访问节点">13. 如何开放VNC给用户，允许用户访问节点？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+{
+    &#34;role&#34;: &#34;log_node&#34;,
+    &#34;container&#34;: {
+        &#34;type&#34;: &#34;kvm&#34;,
+        &#34;zone&#34;: &#34;pek3a&#34;,
+        &#34;image&#34;: &#34;img-b5urfv9t&#34;
+    },
+    &#34;instance_class&#34;: {{cluster.log_node.instance_class}},
+    &#34;user_access&#34;: true,     ***请注意这里!!!
+    &#34;count&#34;: 1,
+    &#34;cpu&#34;: {{cluster.log_node.cpu}}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上集群的节点列表下会有一个 VNC 的小图标，点击该图标可以登录该节点。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_vnc.png" alt="faq_vnc"/>
+</div>
+</div>
+<div class="paragraph">
+<p>同时，在 AppCenter应用开发平台搜索找到你需要的应用，打开<code>资源</code> tab 页，右侧有一个 VNC 小图标。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_vnc2.png" alt="faq_vnc2"/>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：user_access</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_如何备份">14. 如何备份？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>backup_policy 定义应用的备份策略，支持 &#34;device&#34; 和 &#34;custom&#34; 两种类型。
+&#34;device&#34; 表示对节点的挂盘做 snapshot；&#34;custom&#34; 则是使用自定义的备份命令进行备份操作，比如备份到某个目录，或拷贝到某个节点。非必填项</p>
+</div>
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+    &#34;name&#34;: {{cluster.name}},
+    &#34;description&#34;: {{cluster.description}},
+    &#34;vxnet&#34;: {{cluster.vxnet}},
+    &#34;backup_policy&#34;: &#34;device&#34;,  ***请注意这里!!!
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注意，如果设置了备份策略参数的话，必须将 service 下的 backup 命令写上，否则该参数不会生效。 示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;services&#34;: {
+    &#34;init&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pginit.sh&#34;
+    },
+    &#34;backup&#34;: {  ***请注意这里!!!
+        &#34;cmd&#34;: &#34;echo `date &#39;+%Y-%m-%d %H:%M:%S&#39;`&#39;:Info: Backup by Appcenter interface!&#39;  &gt;&gt;/data/pgsql/main/pg_log/pgscripts.log&#34;,
+        &#34;timeout&#34;: 86400
+    },
+    &#34;restore&#34;: {
+        &#34;cmd&#34;: &#34;echo `date &#39;+%Y-%m-%d %H:%M:%S&#39;`&#39;:Info: Backup by Appcenter interface!&#39;  &gt;&gt;/data/pgsql/main/pg_log/pgscripts.log&#34;,
+        &#34;timeout&#34;: 86400
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上集群右键会出现创建备份的菜单。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_backup.png" alt="faq_backup"/>
+</div>
+</div>
+<div class="paragraph">
+<p>以上示例是基于device类型的备份策略，对于custom类型类似，但是需要注意如下几点：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#34;backup_policy&#34;: &#34;custom&#34;,</p>
+</li>
+<li>
+<p>&#34;backup&#34;: cmd 参数会默认传入一个 snapshot id 作为参数，在 cmd 脚本可以获取到这个参数。
+例如：执行的时候是 <code>sh /opt/yourbackup.sh &#39;{&#34;snapshot_id&#34;: &#34;s-12345678&#34;}</code>&#39;  开发者可以解析后在 cmd 命令写成处理成 <code>cp /opt/data.txt /data/s-12345678</code></p>
+</li>
+<li>
+<p>&#34;restore&#34;: restore 操作的时候类似。cmd 参数会默认传入一个 snapshot id 作为参数，在 cmd 脚本可以获取到这个参数。
+例如：执行的时候是 <code>sh /opt/yourrestore.sh &#39;{&#34;snapshot_id&#34;: &#34;s-12345678&#34;}&#39;</code>  开发者可以解析后在 cmd 命令写成处理成 <code>cp /data/s-12345678 /opt/data.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>注意：restore 操作是在恢复的新集群上进行操作的。</p>
+</div>
+<div class="paragraph">
+<p>incremental_backup_supported
+定义应用是否支持增量备份。
+备份分为全量备份和增量备份，全量备份每次创建新的备份链，而增量备份会在原有备份链上基于上一个备份点创建新的备份点，删除备份链上某一备份点后，
+其后的所有备份点都会被相应删除。默认值为 false 表示只支持全量备份，非必填项。</p>
+</div>
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+    &#34;name&#34;: {{cluster.name}},
+    &#34;description&#34;: {{cluster.description}},
+    &#34;upgrade_policy&#34;: [&#34;appv-djgirq3p&#34;,&#34;appv-gr2vm9ee&#34;,&#34;appv-qmxgxyc1&#34;,&#34;appv-7tb3ldwl&#34;,&#34;appv-6vsdo968&#34;,&#34;appv-ng9ai35b&#34;,&#34;appv-f3stol95&#34;],
+    &#34;vxnet&#34;: {{cluster.vxnet}},
+    &#34;backup_policy&#34;: &#34;device&#34;,
+    &#34;incremental_backup_supported&#34;: true,***请注意这里!!!
+    &#34;nodes&#34;: [{
+        &#34;role&#34;: &#34;pg&#34;,
+        &#34;container&#34;: {
+            &#34;type&#34;: &#34;lxc&#34;,
+            &#34;image&#34;: &#34;img-nkp0orrc&#34;,
+            &#34;zone&#34;: &#34;sh1a&#34;
+        }
+    }]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：backup_policy、backup、incremental_backup_supported</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_15_如何升级如何支持应用的大版本升级">15. 如何升级，如何支持应用的大版本升级？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>云应用支持的升级的原理是，用新的版本的镜像去驱动挂载盘下应用的数据，因此如果应用本身的版本没有变化或者只是小版本升级，
+可以直接通过升级参数配置进行无缝升级。
+示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+  &#34;name&#34;: {{cluster.name}},
+  &#34;description&#34;: {{cluster.description}},
+  &#34;vxnet&#34;: {{cluster.vxnet}},
+  &#34;upgrade_policy&#34;: [&#34;appv-djgirq3p&#34;]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>同时，如果在升级的同时要做一些其他的任务，可以在 service 的 upgrade 脚本里编写自己的内容。示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;services&#34;: {
+    &#34;init&#34;: {
+        &#34;cmd&#34;: &#34;/usr/lib/postgresql/9.6/bin/scripts/pginit.sh&#34;
+    },
+    &#34;upgrade&#34;: {    ***请注意这里!!!
+        &#34;cmd&#34;: &#34;/opt/myapp/sbin/upgrade.sh&#34;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上原来旧的版本的集群列表集群右侧会出现一个向上的升级箭头，关闭旧的集群，点击该图标就可以直接升级到最新的版本。
+请注意 upgrade 脚本是在新的应用的集群上运行的。</p>
+</div>
+<div class="paragraph">
+<p>对于应用的大版本升级的问题，例如 PostgreSQL9.6 和 PostgreSQL10，如果直接采用上面的方法是不可用的，
+因为对于新版本的应用（PostgreSQL10）是无法驱动挂载盘下的旧版本（PostgreSQL9.6）格式的数据，
+需要对挂载盘下的数据做转换才可以以升级后的新版本的应用读取数据。
+因此，我们建议有以下2种方式进行升级处理。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>新版本不直接支持从旧版本无缝升级到新版本，用户创建好新版本后，自己通过工具将数据从旧版本导入到新版本的集群中去。</p>
+</li>
+<li>
+<p>新版本直接支持从旧版本无缝升级到新版本，在新版本的镜像中同时安装新旧2个版本，在 upgrade 的 cmd 编写脚本，</p>
+</li>
+<li>
+<p>将数据从旧版本转换成新版本可直接读取的文件格式。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：upgrade_policy、upgrade</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_16_如何设置集群的_vip">16. 如何设置集群的 VIP？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;reserved_ips&#34;: {
+    &#34;vip&#34;: {
+        &#34;value&#34;: &#34;&#34;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上集群信息左侧会出现 VIP 的具体信息。
+image::/images/cloud_service/appcenter/faq_vip.png[faq_vip]</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：reserved_ips</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_17_如何支持用户下载和查看应用的日志">17. 如何支持用户下载和查看应用的日志？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>对于这个需求，解决的办法可以有多种方式。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>应用自身提供的 web 页面的 log 查看方式。</p>
+</li>
+<li>
+<p>若应用本身不提供 web log，可以开放 ftp 权限给用户去应用的日志路径下查看日志。</p>
+</li>
+<li>
+<p>采用第三方日志收集工具 rsyslog，logstash 等日志收集到日志节点，允许用户登录该节点查看日志。</p>
+</li>
+<li>
+<p>其他方式。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_18_如何语言国际化">18. 如何语言国际化？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果您想要适应不同的语言，需要在提交的应用中包含一个 locale 文件夹，并添加对应语言的翻译文件，如：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>locale/en.json 英文翻译文件</p>
+</li>
+<li>
+<p>locale/zh-cn.json 中文翻译文件</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># locale/zh-cn.json 文件
+
+{
+  &#34;Master&#34;: &#34;主节点&#34;,
+  &#34;Slave&#34;: &#34;从节点&#34;,
+  &#34;CPU&#34;: &#34;CPU&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>config.json 定义用户在管理控制台部署应用时需要填写的表单。</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：国际化</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_19_应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题">19. 应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果我们在制作镜像的时候设置了一些环境变量，并在一些脚本文件中直接使用这些环境变量是没有问题的，
+但在使用这个 image 实例化应用之后，这些环境变量会不可用。
+因此建议大家在编写脚本的时候重新再 export 一下环境变量，或者 source 一下环境变量的文件。
+例如 export PGDATA=/data/pgsql/main 或者 source /etc/profile</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_20_如何配置依赖其他集群的服务">20. 如何配置依赖其他集群的服务？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;links&#34;: {
+    &#34;redis_service&#34;: {{cluster.redis_service}},
+    &#34;mysql_service&#34;: {{cluster.mysql_service}}
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># config.json 文件
+
+{
+    &#34;key&#34;: &#34;redis_service&#34;,
+    &#34;label&#34;: &#34;Redis&#34;,
+    &#34;description&#34;: &#34; &#34;,
+    &#34;type&#34;: &#34;service&#34;,
+    &#34;tag&#34;: [&#34;Redis&#34;,&#34;redis&#34;	],
+    &#34;limits&#34;: {&#34;app-zydumbxo&#34;: [&#34;appv-q1uwklp7&#34;]},
+    &#34;default&#34;: &#34;&#34;,
+    &#34;required&#34;: &#34;no&#34;
+},
+{
+    &#34;key&#34;: &#34;mysql_service&#34;,
+    &#34;label&#34;: &#34;MySql&#34;,
+    &#34;description&#34;: &#34; &#34;,
+    &#34;type&#34;: &#34;service&#34;,
+    &#34;tag&#34;: [&#34;MySql&#34;,&#34;mysql&#34;],
+    &#34;limits&#34;: {&#34;app-00r26u27&#34;: []},
+    &#34;default&#34;: &#34;&#34;,
+    &#34;required&#34;: &#34;no&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>其中 limits 参数的值为 app-id<strong><em>: [app-version</em></strong>]。若 version 列表为空，表示该应用所有版本均可支持。
+如果配置了此参数，在控制台上新建集群的时候会出现当前实例所在的私网下存在的所依赖的服务。
+image::/images/cloud_service/appcenter/faq_depend.png[faq_depend]</p>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：links、limits</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_21_执行操作失败时如何展示给用户错误提示">21. 执行操作失败时如何展示给用户错误提示？</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>制作 image 时，规划好 cmd 在不同出错情况下 exit code 值。</p>
+</li>
+<li>
+<p>配置文件 locale/zh-cn.json 中定义：</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;err_code1&#34;: &#34;禁止同时删除多个从节点&#34;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>配置文件 locale/en.json 中定义：</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;err_code1&#34;: &#34;Permission denied to delete multiple slave nodes&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在执行操作 cmd 时，遇到 exit code 是 1 的情况时，会给用户如下提示：
+image::/images/cloud_service/appcenter/err_code.png[err_code]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_22_如何配置横向扩容">22. 如何配置横向扩容？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;nodes&#34;: [
+  {
+    &#34;role&#34;: &#34;tomcat_nodes&#34;,
+    &#34;container&#34;: {&#34;type&#34;: &#34;kvm&#34;,&#34;zone&#34;: &#34;pek3a&#34;,&#34;image&#34;: &#34;img-h73eih5e&#34;},
+    &#34;loadbalancer&#34;: {{cluster.tomcat_nodes.loadbalancer}},
+    &#34;instance_class&#34;: {{cluster.tomcat_nodes.instance_class}},
+    &#34;count&#34;: {{cluster.tomcat_nodes.count}},
+    &#34;cpu&#34;: {{cluster.tomcat_nodes.cpu}},
+    &#34;memory&#34;: {{cluster.tomcat_nodes.memory}},
+    &#34;advanced_actions&#34;: [&#34;scale_horizontal&#34;]   ***请注意这里!!!
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>同时，如果在升级的同时要做一些其他的任务，可以在 service 的 upgrade 脚本里编写自己的内容。示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+&#34;services&#34;: {
+    &#34;scale_out&#34;: {
+        &#34;pre_check&#34;: &#34;/opt/myapp/sbin/scale-out-pre-check.sh&#34;,
+        &#34;cmd&#34;: &#34;/opt/myapp/sbin/scale-out.sh&#34;
+    },
+    &#34;scale_in&#34;: {
+        &#34;pre_check&#34;: &#34;/opt/myapp/sbin/scale-in-pre-check.sh&#34;,
+        &#34;cmd&#34;: &#34;/opt/myapp/sbin/scale-in.sh&#34;,
+        &#34;timeout&#34;: 86400
+    },
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上集群节点列表上会出现新增节点的按钮。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_scale.png" alt="faq_scale"/>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：advanced_actions、scale_horizontal、scale_out、scale_in</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_23_如何支持集群切换私网网络">23. 如何支持集群切换私网网络？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>变换网络 (change_vxnet) 如果您的应用支持切换网络可以加上 change_vxnet。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+  &#34;name&#34;: {{cluster.name}},
+  &#34;description&#34;: {{cluster.description}},
+  &#34;vxnet&#34;: {{cluster.vxnet}},
+  &#34;backup_policy&#34;: &#34;device&#34;,
+  &#34;advanced_actions&#34;: [&#34;change_vxnet&#34;]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果配置了此参数，在控制台上集群列表选中集群右键会出现切换私有网络菜单。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/faq_vxnet.png" alt="faq_vxnet"/>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：advanced_actions、change_vxnet</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_24_如何将角色的某个节点直接绑定公网_ip">24. 如何将角色的某个节点直接绑定公网 IP？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>绑定公网 IP (associate_eip)
+如果该角色的节点需要直接绑定公网IP可以加上 associate_eip，</p>
+</div>
+<div class="paragraph">
+<p>绑定公网 IP 会给这个集群绑定默认集群防火墙, 其他集群如果需要访问这个集群请在集群防火墙中添加对应放行规则。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+    &#34;name&#34;: {{cluster.name}},
+    &#34;description&#34;: {{cluster.description}},
+    &#34;vxnet&#34;: {{cluster.vxnet}},
+    &#34;backup_policy&#34;: &#34;device&#34;,
+    &#34;advanced_actions&#34;: [&#34;associate_eip&#34;]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>具体配置请参考文档 <a href="../cluster-developer-guide/specifications">云应用开发模板规范 - 完整版</a>。</p>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：advanced_actions、associate_eip</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_25_如何获取依赖其他集群的服务的_appid_和_appversionid">25. 如何获取依赖其他集群的服务的 AppID 和 AppVersionID？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在配置依赖服务的时候，配置参数需要知道所依赖的服务的 AppID 和 AppVersionID。
+在 AppCenter 应用开发平台搜索找到你需要的应用，打开可以看到相关信息。
+image::/images/cloud_service/appcenter/faq_appid.png[faq_appid]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_26_能否提供一些_confd_templates即_tmpl_文件的使用例子">26. 能否提供一些 confd templates（即 tmpl 文件）的使用例子？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>示例1：</p>
+</div>
+<div class="paragraph">
+<p>获取集群中所有节点的 ip 地址，range 循环的用法</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">{{range $dir := lsdir &#34;/hosts&#34;}}
+    {{$sid := printf &#34;/hosts/%s/sid&#34; $dir}}
+    {{$ip := printf &#34;/hosts/%s/ip&#34; $dir}}
+        server.{{getv $sid}}={{getv $ip}}:2888:3888
+{{end}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>confd service restart 刷新后的信息为</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">server.1=192.168.100.2:2888:3888
+server.2=192.168.100.3:2888:3888
+server.3=192.168.100.4:2888:3888</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>示例 2：</p>
+</div>
+<div class="paragraph">
+<p>定义一个变量并使用这个变量</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">{{$tomcat_user :=getv &#34;/env/tomcat_user&#34;}}
+{{$tomcat_pwd :=getv &#34;/env/tomcat_pwd&#34;}}
+
+&lt;user username=&#34;{{$tomcat_user}}&#34; password=&#34;{{$tomcat_pwd}}&#34; roles=&#34;manager-gui&#34; /&gt;
+&lt;user username=&#34;tomcat&#34; password=&#34;{{$tomcat_pwd}}&#34; roles=&#34;standard,manager-script,manager-jmx,manager-status&#34; /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>示例3：
+获取一个key的值</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">max_connections= {{getv &#34;/env/max_connections&#34;}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>示例4：
+对算术的支持 div</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">{{$shared_buffers := div (getv &#34;/host/memory&#34;) 4}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>示例5：
+if else 的用法</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">{{$SyncStreamRepl := getv &#34;/env/SyncStreamRepl&#34;}}
+
+{{if eq $SyncStreamRepl &#34;No&#34; }}
+    synchronous_standby_names =  &#39;&#39;
+{{else}}
+    synchronous_standby_names =  &#39;*&#39;
+{{end}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>示例6：
+split的用法</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-tmpl" data-lang="tmpl">{{ $replicaIPs := split (getv &#34;/host/ip&#34;) &#34;.&#34; }}
+{{index $replicaIPs 0}}.{{index $replicaIPs 1}}.{{index $replicaIPs 2}}.0/24</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>更多 template 的函数使用示例请参考<a href="https://github.com/yunify/confd/blob/master/docs/templates.md">yunify/confd</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_27_confd_日志显示_key_找不到的错误信息">27. confd 日志显示 key 找不到的错误信息</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>经常会在 confd 的日志文件中看到类似于如下错误信息，通常情况是在 toml 文件没 watch 该 key，或者该 key 不存在，
+可以通过 <code>curl http://metadata/self</code> 查看。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">2016-10-11T13:54:41+08:00 i-lvn35udh confd[1531]: ERROR template: index.html.tmpl:2:7: executing &#34;index.html.tmpl&#34; at &lt;getv &#34;/self/host/sid...&gt;: error calling getv: key does not exist: /self/host/sid</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_28_上传配置包时报错配置验证失败报config_json_not_valid_json错误">28. 上传配置包时报错：配置验证失败,报[config.json] Not valid json错误？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>需要检查 config.json 文本内容，是否有中文符号或其他不符合 json 格式的部分，可以通过在线工具验证合法性，比如 <a href="http://jsonlint.com/">jsonlint</a>。
+同时配置包中文件不支持 &#34;UTF-8 Unicode (with BOM) text&#34; 文本格式，windows下的编辑器编辑文件默认是此格式也会报此错误，
+可通过 &#34;格式-&gt; 以utf-8无BOM格式编码&#34; 进行转换。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_29_我在测试的时候发现设置的服务价格没起作用原因是什么">29. 我在测试的时候发现设置的服务价格没起作用，原因是什么？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>自己测试自己的应用的时候是不收取服务费用的，一旦上线用户使用的时候会收取您设置的服务费用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_30_节点的启动停止命令执行出错请确保命令写完整的全路径">30. 节点的启动/停止命令执行出错，请确保命令写完整的全路径。</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当定义的应用的启动/停止/监控命令执行有问题，例如
+文件定义如下</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">&#34;start&#34;:&#34;your_script&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>服务日志如下</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">2017-04-13 12:14:19,318 ERROR Failed to execute the [cmd:your_script, id:JPwqtXY56Mp22t0RsqkDtQVu3hQLxxxx] in the node [cln-pwgxxxxx]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请确认起停的命令要写全路径。例如</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">&#34;start&#34;:&#34;/bin/your_script&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>要保证脚本在任意路径下调用都可以成功返回。
+例如在创建好的集群中，执行如下命令返回正常。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cd /tmp
+/opt/yourscript.sh</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_31_使用_kvm_作为镜像模板时应用创建资源失败">31. 使用 kvm 作为镜像模板时，应用创建资源失败</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>登录创建的节点发现文件系统变成只读，且日志如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">2017-04-17 11:03:48,800 CRITICAL Mount volume [{&#39;mount_point&#39;: &#39;/data&#39;, &#39;mount_options&#39;: &#39;&#39;, &#39;filesystem&#39;: &#39;ext4&#39;}] on node [cln-bo73222b] failed</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请确保在制作镜像时正常关机，保证磁盘正常卸载。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_32_使用说明和服务条款的_markdown_语法说明">32. 使用说明和服务条款的 Markdown 语法说明</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>支持标准的 <a href="https://www.appinn.com/markdown/">Markdown 语法</a>，同时你也可以直接使用 HTML 代码</p>
+</li>
+<li>
+<p>Markdown 转换后的内容是没有样式，如果你想再添加样式，可以将下面的 HTML 代码添加到你输入的内容之前：</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;link href=&#34;https://cdn.bootcss.com/foundation/6.3.1/css/foundation.min.css&#34; rel=&#34;stylesheet&#34;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在使用说明中，如果只输入一个网址，用户在查看使用说明时会直接跳转到该网址</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_33_如果只想用云应用开发框架管理纯云服务器集群">33. 如果只想用云应用开发框架管理纯云服务器集群</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>可以不用装云平台提供的 App agent，以下是样例。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># config.json
+
+{
+    &#34;type&#34;: &#34;array&#34;,
+    &#34;properties&#34;: [{
+        &#34;key&#34;: &#34;cluster&#34;,
+        &#34;description&#34;: &#34;Sample cluster properties&#34;,
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;properties&#34;: [{
+            &#34;key&#34;: &#34;name&#34;,
+            &#34;label&#34;: &#34;name&#34;,
+            &#34;description&#34;: &#34;The name of the Sample service&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;Sample&#34;,
+            &#34;required&#34;: &#34;no&#34;
+        }, {
+            &#34;key&#34;: &#34;description&#34;,
+            &#34;label&#34;: &#34;description&#34;,
+            &#34;description&#34;: &#34;The description of the Sample service&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;no&#34;
+        }, {
+            &#34;key&#34;: &#34;vxnet&#34;,
+            &#34;label&#34;: &#34;VxNet&#34;,
+            &#34;description&#34;: &#34;Choose a vxnet to join&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;yes&#34;
+        }, {
+            &#34;key&#34;: &#34;role_name1&#34;,
+            &#34;label&#34;: &#34;role_name1&#34;,
+            &#34;description&#34;: &#34;role-based role_name1 properties&#34;,
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;properties&#34;: [{
+                 &#34;key&#34;: &#34;cpu&#34;,
+                 &#34;label&#34;: &#34;CPU&#34;,
+                 &#34;description&#34;: &#34;CPUs of each node&#34;,
+                 &#34;type&#34;: &#34;integer&#34;,
+                 &#34;default&#34;: 1,
+                 &#34;range&#34;: [1, 2, 4, 8, 16],
+                 &#34;required&#34;: &#34;yes&#34;
+            }, {
+                 &#34;key&#34;: &#34;memory&#34;,
+                 &#34;label&#34;: &#34;Memory&#34;,
+                 &#34;description&#34;: &#34;Memory of each node&#34;,
+                 &#34;type&#34;: &#34;integer&#34;,
+                 &#34;default&#34;: 2048,
+                 &#34;range&#34;: [2048, 8192, 16384, 32768, 49152],
+                 &#34;required&#34;: &#34;yes&#34;
+            }, {
+                 &#34;key&#34;: &#34;count&#34;,
+                 &#34;label&#34;: &#34;Count&#34;,
+                 &#34;description&#34;: &#34;Number of nodes for the cluster to create&#34;,
+                 &#34;type&#34;: &#34;integer&#34;,
+                 &#34;default&#34;: 3,
+                 &#34;max&#34;: 100,
+                 &#34;min&#34;: 1,
+                 &#34;required&#34;: &#34;yes&#34;
+            }, {
+                 &#34;key&#34;: &#34;volume_size&#34;,
+                 &#34;label&#34;: &#34;Volume Size&#34;,
+                 &#34;description&#34;: &#34;The volume size for each instance&#34;,
+                 &#34;type&#34;: &#34;integer&#34;,
+                 &#34;default&#34;: 10,
+                 &#34;min&#34;: 10,
+                 &#34;max&#34;: 1000,
+                 &#34;step&#34;: 10,
+                 &#34;required&#34;: &#34;yes&#34;
+            }, {
+                 &#34;key&#34;: &#34;instance_class&#34;,
+                 &#34;label&#34;: &#34;resource type&#34;,
+                 &#34;description&#34;: &#34;The instance type for the cluster to run, such as high performance, high performance plus&#34;,
+                 &#34;type&#34;: &#34;integer&#34;,
+                 &#34;default&#34;: 0,
+                 &#34;range&#34;: [
+                     0,
+                     1
+                 ],
+                 &#34;required&#34;: &#34;yes&#34;
+            }]
+        }]
+    }]
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>其中 <code>img-hlhql5ea</code> 是没有安装 app agent 的镜像，<code>agent_installed</code> 用来标识此 role 没有安装 agent **</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache
+
+{
+    &#34;name&#34;: {{cluster.name}},
+    &#34;description&#34;: {{cluster.description}},
+    &#34;vxnet&#34;: {{cluster.vxnet}},
+    &#34;nodes&#34;: [
+      {
+        &#34;role&#34;: &#34;role_name1&#34;,
+        &#34;container&#34;: {
+            &#34;type&#34;: &#34;kvm&#34;,
+            &#34;zone&#34;: &#34;pek3a&#34;,
+            &#34;image&#34;: &#34;img-hlhql5ea&#34;
+         },
+         &#34;agent_installed&#34;: false,
+         &#34;instance_class&#34;: {{cluster.role_name1.instance_class}},
+         &#34;count&#34;: {{cluster.role_name1.count}},
+         &#34;cpu&#34;: {{cluster.role_name1.cpu}},
+         &#34;memory&#34;: {{cluster.role_name1.memory}},
+         &#34;volume&#34;: {
+             &#34;size&#34;: {{cluster.role_name1.volume_size}},
+             &#34;mount_point&#34;: &#34;/test_data&#34;,
+             &#34;filesystem&#34;: &#34;ext4&#34;
+         }
+      }
+    ]
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_34_如何使用环境变量里的_accesskey_类型数据">34. 如何使用环境变量里的 accesskey 类型数据？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果需要用户提供 API 密钥并写入环境变量，可以使用数据类型 accesskey</p>
+</div>
+<div class="paragraph">
+<p>示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># cluster.json.mustache 文件
+
+{
+    &#34;env&#34;: {
+        &#34;access_key&#34;: {{env.access_key}}
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json"># config.json 文件
+
+
+{
+    &#34;key&#34;: &#34;env&#34;,
+    &#34;description&#34;: &#34;application configuration properties&#34;,
+    &#34;type&#34;: &#34;array&#34;,
+    &#34;properties&#34;: [{
+        &#34;key&#34;: &#34;access_key&#34;,
+        &#34;label&#34;: &#34;access_key_id&#34;,
+        &#34;description&#34;: &#34;access key ID&#34;,
+        &#34;type&#34;: &#34;accesskey&#34;,
+        &#34;required&#34;: &#34;yes&#34;
+    }]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过如下方法获取用户 API 密钥及其私钥：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">curl http://metadata/self/env/access_key/access_key_id
+curl http://metadata/self/env/access_key/secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>关键字</strong>：env、accesskey、metadata</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_35_环境变量里如何支持层级联动关系">35. 环境变量里如何支持层级联动关系？</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;key&#34;: &#34;env&#34;,
+  &#34;description&#34;: &#34;application configuration properties&#34;,
+  &#34;type&#34;: &#34;array&#34;,
+  &#34;properties&#34;: [{
+      &#34;key&#34;: &#34;s3_type&#34;,
+      &#34;label&#34;: &#34;s3.type&#34;,
+      &#34;description&#34;: &#34;Type of s3 compatible object store&#34;,
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;default&#34;: &#34;none&#34;,
+      &#34;range&#34;: [&#34;none&#34;,&#34;minio&#34;,&#34;QingStor&#34;],
+      &#34;required&#34;: &#34;yes&#34;
+    }, {
+      &#34;key&#34;: &#34;access_key&#34;,
+      &#34;label&#34;: &#34;access.key&#34;,
+      &#34;description&#34;: &#34;Access key used to access QingStor object store&#34;,
+      &#34;type&#34;: &#34;accesskey&#34;,
+      &#34;dependencies&#34;:[
+        {&#34;refkey&#34;:&#34;s3_type&#34;,&#34;values&#34;:[&#34;QingStor&#34;],&#34;operator&#34;:&#34;in&#34;}
+      ],
+      &#34;required&#34;: &#34;yes&#34;
+    }, {
+      &#34;key&#34;: &#34;s3_access_key&#34;,
+      &#34;label&#34;: &#34;s3.access.key&#34;,
+      &#34;description&#34;: &#34;Access key used to access MinIO object store&#34;,
+      &#34;type&#34;: &#34;password&#34;,
+      &#34;default&#34;: &#34;AKIAIOSXODNN7EXAMPLE&#34;,
+      &#34;pattern&#34;: &#34;^.{20}$&#34;,
+      &#34;changeable&#34;: true,
+      &#34;dependencies&#34;:[
+        {&#34;refkey&#34;:&#34;s3_type&#34;,&#34;values&#34;:[&#34;minio&#34;],&#34;operator&#34;:&#34;in&#34;}
+      ],
+      &#34;required&#34;: &#34;yes&#34;
+    }, {
+      &#34;key&#34;: &#34;s3_secret_key&#34;,
+      &#34;label&#34;: &#34;s3.secret.key&#34;,
+      &#34;description&#34;: &#34;Secret key used to access MinIO object store&#34;,
+      &#34;type&#34;: &#34;password&#34;,
+      &#34;default&#34;: &#34;wJalrXUtqFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&#34;,
+      &#34;pattern&#34;: &#34;^.{40}$&#34;,
+      &#34;changeable&#34;: true,
+      &#34;dependencies&#34;:[
+        {&#34;refkey&#34;:&#34;s3_type&#34;,&#34;values&#34;:[&#34;minio&#34;],&#34;operator&#34;:&#34;in&#34;}
+      ],
+      &#34;required&#34;: &#34;yes&#34;
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>当 s3_type 值为 none 时，access_key、s3_access_key 和 s3_secret_key 都不显示</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/s3_type_none.png" alt="s3_type_none"/>
+</div>
+</div>
+<div class="paragraph">
+<p>当 s3_type 值为 minio 时，s3_access_key 和 s3_secret_key 显示，access_key 不显示</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/s3_type_minio.png" alt="s3_type_minio"/>
+</div>
+</div>
+<div class="paragraph">
+<p>当 s3_type 值为 QingStor 时，access_key 显示，s3_access_key 和 s3_secret_key 都不显示</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/s3_type_qingstor.png" alt="s3_type_qingstor"/>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_36_如何定义原地升级方式">36. 如何定义原地升级方式？</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>cluster.json.mustache 的 upgrading_policy 定义为 in-place-parallel 或 in-place-sequential，同时定义 in-place-upgrade-nodes 信息：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;upgrading_policy&#34;: &#34;in-place-parallel&#34;,
+  &#34;in-place-upgrade-nodes&#34;: [{
+    &#34;container&#34;: {
+      &#34;snapshot&#34;: &#34;ss-skhdp1m1&#34;,
+      &#34;zone&#34;: &#34;pek3&#34;
+    },
+    &#34;copy&#34;: [{
+        &#34;mount_role&#34;: &#34;master&#34;,
+        &#34;mount_point&#34;: &#34;/data1&#34;,
+        &#34;mount_options&#34;: &#34;defaults,noatime&#34;,
+        &#34;filesystem&#34;: &#34;ext4&#34;,
+        &#34;source&#34;: &#34;/data1/upgrade1/bin&#34;,
+        &#34;destination&#34;: &#34;/data/bin&#34;
+      },
+      {
+        &#34;mount_role&#34;: &#34;slave&#34;,
+        &#34;mount_point&#34;: &#34;/data2&#34;,
+        &#34;mount_options&#34;: &#34;defaults,noatime&#34;,
+        &#34;filesystem&#34;: &#34;ext4&#34;,
+        &#34;source&#34;: &#34;/data2/upgrade1/bin&#34;,
+        &#34;destination&#34;: &#34;/data/bin&#34;
+      }
+    ]
+  }]
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 33.3335%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">-</th>
+<th class="tableblock halign-left valign-top">-</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upgrading_policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">定义版本升级的模式，支持 in-place-parallel 或 in-place-sequential</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-place-upgrade-nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">原地升级时，需要使用的备份以及拷贝操作信息，定义在里面。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份信息，必填项。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">snapshot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份 ID。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份制作时所属区域。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">定义由备份恢复的硬盘，原地升级时拷贝操作相关信息。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount_role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">将备份恢复的硬盘，挂载到哪个角色节点上，该角色所有节点都会挂载硬盘。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount_point</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份恢复的硬盘的挂载路径，比如 /data1。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount_options</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">描述数据盘的挂接方式，默认值 ext4 是 defaults,noatime，xfs 是 rw,noatime,inode64,allocsize=16m。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份恢复的硬盘的文件系统类型。目前支持 ext4 和 xfs，默认是 ext4。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要拷贝数据的源目录，也就是 mount_point 下的目录。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要拷贝数据的目标目录。拷贝失败时会删除该目录，拷贝成功不做任何处理，建议该目录使用一个临时目录，后面开发者可以在 services 下 upgrade 操作定义后续的操作。</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>由硬盘制作备份时，需要制作 qcow2 格式的全量备份。</p>
+<div class="listingblock">
+<div class="content">
+<pre>./create-snapshots -r vol-pisotyhp -F 1 -m qcow2</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_37_升级操作时如何给用户弹出提示">37. 升级操作时如何给用户弹出提示？</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>配置文件 locale/zh-cn.json 中定义：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;notice_when_upgrade&#34;: &#34;此版本包含不兼容 Kafka 1.x 版本的改动，可能会导致业务代码异常退出并无法回退！为避免损失，强烈建议先创建一个新集群进行验证，确保可以工作以后再进行升级操作。Kafka 2.3 版本说明请查看官方文档：https://kafka.apache.org/documentation/&#34;
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>配置文件 locale/en.json 中定义：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;notice_when_upgrade&#34;: &#34;The new version app may need refit your kafka consumer code! Make sure you are using the new config!!!&#34;
+}</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/appcenter/notice_when_upgrade.png" alt="notice_when_upgrade"/>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_38_串行纵向扩容或滚动升级时如何按照一定顺序进行操作">38. 串行纵向扩容或滚动升级时，如何按照一定顺序进行操作？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>一些应用同一角色内多个节点之间地位不同，仍然会有主从关系。在纵向扩容或滚动升级时，希望优先操作从节点，最后操作主节点，以达到最少主从切换的目的。
+同一角色内多个节点之间的身份，只有应用实例自己知道，可以通过定义 get_nodes_order 的方式来实现这个目的：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">&#34;services&#34;: {
+    &#34;get_nodes_order&#34;: {
+        &#34;event&#34;: [&#34;upgrade&#34;, &#34;rollback&#34;, &#34;scale_vertical&#34;],
+        &#34;cmd&#34;: &#34;/opt/myapp/bin/get-nodes-order.sh&#34;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>其中 event 的可选值为：upgrade, rollback, scale_vertical。表示在定义的生命周期到来时，使用 get_nodes_order 中 cmd 的执行结果作为该生命周期节点的操作顺序。
+<code>{event: xx}</code> 会作为 cmd 的 $1 传入。</p>
+</div>
+<div class="paragraph">
+<p>例：</p>
+</div>
+<div class="paragraph">
+<p>集群 cl-12345678 有 3 个节点，分别是：cln-11111111, cln-22222222, cln-33333333。
+<code>/opt/myapp/bin/get-nodes-order.sh</code> 的返回结果为：<code>cln-33333333,cln-22222222,cln-11111111</code>，逗号分隔的节点 id 列表。
+则在滚动升级和串行纵向扩容时，按照 <code>cln-33333333,cln-22222222,cln-11111111</code> 的节点顺序，执行这个生命周期下的操作。</p>
+</div>
+</div>
+</div>
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_1_作为新手如何从一个最简单的例子入手">1. 作为新手，如何从一个最简单的例子入手？</a></li>
+    <li><a href="#_2_app_ggent_是什么如何安装_app_ggent">2. App Ggent 是什么？如何安装 App Ggent？</a></li>
+    <li><a href="#_3_如何创建_toml_和_tmpl_的模板文件">3. 如何创建 toml 和 tmpl 的模板文件？</a></li>
+    <li><a href="#_4_什么是_metadata_服务如何查询_metadata_上的值">4. 什么是 Metadata 服务，如何查询 Metadata 上的值？</a></li>
+    <li><a href="#_5_如何查看日志">5. 如何查看日志？</a></li>
+    <li><a href="#_6_如何理解数据持久化和挂盘如何配置如何检查数据持久化是否配置成功">6. 如何理解数据持久化和挂盘？如何配置？如何检查数据持久化是否配置成功？</a></li>
+    <li><a href="#_7_如何写健康检查的配置和脚本">7. 如何写健康检查的配置和脚本？</a></li>
+    <li><a href="#_8_如何写监控数据的配置和脚本">8. 如何写监控数据的配置和脚本？</a></li>
+    <li><a href="#_9_如何写自定义服务的脚本">9. 如何写自定义服务的脚本？</a></li>
+    <li><a href="#_10_如何设置应用自身的配置参数">10. 如何设置应用自身的配置参数？</a></li>
+    <li><a href="#_11_用户输入参数如何做校验如何支持正则表达式">11. 用户输入参数如何做校验,如何支持正则表达式？</a></li>
+    <li><a href="#_12_如何展示节点的其他信息">12. 如何展示节点的其他信息？</a></li>
+    <li><a href="#_13_如何开放vnc给用户允许用户访问节点">13. 如何开放VNC给用户，允许用户访问节点？</a></li>
+    <li><a href="#_14_如何备份">14. 如何备份？</a></li>
+    <li><a href="#_15_如何升级如何支持应用的大版本升级">15. 如何升级，如何支持应用的大版本升级？</a></li>
+    <li><a href="#_16_如何设置集群的_vip">16. 如何设置集群的 VIP？</a></li>
+    <li><a href="#_17_如何支持用户下载和查看应用的日志">17. 如何支持用户下载和查看应用的日志？</a></li>
+    <li><a href="#_18_如何语言国际化">18. 如何语言国际化？</a></li>
+    <li><a href="#_19_应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题">19. 应用实例调用的脚本中环境变量在创建应用实例后变得不可用的问题？</a></li>
+    <li><a href="#_20_如何配置依赖其他集群的服务">20. 如何配置依赖其他集群的服务？</a></li>
+    <li><a href="#_21_执行操作失败时如何展示给用户错误提示">21. 执行操作失败时如何展示给用户错误提示？</a></li>
+    <li><a href="#_22_如何配置横向扩容">22. 如何配置横向扩容？</a></li>
+    <li><a href="#_23_如何支持集群切换私网网络">23. 如何支持集群切换私网网络？</a></li>
+    <li><a href="#_24_如何将角色的某个节点直接绑定公网_ip">24. 如何将角色的某个节点直接绑定公网 IP？</a></li>
+    <li><a href="#_25_如何获取依赖其他集群的服务的_appid_和_appversionid">25. 如何获取依赖其他集群的服务的 AppID 和 AppVersionID？</a></li>
+    <li><a href="#_26_能否提供一些_confd_templates即_tmpl_文件的使用例子">26. 能否提供一些 confd templates（即 tmpl 文件）的使用例子？</a></li>
+    <li><a href="#_27_confd_日志显示_key_找不到的错误信息">27. confd 日志显示 key 找不到的错误信息</a></li>
+    <li><a href="#_28_上传配置包时报错配置验证失败报config_json_not_valid_json错误">28. 上传配置包时报错：配置验证失败,报[config.json] Not valid json错误？</a></li>
+    <li><a href="#_29_我在测试的时候发现设置的服务价格没起作用原因是什么">29. 我在测试的时候发现设置的服务价格没起作用，原因是什么？</a></li>
+    <li><a href="#_30_节点的启动停止命令执行出错请确保命令写完整的全路径">30. 节点的启动/停止命令执行出错，请确保命令写完整的全路径。</a></li>
+    <li><a href="#_31_使用_kvm_作为镜像模板时应用创建资源失败">31. 使用 kvm 作为镜像模板时，应用创建资源失败</a></li>
+    <li><a href="#_32_使用说明和服务条款的_markdown_语法说明">32. 使用说明和服务条款的 Markdown 语法说明</a></li>
+    <li><a href="#_33_如果只想用云应用开发框架管理纯云服务器集群">33. 如果只想用云应用开发框架管理纯云服务器集群</a></li>
+    <li><a href="#_34_如何使用环境变量里的_accesskey_类型数据">34. 如何使用环境变量里的 accesskey 类型数据？</a></li>
+    <li><a href="#_35_环境变量里如何支持层级联动关系">35. 环境变量里如何支持层级联动关系？</a></li>
+    <li><a href="#_36_如何定义原地升级方式">36. 如何定义原地升级方式？</a></li>
+    <li><a href="#_37_升级操作时如何给用户弹出提示">37. 升级操作时如何给用户弹出提示？</a></li>
+    <li><a href="#_38_串行纵向扩容或滚动升级时如何按照一定顺序进行操作">38. 串行纵向扩容或滚动升级时，如何按照一定顺序进行操作？</a></li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

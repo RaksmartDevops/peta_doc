@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>云服务器安全 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/common_operations/server_security/</link>
+    <description>Recent content in 云服务器安全 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/common_operations/server_security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>云服务器被非法域名恶意指向</title>
+      <link>/v6.1/compute/vm/faq/common_operations/server_security/instance_malicious_resolution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/server_security/instance_malicious_resolution/</guid>
+      <description>背景 云服务器被非法域名恶意指向，工信部扫描到之后，也会对该云服务器进行处罚，这样就会带来无谓的损失，但任何一台云服务器，目前都无法避免这个现象。
+原理 如果一个非法域名指向到某台服务器，而该服务器上存在着空主机头的站点，这时候使用该域名访问，效果是和使用 IP 访问是一致的，Web 服务器会自动的将请（Request）分配（Dispatch）到空主机头的站点上，这样就使得非法指向的恶意域名有了可访问性，被工信部扫描到之后，受损失的是该云服务器的客户和该客户的服务商。
+解决方法 文档提供以下几种类型的web服务解决方式：
+IIS
+Nginx
+Tomcat
+Apache
+IIS配置方法 查看是否绑定主机头，如以下截图主机名为空，则表示未绑定主机名。
+配置 IIS 网站绑定主机名
+验证只能通过绑定的域名访问，其他方式无法访问网站页面即可。
+Nginx配置方法 首先打开 nginx 域名配置文件存放目录：/etc/nginx/nginx.conf
+说明 不同安装方式 nginx 路径可能不同，但配置文件写法一样。
+配置默认站点禁止 IP 地址访问。
+server { listen 80 default_server; listen [::]:80 default_server; server_name _; return 403; } 配置网站绑定主机头。
+server { listen 80; server_name www.server.com; # 绑定域名 index index.htm index.html index.php; # 默认文件 root /var/www/html/server/; # 网站根目录 include location.conf; # 调用其他规则，也可去除 } 重启 nginx 服务器，验证访问效果。</description>
+    </item>
+    
+    <item>
+      <title>配置 IP/端口集合</title>
+      <link>/v6.1/compute/vm/faq/common_operations/server_security/ipandport/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/server_security/ipandport/</guid>
+      <description>产品概述 IP/端口集合功能可以把具有相同特征的一组 IP 或者一组端口设置成为 IP/端口集合，并且在安全组规则中进行添加，实现批量管理功能，以下介绍 IP/端口集合的配置方法。
+操作步骤 配置 ip 集合 登录管理控制台，选择 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。
+在左侧的 计算基础服务 导航栏，选择 计算基础服务 &amp;gt; 安全 &amp;gt; 安全组 &amp;gt; IP/端口集合 &amp;gt; 创建，类型选择 IP 地址,注意：IP 地址不要重复定义。
+修改IP集合。右键 集合ID &amp;gt; 修改 &amp;gt; 提交 &amp;gt; 右键集合ID &amp;gt; 应用修改。
+登录管理控制台，选择 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。
+在左侧的 计算基础服务 导航栏，选择 安全 &amp;gt; 安全组 &amp;gt; sg-xxxxxxx &amp;gt; 添加规则 &amp;gt; 源IP绑定IP集合 &amp;gt; 提交 &amp;gt; 应用修改，绑定后只有 IP 集合里面的源地址才能通过该安全组。
+配置端口集合 登录管理控制台，选择 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。</description>
+    </item>
+    
+    <item>
+      <title>Linux 系统下查看系统用户登录记录</title>
+      <link>/v6.1/compute/vm/faq/common_operations/server_security/user_record/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/server_security/user_record/</guid>
+      <description> 背景信息 如需查看 Linux 系统用户登录记录，可参考下面方法。
+相关命功能如下所示 who命令显示当前登录用户的信息
+who w 命令显示当前登录的用户名并显示该用户当前执行的任务
+w users 命令显示当前登录的用户名
+users last 命令显示当前与过去登录系统的用户信息
+lastb lastlog 命令显示用户最后一次登录的信息
+lastlog secure 文件查看登录记录
+cat /var/log/secure </description>
+    </item>
+    
+    <item>
+      <title>Linux 操作系统安全设置</title>
+      <link>/v6.1/compute/vm/faq/common_operations/server_security/linux_security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/server_security/linux_security/</guid>
+      <description>账号和口令 禁用或删除无用账号 减少系统无用账号，降低安全风险。
+使用命令 userdel &amp;lt;用户名&amp;gt; 删除不必要的账号。
+使用命令 passwd -l &amp;lt;用户名&amp;gt; 锁定不必要的账号。
+使用命令 passwd -u &amp;lt;用户名&amp;gt; 解锁必要的账号。
+检查特殊账号 检查是否存在空口令和 root 权限的账号。
+查看空口令和 root 权限账号，确认是否存在异常账号：
+使用命令 awk -F: &amp;#39;($2==&amp;#34;&amp;#34;)&amp;#39; /etc/shadow 查看空口令账号。
+使用命令 awk -F: &amp;#39;($3==0)&amp;#39; /etc/passwd 查看 UID 为零的账号。
+加固空口令账号：
+使用命令 passwd &amp;lt;用户名&amp;gt; 为空口令账号设定密码。
+确认 UID 为零的账号只有 root 账号。
+禁止 root 用户直接登录 限制 root 用户直接登录。
+创建普通权限账号并配置密码,防止无法远程登录;
+使用命令 vi /etc/ssh/sshd_config 修改配置文件将 PermitRootLogin 的值改成 no，并保存，然后使用 service sshd restart 重启服务。
+SSH 服务安全 对 SSH 服务进行安全加固，防止暴力破解成功。</description>
+    </item>
+    
+    <item>
+      <title>如何关闭 IE 增强的安全配置</title>
+      <link>/v6.1/compute/vm/faq/common_operations/server_security/disable_ie_enhance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/server_security/disable_ie_enhance/</guid>
+      <description>选择 服务器管理器 &amp;gt; 本地服务器 &amp;gt; IE 增强的安全配置 &amp;gt; 管理员 &amp;gt; 关闭 &amp;gt; 确定。</description>
+    </item>
+    
+  </channel>
+</rss>

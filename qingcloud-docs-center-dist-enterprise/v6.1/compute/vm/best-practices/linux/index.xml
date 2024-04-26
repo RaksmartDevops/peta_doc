@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux云服务器 on 用户指南</title>
+    <link>/v6.1/compute/vm/best-practices/linux/</link>
+    <description>Recent content in Linux云服务器 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/best-practices/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS 7 系统安装部署 LNMP</title>
+      <link>/v6.1/compute/vm/best-practices/linux/centos_install_lnmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/centos_install_lnmp/</guid>
+      <description>一、安装 Nginx 运行以下命令安装 Nginx。
+yum -y install nginx 查看安装的 Nginx 版本。
+nginx -v 返回结果如下即为安装成功:
+nginx version: nginx/1.16.1 二、安装 MySQL 更新 yum 源。
+rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 安装 MySQL。
+yum -y install mysql-community-server 查看 MySQL 版本号，返回版本信息即为安装成功。
+mysql -V mysql Ver 14.14 Distrib 5.7.28, for Linux (x86_64) using EditLine wrapper 启动 MySQL 服务。
+systemctl start mysqld 设置 MySQL 服务开机自启。
+systemctl enable mysqld systemctl daemon-reload 三、安装 PHP 添加 epel 源。
+yum install \ https://repo.</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 系统安装 Python3</title>
+      <link>/v6.1/compute/vm/best-practices/linux/install_python3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/install_python3/</guid>
+      <description>查看一下 python2 在哪个目录。
+whereis python cd /usr/bin ll python* 安装 python3 所需要的依赖包。
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make libffi-devel 安装 pip。
+yum -y install epel-release yum install python-pip 下载 python3 源码包。
+wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz 解压缩
+tar -zxvf Python-3.7.0.tgz 切换至解压后的目录，编译安装源码包。
+./configure prefix=/usr/local/python3 make &amp;amp;&amp;amp; make install 添加 python3 的软链接及 pip3 的软链接。
+ln -s /usr/local/python3/bin/python3.7 /usr/bin/python3.7 ln -s /usr/local/python3/bin/pip3.7 /usr/bin/pip3.7 测试是否安装成功。
+python -V 更改 yum 配置，因为其要用到 python2 才能执行，否则会导致 yum 不能正常使用。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器配置多网卡</title>
+      <link>/v6.1/compute/vm/best-practices/linux/ipwhiz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/ipwhiz/</guid>
+      <description>多网卡说明 对于物理服务器来说，网卡就是服务器的网络设备，用于接入以太网络，和其它计算机进行通信。网卡是基于虚拟化技术模拟的网卡设备，此设备是基于虚拟机所在的物理设备。云平台可以将集群内的虚拟网络统一起来，进行再分配。用户毋需关心具体的网卡在什么位置，有需要申请、挂接即可。
+网卡使用限制 每个云服务器最多可以绑定 64 张网卡（其中主网卡 1 张，从网卡 63 张），而每个网络最多可以有 252 张网卡。
+配置方法: 一、申请网卡 通过 控制台 &amp;gt; 计算 &amp;gt; 网卡 &amp;gt; 申请网卡。
+注意 申请网卡前需有 vpc 和私有网络。
+二、网卡绑定到云服务器 右键网卡，分配到云服务器，选择云服务器。
+三、登录云服务器查看网卡 登录到云服务器，查看网卡信息，并检查无法 ping 通其他网卡。
+四、配置策略路由 执行如下命令增加路由表：
+echo &amp;#34;200 table0&amp;#34; &amp;gt;&amp;gt; /etc/iproute2/rt_tables echo &amp;#34;201 table1&amp;#34; &amp;gt;&amp;gt; /etc/iproute2/rt_tables echo &amp;#34;202 table2&amp;#34; &amp;gt;&amp;gt; /etc/iproute2/rt_tables 查看路由表：
+cat /etc/iproute2/rt_tables 说明 此处数值越小，优先级越高。
+增加网卡路由策略：
+清空路由表 200 的路由规则。
+p route flush table 200 添加默认路由到路由表 200，这条规则是 table0 这个路由表中数据包默认使用 IP 192.168.0.2 通过 eth0 走网关 192.</description>
+    </item>
+    
+    <item>
+      <title>设置云服务器禁 ping</title>
+      <link>/v6.1/compute/vm/best-practices/linux/disabled_ping/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/disabled_ping/</guid>
+      <description>正常情况下，可以直接在云服务器上绑定一个安全组，添加一个 ICMP 协议的拒绝上行规则也可以。
+此方法适用于不想给云服务器单独绑定一个安全组的场景。
+方法一 echo 1 &amp;gt; /proc/sys/net/ipv4/icmp_echo_ignore_all 执行完成后，即时生效。
+方法二 在 /etc/sysctl.conf 添加一条参数 net.ipv4.icmp_echo_ignore_all=1
+# vi /etc/sysctl.conf ... net.ipv4.icmp_echo_ignore_all = 1 # 加入该参数 ... # sysctl -p # 使参数即时生效 其实方法二跟方法一实现的原理是一样的，仔细观察可以看到 sysctl.conf 中的参数为方法一种 sys 目录下的路径。</description>
+    </item>
+    
+    <item>
+      <title>开启 Linux 启动项</title>
+      <link>/v6.1/compute/vm/best-practices/linux/grub_open/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/grub_open/</guid>
+      <description>有时需要修改内核参数来进行调试或者优化，但是修改不当又容易导致云服务器启动失败，下面举例说明几个操作系统如何在启动的时候进入启动项，临时修改一些内核的参数。
+CentOS 6.8 正常登录云服务器，修改 /etc/grub.conf，修改 timeout 参数为 30，并将 hiddenmenu 参数注释，保存退出。如下图所示：
+重启云服务器，并在 20 秒内重新连接云服务器的 VNC，此时可以看到选择启动项的界面。
+在这个界面按下 e ，然后按键盘 ↓ 键，选择第二个内核选项。
+再按下 e。
+按键盘的←→键就可以移动光标并进行内核参数的临时修改了，修改好之后，按回车键，返回到 GURB 界面，再按下 b，就会启动云服务器。
+CentOS 7.9 先正常登录云服务器，修改 /etc/default/grub，修改 timeout =30，保存退出。
+修改 /boot/grub2/grub.cfg，修改两处 set timeout=30，保存退出。
+··· if [ x$feature_timeout_style = xy ] ; then set timeout_style=menu set timeout=30 # Fallback normal timeout code in case the timeout_style feature is # unavailable. else set timeout=30 fi ··· 重启云服务器，并在 20 秒内重新连接云服务器的 VNC，此时可以看到选择启动项的界面。</description>
+    </item>
+    
+    <item>
+      <title>关闭 SeLinux</title>
+      <link>/v6.1/compute/vm/best-practices/linux/shut_selinux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/shut_selinux/</guid>
+      <description> 问题背景 初学者配置 Linux 服务器时不成功，却没有头绪，那是因为在 Linux 操作系统中默认开启了防火墙，SeLinux 也处于启动状态，一般状态为 Enforing。致使很多服务端口默认是关闭的。所以好多服务初学者明明配置文件正确，等验证时有时连 ping 也 ping 不通，建议初学者配置服务器把 SeLinux 这项关掉。
+SeLinux 状态释义 SeLinux 有三种状态，分别如下：
+Enforcing：强制模式，表示 SeLinux 运作当中，所有违反其规则的操作都会被阻止执行；
+Permissive：宽容模式， 表示 SeLinux 运作当中，不会限制违反其规则的操作，只会给出警告信息；
+Disabled：禁用模式，不使用 SeLinux 机制。
+关闭SeLinux 临时关闭，但重启后失效。
+setenforce 0 永久关闭，修改 /etc/selinux/config 文件，编辑 SELINUX=disabled，重启后生效。
+vi /etc/selinux/config </description>
+    </item>
+    
+    <item>
+      <title>开启 SFTP</title>
+      <link>/v6.1/compute/vm/best-practices/linux/sftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/sftp/</guid>
+      <description>SFTP 工具可以用来打开一次安全互动的 FTP 会话。它与 FTP 相似，只不过，它使用安全、加密的连接。它的一般语法是：sftp username@hostname.com。一旦通过验证，你可以使用一组和使用 FTP 相似的命令。
+Ubuntu 云服务器开启 SFTP 确认是否已经安装 openssh-server。
+dpkg --get-selections |grep ssh 如果没有安装，请手动执行下面的指令进行安装。
+sudo apt-get install openssh-server 新建用户组 sftp-users，并新建用户 sftp。
+sudo addgroup sftp-users sudo adduser sftp 给 sftp 赋权并新建用户组 ssh-users。
+将 sftp 从所有其他用户组中移除并加入到 sftp-users 组，并且关闭其 Shell 访问：
+sudo usermod -G sftp-users -s /bin/false sftp 创建 SSH 用户组，并把管理员加入到该组（注意 usermod 中的 -a 参数的意思是不从其他用户组用移除）。
+sudo addgroup ssh-users sudo usermod -a -G ssh-users root 创建并设置 sftp 用户目录。</description>
+    </item>
+    
+    <item>
+      <title>CentOS6 更新 yum源</title>
+      <link>/v6.1/compute/vm/best-practices/linux/centos6_yum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/centos6_yum/</guid>
+      <description> 问题背景 由于 centos6 的版本有点老了，很多镜像站都不在维护 centos6 的 yum 源；新建的 centos6 云服务器我们已经更新了 yum 源，之前创建的 centos6 云服务器的 yum 源需要手动更新一下，可以参考以下步骤。
+操作步骤 先备份源文件
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo-backup 编辑文件：vi /etc/yum.repos.d/CentOS-Base.repo
+vi /etc/yum.repos.d/CentOS-Base.repo [base] name=CentOS-6 failovermethod=priority baseurl=http://mirrors.sohu.com/centos/6.10/os/x86_64/ gpgcheck=0 清理软件源
+yum clean all 建立源数据缓存
+yum makecache </description>
+    </item>
+    
+    <item>
+      <title>Linux 系统升级内核版本</title>
+      <link>/v6.1/compute/vm/best-practices/linux/kernel_upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/kernel_upgrade/</guid>
+      <description>背景 在使用 Linux 发行版的时候，很多人都会遇到各种各样的问题，比如：网卡不能使用，亮度不能调节，触摸板不能识别，蓝牙不能使用，应用软件要求的内核版本不符等等，这些都和 Linux 的内核有关系。
+操作步骤 1、查看当前内核版本 uname -r uname -a cat /etc/redhat-release 2、升级内核 更新yum源
+yum -y update 启用 ELRepo 仓库
+ELRepo 仓库是基于社区的用于企业级 Linux 仓库，提供对 RedHat Enterprise（RHEL）和其他基于 RHEL 的 Linux 发行版（CentOS、Scientific、Fedora 等）的支持。
+ELRepo仓库的公共密钥
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org 安装 ELRepo 仓库的 yum 源
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 3、查看可用的系统内核包 yum --disablerepo=&amp;#34;*&amp;#34; --enablerepo=&amp;#34;elrepo-kernel&amp;#34; list available 4、安装最新版本内核 yum --enablerepo=elrepo-kernel install kernel-ml 说明 enablerepo 选项开启 CentOS 系统上的指定仓库。默认开启的是 elrepo，这里用 elrepo-kernel 替换。
+5、设置 grub2 内核安装好后，需要设置为默认启动选项并重启后才会生效。
+查看系统上的所有可用内核：
+sudo awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器开启 SSH 会话保持</title>
+      <link>/v6.1/compute/vm/best-practices/linux/how_to_avoid_ssh_session_disconnection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/how_to_avoid_ssh_session_disconnection/</guid>
+      <description> 操作场景 使用 SSH 方式登录 CentOS 操作系统的弹性云服务器时，过一段时间就会自动断开连接。本节操作介绍如何保持 SSH 会话持续连接不断开。
+说明 本节操作涉及重启 sshd 服务，会造成 sshd 断开。
+操作方法 编辑 /etc/ssh/sshd_config，添加以下配置项：
+# vim /etc/ssh/sshd_config …… ClientAliveInterval 600 ClientAliveCountMax 10 …… 说明 ClientAliveInterval 600 表示每 600 秒发送一次请求，从而保持连接。
+ClientAliveInterval 设置超时间隔（以秒为单位），在此间隔之后，如果尚未从客户端接收到任何数据,则 sshd 将通过加密的通道发送消息以请求客户端的响应。默认值为 0，表示这些消息将不会发送到客户端。此选项仅适用于协议版本 2。
+ClientAliveCountMax 10 表示服务器发出请求后客户端没有响应的次数达到 10 次，就自动断开连接。
+ClientAliveCountMax 设置客户端活动消息的数量，该消息可以在 sshd 接收不到来自客户端的任何消息的情况下发送。如果在发送客户端活动消息时达到此阈值，则 sshd 将断开客户端连接，从而终止会话。
+无响应的 SSH 客户端将在大约 600x10=6000 秒后断开连接。
+执行以下命令，重启 sshd 服务，使配置生效。
+CentOS6 操作系统
+service sshd restart CentOS7 操作系统
+systemctl restart sshd </description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器之间配置 SSH 互信（SSH 免密码登录）</title>
+      <link>/v6.1/compute/vm/best-practices/linux/how_to_deploy_ssh_trust/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/how_to_deploy_ssh_trust/</guid>
+      <description>操作场景 通过配置 Linux 云服务器 SSH 互信可以实现云服务器间免密码登录。
+操作步骤 在客户端生成公钥、私钥对
+ssh-keygen -t rsa 默认点击回车，系统在/root/.ssh下生成id_rsa、id_rsa.pub
+查看系统生成的公钥私钥对。
+ls /root/.ssh 可以看到如下的文件：
+id_rsa id_rsa.pub 将生成的公钥对 id_rsa.pub 发送到其它要连接的服务器上
+ssh-copy-id -i /root/.ssh/id_rsa.pub 192.168.10.3 可以看到成功将公钥对发送到了其它服务器，更多服务器一样操作即可
+现在可以测试连接其它服务器是否不需要密码登录。
+ssh 192.168.10.3 # 登录其它服务器命令 显示连接成功。</description>
+    </item>
+    
+    <item>
+      <title>虚拟 VIP 如何使用</title>
+      <link>/v6.1/compute/vm/best-practices/linux/use_vip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/use_vip/</guid>
+      <description>概述 虚拟 IP（Virtul_IP）是 VPC 网络中的一种 IP 地址，通常用于不同云服务器之间的切换，达到高可用的需求。本文为您介绍如何使用高可用虚拟 IP 。
+使用方法 在 VPC 的私有网络中申请一个 VIP ，将这个 IP 从该网段中隔离出来，防止其它资源使用这个 IP。
+在云服务器上面安装 keepalived。
+yum install keepalived 配置 keepalived 参数。
+vi /etc/keepalived/keepalived.conf 主服务器配置如下：
+! Configuration File for keepalived global_defs { router_id lb01 # 标识信息 } vrrp_instance VI_1 { state MASTER # 主为 MASTER，备为 BACKUP priority 150 # 优先级，主的参数要比备的参数大 interface eth0 # 绑定的网卡 virtual_router_id 50 # 同一个虚拟的路由 advert_int 1 # 心跳的间隔时间 authentication { auth_type PASS # 两个云服务器之间的密语 auth_pass 1111 # 心跳密码 } virtual_ipaddress { 192.</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器配置静态 IP</title>
+      <link>/v6.1/compute/vm/best-practices/linux/static_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/static_ip/</guid>
+      <description>问题背景 网络配置默认为 DHCP 模式，如果您需要将网络配置修改为 Static 静态模式，可参考本文进行操作。
+操作步骤 准备设置。
+关闭私有网络 DHCP，再开启 DHCP 设置获取范围，将需设置 IP 设置在 DHCP 自动获取的范围外，避免系统 HDCP 分配时将设置的静态 IP 分配，导致网络故障。
+示例为：Cento 7.5 操作系统
+登录云服务器，执行以下任一命令，查看实例的 IP 地址和子网掩码。
+ip a ifconfig 编辑网卡文件，将 BOOTPROTO 的值修改为 static，并将以上步骤中记录的 IP 地址、网关信息、子网掩码填写到该配置文件中，保存并退出。
+vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 BOOTPROTO=static ONBOOT=yes TYPE=Ethernet NM_CONTROLLED=no IPADDR=192.168.100.251 NETMASK=255.255.255.0 GATEWAY=192.168.100.1 执行下面命令，重启网卡服务。
+systemctl restart network 检查网卡获取静态 IP 信息，并测试 IP 连通性。</description>
+    </item>
+    
+    <item>
+      <title>Centos 安装图形化桌面</title>
+      <link>/v6.1/compute/vm/best-practices/linux/centos_gui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/centos_gui/</guid>
+      <description> 云平台 CentOS 7.x 镜像默认为最小化部署，需要自行安装图形化桌面。
+本次示例为安装 GNOME 图形化的具体步骤，以 CentOS7.x 为例，仅供参考。
+首先更新系统。
+yum upgrade 在命令行下输入下面的命令来依赖包。
+yum update grub2-common yum install fwupdate-efi 输入以下命令安装图形化组件。
+sudo yum group install &amp;#39;GNOME Desktop&amp;#39; &amp;#39;Graphical Administration Tools&amp;#39; 更新系统的运行级别。
+ln -sf /lib/systemd/system/graphical.taget /etc/systemd/system/default.target 重启系统。
+reboot -h now </description>
+    </item>
+    
+    <item>
+      <title>HAProxy 如何配置 SSL</title>
+      <link>/v6.1/compute/vm/best-practices/linux/haproxy_ssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/haproxy_ssl/</guid>
+      <description>项目背景 由于 HTTP 协议以明文方式发送请求，而部分业务需要进行数据加密传输，使用 SSL/TLS 来加密数据包，能够很好的保护数据的隐私性和完整性。
+HAProxy 是一款可实现负载均衡的优秀软件，它可用于 TCP 代理、HTTP 反向代理、SSL 终结、规范 TCP、HTTP 连接等等。本文中主要介绍通过 HAProxy 反向代理实现负载均衡，并确保连接基于 SSL/TLS 安全加密。HAProxy 更多应用详见 HAProxy官方文档。
+准备事项 主机已安装 HAProxy。
+已申请并签发了 SSL 证书，如没有证书，请购买 SSL 证书。
+申请 SSL 证书时绑定的域名已解析到服务器 IP。
+后端可正常访问。
+部署步骤 HAProxy 代理 SSL 有两种方式。
+HAProxy 本身绑定 SSL 证书，后面的 Web 服务器走正常的 HTTP ，这种方式 HAProxy 需要支持 SSL。
+HAProxy 本身只提供反向代理，后面的 Web 服务器走 HTTPS，这种方式 HAProxy 不需要支持 SSL。
+方式一：HAProxy 绑定 SSL 证书： 查看已安装的 HAProxy 是否支持 SSL：
+执行一下命令
+haproxy -vv 找到 haproxy 命令源文件，执行如下命令：</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 安装图形化桌面</title>
+      <link>/v6.1/compute/vm/best-practices/linux/ubuntu_gui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/ubuntu_gui/</guid>
+      <description> 1、准备环境 OS：版本为 Ubuntu Server 16.04.5 LTS 64bit。
+Ubuntu 16.04 在安装时默认是不安装图形界面的。
+Gnome 是 Linux 最流行的桌面环境。
+2、安装 xinit apt update apt install -y xinit 3、安装登录器 登录管理器 gnome display manager,简称 gdm。
+apt install -y gdm 4、安装桌面环境 apt install -y --no-install-recommends ubuntu-gnome-desktop 5、Startx 启动桌面 取消开机 GUI 自动启动桌面：
+startx 恢复开机GUI 自动启动：
+update-rc.d gdm defaults </description>
+    </item>
+    
+    <item>
+      <title>配置 Linux 云服务器免密登录</title>
+      <link>/v6.1/compute/vm/best-practices/linux/avoidcloselogin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/avoidcloselogin/</guid>
+      <description>本机自身实现无密码登录 生成公钥、私钥对。
+ssh-keygen 进行配置。
+进入到生成密钥文件夹中，默认在用户的家目录下面，一个隐藏的 .ssh 文件夹中。
+cd /root/.ssh/ 查看是否有 authorized_keys 文件，如果有，直接将公钥追加到 authorized_keys 文件中，如果没有，创建 authorized_keys 文件，并修改权限为 600。
+touch authorized_keys chmod 600 authorized_keys 追加公钥到 authorized_keys 文件中。
+cat id_rsa.pub &amp;gt;&amp;gt; authorized_keys 配置（A、B云服务器）间实现无密码登录 配置hosts文件
+在 A、B 服务器中分别配置该文件。
+vim /etc/hosts 10.89.127.123 lz-1 10.89.127.125 lz-2 生成秘钥
+A、B云服务器分别生成公钥、私钥对。
+ssh-keygen 开始配置
+进入到生成密钥文件夹中，默认在用户的家目录下面，一个隐藏的 .ssh 文件夹中。
+cd /root/.ssh/ 使用 scp 命令，将 B 云服务器公钥发送给 A 云服务器。
+scp id_rsa.pub lz-1:/root 查看A云服务器的 /root/.ssh 目录下是否有 authorized_keys 文件，如果有，直接将需无密码登录的云服务器公钥追加到 authorized_keys 文件中，如果没有，创建 authorized_keys 文件，并修改权限为 600。</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6 无法使用 yum 解决办法</title>
+      <link>/v6.1/compute/vm/best-practices/linux/centos6_yum_program/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/centos6_yum_program/</guid>
+      <description> 背景 CentOS 6 已经随着 2020 年 11 月的结束进入了 EOL（Reaches End of Life），不过有一些老设备依然需要支持，yum 源失效无法访问等情况，可参考此文档添加新 yum 源。
+yum 设置 源 yum 进行备份。
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 替换为官方的 VAULT 源（海外用户可使用）。
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://www.xmpan.com/Centos-6-Vault-Official.repo 国内可使用 yum 源(任选其一)。
+替换国内的 VAULT 源（国内使用）：
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://www.xmpan.com/Centos-6-Vault-Aliyun.repo 国内可使用的 yum repo 文件配置，如下：
+[base] name=CentOS-6 failovermethod=priority baseurl=http://mirrors.sohu.com/centos/6.10/os/x86_64/ gpgcheck=0 </description>
+    </item>
+    
+    <item>
+      <title>httpd 服务配置 SSL</title>
+      <link>/v6.1/compute/vm/best-practices/linux/confighttpdssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/confighttpdssl/</guid>
+      <description>一、在服务器上部署 httpd 服务（Ubuntu 为例） 部署 httpd 服务。
+sudo apt install apache2 -y 启动 apache2 服务并设置为开机自启。
+systemctl enable apache2 systemctl start apache2 检查服务器 80 端口是否监听。
+ss -nutlp | grep 80 二、配置安装并启用 httpd 所需的 SSL 相关组件 安装 httpd 相关 SSL 组件，并启用相关模块。
+# ubuntu apt 安装会自动安装所需组件，centos 还需运行如下命令安装组件：yum install mod_ssl openssl # 启用 ssl 模块 root@web:/etc/apache2/sites-available# sudo a2enmod ssl Considering dependency setenvif for ssl: Module setenvif already enabled Considering dependency mime for ssl: Module mime already enabled Considering dependency socache_shmcb for ssl: Module socache_shmcb already enabled Module ssl already enabled # 这一行表示 ssl 模块已启用 配置 httpd 的 SSL。</description>
+    </item>
+    
+    <item>
+      <title>Linux 部署 FTP 服务</title>
+      <link>/v6.1/compute/vm/best-practices/linux/linux_ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/linux_ftp/</guid>
+      <description>准备环境 操作系统：CentOS 7.5 64bit
+Vsftpd: 3.0.2
+1.安装 FTP 服务 1.1 安装 vsftpd yum install -y vsftpd 1.2 启动 vsftpd 服务 运行下面命令启动 FTP 服务。
+systemctl start vsftpd.service 设置 FTP 服务开机自启动。
+systemctl enable vsftpd.service 查看 FTP 服务监听的端口。
+netstat -antup | grep ftp 出现如下图所示界面，表示 FTP 服务已启动，监听的端口号为 21。此时，Vsftpd 默认已开启匿名访问功能，您无需输入用户名密码即可登录 FTP 服务器，但没有修改或上传文件的权限。
+1.3 主动模式设置 主动模式适用于局域网（内网）环境下，云平台使用公网 FTP 服务，请使用被动模式。
+主动模式下 vsftpd.conf 参数设置。
+vim /etc/vsftpd/vsftpd.conf # 修改参数如下，没有修改的为默认值 chroot_local_user=YES # 全部用户被限制在主目录 chroot_list_enable=YES # 启用例外用户名单 chroot_list_file=/etc/vsftpd/chroot_list # 指定例外用户列表文件，列表中的用户不被锁定在主目录 allow_writeable_chroot=YES local_root=/var/ftp/test # 设置本地用户登录后所在的目录 1.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 20 配置多网卡方法</title>
+      <link>/v6.1/compute/vm/best-practices/linux/ubuntu20_network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/ubuntu20_network/</guid>
+      <description>背景信息 Ubuntu Server 20 配置多网卡策略，可参考如下方法。
+1.检查服务 Ubuntu 在 18 版本以后加入了 Netplan，如果启用第二个网卡需要在 Netplan 注册。本示例系统版本：Ubuntu Server 20.04.1 LTS 64bit。
+如果执行 sudo netplan apply 命令出现,如下报错：
+# sudo netplan apply Command &amp;#39;netplan&amp;#39; not found, but can be installed with: apt install netplan.io 表示没有安装此服务，需要执行更新 apt-get 服务：
+sudo apt-get update 2.添加网卡 登录控制台申请网卡，并添加到主机。
+登录到主机查看网卡 IP 信息，eth1 此时没有获取到 IP，需要配置下面网卡信息后才会获取到。
+# ip a 2: eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000 link/ether 52:54:9e:1b:ed:b4 brd ff:ff:ff:ff:ff:ff inet 192.</description>
+    </item>
+    
+    <item>
+      <title>配置云服务器为网关服务器(外部绑定公网 IP)</title>
+      <link>/v6.1/compute/vm/best-practices/linux/configure_the_gateway_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/configure_the_gateway_server/</guid>
+      <description>项目概览 在本项目中，您将了解如何使用云服务器外部绑定公网 IP 作为网关服务器，让其他云服务器可以使用网关服务访问互联网。
+环境准备 创建一个 VPC 网络。
+创建一个私有网络并加入到 VPC 网络。
+创建两台云服务器加入到上面创建的私有网络。
+创建一个公网 IP，外部绑定到网关服务器。
+网络拓扑 配置步骤 网关服务器配置 测试网络连通性
+ping www.baidu.com 开启路由功能
+临时更改
+echo 1 &amp;gt; /proc/sys/net/ipv4/ip_forward 永久生效
+vim /etc/sysctl.conf net.ipv4.ip_forward = 1 sysctl -p /etc/sysctl.conf 配置 SNAT
+iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o eth0 -j MASQUERADE 客户端及 DNS 配置 路由配置 方案一：
+route add default gw 172.16.0.200 说明 云服务器中添加网关路由，云服务器重启会失效。
+方案二：
+网络 &amp;gt; VPC 网络 &amp;gt; 管理配置 &amp;gt; 路由推送</description>
+    </item>
+    
+    <item>
+      <title>将 ECS 迁移到云平台</title>
+      <link>/v6.1/compute/vm/best-practices/linux/ecs2qing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/ecs2qing/</guid>
+      <description>从阿里云 ECS 导出镜像 第1步：开通 OSS 登录阿里云控制台，点击左上角选择对象存储 OSS，初次使用同意 OSS 服务条款，进入管理控制台。
+左侧点击创建 Bucket，选择与保存镜像同一地域的 Bucket。切记要选择标准存储，读写权限设置为公共读，并记住 Bucket 的名字。
+第2步：创建镜像 控制台页面，点击左上角选择云服务器 ECS，进入云服务器 ECS 界面，选择相应的实例，进入实例详情页面。
+选择 创建自定义镜像 选项，为镜像命名后点击创建按钮，创建自定义镜像。
+镜像创建完成后，可以在镜像列表上看到我们创建的镜像。
+第3步： 导出镜像 选择导出镜像选项（如没有该选项，可通过工单申请开通）。
+选择我们之前创建的 bucket，并输入 object 前缀，点击确定。
+控制台页面，点击左上角选择对象存储，进入对象存储界面，在我们之前创建的 bucket 里面可以看到导出的镜像，并选择复制文件 url，获得镜像下载链接。
+镜像导入到云平台 第1步：下载镜像 我们在云平台的虚机里下载该镜像。没有 wget 需要先下载安装 wget 工具，并且注意下面命令里面的两个单引号。
+wget ‘下载链接’ 下载完成后，文件重命名成 raw.tar.gz 后缀。
+镜像压缩包进行解压。
+tar -zxvf test_m-uf66lzx8rzvh3ht5tbz1_system.raw.tar.gz 第2步：制作云平台自定义镜像 在管理控制台上创建一个硬盘并挂载到下载镜像的云服务器上，注意硬盘的大小需要和原云服务器的系统盘大小一致。
+fdisk -l 将 raw 格式的镜像文件拷贝到硬盘中。
+dd if=test_m-uf66lzx8rzvh3ht5tbz1_system.raw of=/dev/vdc 可以新开一个 shell 界面，输入下面命令，查看 dd 命令的执行进度；
+watch -n 5 pkill -USR1 ^dd$ 完成之后，更新下硬盘的分区信息；</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器部署 Docker</title>
+      <link>/v6.1/compute/vm/best-practices/linux/docker_deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/docker_deployment/</guid>
+      <description>简介 本文介绍了如何在 Linux 云服务器实例中部署 Docker，并提供了 Docker 常用操作命令及简单的镜像制作过程。
+本文档示例环境为 CentOS7.9。
+Docker 相关术语 Docker 镜像 Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+Docker容器 镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+容器的实质是进程，但与直接在宿主机执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。
+Docker仓库 镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务。 一个 Docker Registry 中可以包含多个 仓库（Repository）；每个仓库可以包含多个 标签（Tag）；每个标签对应一个镜像。
+说明 更多关于镜像、容器、仓库的基础知识，请参见 Docker Documentation。
+部署Docker Docker 支持 64 位版本 CentOS 7/8，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 overlay2 存储层驱动）无法使用，并且部分功能可能不太稳定。
+添加 yum 源。
+yum install epel-release -y # 安装 EPEL YUM 源 安装 yum-util。
+yum install -y yum-utils device-mapper-persistent-data lvm2 设置 docker yum 源。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器搭建 FTP 并使用对象存储</title>
+      <link>/v6.1/compute/vm/best-practices/linux/linux_qsftpd_use/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/linux_qsftpd_use/</guid>
+      <description>背景介绍 对象存储是面向海量非结构化数据的通用数据存储平台，提供安全可靠、低成本的云端存储服务，可以作为 FTP 服务后端的存储服务来为客户提供便捷、有效的数据存储功能。
+qsftpd介绍 qsftpd 是一个将对象存储作为存储后端的 FTP Server，用户通过简单的配置，即可通过 FTP 协议使用对象存储服务。
+qsftpd 已在 GitHub 开源，更多详情可参见 GitHub。
+准备工作 创建 Bucket
+通过控制台对象存储，点击创建，输入名称，提交。
+申请 API 密钥
+选择 控制台 &amp;gt; 个人信息 &amp;gt; api 密钥，点击创建，提交，然后下载到本地。
+说明 此链接仅能下载一次。
+配额不够可以开工单申请。
+下载安装
+qsftpd 支持 Linux、MacOS 和 Windows 操作系统，可访问 GitHub 项目的 Releases 页面查看和下载历史版本。Linux最新版本下载链接：qsftpd-latest-linux_amd64。
+使用示例 本文档使用的是 CentOS 7.7，其余版本的系统使用方法一样。
+使用 wget 将 tar 包下载至 linux 主机中。
+yum -y install wget wget https://pek3a.qingstor.com/releases-qs/qsftpd/qsftpd-latest-linux_amd64.tar.gz tar -zxvf qsftpd-latest-linux_amd64.tar.gz ./qsftpd -h 此时，qsftpd已能正常使用。
+创建配置文件
+vi qsftpd.</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器配置 MySQL</title>
+      <link>/v6.1/compute/vm/best-practices/linux/linux_mysql_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/linux_mysql_install/</guid>
+      <description>背景介绍 MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS（Relational Database Management System：关系数据库管理系统）应用软件之一。本文介绍了在不同系统的云服务器中安装配置 MySQL。
+CentOS 安装 MySQL
+使用yum安装。
+yum -y install mysql-server rpm -qa | grep mysql # 检查 mysql 是否安装成功 systemctl start mysqld.service #查看 mysql 服务状态 启动 MySQL 服务
+systemctl start mysqld.service # 启动 mysql systemctl restart mysqld.service # 重启 mysql systemctl stop mysqld.service # 停止 mysql systemctl enable mysqld.service # 设置 mysql 开机启动 MySQL 常用文件路径：
+/etc/my.cnf 这是 mysql 的主配置文件。</description>
+    </item>
+    
+    <item>
+      <title>Linux 中 vi 快捷键编辑</title>
+      <link>/v6.1/compute/vm/best-practices/linux/liunx_use_vi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/liunx_use_vi/</guid>
+      <description>操作系统快捷方式 利用方向键 ↑ ↓ — 快速调取历史命令（输入命令都会临时保存在内存中 &amp;gt; 保存在磁盘文件）。
+快速移动光标。
+ctrl + a --- 将光标快速移动到行首 ctrl + e --- 将光标快速移动到行尾 ctrl + ← → --- 将光标按照单词进行左右快速移动 快速操作命令信息。
+ctrl + u --- 将光标之前的内容进行剪切 ctrl + k --- 将光标之后的内容进行剪切 ctrl + w --- 以空格作为分隔 剪切每个字符串信息 ctrl + y --- 将剪切的内容进行粘贴 特殊功能快捷方式。
+ctrl + c(cancel) --- 中断或取消命令执行过程 ctrl + l(clear) --- 清屏操作 ctrl + s --- 进入锁定状态 ctrl + q --- 退出锁定状态 编辑命令使用方法 vi/vim 编辑命令模式信息。</description>
+    </item>
+    
+    <item>
+      <title>LVM 逻辑卷 VG 卷组丢失的处理流程</title>
+      <link>/v6.1/compute/vm/best-practices/linux/lvm_datarecovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/lvm_datarecovery/</guid>
+      <description>LVM 是通过将物理的磁盘或磁盘分区创建成物理卷（PV），多个物理卷添加创建为一个卷组（VG），然后在卷组的基础上创建逻辑卷（LVM），进而在逻辑卷上去创建文件系统，这种在硬盘或分区和文件系统之下的磁盘管理机制大大提高了对磁盘管理的灵活性，也是当前企业 Linux 环境下实现对磁盘分区管理的方式。 但在实际应用管理中，常常因为误操作，系统重启等原因造成卷组丢失，逻辑卷无法挂载等异常的故障，本文将逻辑卷故障处理过程给大家分享因为系统重启原因造成卷组丢失的恢复方法。
+原因分析 查看 /etc/lvm/archive/VG 名文件中 PV 的 ID 号，与 pvdisplay /dev/vdc 命令中显示的 UUID 号不一致，初步判断是因为系统重启后，/dev/vdc 的 UUID 号发生变化了。导致 VG 无法找到对应的物理卷。
+VG找回步骤 为了防止数据丢失或破坏，首先对 /dev/vdc 设备的数据进行备份。
+dd if=/dev/vdc of=/data/vdc.img Linux 的 LVM 会默认存储用户对 PV/VG/LV 的每一步操作，并自动把当前的 VG 的信息备份到一个文件里面，位置是 /etc/lvm/backup/VG 名或者 /etc/lvm/archive/VG 名。这个文件里面记录的东西大概跟 vgdisplay/pvdisplay/lvdisplay 输出的信息一致，里面也包括了对于恢复 VG 信息至关重要的 PV UUID。
+cat /etc/dev/vdc/vgtest_00002-645033136.vg 使用原来的 PV UUID 来创建 PV，并使用自动备份的文件来恢复信息。
+pvcreate /dev/vdc -u qaTzJn-Hdgc-aeC5-EUT0-H1l1-tPiA-rYXnDx --restorefile /etc/lvm/archive/vgtest_00002-645033136.vg 恢复 VG。
+vgcfgrestore -f archive/vgtest_00002-645033136.vg vgtest 激活 VG。</description>
+    </item>
+    
+    <item>
+      <title>nginx 配置 SSL</title>
+      <link>/v6.1/compute/vm/best-practices/linux/nginx_ssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/nginx_ssl/</guid>
+      <description>背景 由于 http 协议以明文方式发送请求，不提供任何方式的数据加密，因此不适合传输一些敏感信息，而 https 使用 SSL/TLS 来加密数据包，能很好的保护数据的隐私性和完整性，因此目前对网站安全性有要求的都会采用 https 协议来进行加密传输。
+准备事项 云服务器已安装 nginx。
+已经申请并签发了 SSL 证书，如没有证书，请购买 SSL 证书。
+申请 SSL 证书时绑定的域名已解析到服务器 IP。
+站点文件已上传至云服务器目录。
+部署步骤 查看 nginx 是否安装了 http_ssl_module 模块，执行 /usr/sbin/nginx -V 后返回的 configure arguments 包含 --with-http_ssl_module 则表示已经安装。
+[root@i-3lioycgh ~]# /usr/sbin/nginx -V nginx version: nginx/1.16.1 built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) built with OpenSSL 1.1.1c FIPS 28 May 2019 (running with OpenSSL 1.1.1g FIPS 21 Apr 2020) TLS SNI support enabled configure arguments: --prefix=/usr/share/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.</description>
+    </item>
+    
+    <item>
+      <title>nginx 配置多个站点使用同一端口</title>
+      <link>/v6.1/compute/vm/best-practices/linux/nginx_multiple_sites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/nginx_multiple_sites/</guid>
+      <description>背景 用户在同一台云服务器上部署了多个站点，需要使用不同域名的 80 端口来访问不同的网站。
+准备事项 云服务器已安装好 nginx 服务。
+站点文件已上传到云服务器目录。
+不同域名已解析到云服务器 IP。
+部署步骤 检查 /etc/nginx/nginx.conf（nginx默认配置文件路径，如果使用其他方式部署，对应部署的其他路径）配置文件，确保文件中包含 include /etc/nginx/conf.d/.conf;。
+user nginx; worker_processes auto; error_log /var/log/nginx/error.log; pid /run/nginx.pid; # Load dynamic modules. See /usr/share/doc/nginx/README.dynamic. include /usr/share/nginx/modules/*.conf; events { worker_connections 1024; } http { log_format main &amp;#39;$remote_addr - $remote_user [$time_local] &amp;#34;$request&amp;#34; &amp;#39; &amp;#39;$status $body_bytes_sent &amp;#34;$http_referer&amp;#34; &amp;#39; &amp;#39;&amp;#34;$http_user_agent&amp;#34; &amp;#34;$http_x_forwarded_for&amp;#34;&amp;#39;; access_log /var/log/nginx/access.log main; sendfile on; tcp_nopush on; tcp_nodelay on; keepalive_timeout 65; types_hash_max_size 2048; include /etc/nginx/mime.types; default_type application/octet-stream; # Load modular configuration files from the /etc/nginx/conf.</description>
+    </item>
+    
+    <item>
+      <title>安装使用宝塔面板</title>
+      <link>/v6.1/compute/vm/best-practices/linux/instance_install_bt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/instance_install_bt/</guid>
+      <description>文档背景 此文档介绍用户如何在云服务器安装及使用宝塔面板。
+安装宝塔 前提条件 云服务器可以正常访问外网。
+云服务器操作系统及版本支持安装宝塔面板。
+云服务器8888端口未被占用。
+安装步骤 打开 宝塔官网 。
+找到云服务器对应系统的宝塔面板安装方式，根据官方提供的命令及方式安装。
+使用宝塔 放行 8888 端口 宝塔面板安装完成后，默认使用 8888 端口，用户访问前，需要先放行该端口。以下为两种网络环境中放行端口规则介绍：
+云服务器使用基础网络，单独绑定了公网 IP。
+在 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，点击云服务器 id，进入后查看绑定资源中的安全组。
+点击安全组 id 进入后，添加 8888 端口的下行规则。
+云服务器使用私有网络，通过 VPC 上绑定的公网 IP 进行访问。
+在 产品与服务 &amp;gt; 网络服务 &amp;gt; VPC 网络，点击 VPC 名称进入 VPC，在 管理配置 &amp;gt; 端口转发 &amp;gt; 添加规则，添加宝塔端口的转发规则。
+修改 VPC 绑定的安全组，添加转发规则中的自定义端口的下行规则。
+宝塔面板使用云平台证书 用户在云平台申请了 SSL 证书，需要在宝塔中部署的网站中使用。
+下载已经签发的证书。
+下载下来后会有一个 .pem 和 .key 文件。
+上传到宝塔面板。
+复制上一步下载的证书文件内容，粘贴到上传证书对应文本框。
+部署证书。</description>
+    </item>
+    
+    <item>
+      <title>非 root 用户配置 SSH 密钥登录</title>
+      <link>/v6.1/compute/vm/best-practices/linux/configuring_ssh_key_login_for_non_root_users/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/configuring_ssh_key_login_for_non_root_users/</guid>
+      <description>背景介绍 由于 root 用户的权限过大，正式环境中不建议使用 root 用户登录并操作，本文以 CentOS 8.2 系统为例，介绍了普通用户如何通过 ssh 密钥登录至云服务器中。
+操作步骤 通过下列命令，创建一个用户 user，并切换到 user 的家目录下。
+useradd -m user # 创建用户 user,并同时创建用户 user 的家目录 /home/user passwd user # 设置用户 user 的密码，需键入两次 su user # 切换到用户 user cd ~ # 切换到用户 user 的家目录 创建 ssh 证书。
+ssh-keygen -b 2048 -t rsa # 此时会提示密钥保存路径，若无需修改，回车即可。接着会提示输入密码，按提示输入两次密码，若无需密码，执行两次回车 通过以下命令，可以看到已经生成相应的私钥（id_rsa）和公钥（id_rsa.pub）。
+ls /home/user/.ssh/ 添加公钥
+创建 authorized_keys 文件，将公钥加入至 authorized_keys 文件，并设置 .ssh 以及 authorized_keys 文件的权限。
+touch /home/user/.ssh/authorized_keys cat /home/user/.ssh/id_rsa.pub &amp;gt;&amp;gt; /home/user/.</description>
+    </item>
+    
+    <item>
+      <title>扩容 swap 大小</title>
+      <link>/v6.1/compute/vm/best-practices/linux/extend_swap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/extend_swap/</guid>
+      <description> 在根目录下新建一个文件夹 swap。
+mkdir /swap 使用 dd 命令生成一个空文件，给 swap 划分一块 4G 大小的空间。
+cd /swap dd if=/dev/zero of=swap.img bs=1M count=4096 使用 mkswap 命令将生成的空文件格式化为 swap 格式。
+mkswap swap.img 激活 swap。
+swapon swap.img 执行 free -m 查看。
+free -m total used free shared buff/cache available Mem: 990 110 68 6 811 728 Swap: 5119 0 5119 并将分区信息写入 /etc/fstab，添加如下信息。
+vi /etc/fstab /swap/swap.img swap swap defaults 0 0 </description>
+    </item>
+    
+    <item>
+      <title>配置多网卡路由策略</title>
+      <link>/v6.1/compute/vm/best-practices/linux/routing_policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/routing_policy/</guid>
+      <description>网卡介绍 对于弹性裸金属服务器来说，网卡就是服务器的网络设备，用于接入以太网络，和其它计算机进行通信。云平台 网卡是基于虚拟化技术模拟的网卡设备，此设备是基于虚拟机所在的物理设备。云平台 云平台可以将集群内的虚拟网络统一起来，进行再分配。用户毋需关心具体的网卡在什么位置，有需要申请、挂接即可。
+网卡使用限制 每个云服务器最多可以绑定 64 张网卡（其中主网卡 1 张，从网卡 63 张），而每个网络最多可以有 252 张网卡。
+登录管理控制台，选择 计算 &amp;gt; 网卡 &amp;gt; 申请网卡，目前只能网卡只能分配私有网络地址，不支持分配基础网络地址，申请方式如图所示。
+将网卡与云服务器绑定。
+登录到云服务器，查看网卡 ip 地址信息。
+使用以下的命令创建两张路由表。
+echo &amp;#34;200 net1&amp;#34; &amp;gt;&amp;gt;/etc/iproute2/rt_tables echo &amp;#34;201 net2&amp;#34; &amp;gt;&amp;gt;/etc/iproute2/rt_tables echo &amp;#34;202 net3&amp;#34; &amp;gt;&amp;gt;/etc/iproute2/rt_tables 说明 路由表名称（net1、net2、net3）和路由表优先级（200、201、202，优先级数值越小表示优先级越高）。
+查看路由表。
+执行以下命令，增加网卡路由策略。
+ip r f t 200 # 清空路由表 200 的路由规则 ip r replace default via 172.16.10.1 dev eth0 src 172.16.10.2 table 200 # 添加默认路由到路由表 200 ip ru a from 172.</description>
+    </item>
+    
+    <item>
+      <title>配置云服务器为网关服务器</title>
+      <link>/v6.1/compute/vm/best-practices/linux/instance_to_gateway_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/instance_to_gateway_server/</guid>
+      <description>项目概览 在本项目中，您将了解如何云服务器自建一个网关服务器，让其他云服务器可以使用网关服务器访问互联网。
+网络拓扑如下 准备事项 请先创建一个 vpc 网络。
+请创建一个私有网络加入到 vpc 网络，指定 ip 网段为 192.168.0.0/24。
+请创建两台 vm 云服务器加入到私有网络，指定 ip 地址分别为 192.168.0.2/192.168.0.3。
+请创建一个内部绑定的弹性 eip 绑定到 192.168.0.2，参考下图。
+目标是把 192.168.0.2 这个云服务器配置成网关服务器 内部绑定的公网 ip 分配给云服务器，会有两个网卡 eth0 和 eth1，先备份之前的网卡配置。
+cd /etc/sysconfig/network-scripts/ cp ifcfg-eth0 ifcfg-eth0.bak cp ifcfg-eth1 ifcfg-eth1.bak 请将两个网卡配置成静态 ip 地址，参考截图的配置参数。
+# vi /etc/sysconfig/network-scripts/ifcfg-eth0 TYPE=Ethernet NAME=eth0 DEVICE=eth0 BOOTPROTO=static IPADDR=192.168.0.2 NETMASK=255.255.255.0 ONBOOT=yes #IPV6INIT=yes IPV6_AUTOCONF=yes IPV6_FAILURE_FATAL=no # vi /etc/sysconfig/network-scripts/ifcfg-eth1 TYPE=Ethernet NAME=eth1 DEVICE=eth1 BOOTPROTO=static IPADDR=139.198.127.6 NETMASK=139.198.127.1 ONBOOT=yes #IPV6INIT=yes IPV6_AUTOCONF=yes IPV6_FAILURE_FATAL=no DNS1=114.</description>
+    </item>
+    
+    <item>
+      <title>屏蔽 Swap 分区</title>
+      <link>/v6.1/compute/vm/best-practices/linux/delete_swap_partition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/delete_swap_partition/</guid>
+      <description>在部署业务时，会遇到使用脚本来部署的场景，如果此时业务部署脚本将程序部署在 /dev/vdb 或者 /dev/sdb，会与云服务器的 Swap 分区发生冲突，此时我们需要临时屏蔽 Swap 分区来避免冲突。
+找到 Swap 的盘符。
+#fdisk -l ... Disk /dev/vdb: 1 GiB, 1073741824 bytes, 2097152 sectors ... 找到 Swap block 的 pci。
+# ls -lht /sys/block/vdb* lrwxrwxrwx 1 root root 0 Mar 3 22:49 /sys/block/vdb -&amp;gt; ../devices/pci0000:00/0000:00:08.0/virtio3/block/vdb 关闭 Swap。
+# swapoff -a # free -m total used free shared buff/cache available Mem: 991 49 727 5 214 788 Swap: 0 0 0 移除 PCI。</description>
+    </item>
+    
+    <item>
+      <title>使用云服务器搭建一个基于 LNMP 的 Wordpress 博客</title>
+      <link>/v6.1/compute/vm/best-practices/linux/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/linux/wordpress/</guid>
+      <description>项目概览 在本项目中，您将了解如何使用云平台 &amp;gt; 计算 &amp;gt; 云服务器部署具备高可用性的 LNMP Web 应用程序。本项目相关的技术栈有 Linux、Nginx、MySQL 和 PHP。
+准备事项 云平台账号：您需要注册一个云平台账户并充值来购买资源。
+操作系统：本地需使用 Windows 7 及以上版本的 Windows 操作系统。
+技能水平：基本了解 Web 技术、命令行和 LNMP。
+前期小知识 Wordpress 是被广泛使用的、免费的、开放源代码的博客程序。相对于网易 163 博客或 QQ 空间等现成的博客网址，Wordpress 具备更高的自定义特性：可以自定义网站的外观样式、可以自由地发表文章、可以绑定自己的域名、甚至可以在博客里面集成购物功能。国外的许多企业网址、摄影博客都是基于Wordpress构建的。
+搭建一个 Wordpress 有非常多的方式，本文推荐的是通过 LNMP 一键包进行安装，帮助用户熟悉云平台后台的基本操作以入门云计算。
+LNMP 就是 Linux + Nginx + MySQL + PHP。针对非常小型的网址，可以不必完全使用 LNMP 方式来搭建，但 LNMP 可以良好应对未来流量上升而对服务器造成的压力，接触 LNMP 可以让我们在未来更好地深入学习。
+Linux：是一类 Unix 计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora等。使用 Linux 而非 Wordpress 是因为 Linux 更省资源，Linux 默认没有远程桌面也使得其比 Windows 更安全；
+Nginx：这是一个 HTTP 及反向代理引擎，其作用是作为一个中间人，让用户得以访问服务器上的资源。在用户量大后，也可作控制流量用，将用户分散到不同的服务器以减缓单个服务器的压力；
+MySQL：数据库软件，博客文章数据以及用户数据等都存储在 MySQL 的数据表里。数据库可以使数据的存储更有条理，也有方便快捷的语法可以批量调整数据；</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>节点管理 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/mgt_node/</link>
+    <description>Recent content in 节点管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/mgt_node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>节点概述</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/node_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/node_intro/</guid>
+      <description>什么是节点 节点是组成容器集群的基本元素，Kubernetes 将容器放入容器组（Pod）中并在节点上运行，从而运行工作负载。节点取决于业务，可以为虚拟机或物理机。QKE 集群使用云服务器作为节点。
+节点类型及规格 QKE 集群包含以下类型节点：
+主节点（Master）：Kubernetes 集群的管理者，运行着的服务包括 kube-apiserver、kube-scheduler、kube-controller-manager、etcd 组件，以及容器网络相关的组件。
+工作节点（Worker）：Kubernetes 集群中承担工作负载的节点，负责实际的 Pod 调度以及与控制节点的通信等。
+节点管理 在 QKE 集群列表，点击集群名称，进入集群概览页。然后在左侧导航栏，选择资源管理 &amp;gt; 节点管理，进入节点管理页面。
+节点管理页面展示当前集群的所有节点。
+您可以进行如下节点管理操作：
+调整节点数量，通过新增或删除节点来进行集群横向扩/缩容。
+更改节点配置，通过更新主节点或工作节点的规格、硬盘大小来达到集群扩容的目的。
+节点弹性伸缩，通过云平台提供的自动伸缩功能，配置节点根据所设置的条件进行弹性伸缩，防止节点资源不足或浪费。</description>
+    </item>
+    
+    <item>
+      <title>节点资源预留</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/node_reserve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/node_reserve/</guid>
+      <description>QKE 需要占用一定的节点资源来运行相关组件（例如 kubelet、kube-proxy、Container Runtime 等），这会造成节点的资源总数与集群中可分配的资源数之间存在差异。本文介绍 QKE 集群中节点资源预留策略及相关注意事项，以便在部署应用时合理设置 Pod 的请求资源量和限制资源量。
+节点可分配资源计算策略 可分配资源的计算公式：可分配资源（Allocatable） = 总资源（Capacity）- 总预留资源（Reserved） 可分配资源：对应查询节点可分配资源命令输出中的 Allocatable 字段。
+总资源：对应查询节点可分配资源命令输出中的 Capacity 字段。
+总预留资源：
+总预留资源 = 系统预留 + Kubernetes 组件预留 + 驱逐阈值预留 系统预留：预留给 K8s 管理进程的资源，如 Kubelet，Docker Daemon 等。预留策略请参见节点资源预留策略。
+Kubernetes 组件预留：预留给系统的资源，如 kernel，sshd，udev 等。预留策略请参见节点资源预留策略
+驱逐阈值预留：Pod 驱逐阈值。更多关于驱逐阈值的相关信息，请参见节点压力驱逐。
+节点资源预留策略 QKE v2.3.1 及之后版本 系统预留（systemReserved）
+v2.3.1 及之后的版本，新建集群默认开启节点资源预留功能，可通过修改配置文件关闭（不推荐此操作）。 QKE 根据 CPU 和内存所在的不同区间来计算预留的资源量，节点的总预留资源量等于各区间的预留资源量之和。
+CPU 预留规则
+以 32 核的节点为例，总的 CPU 预留量计算如下： 0.1 + (32-4)*2.5% = 0.8 core = 800 milliCore
+内存预留规则</description>
+    </item>
+    
+    <item>
+      <title>调整节点数量</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/node_amount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/node_amount/</guid>
+      <description>QKE 集群支持通过新增或删除节点来进行集群横向扩缩容。
+说明 您可以通过自动伸缩功能来自动调整节点数量。具体操作请参见节点弹性伸缩。
+新增节点 您可以通过新增节点来应对应用逐步增多带来的压力。
+登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 节点管理，进入节点管理页面。
+点击新增节点，弹出新增节点页面。
+选择新增节点类型，并配置节点信息：节点规格（即云服务实例规格）、硬盘大小、节点数量、节点名称。
+说明 不支持新增主节点。
+若增加当前集群已存在的节点类型，则只能增加节点数量，不可选择同类型下其他规格。例如，当前集群中基础型工作节点已存在性能型 4核8G 的节点，则增加基础型工作节点时，只能选择性能型 4 核 8G 的规格，不支持增加其他规格的实例。
+点击确定。
+删除节点 当集群服务能力过剩时，您也可以删除多余的节点，以节省资源和费用。
+注意 删除前请确保 QKE 集群内有足够资源容纳迁移的 Pod。
+删除节点不可恢复，请谨慎操作。
+集群至少需要有 3 个工作节点。
+不支持删除主节点。
+登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 节点管理，进入节点管理页面。
+在节点列表，点击操作列的删除，弹出提示框。
+若需删除多个节点，则勾选多个节点，然后点击批量删除。
+确认无误后，点击删除。</description>
+    </item>
+    
+    <item>
+      <title>节点弹性伸缩</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/auto_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/auto_node/</guid>
+      <description>您可以使用管理控制台运维工具的自动伸缩功能，来配置节点弹性伸缩。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 运维与管理 &amp;gt; 自动伸缩，进入自动伸缩页面。
+您也可以在 QKE 集群的节点管理页面，点击弹性伸缩进入自动伸缩页面。
+点击创建，弹出创建自动伸缩策略窗口。
+配置伸缩策略。
+名称：自动伸缩策略名称。
+操作类型：选择调整应用节点数量。
+资源类型：选择容器引擎。
+资源：选择需要进行自动伸缩的 QKE 集群。
+通知列表：选择接收操作通知的联系人。
+点击提交，自动跳转到规则配置页面。
+根据需要，可分别设置增加及减少应用节点数量的规则。
+选择节点角色。
+点击定义触发条件，设置监控周期及告警规则，点击提交。
+参数 说明 监控周期
+表示根据告警规则进行检查的时间周期。 如监控周期为“5分钟”，表示每隔 5 分钟将检查一次是否满足告警规则。
+告警规则
+定义触发增加/减少节点操作需要满足的条件。
+可设置多条告警监控规则，规则之间可以是所有或任意关系。
+所有关系表示当每个告警规则都满足时，才能触发自动伸缩。
+任意关系表示任意一条告警规则满足，都会触发自动伸缩。
+点击定义操作参数，设置增加相关参数，点击提交。
+参数 说明 增加/减少节点数
+一次操作需要增加/减少的节点数。
+最大/最小节点数
+限制当前节点角色在集群中的最大/最小数量。一旦节点数量达到限制，停止自动伸缩操作。
+冷却时间
+规则执行的最小间隔时间。
+配置完成后，当阈值被触发后，相应集群会自动进行节点增删操作，通知列表中的用户会收到通知。</description>
+    </item>
+    
+    <item>
+      <title>更改节点配置</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/node_cfg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/node_cfg/</guid>
+      <description>您可以随时根据实际需求增强节点配置来进行集群扩容。
+说明 仅支持增强节点配置，不可降低节点配置。
+具体操作说明请参见集群扩容。</description>
+    </item>
+    
+    <item>
+      <title>重启节点</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_node/restart_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_node/restart_node/</guid>
+      <description>本文介绍如何对节点进行重启。
+操作场景 当节点出现异常时，您可以通过重启节点来进行快速修复。
+注意事项 节点重启前，需要将该节点的 Pod 进行驱逐，可能会影响业务，请在业务低峰期操作。
+重启操作可能存在非预期风险，请提前做好相关的数据备份。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 节点管理，进入节点管理页面。
+在节点列表，点击操作列的重启，弹出提示框。
+确认无误后，点击重启，节点进行重启。
+重启过程中，节点状态为重启中，集群状态为更新中，当节点状态变为活跃，则重启成功。</description>
+    </item>
+    
+  </channel>
+</rss>

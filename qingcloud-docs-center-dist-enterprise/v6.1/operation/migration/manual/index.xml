@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/operation/migration/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/operation/migration/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>迁移前准备</title>
+      <link>/v6.1/operation/migration/manual/preparation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/manual/preparation/</guid>
+      <description> 迁移前，您需要了解以下注意事项。
+Windows 系统迁移前准备 Windows server 2003 虚拟机 点击 下载 virtio-win-0.1.171.zip 驱动，下载后将安装包拷贝至源虚拟机的任一目录下，并记录放置的路径。
+点击 下载 MergeIDE.zip 安装包，获取 MergeIDE.zip 安装包。
+拷贝 MergeIDE.zip 到 Windows server 2003 虚拟机中，进行解压。
+以管理员身份运行 CMD 窗口，将解压后的 MergelDE 拖到 CMD 窗口，点击回车键执行。
+其他 Windows 系统虚拟机 点击 下载 virtio-win-0.1.171.zip 驱动，下载后将安装包拷贝至源虚拟机的任一目录下，并记录放置的路径。
+Linux 系统迁移前准备 如果使用盘符等标识符挂载目录，需修改为 UUID 的方式挂载目录，否则迁移后若盘符发生变化，会导致 linux 无法启动。
+操作步骤 登录待迁移的虚拟机。
+查看索引盘 UUID：
+# blkid …… /dev/sda1: UUID=&amp;#34;57d2d9f5-0200-4294-bc5d-4931bafd89cf&amp;#34; TYPE=&amp;#34;ext4&amp;#34; /dev/sda2: UUID=&amp;#34;22ad2eda-960c-474f-829b-11e8718425c0&amp;#34; TYPE=&amp;#34;swap&amp;#34; …… 将索引盘盘符修改为对应的 UUID，格式如下所示：
+# vim /etc/fstab …… UUID=57d2d9f5-0200-4294-bc5d-4931bafd89cf / ext4 defaults 0 1 UUID=22ad2eda-960c-474f-829b-11e8718425c0 none swap sw 0 0 …… </description>
+    </item>
+    
+    <item>
+      <title>迁移基本操作</title>
+      <link>/v6.1/operation/migration/manual/basic_use/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/manual/basic_use/</guid>
+      <description>服务器迁移中心提供 V2V 迁移服务，可将其它虚拟化平台的云主机系统及数据完整迁移至当前云平台。
+约束限制 当前仅支持 VMware 平台资源迁移至云平台。
+前提条件 迁移前请仔细阅读使用限制。
+添加源平台 创建迁移任务前，需先添加源平台，操作步骤如下：
+登录管理控制台，选择运维与管理 &amp;gt; 服务器迁移中心 SMC，进入 V2V 迁移页面。
+点击源平台列表页签，进入源平台列表，点击添加源平台。
+弹出添加源平台提示框，配置相关参数。
+参数说明如下：
+源平台名称：填写源平台的名称。
+源平台地址：根据实际情况填写源平台地址。
+管理员账号：根据实际情况填写源平台的管理员账号。
+管理员密码：根据实际情况填写源平台的管理员密码。
+端口号：根据实际情况填写源平台的端口号，一般为 443。
+参数配置完成后，点击添加 ，添加的源平台显示在列表。
+创建迁移任务 进入V2V 迁移页面，选择迁移任务页签，点击创建任务。
+弹出创建任务提示框，根据流程进行相关配置。
+配置源平台资源相关参数，完成后点击下一步。
+参数说明如下：
+任务名称：迁移任务的名称。
+任务简介：迁移任务的简介。
+迁移模式：分为纳管迁移模式和镜像上传模式。
+源平台类型：当前仅支持 VMware。
+选择源平台：选择需要添加的源平台。若无可选择的源平台，可根据页面提示，点击添加源平台进行添加。当迁移模式为纳管迁移模式时配置该参数。
+数据中心：选择源平台的数据中心。当迁移模式为纳管迁移模式时配置该参数。
+源集群：选择源平台的源集群。当迁移模式为纳管迁移模式时配置该参数。
+源主机：选择需要迁移的源主机。仅可迁移状态为可迁移的源主机。
+镜像路径：根据实际情况输入镜像路径，格式为：IP + 路径，如：192.168.10.10/mnt/v2v/。当迁移模式为镜像上传模式时配置该参数。
+输入路径后，点击校验，校验通过后再进行下一步。
+指定路径下若包含多台虚拟机，每台虚拟机的镜像文件需单独放置一个文件夹。
+示例如下图：
+任一一台虚拟机文件夹下至少需包含 vmdk 和 ovf 文件。
+示例如下图：
+配置目标平台资源相关参数，完成后点击下一步。
+参数说明如下：
+目标用户：选择要迁移到的目标用户。子账号仅支持选择自身账号。
+区域：选择要迁移到的区域。
+可用区：选择要迁移到的可用区。
+宿主节点：可选项，选择宿主节点。
+配置网络，完成后单击下一步。
+参数说明如下：
+选择网络：可选择基础网络和 VPC 网络。
+网络类型为基础网络时：
+设置基础网络：根据实际情况进行配置。基础网络由云平台统一管理和规划，自动分配内网IP，同一账号同一地域内互通。
+网络类型为 VPC 网络时：</description>
+    </item>
+    
+    <item>
+      <title>迁移后检查</title>
+      <link>/v6.1/operation/migration/manual/check_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/manual/check_server/</guid>
+      <description>迁移任务完成后，可在云服务器页面查看相关资源，需检查相关配置。
+查看云服务器 登录 管理控制台，选择 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入 云服务器 页面，可查看到迁移成功的云服务器展示在列：
+点击云服务器 ID 处链接，进入详情页面，可查看当前云服务器的详细信息：
+点击 ID 后图标，如下所示，检查云服务器是否能正常启动到登录界面：
+检查云服务器时间 登录云服务器，检查云服务器的时间和时区是否与当前时间保持一致。
+Linux 系统 登录云服务器。
+执行如下命令查看云服务器的系统时间：
+timedatectl Windows 系统 点击 开始 &amp;gt; 设置。
+选择 时间和语言 &amp;gt; 日期和时间，即可查看云服务器的时间和时区。
+更新 virtio 驱动 当云服务器系统为 Windows 系统，控制器类型选择 virtio 时，需更新 virtio 驱动。
+操作步骤 登录 服务器迁移中心，进入 迁移任务 页面：
+点击任务名称处链接，进入任务详情页面，可查看到云服务器所在物理节点：
+点击 此处，下载 img.tar.gz。登录步骤 2 中的物理节点，拷贝 img.tar.gz 并解压至 /root 目录下：
+tar -zxf img.tar.gz -C /root 执行如下命令，进入指定目录：
+cd img/ 执行如下命令：
+./add_disk.sh 执行后需指定 Instance ID，输入对应云服务器 ID。登录管理控制台，进入 云服务器 页面，即可查看对应云服务器 ID。</description>
+    </item>
+    
+  </channel>
+</rss>

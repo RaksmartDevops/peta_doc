@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作系统功能 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/</link>
+    <description>Recent content in 操作系统功能 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/common_operations/os_func_manage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>为什么 80 端口被禁用</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/port_80_disabled/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/port_80_disabled/</guid>
+      <description>根据上级网管要求，对于一些对备案要求较为严格的区域，用户需要完成备案才能使用 80 端口提供服务，在完成备案之前，80 端口将被禁用。在完成备案流程之后，用户需要将申请到的备案号填入公网 IP 对应的 ICP备案 信息字段中（具体操作在公网 IP 的右键菜单 设置 ICP 备案信息 中），待管理员审核通过之后，才能正常使用 80 端口的服务。</description>
+    </item>
+    
+    <item>
+      <title>更改 Windows 云服务器系统语言</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/windows_language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/windows_language/</guid>
+      <description>背景信息 用户使用 Windows 云服务器系统语言版本不符合使用需求，需更改系统语言。本例为 Windows Server 2019 英文版，更改为中文版语言。
+操作步骤 连接 Windows 云服务器，可使用控制台 VNC 窗口连接云服务器或远程桌面服务连接云服务器。
+在系统开始 Settings &amp;gt; Time &amp;amp; Language &amp;gt; Language &amp;gt; Add a language 中选择相应语言包，并点击添加安装。
+添加完成语言包后点击 options ，Language pack中点击 Download 下载语言包并安装。
+重启 windows 云服务器，登录并查看系统语言。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器常见系统配置</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/winserver_os_func_asset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/winserver_os_func_asset/</guid>
+      <description>服务器命名符合通用命名规则 右键点击这台电脑，选择 属性。
+选择 高级系统设置。
+点击 更改。
+修改 计算机名，完成后点击 应用。
+关闭windows系统自带防火墙 选择 控制面板 &amp;gt; Windows 防火墙 &amp;gt; 启用或关闭 windows 防火墙。
+将 专用网络设置 和 公用网络设置 均勾选 关闭 windows 防火墙。
+创建用户，用户名为test 右键点击这台电脑，选择 管理
+打开 服务器管理器，点击工具栏上 工具，选择 计算机管理。
+弹出 计算机管理 提示框，点击左侧 本地用户和组，右键点击 用户，选择 新用户。
+弹出 新用户 提示框，填写用户信息，点击 创建。
+修改操作系统密码为长密码 右键点击这台电脑，选择 管理
+打开 服务器管理器，点击工具栏上 工具，选择 本地安全策略。
+弹出 本地安全策略 提示框。选择 账户策略 &amp;gt; 密码策略，配置以下内容：
+密码必须符合复杂性要求 配置为 已启用，
+密码长度最小值 配置为 12个字符 ，
+密码最短使用期限 配置为 0天，
+密码最长使用期限 配置为 90天，</description>
+    </item>
+    
+    <item>
+      <title>开启 Windows 云服务器远程登录</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/start_win_remo_desk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/start_win_remo_desk/</guid>
+      <description>操作步骤 登录管理控制台，在云服务器列表里找到待操作的云服务器。
+通过管理控制台，选择 网络 &amp;gt; 公网 IP &amp;gt; 申请，进入公网 IP 申请页面。
+通过右键选择 eip &amp;gt; 分配到云服务器，找到对应的云服务器完成绑定。
+点击云服务器 id 旁边小电脑的标志，通过 web vnc 登录到云服务器，开启远程桌面访问。
+确认云服务器内部防火墙已关闭，通过 控制面板 &amp;gt; 系统和安全 &amp;gt; windows 防火墙 &amp;gt; 启用或者关闭 windows 防火墙，关闭专有网络和共用网络防火墙。
+放行云平台云服务器绑定的安全组规则下行 3389 端口。并应用修改安全组。
+通过客户端测试远程桌面云服务器，通过 开始 &amp;gt; 运行 &amp;gt; mstsc，点击回车。</description>
+    </item>
+    
+    <item>
+      <title>关闭 Linux 云服务器内部防火墙</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/close_linux_firewalld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/close_linux_firewalld/</guid>
+      <description>背景介绍 用户已在控制台安全组添加指定端口的安全组下行规则，云服务器上服务状态也是运行正常，但是无法使用公网或内网 IP 进行访问云服务器。
+本文档将介绍不同系统版本下，如何关闭云服务器内部防火墙的操作步骤，如您按文档操作后仍无法解决，请提交工单处理。
+操作步骤 CentOS6 关闭云服务器内部防火墙 示例为CentOS 6.8 操作步骤，CentOS6 版本操作系统内部默认的防火墙为 iptables。
+查看云服务器内部防火墙是否开启。
+可通过执行命令 service iptables status 查看内部防火墙开启状态，如果返回结果中包含规则信息，则表示内部防火墙是开启状态。
+[root@i-bhn0ys6l ~]# service iptables status Table: filter Chain INPUT (policy ACCEPT) num target prot opt source destination 1 ACCEPT all -- 0.0.0.0/0 0.0.0.0/0 state RELATED,ESTABLISHED 2 ACCEPT icmp -- 0.0.0.0/0 0.0.0.0/0 3 ACCEPT all -- 0.0.0.0/0 0.0.0.0/0 4 ACCEPT tcp -- 0.0.0.0/0 0.0.0.0/0 state NEW tcp dpt:22 5 REJECT all -- 0.</description>
+    </item>
+    
+    <item>
+      <title>关闭 Windows 云服务器内部防火墙</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/close_windows_firewalld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/close_windows_firewalld/</guid>
+      <description>本文以 Windows Server 2019 为例进行操作，其他版本的 Windows 云服务器内部防火墙关闭位置相同。
+操作步骤 打开 Windows 云服务器控制面板，查看方式切换为：大图标，进入 Windows Defender 防火墙。
+查看云服务器内部防火墙状态（启用状态）。
+关闭 Windows 防火墙。
+查看云服务器内部防火墙状态（关闭状态）。</description>
+    </item>
+    
+    <item>
+      <title>Windows 查看本地登录日志</title>
+      <link>/v6.1/compute/vm/faq/common_operations/os_func_manage/windows_event_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/os_func_manage/windows_event_log/</guid>
+      <description>问题描述 Windows 云服务器登录异常，排查登录日志可参考本操作。
+操作步骤 本示例以操作系统版本为 Windows Server 2019。
+登录云服务器进入桌面。
+选择 开始 &amp;gt; 管理工具 &amp;gt; 事件查看器。
+打开 Windows 日志 &amp;gt; 安全 &amp;gt; 筛选当前日志。
+点击事件查看事件属性，可看到该时间的登录用户、进程、时间等信息。</description>
+    </item>
+    
+  </channel>
+</rss>

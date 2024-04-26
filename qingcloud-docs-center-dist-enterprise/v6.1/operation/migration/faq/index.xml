@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>常见问题 on 用户指南</title>
+    <link>/v6.1/operation/migration/faq/</link>
+    <description>Recent content in 常见问题 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/operation/migration/faq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>迁移中 FAQ</title>
+      <link>/v6.1/operation/migration/faq/migration_faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/faq/migration_faq/</guid>
+      <description>迁移时提示源虚拟机的状态非法。 原因：
+源虚拟机处于开机或者挂起状态。
+处理方法：
+关闭源虚拟机。
+迁移时提示虚拟机系统盘不存在或虚拟机存在多个系统盘。 处理方法：
+点击迁移任务，进入迁移任务详情页面，点击迁移任务后操作列的 指定系统盘，操作完成后，再点击 重试。
+迁移时提示目标云服务器引导方式非法，目标云服务器控制器类型非法，目标云服务器网卡类型非法。 原因：
+页面下发的参数不合法。
+处理方法：
+重新创建迁移任务。
+迁移时提示 OVA 文件不存在。 原因：
+导出镜像异常。
+处理方法：
+重试当前迁移任务。
+迁移时提示 OVF 文件数量非法或者 VMDK 文件数量非法。 原因：
+导出数据异常。
+处理方法：
+重试当前迁移任务。
+迁移时提示上传镜像失败。 原因：
+导出镜像异常。
+处理方法：
+重试当前迁移任务。
+迁移时提示转换镜像失败。 原因：
+qemu-convert 工具异常、空间不足等。
+处理方法：
+联系售前售后处理。
+迁移时提示识别系统盘失败、虚拟机系统盘不存在、虚拟机存在多个系统盘。 原因：
+识别系统盘异常。
+处理方法：
+联系售前售后处理。
+迁移时提示磁盘配置关联镜像地址失败。 原因：
+解析磁盘数据失败。
+处理方法：
+联系售前售后处理。
+迁移时提示创建虚拟机失败。 原因：
+配额不足、空间不足、虚拟机类型错误等。
+处理方法：
+联系售前售后处理。
+迁移时提示更新用户配额失败。 原因：
+配额不足、空间不足等。
+处理方法：
+联系售前售后处理。
+迁移时提示覆盖硬盘数据失败。 原因：
+空间不足、权限不足等。
+处理方法：
+联系售前售后处理。
+迁移时提示硬盘文件不存在。 原因：</description>
+    </item>
+    
+    <item>
+      <title>迁移后 FAQ</title>
+      <link>/v6.1/operation/migration/faq/after_migration_faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/faq/after_migration_faq/</guid>
+      <description>系统启动问题 迁移后虚拟机无法启动 处理方法：
+联系售前售后人员处理。
+业务连续性问题 Windows 虚拟机迁移后安装/更新 virtio 驱动 处理方法：
+若硬盘控制器类型设置为 vd：virtio 和 sd：scsi，需额外驱动支持，详细操作请参考更新 virtio 驱动。
+若硬盘控制器类型设置为 hd:ide，则无需额外安装驱动。
+开机后提示 ：Booting from Hard Disk 原因：
+平台不兼容部分参数。
+处理方法：
+登录宿主节点（hyper 节点）服务器。
+执行如下命令，查看 webservice 节点：
+cat /pitrix/conf/nodes/webservice 执行如下命令，登录任一 webservice 节点：
+ssh xxx 说明 命令行中，xxx 为步骤2中查看的 webservice 节点名称。
+执行如下命令，检查配置，更新目标镜像对应控制器类型：
+python /pitrix/lib/pitrix-scripts/exec_sql.py -d zone -f /pitrix/conf/global/postgresql.yaml -c &amp;#34;update image set block_bus=&amp;#39;hd&amp;#39; where image_id = &amp;#39;img-xxxxxx&amp;#39;&amp;#34; 说明 命令行中 image_id 可通过如下方式获取：
+登录云平台，查看云服务器列表。
+点击需要操作的云服务器 ID，查看云服务器详情。
+点击如图所示位置：
+进入镜像详情，即可获取 image_id：</description>
+    </item>
+    
+    <item>
+      <title>故障排查</title>
+      <link>/v6.1/operation/migration/faq/troubleshooting_faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/migration/faq/troubleshooting_faq/</guid>
+      <description>V2V 服务所在宿主节点出现断电现象 影响：
+正在进行的迁移业务全部中断；
+迁移进度无法再次更新;
+恢复供电后，若重启 V2V 服务，之前所有未完成的迁移项会全部置为失败。
+建议措施：
+恢复供电后，重启 V2V 服务；
+失败的迁移项执行重试操作。
+V2V 服务所在宿主节点负载过高 影响：
+被迁移的主机的不会被调度到当前节点但正在该节点上进行迁移到主机有可能失败。
+建议措施:
+创建迁移任务时，尽量不要选择当前负载过高的宿主节点做为目标迁移节点；
+失败的任务状态更新之后在迁移前台进行重试操作。
+V2V 服务与 zookeeper 失联 影响：
+创建迁移任务页面无法发现已经注册的 V2V 服务节点即宿主节点。
+建议措施:
+创建迁移任务时，暂时不要选择具体的宿主节点进行迁移，让系统进行自动调度。
+源虚拟机镜像太大，检查镜像时占用过高内存 影响：
+潜在对现有的业务产生影响的风险。
+建议措施:
+太大的镜像，建议迁移前拆分为多个硬盘后再迁移。
+上传镜像模式需要使用 nfs 的 client 引发调用底层库时引发程序奔溃 影响：
+引发 V2V 服务崩溃。
+建议措施:
+规范的排列远端 nfs 目录。
+和 VMware 平台通讯异常 影响：
+无法导出镜像执行迁移。
+建议措施:
+采用镜像上传模式执行迁移。</description>
+    </item>
+    
+  </channel>
+</rss>

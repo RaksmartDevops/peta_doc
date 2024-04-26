@@ -1,0 +1,2543 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云计算,大数据,消息队列,中间件,Kafka,收发消息,常见问题]">
+
+
+
+<meta name="description" content="Kafka 收发消息常见问题。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>消息问题 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/middware/kafka/">
+          
+            Kafka 服务
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/intro/intro/">什么是 Kafka</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/intro/notice/">注意事项</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >计费指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/billing/price/">计费说明</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/billing/change_price/">费用变更</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/billing/charge/">到期与欠费</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/billing/refund/">退款说明</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >快速入门</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/quickstart/create_cluster/">步骤一：创建 Kafka 集群</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/quickstart/create_resource/">步骤二：创建 Topic</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/quickstart/connect_kafka/">步骤三：生产消费消息</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >连接管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/connect/eip/">开启公网访问</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/connect/sasl/">开启 SASL</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/connect/broker_list/">Kafka 连接地址说明</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >集群管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/cluster_info/">查看集群信息</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/cluster_expansion/">集群扩容</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/cluster_upgrade/">版本升级</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/switch_network/">切换私有网络</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/off_and_on/">启停集群</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/switch_billing_mode/">修改计费模式</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/switch_node_mode/">更改服务器类型</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/renewal/">续费</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/unsubscribe/">退订</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/cluster_lifecycle/delete_cluster/">删除集群</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >节点管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/mgt_node/capacity_expansion/">扩容节点</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/mgt_node/add_node/">新增节点</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/mgt_node/delete_node/">删除节点</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >配置参数</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/config_para/config_para_info/">参数介绍</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/config_para/modify_para/">修改配置参数</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Kafka Manager</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_manager/access_kafka_manager/">访问 Kafka Manager</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_manager/kafka_manager_cluster/">Cluster 配置</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_manager/kafka_manager_topic/">Topic 管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_manager/kafka_manager_upgrade/">Kafka Manager 升级说明</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Kafka 命令行</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_client/login_kafka_client/">登录 Kafka 客户端</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_client/kafka_client_topic/">Topic 管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_client/producer_consumer/">生产消费消息</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >连接 Kafka 生产消费消息</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_disabled/">未开启 SASL</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_enabled/">已开启 SASL</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >监控与告警</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/metrics_alarm/config_display_metrics/">监控指标</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/metrics_alarm/set_alarm_rules/">设置监控告警</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/metrics_alarm/view_monitor_metrics/">查看资源和服务监控</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/manual/view_log/">查看日志及数据文件</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SDK 文档</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Java SDK</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/sdk/java/sdk_java/">使用默认接入点收发消息</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/sdk/java/sdk_javaspring/">使用 Spring Cloud 框架收发消息</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/best-practices/kafka_mirrormaker/">跨集群迁移方案 MirrorMaker 使用</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/best-practices/partitons_assignments/">Kafka 分区再平衡</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/best-practices/key_value/">Kafka Key 和 Value</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/best-practices/zabbix/">配置 Zabbix Server 监控 Kafka 集群</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/middware/kafka/faq/connect/">连接问题</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/middware/kafka/faq/message/">消息问题</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/middware/kafka" data-url="/v6.1/middware/kafka">Kafka 服务</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/middware/kafka/faq/connect/" data-url="/v6.1/middware/kafka/faq">常见问题</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/middware/kafka/faq/message" data-url="/v6.1/middware/kafka/faq/message">消息问题</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    消息问题</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/middware/kafka/faq">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_客户端连接_kafka_服务超时无法正常收发消息如何处理">客户端连接 Kafka 服务超时，无法正常收发消息，如何处理？</a></li>
+    <li><a href="#_如何增大生产者发送消息的大小">如何增大生产者发送消息的大小？</a></li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="sect1">
+<h2 id="_客户端连接_kafka_服务超时无法正常收发消息如何处理">客户端连接 Kafka 服务超时，无法正常收发消息，如何处理？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>问题现象</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>客户端连接 Kafka 服务超时，无法正常收发消息。</p>
+</li>
+<li>
+<p>Kafka 集群中有 <code>不正常</code> 的 Kafka 节点，且节点的 cpu/mem/ 硬盘使用率过高（如下图，达到了 100%）。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/middware/kafka/abnomal_node.png" alt="abnomal node"/>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/middware/kafka/massage_failed01.png" alt="massage failed01"/>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>问题原因</strong></p>
+</div>
+<div class="paragraph">
+<p>磁盘占满导致无法写入新消息，Kafka 服务中断。</p>
+</div>
+<div class="paragraph">
+<p><strong>解决方法</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>方法一</strong>：
+登录对应节点的后台，根据实际情况删除消息存储空间中的日志文件（日志文件路径为：/data/kafka/kafka-logs/），稍后 Kafka 服务即可恢复正常。<strong>此方法可临时规避该问题</strong>，若后续磁盘空间占满，该问题会再次出现。</p>
+</li>
+<li>
+<p><strong>方法二</strong>：
+修改服务<strong>配置参数</strong>中自动删除消息的最大限值 <strong>log.retention.bytes</strong> ，超过该大小会触发删除策略，系统将自动对文件进行清理，<strong>从而避免此问题再次发生</strong>。</p>
+<div class="paragraph">
+<p><strong>log.retention.bytes</strong> 具体值请根据实际情况进行配置。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/middware/kafka/message_failed02.png" alt="message failed02"/>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_如何增大生产者发送消息的大小">如何增大生产者发送消息的大小？</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kafka 默认生产者发送的消息不能超过 1M（<strong>max.request.size</strong> 参数的默认值为 1M），若需要增大生产者发送消息的大小，需要在生产端和服务端对相关参数进行修改。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>生产端修改（在 producer 的代码中进行修改）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>若生产者的消息大于 1M、小于等于 32M，增大 <strong>max.request.size</strong> 参数即可。</p>
+</li>
+<li>
+<p>若生产者的消息大于 32M，需要同时增大 <strong>max.request.size</strong> 和 <strong>buffer.memory</strong> 参数。</p>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>buffer.memory</strong> 参数值（默认值为 32M）必须大于 <strong>max.request.size</strong> 参数。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>针对消费者：如果生产者的消息持续较大，可以修改 <strong>fetch.message.max.bytes</strong> 参数，增加 fetch 的最大字节数，加大每次 fetch 的消息大小。</p>
+</div>
+</li>
+<li>
+<p>服务端修改（通过管理控制台的<strong>配置参数</strong>进行修改）<br/>
+生产端增大了 <strong>max.request.size</strong> 参数值后，需要同时增大服务端的 <strong>message.max.bytes</strong> 参数，否则服务端无法接收这么大的消息。</p>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>message.max.bytes</strong> 参数值（默认值为 1000000 + MessageSet.LogOverhead = 1000012）必须大于 <strong>max.request.size</strong> 参数。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_客户端连接_kafka_服务超时无法正常收发消息如何处理">客户端连接 Kafka 服务超时，无法正常收发消息，如何处理？</a></li>
+    <li><a href="#_如何增大生产者发送消息的大小">如何增大生产者发送消息的大小？</a></li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

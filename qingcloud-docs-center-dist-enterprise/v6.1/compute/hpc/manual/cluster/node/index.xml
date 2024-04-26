@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>节点管理 on 用户指南</title>
+    <link>/v6.1/compute/hpc/manual/cluster/node/</link>
+    <description>Recent content in 节点管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/hpc/manual/cluster/node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>节点概述</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/node/</guid>
+      <description>弹性高性能计算 EHPC 集群由多种类型的节点组成，包括：管控节点、计算节点、登录节点。
+管控节点
+为集群提供统一的作业调度服务和域账户管理服务。
+一般来说，管控节点只处理作业调度和帐户信息，不直接参与作业运算，因此管控节点选用较低配置的企业级实例保证高可用性即可。
+计算节点
+执行高性能计算作业的节点。
+计算节点的硬件配置选择决定了集群的计算性能。
+登录节点
+用户可远程登录该节点，通过命令行操作 EHPC 集群（如：作业提交），用户还可以在该节点上自定义软件编译安装。
+登录节点通常会被配置为开发环境，需要为集群所有用户提供软件开发调试所需的资源及测试环境，因此推荐登录节点选择与计算节点配置一致或内存配比更大的实例。</description>
+    </item>
+    
+    <item>
+      <title>添加节点</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/add_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/add_node/</guid>
+      <description>添加节点可能会导致服务中断，请在业务低峰时进行。添加新的登录节点将会产生额外的费用。
+使用限制 只可以添加登录节点和计算节点。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 高性能计算 HPC，默认进入集群管理页面。
+选择 EHPC 集群，点击集群 ID， 进入集群详情页面。
+在集群详情页面，选择节点列表页签。
+点击添加节点，弹出添加节点窗口，选择节点类型，并配置相应参数。
+添加登录节点参数说明：
+参数 参数说明 节点类型
+节点的类型，支持登录节点和计算节点
+节点数量
+配置节点的数量，配置范围为：1 ～ 99。
+节点名称
+添加的节点的名称，选填项。
+内网 IP
+节点的内网 IP 地址，支持选择自动分配或者手动指定 IP 地址。
+添加计算节点参数说明：
+参数 参数说明 节点类型
+节点的类型，支持登录节点和计算节点
+节点数量
+配置节点的数量，配置范围为：1 ～ 99。
+所属队列
+EHPC 集群支持选择队列管理列表内的任一队列
+节点名称
+添加的节点的名称，选填项。
+内网 IP
+节点的内网 IP 地址，支持选择自动分配或者手动指定 IP 地址。
+配置完成后，点击确定添加。</description>
+    </item>
+    
+    <item>
+      <title>节点监控</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/monitor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/monitor/</guid>
+      <description>本章节介绍如何查看节点监控信息。
+前提条件 已创建 EHPC 集群。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表页签。
+在目标节点所在行，点击监控，弹出查看监控窗口。
+用户可以查看节点的基本信息和监控资源。
+监控资源包含：CPU、内存、硬盘使用率、硬盘 IOPS、硬盘吞吐量等。</description>
+    </item>
+    
+    <item>
+      <title>修改节点信息</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/modify_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/modify_node/</guid>
+      <description>本章节介绍如何修改节点信息。
+前提条件 已创建 EHPC 集群。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 高性能计算 HPC，默认进入集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表页签，进入节点列表页面。
+在目标节点所在行，点击操作栏中的编辑，弹出编辑窗口，输入节点的新名称。
+点击确定，完成节点名称修改操作。</description>
+    </item>
+    
+    <item>
+      <title>WebSSH 登录</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/ssh/</guid>
+      <description>本章节介绍如何配置 EHPC 集群登录节点的 WebSSH 登录。
+限制条件 仅登录节点支持 WebSSH 登录。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 高性能计算 HPC，默认进入集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表页签。 在节点列表页面，点击节点所在行的更多操作，选择远程登录。
+在弹出的远程连接窗口中，选择 WebSSH 远程连接，并输入用户名和密码，点击确定即可。
+说明 用户名和密码为集群内已存在的户名和密码，可通过进入集群详情页面内的用户页签进行查看。</description>
+    </item>
+    
+    <item>
+      <title>节点绑定/解绑公网 IP</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/bind_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/bind_ip/</guid>
+      <description>本章节介绍如何绑定/解绑公网 IP。
+前提条件 已创建 EHPC 集群。
+申请公网 IP EHPC 集群仅支持外部绑定模式的公网 IP，因此申请公网 IP 地址时，绑定方式需要选择外部绑定模式。
+选择产品与服务 &amp;gt; 网络服务 &amp;gt; 公网 IP，进入公网 IP 页面。
+点击申请，申请公网 IP。
+输入公网 IP 名称和带宽上限，绑定方式选择外部绑定。其他参数采用默认值即可。
+点击提交，完成公网 IP 申请。系统会自动为您分配公网 IP 地址。
+绑定公网 IP 选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，默认集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表，进入节点列表页面，点击待绑定公网 IP 的节点所在行的更多操作，选择绑定公网 IP。
+在弹出的绑定公网 IP窗口，选择申请完成的公网 IP，点击确定即可。
+对公网 IP 进行安全放行 给其中一个登录节点绑定公网 IP，会给所有节点绑定集群默认防火墙。防火墙内的所有节点可以互相通信，当所有节点没有 EIP 时，防火墙自动解绑。
+选择产品与服务 &amp;gt; 安全服务 &amp;gt; 安全组，进入安全组页面。
+点击集群安全组 ID，进入集群安全组详细信息页面。
+点击添加规则，配置相关参数。
+输入规则名称，并在窗口右侧点击 ssh，系统自动填充起始端口。
+点击应用修改，使添加的规则生效。
+解绑公网 IP 点击已创建完成的集群 ID，进入集群详情页面，选择节点列表，进入节点列表页面，点击待解绑公网 IP 的节点所在行的更多操作，选择解绑公网 IP。</description>
+    </item>
+    
+    <item>
+      <title>重启节点</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/restart_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/restart_node/</guid>
+      <description>本章节介绍如何重启节点。
+前提条件 已创建 EHPC 集群。
+EHPC 集群支持重启登录节点和计算节点。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，默认进入集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表页签。 在节点列表页面，点击待重启节点所在行的更多操作。
+选择重启即可。</description>
+    </item>
+    
+    <item>
+      <title>删除节点</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/delete_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/delete_node/</guid>
+      <description>本章节介绍如何删除节点。
+前提条件 已创建 EHPC 集群。
+EHPC 集群支持删除登录节点和计算节点。
+注意事项 节点删除后不可恢复，在释放前务必先备份数据。
+按需付费的所有服务将立即释放。
+按合约包年包月已经产生扣费的节点将退还剩余周期费用。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，默认集群管理页面。
+点击已创建完成的集群 ID，进入集群详情页面，选择节点列表页签。在节点列表页面，点击待删除节点所在行的更多操作，选择删除。
+在弹出的确认删除指定节点的提示框中，点击确定即可。</description>
+    </item>
+    
+    <item>
+      <title>移动计算节点到队列</title>
+      <link>/v6.1/compute/hpc/manual/cluster/node/remove_node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/node/remove_node/</guid>
+      <description>本章节介绍如何将计算节点移动至队列中，仅适用。
+前提条件 已创建 EHPC 集群。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 高性能计算 HPC，默认进入集群管理页面。
+点击已创建完成的 EHPC 集群 ID 进入集群详情页面，选择节点列表页签。 在节点列表页面，点击待移动的计算节点所在行的，选择移动节点到队列。
+在弹出的移动节点到队列的窗口中，点击移动到该队列的下拉选框，选择相应的队列，点击确认移动即可。</description>
+    </item>
+    
+  </channel>
+</rss>

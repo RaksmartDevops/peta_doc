@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据处理 on 用户指南</title>
+    <link>/v6.1/storage/object_storage/manual/console/data_process/</link>
+    <description>Recent content in 数据处理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/object_storage/manual/console/data_process/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图片处理</title>
+      <link>/v6.1/storage/object_storage/manual/console/data_process/image_process/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/console/data_process/image_process/</guid>
+      <description>概述 对象存储提供了格式转换、旋转、添加水印等多种图片处理功能。用户可以根据需求在管理控制台配置处理参数，并将生成的处理参数代码拼接至图片的 URL 后面，以获得经过处理的图片。
+对象存储目前暂不支持对加密图片进行处理，且处理的单张图片最大尺寸为 10MB。
+操作步骤 进入对象存储的主页面，点击对应的 Bucket 名：
+进入 Bucket 详情页面，点击 数据处理，选择 图片处理，点击 打开：
+进入 图片处理 详情页面，图片处理详情界面分为预览、操作面板以及处理参数三个部分。各部分操作简单直观，如下图所示：
+各部分功能说明：
+预览：显示经过当前操作处理后得到的示例图片以及该图片的基本信息，目前提供三张常用尺寸的示例图片，用户可根据需要切换不同的示例图片。
+操作面板：目前提供五种基本图片处理操作，用户可对其进行搭配，图片处理将按照操作顺序生成处理参数代码。
+处理参数：图片处理最终将生成一段处理参数代码，将该代码拼接至图片的 URL 后面，以获得经过处理的图片。同时可以将处理参数保存在浏览器本地，方便再次编辑使用。
+操作面板说明：
+裁剪：指定裁剪区域尺寸和位置在图片中裁剪出不同尺寸的图片。
+旋转：对图片进行旋转。
+缩放：将图片缩放到指定尺寸，可选择是否保持原有比例进行缩放。
+水印：增加文字或图片水印。
+格式：将图片转换成指定格式。</description>
+    </item>
+    
+    <item>
+      <title>图普鉴黄</title>
+      <link>/v6.1/storage/object_storage/manual/console/data_process/tupu_porn/</link>
+      <pubDate>Tue, 28 Jul 2020 10:08:56 +0900</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/console/data_process/tupu_porn/</guid>
+      <description>概述 图普科技鉴黄服务可以帮助用户判断存储在对象存储 Bucket 中的图片是否包含有色情信息。该服务由广州图普网络科技有限公司提供。对象存储通过无缝对接图谱科技的图像智能审核功能，为用户提供面向图像文件的高精度鉴黄服务，实现对违规内容的有效甄别与管理，帮助用户大幅度提高业务运营效率及合规性。
+图普鉴黄服务使用深度学习算法，帮助用户识别存储在对象存储 Bucket 中的图片是否涉黄，并将识别结果划分为确定部分和复审部分，其中确定部分的准确率超过 99.5%；复审部分不超过鉴别数据总量的 5% 。
+开启该服务后，每当有图片成功上传至对象存储的 Bucket 时，匹配指定规则的图片将会触发鉴黄，鉴黄结果会以 HTTP POST 请求的方式推送至用户所配置的接收结果地址。对象存储不会对图普科技鉴黄的结果进行修改。
+图普科技的鉴黄服务可参考 官网相关文档。
+操作步骤 开启服务 开启图谱鉴黄服务只需点击 点击开启 按钮，并在弹出框中输入参数即可。详细操作步骤如下：
+进入对象存储的主页面，点击对应的 Bucket 名：
+进入 Bucket 详情页面，点击 数据处理，选择 图谱鉴黄，点击 点击开启：
+弹出参数设置对话框，根据对话框提示信息，输入对应参数后，点击 确认：
+说明：
+接收结果地址：当数据处理完成后，对象存储会将处理结果以 HTTP POST 方式向接收结果地址发送。要求该地址在接受成功后返回状态码 200 至对象存储。
+接收结果地址返回其他状态码至对象存储时，对象存储会发起重试，重试次数为 3 次，重试时间间隔为 500ms。该请求超时时间为 5s。
+文件名匹配规则：用于设置需要进行数据处理的文件名的规则。匹配规则是基于 Glob Pattern 的模式，多个规则之间使用逗号 ， 进行分割。
+查看详情 点击图谱鉴黄，进入详情页面。在这里可以根据需求查看结果说明，价格，消费记录以及配置等四个选项，可以对图谱鉴黄服务进行精确管理。
+进入对象存储的主页面，点击对应的 Bucket 名：
+进入 Bucket 详情页面，点击 数据处理，选择 图谱鉴黄，点击 打开：
+进入 图谱鉴黄 详情页面，查看 结果说明，用户通过这个页面，可以查看接收到的识别结果中的各个字段的含义：
+在 图谱鉴黄 详情页面，点击 价格，用户可查看该功能的收费标准，详细说明与计费示例参考下图：</description>
+    </item>
+    
+  </channel>
+</rss>

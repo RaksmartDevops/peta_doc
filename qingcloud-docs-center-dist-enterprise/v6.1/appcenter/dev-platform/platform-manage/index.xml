@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>平台管理 on 用户指南</title>
+    <link>/v6.1/appcenter/dev-platform/platform-manage/</link>
+    <description>Recent content in 平台管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/appcenter/dev-platform/platform-manage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>财务管理</title>
+      <link>/v6.1/appcenter/dev-platform/platform-manage/finance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/platform-manage/finance/</guid>
+      <description>财务管理主要包括应用收入统计、应用保证金及平台费用管理、提现管理等功能。
+应用收入管理 点击【财务管理】可查看到所有应用整体收入情况。
+应用收入详情 点击【查看详情】可查看单个应用收入详细情况。</description>
+    </item>
+    
+    <item>
+      <title>订单管理</title>
+      <link>/v6.1/appcenter/dev-platform/platform-manage/order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/platform-manage/order/</guid>
+      <description>订单处理 在用户下单并购买支付后，应用开发者会收到待处理订单。
+待处理订单列表，可看到用户下单时间、购买信息，应用开发者需在交付截止时间前处理完成该订单。
+提交 License 支持文本方式、与上传文件附件方式。</description>
+    </item>
+    
+    <item>
+      <title>工单管理</title>
+      <link>/v6.1/appcenter/dev-platform/platform-manage/tickets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/platform-manage/tickets/</guid>
+      <description>工单系统在应用开发平台做了全面升级，开发者或用户可向云平台提交工单，也支持用户直接向开发者提交工单。开发者既可以做为用户向云平台提交工单，同时也能够接收用户针对开发者所开发的应用接收用户提交的工单。
+创建工单 应用开发平台提供创建工单入口，开发者用户可以提交工单。
+在页面右上角，点击【工单】，选择【创建工单】。
+填写工单内容，包括：工单类型、标题、描述、问题的影响类型、相关产品以及文件。
+提交工单后，可在【我的工单】中查看该工单处理详情。
+我的工单 可查看我创建的工单、共享给我的工单、企业内工单，其中共享给我的工单需要用户在【新邀请】中确定接受后才确认同意接收共享给我的工单。
+处理工单 开发者接收到用户提交给开发者的全部工单，可查看到待处理、处理中、待确认、已解决的工单。开发者可在【工单回复】窗口直接回复用户提交的工单。
+每个工单均有处理超时期限，开发者应尽快在超时期限内处理工单，以免影响用户对应用的使用体验。</description>
+    </item>
+    
+    <item>
+      <title>通知中心</title>
+      <link>/v6.1/appcenter/dev-platform/platform-manage/notification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/platform-manage/notification/</guid>
+      <description>开发者除了接收各种类型的通知，并可以对上架应用的使用用户发送自己的通知。
+查看通知 点击右上角【通知】，可查看接收到的全部通知，可根据通知类型进行筛选系统通知、财务通知、告警通知等。
+发送通知 开发者可针对其开发应用对用户发送通知，该应用的使用者可接收到开发者发送的通知。</description>
+    </item>
+    
+  </channel>
+</rss>

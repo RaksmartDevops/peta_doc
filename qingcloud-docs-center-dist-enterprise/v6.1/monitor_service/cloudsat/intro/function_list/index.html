@@ -1,0 +1,2405 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[CloudSat, 自定义监控]">
+
+
+<meta name="description" content="这里是企业云文档页面">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>功能简介 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/monitor_service/cloudsat/">
+          
+            云监控 CloudSat
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/intro/intro/">CloudSat 简介</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/monitor_service/cloudsat/intro/function_list/">功能简介</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >计费指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/billing/price/">计费说明</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/monitoring_overview/">监控概览</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/dashboard/">Dashboard</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/group_management/">分组管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/event_monitor/">事件监控</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/alarm_service/">告警服务</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/alarm_service_new/">告警服务（新版）</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/alarm_service_new/alarm_policy/">告警策略</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/alarm_service_new/alarm_history/">告警记录</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/alarm_service_new/alarm_onekey/">一键告警</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/cloud_service/">云服务监控</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/cloud_service/load_balancer/">负载均衡</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/cloud_service/service/">应用服务</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/custom_monitor/">自定义监控</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/manual/upload_monitor_data/">自定义监控上报数据规范</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/webhook-dtalk/">Webhook 配置钉钉通知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/show-all-resource/">全栈资源监控统一展示</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/resource-alarm/">通过分组管理和告警功能构建大批量资源监控告警机制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/panic-check/">异常处理排查</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/event-statistic/">周期时间内重大事件统计</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/best-practices/resource-tops/">资源用量排行</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/monitor_service/cloudsat/faq/faq/">常见问题</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/monitor_service/cloudsat" data-url="/v6.1/monitor_service/cloudsat">云监控 CloudSat</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/monitor_service/cloudsat/intro/intro/" data-url="/v6.1/monitor_service/cloudsat/intro">产品简介</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/monitor_service/cloudsat/intro/function_list" data-url="/v6.1/monitor_service/cloudsat/intro/function_list">功能简介</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    功能简介</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/monitor_service/cloudsat/intro">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_监控概览">监控概览</a>
+      <ul>
+        <li><a href="#_功能概述">功能概述</a></li>
+        <li><a href="#_适用场景">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_dashboard">Dashboard</a>
+      <ul>
+        <li><a href="#_功能概述_2">功能概述</a></li>
+        <li><a href="#_术语解释">术语解释</a></li>
+        <li><a href="#_适用场景_2">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_云服务监控">云服务监控</a>
+      <ul>
+        <li><a href="#_功能概述_3">功能概述</a></li>
+        <li><a href="#_适用场景_3">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_分组管理">分组管理</a>
+      <ul>
+        <li><a href="#_核心功能">核心功能</a></li>
+        <li><a href="#_适用场景_4">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_事件监控">事件监控</a>
+      <ul>
+        <li><a href="#_核心能力">核心能力</a></li>
+        <li><a href="#_适用场景_5">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_告警服务">告警服务</a>
+      <ul>
+        <li><a href="#_适用场景_6">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_告警服务新版">告警服务（新版）</a>
+      <ul>
+        <li><a href="#_功能概述_4">功能概述</a></li>
+        <li><a href="#_适用场景_7">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_自定义监控">自定义监控</a>
+      <ul>
+        <li><a href="#_功能概述_5">功能概述</a></li>
+        <li><a href="#_适用场景_8">适用场景</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="sect1">
+<h2 id="_监控概览">监控概览</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>监控概览模块主要对云产品的整体监控情况进行汇总与展示，为用户提供一个查看入口。用户可从全局视角来查看账号内所有云资源的监控状况，以及核心资源的用量排序。</p>
+</div>
+<div class="sect2">
+<h3 id="_功能概述">功能概述</h3>
+<div class="paragraph">
+<p>监控概览为用户提供实时查看整体监控数据的功能，将云平台最核心的服务监控指标使用率情况集中呈现在一张监控大屏里，根据用户的资源运行与监控状态进行实时的监测与更新，为用户定制一个立体化监控平台，供用户进行全局管理。</p>
+</div>
+<div class="paragraph">
+<p>监控概览内，提供了资源整体监控告警情况统计、告警统计、云服务器核心指标使用量监控与排序、网络核心指标的监控与排序、存储关键指标的监控与排序等。
+通过查看监控概览，让用户实时了解各云服务的资源使用情况和告警情况。</p>
+</div>
+<div class="paragraph">
+<p>监控概览的主要展示信息分为以下四大类：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>实时展示资源类型与总数统计。</p>
+</li>
+<li>
+<p>各资源告警、正常、未配置告警策略数据统计展示。</p>
+</li>
+<li>
+<p>近 24 小时事件/告警统计数据展示。</p>
+</li>
+<li>
+<p>资源核心指标数据总和以及 Top5 统计展示。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>在日常运维工作中，满足用户对账号下全部基础资源的全局监控状态视角概览需求，可了解并把控所有资源的整体运行健康情况。</p>
+</li>
+<li>
+<p>在进行运维工作整体优化评估时，可参考所有资源的报警数据趋势图，分析并发现资源出现异常时的高峰时段，加以应对与防范。</p>
+</li>
+<li>
+<p>可通过资源用量排序了解核心基础资源的使用情况，有助于用户及时执行配置调整。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dashboard">Dashboard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>云监控的 Dashboard 功能为用户提供自定义查看监控数据、定位异常资源的功能。用户可跨区域、跨资源类型创建自定义监控图表与面板。该功能可灵活、高效地适用于各类监控场景下，实现对同类指标的对比监控需求。用户可以在一张监控大屏中跨资源类型、跨实例查看监控数据，并将相同业务的不同资源指标集中展现。</p>
+</div>
+<div class="sect2">
+<h3 id="_功能概述_2">功能概述</h3>
+<div class="paragraph">
+<p>监控 Dashboard 为用户提供了可跨资源类型、跨指标类型、跨可用区的自定义集中监控服务，用户可根据业务需求，将各类维度的数据集中在同一个面板下，进行统一可视化监控。</p>
+</div>
+<div class="paragraph">
+<p>监控 Dashboard 支持丰富的监控时间周期，在每种监控周期下对应的监控间隔粒度都有所不同，用户可根据监控场景选择符合需求的时间周期。同时，若需要对某一个时间周期下的关键时间点进行进一步操作，可选择 <code>暂停</code> 刷新的设置，面板将停止自动刷新。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_术语解释">术语解释</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>指标：指标作为具体监控资源中的变量值，如云服务器的 CPU 使用率，也是本次监控 Dashboard 最核心的变量。</p>
+</li>
+<li>
+<p>面板：可自定义图表的面板区域，一个账号可创建多个面板，可对面板进行重命名、删除等操作。</p>
+</li>
+<li>
+<p>图表：一张监控图表由资源所属区域、某一类具体资源、该资源的某一个具体指标、需要监控的资源实例（上限 10 个）等四个主要因素构成，最终集成为图形化数据，支持折线图 + 列表详述。</p>
+</li>
+<li>
+<p>监控周期：监控指标的时间范围，目前分别支持：<code>最近 6 小时</code>、<code>最近一天</code>、<code>最近两周</code>、<code>最近一个月</code>、<code>最近六个月</code>、<code>用户自定义周期</code>。按面板页面级统一控制。</p>
+</li>
+<li>
+<p>监控粒度：实时监控指标的时间粒度，具体监控的时间粒度与对应的时间周期有关。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_2">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>监控面板: 监控面板是可供用户自定义编辑的监控视图区，可向监控面板内加入不同区域、不同资源、不同指标的监控图表。</p>
+</li>
+<li>
+<p>监控图表: 用户可在某一区域内自行创建该区内某类资源的多个实例、单个指标集成的数据图形。创建完成后，可对已创建的图表进行查看、修改、数据导出、删除等操作。</p>
+</li>
+<li>
+<p>面板全屏: 用户可在面板图表生成之后进行集中监控，若暂时不再操作图表以及面板的其他功能，仅需要盯屏查看监控图表以及数据，可选择<strong>全屏</strong>显示模式，进入全屏式面板。全屏式面板的监控可视化图表效果更佳，同时依然可以支持在监控面板上的数据查看、时间周期切换等功能。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_云服务监控">云服务监控</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_功能概述_3">功能概述</h3>
+<div class="paragraph">
+<p>云服务监控是所有云服务产品监控数据的展示平台，可以为用户提供当前账号下的云服务资源列表以及对应的监控指标和告警策略。使得用户可以更为方便的了解资源的运行情况。</p>
+</div>
+<div class="paragraph">
+<p>当前已对接负载均衡器和应用服务（包含集群和部分应用）的监控数据。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_3">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>云服务监控支持负载均衡器，用户可以在云监控中查看当前账号下的负载均衡的监控数据，并支持以负载均衡节点、监听器和监听器后端多维度设置告警策略。</p>
+</li>
+<li>
+<p>云服务监控支持应用服务，用户可以在云监控中查看当前账号下的集群和部分应用的监控数据，并支持多维度设置告警策略。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_分组管理">分组管理</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>实例分组提供了跨云产品、跨地域的云产品资源分组管理功能。使得用户可根据云资源的实际业务划分，对资源实例进行分组监控，集中配置告警策略，从而提升运维效率。</p>
+</div>
+<div class="paragraph">
+<p>用户可以从业务角度、组织结构、资源规划等视角，集中管理业务线涉及到的云服务器、硬盘、数据库、负载均衡、网络等各类核心资源，从而按业务线、组织架构等分类，来管理资源涉及到的报警规则，并高效查看监控数据，从而可以迅速提升运维效率。</p>
+</div>
+<div class="sect2">
+<h3 id="_核心功能">核心功能</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>列表汇总所有的分组信息，展示组内的关键统计信息，如：资源类型、资源总数、告警资源数/未告警资源数/未配置告警规则的资源数、创建类型、操作等。</p>
+</li>
+<li>
+<p>管理实例分组。</p>
+</li>
+<li>
+<p>管理告警规则。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>支持的监控资源包括：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>云服务器的状态、告警服务以及告警状态。</p>
+</li>
+<li>
+<p>VPC 网络的状态、告警服务以及告警状态。</p>
+</li>
+<li>
+<p>公网 IP 的状态、告警服务以及告警状态。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_4">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>购买了多类型云产品的客户，需要利用分组功能将同一业务相关的云服务器、数据库、对象存储、缓存等资源添加到同一分组中进行集中管理。在分组维度内集中去管理报警规则，查看监控数据，可以极大地降低管理复杂度，提高云监控使用效率。</p>
+</li>
+<li>
+<p>客户在购买了云资源后，所部署的业务重要程度不同，对核心系统需要最高标准的监控告警服务；对非核心的业务系统则需要相对中级的告警策略设置，此类场景，适合将不同重要度的资源集中起来，统一管理、统一批量设置与绑定告警策略。</p>
+</li>
+<li>
+<p>云资源运维人员若需要对不同部门、不同业务使用资源的情况进行分组查看与管理，则可使用实例分组，按照部门或者业务进行资源划分，清晰了解到各组内的资源情况。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_事件监控">事件监控</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>事件监控模块汇集了云产品各类运维事件，以及用户业务的异常事件，并对各类事件进行整体统计与展示，提供多种细查方式与查询模式，提供按资源类型、事件类型、事件名称等多种筛选模式下的事件汇总统计结果，便于关联业务与问题复盘。除此之外，可直接在事件监控列表上进行告警策略的设置与修改工作。</p>
+</div>
+<div class="paragraph">
+<p>云监控服务中的<strong>事件监控</strong>功能作为云平台事件信息中枢，产品化了云平台各类基础资源的生命周期与运转中的重要事件信息，并构建完善的事件消费渠道与流程，支撑客户云上监控与运维。</p>
+</div>
+<div class="sect2">
+<h3 id="_核心能力">核心能力</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>集中统计展示系统预置的云产品关键事件。</p>
+</li>
+<li>
+<p>支持不同视图形式下的事件信息展示。</p>
+</li>
+<li>
+<p>支持对用户关注的事件进行告警策略设置。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_5">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>为日常运维工作，提供更加完善的云上资源监控信息维度，为监控运维提供更全面数据支撑。</p>
+</li>
+<li>
+<p>在对监控数据进行数据消费的环节，提供事件信息消费渠道，帮助用户转化监控信息价值。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_告警服务">告警服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>告警功能提供对监控指标的告警服务支持，用户对云服务的核心监控指标设置告警规则，当监控指标触发用户设置的告警规则阈值时，则会按照用户设置的查收通知形式，收取告警信息。目前平台支持以邮箱、短信等方式通知用户，让用户可以在第一时间得知云资源发生的异常情况，快速准确定位，并迅速处理故障，避免因资源问题或者外部操作原因，造成业务上的损失。</p>
+</div>
+<div class="paragraph">
+<p>监控告警功能是对资源层面的监控数据，设置告警条件和通知列表， 有助于及时了解资源使用情况和处理突发事件。具体包含以下几个核心的功能点：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>设置告警策略规则。</p>
+</li>
+<li>
+<p>绑定资源到具体的告警规则内。</p>
+</li>
+<li>
+<p>设置告警通知联系人。</p>
+</li>
+<li>
+<p>设置联系人接收方式。</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_6">适用场景</h3>
+<div class="paragraph">
+<p>目前支持的监控项包括：</p>
+</div>
+<div class="paragraph">
+<p><strong>云服务器</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU 使用百分比</p>
+</li>
+<li>
+<p>内存使用百分比</p>
+</li>
+<li>
+<p>磁盘空间使用百分比，检查范围包括云服务器中所有已挂载（mount）的分区</p>
+</li>
+<li>
+<p>云服务器网卡的进流量，检查范围包括云服务器所有网卡</p>
+</li>
+<li>
+<p>云服务器网卡的出流量，检查范围包括云服务器所有网卡</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>公网IP</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>公网进流量</p>
+</li>
+<li>
+<p>公网出流量</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>路由器</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>路由器新增针对网络 PPS 和路由器 CPU / 内存的监控告警仅支持新的区域和可用区。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>路由器所连网络的进流量，检查范围包括所有与此路由器连接的私有网络</p>
+</li>
+<li>
+<p>路由器所连网络的出流量，检查范围包括所有与此路由器连接的私有网络</p>
+</li>
+<li>
+<p>路由器所连网络的入口 PPS，检查范围包括所有与此路由器连接的私有网络</p>
+</li>
+<li>
+<p>路由器所连网络的出口 PPS，检查范围包括所有与此路由器连接的私有网络</p>
+</li>
+<li>
+<p>路由器自身的 CPU 利用率</p>
+</li>
+<li>
+<p>路由器自身的内存利用率</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>私有网络</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>私有网络监控告警仅支持新的区域和可用区。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>私有网络所有网卡的进流量，检查范围包括私有网络内的所有网卡</p>
+</li>
+<li>
+<p>私有网络所有网卡的出流量，检查范围包括私有网络内的所有网卡</p>
+</li>
+<li>
+<p>私有网络所有网卡的入口 PPS，检查范围包括私有网络内的所有网卡</p>
+</li>
+<li>
+<p>私有网络所有网卡的出口 PPS，检查范围包括私有网络内的所有网卡</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>负载均衡器</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>监听器 HTTP/HTTPS 协议</p>
+<div class="ulist">
+<ul>
+<li>
+<p>请求数：接收到的请求数</p>
+</li>
+<li>
+<p>平均响应延迟时间：监听器下所有后端的响应时间</p>
+</li>
+<li>
+<p>平均并发数：并发连接数</p>
+</li>
+<li>
+<p>后端1xx/2xx/3xx/4xx/5xx响应数：监听器下所有后端返回的，对应状态码的响应数</p>
+</li>
+<li>
+<p>后端服务器可用个数</p>
+</li>
+<li>
+<p>后端服务器不可用个数</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>监听器 TCP 协议</p>
+<div class="ulist">
+<ul>
+<li>
+<p>连接数：监听器下所有后端的 TCP 连接数</p>
+</li>
+<li>
+<p>平均并发数：并发连接数</p>
+</li>
+<li>
+<p>后端服务器可用个数</p>
+</li>
+<li>
+<p>后端服务器不可用个数</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>后端服务 HTTP 协议</p>
+<div class="ulist">
+<ul>
+<li>
+<p>平均响应延迟时间：监听器下所有后端的响应时间</p>
+</li>
+<li>
+<p>服务状态：后端服务器是否异常</p>
+</li>
+<li>
+<p>后端1xx/2xx/3xx/4xx/5xx响应数：此后端返回的，对应状态码的响应数</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>后端服务 TCP 协议</p>
+<div class="ulist">
+<ul>
+<li>
+<p>连接数：此后端的 TCP 连接数</p>
+</li>
+<li>
+<p>服务状态：后端服务器是否异常</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>关系型数据库</strong></p>
+</div>
+<div class="paragraph">
+<p>关系型数据库的监控告警只会监控主节点，包括如下监控项：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU：CPU 使用百分比</p>
+</li>
+<li>
+<p>内存：内存使用百分比</p>
+</li>
+<li>
+<p>磁盘使用率：磁盘空间使用百分比</p>
+</li>
+<li>
+<p>活跃连接数：数据库的活跃连接数</p>
+</li>
+<li>
+<p>查询请求：数据库执行的所有查询请求的次数</p>
+</li>
+<li>
+<p>慢查询：根据数据库配置的慢查询标准，监控慢查询的次数</p>
+</li>
+<li>
+<p>全表扫描次数：发生全表扫描的次数。 (全表扫描是数据库服务器用来搜寻表的每一条记录的过程， 直到所有符合给定条件的记录返回为止，大多发生在对无索引的表进行查询)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MongoDB</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU：CPU 使用百分比</p>
+</li>
+<li>
+<p>内存：内存使用百分比</p>
+</li>
+<li>
+<p>磁盘使用率：磁盘空间使用百分比</p>
+</li>
+<li>
+<p>连接数：数据库的连接数</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Redis/Memcached</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>内存利用率：内存使用百分比</p>
+</li>
+<li>
+<p>被拒绝 key 个数</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Zookeeper</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU：CPU 使用百分比</p>
+</li>
+<li>
+<p>内存：内存使用百分比</p>
+</li>
+<li>
+<p>集群服务是否可用</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Kafka</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU：CPU 使用百分比</p>
+</li>
+<li>
+<p>内存：内存使用百分比</p>
+</li>
+<li>
+<p>磁盘使用率：磁盘空间使用百分比</p>
+</li>
+<li>
+<p>出现未复制分区或离线分区</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>ElasticSearch</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU：CPU 使用百分比</p>
+</li>
+<li>
+<p>内存：内存使用百分比</p>
+</li>
+<li>
+<p>磁盘使用率：磁盘空间使用百分比</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_告警服务新版">告警服务（新版）</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>告警服务提供告警策略、告警记录和一键告警功能。</p>
+</div>
+<div class="sect2">
+<h3 id="_功能概述_4">功能概述</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>告警策略</p>
+<div class="paragraph">
+<p>告警策略为用户提供监控指标告警功能。用户可以对云服务器的监控项和云服务产品的监控项设置告警策略。当监控指标在一定周期内多次触发告警策略的阈值时，系统将向用户发送告警通知，通知方式支持邮件、短信和webhook等。</p>
+</div>
+</li>
+<li>
+<p>告警记录</p>
+<div class="paragraph">
+<p>云监控提供告警记录功能，帮助用户回溯和查看近半年的告警历史记录。</p>
+</div>
+</li>
+<li>
+<p>一键告警</p>
+<div class="paragraph">
+<p>一键告警功能为用户提供一键开启指定云服务产品关键监控项的告警服务，帮助用户快速建立云服务的告警体系，及时处理异常。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_7">适用场景</h3>
+<div class="paragraph">
+<p>为了防止云服务产品监控指标达到异常状态，影响业务的正常运行。用户可以对云服务产品的监控指标设置告警策略，当监控数据满足告警策略触发条件时，发送告警通知给用户，帮助用户在第一时间了解云服务产品的异常情况，并迅速处理，避免造成业务上损失。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_自定义监控">自定义监控</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>自定义监控的功能支持，可满足云平台已有用户、非云平台用户对基础资源的指标监控需求，可与 CloudSat 服务内的其他功能结合使用，形成完整的立体化监控告警服务。
+在自定义监控功能模块内，需要完成以下几个目标：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>对体量较大的客户，可上报非平台预置、其他云平台上的监控数据</p>
+</li>
+<li>
+<p>对非云平台用户，在自定义功能内，提供轻量、简易的数据上报与监控管理能力</p>
+</li>
+<li>
+<p>可接入 Zabbix 的基础监控数据，运用 CloudSat 的告警服务、dashboard、图形化指标数据展示等各类功能，简化运维人员运维工作，实现通过云平台达成全面监控的目标弹性裸金属服务器是即将推出的一款全新产品。</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_功能概述_5">功能概述</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>上报数据：按规定路径与参数规范，进行监控指标数据上报。</p>
+</li>
+<li>
+<p>数据上报状态：系统会对上报的监控数据的各种状态进行及时的反馈与同步，包括延迟/上报失败原因等，保证用户对自定义上报的数据的可控性。</p>
+</li>
+<li>
+<p>上报后数据展示样式/展示条件/限制/功能：数据归属（组）/图形展示，按数据归属组（命名空间）/维度等过滤查询，数据保存时间/数据类型要求/设置告警规则/查看数据/图形等。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_适用场景_8">适用场景</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>自定义监控是提供给用户可自由定义监控项及报警规则的能力。用户可以针对自己关心的业务指标进行监控，将采集到监控数据上报至云监控，由云监控来进行数据的处理，并根据处理结果进行报警。</p>
+</li>
+<li>
+<p>兼容云平台用户、非云平台用户对基础资源的指标监控需求，可与 CloudSat 服务内的其他功能关联使用，形成全面的立体化监控告警服务。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_监控概览">监控概览</a>
+      <ul>
+        <li><a href="#_功能概述">功能概述</a></li>
+        <li><a href="#_适用场景">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_dashboard">Dashboard</a>
+      <ul>
+        <li><a href="#_功能概述_2">功能概述</a></li>
+        <li><a href="#_术语解释">术语解释</a></li>
+        <li><a href="#_适用场景_2">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_云服务监控">云服务监控</a>
+      <ul>
+        <li><a href="#_功能概述_3">功能概述</a></li>
+        <li><a href="#_适用场景_3">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_分组管理">分组管理</a>
+      <ul>
+        <li><a href="#_核心功能">核心功能</a></li>
+        <li><a href="#_适用场景_4">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_事件监控">事件监控</a>
+      <ul>
+        <li><a href="#_核心能力">核心能力</a></li>
+        <li><a href="#_适用场景_5">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_告警服务">告警服务</a>
+      <ul>
+        <li><a href="#_适用场景_6">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_告警服务新版">告警服务（新版）</a>
+      <ul>
+        <li><a href="#_功能概述_4">功能概述</a></li>
+        <li><a href="#_适用场景_7">适用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#_自定义监控">自定义监控</a>
+      <ul>
+        <li><a href="#_功能概述_5">功能概述</a></li>
+        <li><a href="#_适用场景_8">适用场景</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

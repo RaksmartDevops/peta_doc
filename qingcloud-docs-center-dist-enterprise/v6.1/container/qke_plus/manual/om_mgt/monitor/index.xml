@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>监控管理 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/om_mgt/monitor/</link>
+    <description>Recent content in 监控管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/om_mgt/monitor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>监控指标说明</title>
+      <link>/v6.1/container/qke_plus/manual/om_mgt/monitor/index_desc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/om_mgt/monitor/index_desc/</guid>
+      <description>QKE 提供了基于集群级别及节点级别的监控数据收集与展示。通过监控数据，您可以快速查看集群及节点的资源使用情况。
+集群监控指标 资源使用情况指标：
+监控项 指标含义 CPU
+统计 CPU 的使用率、已使用量及总量。
+内存
+统计内存的使用率、已使用量及总量。
+容器组
+统计容器组的使用率、已使用量及总量。
+存储
+统计存储的使用率、已使用量及总量。
+物理资源监控指标：
+监控项 单位/值 指标含义 CPU 使用率
+%，整数[0, 100]
+集群 CPU 使用率。
+CPU 负载
+&amp;gt;=0，整数
+集群 CPU 使用量。
+系统盘使用率
+%，整数[0, 100]
+集群系统盘使用率。
+数据盘使用率
+%，整数[0, 100]
+集群所挂载数据盘的使用率。 托管版集群 Master 节点不挂盘，默认为 0。
+内存使用率
+%，整数[0, 100]
+集群内存使用率。
+apiserver 的连通性
+1：正常
+0：异常
+集群 apiserver 是否能正常连通。 检查 Master 节点 6443 端口。如果持续 1 分钟为 0，表示 Master 节点有异常。
+正在运行的 Pod 数量</description>
+    </item>
+    
+    <item>
+      <title>查看监控数据</title>
+      <link>/v6.1/container/qke_plus/manual/om_mgt/monitor/view_data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/om_mgt/monitor/view_data/</guid>
+      <description>介绍如何查看 QKE 的监控数据。
+背景信息 系统支持的监控指标请查看监控指标说明。
+前提条件 当前集群版本为 v1.1.0 及以上版本。
+集群状态为活跃，且服务状态为健康。
+查看集群监控数据 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择集群运维 &amp;gt; 监控管理，进入监控管理页面。
+在集群页签的集群资源使用情况区域，查看集群资源使用量数据。
+在集群页签的物理资源监控区域，查看集群物理资源监控图。
+支持最近6小时、最近一天、最近两周、最近一个月、最近6个月的指标监控数据。
+您也可以通过自定义起止时间，查看目标时间段内的监控数据。自定义所选时间范围支持选择近6个月内。
+查看节点监控数据 说明 监控扫描周期默认为5分钟，新增节点暂无法查看监控信息。
+登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择集群运维 &amp;gt; 监控管理，进入监控管理页面。
+点击节点页签，进入节点监控页面。
+在集群节点下拉列表中，选择需要查看的节点，并选择需要查看的时间段。
+支持最近6小时、最近一天、最近两周、最近一个月、最近6个月的指标监控数据。
+您也可以通过自定义起止时间，查看目标时间段内的监控数据。自定义所选时间范围支持选择近6个月内。</description>
+    </item>
+    
+  </channel>
+</rss>

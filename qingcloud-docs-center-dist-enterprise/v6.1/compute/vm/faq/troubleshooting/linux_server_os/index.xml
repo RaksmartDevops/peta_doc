@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux云服务器操作系统类 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/</link>
+    <description>Recent content in Linux云服务器操作系统类 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/troubleshooting/linux_server_os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Soft lockup 说明</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/softlock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/softlock/</guid>
+      <description> 背景说明 所谓，soft lockup 就是说，这个 bug 没有让系统彻底死机，但是若干个进程（或者 kernel thread）被锁死在了某个状态（一般在内核区域），很多情况下这个是由于内核锁的使用的问题。Linux 内核对于每一个 cpu 都有一个监控进程，在技术界这个叫做 watchdog（看门狗）。通过 ps --ef grep watchdog 能够看见，进程名称大概是 watchdog/X（数字：cpu 逻辑编号 1/2/3/4 之类的）。这个进程或者线程每一秒钟运行一次，否则会睡眠和待机。这个进程运行会收集每一个 cpu 运行时使用数据的时间并且存放到属于每个 cpu 自己的内核数据结构。在内核中有很多特定的中断函数。这些中断函数会调用 soft lockup 计数，他会使用当前的时间戳与特定（对应的） cpu 的内核数据结构中保存的时间对比，如果发现当前的时间戳比对应 cpu 保存的时间大于设定的阀值，他就假设监测进程或看门狗线程在一个相当可观的时间还没有执。Cpu 软锁为什么会产生，是怎么产生的？如果 Linux 内核是经过精心设计安排的 CPU 调度访问，那么怎么会产生 cpu 软死锁？那么只能说由于用户开发的或者第三方软件引入，看我们服务器内核 panic 的原因就是 qmgr 进程引起。因为每一个无限的循环都会一直有一个 cpu 的执行流程（qmgr 进程示一个后台邮件的消息队列服务进程），并且拥有一定的优先级。Cpu 调度器调度一个驱动程序来运行，如果这个驱动程序有问题并且没有被检测到，那么这个驱动程序将会暂用 cpu 的很长时间。根据前面的描述，看门狗进程会抓住（catch）这一点并且抛出一个软死锁（soft lockup）错误。软死锁会挂起 cpu 使你的系统不可用。
+解决办法 追加到配置文件中 echo 30 &amp;gt; /proc/sys/kernel/watchdog_thresh 查看 [root@git-node1 data]# tail -1 /proc/sys/kernel/watchdog_thresh 30 临时生效 sysctl -w kernel.watchdog_thresh=30 </description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器重启后无法获取 IP</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/liunx_check_dhclient/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/liunx_check_dhclient/</guid>
+      <description>问题描述 云服务器启动后 dhclient 未运行导致 IP 无法获取。
+问题分析 重启后 dhclient 进程未运行的原因通常为：
+NetworkManager 未开启自启动导致 dhclient 进程未运行。
+网卡设备未纳入 NetworkManager 管理导致。
+前提条件 本节操作适用于 CentOS 7 系列、EulerOS 2 系列、Ubuntu18.04 操作系统的云服务器，并使用 DHCP 获取 IP 。
+处理方法 执行以下命令，确认 dhclient 是否运行。
+ps -ef |grep dhclient |grep -v grep 如果未找到 dhclient 进程，则确认 dhclient 进程未运行，执行以下命令，继续排查 NetworkManager 是否运行。
+systemctl status NetworkManager 如果 NetworkManager 的状态为 Active: inactive (dead) ，则 NetworkManager 未启动，执行以下命令，检查该服务是否开机自启。
+systemctl is-enabled NetworkManager 结果为 disabled 则确认为 NetworkManager 未设置开机自启导致，执行以下命令进行恢复。
+systemctl enable NetworkManager &amp;amp;&amp;amp; systemctl start NetworkManager 如果 NetworkManager 的状态为 Active: active (running) ，执行以下命令查看网卡设备是否被 NetworkManager 管理。</description>
+    </item>
+    
+    <item>
+      <title> 云服务器加载 SSH 密钥失败</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/load_sshserect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/load_sshserect/</guid>
+      <description>问题介绍 使用管理控制台云服务器加载 SSH 密钥失败。
+解决办法 进入主机重启一下 gapd 服务。
+systemctl restart gapd # Centos service gapd restart # Ubuntu 在控制台重新加载 SSH 密钥。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器 ext4 文件系统损坏</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/repair_method_of_ext4_file_system_damage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/repair_method_of_ext4_file_system_damage/</guid>
+      <description>问题背景 ext4 文件系统没有 umount 下来，之后做了 fsck 操作检查一致性，结果导致 ext4 文件 mount 不上（有时也会表现为导致目录变成了文件），报错提示信息：
+mount: wrong fs type, bad option, bad superblock。 解决方法 执行以下命令，检查文件系统。
+e2fsck -f /dev/vdx 说明 做此步之前确保分区处于umount状态 ，另外确保磁盘已经做好数据备份。
+执行以下命令，修复文件系统。
+fsck -t ext4 /dev/vdx 修复完成以后重新挂载测试。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器 xfs 文件系统损坏</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/how_to_repair_the_damage_of_xfs_file_system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/how_to_repair_the_damage_of_xfs_file_system/</guid>
+      <description>问题现象 磁盘没办法挂载，提示 wrong_fs_type_bad_option_bad_superblock。
+解决方法 检查文件系统，执行命令， 返回 0 表示正常。
+xfs_check /dev/vdx(盘符); echo $? 说明 做此步之前确保分区处于umount状态 ，另外确保磁盘已经做好数据备份。
+执行命令，检查文件系统是否损坏，如果损坏会列出将要执行的操作。
+xfs_repair -n 执行命令修复文件系统。
+xfs_repair /dev/vdx 以损失部分数据的修复方法（最后手段），如以上步骤修复失败时，先执行命令。
+xfs_repair -L /dev/vdx 说明 此命令是清空日志，会丢失文件。
+再执行命令。
+xfs_repair /dev/vdx 最后执行命令，检查文件系统是否修复成功。
+xfs_check /dev/vdx 说明 -L 是修复 xfs 文件系统的最后手段，慎重选择，它会清空日志，会丢失用户数据和文件。</description>
+    </item>
+    
+    <item>
+      <title>删除文件后磁盘空间不释放</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/cloud_server_delete_file_space_does_not_release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/cloud_server_delete_file_space_does_not_release/</guid>
+      <description>问题现象 当磁盘空间不够的时候，客户删除了文件以释放空间，但是发现删除了文件空间依然没有释放。
+问题背景 文件系统的数据分为两个部分：数据部分和指针部分，当有进程正在使用某个文件是，执行删除命令，空间是不会释放的，删除的是数据文件部分，指针部分并未删除，所以空间并不释放；以下为真实案例，本实验使用的操作系统是 ubuntu 16.04。
+处理方法 执行命令安装 lsof。
+apt-get install lsof 执行命令查看死文件占用情况。
+lsof |grep delete | more 如果这些文件过多，会占用很大的磁盘空间。可以通过如下方法来释放句柄，以清除僵尸文件
+执行命令正常停止或杀掉占用这些文件的服务进程。
+kill -9 pid 执行清空命令，空间就会得到释放。
+echo &amp;#34; &amp;#34; &amp;gt; /tmp/nginx.log 重启服务器。</description>
+    </item>
+    
+    <item>
+      <title>云服务器 /dev/loop0 磁盘 100% 监控告警处理方法</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/delet_snap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/delet_snap/</guid>
+      <description>问题背景 使用 Ubuntu 云服务器，添加了磁盘使用率的告警策略，会在磁盘使用率没有达到 100% 时收到告警信息，通过排查可以发现。
+#df -h ... /dev/loop2 55M 55M 0 100% /snap/core18/1754 /dev/loop1 30M 30M 0 100% /snap/snapd/8140 /dev/loop0 31M 31M 0 100% /snap/snapd/7777 ... 有如上输出，snap 使用的是 SquashFS 文件系统，这是一个只读的文件系统，所以它的大小在创建的时候一定是刚刚好能够存放它的内容就可以了，因为它是只读，所以它的大小之后不会改变。所以占用量肯定是 100%。
+解决方法 可以卸载 snap 解决该问题。
+# apt autoremove --purge snapd Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be REMOVED: snapd* 0 upgraded, 0 newly installed, 1 to remove and 135 not upgraded.</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器中毒排查思路</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/virus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/virus/</guid>
+      <description>当我们在控制台监控中发现，CPU 或者内存跑满了的现象时，我们需要进入主机内部排查一下。
+排查方法 使用 top 命令查看是否有特别吃 CPU 和内存的进程。
+如果使用 top 命令找不到占用 CPU 或者内存较多的进程，可使用 busybox 找出隐藏的进程。
+wget https://oc-storage.pek3a.qingstor.com/busybox # 下载 busybox chmod +x busybox # 给 busybox 增加运行权限 ./busybox top -b -n 1 # 使用 busybox 查看进程占用资源情况 使用 ps aux|grep &amp;#34;进程名&amp;#34; 命令查看对应进程的信息以及进程文件所处位置。
+查看 /etc/passwd 是否有异常或隐藏用户，usermod -L xxx 禁用该用户。
+查看系统日志。
+日志路径 含义 /var/log/messages
+记录 Linux 内核消息及各种应用程序的公共日志信息，包括启动、IO 错误、网络错误、程序故障等。对于未使用独立日志文件的应用程序或服务，一般都可以从该文件获得相关的事件记录信息
+/var/log/cron
+记录 crond 计划任务产生的事件消息
+/varlog/dmesg
+记录 Linux 系统在引导过程中的各种事件信息
+/var/log/maillog
+记录进入或发出系统的电子邮件活动
+/var/log/lastlog
+最近几次成功登录事件和最后一次不成功登录事件
+/var/log/rpmpkgs
+记录系统中安装各 rpm 包列表信息</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器查看 CPU 和内存信息</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/cpu_and_memory_info/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/cpu_and_memory_info/</guid>
+      <description>概述 本文主要介绍在 Linux 系统的云服务器中，如何查看 CPU 和内存信息。
+说明 总核心数 = 物理CPU颗数 * 每颗CPU上核心数
+总线程数（逻辑CPU数） = 物理CPU颗数 * 每颗CPU上核心数 * 每颗核心数上的线程 或者 总线程数（逻辑CPU数） = 总核心数 * 每颗核心数上的线程
+操作步骤 通过如下命令，可以查看 Linux 系统的云服务器 CPU 和内存相关信息。
+查看云服务器上物理 cpu 的颗数。
+cat /proc/cpuinfo |grep &amp;#34;physical id&amp;#34; | sort -u |wc -l 查看云服务器上每颗 cpu 上的核心数。
+cat /proc/cpuinfo |grep &amp;#34;cpu cores&amp;#34;|sort -u 查看云服务器上总逻辑 CPU 数量（可通过如下三种方式查看）。
+cat /proc/cpuinfo |grep &amp;#34;core id&amp;#34;|wc -l nproc --all getconf _NPROCESSORS_ONLN 查看 CPU 型号。</description>
+    </item>
+    
+    <item>
+      <title>网络异常时如何抓取数据包</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/tcpdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/tcpdump/</guid>
+      <description>本文主要介绍了 Linux 和 Windows 环境下如何使用抓包工具进行抓包。
+详细信息 如果源服务器访问目标服务器时出现异常，您可以抓包获取最原始的交互数据进行排查分析。
+操作步骤 Linux 环境中的抓包工具 Linux 环境中通常使用 TCPDump 工具进行抓包和分析，TCPDump 工具是所有 Linux 发行版本预装的数据包抓取和分析工具。有关 TCPDump 工具的获取和安装方法，请参见 TCPDump 官方文档。
+关于 tcpdump 命令的说明如下所示（区分大小写）。
+tcpdump [ -AbdDefhHIJKlLnNOpqStuUvxX# ] [ -B buffer_size ] [ -c count ] [ -C file_size ] [ -G rotate_seconds ] [ -F file ] [ -i interface ] [ -j tstamp_type ] [ -m module ] [ -M secret ] [ --number ] [ -Q in|out|inout ] [ -r file ] [ -V file ] [ -s snaplen ] [ -T type ] [ -w file ] [ -W filecount ] [ -E spi@ipaddr algo:secret,.</description>
+    </item>
+    
+    <item>
+      <title> Linux 系统因开启 SELinux 导致登录错误</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_setlinux_close/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_setlinux_close/</guid>
+      <description>问题描述 在 SSH 远程连接 Linux 实例时，即便密码正确输入后，在命令行或 secure 日志中也会出现如下错误信息。
+Permission denied, please try again. error: Could not get shadow infromation for root. 问题原因 该问题通常是由于系统启用了 SELinux 服务所致。
+解决方法 可以根据现场环境需求，选择临时或永久关闭 SELinux 服务解决 SSH 连接异常问题。
+检查 SELinux 服务状态 通过 vnc 登录 Linux 实例，执行以下命令，查看当前 SELinux 服务状态。
+/usr/sbin/sestatus -v 系统显示类似如下。
+SELinux status: enabled 说明 如果 SELinux status 参数是 enabled 即处于开启状态，是 disabled 即处于关闭状态。
+临时关闭 SELinux 服务 登录 Linux 实例，执行以下命令，临时关闭 SELinux 。
+setenforce 0 说明 临时修改 SELinux 服务状态，属于实时生效无需重启系统或实例。</description>
+    </item>
+    
+    <item>
+      <title>Linux 服务器登录缓慢</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_login_timeout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_login_timeout/</guid>
+      <description>问题描述 Linux 服务器登录，su 命令到其他用户或 sudo 命令涉及到用户鉴权相关的操作均非常慢，花费20多秒或以上的时间。
+排查方法 安装 strace，通过 strace su 查看是哪一步花费较长时间。
+CentOS 安装命令：
+yum install strace Ubuntu 安装命令：
+apt-get install strace -y 查看 systemd-logind 服务是否正常。
+执行以下命令可以查看服务状态，这种情况服务一般是假死状态（服务是 active ，但一直在重启且启动未成功）或有明显异常报错。
+Systemctl status systemd-logind 参考异常案例：
+通过 journalctl -xe 查看微服务异常点。
+执行以下命令，查看具体哪个微服务异常，从而查找解决办法，
+journalctl -xe 常见错误为：
+[system] Failed to activate service &amp;#39;org.freedesktop.login1&amp;#39;: timed out 问题解决方案
+此问题是因为 放弃 用户会话（ session ）未关闭而导致。
+执行以下命令。
+systemctl | grep &amp;#39;of user&amp;#39;| grep &amp;#39;abandoned&amp;#39; 检查被遗弃的用户
+执行以下命令。
+rm -rf /run/systemd/system/sessionscope 删除会话目录</description>
+    </item>
+    
+    <item>
+      <title>Linux 时间不同步解决办法</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_time/</guid>
+      <description> 本文以 CentOS 7.9 系统为例介绍如何解决 Linux 系统时间不同步。
+解决方法 执行以下命令 ，安装ntpdate，ntpdate 是一个 Linux 时间同步服务软件。
+yum install -y ntpdate 执行以下命令同步时间，
+ntpdate time.nuri.net 如果 time.nuri.net 服务器同步不了，可以换下面的时间服务器。
+time.nist.gov time.nuri.net 0.asia.pool.ntp.org 1.asia.pool.ntp.org 2.asia.pool.ntp.org 3.asia.pool.ntp.org 定时执行时间同步任务。执行以下命令来添加定时任务。
+crontab -e # 编辑定时任务 * */1 * * * root ntpdatetime.nuri.net # 每小时进行一次同步 </description>
+    </item>
+    
+    <item>
+      <title>Linux 实例网站访问丢包延时高</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linus_packet_loss/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linus_packet_loss/</guid>
+      <description>背景介绍 当网站访问很慢或无法访问时，若已经排除显著的问题，而使用 ping 命令检测到有明显丢包时，建议做链路测试。Linux 环境下，推荐优先使用 mtr 命令行工具测试，或使用 traceroute 命令行工具进行链路测试来判断问题来源。通常情况下，链路测试步骤如下。
+利用链路测试工具探测网络状况和服务器状态。
+根据链路测试结果分析处理。
+解决方法 WinMTR 工具 mtr（My traceroute）几乎是所有 Linux 发行版本预装的网络测试工具，集成了 tracert 与 ping 这两个命令的图形界面，功能十分强大。ping 与 tracert 通常被用来检测网络状况和服务器状态，具体说明如下。
+命令名称 具体说明 ping
+送出封包到指定的服务器。如果服务器有回应就会传送回封包，并附带返回封包来回的时间。
+tracert
+返回从用户的电脑到指定的服务器中间经过的所有节点（路由）以及每个节点的回应速度。
+mtr 默认发送 ICMP 数据包进行链路探测，通过 -u 参数指定 UDP 数据包用于探测。相对于 traceroute 只做一次链路跟踪测试，mtr 会对链路上的相关节点做持续探测并给出相应的统计信息。mtr 能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。
+用法说明
+mtr [-hvrctglspni46] [--help] [--version] [--report] [--report-cycles=COUNT] [--curses] [--gtk] [--raw] [--split] [--no-dns] [--address interface] [--psize=bytes/-s bytes] [--interval=SECONDS] HOSTNAME [PACKETSIZE] 示例输出
+[root@centos ~]# mtr 223.5.5.5 My traceroute [v0.</description>
+    </item>
+    
+    <item>
+      <title>Linux 实例系统总体负载查询及分析</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_instance_system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_instance_system/</guid>
+      <description>本文主要对 Linux 实例总体负载情况的查询和分析进行说明。
+Linux 实例总体负载的查询及分析 Linux 实例如果总体负载过高，可能会引发死机或卡顿等异常。可以参阅如下步骤进行整体排查。
+检查服务器进程与服务否占用过多内存，或者内存没有正常释放，导致出现内存溢出，系统宕机。
+检查 /var/spool/cron 等系统配置中是否有 cron（计划任务）在对应时间段内执行。
+检查 Web 服务器的参数是否超过了服务器的性能，比如最大连接数过高等。
+检查进程数是否非常高，导致服务瘫痪，机器假死。
+查看系统日志中是否有异常记录。
+检查磁盘是否有坏块。
+内核消耗过大，查看是否有瞬间资源占用过大的进程或服务。
+查看是否有异常进程，是否存在被攻击或入侵症状。
+使用 sar 工具查看 Linux 实例各项资源使用情况 sar 是 System Activity Reporter （系统活动情况报告）的缩写。sar 工具对系统状态进行取样后，通过计算数据和比例来表达系统当前的运行状态。其特点是可以连续对系统取样，获得大量的取样数据。其取样数据和分析结果可以存入文件，所需的负载很小。
+sar 是 Linux 系统中较为全面的性能分析工具，可以从多个方面对系统的活动进行监控和报告，包括文件读写情况、系统调用使用情况、串口、CPU 效率、内存使用情况、进程活动及 IPC 有关的活动情况等等。
+安装 sar 工具 如果您的系统中默认未安装 sar 工具，可参考如下步骤进行安装。
+登录 Linux 实例，执行以下命令，安装 sar 工具。
+yum install sysstat 执行以下命令，启动服务。
+/etc/init.d/sysstat start 查看 CPU 负载 执行以下命令，查看 CPU 负载。
+sar -u 1 5 系统显示类似如下。
+Linux 3.10.0-123.9.3.el7.x8664 (iZ23pddtofdZ) 07/04/2016 _x86_64 (1 CPU) 10:16:35 AM CPU %user %nice %system %iowait %steal %idle 10:16:36 AM all 14.</description>
+    </item>
+    
+    <item>
+      <title>使用 SSH 命令登录 Linux 系统时出现报错</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_login_error_nologin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_login_error_nologin/</guid>
+      <description>问题描述 当使用 SSH 命令登录 Linux 系统的云服务器时，即便使用了正常的账号和密码也会连接失败，在命令行或 secure 日志中也会出现类似如下的错误信息：
+This account is currently not available. Connection to 127.0.0.1 closed. Received disconnect from 127.0.0.1: 11: disconnected by user. pam_unix(sshd:session): session closed for user test. 问题原因 该问题通常是由于相应用户的默认 Shell 被修改导致。
+解决方法 通过救援主机查看和修改云服务器配置文件，救援主机可参考文档 如何使用救援主机。
+通过救援主机进入源主机系统盘的根目录下，执行以下命令，查看相应用户的默认 Shell。
+cat etc/passwd | grep test 系统显示类似如下，登录相应用户的 Shell 被修改成 nologin 。
+test:x:1000:1000::/home/test:/sbin/nologin 如果需要修改相关策略配置，操作之前建议先进行文件备份。
+执行以下命令，编辑文件，将相应用户的默认 Shell 修改为 bash ，即将 /sbin/nologin 修改为 /bin/bash ，然后保存并退出即可。
+vi /etc/passwd 在客户端再次尝试连接服务器，确认能正常连接。</description>
+    </item>
+    
+    <item>
+      <title>文件系统扫描工具 fsck</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/fsck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/fsck/</guid>
+      <description>文件系统扫描工具有 fsck、fsck.ext2、fsck.ext3、fsck.ext4、fsck.msdos、fsck.cramfs、fsck.ext4dev、fsck.vfat。需要根据不同的文件系统来调用不同的扫描工具，比如 ext3 的文件系统使用 fsck.ext3，ext4 文件系统使用 fsck.ext4 等。
+注意：fsck 扫描文件系统时一定要在单用户模式、修复模式或把设备 umount 后进行。建议在单用户模式下运行。如果扫描正常运行中的系统，会造成系统文件损坏。
+下面简单介绍下：fsck.ext4
+基本信息 语法 fsck.ext4[必要参数][选择参数][设备代号] 执行权限 root 功能 针对 ext4 型文件系统进行检测修复
+必要参数 -a 非互交模式，自动修复
+-c 检查是否存在有损坏的区块。
+-C&amp;lt;反叙述器&amp;gt; fsck.ext3 命令会把全部的执行过程，都交由其逆向叙述，便于监控程序
+-d 详细显示命令执行过程
+-f 强制进行检查
+-F 检查文件系统之前，先清理该保存设备块区内的数据
+-l&amp;lt;损坏区块文件&amp;gt; 把文件中所列出的损坏区块，加入标记
+-L&amp;lt;损坏区块文件&amp;gt; 清除所有损坏标志，重新标记
+-n 非交互模式,把欲检查的文件系统设成只读
+-P&amp;lt;数字&amp;gt; 设置 fsck.ext2 命令所能处理的 inode 大小为多少
+-r 交互模式
+-R 忽略目录
+-s 顺序检查
+-S 效果和指定 “-s” 参数类似
+-t 显示 fsck.ext2 命令的时序信息。
+-v 显示详细的处理过程
+-y 关闭互动模式
+选择参数 -b&amp;lt;分区第一个磁区地址&amp;gt; 指定分区的第一个磁区的起始地址/Super Block</description>
+    </item>
+    
+    <item>
+      <title>详解 Linux 中的日志及用日志来排查错误的方法</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_system_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_system_log/</guid>
+      <description>许多有价值的日志文件都是由 Linux 自动地为你创建的。你可以在 /var/log 目录中找到它们。下面是在一个典型的 Ubuntu 系统中这个目录的样子：
+日志分类 一些最为重要的 Linux 系统日志包括：
+/var/log/syslog 或 /var/log/messages 存储所有的全局系统活动数据，包括开机信息。基于 Debian 的系统如 Ubuntu 在 /var/log/syslog 中存储它们，而基于 RedHat 的系统如 RHEL 或 CentOS 则在 /var/log/messages 中存储它们。
+/var/log/auth.log 或 /var/log/secure 存储来自可插拔认证模块（PAM）的日志，包括成功的登录，失败的登录尝试和认证方式。Ubuntu 和 Debian 在 /var/log/auth.log 中存储认证信息，而 RedHat 和 CentOS 则在 /var/log/secure 中存储该信息。
+/var/log/kern 存储内核的错误和警告数据，这对于排除与定制内核相关的故障尤为实用。
+/var/log/cron 存储有关 cron 作业的信息。使用这个数据来确保你的 cron 作业正成功地运行着。
+Digital Ocean 有一个关于这些文件的完整教程，介绍了 rsyslog 如何在常见的发行版本如 RedHat 和 CentOS 中创建它们。
+日志写入 应用程序也会在这个目录中写入日志文件。例如像 Apache，Nginx，MySQL 等常见的服务器程序可以在这个目录中写入日志文件。其中一些日志文件由应用程序自己创建，其他的则通过 syslog （具体见下文）来创建。
+什么是 Syslog？ Linux 系统日志文件是如何创建的呢？答案是通过 syslog 守护程序，它在 syslog 套接字 /dev/log 上监听日志信息，然后将它们写入适当的日志文件中。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器同步 NTP 时间</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/ntp_service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/ntp_service/</guid>
+      <description>背景介绍 云服务器默认会开启时间同步，云服务器中 Agent 进程会与平台系统 NTP 同步时间，对于业务需求很强时间准确性的用户，可自己配置 NTP 服务同步时间。
+操作步骤 Linux 配置 NTP 服务 环境配置说明。
+云服务器系统版本 entos 7.7
+NTP 服务端： 192.128.126.3
+NTP 客户端： 192.168.126.2
+如果 NTP 服务器和客户端都是云平台的云服务器，都需要到控制体右键云服务器 id 关闭时间同步，否则云服务器还会自动同步云平台的 NTP 时间。
+检查服务是否安装 ntp、ntpdate。
+rpm -qa | grep ntp 安装服务。
+yum install ntp ntpdate -y 修改配置文件。
+修改配置文件/etc/ntp.conf，注释默认 NTP 服务。
+然后添加新 NTP 服务配置。
+logfile /var/log/ntpd.log # 日志文件 restrict 192.168.126.0 mask 255.255.255.0 nomodify notrap # 授权 192.168.126.0/24 可以从云服务器同步时间 server 192.168.126.3 biurst # 外部时间不可以，可使用本地时间 fudge 127.</description>
+    </item>
+    
+    <item>
+      <title>inodes 被占满</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/inodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/inodes/</guid>
+      <description>背景介绍 Linux 系统下文件数据储存在 “块” 中，而文件的元信息，例如文件的创建者、文件的创建日期、文件的大小等都存储在索引中，这个索引叫做 inode。inode 也占用硬盘空间，硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是inode 区（inode table），存放 inode 所包含的信息。
+inode占满 inodes 使用完与存储空间使用完相似，都是创建不了文件或无法正常执行一些命令。若发现磁盘空间还有，但无法创建文件，可以排查下是否是 inode 空间占满导致。
+执行以下命令，可以查询 inode 的使用情况。
+df -i 或者在平台的云服务器详情页中可以看到 inode的监控。
+解决方法 分析占用数量多的目录 执行以下命令，分析根目录下的每个二级目录下有多少个文件。然后逐层进入 inode 占用最高的目录，继续执行指令，逐步定位占用过高空间的文件或目录。
+for i in /*; do echo $i; find $i | wc -l; done 删除文件 定位到相应目录后，可以执行 find -exec 命令，来删除无用的临时文件。/list 填写相应目录。
+find /list -type f -exec rm {} \; 除了无用的临时文件，0字节的文件也会占用 inode，应该也释放，使用以下命令遍历寻找0字节的文件，并删除。
+find /list -type f -size 0 -exec rm {} \; 或者使用 xargs 命令删除大量小文件。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器 gapd 服务异常</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_gapd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/linux_gapd/</guid>
+      <description> 背景介绍 部分用户反馈在 Linux 云服务器详情页面查询监控信息时，无法获取到硬盘的数据，显示为 “没有数据”。排查发现大部分为 gapd 服务没有运行或异常导致。gapd 服务异常会导致控制台上部分命令执行失败，如加载 SSH 秘钥等，也可按照下面步骤操作。
+解决方法 检查 gapd 服务 通过 ps 命令查看 gapd 进程是否运行，以及 gapd 服务是否正常。若 gapd 服务正常，可以重启下 gapd 服务，若硬盘数据还是无法获取，可以提工单咨询。
+ps -ef | grep gapd # 查看 gadp 进程 systemctl status gapd # 查看 gapd 服务状态 systemctl restart gapd # 重启 gapd 服务 查看文件 需要查看云服务器对应目录下是否有相应文件。两个文件，分别是 “/usr/bin/gapd” 和 “/usr/lib/systemd/system/gapd.service” 。可以执行下列命令查看文件是否存在，若文件不存在，则需要在其他云服务器中拷贝相应文件。
+ls /usr/bin/gapd ls /usr/lib/systemd/system/gapd.service 拷贝文件 在另一台云服务器中拷贝相应文件，可以在另一台有文件中的云服务器中执行下列命令。
+scp /usr/bin/gapd username@ip:/usr/bin/gapd scp /usr/lib/systemd/system/gapd.service username@ip:/usr/lib/systemd/system/gapd.service 启动服务 执行启动命令，并设置为开机自启。
+systemctl start gapd # 启动 gapd 服务 systemctl enable gapd # 设置 gapd 服务开机自启 </description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器网卡丢失 IP</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/nic_loss_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/nic_loss_ip/</guid>
+      <description> 问题背景 客户的云服务器无法登录，经排查发现是云服务器的网卡没有获取到 IP 地址，如截图所示。
+解决方法 可以执行命令 dhclient + 网卡名，以 eth0 例
+dhclient eth0 重启网卡
+ifdown eth0 ifup eth0 </description>
+    </item>
+    
+    <item>
+      <title>磁盘空间容量不足</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/treatment_of_insufficient_disk_space/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/treatment_of_insufficient_disk_space/</guid>
+      <description>问题现象 用户使用云服务器时，往往会遇到磁盘使用空间占满导致业务无法正常运行。
+处理方法 遇到磁盘空间不足的报错时候，首先使用 df -h 命令查看磁盘空间使用情况。
+查看容量用尽的目录，进入到相应的目录中，此处以根目录为例，执行 du -h --max-depth=1 命令。
+cd / du -h --max-depth=1 定位到占用空间大的目录后，进入到相应的目录，继续执行 du -h --max-depth=1 命令。
+du -h --max-depth=1 通过逐层定位，最后找出占用大空间的文件，再结合业务需要，看是否有可以删除的文件，若无可删除的文件，则可以考虑扩容磁盘。</description>
+    </item>
+    
+    <item>
+      <title>文件系统只读的处理方法</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/the_solution_of_read_only_file_system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/the_solution_of_read_only_file_system/</guid>
+      <description> 问题背景 在 Linux 的使用过程中，有时会遇到文件系统只读的情况，写入时出现 Read-only file system 的报错，无法进行写操作。
+处理方法 备份数据 右键云服务器—​创建备份。
+重新挂载 数据盘只读，可以重新挂载数据盘，执行 mount -o remount,rw /dev/vdc 命令。
+使用 fsck 命令修复 查看只读文件位置
+使用 mount 命令查看只读文件位置.
+执行 umount /dev/vdc 命令，取消挂载硬盘。
+使用 fsck.ext4 -y /dev/vdc 命令修改硬盘。
+重启云服务器并重新挂载
+#reboot mount /dev/vdc /mnt </description>
+    </item>
+    
+    <item>
+      <title>如何为 Linux 云服务器配置静态 IP 地址？</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/vm_linux_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/vm_linux_ip/</guid>
+      <description>只有当云服务器位于自管私有网络之中，或者受管私有网络的路由器关闭了 DHCP 时，才需要自行配置 IP 地址。
+注意 请勿手动配置基础网络中云服务器的 IP，否则会造成网络无法连接。
+操作步骤 云平台官方提供的 Linux 镜像使用 NetworkManager 来自动化云服务器的网络配置，其默认配置是通过 DHCP 方式来获取 IP 地址。以下步骤描述了如何配置静态地址。
+用指令 ip link 或者 ifconfig -a 找到网卡在云服务器中的设备名， 通常名为 eth0、eth1 等，以下以 eth0 名字为例。
+配置网卡
+RHEL/CentOS/Fedora
+# vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 BOOTPROTO=static ONBOOT=yes TYPE=Ethernet NM_CONTROLLED=no IPADDR=192.168.100.11 NETMASK=255.255.255.0 GATEWAY=192.168.100.1 NETWORK=192.168.100.0 BROADCAST=192.168.100.255 对于 CentoOS 系统，手动配置网卡可能会和 NetworkManager 的管理有冲突，所以我们建议在手动配置网卡前先将 NetworkManager 禁用，禁用方法为：
+# service NetworkManager stop # chkconfig NetworkManager off Debian/Ubuntu
+# vi /etc/network/interfaces auto eth0 iface eth0 inet static address 192.</description>
+    </item>
+    
+    <item>
+      <title>如何启用 SSH 密码登录 Linux 云服务器？ </title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/vm_linux_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/vm_linux_ssh/</guid>
+      <description>为了安全方面的考量，云平台官方提供的 Linux 映像都禁用了 SSH 密码登录。 当然，您完全可以自行启用密码登录， 但请一定记得修改操作系统用户密码为复杂字串，否则极不安全。
+操作步骤 以下步骤启用 SSH 密码登录。
+# vi /etc/ssh/sshd_config PasswordAuthentication yes 重启 ssh daemon 使之生效。
+RHEL/CentOS
+# service sshd restart Fedora
+# systemctl restart sshd Debian/Ubuntu
+# service ssh restart 注意 强烈建议不要使用密码方式 SSH 登录！</description>
+    </item>
+    
+    <item>
+      <title>解决 df: no file systems processed</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/df_no_file_systems_processed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/df_no_file_systems_processed/</guid>
+      <description>背景介绍 Linux 运维开发时，在使用 df 命令时，偶尔会遇到以下报错：
+df: no file systems processed 或者
+“df：未处理文件系统” 解决方法 root 权限下，执行以下命令。
+#cat /proc/mounts &amp;gt; /etc/mtab 让 /etc/mtab 与 /proc/mount 内容同步，然后再使用 df -h 就可以看到恢复正常了。</description>
+    </item>
+    
+    <item>
+      <title>Linux 云服务器系统卡顿</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/slow_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/linux_server_os/slow_linux/</guid>
+      <description>本文档适用于系统运维工程师，通过本文档可以根据 CPU/内存占用率异常增高导致的 Linux 云服务器卡顿有一个清晰的排查思路。
+CPU 使用率 CPU 使用率查看 在系统维护的过程中，随时可能有需要查看 CPU 使用率，并根据相应信息分析系统状况的需要。在 Linux中，可以通过 top 命令来查看 CPU 使用状况。运行 top 命令后，CPU 使用状态会以全屏的方式显示，并且会处在对话的模式 — 用基于 top 的命令，可以控制显示方式等等。退出 top 的命令为 q （在 top 运行后敲 q 键一次）。
+#top top 的全屏对话模式可分为3部分：系统信息栏、命令输入栏、进程列表栏。
+系统信息栏 第一行（ top）
+13:53:46 为系统当前时刻；
+59min 为系统启动后到现在的运作时间；
+2 users 为当前登录到系统的用户，更确切的说是登录到用户的终端数，同一个用户同一时间对系统多个终端的连接将被视为多个用户连接到系统，这里的用户数也将表现为终端的数目；
+load average 为当前系统负载的平均值，后面的三个值分别为1分钟前、5分钟前、15分钟前进程的平均数，一般的可以认为这个数值超过 CPU 数目时，CPU 将比较吃力的负载当前系统所包含的进程；
+第二行（Tasks）
+160 total 为当前系统进程总数；
+1 running 为当前运行中的进程数；
+159 sleeping 为当前处于等待状态中的进程数；
+0 stoped 为被停止的系统进程数；
+0 zombie 为被复原的进程数；
+第三行（%Cpus）
+分别表示了 CPU 当前的使用率；</description>
+    </item>
+    
+  </channel>
+</rss>

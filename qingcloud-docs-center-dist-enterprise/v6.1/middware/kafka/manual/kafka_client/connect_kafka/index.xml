@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>连接 Kafka 生产消费消息 on 用户指南</title>
+    <link>/v6.1/middware/kafka/manual/kafka_client/connect_kafka/</link>
+    <description>Recent content in 连接 Kafka 生产消费消息 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/middware/kafka/manual/kafka_client/connect_kafka/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>未开启 SASL</title>
+      <link>/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_disabled/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_disabled/</guid>
+      <description>本小节主要介绍如何在命令行模式下不使用 SASL 证书连接 Kafka，并通过 Kafka 生产消费消息。
+您也可以在业务代码中连接 Kafka，具体操作请参见 SDK 文档。
+前提条件 已创建 Kafka 集群，且集群状态为活跃。
+已创建 Topic，并获取 Topic 名称。
+已获取 Kafka 连接地址。
+发送消息 登录 Kafka 客户端。
+执行以下命令，进入命令行工具所在目录。
+cd /opt/kafka/current/bin 执行以下命令，向 Topic 发送消息。
+./kafka-console-producer.sh --bootstrap-server &amp;lt;Kafka 连接地址&amp;gt; --topic &amp;lt;topic_name&amp;gt; 参数说明：
+Kafka 连接地址：所连接的 Kafka 集群的地址。
+topic_name：已创建的 Topic 名称。
+示例：
+如下以私网访问为例，Kafka 连接地址为 “192.168.0.1:9092,192.168.0.2:9092,192.168.0.3:9092”。
+输入需要发送的消息内容，按 Enter 发送消息，每一行的内容都将作为一条消息发送到 Topic。
+$ cd /opt/kafka/current/bin $ ./kafka-console-producer.sh --bootstrap-server 192.168.0.1:9092,192.168.0.2:9092,192.168.0.3:9092 --topic test &amp;gt;hi &amp;gt;hello world &amp;gt;how are you 如需停止发送消息使用 Ctrl+C 命令退出。</description>
+    </item>
+    
+    <item>
+      <title>已开启 SASL</title>
+      <link>/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_enabled/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/middware/kafka/manual/kafka_client/connect_kafka/sasl_enabled/</guid>
+      <description>开启 SASL 后，数据被加密传输，安全性更高。
+本小节主要介绍如何在命令行模式下使用 SASL 证书连接 Kafka，并通过 Kafka 生产消费消息。
+您也可以在业务代码中连接 Kafka，具体操作请参见 SDK 文档。
+前提条件 已创建 Kafka 集群，且集群状态为活跃。
+已创建 Topic，并获取 Topic 名称。
+已获取 Kafka 连接地址。
+已开启 SASL。
+发送消息 登录 Kafka 客户端。
+执行以下命令，进入命令行工具所在目录。
+cd /opt/kafka/current/bin 执行以下命令，向 Topic 发送消息。
+./kafka-console-producer.sh --bootstrap-server &amp;lt;Kafka 连接地址&amp;gt; --topic &amp;lt;topic_name&amp;gt; --producer.config /ssl/kafka.config 参数说明：
+Kafka 连接地址：所连接的 Kafka 集群的地址。
+topic_name：已创建的 Topic 名称。
+示例：
+如下以私网访问为例，Kafka 连接地址为 “192.168.0.1:9092,192.168.0.2:9092,192.168.0.3:9092”。
+输入需要发送的消息内容，按 Enter 发送消息，每一行的内容都将作为一条消息发送到 Topic。
+$ cd /opt/kafka/current/bin $ ./kafka-console-producer.sh --bootstrap-server 192.168.0.1:9092,192.168.0.2:9092,192.168.0.3:9092 --topic test --producer.</description>
+    </item>
+    
+  </channel>
+</rss>

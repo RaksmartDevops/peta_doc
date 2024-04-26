@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/compute/image/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/image/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>捕获镜像</title>
+      <link>/v6.1/compute/image/manual/image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/image/manual/image/</guid>
+      <description>通过云服务器备份捕获的镜像 点击 计算 &amp;gt; 云服务器 ，关闭任一云服务器，右键选择 创建备份，创建可以制作为镜像的备份。
+待备份完成之后，在控制台上选择 存储 &amp;gt; 备份，找到之前的备份，并右键选择 制作新镜像。
+待完成之后，可以在 计算 &amp;gt; 镜像 &amp;gt; 自有 中看到刚才创建的镜像。
+通过数据盘备份捕获的镜像 用户也可以将自定义镜像上传到云服务器挂载的硬盘中，使用硬盘的快照制作成用户自定义的镜像。
+限制条件 您需要注意以下的限制条件:
+用户自定义的镜像创建的云服务器不能重置密码；
+某些监控信息可能采集不到；
+不支持使用 lvm 分区的镜像；
+根据自定义的镜像文件创建的云服务器在挂载硬盘后硬盘的映射关系无法显示（即 vol-XXX 和 /dev/sdX 之间的映射关系）；
+自定义的镜像的大小不能超过设置的值，公有云中不能超过 100G 不能小于 20G。
+注意事项 在使用自定义的系统盘创建自定义镜像时，务必保证 /etc/fstab 的信息和系统盘内分区一致；
+确保 /boot/grub/grub.cfg，/boot/grub/menu.list （不同操作系统对应文件不一样）等文件可以正确引导启动；
+确保网口配置为 dhcp 能够自动获取 ip 地址。
+操作步骤 示例 1: 将本地的 20G 系统盘的镜像上传到云平台环境上。 务必确保本地系统盘上的 /etc/fstab，/etc/network/ 等文件信息正确。
+云服务器创建新的硬盘，大小也为 20G (和本地系统盘的大小一致；如果系统盘的大小小于 20G，也需要创建 20G 的云硬盘)；
+挂载新创建的硬盘到某台云服务器上；
+拷贝本地的 test2.img 镜像文件到云服务器上；
+scp -i $KEY_PATH test2.</description>
+    </item>
+    
+    <item>
+      <title>自有镜像跨区复制</title>
+      <link>/v6.1/compute/image/manual/copy_resource/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/image/manual/copy_resource/</guid>
+      <description>用户在多地部署资源或转移使用区域时，常常需要将云服务器镜像资源跨区复制。跨区复制功能方便用户多地共享资源，便于区域间的同步。
+镜像跨区复制步骤 选择一个自有镜像，右键点击 跨区复制镜像 按钮，即可选择目标区域，提交复制任务。 复制任务需要的时间取决于映象本身大小和网络情况。复制完成后可以在右上角看到进度提示，也可以到全局任务日志列表中查看。</description>
+    </item>
+    
+    <item>
+      <title>镜像管理</title>
+      <link>/v6.1/compute/image/manual/image_manage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/image/manual/image_manage/</guid>
+      <description>镜像管理功能主要是为方便用户自主上传自有镜像文件，并对已在平台内的自有镜像文件进行挂载和卸载操作。
+前提条件 镜像文件已上传至云平台，该操作需登录 BOSS 平台进行。
+该操作仅适用于自有镜像。
+挂载镜像文件 登录管理控制台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 镜像， 进入镜像列表页面。
+选择自有页签，右键点击指定镜像，在弹出的选框中，选择镜像管理。
+在弹出的镜像管理页面中，选择当前镜像待挂载的云服务器，点击确定即可。
+说明 支持选择单个或多个云服务器。
+卸载镜像文件 登录管理控制台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 镜像， 进入镜像列表页面。
+在自有镜像列表页面，右键点击指定镜像，在弹出的选框中，选择镜像管理。
+在弹出的镜像管理页面中，删除已挂载的云服务器，点击确定即可。</description>
+    </item>
+    
+  </channel>
+</rss>

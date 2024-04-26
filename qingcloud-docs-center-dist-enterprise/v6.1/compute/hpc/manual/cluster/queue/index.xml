@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>队列管理 on 用户指南</title>
+    <link>/v6.1/compute/hpc/manual/cluster/queue/</link>
+    <description>Recent content in 队列管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/hpc/manual/cluster/queue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>队列概述</title>
+      <link>/v6.1/compute/hpc/manual/cluster/queue/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/queue/queue/</guid>
+      <description>弹性高性能计算 EHPC 推出调度器管理功能，将运行不同作业或执行不同任务的节点进行分类，加入到不同的队列进行分类管理，从而更高效的管理大量运行作业的计算节点。
+队列是计算节点的集合，队列的计算节点越多、核心数越多、计算效率越高。
+作业的运行需要选择队列。
+EHPC 集群，作业运行默认在默认队列。若需将不同的计算节点分配给不同的人员使用，可以申请新的队列，将节点添加到此队列来构建队列。</description>
+    </item>
+    
+    <item>
+      <title>申请队列</title>
+      <link>/v6.1/compute/hpc/manual/cluster/queue/apply_queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/queue/apply_queue/</guid>
+      <description>若需将不同的计算节点分配给不同的人员使用，可以申请新的队列，将节点添加到此队列来构建队列。
+前提条件 已创建 EHPC 集群。
+申请队列 登录管理控制台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。
+点击 EHPC 集群 ID，进入集群详情页面，选择队列管理页签。
+点击申请队列，弹出申请队列窗口，输入队列名称。
+点击确定，完成队列的申请操作。
+若界面弹出添加队列成功的提示信息，则说明添加队列成功。
+在队列列表中，可以查看新申请的队列。
+后续操作 队列申请完成后，请将节点添加到此队列来构建队列。
+节点添加到队列
+相关操作 删除队列 删除队列时，需要保证集群中至少有一个队列处于活跃状态。
+在 EHPC 集群详情页面，点击队列管理，进入队列管理页面。
+在待删除的队列所在行，点击删除，弹出删除队列窗口。点击确定，即可完成队列的删除操作。</description>
+    </item>
+    
+    <item>
+      <title>节点添加到队列</title>
+      <link>/v6.1/compute/hpc/manual/cluster/queue/add_to_queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/queue/add_to_queue/</guid>
+      <description>前提条件 已创建 EHPC 集群。
+使用限制 仅计算节点可添加到队列。
+新节点添加到队列 登录管理控制台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，默认进入集群管理页面。
+点击已创建完成的 EHPC 集群 ID，进入集群详情页面。 选择节点列表页签。
+点击添加节点，在添加节点窗口，节点类型选择计算节点，选择所属队列。
+配置完成相关参数，并点击确定添加，完成新节点添加到队列操作。
+节点移动到队列 进入节点列表页面。
+在计算节点所在行，点击，选择移动节点到队列。
+在弹出的移动节点到队列窗口中，选择移动到的队列。
+点击确认移动，完成节点移动到队列的操作。
+若界面弹出移动节点到队列成功的提示信息，则说明移动节点到队列成功。</description>
+    </item>
+    
+  </channel>
+</rss>

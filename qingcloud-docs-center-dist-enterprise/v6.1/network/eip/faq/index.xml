@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>常见问题 on 用户指南</title>
+    <link>/v6.1/network/eip/faq/</link>
+    <description>Recent content in 常见问题 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/network/eip/faq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>公网连通 FAQ</title>
+      <link>/v6.1/network/eip/faq/connect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/eip/faq/connect/</guid>
+      <description>为什么云服务器绑定 EIP 后仍无法通过公网连通？
+公网连接的网络延迟增大如何处理？
+如何实现云服务器 IPv6 公网访问？
+为什么云服务器绑定 EIP 后仍无法通过公网连通？ 无法通过 EIP 访问云服务器，可能原因如下：
+可能原因 排查建议 被云服务器的安全策略拦截
+请排查云服务器是否绑定安全组。
+请检查安全组规则中是否允许对相关协议或端口的访问。
+如果您的云服务器绑定的是默认安全组，那么 ping 和 ssh 所使用的端口默认是放开的，您可以通过 SSH 方式远程登录云服务器，也可以 ping 通云服务器 EIP。
+如果您的云服务器绑定的是自建安全组，初始状态下，安全组中不包含任何规则，所有端口都是关闭的，故无法连通。您需要建立规则以打开相应的端口。
+例如：如果您需要访问云服务器的 22 号端口，需要手动为云服务器所在安全组下，添加一条接受 tcp 22 端口的下行规则；如果您想开启 ping 功能，则需要在安全组中添加接受 ICMP echo request 的下行规则。
+EIP 实例欠费
+请排查 EIP 实例是否存在欠费的情况。 平台会在欠费前后给您发送短信或邮件提醒。为避免实例欠费对您的服务产生影响，请您及时续费或充值。
+公网连接的网络延迟增大如何处理？ 可能原因 当出现通过云服务器访问互联网或者互联网访问云服务响应慢时，通常有如下原因：
+正在上传文件到云服务器或者在云服务器从互联网下载数据。
+云服务器对外提供的业务，有大量流量进出（既有用户在访问您的业务）。
+排查建议 通过执行以下命令测试公网 IP 的延迟。
+请将 &amp;lt;EIP&amp;gt; 替换为您的实际 EIP 地址。
+ping &amp;lt;EIP&amp;gt; -t 返回如下类似信息：
+正在 Ping 139.x.x.x 具有 32 字节的数据: 来自 139.</description>
+    </item>
+    
+    <item>
+      <title>计费 FAQ</title>
+      <link>/v6.1/network/eip/faq/bill/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/eip/faq/bill/</guid>
+      <description>EIP 流量计费的具体统计方法是什么？
+EIP 实例欠费后会被如何处理？
+什么情况下会收取 IP 地址附加费?
+按流量计费的 EIP 可以转换为按带宽计费吗？
+EIP 流量计费的具体统计方法是什么？ 如果 EIP 的计费模式是按流量计费，则除了固定的 IP 地址价格外，流量数据会每小时自动统计一次，统计方法为：对统计周期内的进、出流量求和，取其中较大的值作为扣费依据。其中，进流量费用只对超出 10Mbps 之后的流量计费。
+EIP 实例欠费后会被如何处理？ 欠费之后有 10 天的资源保留期，并且平台会发送欠费提醒通知。保留期内，用户可随时充值来恢复资源。超过保留期仍未充值，资源将被彻底删除，无法再恢复。
+什么情况下会收取 IP 地址附加费? 针对按带宽计费的 EIP，每个主账户名下都有免费的 IP 地址额度（默认为 2 个），当申请的 IP 地址个数超过免费额度时，系统会对额度外的每个 IP 收取固定的附加费用。该费用记在主账户名下。
+按流量计费的 EIP 可以转换为按带宽计费吗？ 可以。公网 IP 支持按带宽计费和按流量计费两种收费模式，两种收费模式可以互相转换。</description>
+    </item>
+    
+    <item>
+      <title>绑定与解绑 FAQ</title>
+      <link>/v6.1/network/eip/faq/bind/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/eip/faq/bind/</guid>
+      <description>EIP 可以绑定到那些云资源？
+一个 EIP 可以同时绑定多个云资源吗？
+EIP 是否支持跨区域和跨可用区绑定？
+多台云服务器访问公网，是否需要为每台云服务器绑定 EIP？
+云服务器已经绑定了 EIP，是否还支持通过 NAT 网关的 DNAT 功能对外提供公网服务？
+EIP 可以绑定到那些云资源？ 目前，EIP 支持绑定到云服务器、负载均衡器、VPC 网络、NAT 网关和网卡上。
+一个 EIP 可以同时绑定多个云资源吗？ 不能。一个 EIP 只能同时绑定一个云资源。
+EIP 是否支持跨区域和跨可用区绑定？ 不支持跨区域绑定，EIP 和要绑定的云资源必须在同一个区域。
+支持跨可用区绑定，EIP 没有可用区属性，云资源只要和 EIP 属于同一个区域，就可以绑定该云资源。
+多台云服务器访问公网，是否需要为每台云服务器绑定 EIP？ 不需要。您可以通过以下两种方式使云服务器使用同一个 EIP 访问公网：
+将需要访问外网的云服务器加入到同一个 VPC 网络中，并在同一 VPC 下创建一个 NAT 网关然后绑定 EIP，通过配置 SNAT 规则，可以使 VPC 下的所有云服务器都通过 NAT 访问公网，无需为每个云服务器绑定 EIP。详细操作，请参见通过 SNAT 功能实现访问公网服务。
+将需要访问外网的云服务器加入到同一个 VPC 网络中，然后为 VPC 网络绑定一个 EIP，则 VPC 下的私有网络中的所有云服务器都可以访问公网。
+云服务器已经绑定了 EIP，是否还支持通过 NAT 网关的 DNAT 功能对外提供公网服务？ 不支持。</description>
+    </item>
+    
+  </channel>
+</rss>

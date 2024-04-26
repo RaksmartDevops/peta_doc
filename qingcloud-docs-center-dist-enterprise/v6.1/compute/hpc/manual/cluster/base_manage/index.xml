@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>集群基础管理 on 用户指南</title>
+    <link>/v6.1/compute/hpc/manual/cluster/base_manage/</link>
+    <description>Recent content in 集群基础管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/hpc/manual/cluster/base_manage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看集群信息</title>
+      <link>/v6.1/compute/hpc/manual/cluster/base_manage/view_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/base_manage/view_cluster/</guid>
+      <description>本章节介绍如何查看集群相关信息。
+前提条件 已创建专属 EHPC 集群。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面，用户在当前页面可以查看集群相关状态。
+状态 状态说明 创建中、安装中、初始化中
+集群创建期间的状态，正在构建集群的登录节点、管控节点、计算节点，进行调度器、域账号服务等程序的安装，无需用户干预，预计 5 ~ 8 分钟
+活跃
+集群创建完毕处于可用状态。注意：这是集群唯一可以正常使用的状态
+异常
+可提交工单，技术支持团队会提供相应协助
+已停止
+集群节点已经停止服务，集群不计费，只收少量硬盘费用
+删除中
+集群在停机释放过程中
+点击已创建完成的集群名称/ ID，进入指定集群的详细信息页面。
+集群详情说明 基本信息 参数 参数说明 集群名称
+集群的名称，用户可根据需要自定义修改
+集群 ID
+集群 ID 是云平台自动分配的 EHPC 集群唯一标识
+集群状态
+集群的状态
+付费类型
+集群的扣费规则，包年包月按月进行资源的统一扣费；按需付费为按小时进行扣费，详细内容可到费用中心进行查看
+集群版本
+集群的版本信息
+公网 IP
+该集群登录节点绑定的公网 IP，通过此 IP 地址可以登录到集群的登录节点进行远程操作。另外，可以在公网 IP 详情页面，查看流量的监控及计费情况等
+安全组
+集群安全的保证，系统自动构建默认防火墙。若绑定公网 IP 系统会自动给所有节点绑定默认防火墙
+集群描述
+针对当前集群的描述，用户自定义
+申请时间
+申请集群的时间
+应用信息 参数 参数说明 部署方式</description>
+    </item>
+    
+    <item>
+      <title>远程连接配置</title>
+      <link>/v6.1/compute/hpc/manual/cluster/base_manage/remote_login/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/base_manage/remote_login/</guid>
+      <description>本章节介绍如何配置 EHPC 集群的远程登录。
+前提条件 已创建 EHPC 集群。
+操作步骤 WebSSH 远程连接 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面，点击远程登录。在弹出的远程连接窗口中，选择 WebSSH 远程连接，并输入用户名和密码，点击确定即可。
+说明 用户名和密码为集群内已存在的户名和密码，可通过进入集群详情页面内的用户页签进行查看。
+VNC连接 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面，点击远程登录。在弹出的远程连接窗口中，选择 VNC 连接，点击确定。
+在弹出的 Web 终端页面中输入相应的账户和密码即可登录集群。
+说明 用户名和密码为集群内已存在的户名和密码，可通过进入集群详情页面内的用户列表进行查看。</description>
+    </item>
+    
+    <item>
+      <title>扩容缩容</title>
+      <link>/v6.1/compute/hpc/manual/cluster/base_manage/expansion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/base_manage/expansion/</guid>
+      <description>本章节介绍如何对已创建完成 EHPC 集群进行扩容或缩容操作。
+前提条件 已创建EHPC 集群。
+注意事项 扩容/缩容集群是指修改集群内节点的配置，过程中会导致服务中断，请在集群业务低峰期进行。
+EHPC 集群支持扩容/缩容登录节点、计算节点以及管控节点。通过增加或减少计算节点，可以控制集群的最大计算力。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 高性能计算，进入集群管理页面，点 EHPC 集群更多操作的下拉选框，选择扩容缩容。
+在弹出的扩容缩容集群窗口中，选择需要扩容/缩容的节点类型以及节点规格，点击确定添加。
+返回集群界面，弹出调整 HPC 集群提示符，等待集群扩容/缩容完成即可。</description>
+    </item>
+    
+    <item>
+      <title>集群停机/启动</title>
+      <link>/v6.1/compute/hpc/manual/cluster/base_manage/cluster_pause/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/base_manage/cluster_pause/</guid>
+      <description>本章介绍 EHPC 集群的启停操作。按需计费的集群停机后，将不再收取节点费用，只收取相应系统盘的费用。
+前提条件 已创建 EHPC 集群。
+操作步骤 集群停机 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。选择带停机的集群，点击更多操作的下拉选框，选择停机。
+在弹出的关闭集群的提示窗口中，点击确定，完成集群停机操作。若集群状态变更为已停止，则说明集群停机成功。
+说明 集群停机后，按需付费的节点将不再收费。
+集群启动 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。选择状态为已停止的集群，点击更多操作的下拉选框，选择启动。
+在弹出的启动集群的提示窗口中，点击确定，完成集群启动操作。若集群状态变更为活跃，则说明集群启动成功。
+说明 集群内所有节点启动，按需付费的节点将开始收费。</description>
+    </item>
+    
+    <item>
+      <title>删除集群</title>
+      <link>/v6.1/compute/hpc/manual/cluster/base_manage/cluster_delete/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/base_manage/cluster_delete/</guid>
+      <description>本章节介绍如何对已创建完成 EHPC 集群进行删除操作。
+前提条件 已创建 EHPC 集群。
+集群内的所有业务均已停止，所有数据均已备份。
+操作步骤 登录管理控制平台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。选在待删除的集群，点击更多操作的下拉选框，选择删除。
+在弹出的注销集群的提示窗口中，点击确定即可。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>磁盘管理 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/common_operations/disk_manage/</link>
+    <description>Recent content in 磁盘管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/common_operations/disk_manage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>云服务器挂载硬盘时注意事项</title>
+      <link>/v6.1/compute/vm/faq/common_operations/disk_manage/disk-_mount-_problem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/disk_manage/disk-_mount-_problem/</guid>
+      <description>云服务器挂载硬盘类型 云服务器类型 挂载硬盘类型 基础型
+基础型本地盘、容量型云盘、通用型 SSD 云盘和增强型 SSD 云盘。
+企业型
+SSD 本地盘、容量型云盘、通用型 SSD 云盘和增强型 SSD 云盘。
+专业型（GPU 云服务器）
+企业级 SSD 硬盘，数据盘支持企业级 SSD 硬盘、容量型和企业级分布式 SAN。
+云服务器和硬盘区域（zone） 云服务器需要与硬盘所属同个可用区，如云服务器（北京3B） 硬盘也必须为北京3B ；
+副本策略 云服务器副本策略是否与硬盘副本策略一致；
+例：云服务器副本策略为同数据中心多副本 — 硬盘副本策略也需一致。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器硬盘初始化</title>
+      <link>/v6.1/compute/vm/faq/common_operations/disk_manage/init_harddisk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/disk_manage/init_harddisk/</guid>
+      <description>硬盘容量小于 2TB 的操作方法 右键点击开始菜单，选择 运行 &amp;gt; diskmgmt.msc
+选择磁盘分区类型，默认为 MBR。
+如果硬盘是脱机状态，通过以下办法联机，联机以后才能对磁盘进行操作。
+右键单击磁盘上未分配的区域，选择 新建简单卷，后续按提示操作。
+初始化完成，卷 如下图状态即初始化成功。
+硬盘容量大于 2TB 的操作方法 右键开始菜单，选择 运行 &amp;gt; diskmgmt.msc。
+选择磁盘分区类型，选择 GPT 分区。
+如果硬盘是脱机状态，通过以下办法联机，联机以后才能对磁盘进行操作。
+右键单击磁盘上未分配的区域，选择 新建简单卷，后续按提示操作。
+初始化完成，卷 如下图状态即初始化成功。</description>
+    </item>
+    
+    <item>
+      <title>Linux 恢复误删除分区</title>
+      <link>/v6.1/compute/vm/faq/common_operations/disk_manage/linux_restore_partition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/disk_manage/linux_restore_partition/</guid>
+      <description>磁盘分区误删除后，再没有重启云服务器的情况下，使用 TestDisk 工具恢复分区。
+故障复现 磁盘分区
+删除分区
+如图，当前 /dev/vdc 磁盘只剩下 vdc3 分区，现在按照下面的步骤进行恢复。
+操作步骤 使用 TestDisk 工具修复
+安装 Ubuntu：
+apt-get install testdisk CentOS 6,7
+yum install -y epel-release yum install -y testdisk 恢复 输入需要恢复分区的磁盘，开始修复
+testdisk /dev/vdc 选择修复磁盘，如下图为 /dev/vdc，选择下面的 Proceed，回车；
+选择分区表类型，这里是 ntel，回车；
+选择 Analyse，回车；
+此时只有第三个分区，选择 Quick Search ，回车。这里可以先选择 Backup 备份，避免操作失误；
+可能会弹出一个确认信息， Continue 回车确认。
+TestDisk 分析出磁盘的分区开始块、结束块等信息，选择第一个分区，回车；
+选择 Write 回车，将原有的分区信息再写回到磁盘中；
+之后输入 Y 确认，然后会弹出提示信息，重启生效，回车确认。
+按 Q 或者选择 Quit 退出，`lsblk`命令查看当前磁盘分区信息。
+可以看到被删除的分区都恢复了。</description>
+    </item>
+    
+    <item>
+      <title>云服务器怎么扩容磁盘</title>
+      <link>/v6.1/compute/vm/faq/common_operations/disk_manage/disk_expansion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/disk_manage/disk_expansion/</guid>
+      <description> 问题现象 用户使用云服务器时，往往会有遇到需要扩容云硬盘的场景。
+操作步骤 控制台扩容 登录管理控制台。
+选择 存储 &amp;gt; 硬盘，进入 硬盘 界面。
+右键选择 扩容，弹出扩容硬盘提示框，修改完成后点击 提交：
+云硬盘扩容文件系统 需要查看磁盘的文件系统类型，并将挂载的磁盘卸载。
+lsblk -f df -h #查看挂载盘符为/dev/vdc umount /dev/vdc EXT 文件系统扩容 检查分区
+执行以下命令，检查扩容后的分区。
+e2fsck -f /dev/vdc 扩容文件系统
+执行 resize2fs 命令扩容文件系统。
+resize2fs /dev/vdc 挂载并检查容量
+使用 mount 命令将扩容后的磁盘挂载到系统目录，并检查容量变化。
+mount /dev/vdc /mnt df -h XFS 文件系统扩容 检查分区
+执行以下命令，检查扩容后的分区。若输出为 0，说明正常。
+xfs_ncheck /dev/vdc; echo $? 扩容文件系统
+需要先将磁盘挂载，然后执行 xfs_growfs 命令扩容文件系统，否则会报错。
+mount /dev/vdc /mnt xfs_growfs /dev/vdc 检查容量
+df -h </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>挂载资源 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/mounting_resource/</link>
+    <description>Recent content in 挂载资源 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/mounting_resource/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>挂载资源说明</title>
+      <link>/v6.1/container/qke_plus/manual/mounting_resource/resource_des/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mounting_resource/resource_des/</guid>
+      <description>挂载资源包括集群运行、内置插件及功能运行所需的网络、存储等资源。
+云资源使用说明 说明 挂载资源仅展示系统根据业务需求自动创建的资源，用户手动创建或绑定的资源不在此处显示。
+资源类型 资源使用说明 云硬盘
+安装集群可视化管理工具及其内置组件，将会自动创建并挂载一定数量的云硬盘。对应的持久卷信息请参考持久卷使用说明。 用户也可通过 KubeSphere 创建并挂载云硬盘到集群。
+负载均衡器
+创建集群将自动创建一个负载均衡器。 若为可视化控制台绑定了 EIP（公网 IP），会自动创建一个负载均衡器。
+安全组
+创建集群将自动创建一个安全组。 若为可视化控制台绑定了 EIP（公网 IP），会自动创建一个安全组。 用户也可以为集群绑定其他安全组。
+持久卷说明 单个 Master 节点的集群的持久卷使用量说明：
+组件 命名空间 持久卷名称 持久卷个数 MetricServer (默认安装)
+kubesphere-monitoring-system
+prometheus-k8s-db-prometheus-k8s-0
+prometheus-k8s-db-prometheus-k8s-1
+2
+审计/事件/日志
+kubesphere-logging-system
+集群节点大于 1 小于等于 5 时，3 个 PVC：
+data-elasticsearch-logging-data-0
+data-elasticsearch-logging-data-1
+data-elasticsearch-logging-discovery-0
+集群节点数大于 5 时，6 个 PVC，除以上 3 个，增加如下 3 个：
+data-elasticsearch-logging-data-2
+data-elasticsearch-logging-discovery-1
+data-elasticsearch-logging-discovery-2
+说明 日志、审计、事件组件都依赖 elasticsearch。elasticsearch 需要创建 3个 或 6个 PVC。如果使用外置 ELK，则不需要。</description>
+    </item>
+    
+    <item>
+      <title>查看挂载资源</title>
+      <link>/v6.1/container/qke_plus/manual/mounting_resource/view_resource/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mounting_resource/view_resource/</guid>
+      <description>本文介绍如何查看集群所挂载的云资源。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群管理页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 挂载资源，进入挂载资源页面。
+通过点击选项卡，分别查看已挂载到集群的云硬盘、负载均衡器及安全组资源。
+云硬盘
+可查看集群挂载的云硬盘名称、对应持久卷名称、硬盘状态、硬盘类型、硬盘容量等信息。点击资源 ID 号，将跳转到对应资源的详情页面。
+说明 名称指云平台获取的硬盘名称。
+持久卷指 K8s 获取的持久卷名称。
+负载均衡器
+可查看集群中使用到的负载均衡器的名称、状态、类型、IP 地址等信息。点击资源 ID 号，将跳转到对应资源的详情页面。
+安全组
+可查看集群所绑定的安全组的信息。点击资源 ID 号，将跳转到对应资源的详情页面。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产品简介 on 用户指南</title>
+    <link>/v6.1/operation/resource/intro/</link>
+    <description>Recent content in 产品简介 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/operation/resource/intro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>什么是项目管理</title>
+      <link>/v6.1/operation/resource/intro/project_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/resource/intro/project_intro/</guid>
+      <description>项目是基于资源协作（Collaboration）升级的功能，目的是帮助您分组管理、分享资源。
+项目可以让用于不同目的资源，在独立的视图下进行操作。同时项目内能够设置角色、添加成员，使得项目能够分享给其他账户（包括子账户和其他独立账户）使用。
+项目是跨可用区的，您可以在全局视图看到项目的消费查询、预估，以及重点资源用量趋势、告警等。</description>
+    </item>
+    
+    <item>
+      <title>什么是区域及可用区</title>
+      <link>/v6.1/operation/resource/intro/region_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/resource/intro/region_intro/</guid>
+      <description>区域 根据数据中心地理位置划分，不同区域间内网隔离，不能互相访问。
+可用区 一个区域包括多个可用区，每个可用区都相互独立但网络互通，同一可用区内的主机网络延时更小。如果业务需要同城多活，建议您部署在不同可用区。
+云平台的一个区域由多个可用区组成，每个可用区都是独立的数据中心，它们之间电力和网络设备互相独立，并且网络互通，适合部署同城多活的高可用业务， 同一可用区内的主机网络延时更小。
+如果业务需要同城多活，建议您将主机部署在不同可用区内，通过同一个负载均衡器对外提供服务。
+如果主机之间需要较低的网络时延，则建议您将它们部署在相同的可用区内。
+部署业务时，用户可利用多可用区部署来实现高可用方案，从而避免某个可用区的服务不可用而影响整个业务。</description>
+    </item>
+    
+    <item>
+      <title>什么是资源共享</title>
+      <link>/v6.1/operation/resource/intro/resource_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/resource/intro/resource_intro/</guid>
+      <description>资源共享（Resource Sharing）是指多账号间通过共享的方式将一个账号下的私有网络共享给一个或多个目标账号使用。
+应用场景 在使用云平台服务的过程中，您会创建多个私有网络。某些场景下，您需要其他账号的资源，加入到您的私有网络中。
+使用云平台提供的资源共享功能，您可以将自己的私有网络分享给其他账号，分享者可以在您的私有网络中创建资源，或者将自己已有的资源加入您的私有网络中。
+产品介绍 名称 说明 共享单元
+共享单元是资源共享的实例。共享单元本身也是一种云资源，拥有独立的 ID 和名称。共享单元包括：资源所有者、资源使用者和共享的资源。
+资源所有者
+资源所有者是资源共享的发起者，也是共享资源的拥有者，通常为资源目录的企业管理账号或成员账号。
+资源使用者
+资源使用者是资源共享的使用者，对共享资源具有特定的操作权限，通常为资源目录内的一个或多个成员账号。
+共享资源
+共享的资源通常为某个云服务的某类资源，例如专有网络（VPC）。
+产品特点 降低成本：统一创建资源，并与其他成员账号共享资源，无需在每个账号中重复配置资源，从而降低操作成本。
+统一管理：将被共享的资源统一做运维管理，方便集中配置安全策略及其他操作。
+提升体验：资源基于相同的共享机制运作，您不必适应不同云资源的差异化共享操作，提升共享体验。</description>
+    </item>
+    
+    <item>
+      <title>什么是配额管理</title>
+      <link>/v6.1/operation/resource/intro/quota_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/resource/intro/quota_intro/</guid>
+      <description>为防止资源滥用，云平台限定了各服务资源的配额，对用户的资源数量和容量做了限制，如最多可以创建多少台云服务器等。如果当前资源配额无法满足使用需要，您可以申请扩大配额。</description>
+    </item>
+    
+  </channel>
+</rss>

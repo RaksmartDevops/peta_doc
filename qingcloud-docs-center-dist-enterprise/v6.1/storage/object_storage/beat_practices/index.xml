@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>最佳实践 on 用户指南</title>
+    <link>/v6.1/storage/object_storage/beat_practices/</link>
+    <description>Recent content in 最佳实践 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/object_storage/beat_practices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据迁移方案</title>
+      <link>/v6.1/storage/object_storage/beat_practices/migrate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/migrate/</guid>
+      <description>对象存储推出了无缝数据迁移方案，帮助用户将业务数据从自建平台或者其他对象存储平台高效完整地迁移至对象存储服务。
+本方案提供两种迁移方式：
+被动触发迁移
+用户主动迁移
+综合运用两种迁移方式，可以在不中断业务的前提下，平滑完整地进行迁移。本方案首先介绍对象存储提供的两种迁移方式，再对迁移步骤进行详细说明。
+被动触发迁移 - 外部镜像 对于已经设置了外部镜像的对象存储 的 Bucket，当请求的 Object 在 Bucket 中不存在时，对象存储服务端会把 Object Key 拼接在外部镜像源站后作为抓取的源链接，然后自动从源站抓取（回源），并写入到 Bucket 当中。在回源过程中，请求这个 Object 的客户端，有可能会下载到源站文件，也有可能收到重定向到源站相应路径的 302 请求。在回源完成后，客户端能够直接从对象存储的 Bucket 中获取这个 Object。对象存储建议用户可先使用 Head Object 返回 200 成功来确认 Object 存在。
+下面结合示意图，说明外部镜像的工作原理:
+外部镜像，需要源站在提供下载文件时能返回 Content-Length 头，否则回源失败。
+假设用户的外部镜像源站为 http://img.example.com，在对象存储的 Bucket 的默认域名为 http://bucketname.pek3a.qingstor.com。
+示意图左侧为首次请求:
+用户发起获取 Object 的请求，如 http://bucketname.pek3a.qingstor.com/blog.png；
+Object 在对象存储的 Bucket 中不存在，且用户已经为该 Bucket 设置了外部镜像源站，此时，对象存储服务端会将 Object Key blog.png 拼接到源站，生成源链接 +http://img.example.com/blog.png；
+对象存储服务端从该源链接抓取；
+在抓取过程中，请求该 Object 的客户端，有可能会下载到源站文件，也有可能收到重定向到源站相应路径的 302 请求。
+示意图右侧为抓取完成后，再次发起请求:
+用户发起获取 Object 的请求；</description>
+    </item>
+    
+    <item>
+      <title>实时增量数据备份解决方案</title>
+      <link>/v6.1/storage/object_storage/beat_practices/backup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/backup/</guid>
+      <description>实时且增量地对数据进行备份是用户的普遍需求，本方案将描述如何在 Linux 下将本地业务数据实时备份至对象存储的 Bucket 中。
+本方案采用 lsyncd 实时地监控指定目录在文件系统层次的变化，当该目录下发生文件创建、重命名、删除等操作时，qsctl 便会被自动调用以将数据同步至指定的对象存储的 Bucket 中。因为 qsctl 支持增量同步，所以整个方案可以做到实时且增量的数据备份。
+下面介绍完整的配置步骤。
+环境要求 本方案仅支持 Linux Kernel 2.6.13 及其以后的版本，且要求 Kernel 编译选项 CONFIG_INOTIFY_USER 为开启状态。用户可以使用如下命令来确认自己的系统是否支持该方案:
+本地终端输入如下命令行：
+grep INOTIFY_USER /boot/config-$(uname -r) 返回结果：
+CONFIG_INOTIFY_USER=y 则说明可以采用该方案。
+软件配置 安装 lsyncd，使用系统对应的包管理器进行安装即可
+Debian、Ubuntu 等系统：
+sudo apt install lsyncd CentOS、Fedora 等系统：
+sudo yum install epel-release &amp;amp;&amp;amp; yum makecache sudo yum install lsyncd 使用 pip 安装并配置 qsctl，qsctl 的详细配置可以参考 qsctl 的文档
+pip install qsctl -U 使用方法 假设需要同步的目录为 /tmp/example， 待同步的对象存储的 Bucket 为 example-bucket，lsyncd 的配置文件为 ~/qingstor-backup.</description>
+    </item>
+    
+    <item>
+      <title>Linux 使用对象存储作为本地盘</title>
+      <link>/v6.1/storage/object_storage/beat_practices/linux_uses_object_storage_as_a_local_disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/linux_uses_object_storage_as_a_local_disk/</guid>
+      <description>本文介绍如何通过 goofys 将对象存储挂载到文件系统使用。项目地址：Github 项目
+操作步骤 创建 Bucket，若已经有可使用的 Bucket，可略过该步骤。详细操作可参考 创建 Bucket。
+申请 API 密钥。
+安装 goofys (以 Ubuntu 为例)
+mkdir /usr/local/goofys cd /usr/local/goofys wget https://github.com/kahing/goofys/releases/latest/download/goofys chmod +x goofys echo &amp;#34;PATH=\$PATH:/usr/local/goofys&amp;#34; &amp;gt;&amp;gt; /etc/profile source /etc/profile 挂载 Bucket
+cd ~ vim .aws/credentials [default] aws_access_key_id = qy_access_key_id #API密钥ID aws_secret_access_key = qy_secret_access_key #API密钥密码 goofys --endpoint https://s3.&amp;lt;zone&amp;gt;.qingstor.com &amp;lt;bucket_name&amp;gt; &amp;lt;mount_point&amp;gt; df -Th 查看结果</description>
+    </item>
+    
+    <item>
+      <title>移动 App 接入方案</title>
+      <link>/v6.1/storage/object_storage/beat_practices/app_integration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/app_integration/</guid>
+      <description>伴随着移动互联网的浪潮，移动应用 App 的开发需求越来越多样化，无论何种功能都离不开文件存储。在以前，应用开发者需要自行开发构建文件服务器，用于保存数据文件，并面向互联网提供访问，例如社交网络中的用户照片，视频网站中的影音内容，电商平台中的商品图片。
+然而这些数据通常由终端用户直接生产和消费，伴随着用户增长，服务器的压力也会日益增大，开发者很难构建一个兼具高可用性、高扩展性和低成本的文件服务器。对象存储刚好填补了这方面的需求，可为移动开发者提供一站式的文件存储解决方案。
+对象存储提供 HTTP RESTful 风格的访问接口，并辅助于编程语言相关的 SDK 工具，帮助开发者用极少的开发成本，将移动应用 App 对接到对象存储。本文将介绍几种种不同使用场景下，与对象存储对接的方案：
+使用对象存储 SDK
+开发者实现签名服务器
+表单 POST 上传
+最后再介绍一种特殊的签名认证方式：请求参数签名，用于当 Bucket 为私有权限时，在用户之间分享 Bucket 中的文件链接。
+准备工作 创建 Bucket 使用对象存储之前，用户需创建相应的 Bucket，用于储存 Object。详细操作可参考 创建 Bucket。
+创建 Access Key 选择 产品与服务 &amp;gt; 访问与授权 &amp;gt; API 密钥，进入 API 密钥主页面。
+在 API 密钥主页面，点击 创建，按要求输入相关信息后，点击 提交 按钮。
+使用 SDK 对象存储目前已提供多种语言的 SDK，包括开发 iPhone App 使用的 Swift 语言，以及开发 Android App 使用的 Java 语言。App 开发者将 SDK 嵌入到客户端程序中，通过调用 SDK 提供的方法和接口与对象存储服务端通信。
+这里将以开发一个上传照片的 iPhone App 为例，讲解如何使用对象存储的 SDK for Swift 将 App 接入到对象存储。</description>
+    </item>
+    
+    <item>
+      <title>静态网站托管方案</title>
+      <link>/v6.1/storage/object_storage/beat_practices/web_hosting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/web_hosting/</guid>
+      <description>静态网站托管（Bucket Web Hosting），是对象存储，面向静态网页内容（包含音频和视频等文件）提供的一种托管服务，是对静态网站的文件存储、访问控制、 CDN 分发加速，以及安全保障等一站式的解决方案。网页内容包含音频和视频等文件。可帮助用户快速构建并托管基于静态内容的网站，并提供高可靠与高可用的服务保障，大幅简化用户建站的操作流程，同时大幅降低网站的日常运营与维护成本。
+主要优势 高可靠、高可用 继承对象存储高可靠高可用特性。
+存储容量可无限水平扩展。
+提供完善的 API 接口与管理功能。
+用户可便捷地上传与管理托管的静态内容。
+操作简便 配合对象存储提供的 qsctl 文件上传工具，可实现对托管内容的快速实时更新，保障用户对网站内容的快速更新。
+用户可以通过对象存储完善的功能，实现对所托管网站的访问控制、流量监控、安全防护等功能。
+无缝衔接 CDN 加速及 HTTPS 证书 整合了云平台 CDN 加速服务，并支持对网站开启 HTTPS 证书认证，以满足用户对网站访问的更高需求。
+在 管理控制台与静态网站托管功能进行无缝衔接，使用户在一致的操作体验中完成操作。
+使用成本大幅降低 对象存储成本低廉，无需采购、部署和运维，可按量付费。并且支持用户通过存储分层及对象生命周期管理，将成本降至更低。
+应用场景 静态网站托管 对象存储静态网站托管可为企业官网、新闻站点、自媒体站点、个人博客及文档汇编等大量使用静态内容的网站提供一套使用简便、成本低廉、高效可靠的面向静态网页的托管方案。
+三步完成网站上线，省去繁杂的基础设施运维：
+将所有静态网站文件上传至对象存储 Bucket，并点选相应的配置；
+设置网站访问域名，选择是否开启 CDN 或 HTTPS 证书（证书需用户自行提前准备好）；
+开启静态网站托管。
+静态网站托管使用流程：
+设置 Bucket 为公开可读：
+将网站内容上传至 Bucket。
+推荐使用对象存储提供的命令行工具 qsctl 进行上传，使用方法可以参考 qsctl 文档。如使用 sync 命令上传整个网站，操作命令行为：
+qsctl sync /path/to/website qs://test-bucket 绑定自定义域名并开启静态网站设置并操作。
+在浏览器中访问刚才绑定的自定义域名，即可查看网站内容。
+大型动态网站动静分离 将静态内容单独拆分出来进行托管，是目前普遍的网站优化手段，对象存储静态网站托管可帮助提升网站的整体运行效率，并降低使用成本。
+降低 Web 服务器负载，静态文件访问负载全部通过 CDN</description>
+    </item>
+    
+    <item>
+      <title>Bucket Policy 白名单和黑名单使用实例</title>
+      <link>/v6.1/storage/object_storage/beat_practices/policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/beat_practices/policy/</guid>
+      <description>ACL 提供了 Bucket 级别的读写权限设置，包括可读、可写和可读写。用户可以将不同的访问权限分别授予不同的云平台用户，也可以选择所有用户整体设置。Bucket Policy 允许用户更细粒度的控制 Bucket 的访问。其语义主要由用户、 资源、动作及条件运算符组合定义。例如仅允许指定用户以指定站点为 Referer 以下载 Bucket 中的某单个 Object，或者防止外链等。
+ACL 过于广域，对于一些更细粒度的控制无法实现，需要用 Policy 来实现访问控制。
+以下是 Policy 规则分别使用白名单和黑名单实现相同结果的两个案例，从案例中熟悉 Policy 黑白名单的使用。最终实现的效果都是一样，即头字段里的 referer 必须匹配 *.baidu.com，才能允许访问。详细操作如下：
+案例一：ACL无任何规则 进入 访问控制 设置页面，清除所有 ACL 规则，详细操作可参考 Bucket ACL：
+进入 存储空间策略 设置页面，创建规则，设置 Referer 匹配 *.baidu.com 访问，也就是设置访问白名单。详细操作可参考 Bucket Policy：
+测试结果如下，直接 curl 访问提示无权限，添加 --referer 参数，指定 www.baidu.com 之后可以正常访问:
+可见，ACL 不做任何规则限制，此时默认都无权访问，但是由于 Policy 优先级更高，可以直接越过 ACL 的限制。
+案例二：ACL限制所有人可读 进入 访问控制 设置页面，添加所有用户可读的 ACL 规则，详细操作可参考 Bucket ACL：
+进入 存储空间策略 设置页面，创建规则，设置 Referer 不匹配 *.</description>
+    </item>
+    
+  </channel>
+</rss>

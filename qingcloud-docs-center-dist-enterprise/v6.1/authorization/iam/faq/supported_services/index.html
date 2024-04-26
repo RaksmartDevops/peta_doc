@@ -1,0 +1,2543 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[IAM , 服务类别]">
+
+
+
+<meta name="description" content="介绍 IAM 支持的服务类别。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>支持的服务类别列表 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/authorization/iam/">
+          
+            访问鉴权管理
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/intro/">概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/glossary/">名词解释</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/iam_v1/">IAM V1.0 版发布概要</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/portal/">产品入口</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/role/">身份管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/policy/">策略管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/user/">用户管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/policies_simulate/">策略模拟器</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/log/">操作日志</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/principal/">信任载体</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/qrn/">资源标识符 QRN</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/json/">JSON 编辑格式及参数说明</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/authorization/iam/faq/supported_services/">支持的服务类别列表</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/assume_role/">如何使用身份</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/best-practices/scenario1/">免密钥应用开发</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/best-practices/scenario2/">跨账号管理协作</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/authorization/iam" data-url="/v6.1/authorization/iam">访问鉴权管理</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/authorization/iam/faq/principal/" data-url="/v6.1/authorization/iam/faq">常见问题</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/authorization/iam/faq/supported_services" data-url="/v6.1/authorization/iam/faq/supported_services">支持的服务类别列表</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    支持的服务类别列表</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/authorization/iam/faq">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_服务类别">服务类别</a></li>
+    <li><a href="#_区域和可用区">区域和可用区</a></li>
+    <li><a href="#_服务操作列表">服务操作列表</a>
+      <ul>
+        <li><a href="#_弹性云服务器ecm">弹性云服务器（ecm）</a></li>
+        <li><a href="#_虚拟专用网vpc">虚拟专用网（vpc）</a></li>
+        <li><a href="#_弹性负载均衡器elb">弹性负载均衡器（elb）</a></li>
+        <li><a href="#_资源云监控rcm">资源云监控（rcm）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p><strong>服务类别</strong>指的是云平台为客户提供的一系列云服务，如弹性云服务器服务、虚拟专用网服务等。</p>
+</div>
+<div class="paragraph">
+<p>若您决定针对性的创建策略以定义某些操作或资源的访问权限，您需要先选择对应的服务类别，然后勾选需要限定的操作，最后根据操作来指定权限范围。</p>
+</div>
+<div class="paragraph">
+<p>在您编辑<a href="../../manual/policy">策略</a>或指定<a href="../../faq/qrn">资源标识符 QRN</a>时，您可能需要了解云平台上的服务类别、区域、操作指令，以及它们与云平台资源类型之间的关系。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>只有经过 IAM 集成的服务才可以创建自定义策略，暂未集成的服务将会默认被 IAM 评估拒绝。</p>
+</div>
+<div class="paragraph">
+<p>目前并非所有的云平台服务都可以通过 IAM 来控制访问权限。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect1">
+<h2 id="_服务类别">服务类别</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>目前云平台 IAM 暂时支持以下几种服务类别以及对应 ID：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>弹性云服务器：ecm</p>
+</li>
+<li>
+<p>虚拟专用网：vpc</p>
+</li>
+<li>
+<p>弹性负载均衡器：elb</p>
+</li>
+<li>
+<p>资源云监控：rcm</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>对服务类别的支持将在后续逐步完善，目前暂未支持的云计算服务默认将采取拒绝策略。</p>
+</div>
+<div class="paragraph">
+<p>有些全局服务（例如财务、通知、工单、发票等）暂未提供 API 级别的策略配置，您需要到账户类身份详情页<a href="../../manual/role/#_为账户类身份配置可见模块">配置控制台可见模块</a>来控制页面级访问。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/demo1_ConfigModule.png" alt="demo1_ConfigModule"/>
+</div>
+</div>
+<div class="paragraph">
+<p>您可能在使用过程中发现一些服务暂不支持或使用报错，可随时与我们联系。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_区域和可用区">区域和可用区</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IAM 身份和 QRN 支持的区域及可用区列表：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">区域</th>
+<th class="tableblock halign-left valign-top">区域 ID</th>
+<th class="tableblock halign-left valign-top">可用区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">北京3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PEK3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">北京3区-B 、北京3区-C 、北京3区-D</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">广东2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GD2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">广东2区-A 、广东2区-B</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上海1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SH1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上海1区-A 、上海1区-B</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">亚太2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AP2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">亚太2区-A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">雅加达</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AP3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">雅加达区</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>更多详细信息，请参考区域和可用区指南。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_服务操作列表">服务操作列表</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IAM 支持管理访问控制的操作列表如下：</p>
+</div>
+<div class="sect2">
+<h3 id="_弹性云服务器ecm">弹性云服务器（ecm）</h3>
+<table class="tableblock frame-all grid-all stretch allow_break_inside">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API 指令</th>
+<th class="tableblock halign-left valign-top">操作名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeInstancesWithMonitors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看云服务器监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeInstanceTypes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看云服务器类型</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateBrokers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访问终端</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteBrokers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关闭终端</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeInstanceGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeKeyPairs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看 SSH 密钥</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeImages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看镜像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeNics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看网卡</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeEips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSecurityGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看防火墙</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSecurityGroupSnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看防火墙备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSecurityGroupIPSets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看 IP/端口组集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSecurityGroupRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeS2Groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看共享存储组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeS2Accounts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看共享存储账户</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeS2DefaultParameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看共享存储目标缺省参数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeS2SharedTargets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看共享存储目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeSchedulers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看定时器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyInstanceAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改云服务器属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResetLoginPasswd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重置登录密码</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoveSecurityGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除防火墙</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RestartInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重启云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StartInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启动云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StopInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关闭云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoveSecurityGroupFromResources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">移除防火墙</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateInstanceGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteInstanceGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JoinInstanceGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">分配云服务器到安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplyInstanceGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更新安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LeaveInstanceGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">离开安置策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyInstanceGroupAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改安置策略组信息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateKeyPair</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建 SSH 密钥</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AttachKeyPairs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">加载 SSH 密钥</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DetachKeyPairs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卸载 SSH 密钥</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyKeyPairAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改 SSH 密钥属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteKeyPairs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除 SSH 密钥</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyImageAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改镜像属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AttachVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">加载硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DetachVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卸载硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyVolumeAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改硬盘属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifySnapshotAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改备份属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyEipAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改公网 IP 属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AssociateEip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DissociateEips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解绑公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateSecurityGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CopySecurityGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">复制防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifySecurityGroupAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改防火墙属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSecurityGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除防火墙</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddSecurityGroupRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifySecurityGroupRuleAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改防火墙规则属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplySecurityGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplySecurityGroupToResources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用防火墙规则到资源</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSecurityGroupRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除防火墙规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateSecurityGroupSnapshot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建防火墙备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RollbackSecurityGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">回滚防火墙</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSecurityGroupSnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除防火墙备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateSecurityGroupIPSet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建 IP/端口组集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CopySecurityGroupIPSets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">复制 IP/端口组集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifySecurityGroupIPSetAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改 IP/端口组集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplySecurityGroupIPSets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用防火墙 IP/端口集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSecurityGroupIPSets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除 IP/端口组集合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyS2ServerAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改共享存储属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PowerOnS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启动共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PowerOffS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关闭共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UpdateS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更新共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyS2Account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改共享存储账户</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AssociateS2AccountGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关联共享存储账户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DissociateS2AccountGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解绑共享存储账户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyS2Group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改共享存储组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DetachFromS2SharedTarget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关联目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyS2SharedTargetAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改目标门户组属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EnableS2SharedTargets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启用目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DisableS2SharedTargets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">禁用目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AttachToS2SharedTarget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解绑目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeS2ServerVxnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">切换私有网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateScheduler</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建定时器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifySchedulerAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改定时器属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSchedulers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除定时器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateNics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建网卡</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AttachNics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定网卡</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DetachNics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解绑网卡</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyNicAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改网卡属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RunInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TerminateInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResizeInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改云服务器配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RescueInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">救援云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnrescueInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取消救援云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResetInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重置系统</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CaptureInstance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">制作新镜像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteImages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除镜像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloneVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">克隆硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResizeVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">扩容硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteVolumes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除硬盘</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateSnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteSnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplySnapshots</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用备份</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AllocateEips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReleaseEips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">释放公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeEipsBandwidth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">调整公网 IP 带宽</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeEipsBillingMode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改公网 IP 计费模式</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateS2Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ScaleOutS2Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加 S2 节点</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ScaleInS2Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除 S2 节点</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResumeS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CeaseS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">销毁共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SuspendS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResizeS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改共享存储配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteS2Servers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除共享存储</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateS2Group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteS2Groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除共享存储组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateS2Account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteS2Accounts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除共享存储账户</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateS2SharedTarget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteS2SharedTargets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除目标门户组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteNics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除网卡</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_虚拟专用网vpc">虚拟专用网（vpc）</h3>
+<table class="tableblock frame-all grid-all stretch allow_break_inside">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API 指令</th>
+<th class="tableblock halign-left valign-top">操作名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeRouteTables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看路由表</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeVpcBorders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看边界路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeRouterStatics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看路由器详细配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeRouterVxnets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看路由器下的私有网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeVxnets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看私有网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeVxnetInstances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看私有网络下云服务器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeVxnetResources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看私有网络下资源</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeRouterStaticEntries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看路由器规则条目</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetVPNCerts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看 VPN 证书</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JoinRouter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">连接路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LeaveRouter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">离开路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyRouterAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改路由器属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddRouterStatics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加路由器详细配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyRouterStaticAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改路由器详细配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteRouterStatics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除路由器详细配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateVxnets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建私有网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteVxnets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除私有网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyVxnetAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改私有网络属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JoinVxnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">加入网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LeaveVxnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">离开网络</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddRouterStaticEntries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加路由器规则条目</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyRouterStaticEntryAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改路由器规则条目属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteRouterStaticEntries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除路由器规则条目</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UpdateRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更新路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateRouteTable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建路由表</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateVpcBorders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建边界路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResizeRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改路由器类型</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PowerOffRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关闭路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PowerOnRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启动路由器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteRouters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除路由器</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_弹性负载均衡器elb">弹性负载均衡器（elb）</h3>
+<table class="tableblock frame-all grid-all stretch allow_break_inside">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API 指令</th>
+<th class="tableblock halign-left valign-top">操作名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancerPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看转发策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancerListeners</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看负载均衡器监听器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancerBackends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看负载均衡器后端</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancerPolicyRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看转发策略规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeLoadBalancerPolicyRewriteRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看转发策略重写规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeWAFDomainPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查询 WAF 域名防护策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeWAFParameterGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查询 WAF 配置组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeWAFParameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查询 WAF 配置组参数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeWAFRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeWAFRuleGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改负载均衡器属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResizeLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更新负载均衡器配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddLoadBalancerListeners</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加负载均衡器监听器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerListenerAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改负载均衡器监听器属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancerListeners</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除负载均衡器监听器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddLoadBalancerBackends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加负载均衡器后端</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerBackendAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改负载均衡器后端属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancerBackends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除负载均衡器后端</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AssociateEipsToLoadBalancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定公网 IP 到负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DissociateEipsFromLoadBalancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解绑负载均衡器公网 IP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UpdateLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更新负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateLoadBalancerPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建转发策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddLoadBalancerPolicyRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加转发策略规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddLoadBalancerPolicyRewriteRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">添加转发策略重写规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerPolicyAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改转发策略属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerPolicyRuleAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改转发策略规则属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyLoadBalancerPolicyRewriteRuleAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">修改转发策略重写规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancerPolicyRewriteRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除转发策略重写规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancerPolicyRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除转发策略规则</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplyLoadBalancerPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用转发策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancerPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除转发策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DetachWAFDomainPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解除域名防护策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AttachWAFDomainPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">加载域名防护策略组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyWAFParameterGroupAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AddWAFRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteWAFRules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UpdateWAFParameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ApplyWAFParameterGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用 WAF 域名防护策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ResetWAFParameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateWAFParameterGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建 WAF 配置组</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteWAFParameterGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateWAFRuleGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteWAFRuleGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateLoadBalancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StopLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">关闭负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StartLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启动负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteLoadBalancers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除负载均衡器</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateWAFDomainPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建域名防护策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteWAFDomainPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建 WAF 域名防护策略组</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_资源云监控rcm">资源云监控（rcm）</h3>
+<table class="tableblock frame-all grid-all stretch allow_break_inside">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API 指令</th>
+<th class="tableblock halign-left valign-top">操作名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetMonitor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetMonitors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看多组监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetResourceMonitor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看资源监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetLoadBalancerMonitor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看负载均衡器监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetLoadBalancerWafEventData</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GetClusterMonitor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看集群监控</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeAlarms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeAlarmPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看告警策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeAlarmHistory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DescribeAutoScalingPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">查看自动伸缩策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateAlarmPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建告警策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyAlarmPolicyAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改告警策略属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteAlarmPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除告警策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CreateAutoScalingPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建自动伸缩策略</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ModifyAutoScalingPolicyAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">更改自动伸缩策略属性</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeleteAutoScalingPolicies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除自动伸缩策略</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_服务类别">服务类别</a></li>
+    <li><a href="#_区域和可用区">区域和可用区</a></li>
+    <li><a href="#_服务操作列表">服务操作列表</a>
+      <ul>
+        <li><a href="#_弹性云服务器ecm">弹性云服务器（ecm）</a></li>
+        <li><a href="#_虚拟专用网vpc">虚拟专用网（vpc）</a></li>
+        <li><a href="#_弹性负载均衡器elb">弹性负载均衡器（elb）</a></li>
+        <li><a href="#_资源云监控rcm">资源云监控（rcm）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

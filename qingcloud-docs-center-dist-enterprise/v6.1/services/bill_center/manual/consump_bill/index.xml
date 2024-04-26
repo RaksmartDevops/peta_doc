@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>消费账单 on 用户指南</title>
+    <link>/v6.1/services/bill_center/manual/consump_bill/</link>
+    <description>Recent content in 消费账单 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/services/bill_center/manual/consump_bill/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>账单总览</title>
+      <link>/v6.1/services/bill_center/manual/consump_bill/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/consump_bill/overview/</guid>
+      <description>您可以在账单总览页面查看每个账单期的账单概况，包括资源的消费情况及优惠券抵扣等信息，并支持导出选定时间范围内的账单。
+查看账单：选择对账周期，页面即可显示对应周期内的账单消费情况，包括余额概览、账期充值概览、账期发票概览、账期消费概览。
+导出账单：选择对账周期，点击导出，即可以 .xls 格式导出所选周期的账单数据。</description>
+    </item>
+    
+    <item>
+      <title>消费明细</title>
+      <link>/v6.1/services/bill_center/manual/consump_bill/details/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/consump_bill/details/</guid>
+      <description>您可以在消费明细页面查看每月/季度/年/自定义时间的消费明细，并支持按照项目、资源类型、区域等多维度条件筛选查看。
+查看消费明细：选择时间及过滤条件后，页面下方即可显示满足条件的消费统计图表，默认显示柱状图统计。在统计图右上方，可点击图标切换为折线图形式。
+导出消费明细：在统计图右上角，点击导出，即可以 .xls 格式导出当前页面的消费统计数据。</description>
+    </item>
+    
+    <item>
+      <title>消费预估</title>
+      <link>/v6.1/services/bill_center/manual/consump_bill/forecast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/consump_bill/forecast/</guid>
+      <description>您可以在消费预估页面查看从现在开始的未来7天内的消费预估，包括按需计费及预留合约/包年包月的消费预估。
+说明 费用预估仅供参考，系统将根据实际使用情况进行费用收取。
+页面默认显示 7 天消费预估，可点击默认预估时长配置进行修改。也可手动切换查看 1 小时、1 天、30 天、3 月、1 年的消费预估。
+在主账户视图下，可以查看主账户和非独立计费的子账户的资源或服务的预估情况，在子账户视图下可查看自己所有的消费预估情况。详细情况如下表：
+说明 在按项目预估的统计中，包括了项目中目前所有资源的预估。如果一个合约内的资源属于多个项目，将根据项目将预留合约的费用进行拆分预估。
+例如，用户有一个预留合约总共包括 5 台云服务器产品，预留合约自动续费的费用是 500 元，合约中有 4 台属于项目 A，1 台属于项目 B，合约在 30 天内会到期自动续费，那项目 A 的这 4 台资源的预估为 400 元，项目 B 中这 1 台的预估为 100元。</description>
+    </item>
+    
+  </channel>
+</rss>

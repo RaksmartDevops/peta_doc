@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>快速入门 on 用户指南</title>
+    <link>/v6.1/services/bill_center/qs/</link>
+    <description>Recent content in 快速入门 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/services/bill_center/qs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>了解费用中心</title>
+      <link>/v6.1/services/bill_center/qs/10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/qs/10/</guid>
+      <description>什么是费用中心 费用中心是免费提供给客户的财务经营管理服务，为客户在云平台进行云资源交易、资源运营、财务分析管理等提供了统一的渠道和策略。客户通过费用中心，可以清晰地了解自己的订单、账单和消费明细等相关信息，还可以进行续约、退订、发票管理等操作。
+费用中心功能概览 功能 说明 相关文档 账户总览
+提供费用中心常用功能的信息概览及操作入口。
+账单总览
+钱包
+支持账户充值及充值记录查看。
+钱包充值
+优惠券
+查看有效优惠券、过期优惠券及激活优惠券。
+管理优惠券
+账单总览
+支持按月查看账单概况，包括资源消费、资源抵扣及账单发票情况，并支持账单导出。
+账单总览
+消费明细
+支持查看每个月的消费明细，并支持多维度条件筛选及数据导出。
+账单明细
+消费预估
+支持从多个维度查看按需计费资源及包年包月资源的费用预估，以及设置默认预估参数。
+消费预估
+续费管理
+支持查看已购买的包年包月/预留合约资源，以及资源的自动及手动续费。
+续费管理
+发票管理
+支持申请开具发票、管理发票抬头及发票邮寄地址。
+发票管理</description>
+    </item>
+    
+    <item>
+      <title>快速上手指引</title>
+      <link>/v6.1/services/bill_center/qs/20/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/qs/20/</guid>
+      <description>本文指导您快速了解如何通过费用中心及控制台完成基础的资源采购及财务管理，如：注册账号、充值、购买、查看账单、索取发票等。
+整体流程如下图所示。
+完成准备工作。
+注册云平台账号。
+完成账号的实名认证。
+完成账户充值及资源购买。
+在费用中心钱包页面，选择适用的充值类型，完成账户充值。
+通过产品与服务目录，找到目标产品或服务的控制台入口，进行资源创建或购买。
+支付您的购买。
+查看或导出您的消费账单。
+在费用中心账单总览页面，查看及导出账单总览。
+在费用中心消费明细页面，查看及导出账单明细。
+索取您的发票。
+在费用中心发票管理页面，申请发票。
+等待纸质发票邮寄给您。
+根据需要进行资源续费或停止。
+若您需要继续使用资源，则可以在费用中心的续费管理页面，进行资源续费。
+若您不再需要使用资源，则需要在控制台找到目标资源，手动删除按需计费资源或退订包年包月资源。</description>
+    </item>
+    
+  </channel>
+</rss>

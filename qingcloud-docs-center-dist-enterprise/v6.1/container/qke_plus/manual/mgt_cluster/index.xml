@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>集群管理 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/mgt_cluster/</link>
+    <description>Recent content in 集群管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/mgt_cluster/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看集群概览</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/cluster_overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/cluster_overview/</guid>
+      <description>本文介绍如何查看集群概览信息。
+进入集群概览页面 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+集群概览页面以图形化界面展示了集群节点、集群资源、相关依赖服务及插件等运行或使用情况。
+查看集群概览 节点在线状态
+展示集群全部节点及在线节点数。
+集群资源使用情况
+展示集群的 CPU、内存、容器组及存储资源的总量、使用量及使用率。
+可视化管理工具
+展示集群已安装的可视化管理工具。若为管理工具绑定了公网 IP，其登录地址将一并展示，点击地址即可访问。
+插件运行情况
+展示已安装的插件信息及其运行状态。将鼠标悬浮与插件上方，可显示插件详细信息。
+插件详细介绍请参见插件说明。
+日志管理
+默认展示近一个月内的集群操作日志，操作日志包括操作类型、操作者、操作内容及操作时间。</description>
+    </item>
+    
+    <item>
+      <title>查看集群信息</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/cluster_info/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/cluster_info/</guid>
+      <description>集群创建成功后，可查看集群信息。
+进入集群信息页面 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，点击集群信息，进入集群信息页面。
+查看集群信息 集群信息包括以下内容：
+查看基本信息
+基本信息区域展示了集群名称、集群类型、集群状态、服务状态、部署方式等基本信息。
+点击集群名称和描述后的图标，可修改集群名称及描述。
+查看配置信息
+配置信息区域展示了集群版本、节点个数及所属网络。
+查看计费信息
+计费信息区域展示了集群计费模式及产品价格等信息。
+点击详情，可查看扣费详情。
+查看 kubeconfig
+说明 kubeconfig 文件用于存储所要管理集群的访问凭证，kubectl 会根据该配置文件连接至集群。默认情况下，kubectl 在 $HOME/.kube 目录下查找名为 config 的文件。 您可以通过设置 KUBECONFIG 环境变量或者设置 --kubeconfig 参数来指定其他 kubeconfig 文件。
+点击查看 kubeconfig，在弹出的 kubeconfig 窗口中便可查看 kubeconfig 配置。
+点击复制，可复制文件内容；点击下载，可将配置内容下载到一个 .txt 文件中。
+查看插件
+点击查看插件，在弹出的插件窗口中可查看已安装插件的版本及运行状态。
+环境参数
+环境参数区域罗列了当前集群的参数配置情况。
+您可以点击修改参数修改部分参数的值。详细参数说明请参见参数说明。</description>
+    </item>
+    
+    <item>
+      <title>配置集群参数</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/paras_cfg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/paras_cfg/</guid>
+      <description>QKE 支持自定义部分参数的值，您可以根据自己的业务情况对集群运行参数进行调整。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，点击集群信息，进入集群信息页面。
+在页面右侧的环境参数区域，展示了集群当前的参数配置。
+参数包括镜像参数、存储参数、网络参数、kubernetes 配置及其他参数。
+点击修改参数，参数值变为可编辑状态。
+说明 部分参数仅支持在创建集群时配置，此处不可修改，仅作为展示。
+可同时修改不同类型的参数。
+根据实际情况进行参数值修改。
+详细说明请参见下述参数说明。
+修改完成后，点击确认修改进行保存，弹出提示框。
+确认无误后，点击确认。
+参数说明 镜像参数 参数名称 配置说明 registry-mirrors
+填写完整的 Docker 镜像服务地址。 填写示例：https://mirror.harbor.local。多个地址之间使用逗号（,）分隔。
+insecure-registries
+若需要通过非安全的 HTTP 或不受信任的 HTTPS 访问的 Docker 仓库，则在此处填写仓库地址。 填写示例：mirror.harbor.local。多个地址之间使用逗号（,）分隔。
+docker-auths
+填写镜像仓库密钥，以获得访问、拉取、推送镜像得权限。 填写示例：{&amp;#34;dockerhub.domain.com&amp;#34;:{&amp;#34;auth&amp;#34;:&amp;#34;YWRtaW46MTIzNDU2&amp;#34;},&amp;#34;index.docker.io&amp;#34;:{&amp;#34;auth&amp;#34;:&amp;#34;YWRtaW46MTIzNDU2&amp;#34;}}。 具体配置说明请参见配置镜像仓库信息。
+存储参数 参数名称 参数说明 存储插件
+集群默认存储插件为 csi-qingcloud-controller（云平台块存储），您可以添加其他插件提供更多类型集群存储服务，如 csi-u10000（QingStor U10000 存储）。添加前，需要已完成存储与 QKE 的对接，否则无法在界面中添加。
+持久卷默认插件
+在支持的存储插件中，选择一款存储插件作为容器持久卷对应的后端存储。
+网络参数 参数名称 参数说明 Proxy Mode
+选择 kube-proxy 的模式：iptables 或 ipvs。 kube-proxy 用于在服务和其后端 Pod 之间进行负载均衡。其详细说明，请参考 Kubernetes 指南。</description>
+    </item>
+    
+    <item>
+      <title>集群扩缩容</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/change_cluster_scale/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/change_cluster_scale/</guid>
+      <description>QKE 集群支持手动及自动的横向伸缩及纵向扩容。
+纵向扩容 纵向扩容是指通过更改集群节点的实例规格、硬盘大小来达到集群扩容的目的。
+注意事项 扩容时会造成扩容节点暂时不可用，请在业务低峰时进行。
+操作前请保证 QKE 集群内有足够资源容纳迁移的 Pod。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群管理页面。
+在集群列表，点击操作列的图标，选择集群扩容。
+您也可以点击集群名称，进入集群管理页面。在页面右上方，点击更多操作 &amp;gt; 集群扩容。
+选择需要变更的节点类型，然后修改节点规格及硬盘大小。
+注意 只支持扩容，不可降低节点配置。
+在确认集群配置区域，查看当前规格和更改后规格，确认无误后，点击确定。
+横向扩缩容 横向扩/缩容是指通过新增或删除节点来进行集群横向扩/缩容。
+手动扩缩容 您可以在节点管理页面手动新增或删除节点。具体操作请参见调整节点数量。
+自动伸缩 您可以通过云平台提供的自动伸缩功能，配置集群节点根据所设置的条件进行横向的弹性伸缩，防止节点资源不足或浪费。
+具体操作请参见节点弹性伸缩。</description>
+    </item>
+    
+    <item>
+      <title>启停集群</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/start_stop_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/start_stop_cluster/</guid>
+      <description>本小节主要介绍如何手动及自动进行 QKE 集群的启动及关闭操作。
+操作场景 当您暂时不需要使用 QKE 集群时，你可以停用集群以释放所占用的资源，在需要继续使用时再启用即可。
+注意事项 停用集群将导致集群连接中断，在集群未成功启动前，您无法对集群进行读写操作，若您的集群应用于生产环境，建议在业务低峰期操作。
+关闭集群 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击集群操作列的关闭，弹出确认提示框。
+您也可以点击集群名称，进入集群管理页面。在页面右上方，点击关闭。
+确认信息无误后，点击确定，返回集群列表页面。
+集群状态变为关闭中，待状态切换为已关闭，表示集群关闭成功。
+启动集群 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击集群操作列的启动，弹出确认提示框。
+您也可以点击集群名称，进入集群管理页面。在页面右上方，点击启动。
+确认信息无误后，点击确定，返回集群列表页面。
+集群状态变为启动中，待状态切换为活跃，表示集群启动完成。</description>
+    </item>
+    
+    <item>
+      <title>删除集群</title>
+      <link>/v6.1/container/qke_plus/manual/mgt_cluster/delete_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/mgt_cluster/delete_cluster/</guid>
+      <description>本小节主要介绍如何删除集群。
+注意 删除集群为危险操作，请谨慎操作。 集群彻底删除后，将删除集群关联的所有资源。
+注意事项 不支持删除正在执行操作的集群。
+包年包月集群未到期前进行删除，将根据资源实际使用情况扣除已使用的费用，并退回剩余费用。退订费用= 原配置合约价格（含折扣）- 优惠券 - 已使用的合约价格。更多详细计算规则，请参见包年包月合约退费说明。
+集群删除后，将在回收站中保留 2 个小时，这期间可以进行恢复操作。超过 2 小时，集群资源将被彻底销毁，不可恢复。
+集群删除后，关联资源立即释放，请谨慎操作。如需保留数据信息，请确认完成数据备份再执行删除操作。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群管理页面。
+在集群列表，点击操作列的图标，选择删除。
+您也可以点击集群名称，进入集群管理页面。在页面右上方，点击更多操作 &amp;gt; 删除。
+勾选强制删除，点击删除，集群状态变为删除中。
+后续操作 集群删除后，可以前往产品与服务 &amp;gt; 运维与管理 &amp;gt; 回收站，查看已删除的集群。回收站的资源仅保留 2 小时，在这期间：
+若您需要彻底销毁，勾选已删除的集群，点击彻底删除，弹出提示框，点击确认。集群销毁后，集群自动创建的相关资源也将一并销毁。
+若您想要恢复集群，勾选已删除的集群，点击恢复，弹出恢复资源窗口，查看恢复资源所需金额，确保账户余额中的金额大于欠费总金额后，点击提交。</description>
+    </item>
+    
+  </channel>
+</rss>

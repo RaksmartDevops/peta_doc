@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他服务部署 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/</link>
+    <description>Recent content in 其他服务部署 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自建 MySQL 无法远程访问排查思路</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/mysql_problem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/mysql_problem/</guid>
+      <description>概述 使用云平台云服务器安装的 MySQL 无法远程访问，可通过本文检查处理
+Liunx 云服务器排查思路 执行命令查看 MySQL 服务状态是否正常，running 状态表示 MySQL 服务正常
+systcmctl status mysqld 执行命令查看 MySQL 服务是否被监听
+ss -nutlp ｜grep mysql 查看云服务器内部防火墙是否已关闭，dead 状态表示防火墙已关闭，如果是开启状态，使用命令关闭防火墙
+systemctl stop firewalld 查看管理控制台云服务器绑定的安全组中是否放行了 3306 端口，路径如下：计算 &amp;gt; 云服务器 &amp;gt; i-xxxxxxx &amp;gt; 安全组
+查看是否在安全组中放行了 3306 端口，如果没过放行，则通过如下步骤放行：添加 规则 &amp;gt; 提交 &amp;gt; 应用修改，规则模版如下图
+如云服务器是通过 VPC 网络进行访问，则修改 VPC 绑定的安全组，并添加端口转发规则，路径如下：网络 &amp;gt; VPC 网络 &amp;gt; rtr-xxxxxxx &amp;gt; 管理配置 &amp;gt; 添加规则 &amp;gt; 提交 &amp;gt; 应用修改，端口转发规则如下图
+使用客户端工具验证登录
+Windows云服务器排查思路 右键开始 菜单 &amp;gt; 运行 &amp;gt; 输入 services.</description>
+    </item>
+    
+    <item>
+      <title>活动云服务器内网连接活动数据库</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/instances_to_mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/instances_to_mysql/</guid>
+      <description>概述 实现数据库与云服务器网络互通
+操作步骤 通过 Appcenter &amp;gt; 集群管理，找到购买的 Mysql Plus 数据库。
+进入集群详情页面查看集群绑定的私有网络,从下图可以看见此集群的私有网络为 Mysql_Plus
+通过登录管理控制台，选择 产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。
+在左侧的 计算基础服务 导航栏选择 计算 &amp;gt; 云服务器，找到购买的云服务器
+右键 云服务器id &amp;gt; 网络 &amp;gt; 加入 &amp;gt; Mysql_plus（上面集群详情页面查看到的）。
+当云服务器与 Mysql Plus 处于同一私有网络下后，通过 计算基础服务 &amp;gt; 网络 &amp;gt; vpc网络 &amp;gt; rtr-xxxxxxx &amp;gt; Mysql_Plus，查看配置成功，此时云服务器与 Mysql Plus 数据库网络互通，可以在云服务器上通过私有网络直接登录数据库</description>
+    </item>
+    
+    <item>
+      <title>如何修改 SQL Server 默认端口</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/sqlserver_change_default_port/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/other_service_deploy/sqlserver_change_default_port/</guid>
+      <description>问题背景 SQL Server 默认使用 1433 端口来提供对外访问，1433 为高危端口，易被攻击，导致端口可能会被屏蔽。以下将介绍如何修改 SQL Server 的服务端口。
+操作步骤 client 端 云服务器上的 SQL Server 作为 client 连接外部服务器。打开 SQL Server 配置管理器，修改客户端协议，设置默认端口为 14330。
+server 端 云服务器上的 SQL Server 作为 server 提供服务。打开 SQL Server 配置管理器，修改服务端协议，设置默认端口为 11433。</description>
+    </item>
+    
+  </channel>
+</rss>

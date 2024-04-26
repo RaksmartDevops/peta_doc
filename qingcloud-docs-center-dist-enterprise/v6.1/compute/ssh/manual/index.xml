@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/compute/ssh/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/ssh/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH 密钥连接云服务器</title>
+      <link>/v6.1/compute/ssh/manual/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/ssh/manual/ssh/</guid>
+      <description>相对于用户名密码方式，密钥方式拥有更强的安全性，也可以很大程度阻止暴力破解的发生。目前常用的密钥都是非对称性的加密方式，云服务器内置公钥，而用户则拥有私钥。由于采用非对称加密，入侵者试图通过公钥去破解私钥难度会远远超出密码的破解。
+1. 准备密钥 登录管理控制台。
+选择 产品与服务 &amp;gt; 云服务器，在左侧导航栏选择 SSH 密钥，进入 SSH 密钥 页面：
+点击 创建，弹出 创建SSH密钥 页面：
+说明 可选择”创建新密钥对“和”使用已有公钥“。
+2. 云服务器加载上密钥 您可以在创建云服务器时选择密钥
+也可以给现有云服务器加载密钥，选择云服务器，点击右键，选择 ssh 密钥 &amp;gt; 加载:
+3. 配置好弹性 IP 和防火墙 在连接云服务器之前，请确保您的云服务器已经绑定了弹性公网 IP，防火墙放行 TCP 22 端口。
+4. 将密钥转换为正确的格式 如果您用的是 PuTTY ，您需要用 PuTTYgen 将私钥转换为 PuTTY 支持的格式 （ .ppk ） ，点击 Load 加载您的私钥
+5. 打开软件，选择密钥 然后在 PuTTY 的配置页面 Connection 的 Auth 选择您的私钥
+6. 输入 IP 地址 最后，在 Session 页面输入 IP 地址，点击 Open</description>
+    </item>
+    
+  </channel>
+</rss>

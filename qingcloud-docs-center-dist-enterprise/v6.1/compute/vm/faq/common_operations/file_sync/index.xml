@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文件同步 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/common_operations/file_sync/</link>
+    <description>Recent content in 文件同步 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/common_operations/file_sync/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安装及使用 rz/sz 工具</title>
+      <link>/v6.1/compute/vm/faq/common_operations/file_sync/rzandsz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/file_sync/rzandsz/</guid>
+      <description> 概述 rz，sz 是 Linux 同 Windows 进行文件传输的命令行工具，优点就是不用再开一个 SFTP 工具登录上去上传下载文件，该工具需要借助 XSHELL 才能使用，不能直接在 VNC 上使用。
+sz：将选定的文件发送（send）到本地机器。 rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到 Linux 服务器。
+安装与使用 安装 lrzsz yum install lrzsz # 在 centos 上面安装 sudo apt-get install lrzsz # 在 ubuntu 上面安装 下载文件到本地 sz filename # 下载一个文件 sz filename1 filename2 # 下载多个文件 sz dir/* # 下载 dir 目录下的所有文件，不包含 dir 下的文件夹 上传文件到 Linux 云服务器 rz </description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器文件共享</title>
+      <link>/v6.1/compute/vm/faq/common_operations/file_sync/win_share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/file_sync/win_share/</guid>
+      <description>Windows Server 端配置 开启必要的服务组件 以共享 Windows Server 2016 系统下的文件为例。
+进入 服务器管理器 页面， 选择工具栏上 工具 &amp;gt; 服务。
+找到 Server、Function Discovery Resource Publication、SSDP Discovery、UPnP Device Host、Computer Browser 这 5 个服务，并启动。操作如下：
+右键点击 Server，选择 属性。
+启动类型 选择 自动，并点击 应用。
+服务状态 选择 启动，并点击 确定。
+Function Discovery Resource Publication、SSDP Discovery、UPnP Device Host、Computer Browser 也进行同样的操作。
+说明 共享无法开启网络发现主要原因是 &amp;#34;网络发现&amp;#34; 所依赖的服务没有启用，或者被禁用。
+配置网卡选项 打开 控制面板，点击左侧的 更改适配器设置。
+右键网卡，选择 属性。
+在弹出的对话框中勾中 Microsoft 网络客户端 和 Microsoft 网络的文件和打印机共享，并点击 确定。
+点击左侧的 更改高级共享设置。
+确保网络为 当前配置文件 项下的各个与共享相关的选项都启用了。</description>
+    </item>
+    
+    <item>
+      <title>如何上传文件至 windows 服务器中</title>
+      <link>/v6.1/compute/vm/faq/common_operations/file_sync/upload_files_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/file_sync/upload_files_to_windows/</guid>
+      <description>部分客户购买服务器是为了将本地文件存储至服务器中。本文旨在帮助此类用户，介绍如何将文件上传至 windows 服务器中。
+通过剪贴板进行复制粘贴 需要将显示选项 &amp;gt; 本地资源 &amp;gt; 剪贴板勾选上，可以使用远程桌面直接拖拽，这种方式适合小文件，如果文件比较大，推荐第二种方式。操作如下：
+在本地计算机中，使用快捷键 Win + R，打开 运行 窗口。
+在 运行 窗口中，输入 mstsc，点击 确定，打开 远程桌面连接。
+在 远程桌面连接 中，点击 显示选项。
+在 本地资源 中，勾选 剪贴板。
+在 常规 中，输入云服务器的公网 ip 以及用户名（默认为 Administrator），点击连接，即可进行复制粘贴操作。
+通过mstsc挂载本地盘 挂载本地磁盘至服务器上，实现文件传输。
+在本地计算机中，使用快捷键 Win + R，打开 运行 窗口。
+在 运行 窗口中，输入 mstsc，点击 确定，打开 远程桌面连接。
+在 远程桌面连接 中，点击 显示选项。
+在 本地资源 中，点击 详细信息。
+点击驱动器扩展选项，勾选需要挂载的驱动器盘符，点击确定。
+在 常规 中，输入云服务器的公网 ip 以及用户名（默认为Administrator），点击连接。
+连接云服务器后，可以在 此电脑 中看到相应的盘符，复制文件与本地操作方式一致。</description>
+    </item>
+    
+    <item>
+      <title>上传文件到云服务器</title>
+      <link>/v6.1/compute/vm/faq/common_operations/file_sync/how_to_upload_files_to_the_cloud_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/file_sync/how_to_upload_files_to_the_cloud_server/</guid>
+      <description>客户购买了云服务器，希望将将本地文件上传至云服务器中，以下文档会介绍不同操作系统的场景下，如何将文件同步到云服务器中。
+本地 Windows 计算机上传文件到 Windows 云服务器 前提条件 Windows 云服务器具备公网访问能力。
+操作步骤 在电脑桌面中使用 WIN＋R 组合键，打开 运行 窗口，输入 mstsc 命令并回车即可弹出远程桌面连接对话框。
+单击 显示选项。
+在 常规 页签中，输入云服务器的公网 IP 地址和用户名 Administrator。
+选择 本地资源 页签，确认本地设备和资源下的 剪切板 处于勾选状态。
+单击 详细信息。
+在 驱动器 多选框列表，勾选要上传到 Windows 云服务器上的文件所在的本地磁盘。
+点击 确定，登录 Windows 云服务器。
+单击 开始 &amp;gt; 计算机。
+在出现的 Windows 云服务器上可看到本地硬盘的信息。
+在云服务器中，双击进入本地磁盘，将需要上传的文件复制到 Windows 云服务器。
+本地 Windows 计算机使用 WinSCP 上传文件到 Linux 云服务器 操作场景 WinSCP 工具可以实现在本地与远程计算机之间安全地复制文件。通过 WinSCP 可以直接使用服务器账户密码访问服务器，无需在服务器端做任何配置。 通常本地 Windows 计算机将文件上传至 Linux 服务器一般会采用 WinSCP 工具。本节为您介绍本地 Windows 计算机使用 WinSCP 工具，上传文件至 Linux 云服务器的操作方法。本例中云服务器操作系统为 CentOS。</description>
+    </item>
+    
+  </channel>
+</rss>

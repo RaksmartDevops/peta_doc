@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>最佳实践 on 用户指南</title>
+    <link>/v6.1/compute/hpc/best-practices/</link>
+    <description>Recent content in 最佳实践 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/hpc/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用界面提交并运行作业</title>
+      <link>/v6.1/compute/hpc/best-practices/sample1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/best-practices/sample1/</guid>
+      <description>本章节以运行 Lammps 软件应用程序为例，详细介绍提交作业、查看作业结果的具体流程。
+作业文件说明 Lammps 软件应用过程中，需要用到的作业文件包括：
+计算文件，文件格式为 *in，或 .lj。
+其他相关文件，文件格式为.restart，__airebo，__lcbop等。
+在本次示例中仅使用 .lj 计算文件即可，文件名为 ball.lj，用户可在附录中查看或下载源码。
+操作步骤 创建 EHPC 集群。
+将示例代码 ball.lj 上传至集群文件存储的指定目录下。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，进入集群管理页面。点击提交作业，进入提交作业页面。
+用户根据实际情况，选择相应的软件及版本。此处选择 lammps 软件。
+说明 此处勾选 lammps 软件，版本号选择最新即可。
+参数配置项，作业执行命令选择自定义参数提交，点击选择/上传 .lj 文件，在弹出的选择命令文件窗口中，选择待执行的命令文件，并点击确定，.lj 文件会自动写入。
+说明 Lammps 软件，平台做了内置的作业命令，不需要用户再提交其他命令文件，这里只需要上传计算执行文件即可。与计算执行文件相关的其他文件，需要放在共享存储的同一个目录文件夹下。
+选择资源后，点击提交作业，系统将自动分配计算任务到计算节点，进入作业状态，等待作业运行结束即可。
+在作业列表中，点击指定作业右侧的详情。
+进入相应作业详细信息页面，选择输出日志页签，即可查看当前作业的标准输出日志。
+附录 本次示例中使用到的 Lammps 作业的计算文件源码 ball.lj 内容如下，可从此处下载。
+#原子数量 variable npart equal 800 #体系单位lj units lj #二维体系 dimension 3 #原子类型atomic atom_style atomic #周期性边界 boundary p p p #近邻参数 neighbor 6 bin #邻居列表更新频率 neigh_modify every 1 delay 0 check yes # box 尺寸 region box block -20 20 -20 20 -20 20 #在 box 内生成 2 种原子 create_box 2 box #转为二维计算 #fix 3d all enforce3d #在 box 内随机生成 800 个原子，原子类型为1 create_atoms 1 random ${npart} 324523 box #随机生成 1 个类型为 2 的原子 create_atoms 2 random 1 32524523 box #原子质量 mass 1 1 mass 2 5 #设置力场参数， soft 势 pair_style soft 1.</description>
+    </item>
+    
+    <item>
+      <title>使用命令提交并行运行作业</title>
+      <link>/v6.1/compute/hpc/best-practices/sample2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/best-practices/sample2/</guid>
+      <description>本章节以运行 Lammps 软件应用程序为例，详细介绍在 EHPC 集群中通过命令行提交作业、查看作业结果的具体流程，从而使用户可以更好的理解 EHPC 集群中命令行的基本使用逻辑。
+作业文件说明 Lammps 软件应用过程中，需要用到的作业文件包括：
+计算文件，文件格式为 *in 或 .lj 。
+其他相关文件，文件格式为 .restart，__airebo，__lcbop等。
+在本次示例中需要用到 .lj 计算文件和执行脚本文件 .sh，用户可在附录中查看或下载源码。
+操作步骤 创建 EHPC 集群。
+说明 本示例中所创建的 EHPC 集群登录节点和管控节点采用的默认配置，计算节点则使用 4 台 2 核 4G 的通用计算节点。
+等待集群创建完成后，将 Lammps 作业所需的文件（.lj 和 .sh文件）上传至 EHPC 集群的共享目录中，详细步骤可参考上传文件相关章节。
+说明 在本示例中需上传的文件为附录中的 ball.lj 和 ball.sh 文件。
+参考 WebSSH 章节相关内容，登录至集群的登录节点。
+依次执行如下 module 命令，加载 OpenMPI， Lammps 以及 IntelMPI 模块。
+说明 若想要了解更多 module 相关命令，可执行 module --help。
+加载 OpenMPI 模块。
+module load openmpi 加载 Lammps 模块，版本为 20190430。</description>
+    </item>
+    
+    <item>
+      <title>使用容器环境提交并运行作业</title>
+      <link>/v6.1/compute/hpc/best-practices/sample3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/best-practices/sample3/</guid>
+      <description>云平台 的弹性高性能计算 EHPC 集群内置 singularity 容器环境，用户可以在 EHPC 集群中通过容器化的应用解决各软件的运行环境以及版本兼容性问题，从而降低业务部署与实现的复杂性。高性能计算的容器化应用在支持 EHPC 集群全部原有能力的基础上，可为用户提供更加高效和便捷的计算解决方案。
+该章节以 Lammps 软件作业为例，基于 singularity 混合模型，展示高性能计算集群的容器化应用。
+前提条件 已创建好弹性高性能计算 EHPC 集群。
+Lammps 软件应用过程中，需要用到的作业文件*in、.lj，.restart，*airebo，以及 *lcbop 等已经上传至集群的共享目录中，可参考上传本地文件相关内容。
+EHPC 集群中的登录节点已绑定公网 IP。
+操作步骤 登录集群的登录节点，详细步骤可参考 WebSSH 登录。
+执行如下命令，拉取 lammps 镜像。
+singularity build -s lammps.simg docker://alahiff/lammps-intel-avx512-2018:latest 说明 -s 表示是 sandbox 格式的镜像，可以对镜像做修改，如果用户自己编译镜像，则需要使用当前格式。如果用户不需要自己进行编译，则可不加，默认镜像是只读的。
+lammps.simg 表示生成的镜像名称。
+提交作业之前，执行如下命令，加载本地的 mpi 环境。
+module load intel/18.0.1 用以下三种方式运行作业，并进行对比。
+不使用 singularity 运行作业的指令，直接使用主机上的 mpi，即传统方式，主要用于和下面两种方式做对比。
+mpirun -n 4 lmp_mpi -in in.lj 不结合调度器，在单机中使用 singularity 运行作业，完全使用容器内部的 mpi 和软件。该方式可以不需要在主机上安装 mpi，但无法多节点运行。
+singularity exec -B /es01 lammps.</description>
+    </item>
+    
+  </channel>
+</rss>

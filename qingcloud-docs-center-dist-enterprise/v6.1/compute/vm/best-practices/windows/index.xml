@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows云服务器 on 用户指南</title>
+    <link>/v6.1/compute/vm/best-practices/windows/</link>
+    <description>Recent content in Windows云服务器 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/best-practices/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改 windows 云服务器远程桌面的访问端口</title>
+      <link>/v6.1/compute/vm/best-practices/windows/remote_port/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/remote_port/</guid>
+      <description> 1.打开 windows 云服务器远程桌面，关闭系统自带防火墙 选择 开始 &amp;gt; 控制面板 &amp;gt; 系统和安全 &amp;gt; 系统 &amp;gt; 允许远程访问 &amp;gt; 勾选“允许远程连接到此计算机(L)”。
+选择 开始 &amp;gt; 控制面板 &amp;gt; 系统和安全 &amp;gt; Windows Defender 防火墙 &amp;gt; 启用或关闭 Windows Defender 防火墙 &amp;gt; 勾选“关闭关闭 Windows Defender 防火墙(不推荐)”。
+2.修改注册表 选择 开始 &amp;gt; 运行 &amp;gt; regedit。
+打开注册表，进入以下注册表项 HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/Wds/rdpwd/Tds/tcp ，在右侧找到 PortNamber，可以看见其默认值是 3389，修改成所希望的端口（2000-65535 间选择）即可。
+修改注册表项 HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/WinStations/RDP-Tcp，将 PortNumber 的值修改成其他端口，注意使用十进制。
+3.重启云服务器 右键选择 云服务器 &amp;gt; 重启。
+4.放行云平台安全组的对应端口，并点击应用修改 选择 安全 &amp;gt; 安全组 ，找到云服务器对应的安全组 sg-xxxxxx，放行修改后的端口，并应用修改安全组。
+5.测试新端口的远程桌面 ip:port </description>
+    </item>
+    
+    <item>
+      <title>调整屏幕分辨率</title>
+      <link>/v6.1/compute/vm/best-practices/windows/change_screen_resolution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/change_screen_resolution/</guid>
+      <description>1.通过 vnc (Web 终端)或者远程桌面连接 Windows 云服务器 2.进入调整屏幕分辨率界面 方法一 右键桌面空白处，选择 显示设置：
+方法二： 选择 开始 &amp;gt; 控制面板:
+选择 外观和个性化 &amp;gt; 更改主题:
+点击 显示:
+点击 高级显示设置:
+调整分辨率，点击 应用:
+点击 保留修改：</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器配置多用户同时登录</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_loggin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_loggin/</guid>
+      <description>Windows 云服务器配置多用户同时登录 在键盘上按 Win+R 键（也可以在开始菜单右键然后选择运行），在运行的输入框里输入 gpedit.msc 命令，然后点击确定。
+在 计算机组策略 中依次点击 计算机配置 &amp;gt; 管理模板 &amp;gt; Windows 组件， 然后在右边的菜单中选择远程桌面服务，双击打开。
+在远程桌面服务界面双击打开 远程桌面会话云服务器。
+在 远程桌面会话云服务器 界面中双击打开 连接。
+在 连接 界面中双击打开 将远程桌面服务用户限制到单独的远程桌面服务会话。
+在 将远程桌面服务用户限制到单独的远程桌面服务会话 界面中选择 已禁用 然后点击确定。
+然后返回 连接 界面，在 连接 界面中双击打开 限制连接的数量。
+在 限制连接的数量 界面中；选择 已启用，然后在选项里面 允许的RD最大连接数 里面选择你能接受的最大的同时远程的用户数，这里选择的是 3，也就是能支持同时 3 个远程桌面管理，然后点击 确定。
+用多台云服务器同时远程该云服务器，验证配置是否成功。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器内部绑定公网 IP</title>
+      <link>/v6.1/compute/vm/best-practices/windows/method_of_inner_associateeip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/method_of_inner_associateeip/</guid>
+      <description>内部绑定方式与外部绑定方式的差异 公网 IP 的绑定模式分为两类： 外部绑定与内部绑定 ；外部绑定是在云服务器外部通过网络地址转换（NAT）的方式将公网 IP 地址转换成用户私有网络地址或基础网络地址；内部绑定是通过在云服务器内部添加一块连接到公网网关的网卡的方式来绑定公网 IP ，该方式需要用户手动为这块网卡配置 IP 地址及相关路由。
+方式一 准备事项 假设绑定的公网 IP 地址为 139.198.1.188 ，网关为 139.198.1.1； 云服务器在基础网络中的 IP 地址为 10.140.84.3 ，网关为 10.140.84.1 ；内部绑定 eip 以后，会自动增加一个网卡，以 Windows Server 2012 为例来说明网络配置的步骤。
+选择 控制面板 &amp;gt; 网络和Internet &amp;gt; 网络连接 &amp;gt; 以太网3 ，点击 属性，再双击 Internet 协议版本4（TCP/IPv4） &amp;gt; 高级，并填写 ip 地址等信息，如图所示：
+路由配置 打开 Windows 命令行终端进行路由配置。首先使用 route 命令查看网卡的编号：
+route print -4 输出结果如下图所示，其中第一行与第二行分别为公网的网络连接与基础网络的网络连接，每行的第一个数字为网卡的编号。在本示例中，基础网络的网卡编号为 12 ，公网的网卡编号为 17 。
+从截图上看，已经存在一条公网 ip 的默认路由，将此条路由的优先级调整为 1，使用以下命令调整，调整后如截图所示：
+route -p change 0.</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器安装 IIS Web 服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/iis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/iis/</guid>
+      <description>点击 开始 &amp;gt; 服务器管理器。
+选择 添加角色和功能。
+点击 下一步。
+服务器角色勾选 Web 服务器（IIS） &amp;gt; 添加功能。
+勾选 .NET Framework 3.5 功能。
+选择 Web 服务器角色（IIS） &amp;gt; 角色服务，保持默认即可。
+点击 安装。
+内网测试 IIS 服务。
+外网测试 IIS 服务
+如果是基础网络云服务器，直接放行云服务器对应安全组的下行 80 端口，并应用修改；
+如果是私有网络云服务器
+针对云服务器的 80 端口做端口转发。
+放行安全组的 80 端口，并点击 应用修改。
+外网测试。
+注意 通过 80/443 端口对外提供服务，需要备案，并且需要通过域名对外提供服务。</description>
+    </item>
+    
+    <item>
+      <title>使用 IIS 搭建网站服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/iis_web/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/iis_web/</guid>
+      <description>背景 一般情况下，大多数用户习惯基于 Linux 平台来搭建 Web 服务，一方面 Linux 平台较为简洁稳定，用于搭建 Web 服务的应用程序较多，能够满足绝大多数的应用平台，如使用较多的 Nginx、Tomcat、Apache 等 ，但仍有部分用户会使用 Windows 平台来搭建 Web 服务，本文将详细介绍如何在 Windows 平台使用 IIS 来搭建 Web 服务。
+步骤 准备工作 参照文档：Windows 云服务器安装 IIS Web 服务 来安装 IIS 服务。
+部署站点 将 Web 站点文件放在磁盘目录下。本实例为 D:\web\down；
+添加 IIS 站点，如下图：
+按照以上步骤完成启动后，即可通过绑定的域名来进行访问。
+配置 https 访问 导入证书。
+添加 https 类型网站绑定。
+FAQ IIS 如何配置跨域？
+添加 HTTP 响应标头，名称和值分别为：
+名称 值 Access-Control-Allow-Origin
+*
+Access-Control-Allow-Methods
+GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers
+Content-Type
+IIS 如何配置文件下载？</description>
+    </item>
+    
+    <item>
+      <title> Windows 开启音频功能</title>
+      <link>/v6.1/compute/vm/best-practices/windows/windows_audio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/windows_audio/</guid>
+      <description>适用场景 适用于云服务器需播放音频，如淘宝后台，消息提醒等。
+目前暂不支持 Windows 2008 镜像。
+配置方法 1、云服务器开启 Windows Audio 服务。 安装系统后看到喇叭图标有 × 标识，为不可调整状态，并非未安装驱动，而是系统默认将 Windows Audio 服务为关闭并手动启动。
+选择 开始 &amp;gt; 运行 &amp;gt; services.msc，找到 Windows Audio 服务，改为自动，并将服务启动。
+2、本地需配置允许远程桌面音频在本地播放。 选择 开始 &amp;gt; 运行 &amp;gt; mstsc &amp;gt; 显示选项 &amp;gt; 本地资源 &amp;gt; 配置远程音频设置 &amp;gt; 设置，勾选 在此计算机上播放。</description>
+    </item>
+    
+    <item>
+      <title>如何配置 NTP 服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/configntp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/configntp/</guid>
+      <description>1.启动/关闭 NTP 服务 Windows Server 操作系统默认开启 Windows Time 服务。为了保证 NTP 服务配置成功后能正常同步时间，实例中必须开启 NTP 服务。请按以下步骤检查并开启 NTP 服务：
+远程连接 Windows 实例。
+单击开始图标，在底部单击下拉按钮，然后单击 运行，在运行对话框中执行命令 services.msc。
+在 服务 对话框中，找到并双击 Windows Time 服务。将启动类型设置为 自动，然后点击启动 若需停止NTP服务则单击停止，然后单击 确定 退出。
+2.修改默认 NTP 服务器地址 Windows Server 操作系统默认配置微软 NTP 服务器（time.windows.com），但是可能经常同步出错。您也可以修改为其它 NTP 时间服务器。
+远程连接 Windows 实例。
+打开控制面板并点击时钟和区域按钮。
+点击 添加不同时区的时钟 会弹出如下对话框，然后选择 Internet 时间 栏，再点击下方的 更改设置 最后将需要修改的 ntp 服务器输入进去并单击 立即更新。
+3.修改 NTP 服务时间同步间隔 NTP 服务的时间同步间隔默认是 5 分钟，您可以根据业务需求自定义同步间隔。请按以下步骤修改时间同步间隔：
+远程连接 Windows 实例。
+单击开始图标，在底部单击下拉按钮，然后单击 运行 按钮，在运行对话框中执行以下命令：</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器安装 NFS 客户端</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_install_nfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_install_nfs/</guid>
+      <description>可以通过以下路径安装，服务器管理器 &amp;gt; 本地服务器 &amp;gt; 管理 &amp;gt; 添加角色和功能 &amp;gt; 功能 &amp;gt; NFS 客户端 &amp;gt; 安装。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器安装 telnet 客户端</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_install_telnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_install_telnet/</guid>
+      <description>可以通过以下路径安装，服务器管理器 &amp;gt; 本地服务器 &amp;gt; 管理 &amp;gt; 添加角色和功能 &amp;gt; 功能 &amp;gt; telnet 客户端 &amp;gt; 安装。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器搭建 FTP 服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_deploy_ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_deploy_ftp/</guid>
+      <description>前提条件 点击 此处下载 ftp server。
+点击 此处下载 ftp_client。
+操作步骤 安装 ftp server，按照提示操作即可。
+配置 ftp server，首先设置管理员端口和密码，端口配置默认的即可。
+安装以上的报错，依次是需要配置被动模式、TLS 认证，首先配置被动模式。
+配置 TLS 安全认证登录。
+配置 ftp 用户。
+配置 ftp 共享目录。
+放行云服务器绑定防火墙的下行 21 号端口，20000-21000 被动端口范围，协议为 tcp 协议，并应用修改。
+安装 ftp 客户端，按照提示下一步直到完成即可（略）。
+打开 ftp 客户端，测试 ftp 功能是否正常。</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 R2 配置 HTTPS TLS1.2</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win2008r2_tls1_2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win2008r2_tls1_2/</guid>
+      <description>目前提供的 Windows 2008 R2 SP1 系统不支持 TLS1.2 协议，只有 SSL2.0。
+在配置 SSL 做小程序开发时候，或者 .net 系统无法正常发起 https 请求提示小程序的 TLS 版本必须大于等于 1.2。
+Windows Server 2008 R2 添加对 TLS1.2的支持 打开服务器组策略，通过快捷键 Win+R 运行中输入 gpedit.msc，找到 SSL 配置设置，双击 SSL 密码套件顺序，选择已启用，并点击 确定。
+方法一 使用 ssltools 工具 点击 此处 下载工具，启用 TLS1_2 协议。
+勾选三个 TLS 协议并重启系统，打开以下目录：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols。
+方法二 修改注册表的方式 将下列代码保存到后缀名为 .reg 的文件中，并双击执行，将下列配置添加到注册表中。
+Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols] [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello] [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Client] &amp;#34;Enabled&amp;#34;=dword:00000000 &amp;#34;DisabledByDefault&amp;#34;=dword:00000001 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server] &amp;#34;Enabled&amp;#34;=dword:00000000 &amp;#34;DisabledByDefault&amp;#34;=dword:00000001 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器多用户配置管理</title>
+      <link>/v6.1/compute/vm/best-practices/windows/windows_multi_user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/windows_multi_user/</guid>
+      <description>项目概览 在本项目中，您将了解如何配置 Windows 云服务器多用户、多终端同时办公。
+环境准备 本实验以 Windows Server 2012 版本为例，其他版本可以此为参考，开始本实验前，请您先配置好 Windows 云服务器配置多用户同时登录。
+配置步骤 多系统用户多终端配置 添加用户。
+登录 Administrator 用户在 Windows PowerShell 执行。
+net user demo /add	# 创建用户 net user demo pa$$w0rd	# 设置密码 net localgroup Administrators demo /add	# 给用户添加管理员权限（按需操作） 允许用户远程登录。
+选择 文件资源管理器 &amp;gt; 这台电脑 &amp;gt; 属性 &amp;gt; 远程设置 &amp;gt; 选择用户。
+单系统用户多终端配置 这里的系统用户指的是默认的 Administrator 管理员账户，配置好多用户同时登录后，可以直接多终端登录，但同时使用某些软件时会产生错误。
+故障原因 用户数据存储在多终端同时使用时出现问题。
+解决方案 为谷歌浏览器创建一个新的快捷方式。
+鼠标右键选择新建的快捷方式选择属性。
+在目标栏的 firefox.exe 后面添加参数 --user-data-dir=&amp;#34;C:\UserData&amp;#34;。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器安装.NET Framework 4.5</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_install_net45/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_install_net45/</guid>
+      <description>NET Framework 4.5 为轻松便捷的构架和运行应用程序提供了全面而一致的编程模型，这些应用程序可针对包括台式 PC、服务器、智能手机以及公共云和专有云在内的各种不同平台而构造。
+Windows Server 2012安装.NET Framework 4.5 Windows Server 2012 云服务器中，.NET Framework 4.5 功能默认已经安装了 2 个功能，如下图。
+如果有需求安装 ASP.NET 4.5，可以勾选 ASP.NET 4.5 复选框。
+选择下一步，再点击安装。
+安装成功，点击关闭。
+至此完成了 .NET Framework 4.5-ASP.NET 4.5 的安装。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器配置 NFS 服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_nfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_nfs/</guid>
+      <description>本文以 Windows Server 2016 系统配置 NFS 服务为例。
+Windows Server 端配置 开启 Server 服务 点击 开始 &amp;gt; 服务器管理器。
+在 工具 &amp;gt; 服务 中，找到 Server 服务。
+右键点击 属性。
+设置启动类型为自动。
+启动服务。
+安装 NFS 服务 打开 服务器管理器，点击上方的 添加角色和功能，如图所示配置相关信息，点击 下一步。
+在 服务器角色 中，点击 文件和存储服务 &amp;gt; NFS 服务器。
+在弹出的 添加角色和功能向导 中，点击 添加功能。
+在 功能 处，勾选 NFS 客户端，点击 下一步 后，确认下需要安装的服务，然后点击安装。
+设置文件通过 NFS 共享 安装完毕之后，右键需要分享的文件，点击 属性。
+选择 NFS 共享，点击 管理 NFS 共享，选择 共享此文件夹，然后点击下方的 允许匿名访问，点击 权限 可以设置用户访问权限，点击 添加 可以添加成员。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器配置 samba 服务</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_samba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_samba/</guid>
+      <description>本文以 Windows Server 2016 系统配置 samba 服务为例，Windows Server 2016 默认已安装 samba 客户端。
+Windows Server 端配置 开启 Server 服务 点击 开始 &amp;gt; 服务器管理器。
+选择 工具 &amp;gt; 服务 。
+找到 Server 服务，右键点击 属性。
+设置启动类型为自动。
+启动服务。
+安装 samba 服务 在 服务器管理器 中，点击上方的 添加角色和功能，点击 下一步。
+在 功能 处，勾选 SMB 1.0/CIFS 文件共享支持 和 SMB Bandwidth Limit，点击 下一步。
+确认需要安装的服务，点击 安装。
+设置文件通过 samba 共享 在 服务器管理器 中点击 文件和存储服务。
+点击 共享，在 任务 处新建共享。
+选择 SMB 共享-快速，点击 下一步。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器搭建 FTP 并使用对象存储</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_qsftpd_use/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_qsftpd_use/</guid>
+      <description>背景介绍 对象存储是面向海量非结构化数据的通用数据存储平台，提供安全可靠、低成本的云端存储服务，可以作为 FTP 服务后端的存储服务来为客户提供便捷、有效的数据存储功能。
+qsftpd介绍 qsftpd 是一个将对象存储作为存储后端的 FTP Server，用户通过简单的配置，即可通过 FTP 协议使用对象存储服务。
+qsftpd 已在 GitHub 开源，更多详情可参见 GitHub。
+准备工作 创建 Bucket 通过控制台对象存储，点击创建，输入名称，提交。
+申请 API 密钥 登录控制台，选择 个人信息 &amp;gt; api 密钥，点击创建，提交，然后下载到本地，
+注意 此链接仅能下载一次。
+配额不够可以开工单申请。
+下载安装 qsftpd 支持 Linux、MacOS 和 Windows 操作系统，可访问 GitHub 项目的 Releases 页面查看和下载历史版本。Windows 最新版本下载链接：qsftpd-latest-windows_amd64
+使用示例 下载并解压 tar 包 下载链接：下载
+将 tar.gz 文件解压为 .tar 文件，再次解压，生成可执行文件 qsftp.exe。
+创建配置文件 在 qsftp.exe 所在的文件夹中创建一个名为 qsftpd.yaml 的文件，填写相关信息，可参考下面配置：
+# QingStor service settings qingstor: access_key_id: your_access_key_id secret_access_key: your_secret_access_key host: qingstor.</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器配置 MySQL</title>
+      <link>/v6.1/compute/vm/best-practices/windows/win_mysql_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/win_mysql_install/</guid>
+      <description>背景介绍 MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。本文介绍了在 Windows 系统的云服务器中安装配置 MySQL。
+下载安装MySQL 进入官网找到所需的安装包：https://dev.mysql.com/ ，路径：MySQL Downloads &amp;gt; MySQL Community Server &amp;gt; Microsoft Windows，或者直接点击链接：https://dev.mysql.com/downloads/mysql/ 。
+下载完成后，将 zip 包解压到相应目录，本文解压至 C:\mysql 下。
+在 C:\mysql\mysql-8.0.23-winx64 目录下添加配置文件 my.ini，输入以下信息：
+[mysqld] basedir = C:\mysql\mysql-8.0.23-winx64 # mysql 的安装目录 datadir = C:\mysql\data # 设置数据存放目录，也可以不设置 bind-address = 0.0.0.0 # 设置监听地址为 0.0.0.0 port = 3306 # 设置端口为 3306 说明 C:\mysql\data 需要提前创建。也可以自行添加所需的参数。
+执行 win+R，打开运行，使用管理员权限打开 cmd。
+切换至 bin 目录下。
+cd C:\mysql\mysql-8.</description>
+    </item>
+    
+    <item>
+      <title>重置 Windows 云服务器密码</title>
+      <link>/v6.1/compute/vm/best-practices/windows/reset_instance_password/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/best-practices/windows/reset_instance_password/</guid>
+      <description>项目背景 用户在使用过程中，忘记了云服务器密码导致无法登录。
+方案一 云服务器关机以后，右键云服务器的资源 id &amp;gt; 更多操作 &amp;gt; 重置登录密码，重设新的密码即可，这种办法能解决大部分问题。
+方案二 如果云服务器安装了 360 安全卫士等软件，可能会将 qingcloud-agent 进程删除，这样子会导致以上重置密码的方法无效，可以尝试用以下方法。
+进入救援云服务器模式，挂载源云服务器系统盘，进入 E 盘的 Windows\System32 目录。
+找到 osk.exe，如图所示。
+这个文件由于属主不是 administrator 而是 Trustedintaller，所以无法修改，需要把这个文件的属主更改为 administrator，更改的步骤如下:
+右键文件 &amp;gt; 属性 &amp;gt; 高级 &amp;gt; 更改 &amp;gt; 高级 &amp;gt; 立即查找 &amp;gt; administrator &amp;gt; 应用 &amp;gt; 确定。
+此时 administrator 用户对此文件只有读取和执行的权限，需要添加修改的权限。
+右键文件 &amp;gt; 属性 &amp;gt; 高级 &amp;gt; 添加 &amp;gt; 选择主体 &amp;gt; 高级 &amp;gt; 立即查找 &amp;gt; administrator &amp;gt; 添加权限 &amp;gt; 应用 &amp;gt; 确定。
+这个时候就可以重命名或者删除，然后在这个目录里找到 cmd.</description>
+    </item>
+    
+  </channel>
+</rss>

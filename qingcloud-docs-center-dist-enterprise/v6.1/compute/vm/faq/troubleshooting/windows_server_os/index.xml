@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows 云服务器操作系统类 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/</link>
+    <description>Recent content in Windows 云服务器操作系统类 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/troubleshooting/windows_server_os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>激活 Windows 系统云服务器</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/activation_of_winos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/activation_of_winos/</guid>
+      <description>操作步骤 通过图形化界面激活 登录 Windows 系统云服务器之后，右键 此电脑 &amp;gt; 属性。
+点击右下角的 激活 Windows。
+之后我们可以看到系统成功激活。
+通过 cmd 命令行界面激活 打开 cmd 命令行，输入 slmgr /ato 命令进行激活。
+说明 通常情况下，Windows 云服务器会自动进行系统激活，如果没有自动激活，或者通过上述 2 个方法无法进行激活，提示类似 &amp;#34;错误：0xC004F074 软件授权服务报告无法激活该计算机。秘钥管理服务（KMS）不可用&amp;#34; 的报错信息，可以先通过如下方法进行操作。
+获取云服务器所在大区的 KMS 服务器的 IP 地址 cmd 中执行 ping windows-kms-server.ks.domain.com 命令来获取返回的基础网络，例如：10.130.1.13。
+说明 返回的 IP 地址会根据大区的不同会有差别，实际操作中请以实际返回结果为准。
+修改 hosts 文件 将这个 IP 地址及 windows-kms-server.ks.domain.com 域名写到 C:\Windows\System32\drivers\etc\hosts 文件的最后边，保存退出。
+再次打开 Windows 的 cmd 窗口，然后输入 slmgr /ato 就可以激活了
+如果执行 slmgr /ato 还是提示 0xC004F074，先执行 slmgr /skms windows-kms-server.ks.domain.com 设置 kms 服务器，然后再执行 slmgr /ato 就可以激活了。</description>
+    </item>
+    
+    <item>
+      <title>扩容磁盘后，实际使用空间并未增加</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/expand_disk_capacity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/expand_disk_capacity/</guid>
+      <description>问题背景 客户创建系统盘超过 50G 大小的 Windows 云服务器，登录云服务器后发现系统盘空间大小是50G，并非实际创建时指定的值。
+处理方案 打开磁盘管理。
+开始 &amp;gt; 运行 diskmgmt.msc打开磁盘管理器，如截图所示。
+发现有未分配的磁盘容量，右键 C 盘 &amp;gt; 扩展卷，请参考以下的流程处理即可。</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 安装 AD 域服务报错：请求添加或删除指定服务器上的功能失败</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_install_ad_error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_install_ad_error/</guid>
+      <description> 问题背景 用户有多台云服务器，日常管理云服务器账户和权限较为繁琐，想要通过 Active Directory 服务来进行账户管理。但是云服务器安装时报错 &amp;#34;请求添加或删除指定服务器上的功能失败。无法完成操作，因为指定的服务器需要重新启动。&amp;#34;
+解决方法 网络连接 除了 IPV6 和多路传送器协议其他都要勾选（保证网卡属性中，网络客户端，网络的文件和打印机共享 都勾选）
+开启服务 有几个服务要设为自动启动，并更改后需要重启服务器生效。 选择 控制面板 &amp;gt; 管理工具 &amp;gt; 服务。
+Server Window 共享的服务端依赖此服务，域相关组件依赖此服务。
+Workstation
+Computer Browser（Windows Server 2012 开始没有这个服务）。
+TCP/IP NetBIOS Helper
+例：Server 服务开启方式
+修改 client 端虚机 sid （非必须步骤，如出现以下文档类似的错误则需要操作此步） 如果域 server 端和 client 端都在云平台上，或者多个 client 都在云上需要操作： https://www.heelpbook.net/2019/microsoft-changing-sid-of-cloned-vms/
+云服务器是否使用了防火墙 包括云平台安全组，云服务器系统防火墙，链路上经过的防火墙，如果使用了需要开通下面端口。建议打开所有端口，待连通后再关闭其他端口 需要开放的端口可以参考文档：https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)
+协议 端口 TCP
+389、636、3268、3269、88、53、445、25、135、5722、464、9389、139
+UDP
+389、88、53、445、123、464、138、67、2535、137
+重启云服务器，再次安装进行验证 </description>
+    </item>
+    
+    <item>
+      <title>Windows 重置网络</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/reset_network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/reset_network/</guid>
+      <description>概述 经常遇到局域网无法互相访问、网络连接上但无法上网的问题。如果找不到原因，可以重置一下网络。
+操作步骤 用管理员身份，打开 cmd 窗口执行 `netsh winsock reset`命令。
+重启服务器。</description>
+    </item>
+    
+    <item>
+      <title>无法安装 .NET Framework 3.5</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_.net_framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_.net_framework/</guid>
+      <description>问题背景 安装 .NET Framework 3.5 服务出现找不到源文件报错提示，本示例为 Windows Server 2016 系统版本。
+解决办法 登录到云服务器，开始菜单中找到 PowerShell，右键单击选择 管理员身份运行。
+修改注册表，将更新源设置为 Windows Update，执行如下命令：
+Set-ItemProperty -Path &amp;#39;HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU&amp;#39; -Name UseWUServer -Value 0 Restart-Service -Name wuauserv 如果执行命令时出现 无法启动服务 Windows Update 报错，需在服务中开启 Windows Update服务，再次执行 Restart-Service -Name wuauserv 命令。
+通过 PowerShell 安装 .NET Framework ，执行 Install-WindowsFeature Net-Framework-Core 命令，并检查安装服务。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器同步网络时间</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_system_time_is_not_synchronized/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_system_time_is_not_synchronized/</guid>
+      <description>问题背景 国内 Windows 系统的云服务器有时候不能自动同步互联网当前时间，这就需要改一下 Windows 的时间同步服务器。
+操作步骤 点击桌面上右下的时间，弹出框点击更改时间和日期。
+在弹出框中选择 Internet 时间，点击更改设置。
+点击立即更新，稍等会提示同步成功，最后会发现时间和日期都同步了。</description>
+    </item>
+    
+    <item>
+      <title>CPU 使用率过高</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_cpu_exception/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_cpu_exception/</guid>
+      <description>问题背景 Windows 云服务器中 CPU 使用率高问题排除，可参考本文处理办法。
+问题排查 在桌面底部点击 开始 菜单，选择 运行，打开运行框后，在框中输入 perfmon -res，并点击 确定。
+在资源监视器页面中，查看各进程是否有 CPU 使用率过高的现象。
+针对占用资源较高的进程，查看对应的进程 ID 和进程的程序名,定位进程ID后，在任务管理器服务中找到之前资源监视器查看到的异常进程。右键点击进程名称，选择打开文件位置，查看进程是不是恶意程序。
+处理方法 CPU使用率异常 对于 CPU 异常使用率过高的情况，可能是被恶意病毒、木马入侵导致的。有时三方恶意程序可能会利用操作系统的 svchost.exe 或者 Tcpsvcs.exe 来伪装，引起高 CPU 的占用。您需要手动对异常进程进行查杀。
+若您无法判断进程是否为病毒或木马，建议将进程名称在网上进行搜索后确认。另外，建议您进行进程删除操作前，提前创建备份。
+使用商业版杀毒软件，或使用微软免费安全工具 Microsoft Safety Scanner，在安全模式下进行扫描杀毒。
+Microsoft Safety Scanner下载链接如下：
+https://docs.microsoft.com/zh-cn/windows/security/threat-protection/intelligence/safety-scanner-download?spm=a2c4g.11186623.2.22.232f52beJo7DUS
+运行 Windows Update 来安装最新的微软安全补丁。</description>
+    </item>
+    
+    <item>
+      <title>查询远程登录日志</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_login_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_login_log/</guid>
+      <description>操作步骤 通过 远程连接 登录 Windows 实例，点击 开始 &amp;gt; 运行，输入 eventvwr.msc 并点击键盘的 Enter 回车按键，打开 事件查看器。
+点击 Windows 日志，选中 安全 并右击，点击 查找，打开 查找 框。
+在 查找内容（N） 处，输入 登录 进行快速查找登录相关事件。
+双击查找到的事件，点击详细信息，查看 IpAddress 字段和 IpPort 字段信息。
+说明 IpAddress 字段记录的是登录过本机的IP地址。
+IpPort 字段记录的是登录过本机的端口。</description>
+    </item>
+    
+    <item>
+      <title>启用密码保护共享导致 Windows 系统远程访问出现“凭据无法工作”错误</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work/</guid>
+      <description>问题背景 使用远程桌面访问 Windows 系统的云服务器时，出现如下错误。使用 web 终端连接服务器可正常登录。
+问题原因 Windows 操作系统内开启密码保护共享功能。
+解决方案 参考如下操作步骤，关闭密码保护共享功能。
+使用 web 终端登录云服务器。
+打开 控制面板 &amp;gt; 所有控制面板项 &amp;gt; 网络和共享中心 &amp;gt; 高级共享设置。
+在 密码保护的共享 配置项，选择 关闭密码保护共享。</description>
+    </item>
+    
+    <item>
+      <title>IIS搭建的网站显示“500 - 内部服务器错误”</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/iis_500_erro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/iis_500_erro/</guid>
+      <description>概述 Windows 实例使用 IIS 作为 Web 服务的网站，访问时出现 “500 - 内部服务器错误”，如下图所示。此报错并没有输出具体的错误项，给排查问题带来一些困难。本文主要介绍如何显示程序的真实报错，以便针对性分析网站错误。
+详细信息 登录 Windows 实例.
+在菜单栏，依次选择 开始 &amp;gt; 管理工具 &amp;gt; Internet Information Service(IIS)管理器。
+在左侧导航窗格点击 网站，然后点击报错站点，找到并点击 错误页，如下图所示。
+在右侧的操作栏中点击 编辑功能设置。
+在弹出的 编辑错误页设置 窗口中，选择 详细错误 后，点击 确定。
+打开网站，按 Ctrl + F5 键强制刷新浏览器，确认重新访问时可以看到真实报错信息。</description>
+    </item>
+    
+    <item>
+      <title>远程控制 Windows 出现凭据无法工作问题</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work2/</guid>
+      <description>问题背景 使用远程桌面访问 Windows 系统的云服务器时，出现如下错误。使用 web 终端连接服务器可正常登录。
+解决方案 打开组策略编辑器。
+找到 开始 &amp;gt; 运行 &amp;gt; 输入 gpedit.msc，打开注册表编辑器。
+然后依次找到菜单，计算机配置 &amp;gt; 管理模板 &amp;gt; 凭据分配 &amp;gt; 允许分配保存的凭据用于 NTLM 服务器身份验证。
+选择 已启用， 然后在 显示 里面输入 TERMSRV/* #允许保存所有。
+刷新组策略，让设置生效。
+开始 &amp;gt; 运行 &amp;gt; 输入 gpupdate /force 强制刷新，如下图设置：
+修改允许分配保存的凭据用于仅 NTLM 服务器身份验证的组策略，若以上方法无效，根据下面的步骤操作：
+快捷键 Win+R，在运行窗里输入 gpedit.msc，如图修改本地组策略编辑器。
+网络访问：本地账户的共享和安全模型 修改成 经典 - 对本地用户进行身份验证，不改变其本来身份。
+这样就可以重新 mstsc 远程控制了。</description>
+    </item>
+    
+    <item>
+      <title>查看 Windows 云服务器系统日志</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_log/</guid>
+      <description>背景介绍 Windows日志路径：C:\Windows\System32\winevt\Logs
+系统日志：System.evtx(记录操作系统组件产生的事件，主要包括驱动程序、系统组件和应用软件的崩溃以及数据丢失错误等。系统日志中记录的时间类型由 Windows NT/2000 操作系统预先定义。)
+安全日志：Security.evtx(记录系统的安全审计事件，包含各种类型的登录日志、对象访问日志、进程追踪日志、特权使用、帐号管理、策略变更、系统事件。安全日志也是调查取证中最常用到的日志。默认设置下，安全性日志是关闭的，管理员可以使用组策略来启动安全性日志，或者在注册表中设置审核策略，以便当安全性日志满后使系统停止响应。)
+应用程序日志: Application.evtx(包含由应用程序或系统程序记录的事件，主要记录程序运行方面的事件，例如数据库程序可以在应用程序日志中记录文件错误，程序开发人员可以自行决定监视哪些事件。如果某个应用程序出现崩溃情况，那么我们可以从程序事件日志中找到相应的记录，也许会有助于你解决问题。)
+设置日志：Setup.evtx
+操作步骤 开始 &amp;gt; 控制面板 &amp;gt; 系统和安全 &amp;gt; 查看事件日志
+可以通过 DOS 命令来打开 事件查看器：按下组合键 win+r, 然后输入 eventvwr.exe,然后回车就可以打开了。</description>
+    </item>
+    
+    <item>
+      <title>远程控制 Windows 远程桌面无法连接</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_not_work3/</guid>
+      <description>问题背景 出现提示 “未启用对服务器的远程访问” 等等。
+解决方案 这个时候需要检查一下被访问的电脑的设置：
+是否开机
+防火墙是否关闭
+远程访问权限是否已经打开
+查看云服务器监控是否正常
+关闭防火墙的方法 打开 控制面板（查看方式：大图标） &amp;gt; windows 防火墙 &amp;gt; 启用或关闭 windows 防火墙。
+点击 关闭 ，然后确认。
+打开远程权限的方法 选择 控制面板 &amp;gt; 系统 &amp;gt; 远程设置 &amp;gt; 勾选 或鼠标右键点击 计算机 图标，在弹出的选项中点击 属性 选项。
+查看云服务器监控 若 cpu 和内存异常，并且到 100%，很可能中毒，建议做好数据的备份，然后重置系统。</description>
+    </item>
+    
+    <item>
+      <title>Windows 实例网络访问丢包延时高</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_packet_loss/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_packet_loss/</guid>
+      <description>背景介绍 当网站访问很慢或无法访问时，若已经排除显著的问题，而使用 ping 命令检测到有明显丢包时，建议做链路测试。在 Windows 环境中，推荐优先使用 WinMTR 工具，或者 tracert 命令行进行链路测试以判断问题来源。通常情况下，链路测试步骤如下。
+利用链路测试工具探测网络状况和服务器状态。
+根据链路测试结果分析处理。
+操作步骤 WinMTR 工具 mtr（My traceroute）作为一款网络测试工具，集成了 tracert 与 ping 这两个命令的图形界面。ping 与 tracert 通常被用于检测网络状况和服务器状态，具体说明如下。
+命令名称 具体说明 ping
+送出封包到指定的服务器。如果服务器有回应就会传送回封包，并附带返回封包来回的时间
+tracert
+返回从用户的电脑到指定的服务器中间经过的所有节点（路由）以及每个节点的回应速度。
+WinMTR 是 mtr 工具在 Windows 环境下的图形化实现，适合 Windows 下做路由追踪及 ping 测试。WinMTR 默认发送 ICMP 数据包进行探测，无法切换。
+相比 tracert 命令行工具，WinMTR 能避免节点波动对测试结果的影响，测试结果更正确。Windows 环境下，建议优先使用 WinMTR 进行链路测试。下载 WinMTR工具。
+下载 WinMTR 工具后，直接解压运行。运行程序后，在 Host 字段输入目标服务器域名或IP。
+点击 Start 开始测试。开始测试后，相应按钮变成了 Stop。
+运行一段时间后，点击 Stop 停止测试。
+说明 建议多测试几分钟，测试结束后，将结果导出。
+常见可选参数说明 Copy Text to clipboard：将测试结果以文本格式复制到粘贴板。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器蓝屏</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/bluescreen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/bluescreen/</guid>
+      <description>Windows 云服务器使用过程中出现蓝屏，Windows 10 1903包括这个之前的系统都有这个漏洞。
+操作步骤 查看蓝屏代码：0x0000007e
+查看系统事件查看器有频繁的登录审核日志，且系统错误日志附近可能会有 temdd 相关的日志。
+查看 Windows 日志路径：C:\Windows\System32\winevt\Logs
+系统日志：System.evtx
+安全日志：Security.evtx
+应用程序日志: Application.evtx
+设置日志：Setup.evtx
+蓝屏信息简略文件：C:\Windows\Minidump\ 根据文件生成日期排序，准备最近生成的 1-2 个文件即可。
+蓝屏详细文件：C:\Windows\MEMORY.DMP 此文件通常很大且信息更丰富，深入分析时需要提供此文件（可暂不提供），操作系统每次蓝屏会用新的文件覆盖此文件，如果蓝屏次数频繁，建议重命名备份一次此文件，便于对比蓝屏原因。
+查看辅助信息。
+系统版本：如Windows Server 2008 R2。
+蓝屏是否频繁：如一个星期前出现过一次。
+系统运行时间以及最近做过什么修改或最近安装过什么软件：如 系统运行了 3 个月，最近一个月都没修改过或装过其他软件。
+将四种日志以及最近 1-2 个简略蓝屏文件打包，附带辅助信息提供出来。
+进行解决
+针对最近出现较多的远程登录漏洞利用导致的蓝屏，用户可以先自行在 Windows 日志管理器查看安全日志，如果频繁出现非法登录日志，基本可以判断是远程登录漏洞导致的。
+综合以上现象，基本可以判定系统遭受了 CVE-2019-0708 漏洞攻击。
+修复方法：https://cert.360.cn/warning/detail?id=0f64023e053a5753816ac129b5362607
+补救措施：先按照文档里面打补丁，修复漏洞，另外，远程端口进行安全加固。
+补救措施无效，可以重置系统，重置之后，将系统更新打上补丁。并针对远程端口做加固。</description>
+    </item>
+    
+    <item>
+      <title>Windows 查看本地登录日志</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_event_log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_event_log/</guid>
+      <description>问题描述 Windows 云服务器登录异常，排查登录日志可参考本操作。
+操作步骤 本示例以操作系统版本为 Windows Server 2019。
+登录云服务器进入桌面。
+选择 开始 &amp;gt; 管理工具 &amp;gt; 事件查看器。
+打开 Windows 日志 &amp;gt; 安全 &amp;gt; 筛选当前日志。
+点击 事件 查看事件属性，可看到该时间的登录用户、进程、时间等信息。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器磁盘脱盘</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/lose_harddisk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/lose_harddisk/</guid>
+      <description>问题背景 Windows 云服务器挂载硬盘后如果没有设置开机 自动挂载，云服务器重启之后，硬盘状态可能会变成脱机状态。
+解决步骤 右键开始 菜单 &amp;gt; 运行 &amp;gt; diskmgmt.msc。
+进入磁盘管理界面后看见脱机状态的硬盘。
+右键脱机状态的硬盘，选择联机。
+查看状态。</description>
+    </item>
+    
+    <item>
+      <title>Windows 云服务器监控服务异常</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_guest_agent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_guest_agent/</guid>
+      <description>问题现象 部分用户反馈在 Windows 云服务器详情页面查询监控信息时，无法获取到硬盘的数据，显示为 “没有数据”。排查发现大部分为云服务器内部服务 Guest Agent 服务没有运行或异常导致。
+处理方法 检查 Guest Agent 服务 在 开始 &amp;gt; 运行 &amp;gt; services.msc，打开服务管理，可以看到 Guest Agent 服务，可以重启该服务。
+拷贝文件并运行服务 如果重启后无法恢复，或是未查询到该服务，可以通过远程桌面的方式在其他该服务正常运行的 Windows 云服务器中拷贝相应的文件，并运行服务。
+服务目录为 C:\Program Files (x86)\QingCloud\Guest Agent\GuestAgent.exe 。</description>
+    </item>
+    
+    <item>
+      <title>远程连接报错：两台计算机无法在分配的时间内连接</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin3/</guid>
+      <description>问题描述 远程登录报错提示：两台计算机无法在分配的时间内连接。
+解决方法 在 cmd 命令窗口输入 netsh winsock reset 后根据提示重启云服务器后，重新连接云服务器。</description>
+    </item>
+    
+    <item>
+      <title>远程登录提示“内部错误”</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin/</guid>
+      <description>问题描述 使用 MSTSC 方式登录 Windows 云服务器时，系统报错提示 “内部错误”。
+解决方法 在本地主机以管理员身份运行 cmd。
+执行 netsh winsock reset 命令。
+重启本地主机。
+说明 如果使用上述方法仍无法登录云服务器，我们首先建议您排查本地的网络是否正常，您可以尝试更换网络（例如：手机热点）测试是否可以远程登录。
+如果通过上述排查，仍然无法登录云服务器，请记录资源信息和问题时间，然后点击管理控制台右上方的 “工单”，填写工单信息，获取技术支持。</description>
+    </item>
+    
+    <item>
+      <title>远程连接报错：您的连接已丢失</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_cant_loggin2/</guid>
+      <description>问题描述 远程桌面链接 Windows 云服务器报错：您的远程桌面会话已结束，另一用户已连接到此远程计算机，因此您的连接已丢失。
+解决方法 2008 操作系统处理方法 打开 管理工具 &amp;gt; 远程桌面服务 &amp;gt; 远程桌面会话主机配置，进入远程桌面会话主机配置页面。
+双击打开，取消勾选 限制每个用户只能进行一个会话，点击 确定。
+2012 操作系统处理方法 打开 开始 &amp;gt; 运行，输入 gpedit.msc，进入本地组策略编辑器。
+打开 计算机配置 &amp;gt; 管理模板 &amp;gt; Windows组件 &amp;gt; 远程桌面服务 &amp;gt; 远程桌面会话主机 &amp;gt; 连接。
+双击打开 将远程桌面服务用户限制到单独的远程桌面服务会话，修改配置为 已禁用，点击 确定 保存。
+在命令窗口执行 gpupdate/force，更新组策略。</description>
+    </item>
+    
+    <item>
+      <title>Windows 配置多用户登录后，登录出现闪屏怎么办？</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_splash_method/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/windows_splash_method/</guid>
+      <description> 概述 Windows 服务器配置多用户登录后，Administrator 登录正常，普通用户登录后出现闪屏，或者打开 我的电脑 出现自动关闭，不能正常使用。
+操作步骤 选择 开始 &amp;gt; 管理工具 &amp;gt; 事件查看器 &amp;gt; 应用程序 中查看相关事件。
+查看事件日志信息，模块发送的错误及时间。
+打开 运行 &amp;gt; cmd，进入到错误文件所在目录。
+执行如下命令。
+cd C:\Program Files (x86)\GifRecord 通过命令清理异常文件`regsvr32.exe /u` 文件名 ，进行移除，移除后恢复正常。
+regsvr32.exe /u GifRecord64.dll </description>
+    </item>
+    
+    <item>
+      <title>Windows 时间不同步解决办法</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win_time/</guid>
+      <description>概述 Windows 系统默认的时间同步间隔是 7 天，不能自由选择。我们也可以通过修改注册表来手动修改它的自动同步间隔以提高同步精度。
+操作步骤 键盘上按 Win+R 键（也可以在开始菜单右键然后选择运行），在运行的输入框里输入 regedit 命令，然后点击确定。
+展开 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpClient 分支，并双击 SpecialPollInterval 键值，将对话框中的 基数栏 选择到 十进制 上。
+对话框中显示的数字正是自动对时的间隔（以秒为单位），比如默认的 604800 就是由 7（天）× 24（时）× 60（分）× 60（秒）计算来的。设定时间同步周期（建议设为 900 = 15 分钟或 3600 = 1 小时等周期值），填入对话框，点击确定保存关闭对话框。</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 无法访问 samba 服务</title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win2019_use_samba/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/win2019_use_samba/</guid>
+      <description>问题背景 Windows Server 2019 默认关闭了 SMB 1.0，在安装了 SMB 服务后，客户端仍无法访问 samba 服务。
+解决方案 需要修改客户端的本地组策略。
+操作步骤 通过 win+ R 打开 运行，输入 gpedit.msc，打开 本地组策略编辑器。
+依次点击 计算机配置 &amp;gt; 管理模板 &amp;gt; 网络 &amp;gt; Lanman工作站，双击 启用不安全的来宾登录，设置为已启用。
+修改之后即可正常访问。</description>
+    </item>
+    
+    <item>
+      <title>如何为 Windows 云服务器配置静态 IP 地址？ </title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_ip/</guid>
+      <description>只有当主机位于自管私有网络之中时，您才需要自行配置 IP 地址。
+开始 &amp;gt; 控制面板 &amp;gt; 网络。
+右键点击 本地连接，选择 属性。
+在弹出的对话框中，选中 Internet 协议版本4。
+点击 属性 按钮， 在弹出的对话框中即可设置静态 IP 地址。</description>
+    </item>
+    
+    <item>
+      <title>为什么我的 Windows 云服务器远程桌面连接不上？ </title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_unconnect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_unconnect/</guid>
+      <description>打开 RDP 服务 在 Windows 主机里打开 RDP 服务：
+使用 虚拟终端 登录 Windows 主机，虚拟终端 就是主机 ID 旁边的 显示器形状的小图标，点击即可以弹出 Windows 桌面;
+右键点击 我的电脑 &amp;gt; 属性 &amp;gt; 远程 &amp;gt; 选择 启用这台机器上的远程桌面。
+在控制台的 安全 &amp;gt; 防火墙 中手动为主机的防火墙添加一条接受 tcp 3389 端口 的下行规则， 点击 更新规则 使其应用到主机。
+确认设置 如果希望在 Windows 本地电脑与远程服务器之间复制粘贴，你需要确认如下设置：
+打开本机的远程桌面连接时，按照下图所示勾选要远程使用的资源。
+在服务器上打开任务管理器，查看进程，看是否有 rdpclip.exe 进程。 通常，只要存在该进程，就可以在本机和远程服务器之间粘贴文本了。 如果没有此进程则需要手动启动，开始 &amp;gt; 运行 &amp;gt; rdpclip.exe。
+注意 请确认关闭了主机内部防火墙或者主机内部防火墙放行了相应的端口。</description>
+    </item>
+    
+    <item>
+      <title>如何开启 Windows 的共享功能？ </title>
+      <link>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/troubleshooting/windows_server_os/vm_windows_share/</guid>
+      <description>Windows SMB（Server Message Block）很容易感染病毒和被黑客袭击，请谨慎使用。 推荐使用 FTP 方式传文件，如果一定要用共享，建议复制完文件就关闭共享。
+修改注册表：
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters Dword: AutoShareServer 1 HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters Dword: SMBDeviceEnabled 1 如果是 window 2008，还需要：
+打开 控制面板 &amp;gt; 网络和Internet &amp;gt; 网络和共享中心。
+点击左侧的 更改适配器设 置 ，右键点击 网卡 ，并选择 属性。
+在弹出的对话框中勾中 Microsoft网络的文件和打印机共享并确定。
+回到 网络和共享中心。
+点击左侧的 更改高级共享设置 ，确保 公用（当前配置文件） 项下的各个与共享相关的选项都启用了，并确定。
+重启 Windows 。</description>
+    </item>
+    
+  </channel>
+</rss>

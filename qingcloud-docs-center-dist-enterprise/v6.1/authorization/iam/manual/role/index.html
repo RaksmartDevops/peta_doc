@@ -1,0 +1,1933 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[IAM , 身份管理, 信任载体]">
+
+
+
+<meta name="description" content="介绍 IAM 如何进行身份管理。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>身份管理 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/authorization/iam/">
+          
+            访问鉴权管理
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/intro/">概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/glossary/">名词解释</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/intro/iam_v1/">IAM V1.0 版发布概要</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/portal/">产品入口</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/authorization/iam/manual/role/">身份管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/policy/">策略管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/user/">用户管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/policies_simulate/">策略模拟器</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/manual/log/">操作日志</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/principal/">信任载体</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/qrn/">资源标识符 QRN</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/json/">JSON 编辑格式及参数说明</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/supported_services/">支持的服务类别列表</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/faq/assume_role/">如何使用身份</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/best-practices/scenario1/">免密钥应用开发</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/authorization/iam/best-practices/scenario2/">跨账号管理协作</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/authorization/iam" data-url="/v6.1/authorization/iam">访问鉴权管理</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/authorization/iam/manual/portal/" data-url="/v6.1/authorization/iam/manual">操作指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/authorization/iam/manual/role" data-url="/v6.1/authorization/iam/manual/role">身份管理</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    身份管理</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/authorization/iam/manual">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_创建身份">创建身份</a>
+      <ul>
+        <li><a href="#_创建子账户同时创建身份">创建子账户同时创建身份</a></li>
+      </ul>
+    </li>
+    <li><a href="#_为身份附加移除策略">为身份附加（/移除）策略</a></li>
+    <li><a href="#_查看和修改身份">查看和修改身份</a>
+      <ul>
+        <li><a href="#_修改身份属性">修改身份属性</a></li>
+        <li><a href="#_为资源类身份添加信任载体">为资源类身份添加信任载体</a></li>
+        <li><a href="#_为信任载体资源更换身份">为信任载体资源更换身份</a></li>
+        <li><a href="#_为账户类身份配置可见模块">为账户类身份配置可见模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用身份">使用身份</a></li>
+    <li><a href="#_测试身份拥有的权限">测试身份拥有的权限</a></li>
+    <li><a href="#_删除身份">删除身份</a></li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p>为了控制可以接入云平台访问客户资源的实体，您可以通过创建 IAM 身份向应用程序或他人来委派您名下云平台服务和资源的访问权限。</p>
+</div>
+<div class="paragraph">
+<p>当您创建身份后，即表示该身份的指定实体与本账户之间建立了信任关系，该实体（即身份的<a href="../../faq/principal">信任载体</a>）可通过代入此身份而获得本账户的一个临时访问凭证。</p>
+</div>
+<div class="sect1">
+<h2 id="_创建身份">创建身份</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>选择左侧<strong>身份管理</strong>菜单，点击<strong>创建</strong>，页面将可视化引导身份创建并绑定策略。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role1.png" alt="role1"/>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>为身份指定信任载体。</p>
+<div class="paragraph">
+<p><a href="../../faq/principal">什么是信任载体？</a></p>
+</div>
+<div class="paragraph">
+<p>您可以选择产品资源或云平台账户类型来创建身份，点击<strong>了解更多</strong>以查看该载体类型的描述和适用场景介绍。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当您为身份指定产品资源类的信任载体时，您可以在下拉框中选择指定具体的产品资源；而当您为身份指定云平台账户类的信任载体时，则需要对方实现将其账户 ID 提供给您。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>若您为自己名下的子账户创建身份，可以直接输入子账户名称实时搜索。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role2.png" alt="图片"/>
+</div>
+</div>
+</li>
+<li>
+<p>选择好将要赋予身份的<strong>信任载体</strong>类型后，填写身份名称和描述。点击<strong>创建身份</strong>即成功创建身份，页面将自动引导进入关联策略的步骤。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea1.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>点击左上角的<strong>系统预置</strong>和<strong>自定义</strong>标签进行策略切换，当列表中的策略比较多时可以通过搜索框筛选定位。</p>
+</div>
+<div class="paragraph">
+<p>勾选 ID 前面的复选框后点击<strong>关联策略</strong>即可完成策略关联的操作。如果暂时不需要关联策略，也可以选择点击<strong>跳过</strong>。</p>
+</div>
+</li>
+<li>
+<p>关联策略或跳过关联策略后，界面都将指引进入完成步骤。提示您身份创建成功，并显示该身份的一些基本信息和其关联的策略。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role3.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>创建成功后，您可以直接从当前审阅窗口链接到<a href="../../manual/policies_simulate">策略模拟器</a>验证该身份的权限配置，或转到该身份详情页查看和管理。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_创建子账户同时创建身份">创建子账户同时创建身份</h3>
+<div class="paragraph">
+<p>为了更方便地使用子账户身份功能，我们还可以在创建子账户时顺便为该子账号创建身份。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>进入子账户管理面板，创建一个子账户。</p>
+<div class="paragraph">
+<p>创建成功后将弹出如下提示，点击<strong>了解更多</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea2.png" alt="rolea2"/>
+</div>
+</div>
+<div class="paragraph">
+<p>若您的子账户列表中已存在子账户，也可在列表上右键单击，选择<strong>添加 IAM 身份</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea3.png" alt="图片"/>
+</div>
+</div>
+</li>
+<li>
+<p>阅读弹窗上的引导内容后，点击<strong>创建身份</strong>。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea4.png" alt="图片"/>
+</div>
+</div>
+</li>
+<li>
+<p>输入身份名称和描述后确定即可为当前子账户成功创建身份。</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea5.png" alt="图片"/>
+</div>
+</div>
+</li>
+<li>
+<p>接下来跟前述常规创建身份时一样，可直接附加策略或放弃附加策略。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为身份附加移除策略">为身份附加（/移除）策略</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>只有为身份附加了策略之后该身份才能获得策略定义的一系列权限，因而在前文创建身份的步骤中，IAM 指引客户直接进入到了关联策略的步骤以平滑完成整个流程。</p>
+</div>
+<div class="paragraph">
+<p>如果一旦您没有在创建时关联或者在创建完后有附加新权限集合的需要，云平台 IAM 依然提供再次为该身份添加和移除策略的操作，并支持一次性添加或移除多条策略。</p>
+</div>
+<div class="paragraph">
+<p>在身份列表页和身份详情页都可以操作。</p>
+</div>
+<div class="paragraph">
+<p>身份列表页找到对应的身份，鼠标右键点击可看到功能入口，如下图所示。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea6.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>也可在身份详情页下方切换到关联策略选项卡后看到操作。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea7.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>点击<strong>附加策略</strong>后即可看到与前文创建身份时描述一样的弹窗。</p>
+</div>
+<div class="paragraph">
+<p>相应的，移除策略时支持复选框同时勾选多条后操作。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea8.png" alt="图片"/>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查看和修改身份">查看和修改身份</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>身份列表页单击任一身份行即可进入该身份详情页查看，详情页将详细展示身份的信任载体及关联的策略信息。</p>
+</div>
+<div class="sect2">
+<h3 id="_修改身份属性">修改身份属性</h3>
+<div class="paragraph">
+<p>IAM 身份的凭证是具备有效期的，表示代入该身份的会话最长可以使用的时间，过期了需要重新获取凭证。</p>
+</div>
+<div class="paragraph">
+<p>创建身份时，系统会根据信任载体类型不同而设置不同的默认有效期，身份创建成功后可随时修改。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>目前资源类身份会话有效期默认为 1 小时，账户类身份会话有效期默认为 6 小时。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>修改身份会话有效期将与身份名称描述等属性的修改入口相同。</p>
+</div>
+<div class="paragraph">
+<p>身份列表页，找到要修改的身份双击鼠标左键。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role4.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>也可以鼠标右键单击对应的身份，选择<strong>修改</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role5.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>或者进入身份详情页，点击右上角选择<strong>修改</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role6.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>在弹出的窗口上方可修改身份名称和描述，最后同时提供该身份的会话有效期，三条属性修改确认无误即可点击<strong>修改</strong>提交。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_为资源类身份添加信任载体">为资源类身份添加信任载体</h3>
+<div class="paragraph">
+<p>身份创建时指定了载体类型，如果该载体类型是产品资源，还需要将具体资源绑定到身份上才可以使该资源能通过 SDK 的方式代入身份。</p>
+</div>
+<div class="paragraph">
+<p>例如：下图是当身份载体类型为<strong>云服务器</strong>时，为身份添加具体云服务器资源的页面。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role7.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>为集群时亦同。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/cluster2.png" alt="图片"/>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_为信任载体资源更换身份">为信任载体资源更换身份</h3>
+<div class="paragraph">
+<p>当身份载体类型为云服务器（或集群）时，已绑定该身份的信任载体云服务器（或集群）详情页也会展示该身份的基本信息。</p>
+</div>
+<div class="paragraph">
+<p>例如：您可以点击关联资源列表的云服务器 id 直接进入到该云服务器详情页，可以看到身份信息卡片，点击<strong>更换关联身份</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role8.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>弹出窗口将提示您可以更换到的身份，阅读这些身份属性选择您需要的身份点击<strong>更换</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role9.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>身份更换成功之后您可以在此查看到新的身份详情。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role10.png" alt="图片"/>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_为账户类身份配置可见模块">为账户类身份配置可见模块</h3>
+<div class="paragraph">
+<p>为了让赋予身份权限的对方账户更聚焦操作，云平台 IAM 将其可操作权限设定了双重保险，默认为对方切换身份后的账户控制台设置了 URL 可见模块，只有开通的模块才可通过 UI 控制台操作。</p>
+</div>
+<div class="paragraph">
+<p>进入账户类身份详情，即可在下方<strong>信任载体详情</strong>选项卡看到相应模块配置，如下图所示。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role11.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>您可以随时根据需要增加或删除相应可见模块。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role12.png" alt="图片"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>浅绿色为默认初始开放模块，<strong>全绿色</strong>为新增开放模块，移除的模块为<strong>红色</strong>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>切换到所有模块，可查看到控制台所有服务模块，包括 IAM 尚未支持管理的部分。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role121.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>调整后点击<strong>立即生效</strong>，可汇总显示此次的所有变动。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role13.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>确认后模块管理将立即在对方账户使用该身份访问控制台页面时生效。</p>
+</div>
+<div class="paragraph">
+<p>点击查看：<a href="../../faq/assume_role">如何使用身份</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>如果您没有将任何可用区设为可见，对方将无法查看除<strong>账户管理</strong>类别外的任意模块。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>当您找不到您需要开放或关闭的模块时，可以使用搜索或者过滤功能来查找。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role15.png" alt="图片"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用身份">使用身份</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当云平台 IAM 身份创建成功后，您可以通过下载云平台官方 SDK 来更新您应用中的认证代码来调用身份，账户类身份也可以通过登录管理控制台 UI 面板执行<strong>切换身份</strong>操作。</p>
+</div>
+<div class="paragraph">
+<p>更多操作详情及注意事项，请参见：<a href="../../faq/assume_role">如何代入身份使用</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_测试身份拥有的权限">测试身份拥有的权限</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当身份附加策略后，您可以使用<a href="../../manual/policies_simulate">策略模拟器</a>来验证多个合并的策略组合附加到身份是否符合预期，从而辅助您确认身份和权限配置。</p>
+</div>
+<div class="paragraph">
+<p>具体操作步骤请参见：<a href="../../manual/policies_simulate/#_身份上的策略权限验证">身份上的策略权限验证</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除身份">删除身份</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>删除身份时将同时解除该身份已关联的策略以及授权关系，请注意谨慎操作。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>身份列表页选择您确认删除的身份，在更多操作中点击<strong>删除</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role16.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>在弹出的确认窗口阅读提示信息确认后，即可批量删除多条身份。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role17.png" alt="role17" width="70%"/>
+</div>
+</div>
+<div class="paragraph">
+<p>也可以在身份列表上鼠标右键单击对应身份，选择<strong>删除</strong>来删除这一条身份。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role18.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>或进入身份详情页面，点击<strong>基本信息</strong>卡片右上角的<strong>删除</strong>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/role19.png" alt="图片"/>
+</div>
+</div>
+<div class="paragraph">
+<p>阅读并确认弹框提示信息后即可删除。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/rolea9.png" alt="rolea9" width="70%"/>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_创建身份">创建身份</a>
+      <ul>
+        <li><a href="#_创建子账户同时创建身份">创建子账户同时创建身份</a></li>
+      </ul>
+    </li>
+    <li><a href="#_为身份附加移除策略">为身份附加（/移除）策略</a></li>
+    <li><a href="#_查看和修改身份">查看和修改身份</a>
+      <ul>
+        <li><a href="#_修改身份属性">修改身份属性</a></li>
+        <li><a href="#_为资源类身份添加信任载体">为资源类身份添加信任载体</a></li>
+        <li><a href="#_为信任载体资源更换身份">为信任载体资源更换身份</a></li>
+        <li><a href="#_为账户类身份配置可见模块">为账户类身份配置可见模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用身份">使用身份</a></li>
+    <li><a href="#_测试身份拥有的权限">测试身份拥有的权限</a></li>
+    <li><a href="#_删除身份">删除身份</a></li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

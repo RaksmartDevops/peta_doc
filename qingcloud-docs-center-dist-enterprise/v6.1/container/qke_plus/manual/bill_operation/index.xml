@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>费用相关 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/bill_operation/</link>
+    <description>Recent content in 费用相关 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/bill_operation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看计费详情</title>
+      <link>/v6.1/container/qke_plus/manual/bill_operation/billing_detail/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/bill_operation/billing_detail/</guid>
+      <description>集群创建后，您可以在集群信息页面查看集群计费详情。
+说明 计费详情仅展示当前集群的计费模式、包年包月合约到期时间、扣费时间、费用等信息，关于集群计费模式、计费项及价格说明，请参见计费说明。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，点击集群信息，进入集群信息页面。
+在页面左下方得计费信息区域，展示了当前集群的计费信息。
+点击详情，查看集群计费详情，包括扣费时间、费用、价格等信息。</description>
+    </item>
+    
+    <item>
+      <title>修改计费模式</title>
+      <link>/v6.1/container/qke_plus/manual/bill_operation/change_billing_mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/bill_operation/change_billing_mode/</guid>
+      <description>本文介绍如何修改 QKE 集群计费模式。
+操作场景 QKE 集群创建后，您可以按需修改集群计费模式：
+按需转包年包月：修改后立即生效，可享受更优惠的价格。
+包年包月转按需：修改后将关闭自动续费，修改不会立即生效，待合约到期后生效。
+前提条件 请您确保余额充足，以免扣费对其他资源造成影响。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击操作列的图标，选择按需转包年包月/包年包月转按需。
+您也可以点击集群名称，在集群信息页面的计费信息区域，点击转换。
+在弹出页面中，进行如下操作：
+按需转包年包月：选择购买时长，并设置是否自动续费，然后点击立即支付。
+包年包月转按需：查看到期时间，点击到期转按需。</description>
+    </item>
+    
+    <item>
+      <title>手动续费</title>
+      <link>/v6.1/container/qke_plus/manual/bill_operation/apply_renewal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/bill_operation/apply_renewal/</guid>
+      <description>本文介绍如何为包年包月集群续费。
+操作场景 包年包月集群若未设置自动续费，将在包年包月合约到期后转为按需计费。若您的集群需要长期使用，建议您在合约到期前手动申请续费，以节约集群费用。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击操作列的图标，选择申请续费，弹出续费页面。
+设置续费时长，点击立即支付。</description>
+    </item>
+    
+    <item>
+      <title>自动续费</title>
+      <link>/v6.1/container/qke_plus/manual/bill_operation/auto_renewal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/bill_operation/auto_renewal/</guid>
+      <description>本文介绍如何为包年包月集群设置自动续费。
+操作场景 对于包年包月集群，您可以在创建集群时，设置集群自动续费，也可以在集群创建后，去费用中心设置自动续费。
+操作步骤 以下介绍在费用中心设置自动续费的操作。
+登录管理控制台。
+将鼠标移到页面顶部右上方的费用选项，然后选择续约管理，进入费用中心的续费管理页面。
+在到期不续费项页签中，找到需要设置的集群，在操作列点击设置自动续费。
+设置自动续费为开启，然后选择续费时长，点击修改。</description>
+    </item>
+    
+  </channel>
+</rss>

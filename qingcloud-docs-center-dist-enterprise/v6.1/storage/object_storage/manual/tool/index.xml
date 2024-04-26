@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>客户端工具 on 用户指南</title>
+    <link>/v6.1/storage/object_storage/manual/tool/</link>
+    <description>Recent content in 客户端工具 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/object_storage/manual/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>qscamel</title>
+      <link>/v6.1/storage/object_storage/manual/tool/qscamel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/tool/qscamel/</guid>
+      <description>工具介绍 qscamel 是一个基于 Goroutine 池实现并发机制的、高效的、端点间迁移数据的工具，有着如下特性。
+采用简单，易用的任务管理方式，实现完全自动化的重试机制，无须人工介入。
+创建迁移任务时，支持 copy，fetch，delete 等迁移任务类型；支持迁移指定时间后上传的文件；支持对任务请求次数的限制，从而全面覆盖用户的迁移需求。
+执行迁移任务时，支持从任务中断处续传，从而节省用户的时间，提高迁移效率。
+迁移任务执行中，统计当前已成功迁移的总容量与总的文件数以及迁移任务的中间状态，并输出相应的统计信息，方便用户实时了解迁移任务的执行状态。
+在最终迁移任务完成时，输出各统计信息，并将迁移失败的文件列表显示。
+命令详解 qscamel 的各命令行，使用方法类似。这里以 run 命令为例，对其参数与用法进行说明。
+用户可通过 run 命令来创建或者恢复一个迁移任务。当调用该命令时，qscamel 会根据任务名查询数据库，并检查任务文件内容是否有更新。
+若有同名任务，且任务文件内容有更新，qscamel 会报错并退出。
+若有同名任务，且任务文件没有更新，qscamel 将恢复该任务，继续执行。
+若无同名任务，qscamel 会对任务内容的 sha256 校验和进行计算，并将结果保存于数据库中。
+同时，使用 run 命令，有如下注意事项。
+说明 数据迁移任务在创建成功后就不能修改。
+创建后的任务，无论执行完成或执行失败，均不会自动从数据库中删除。
+操作说明
+查看 run 的使用教程
+qscamel run -h 命令行回显
+Create or resume a task Usage: qscamel run [task name or task path] [flags] Flags: -h, --help help for run -t, --task string task path Global Flags: -c, --config string config path (default &amp;#34;~/.</description>
+    </item>
+    
+    <item>
+      <title>qsftpd</title>
+      <link>/v6.1/storage/object_storage/manual/tool/qsftpd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/tool/qsftpd/</guid>
+      <description>qsftpd 是对象存储提供的 FTP Server。用户通过简单的配置，即可通过 FTP 协议使用对象存储服务。该工具已在 GitHub 开源，更多详情可参见 https://github.com/qingstor/qsftpd
+安装 qsftpd 支持 Linux、macOS 和 Windows 操作系统。用户可访问 GitHub 项目的 Releases 页面查看和下载相应版本。
+配置 在正式使用 qsftpd 工具之前，需要创建并填写配置文件 qsftpd.yaml。详细操作步骤如下：
+在终端执行如下命令，创建配置文件：
+touch qsftpd.yaml 配置文件内容如下：
+qingstor: access_key_id: access_key_id_example secret_access_key: secret_access_key_example host: qingstor.com port: 443 protocol: https log_level: warn bucket_name: bucket_name_example zone: pek3a listen_host: 127.0.0.1 listen_port: 21 public_host: 127.0.0.1 max_connections: 128 start_port: 6000 end_port: 7000 log_level: error cache_path: /var/cache/qsftpd # 认证设置，默认允许匿名用户登录，也可以指定特定的用户登录 #users: # username_example: password_example 参数说明：</description>
+    </item>
+    
+    <item>
+      <title>Mountain Duck</title>
+      <link>/v6.1/storage/object_storage/manual/tool/mountain_duck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/tool/mountain_duck/</guid>
+      <description>概述 Mountain Duck 是 Windows 平台上用于挂载访问对象存储的第三方客户端软件。目前也支持 MAC 平台。
+对象存储推荐用户使用 Mountain Duck 来挂载由对象存储为其提供的无限容量的在线文件存储空间，从而节省本地磁盘空间。用户通过 Mountain Duck 可以像操作本地磁盘(例如 C 盘、D 盘等)一样方便、快捷地访问或存取对象存储 Bucket 中的各种类型文件。
+目前支持以下平台：
+Windows 7、Windows 8、Windows 10 的 32/64 位平台。
+MAC OS 10.12 及以后版本。
+安装 用户可下载 Mountain Duck 安装包，解压缩后直接运行安装即可完成。
+使用 通过 Mountain Duck 成功挂载对象存储中的 Bucket 后，用户即可像操作本地磁盘一样对对象存储 Bucket 中的文件进行读写、存取等操作，同时可通过托盘菜单对缓存设置、版本更新、帐户信息等进行查看或操作。
+详细操作步骤如下：
+点击 Mountain Duck → 新建链接，如下图所示：
+弹出新建链接对话框，根据提示信息输入相关字段，点击 连接 即可：
+说明：
+协议下拉框里，选择 Amazon S3，如上图所示。
+服务器名，填写对象存储的域名，格式为：s3.&amp;lt;zone_id&amp;gt;.qingstor.com。其中 zone_id 须根据实际情况进行修改。
+访问密钥 ID 与 访问私钥，即 AK/SK 须根据实际情况进行填写。
+盘符 即对象存储 Bucket 成功挂载至本地后的磁盘盘符。</description>
+    </item>
+    
+  </channel>
+</rss>

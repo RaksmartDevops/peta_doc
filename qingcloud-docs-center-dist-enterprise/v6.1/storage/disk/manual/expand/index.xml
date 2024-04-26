@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>硬盘扩容 on 用户指南</title>
+    <link>/v6.1/storage/disk/manual/expand/</link>
+    <description>Recent content in 硬盘扩容 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/disk/manual/expand/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>扩容数据盘（Linux ）</title>
+      <link>/v6.1/storage/disk/manual/expand/expan_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/manual/expand/expan_linux/</guid>
+      <description>前提条件 在对数据盘进行扩容之前，请先确认硬盘内容已进行备份，以防止数据丢失。备份操作详见 备份硬盘。
+扩容步骤 Linux 系统下的数据盘扩容主要包括两部分：
+云硬盘存储容量的扩展，该步骤需登录管理控制台进行操作.
+硬盘文件系统的扩展，该步骤需登录至云硬盘所挂载的服务器，并根据硬盘的分区情况及文件系统类型进行操作。
+扩展云硬盘的存储容量 登录到云服务器，执行 umount 命令将挂载的相应目录下的硬盘进行卸载。然后登录到 管理控制台，将主机与硬盘解除绑定，直至硬盘状态为 可用。详细可参考 卸载硬盘。
+在云硬盘列表右键点击需要扩容的硬盘，选择 扩容，弹出 扩容硬盘 界面。
+点击 + 或直接输入容量值进行扩容，点击 提交 即可。
+将硬盘重新加载到云服务器。
+扩展 EXT 文件系统 扩展无分区磁盘 (ext) 执行 df -h 命令，查看扩容前的磁盘容量。
+执行 lsblk -f 命令，查看磁盘文件系统类型。
+使用 umount 命令将待扩容的磁盘从系统目录上卸载。
+# umount -v /mnt/data 说明 /mnt/data：为磁盘挂载的系统目录，需根据实际情况进行修改。
+执行如下命令，检查磁盘的文件系统状态是否正常：
+# e2fsck -f /dev/vdc 说明 返回结果如下图所示，则证明磁盘文件系统正常；否则，需解决磁盘问题后再进行后续扩容操作。
+执行如下命令，扩容文件系统:
+# resize2fs /dev/vdc 使用 mount 命令将扩容后的磁盘挂载到至相应的系统目录：
+# mount /dev/vdc /mnt/data 说明 /mnt/data：为磁盘挂载的系统目录，需根据实际情况进行修改。
+执行 df -h 命令，检查扩容后磁盘容量变化。</description>
+    </item>
+    
+    <item>
+      <title>扩容数据盘( Windows )</title>
+      <link>/v6.1/storage/disk/manual/expand/expan_win/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/manual/expand/expan_win/</guid>
+      <description>前提条件 在对数据盘进行扩容之前，请先确认硬盘内容已进行备份，以防止数据丢失。备份操作详见 备份硬盘。
+扩容步骤 Windows 系统下的数据盘扩容主要包括两部分：
+云硬盘存储容量的扩展，该操作步骤需登录管理控制台.
+卷容量的扩展，该操作步骤需登录至云硬盘所挂载的服务器进行。
+扩展云硬盘存储容量 在桌面点击 开始 &amp;gt; 运行，然后输入 diskmgmt.msc ，打开磁盘管理器。
+将磁盘的状态设置为脱机。
+登录控制台，进入硬盘页面，右键点击待卸载的硬盘 ID ，选择 卸载硬盘，直至硬盘状态为可用。
+在云硬盘列表右键点击需要扩容的硬盘，选择 扩容，弹出 扩容硬盘 界面。
+点击 + 或直接输入容量值进行扩容，点击 提交 即可。
+将扩容后的磁盘加载到云服务器。
+打开磁盘管理器，可以看到有未分配的磁盘容量。
+扩展卷容量 右键单击磁盘分区，选择 扩展卷。
+根据扩展卷向导的指引完成扩展卷操作。
+完成后新增的数据盘空间将会合入原有卷中。</description>
+    </item>
+    
+    <item>
+      <title>扩容系统盘</title>
+      <link>/v6.1/storage/disk/manual/expand/expan_linux_sys/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/manual/expand/expan_linux_sys/</guid>
+      <description>操作场景 云平台一直秉承云计算的理念，即云服务器的系统是临时的，随时可以关闭和销毁，而不影响业务的可用性，故不建议用户将数据放在系统盘（即操作系统启动程序所在磁盘）。
+若用户确有需求，云平台也为云服务器增加了系统盘扩容的功能，用户可以对已有的云服务器系统盘进行扩容操作。
+已知限制 FreeBSD 操作系统不支持系统盘扩容，Windows 操作系统支持的范围是 50 到 300 GB，其他操作系统支持的范围是 20 到 300 GB。
+为现有云服务器系统盘进行扩容，必须在操作系统关闭的情形下进行。
+扩容仅支持单向的增加，而不可以缩减。
+扩容前，必须确认所使用的操作系统以及文件系统是否支持扩容。否则，有可能会出现系统无法启动，数据无法访问的情形。
+注意 扩容前，请务必做好备份工作，以防误操作导致数据丢失。
+操作步骤 以一台安装了 CentOS 7.9 操作系统的云服务器为例：
+打开 Web 终端，登录云服务器，执行如下命令，确认当前系统盘的大小。
+# df -h / 关闭操作系统，选择要扩容系统盘的云服务器，在 更多操作 中选择 更改配置。点击 + 或直接输入容量值，对系统磁盘进行扩容操作：
+启动云服务器，打开 Web 终端，执行如下命令，查看更改后系统盘的空间容量以确认扩容成功：
+# df -h / 如有更多需求，请提交工单或联系我们。</description>
+    </item>
+    
+  </channel>
+</rss>

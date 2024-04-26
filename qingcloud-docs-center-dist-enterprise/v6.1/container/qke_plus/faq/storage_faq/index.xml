@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>存储 FAQ on 用户指南</title>
+    <link>/v6.1/container/qke_plus/faq/storage_faq/</link>
+    <description>Recent content in 存储 FAQ on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/faq/storage_faq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何理解 Kubernetes 持久化存储体系</title>
+      <link>/v6.1/container/qke_plus/faq/storage_faq/k8s_pv_pvc_storageclass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/faq/storage_faq/k8s_pv_pvc_storageclass/</guid>
+      <description>PVC 是 k8s 中一种比较常见的持久化存储方案，其后端一般是独立的存储系统如 NFS、iSCSI、cephfs 、glusterfs 等。本文将简单阐述这一套存储体系的大致内容。
+基本概念 在学习 Kubernetes 的持久化存储体系之前，您需要先了解以下几个概念：
+Volume（卷）
+所谓容器的 Volume，其实就是将一个宿主机上的目录，跟一个容器里的目录绑定挂载在一起。在k8s 中，卷的类型有很多，不同类型的卷的功能都不一样，具体可以参照 Kubernetes 中文社区｜中文文档_Kubernetes Volume。
+PV
+PV 描述的是持久化存储数据卷。所谓的“持久化 Volume”，指的是宿主机上的目录，具备“持久性”。即：这个目录里面的内容，既不会因为容器的删除而被清理掉，也不会跟当前的宿主机绑定。
+PVC
+PVC 描述的则是 Pod 所希望使用的持久化存储的属性。比如：Volume 存储的大小、可读写权限等。
+StorageClass
+StorageClass 即创建 PV 的模板。
+API 对象详解 以下主要介绍 PV、PVC、StorageClass 等这三种 API 对象。
+PV PV 全称是 PersistentVolume ，是集群中的一块存储，由管理员配置或使用存储类动态配置。 它是集群中的资源，就像节点是集群资源一样。 PV 是与 Volumes 类似的卷插件，但具有独立于使用 PV 的任何单个 Pod 的生命周期。
+其定义方式如下：（以 NFS 类型的 PV 为例）
+apiVersion: v1 kind: PersistentVolume metadata: name: nfs spec: storageClassName: manual capacity: storage: 1Gi accessModes: - ReadWriteMany persistentVolumeReclaimPolicy: Retain nfs: server: 10.</description>
+    </item>
+    
+    <item>
+      <title>云服务器类型与存储类型</title>
+      <link>/v6.1/container/qke_plus/faq/storage_faq/workload_storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/faq/storage_faq/workload_storage/</guid>
+      <description>创建 QKE 集群时，默认使用 性能型本地盘作为挂载数据盘。
+集群使用过程中，默认的 Kubernetes 存储类型为容量型云盘，即安装可视化控制台及其内置组件时，系统会自动使用容量型云盘进行挂盘。</description>
+    </item>
+    
+  </channel>
+</rss>

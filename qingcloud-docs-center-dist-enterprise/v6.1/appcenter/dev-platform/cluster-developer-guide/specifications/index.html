@@ -1,0 +1,3952 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云平台, AppCenter, 云应用开发, 模板, 规范]">
+
+
+
+<meta name="description" content="介绍 AppCenter 云应用开发的模板及规范。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>开发模板规范 - 完整版 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/appcenter/dev-platform/">
+          
+            应用开发平台
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/introduction/">简介</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/introduction/architechure/">系统架构</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >服务商入驻</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/prerequisite/">入驻须知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/serviceprovider/contracts/">入驻流程</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >快速入门</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/cluster/">云应用入门指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/quick-start/quick_start_saas/">SaaS 应用入门指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >云应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/management/">应用管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/version_management/">应用版本管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/build/">镜像制作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/metadata-service/">Metadata 服务</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/basic-specifications/">开发模板规范 - 基础版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/specifications/">开发模板规范 - 完整版</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/lifecycle/">实例生命周期</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/user_management/">用户管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/instance_management/">实例管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/log/">日志管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/debug/">调试指南</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_license/">License 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SaaS 应用开发指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/saas-flow/">接入流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台账户对接</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_flow/">调用流程</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_auth_code/">获取授权码</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/get_token/">获取 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/check_token/">校验 access_token</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/account/login_console/">免密登录控制台</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >SPI 接口开发</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_overview/">接口概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_convention/">接口约定</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_reload/">接口重试机制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/interface/spi_security/">安全设计</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/saas-developer-guide/release/">应用上架</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/release_api_app/">API 应用上架指南</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >平台管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/finance/">财务管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/order/">订单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/tickets/">工单管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/platform-manage/notification/">通知中心</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/appcenter/dev-platform/cluster-faqs/">常见问题</a>
+          </li>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform" data-url="/v6.1/appcenter/dev-platform">应用开发平台</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/management/" data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide">云应用开发指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/appcenter/dev-platform/cluster-developer-guide/specifications" data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide/specifications">开发模板规范 - 完整版</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    开发模板规范 - 完整版</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/appcenter/dev-platform/cluster-developer-guide">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_基本介绍">基本介绍</a></li>
+    <li><a href="#_规范">规范</a>
+      <ul>
+        <li><a href="#_config_json">config.json</a></li>
+        <li><a href="#_cluster_json_mustache">cluster.json.mustache</a></li>
+        <li><a href="#_replace_policy_json">replace_policy.json</a></li>
+        <li><a href="#_数据类型">数据类型</a></li>
+        <li><a href="#_国际化">国际化</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="sect1">
+<h2 id="_基本介绍">基本介绍</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果想快速了解规范可以先阅读<a href="../basic-specifications">应用开发模板规范 - 基础版</a>。</p>
+</div>
+<div class="paragraph">
+<p>开发者提交一个应用需要包含以下几个文件：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>config.json</p>
+<div class="paragraph">
+<p>该文件包含最终用户创建此应用实例时需设置的参数等信息，包括各种角色的节点配置、参数配置等。</p>
+</div>
+</li>
+<li>
+<p>cluster.json.mustache</p>
+<div class="paragraph">
+<p>该文件包含创建此应用实例时的基础架构、应用实例生命周期管理和自定义监控告警等信息，这是一个改进版的 <a href="http://mustache.github.io/">mustache</a> 文件。</p>
+</div>
+</li>
+<li>
+<p>replace_policy.json</p>
+<div class="paragraph">
+<p>类型替换策略</p>
+</div>
+</li>
+<li>
+<p>locale/en.json</p>
+<div class="paragraph">
+<p>英文翻译文件</p>
+</div>
+</li>
+<li>
+<p>locale/zh-cn.json</p>
+<div class="paragraph">
+<p>中文翻译文件</p>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>具体的翻译文件格式，请参考<a href="#_国际化">国际化</a>。</p>
+</li>
+<li>
+<p>以上文件不支持 &#34;UTF-8 Unicode (with BOM) text&#34; 文本格式，windows下的编辑器编辑文件默认是此格式，可通过 &#34;格式-&gt; 以utf-8无BOM格式编码&#34; 进行转换。</p>
+</li>
+<li>
+<p>config.json 定义用户在管理控制台部署应用时需要填写的表单。控制台支持语言国际化，默认情况下，所有语言都会按配置项中的 label 和 description 展示表单。另外，cluster.json.mustache 文件中的 custom service、监控项等，会使用 key 作为国际化展示。如果您想要适应不同的语言，需要在提交的应用中包含一个 locale 文件夹，并添加对应语言的翻译文件。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_规范">规范</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_config_json">config.json</h3>
+<div class="paragraph">
+<p>此配置文件定义用户在创建应用的时候需填入的参数信息，参数包括资源信息如 CPU、内存、节点数等，还包括应用本身配置参数以及外面依赖集群信息等。</p>
+</div>
+<div class="paragraph">
+<p>对于弹性裸金属服务器BM(BareMetal)类型的应用，不需要在 <code>config.json</code> 中配置CPU、内存、硬盘大小等信息，只需要配置弹性裸金属服务器的类型 <code>instance_type</code> 即可。</p>
+</div>
+<div class="paragraph">
+<p>这些信息有集群级别的全局设置，也有基于角色节点级别的信息设置。下面是对每个参数详细的解释：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>role_name,	common.param名称自定义，右上角带3个星号(*)表示该项有 sibling (兄弟)节点，开发者提交的时候也要去掉这个标记。cluster 的 name 和 description 不需要自定义。另外，env 表示集群的环境变量，每一个变量的 key 会作为配置名直接展示给用户(key不能包含空格)，它的 label 属性可以是空字符串 &#34;&#34;。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    &#34;type&#34;: &#34;array&#34;,
+    &#34;properties&#34;: [{
+        &#34;key&#34;: &#34;cluster&#34;,
+        &#34;description&#34;: &#34;cluster properties&#34;,
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;properties&#34;: [{
+            &#34;key&#34;: &#34;name&#34;,
+            &#34;label&#34;: &#34;Name&#34;,
+            &#34;description&#34;: &#34;The name of the application&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;no&#34;
+        }, {
+            &#34;key&#34;: &#34;resource_group&#34;,
+            &#34;label&#34;: &#34;Resource Configuration&#34;,
+            &#34;description&#34;: &#34;The resource configuration of the service&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;customizable&#34;: true,
+            &#34;default&#34;: &#34;Standard&#34;,
+            &#34;range&#34;: [&#34;Standard&#34;, &#34;Enterprise&#34;, &#34;Enterprise Plus&#34;]
+        }, {
+            &#34;key&#34;: &#34;description&#34;,
+            &#34;label&#34;: &#34;Description&#34;,
+            &#34;description&#34;: &#34;The description of the application&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;no&#34;
+        }, {
+            &#34;key&#34;: &#34;vxnet&#34;,
+            &#34;label&#34;: &#34;VxNet&#34;,
+            &#34;description&#34;: &#34;The vxnet that the application will join&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;yes&#34;
+        }, {***
+            &#34;key&#34;: &#34;external_service&#34;,
+            &#34;label&#34;: &#34;External Service&#34;,
+            &#34;description&#34;: &#34;Choose an external service to use&#34;,
+            &#34;type&#34;: &#34;service&#34;,
+            &#34;limits&#34;: {
+                &#34;app-id&#34;***: [&#34;app-version&#34;***]
+            },
+            &#34;allowed_operations&#34;: [&#34;add&#34;, &#34;modify&#34;, &#34;delete&#34;],
+            &#34;default&#34;: &#34;&#34;,
+            &#34;required&#34;: &#34;yes&#34;
+        }, {***
+            &#34;key&#34;: &#34;role_name&#34;,
+            &#34;description&#34;: &#34;role-based node properties&#34;,
+            &#34;label&#34;: &#34;Role Name&#34;,
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;properties&#34;: [{
+                &#34;key&#34;: &#34;loadbalancer&#34;,
+                &#34;label&#34;: &#34;Loadbalancer Service&#34;,
+                &#34;description&#34;: &#34;Choose a loadbalancer service to use&#34;,
+                &#34;type&#34;: &#34;loadbalancer&#34;,
+                &#34;port&#34;: 80,
+                &#34;default&#34;: [],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;cpu&#34;,
+                &#34;label&#34;: &#34;CPU&#34;,
+                &#34;description&#34;: &#34;CPUs of each node&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 1,
+                &#34;range&#34;: [1, 2, 4, 8, 16],
+                &#34;required&#34;: &#34;yes&#34;,
+                &#34;resource_group&#34;: [1, 4, 16]
+            }, {
+                &#34;key&#34;: &#34;cpu_model&#34;,
+                &#34;label&#34;: &#34;CPU Microarchitecture&#34;,
+                &#34;description&#34;: &#34;CPU Microarchitecture&#34;,
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;default&#34;: &#34;Westmere&#34;,
+                &#34;changeable_when_create&#34;: false,
+                &#34;range&#34;: [
+                    &#34;&#34;,
+                    &#34;Westmere&#34;,
+                    &#34;SandyBridge&#34;,
+                    &#34;IvyBridge&#34;,
+                    &#34;Haswell&#34;,
+                    &#34;Broadwell&#34;,
+                    &#34;Skylake&#34;,
+                    &#34;CascadeLake&#34;
+                ],
+                &#34;required&#34;: &#34;no&#34;
+            }, {
+                &#34;key&#34;: &#34;memory&#34;,
+                &#34;label&#34;: &#34;Memory&#34;,
+                &#34;description&#34;: &#34;Memory of each node (in MiB)&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 2048,
+                &#34;range&#34;: [2048, 8192, 16384, 32768, 49152],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;gpu&#34;,
+                &#34;label&#34;: &#34;GPU&#34;,
+                &#34;description&#34;: &#34;GPUs of each node&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 1,
+                &#34;range&#34;: [0, 1, 2],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;count&#34;,
+                &#34;label&#34;: &#34;Count&#34;,
+                &#34;description&#34;: &#34;Number of nodes for the cluster to create&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 3,
+                &#34;max&#34;: 100,
+                &#34;min&#34;: 1,
+                &#34;required&#34;: &#34;yes&#34;,
+                &#34;auto_scale_step&#34;: 2,
+                &#34;resource_group&#34;: [3, 5, 7]
+            }, {
+                &#34;key&#34;: &#34;instance_class&#34;,
+                &#34;label&#34;: &#34;Instance Class&#34;,
+                &#34;description&#34;: &#34;The instance type for the cluster to run，such as high performance，high performance plus&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 101,
+                &#34;range&#34;: [101, 202],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;gpu_class&#34;,
+                &#34;label&#34;: &#34;GPU Class&#34;,
+                &#34;description&#34;: &#34;The gpu type for the cluster to run，such as high performance&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 0,
+                &#34;range&#34;: [0, 2],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;volume_class&#34;,
+                &#34;label&#34;: &#34;Volume Class&#34;,
+                &#34;description&#34;: &#34;The volume type for each instance，such as high performance，high performance plus，high capacity&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 100,
+                &#34;range&#34;: [100, 200, 5],
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;volume_size&#34;,
+                &#34;label&#34;: &#34;Volume Size&#34;,
+                &#34;description&#34;: &#34;The volume size for each instance&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 10,
+                &#34;min&#34;: 10,
+                &#34;step&#34;: 10,
+                &#34;auto_scale_step&#34;: 10,
+                &#34;required&#34;: &#34;yes&#34;
+            }, {
+                &#34;key&#34;: &#34;replica&#34;,
+                &#34;label&#34;: &#34;Replica&#34;,
+                &#34;description&#34;: &#34;The replica number for each node with this role&#34;,
+                &#34;type&#34;: &#34;integer&#34;,
+                &#34;default&#34;: 1,
+                &#34;required&#34;: &#34;yes&#34;
+            }]
+        }]
+    }, {
+        &#34;key&#34;: &#34;env&#34;,
+        &#34;description&#34;: &#34;application configuration properties&#34;,
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;properties&#34;: [{***
+            &#34;key&#34;: &#34;common.param&#34;,
+            &#34;label&#34;: &#34;Common Param&#34;,
+            &#34;description&#34;: &#34;The common.param1 for all nodes&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;changeable&#34;: true,
+            &#34;default&#34;: &#34;value1,value11&#34;,
+            &#34;separator&#34;: &#34;,&#34;,
+            &#34;range&#34;: [&#34;value1&#34;, &#34;value11&#34;, &#34;value111&#34;],
+            &#34;multichoice&#34;: true,
+            &#34;system&#34;: false,
+            &#34;required&#34;: &#34;yes&#34;,
+            &#34;expanded&#34;: true
+        }, {***
+            &#34;key&#34;: &#34;role_name&#34;,
+            &#34;description&#34;: &#34;The role configuration properties of the application&#34;,
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;properties&#34;: [{***
+                &#34;key&#34;: &#34;param&#34;,
+                &#34;label&#34;: &#34;Role Param&#34;,
+                &#34;description&#34;: &#34;The param for all slave nodes&#34;,
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;changeable&#34;: true,
+                &#34;default&#34;: &#34;value1&#34;,
+                &#34;range&#34;: [&#34;value1&#34;, &#34;value11&#34;],
+                &#34;required&#34;: &#34;yes&#34;
+            }]
+        }]
+    }, {
+        &#34;key&#34;: &#34;service_params&#34;,
+        &#34;description&#34;: &#34;Custom service configuration properties&#34;,
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;properties&#34;: [{***
+            &#34;key&#34;: &#34;common.param&#34;,
+            &#34;label&#34;: &#34;Common Param&#34;,
+            &#34;description&#34;: &#34;The common.param1 for all nodes&#34;,
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;value1,value11&#34;,
+            &#34;separator&#34;: &#34;,&#34;,
+            &#34;range&#34;: [&#34;value1&#34;, &#34;value11&#34;, &#34;value111&#34;],
+            &#34;multichoice&#34;: true,
+            &#34;required&#34;: &#34;yes&#34;
+        }, {***
+            &#34;key&#34;: &#34;role_name&#34;,
+            &#34;description&#34;: &#34;Custom service the role (role_name) configuration properties&#34;,
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;properties&#34;: [{***
+                &#34;key&#34;: &#34;param&#34;,
+                &#34;label&#34;: &#34;Role Param&#34;,
+                &#34;description&#34;: &#34;The param for all slave nodes&#34;,
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^value.+&#34;,
+                &#34;default&#34;: &#34;value1&#34;,
+                &#34;range&#34;: [&#34;value1&#34;, &#34;value11&#34;],
+                &#34;required&#34;: &#34;yes&#34;
+            }]
+        }]
+    }]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>对于弹性裸金属服务器 BM(BareMetal) 类型的应用，我们无需配置 CPU、内存、硬盘大小等参数，只需指定弹性裸金属服务器的类型即可，示例见 <a href="#_config_json">config.json</a>，与 <code>KVM</code> 类型应用稍有不同。</p>
+</div>
+<div class="paragraph">
+<p>json 配置项中的每一项，都是一个含有 key、label、description、type、range 等参数的 object。配置项支持嵌套，若 type 为 array，则该项的 properties 填写一个有序列表，在用户部署应用的时候填写配置使用，因此需要注意配置项的顺序。配置项中各参数的解释如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>对应 <a href="#_cluster_json_mustache">cluster.json.mustache</a> 文件索引的值，例如 {{cluster.name}} 表示 config.json 中 cluster 内 key=name 的项用户所填写的值。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">label</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用户部署应用时，填写配置项的名称。如果提供了国际化的配置文件，会进行国际化。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用户部署应用时，填写配置项的描述。如果提供了国际化的配置文件，会进行国际化。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>该配置项的类型，请参考<a href="#_数据类型">数据类型</a>。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">range</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>限定配置项的取值范围，是一个可枚举的数组。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multichoice</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>和 range 配合使用，定义为 true 则为多选，默认是 false 为单选。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">separator</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>定义 multichoice 为 true 时有效，多选后多个值连接所使用的分隔符，默认值为逗号。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>若配置项 type 为 integer 或 number(浮点数)，指定该项的最小值。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>若配置项 type 为 integer 或 number(浮点数)，指定该项的最大值。若配置项是 volume_size，通常不建议指定该值。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">step</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>若配置项是 volume_size，指定硬盘每次调整的最小步长单位。在每个云服务器挂多块盘时，通常需要指定该项。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto_scale_step</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>自动伸缩的步长。若配置项是 volume_size，指定硬盘每次自动伸缩的步长单位；若配置项是 count，指定该类角色节点数自动伸缩的步长单位。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pattern</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>正则表达式，可用该值规范填写内容。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>该项的默认取值，若 required 设为 &#34;no&#34;，default 值必须提供。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">customizable</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>若配置项是 resource_group，该项表示用户部署应用时，除 resource_group 中定义好的组合外，是否允许自定义。默认值是 true。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">changeable_when_create</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>指示在用户<code>部署</code>时，是否允许修改该配置项。默认值是 true。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">system</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>定义在某个 env 下，如果是 true，就会将这个变量的展示提升到最上层，优先让用户看到并选择。默认值是 false。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">expanded</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否展开配置项，值范围：true、false。部署集群时，true 值会将配置项展开，false 值会将配置项折叠，优先级最高。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否为必填项，值范围：yes、no。部署集群时，yes 值会将配置项展开，no 值会将配置项会折叠，优先级低于 expanded。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">changeable</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>如果为 false 表示该项用户在创建应用实例时候需要赋值，创建完毕以后则不能修改，比如数据库实例用户名和密码等类型的参数，默认值为 true。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dependencies</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当前配置项与其他配置项有依赖关系，值为：[{&#34;refkey&#34;:&#34;xxx&#34;,&#34;values&#34;:[&#34;value&#34;],&#34;operator&#34;:&#34;in&#34;}]，其中 refkey 表示依赖的同一级别的且有 range 配置项的 key；values 表示当选中依赖的配置项 key 的 value 值范围；operator 可选值为 in 或 nin，分别在 values 范围内或不在 values 范围内。样例参考：<a href="../../cluster-faqs#_35_环境变量里如何支持层级联动关系">环境变量里如何支持层级联动关系</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">associate_mode</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>type 是 eip 的 env 中，可定义此参数，表示公网 IP 绑定模式：0 为外部绑定，1 为内部绑定，默认是 0。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>一些系统预留(即必须提供)的项含义如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建应用时用户填入的名称</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建应用时用户填入描述信息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vxnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建应用时所在网络ID</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>一些特殊项含义如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">external_service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">此应用依赖外部应用信息，名称可以任意定义，即可以命名为 zk_service 表示依赖 ZooKeeper，用户可以选择在同一 VPC 中满足 limits 限定条件的集群作为此应用依赖的服务。
+limits 限定条件可以指定应用所依赖服务的 app id 及 app version。
+<code>allowed_operations</code>　定义了在集群创建完成后，用户可对集群依赖进行的操作。
+<code>add</code> 表示用户可以在集群创建后添加外部依赖集群，即使现在仍然有集群，仍然可添加
+<code>modify</code> 表示用户可以对集群中现有的依赖集群进行替换，替换成允许的应用版本的其它集群
+<code>delete</code> 表示用户可以删除集群中现有的依赖集群，如果未定义 <code>add</code> 操作，则删除之后不能再添加回来</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resource_group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">用来说明当前这个集群支持哪些配置组合，必须定义range。
+在 role 下的 cpu/memory/count/instance_class/volume_size/volume_class/replica 里面可以定义 resource_group,
+表示每个 resource_group 对应的值。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_cluster_json_mustache">cluster.json.mustache</h3>
+<div class="paragraph">
+<p>该文件是在用户创建应用时需要传给云平台 API 的参数，这些信息的具体值是来自用户在 UI 上根据 config.json 定义的变量的输入，每个字段的具体描述如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>右上角带3个星号(*)表示该项有 sibling (兄弟)节点，开发者提交的时候也要去掉这个标记。advanced_actions 的内容可以添加在国际化中，在控制台用户操作时展示。</p>
+</li>
+<li>
+<p>对于弹性裸金属服务器 BM(BareMetal) 的应用，配置文件会稍有不同，具体是无需配置CPU、内存、硬盘大小，类型等信息，因为弹性裸金属服务器的这些信息是固定的。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-mustache" data-lang="mustache">{
+    &#34;name&#34;: {{cluster.name}},
+    &#34;description&#34;: {{cluster.description}},
+    &#34;vxnet&#34;: {{cluster.vxnet}},
+    &#34;need_tag&#34;: false,
+    &#34;links&#34;: {
+        &#34;external_service&#34;***: {{cluster.external_service}}
+    },
+    &#34;exclude_node_columns&#34;: [&#34;private_ip&#34;],
+    &#34;need_intranet_api_server&#34;: false,
+    &#34;backup_policy&#34;: &#34;device&#34;,
+    &#34;incremental_backup_supported&#34;: false,
+    &#34;upgrade_policy&#34;: [
+        &#34;appv-xxxxxxxx&#34;,
+        &#34;appv-yyyyyyyy&#34;
+    ],
+    &#34;upgrading_policy&#34;: &#34;parallel&#34;,
+    &#34;nodes&#34;: [{***
+        &#34;role&#34;: &#34;role_name&#34;,
+        &#34;loadbalancer&#34;: {{cluster.role_name.loadbalancer}},
+        &#34;container&#34;: {
+            &#34;type&#34;: &#34;kvm&#34;,
+            &#34;image&#34;: &#34;img-skhdp16m&#34;,
+            &#34;zone&#34;: &#34;pek3a&#34;
+        },
+        &#34;cpu&#34;: {{cluster.role_name.cpu}},
+        &#34;cpu_model&#34;: {{cluster.role_name.cpu_model}},
+        &#34;memory&#34;: {{cluster.role_name.memory}},
+        &#34;instance_class&#34;: {{cluster.role_name.instance_class}},
+        &#34;gpu&#34;: {{cluster.role_name.gpu}},
+        &#34;gpu_class&#34;: {{cluster.role_name.gpu_class}},
+        &#34;count&#34;: {{cluster.role_name.count}},
+        &#34;volume&#34;: {
+            &#34;size&#34;: {{cluster.role_name.volume_size}},
+            &#34;mount_point&#34;: &#34;/data&#34;,
+            &#34;mount_options&#34;: &#34;defaults,noatime&#34;,
+            &#34;filesystem&#34;: &#34;ext4&#34;,
+            &#34;class&#34;: {{cluster.role_name.volume_class}}
+        },
+        &#34;replica&#34;: {{cluster.role_name.replica}},
+        &#34;extra_quota&#34;: {
+            &#34;cpu&#34;: 2,
+            &#34;memory&#34;: 8,
+            &#34;instance_class&#34;: 101,
+            &#34;gpu&#34;: 2,
+            &#34;gpu_class&#34;: 0,
+            &#34;count&#34;: 2,
+            &#34;volume&#34;: {
+                &#34;size&#34;: 20,
+                &#34;count&#34;: 2,
+                &#34;class&#34;: 100
+            },
+            &#34;loadbalancer&#34;: 2,
+            &#34;bucket&#34;: 2,
+            &#34;security_group&#34;: 2
+        },
+        &#34;reserved_ips&#34;: {
+            &#34;wvip&#34;: {
+                &#34;value&#34;: &#34;&#34;
+            }
+        },
+        &#34;passphraseless&#34;: &#34;ssh-dsa&#34;,
+        &#34;vertical_scaling_policy&#34;: &#34;parallel&#34;,
+        &#34;user_access&#34;: false,
+        &#34;eip_class&#34;: &#34;base&#34;,
+        &#34;services&#34;: {
+            &#34;init&#34;: {
+                &#34;nodes_to_execute_on&#34;: 1,
+                &#34;post_start_service&#34;: false,
+                &#34;cmd&#34;: &#34;mkdir -p /bigdata1/myapp;/opt/myapp/bin/init-cluster.sh&#34;
+            },
+            &#34;start&#34;: {
+                &#34;order&#34;: 1,
+                &#34;cmd&#34;: &#34;/opt/myapp/bin/start-server.sh&#34;
+            },
+            &#34;stop&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/bin/stop-server.sh&#34;
+            },
+            &#34;scale_out&#34;: {
+                &#34;pre_check&#34;: &#34;/opt/myapp/sbin/scale-out-pre-check.sh&#34;,
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/scale-out.sh&#34;
+            },
+            &#34;scale_in&#34;: {
+                &#34;pre_check&#34;: &#34;/opt/myapp/sbin/scale-in-pre-check.sh&#34;,
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/scale-in.sh&#34;,
+                &#34;timeout&#34;: 86400
+            },
+            &#34;restart&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/restart-server.sh&#34;
+            },
+            &#34;destroy&#34;: {
+                &#34;allow_force&#34;: true,
+                &#34;nodes_to_execute_on&#34;: 1,
+                &#34;post_stop_service&#34;: true,
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/destroy-server.sh&#34;
+            },
+            &#34;upgrade&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/upgrade.sh&#34;
+            },
+            &#34;rollback&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/bin/rollback.sh&#34;
+            },
+            &#34;get_nodes_order&#34;: {
+                &#34;event&#34;: [&#34;upgrade&#34;, &#34;rollback&#34;, &#34;scale_vertical&#34;],
+                &#34;cmd&#34;: &#34;/opt/myapp/bin/get-nodes-order.sh&#34;
+            },
+            &#34;backup&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/backup.sh&#34;,
+                &#34;nodes_to_execute_on&#34;: 1,
+                &#34;with_replica&#34;: false,
+                &#34;order&#34;: 1,
+                &#34;service_params&#34;: {
+                    &#34;service_param&#34;***: {{service_params.role_name.param}}
+                },
+                &#34;timeout&#34;: 86400
+            },
+            &#34;restore&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/restore.sh&#34;,
+                &#34;nodes_to_execute_on&#34;: 1,
+                &#34;with_replica&#34;: false,
+                &#34;order&#34;: 1,
+                &#34;service_params&#34;: {
+                    &#34;service_param&#34;***: {{service_params.role_name.param}}
+                },
+                &#34;timeout&#34;: 86400,
+            },
+            &#34;delete_snapshot&#34;: {
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/delete_snapshot.sh&#34;,
+                &#34;nodes_to_execute_on&#34;: 1,
+                &#34;order&#34;: 1,
+                &#34;service_params&#34;: {
+                    &#34;service_param&#34;***: {{service_params.role_name.param}}
+                },
+                &#34;timeout&#34;: 86400
+            },
+            &#34;custom_service&#34;***: {
+                &#34;type&#34;: &#34;custom&#34;,
+                &#34;cmd&#34;: &#34;/opt/myapp/sbin/custom_service.sh&#34;,
+                &#34;timeout&#34;: 86400,
+                &#34;service_params&#34;: {
+                    &#34;service_param&#34;***: {{service_params.role_name.param}}
+                }
+            }
+        },
+        &#34;server_id_upper_bound&#34;: 255,
+        &#34;env&#34;: {
+            &#34;param&#34;***: {{env.role_name.param}}
+        },
+        &#34;agent_installed&#34;: true,
+        &#34;custom_metadata&#34;: {
+            &#34;cmd&#34;: &#34;/opt/myapp/sbin/get_token.sh&#34;
+        },
+        &#34;health_check&#34;: {
+            &#34;enable&#34;: true,
+            &#34;interval_sec&#34;: 60,
+            &#34;timeout_sec&#34;: 10,
+            &#34;action_timeout_sec&#34;: 30,
+            &#34;healthy_threshold&#34;: 3,
+            &#34;unhealthy_threshold&#34;: 3,
+            &#34;check_cmd&#34;: &#34;/opt/myapp/bin/check.sh&#34;,
+            &#34;action_cmd&#34;: &#34;/opt/myapp/bin/action.sh&#34;
+        },
+        &#34;monitor&#34;: {
+            &#34;enable&#34;: true,
+            &#34;cmd&#34;: &#34;/opt/myapp/bin/monitor.sh&#34;,
+            &#34;items&#34;: {
+                &#34;item_name_x&#34;***: {
+                    &#34;unit&#34;: &#34;&#34;,
+                    &#34;value_type&#34;: &#34;str&#34;,
+                    &#34;statistics_type&#34;: &#34;avg&#34;,
+                    &#34;scale_factor_when_display&#34;: 1,
+                    &#34;enums&#34;: [&#34;value_y&#34;***]
+                }
+            },
+            &#34;groups&#34;: {
+                &#34;group_name_z&#34;***: [&#34;item_name_x&#34;***]
+            },
+            &#34;display&#34;: [&#34;group_name_z&#34;***, &#34;item_name_x&#34;***],
+            &#34;alarm&#34;: [&#34;item_name_x&#34;***]
+        }
+    }],
+    &#34;env&#34;: {
+        &#34;common.param&#34;***: {{env.common_param}}
+    },
+    &#34;advanced_actions&#34;: [&#34;change_vxnet&#34;, &#34;scale_horizontal&#34;, &#34;associate_eip&#34;],
+    &#34;endpoints&#34;: {
+        &#34;client&#34;: {
+            &#34;port&#34;: 2181,
+            &#34;protocol&#34;: &#34;tcp&#34;
+        },
+        &#34;reserved_ips&#34;: {
+            &#34;rvip&#34;: {
+                &#34;value&#34;: &#34;&#34;
+            }
+        }
+    },
+    &#34;metadata_root_access&#34;: false,
+    &#34;health_check&#34;: {
+        &#34;enable&#34;: true,
+        &#34;interval_sec&#34;: 60,
+        &#34;timeout_sec&#34;: 10,
+        &#34;action_timeout_sec&#34;: 30,
+        &#34;healthy_threshold&#34;: 3,
+        &#34;unhealthy_threshold&#34;: 3,
+        &#34;check_cmd&#34;: &#34;/opt/myapp/bin/check.sh&#34;,
+        &#34;action_cmd&#34;: &#34;/opt/myapp/bin/action.sh&#34;
+    },
+    &#34;monitor&#34;: {
+        &#34;enable&#34;: true,
+        &#34;cmd&#34;: &#34;/opt/myapp/bin/monitor.sh&#34;,
+        &#34;items&#34;: {
+            &#34;item_name_x&#34;***: {
+                &#34;unit&#34;: &#34;&#34;,
+                &#34;value_type&#34;: &#34;str&#34;,
+                &#34;statistics_type&#34;: &#34;avg&#34;,
+                &#34;scale_factor_when_display&#34;: 1,
+                &#34;enums&#34;: [&#34;value_y&#34;***]
+            }
+        },
+        &#34;groups&#34;: {
+            &#34;group_name_z&#34;***: [&#34;item_name_x&#34;***]
+        },
+        &#34;display&#34;: [&#34;group_name_z&#34;***, &#34;item_name_x&#34;***],
+        &#34;alarm&#34;: [&#34;item_name_x&#34;***]
+    },
+    &#34;display_tabs&#34;: {
+        &#34;node_details_tab&#34;: {
+            &#34;cmd&#34;: &#34;/opt/myapp/bin/node_details_tab.sh&#34;,
+            &#34;roles_to_execute_on&#34;: [&#34;master&#34;, &#34;slave&#34;],
+            &#34;description&#34;: &#34;More infomation about nodes&#34;,
+            &#34;timeout&#34;: 10
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_name">name</h4>
+<div class="paragraph">
+<p>新建应用的名称，必填项，但值可以为空。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_description">description</h4>
+<div class="paragraph">
+<p>新建应用描述，必填项，但值可以为空。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vxnet">vxnet</h4>
+<div class="paragraph">
+<p>新建应用所在网络 ID，必填项。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_need_tag">need_tag</h4>
+<div class="paragraph">
+<p>部署的集群内会创建一些其他资源，希望这些资源与集群同生命周期：随着集群销毁一并销毁。
+need_tag 值为 true 时，会为集群绑定一个 tag_id，并注册到 metadata service，
+参见 <a href="../metadata-service/#_cluster">Metadata 服务</a>中的 cluster_tag，
+所有集群内通过 api 创建的资源，需要调用 api 绑定上这个 tag_id,
+这样创建的资源，会在集群详情页以列表形式展示给用户，支持的资源包括：
+volume、loadbalancer、eip、security_group、snapshot、nic。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_need_intranet_api_server">need_intranet_api_server</h4>
+<div class="paragraph">
+<p>部署的集群，是否需要依赖 intranet api server，进行云平台 api 的调用。若环境基础网络中未部署 intranet api server，会报错。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exclude_node_columns">exclude_node_columns</h4>
+<div class="paragraph">
+<p>部署后的集群详情页中，哪些列不需要展示，目前支持 private_ip 表示不展示 ip 列，非必填项。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_links">links</h4>
+<div class="paragraph">
+<p>新建应用可能会依赖外部应用，比如 Kafka 依赖 ZooKeeper，依赖名称可以任意命名，不一定是 external_service，比如命名为 zk_service；可以依赖多个外部应用，非必填项。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>集群创建完成后，可对集群的依赖进行修改。用户可进行的操作在 <code>config.json</code> 外部依赖 <code>allowed_operations</code> 定义<br/></p>
+</li>
+<li>
+<p><code>add</code> 表示用户可以在集群创建后添加外部依赖集群，即使现在仍然有集群，仍然可添加<br/></p>
+</li>
+<li>
+<p><code>modify</code> 表示用户可以对集群中现有的依赖集群进行替换，替换成允许的应用版本的其它集群<br/></p>
+</li>
+<li>
+<p><code>delete</code> 表示用户可以删除集群中现有的依赖集群，如果未定义 <code>add</code> 操作，则删除之后不能再添加回来</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_backup_policy">backup_policy</h4>
+<div class="paragraph">
+<p>定义应用的备份策略，支持 &#34;device&#34; 和 &#34;custom&#34; 两种类型。&#34;device&#34; 表示对节点的挂盘做snapshot；&#34;custom&#34; 则是使用自定义的备份命令进行备份操作，比如备份到某个目录，或拷贝到某个节点。非必填项。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_incremental_backup_supported">incremental_backup_supported</h4>
+<div class="paragraph">
+<p>定义应用是否支持增量备份。备份分为全量备份和增量备份，全量备份每次创建新的备份链，而增量备份会在原有备份链上基于上一个备份点创建新的备份点，删除备份链上某一备份点后，其后的所有备份点都会被相应删除。默认值为 false 表示只支持全量备份，非必填项。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_upgrade_policy">upgrade_policy</h4>
+<div class="paragraph">
+<p>定义当前应用的哪些版本可以升级到当前版本，新老版本之间 role 必须相同，数据盘挂载位置必须一致。由于升级后会替换集群的镜像，所以在开发阶段_请仔细测试升级功能_。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_upgrading_policy">upgrading_policy</h4>
+<div class="paragraph">
+<p>定义版本升级的模式，支持parallel、sequential、in-place-parallel 和 in-place-sequential，默认是parallel，非必填项。</p>
+</div>
+<div class="paragraph">
+<p>升级后再开启集群将会以<strong>新版本的镜像</strong>启动。对于 user_access 为 true 的节点也会使用新的镜像启动，请在使用说明中提醒用户自行备份 user_access 为 true 节点上的数据。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>parallel：并行升级，需要关闭集群才能执行，集群节点会同 时启动并执行升级，因此升级的过程中集群提供的服务会短时中断，升级失败时，需先关闭集群再降级或启动。</p>
+</li>
+<li>
+<p>sequential：滚动升级，需要集群在开机状态才能执行，集群节点会逐个重启并执行升级，这样集群提供的服务不会中断，滚动升级的流程参考<a href="../lifecycle#_滚动升级">集群升级</a>，升级失败时，需先关闭集群再降级或启动。</p>
+</li>
+<li>
+<p>in-place-parallel：原地并行升级，不更新 image，所以不需要重启云服务器，定义方式可以参考：<a href="../../cluster-faqs/#_36_如何定义原地升级方式">如何定义原地升级方式</a>，拷贝数据完成后，按照 upgrade 的 order 顺序，并行执行 cmd。升级失败时，只支持集群活跃状态下再次升级或降级，降级时，按照 rollback 的 order 顺序，并行执行 cmd。升级完成后，关闭集群再启动集群会替换 image（只有在升级或降级成功后才会替换；升级失败，关闭启动，不会更新 image）。</p>
+</li>
+<li>
+<p>in-place-sequential：原地串行升级，不更新 image，所以不需要重启云服务器，定义方式可以参考：<a href="../../cluster-faqs/#_36_如何定义原地升级方式">如何定义原地升级方式</a>，拷贝数据完成后，按照 get_nodes_order 的执行结果，以及 upgrade 的 order 顺序，串行执行 cmd。升级失败时，只支持集群活跃状态下再次升级或降级，降级时，按照 get_nodes_order 的执行结果，以及 rollback 的 order 顺序，串行执行 cmd。升级完成后，关闭集群再启动集群会替换 image（只有在升级或降级成功后才会替换；升级失败，关闭启动，不会更新 image）。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_nodes">nodes</h4>
+<div class="paragraph">
+<p>新建应用节点信息，必填项。一个应用的节点可能是无角色区分的，这个时候 nodes 只有一种角色的信息；也可能是多角色组成的复杂应用，这个时候 nodes 就是这些角色节点信息组成的一个数组。</p>
+</div>
+<div class="sect4">
+<h5 id="_role">role</h5>
+<div class="paragraph">
+<p>多角色节点应用必填项，单角色应用可以无此项。角色名称自定义，但必须和 config.json 里定义的名字一致。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_loadbalancer">loadbalancer</h5>
+<div class="paragraph">
+<p>新建应用可能会依赖负载均衡器，不同角色 (role) 以依赖不同的负载均衡器。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_container">container</h5>
+<div class="paragraph">
+<p>镜像信息，必填项。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">镜像类型，目前支持 kvm，docker。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">镜像 ID，开发者根据镜像制作指南制作的以 img- 开头的镜像 ID，如果是 docker 则是 docker image name，包含 tag 部分。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">镜像制作时所属区域 (如果是 docker 镜像，则无需填写该字段)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_cpu">cpu</h5>
+<div class="paragraph">
+<p>每个节点 cpu 个数，可选值范围：1, 2, 4, 8, 12, 16, 24, 32, 64。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cpu_model">cpu_model</h5>
+<div class="paragraph">
+<p>节点的 CPU 体系结构，可选值范围：Westmere、SandyBridge、IvyBridge、Haswell、Broadwell、Skylake、CascadeLake。 <a href="/v6.1/compute/vm/faq/common_operations/server_func/cpu_instruction_set/">查看对应的 CPU 指令集</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_memory">memory</h5>
+<div class="paragraph">
+<p>每个节点内存大小，单位 MiB。可选值范围：1024, 2048, 4096, 6144, 8192, 12288, 16384, 24576, 32768, 40960, 49152, 65536, 81920, 98304, 114688, 131072, 163840, 196608, 229376, 262144, 327680。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_instance_class">instance_class</h5>
+<div class="paragraph">
+<p>节点类型，可选值范围：0, 1, 101, 201, 202, 301。其中 0 表示性能云服务器，1 表示超高性能云服务器，101 表示基础型云服务器，201 表示企业型 e1 云服务器，202 表示企业型 e2 云服务器，301 表示专业增强型云服务器。可选项，默认值为 0。</p>
+</div>
+<div class="paragraph">
+<p>建议值：101, 202, 301。其中 0, 1, 201 这三种云服务器类型，会逐步做下架处理，故不建议使用。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_gpu">gpu</h5>
+<div class="paragraph">
+<p>每个节点 gpu 个数，可选值范围：0, 1, 2, 4, 8。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_gpu_class">gpu_class</h5>
+<div class="paragraph">
+<p>节点 gpu 类型，可选值范围：0，2。其中 0 表示 NVIDIA GPU，2 表示 AMD GPU。可选项，默认值为0。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_count">count</h5>
+<div class="paragraph">
+<p>节点个数，必填项，可以为0，但集群节点总数必须大于0。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_volume">volume</h5>
+<div class="paragraph">
+<p>每个节点数据盘信息，如果此类节点不需要数据盘，不需要填写此项。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每个节点数据容量大小，单位 GiB，注：是单个节点总容量大小，不是每个挂盘容量大小，如果有多个挂盘，则容量平均分配到每个挂盘上，必填项。单张容量盘最大5000G，单张性能盘和超高性能盘最大1000G，且单张步长大小需是10的整数倍。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount_point</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每个节点数据盘挂载路径，可以是单个数据盘， 也可以有多个数据盘，多个数据盘以数组形式表示，如 &#34;mount_point&#34;: [&#34;/data1&#34;,&#34;/data2&#34;]。如果image是基于 Linux 操作系统，默认挂载路径为 /data; 如果 image 是基于 Windows 操作系统，默认挂载路径是 d:, 挂载路径是盘符（后面须带冒号，可选的盘符名从 d 开始，z 结束）。目前最大支持3块数据盘挂载到节点上。请注意，如果挂载了多块数据盘，config.json 对应的 volume_size 部分，最好设置一下 min，step 这 2 个值，以配置创建集群、扩容集群时的范围和步长。例如挂载盘数为3，可以指定 <code>{min: 30, step: 30}</code> 。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount_options</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">描述数据盘的挂接方式，默认值 ext4 是 defaults,noatime，xfs 是 rw,noatime,inode64,allocsize=16m。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">数据盘文件系统类型。如果 image 是基于 Linux 操作系统，目前支持 ext4 和 xfs，默认为 ext4; 如果 image 是基于 Windows 操作系统，目前支持 ntfs, 默认为 ntfs。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">数据盘类型，支持 0、2、3、5、6、100、200 其中 0 表示性能盘，3 表示超高性能盘，2 表示容量盘，5 表示 NeonSAN，6 表示 NeonSAN 容量盘，100 表示基础型硬盘，200 表示企业性硬盘。可选项，如果不写此项，数据盘类型和云服务器类型一样，即性能云服务器挂载性能硬盘，超高性能云服务器挂载超高性能硬盘，基础型云服务器挂载基础型硬盘，企业型云服务器和专业增强型云服务器挂载企业型硬盘。容量盘、NeonSAN、NeonSAN 容量盘可以挂载在不同类型云服务器上，容量盘是通过网络协议挂载的，所以性能相对来说比较差，通常来说如果不是提供必须基于容量盘的服务，最好去掉这个选项，大容量存储可以考虑 NeonSAN 对象存储。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建议值：100, 200。其中 0, 3 这两种云服务器类型，会逐步做下架处理，故不建议使用。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_replica">replica</h5>
+<div class="paragraph">
+<p>此类节点每个节点的副本个数，这是给分片式 (即多主多从，如 redis cluster) 分布式系统使用的功能，定义每个分片的 master 有多少个 replica。
+这类应用需要指定 role 名称比如 master，副本节点的 role 系统会自动在 master 添加 -replica 后缀，如 master-replica。
+因此开发者在定义节点角色名称时不能定义后缀为 &#34;-replica&#34;，这是一个系统保留命名规则。replica 为非必填项。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_extra_quota">extra_quota</h5>
+<div class="paragraph">
+<p>除了集群内部资源以外，额外需要使用的资源列表。这些独立资源都有自己的配额限制，部署带有 extra_quota 的集群时，会对 extra_quota 中的资源进行额外的配额校验，校验失败会提示用户申请特定资源的配额，防止资源配额不足而导致的部署失败。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">-</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cpu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总 cpu 个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总 memory 大小，单位 MiB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instance_class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验节点类型，如果未定义，则以当前节点的 instance_class 进行校验</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gpu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总 gpu 个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gpu_class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的节点 gpu 类型，如果未定义，则以当前节点的 gpu_class 进行校验</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总节点个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的 volume 信息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总数据盘大小，单位 GiB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总数据盘个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的数据盘类型，如果未定义，则以当前节点的 volume class 进行校验</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">loadbalancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总负载均衡器个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总对象存储 bucket 个数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">security_group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">需要校验的总防火墙个数</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_reserved_ips">reserved_ips</h5>
+<div class="paragraph">
+<p>表示集群要预留一些 IP 资源给当前角色节点，由应用自己来分配使用，如果无此需求可不定义。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_passphraseless">passphraseless</h5>
+<div class="paragraph">
+<p>生成密钥信息，即提供此类节点能无密码登录其它节点的可能性，但云平台调度系统只负责把此信息注册到 metadata service 中，开发者自行去获取密钥配置云服务器。目前支持 ssh-dsa, ssh-rsa，非必填项。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_vertical_scaling_policy">vertical_scaling_policy</h5>
+<div class="paragraph">
+<p>配置纵向伸缩时的操作策略，目前支持：sequential 和 parallel，默认是 parallel 即并行操作，非必填项。比如 ZooKeeper 在扩容时希望不影响对外服务，可设置该值为 sequential，串行重启。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_user_access">user_access</h5>
+<div class="paragraph">
+<p>是否允许用户访问，true 表示该角色节点允许用户通过 vnc 登录，默认值为 false，
+该镜像的初始用户名和密码需要在&#34;`版本描述`&#34;中写清楚以便告知用户。
+允许用户登录的节点在集群非活跃状态如关闭时不会销毁云服务器，所以用户可以往这类云服务器写入数据。
+而其它云服务器是不会持久化数据，必须在挂盘上持久化数据，</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_eip_class">eip_class</h5>
+<div class="paragraph">
+<p>是否为节点绑定基础网络ip，只支持值为<code>base</code>，表示绑定基础网络ip。如果配置此项，则在集群创建时会自动为角色中的每个节点绑定基础网络ip，并给基础绑定上默认的防火墙。如果在集群横向扩容的过程中，配置了此项的角色节点数量为0，则会自动解绑集群防火墙。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_server_id_upper_bound">server_id_upper_bound</h5>
+<div class="paragraph">
+<p>节点的 index 的上限，从1开始记起，有些服务如 ZooKeeper 要求这个 index (myid) 必须控制在某一个范围内。缺省没有上限，非必填项。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_services">services</h5>
+<div class="paragraph">
+<p>应用本身服务的初始化、启停等指令，AppCenter 调度系统会发送这些命令到指定节点执行，非必填项。</p>
+</div>
+<div class="sect5">
+<h6 id="_init">init</h6>
+<div class="paragraph">
+<p>初始化命令，在创建集群或者新加节点时会触发该命令的执行。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nodes_to_execute_on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">控制此命令在此类角色节点上某几个节点上执行，如果需要在所有此类节点上执行该命令可不填此项。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post_start_service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">控制初始化命令是在 start 命令执行完毕后执行还是之前执行，如果 post_start_service 为 true 则表示 init 在 start 后执行；默认 (即不加此项) 是之前执行。此项是 init 独有。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">order</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">控制不同角色节点之间执行此命令顺序。比如主从节点，有时候需要主节点先启动服务，从节点后启动服务，非必填项。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cmd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">具体需执行的命令，必填项。如果 image 是基于 Windows 操作系统，目前仅支持 bat 脚本，且脚本需通过变量 %ERRORLEVEL% 设定返回值。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">执行该命令 timeout 时间(单位秒)，系统默认10分钟，由于某些命令可能需要迁移数据而耗时比较长，这种情况下需要计算出最长可能时间，最大值是86400，非必填项。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_start">start</h6>
+<div class="paragraph">
+<p>服务启动命令，具体参数参考初始化命令 init。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_stop">stop</h6>
+<div class="paragraph">
+<p>停止服务命令，具体参数参考初始化命令 init。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_scale_out">scale_out</h6>
+<div class="paragraph">
+<p>加节点时在非新加节点上需执行的命令，具体参数参考初始化命令 init。
+同时系统会捕获这个命令的非0返回值作为错误码,
+参考<a href="../../cluster-faqs#_21_执行操作失败时如何展示给用户错误提示">执行操作失败时如何展示给用户错误提示</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pre_check</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除节点时在非删除节点上执行的预检查命令，若返回非0值表示不可删除节点。
+此项是 scale_in 和 scale_out 独有。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_scale_in">scale_in</h6>
+<div class="paragraph">
+<p>删除节点时在非删除节点上需执行的命令，具体参数参考初始化命令 init。
+同时系统会捕获这个命令的非0返回值作为错误码,
+参考<a href="../../cluster-faqs#_21_执行操作失败时如何展示给用户错误提示">执行操作失败时如何展示给用户错误提示</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pre_check</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">删除节点时在非删除节点上执行的预检查命令，若返回非0值表示不可删除节点。此项是 scale_in 和 scale_out 独有。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_restart">restart</h6>
+<div class="paragraph">
+<p>服务重启动命令，具体参数参考初始化命令 init。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_destroy">destroy</h6>
+<div class="paragraph">
+<p>销毁命令，在删除集群或者节点时会触发该命令的执行，通常用作删除资源之前检查安全性，具体参数参考初始化命令 init。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allow_force</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是否允许强制删除, 默认值为 true 表示允许强制删除该节点, 强制删除时即使 destroy 的 cmd 返回非 0 值也会继续将节点删除。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_post_stop_service">post_stop_service</h6>
+<div class="paragraph">
+<p>控制销毁命令是在 stop 命令执行完毕后执行还是之前执行，如果 post_stop_service 为 true 则表示 destroy 在 stop 后执行；默认 (即不加此项) 是之前执行。此项是 destroy 独有。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_upgrade">upgrade</h6>
+<div class="paragraph">
+<p>升级集群后执行的命令，具体参数参考初始化命令 init。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_get_nodes_order">get_nodes_order</h6>
+<div class="paragraph">
+<p>在特定生命周期，以 cmd 的返回结果作为执行指令的顺序。具体参数参考初始化命令 init。
+参考<a href="../../cluster-faqs#_38_串行纵向扩容或滚动升级时如何按照一定顺序进行操作">串行纵向扩容或滚动升级时，如何按照一定顺序进行操作</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可选值：upgrade, rollback, scale_vertical。表示在定义的生命周期到来时，使用 get_nodes_order 中 cmd 的执行结果作为该生命周期节点的操作顺序。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_rollback">rollback</h6>
+<div class="paragraph">
+<p>升级失败，集群为活跃状态时进行降级操作，会被调用。具体参数参考初始化命令 init。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_backup">backup</h6>
+<div class="paragraph">
+<p>定义该角色的备份操作，若不定义表示该角色不支持备份。若 &#34;backup_policy&#34; 定义为 &#34;custom&#34; 则必须定义 cmd；若 &#34;backup_policy&#34; 定义为 &#34;device&#34; 可不定义 cmd，具体参数参考初始化命令 init，除此之外自定义的服务参数还有：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">service_params</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">service_params 中定义这个 cmd 所需要传的参数，json 格式，非必须项，参数具体定义在 config.json 里，可参考 env 的定义方式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">with_replica</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份操作是否在 replica 节点上执行，默认值为 false。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>提供手动备份的同时也会提供 &#34;定时自动备份&#34; 支持，手动备份时会以 json 形式传入用户填入具体 &#34;service_params&#34; 到 backup 的 cmd，而 &#34;定时自动备份&#34; 操作时不会传入参数。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_restore">restore</h6>
+<div class="paragraph">
+<p>定义该角色的备份恢复操作。若该角色定义该服务，恢复时使用 restore 进行恢复；若该角色未定义该服务，恢复时使用 start 进行恢复。具体参数参考备份命令 backup。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">with_replica</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">备份恢复操作是否在 replica 节点上执行，默认值为 false。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>若 &#34;backup_policy&#34; 定义为 &#34;custom&#34;，备份恢复操作会在当前集群完成；若 &#34;backup_policy&#34; 定义为 &#34;device&#34;，备份恢复操作会使用挂盘的 snapshot 创建一个新的集群。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_delete_snapshot">delete_snapshot</h6>
+<div class="paragraph">
+<p>定义备份删除操作。若 &#34;backup_policy&#34; 定义为 &#34;custom&#34; 则必须定义 cmd；若 &#34;backup_policy&#34; 定义为 &#34;device&#34; 可不定义 cmd。具体参数参考备份命令 backup。</p>
+</div>
+<div class="paragraph">
+<p>这几个服务都是系统定义的；除了 post_start_service 是 init, upgrade 独有、post_stop_service 是 destroy 独有之外，其它配置项每个服务都可配置，比如控制 stop 服务 order 等。
+这些命令的执行顺序请见 <a href="../lifecycle">应用实例生命周期</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_custom_service">custom_service</h5>
+<div class="paragraph">
+<p>用户自定义命令，具体参数参考备份命令 backup，除此之外自定义的服务参数还有：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom 表示这个服务是自定义的， 自定义的名字 (即 key，此处为 custom_service) 开发者自行定义。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>注：用户可以自定义多个服务。自定义服务在用户使用时，展示的服务名就是该 service 的 key。如果想要对其进行国际化，可以在 locale 中添加它的翻译。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_env">env</h5>
+<div class="paragraph">
+<p>特定角色节点的应用参数配置，每类应用有自身特有的可配置应用参数，每类节点也会有不同于应用全局级别的可配置参数。注意：节点之间或节点与集群全局之间的参数没有任何关系，都是独立的。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_agent_installed">agent_installed</h5>
+<div class="paragraph">
+<p>如果用户想利用这套框架管理纯云服务器集群，则可以不用装 App agent，同时需要指定这个参数为 false，否则系统会提示错误，该参数默认为 true。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_custom_metadata">custom_metadata</h5>
+<div class="paragraph">
+<p>节点通过脚本生成的 token (string 类型或返回 json 格式的 string) 需要注册到 metadata service 里供其它节点使用，例如开源容器集群管理系统 (Docker Swarm, Kuburnetes) 会用到此类信息。它是在 start service 之前执行，如果 start 之前有 init 则在 init 之后 start 之前执行。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_health_check">health_check</h5>
+<div class="paragraph">
+<p>特定角色节点的健康检查配置，每类应用有自身特有的可配置健康检查参数，
+每类节点也会有不同于应用全局级别的可配置健康检查参数。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_env_2">env</h4>
+<div class="paragraph">
+<p>应用参数配置，比如 ZooKeeper的 zoo.cfg 里的参数配置等。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_advanced_actions">advanced_actions</h4>
+<div class="paragraph">
+<p>集群支持高级操作，分别为:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>横向伸缩 (scale_horizontal) 即增加节点或删除节点，如果支持横向伸缩可以加上 scale_horizontal。</p>
+</li>
+<li>
+<p>变换网络 (change_vxnet) 如果您的应用支持切换网络可以加上 change_vxnet。</p>
+</li>
+<li>
+<p>绑定公网IP (associate_eip) 如果该角色的节点需要直接绑定公网IP可以加上 associate_eip，<strong>注意</strong>: 绑定公网IP会给这个集群绑定默认集群防火墙, 其他集群如果需要访问这个集群请在集群防火墙中添加对应放行规则。</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>如果只有某一类角色支持高级操作，其它类型节点不支持，则可以只写到这个角色节点里。如果不支持此类操作则需去掉相应的定义，否则用户在界面看见有此功能而实际上是不支持的。<strong>请仔细测试您在advanced_actions中定义的功能</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_endpoints">endpoints</h4>
+<div class="paragraph">
+<p>应用可定义 endpoints 供第三方使用，服务名称可以自定义，但建议使用通用的名称比如 client，manager 等，这样第三方应用使用的时候更方便一些，被第三方应用使用的可能性更大一些。详细的服务信息必须包括 port，但 protocol 非必须项，即可以不提供 protocol 信息。port 除可以是整数端口外，也可以是一个指向 env 的变量，如 &#34;port&#34;:&#34;env.port&#34;或 &#34;port&#34;:&#34;role_name.env.port&#34;，这样用户在更新这个变量的时候会自动更新其关联的 endpoint 端口。如果您的应用是一个大家熟知的且 enpoint 不会被修改，可以省略这一定义，比如 ZooKeeper，通用端口是 2181，所以可以省略掉。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reserved_ips_2">reserved_ips</h4>
+<div class="paragraph">
+<p>表示集群要预留一些 IP 资源，由应用自己来分配使用，如果无此需求可不定义。预留 IP 的成员名称由开发者指定，比如这里定义为 &#34;rvip&#34;，暂时不支持指定 IP，所以定义时 &#34;value&#34; 的值为空。然后系统会为该集群分配一个 IP 并更新到 &#34;value&#34; 中。比如系统预留了 192.168.0.250 这个地址给 &#34;rvip&#34;，则 reserved_ips 的信息为：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    &#34;reserved_ips&#34;: {
+        &#34;rvip&#34;: {
+            &#34;value&#34;:&#34;192.168.0.250&#34;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metadata_root_access">metadata_root_access</h4>
+<div class="paragraph">
+<p>有一些应用用来管理其它应用，因此需要通过 metadata service 获取其它应用实例的信息，默认情况下 (metadata_root_access 为 false) 本应用只能获取自身集群 (即 self) 的信息和通过 self 下的 links 获取外部集群信息，如果设置 metadata_root_access 为 true，则能获取 metadata service 下所有集群的信息。如果您的应用不属于此类管理型应用，则不用设置此项。</p>
+</div>
+<div class="paragraph">
+<p>下例示范 tmpl 模板文件遍历所有集群节点 ip 地址 (假定都是无角色的节点)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">{{range gets &#34;/clusters/*/hosts/*/ip&#34;}}{{.Value}}
+{{end}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>下例示范 tmpl 模板文件遍历某一类 App 的所有集群</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">{{$appID := &#34;app-pjkzvd1&#34;}}
+{{range gets&#34;/clusters/*/cluster/app_id&#34; | filter $appID}}
+{{$string := split .Key &#34;/&#34;}}
+{{$cluster_id := (index $string 2)}}
+{{end}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>下例示范 tmpl 模板文件遍历某几类 App 的所有集群</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">{{$appID1 := &#34;app-pjkzvd1&#34;}}
+{{$appID2 := &#34;app-ascz121&#34;}}
+{{$appID3 := &#34;app-mjkrm56&#34;}}
+{{$exp := printf &#34;%s|%s|%s&#34; $appID1 $appID2 $appID3}}
+{{range gets&#34;/clusters/*/cluster/app_id&#34; | filter $exp}}
+{{$string := split .Key &#34;/&#34;}}
+{{$cluster_id := (index $string 2)}}
+{{end}}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_health_check_2">health_check</h4>
+<div class="paragraph">
+<p>应用可以配置健康检查，详细的配置参数如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是否开启健康检查，默认值为 false。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">interval_sec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">健康检查的周期，默认值为 60，最小值不小于 60。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timeout_sec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">健康检查脚本执行的超时时间，默认值为 10，最小值不小于 3，最大值不能超过 interval_sec。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">action_timeout_sec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">动作脚本执行的超时时间，默认值为 30，最小值不小于 3。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">healthy_threshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">节点状态变为健康时，连续健康检查成功所需的最小次数，默认值为 3，最小值不小于 2。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unhealthy_threshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">节点状态变为非健康时，连续健康检查失败所需的最小次数，默认值为 3，最小值不小于 2。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check_cmd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">健康检查脚本。如果本次检查节点正常，脚本应返回0，否则返回非0值。如果 image 是基于 Windows 操作系统，目前仅支持 bat 脚本。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">action_cmd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">节点状态变为非健康时，触发的动作脚本。如果 image 是基于 Windows 操作系统，目前仅支持 bat 脚本。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>应用节点会继承应用的健康检查配置，当应用节点配置了相同的健康检查参数时，优先使用节点的配置。注明：前端在创建集群之后需要等大约５分钟左右服务检测才会展现出来。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_monitor">monitor</h4>
+<div class="paragraph">
+<p>应用可以配置可采集的监控数据，详细的配置参数如下：</p>
+</div>
+<div class="sect4">
+<h5 id="_enable">enable</h5>
+<div class="paragraph">
+<p>是否开启监控，默认值为 false。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cmd">cmd</h5>
+<div class="paragraph">
+<p>监控数据采集脚本。脚本应保证在5秒内完成，采集的数据以 JSON Object 的方式输出，JSON Object 的 key 是监控项的名字 (item_name)，value 是监控项的值，例如： {&#34;received&#34;: 1200，&#34;sent&#34;: 1234，&#34;connections&#34;: 10}。如果 image 是基于 Windows 操作系统，目前仅支持 bat 脚本。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_items">items</h5>
+<div class="paragraph">
+<p>设置采集的监控项，监控项的个数不能超过50。&#34;items&#34; 对应的值是一个 JSON Object，该 JSON Object 的 key 是监控项的名字 (item_name)，value 是监控项配置，详细的监控项配置参数如下：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>unit : 监控项的计量单位，默认值为空字符串(&#34;&#34;)。</p>
+</li>
+<li>
+<p>enums: 当 value_type 为 &#34;str&#34; 的时候才需要该字段，枚举出该监控项可能的 value 值(为了方便用户配置告警)。</p>
+</li>
+<li>
+<p>scale_factor_when_display: 指定在前端展示时，采集数据的放大倍数，默认值为1。该配置只支持值类型为 &#34;int&#34; (整型)的监控数据。</p>
+</li>
+<li>
+<p>value_type : 监控项的值类型,目前支持 &#34;int&#34; (整型)和 &#34;str&#34; (字符串型)，默认值为 &#34;int&#34;。对于浮点型数据，可以通过乘于一个倍数(例如100)将其转化成整型，并将 scale_factor_when_display 设为该倍数的倒数(例如0.01)来实现数据的采集。</p>
+</li>
+<li>
+<p>statistics_type : 指定监控项值的统计方式，目前支持如下方式：</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的最小值</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的最大值</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">avg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的平均值</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的变化值，如果变化值小于0,则设为0。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的变化率</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的众数(即出现次数最多的一个值)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">median</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的中位数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">取监控项在统计区间内采集数据的最新值</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>值类型为 &#34;int&#34; (整型)的监控数据，支持以上所有类型的统计方式，默认的统计方式为 &#34;avg&#34;。
+值类型为 &#34;str&#34; (字符串型)的监控数据，只支持 &#34;mode&#34; 和 &#34;latest&#34; 两种统计方式，默认的统计方式为 &#34;latest&#34;。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_groups">groups</h5>
+<div class="paragraph">
+<p>设置监控组，每个监控组可以包含1～5个监控项。&#34;groups&#34; 对应的值是一个 JSON Object，该 JSON Object 的 key 是监控组的名字 (group_name)，value 是一个 JSON Array，该 Array 中的每个元素是一个监控项的名字 (item_name)。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_display">display</h5>
+<div class="paragraph">
+<p>指定监控数据的显示顺序，其值是一个 JSON Array，该 JSON Array 中的每个元素可以是一个监控组的名字 (group_name)，也可以是一个监控项的名字 (item_name)。item_name 和 group_name 会进行国际化，如果想要提供各语言环境下的监控项描述，请提供翻译文件。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_alarm">alarm</h5>
+<div class="paragraph">
+<p>告警指标，其值是一个 JSON Array，该 JSON Array 中的每个元素必须是上面某个监控项的名字 (item_name)，这里的每一项都会成为&#34;控制台-管理-监控告警&#34;下的一个告警指标。</p>
+</div>
+<div class="paragraph">
+<p>应用节点会继承应用的监控配置，当应用节点配置了相同的监控参数时，优先使用节点的配置。注明：前端在创建集群之后需要等５分钟监控项才会展现出来。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_display_tabs">display_tabs</h4>
+<div class="paragraph">
+<p>自定义TAB页，TAB页中的信息会以表格的形式展现出来。开发者可以配置此项以在集群详情页显示更多的自定义信息。例如，集群发生主从切换后，节点新的主从信息，节点新的状态。配置应用于整个集群，不支持分角色定义。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>node_details_tab</strong>　必填项，需展示的TAB页标题，该key为自定义并且可定义多个，但最多不超过<strong>5</strong>个，该标题可定义国际化。</p>
+</li>
+<li>
+<p><strong>cmd</strong>　必填项，开发者自定义的命令，调度系统会随机选择集群中的节点去执行。返回的结果需是完整的JSON格式字符串，表格标题以<code>labels</code>来标识，数据行以<code>data</code>，所以命令执行返回的JSON必须包含这两个键。标题的个数不能超过<strong>５</strong>个，数据的行数不能超过<strong>225</strong>行。例如</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    &#34;labels&#34;: [&#34;node_id&#34;, &#34;role&#34;],
+    &#34;data&#34;:
+    [
+        [&#34;cln-xyzw1234&#34;, &#34;master&#34;],
+        [&#34;cln-xyzw1235&#34;, &#34;slave&#34;]
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>roles_to_execute_on</strong> 非必填项，如填写此项，则命令只会在指定的角色节点上执行，若集群创建完成时，没有指定角色的节点存在则会报错。不配置此项则会在所有的节点里随机选取节点执行。</p>
+</li>
+<li>
+<p><strong>description</strong> 非必填项，显示在表格的顶部，起到描述表格的作用，帮助用户更好地理解表格的内容，该描述可以定义国际化。</p>
+</li>
+<li>
+<p><strong>timeout</strong> 非必填项，命令执行的timeout时长，单位s，最大值和默认值为10，如果命令执行时长超过最大值将被终止。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_replace_policy_json">replace_policy.json</h3>
+<div class="paragraph">
+<p>此配置文件可以根据区域的不同，替换用户所能部署的资源情况。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    &#34;pek3b&#34;: {
+        &#34;instance_class&#34;: [{
+            &#34;src&#34;: &#34;0&#34;,
+            &#34;dst&#34;: 101
+        }, {
+            &#34;src&#34;: &#34;1&#34;,
+            &#34;dst&#34;: 202
+        }],
+        &#34;volume_class&#34;: [{
+            &#34;src&#34;: &#34;0&#34;,
+            &#34;dst&#34;: 100
+        }, {
+            &#34;src&#34;: &#34;3&#34;,
+            &#34;dst&#34;: 200
+        }]
+    },
+    &#34;gd2b&#34;: {
+        &#34;cpu_model&#34;: [{
+            &#34;src&#34;: &#34;Broadwell&#34;,
+            &#34;dst&#34;: &#34;CascadeLake&#34;
+        }]
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上述配置，在 pek3b 部署当前版本的集群时，配置包中 instance_class 为 0 值时，会自动替换为 101 展示和部署。一般情况无需此文件。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_数据类型">数据类型</h3>
+<div class="paragraph">
+<p>config.json 文件里对每个变量需要定义其类型、取值范围、默认值等，其中类型和默认值为必填项。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">变量数据类型，支持：integer、boolean、string、number (浮点数)、array、service、loadbalancer、password、accesskey、vxnet、eip。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">新应用可能会依赖外部应用，比如 Kafka 依赖 ZooKeeper，应用使用该类型表示。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">loadbalancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">负载均衡器，可以使用该类型表示，定义时需要同时定义负载均衡器后端服务端口参数：port，比如搭建的 HTTP 的 web server，可以指定 port 为 80。需要使用负载均衡器监听多个 port 时，可将 port 定义为数组，如 port: [80,443]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可在 env 或 service_params 变量中使用，界面会用密码形式显示输入。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accesskey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可在 env 变量中使用，用户选择当前账号下的 API 密钥 ID，系统会将其对应密钥一并注册到 metadata service，参见 <a href="../metadata-service#env">Metadata 服务</a>以及<a href="../../cluster-faqs#_34_如何使用环境变量里的_accesskey_类型数据">如何使用环境变量里的 accesskey 类型数据</a>。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vxnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可在 env 变量中使用，系统会校验用户选择或输入的私有网络 ID，多个私有网络 ID 以空格隔开。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可在 env 变量中使用，系统会校验用户选择或输入的公网 IP，多个公网 IP 会以空格隔开。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_国际化">国际化</h3>
+<div class="paragraph">
+<p>config.json 中的 label 和 description 在控制台呈现时，默认使用配置文件中定义的内容。另外，一些自定义的服务、监控项也会直接展示到集群使用者的操作界面上。控制台的用户切换语言时，不改变该描述。如果您想让不同语言场景的用户能看到该语言的描述，请在提交的包中添加 locale 文件夹，并根据您希望国际化的语言提供翻译文件。</p>
+</div>
+<div class="paragraph">
+<p>翻译文件是&#34;`语言名称.json`&#34;这样的格式，如 locale/en.json，locale/zh-cn.json。例如简体中文的翻译文件 zh-cn.json 内容示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    &#34;Master&#34;: &#34;主节点&#34;,
+    &#34;Slave&#34;: &#34;从节点&#34;,
+    &#34;CPU&#34;: &#34;CPU&#34;,
+    &#34;Memory&#34;: &#34;内存&#34;,
+    &#34;VxNet&#34;: &#34;私有网络&#34;,
+    &#34;The name of the service&#34;: &#34;服务名称&#34;,
+    &#34;The description of the service&#34;: &#34;服务描述&#34;,
+    &#34;CPUs of each node&#34;: &#34;每个节点的 CPU 数量&#34;,
+    &#34;Memory of each node (in MiB)&#34;: &#34;每个节点的内存大小（单位 MiB）&#34;,
+    &#34;The vxnet that the application will join&#34;: &#34;应用运行的私有网络环境&#34;,
+    &#34;change_vxnet&#34;: &#34;切换私有网络&#34;,
+    &#34;scale_horizontal&#34;: &#34;横向扩容&#34;,
+    &#34;err_code1&#34;: &#34;主从切换中，无法删除节点&#34;,
+    &#34;notice_when_upgrade&#34;: &#34;此版本不兼容旧版 API&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>进行国际化的配置内容包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>config.json 文件中，角色名称、节点配置、私有网络、外部依赖、环境变量 env 各配置项的 label 作为待填写项名称，description 作为待填项的描述。label 和 description 会进行国际化。</p>
+</li>
+<li>
+<p>cluster.json.mustache 文件中 type 为 custom 的 service，会使用 service 的 key 作为用户执行自定义服务的展示内容，并进行国际化。</p>
+</li>
+<li>
+<p>cluster.json.mustache 文件中 monitor 部分的 group_name，item_name，会在用户看到的监控视图中，作为监控项名称展示，并进行国际化。</p>
+</li>
+<li>
+<p>type 为 custom 的 service、新增节点、删除节点在执行 cmd 返回非 0 值时，视为操作失败，可以将 err_code 后面跟着退出码（err_code1）作为 key，value 为展示给用户的错误提示，样例参考：<a href="../../cluster-faqs#_21_执行操作失败时如何展示给用户错误提示">执行操作失败时如何展示给用户错误提示</a></p>
+</li>
+<li>
+<p>升级操作时可给用户弹出提示，key 为 notice_when_upgrade，value 为提示内容。样例参考：<a href="../../cluster-faqs#_37_升级操作时如何给用户弹出提示">升级操作时如何给用户弹出提示</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_基本介绍">基本介绍</a></li>
+    <li><a href="#_规范">规范</a>
+      <ul>
+        <li><a href="#_config_json">config.json</a></li>
+        <li><a href="#_cluster_json_mustache">cluster.json.mustache</a></li>
+        <li><a href="#_replace_policy_json">replace_policy.json</a></li>
+        <li><a href="#_数据类型">数据类型</a></li>
+        <li><a href="#_国际化">国际化</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

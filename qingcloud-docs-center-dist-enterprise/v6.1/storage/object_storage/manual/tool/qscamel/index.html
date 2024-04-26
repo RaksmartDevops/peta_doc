@@ -1,0 +1,3586 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云计算, 对象存储]">
+
+
+
+<meta name="description" content="本小节主要介绍 qscamel 相关内容。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>qscamel - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/storage/object_storage/">
+          
+            对象存储
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/intro/product/">对象存储</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/intro/function_list/">功能概览</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a href="/v6.1/storage/object_storage/manual/">操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Console</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/overview/">概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Bucket 管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/basic_opt/">基础操作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/access_control/">访问控制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/monitor/">监控与报表</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/logging/">日志归档</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/lifecycle/">生命周期管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/replication/">跨区域复制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/notification/">事件通知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/version/">版本管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/cname/">存储空间域名别名</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/worm/">WORM</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Object 管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/basic_opt/">基础操作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/change_level/">变更存储级别</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/modify_meta/">修改元数据</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >数据处理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/data_process/image_process/">图片处理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/data_process/tupu_porn/">图普鉴黄</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a href="/v6.1/storage/object_storage/manual/tool/">客户端工具</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/tool/qsctl/">qsctl</a>
+            
+            
+              
+                
+              
+            
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/storage/object_storage/manual/tool/qscamel/">qscamel</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/tool/qsftpd/">qsftpd</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/tool/mountain_duck/">Mountain Duck</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/">第三方数据集成</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/logstash_input/">Logstash Input QingStor</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/logstash_output/">Logstash Output QingStor</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/wordpress_plugin_for_qingstor/">WordPress QingStor </a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/beat_practices/">最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/migrate/">数据迁移方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/backup/">实时增量数据备份解决方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/linux_uses_object_storage_as_a_local_disk/">Linux 使用对象存储作为本地盘</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/app_integration/">移动 App 接入方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/web_hosting/">静态网站托管方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/policy/">Bucket Policy 白名单和黑名单使用实例</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/faq/cidr_ip/">CIDR 地址划分</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/faq/object-faq/">FAQ</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage" data-url="/v6.1/storage/object_storage">对象存储</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual" data-url="/v6.1/storage/object_storage/manual">操作指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual/tool" data-url="/v6.1/storage/object_storage/manual/tool">客户端工具</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual/tool/qscamel" data-url="/v6.1/storage/object_storage/manual/tool/qscamel">qscamel</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    qscamel</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/storage/object_storage/manual">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_工具介绍">工具介绍</a>
+      <ul>
+        <li><a href="#_命令详解">命令详解</a></li>
+        <li><a href="#_命令简介">命令简介</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用流程">使用流程</a></li>
+    <li><a href="#_任务示例">任务示例</a>
+      <ul>
+        <li><a href="#_qingstor_端点信息">Qingstor 端点信息</a></li>
+        <li><a href="#_将本地文件拷贝至_qingstor">将本地文件拷贝至 QingStor</a></li>
+        <li><a href="#_将本地文件列表拷贝至_qingstor">将本地文件列表拷贝至 QingStor</a></li>
+        <li><a href="#_将数据从_s3_迁移到_qingstor">将数据从 S3 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_oss_迁移到_qingstor">将数据从 OSS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_azblob_迁移到_qingstor">将数据从 Azblob 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_cos_迁移到_qingstor">将数据从 COS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_gcs_迁移到_qingstor">将数据从 GCS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_hdfs_迁移到_qingstor">将数据从 HDFS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_qiniu_迁移到_qingstor">将数据从 Qiniu 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_upyun_迁移到_qingstor">将数据从 Upyun 迁移到 QingStor</a></li>
+        <li><a href="#_qingstor_同区域不同账户间进行数据迁移">QingStor 同区域不同账户间进行数据迁移</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="sect1">
+<h2 id="_工具介绍">工具介绍</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>qscamel 是一个基于 Goroutine 池实现并发机制的、高效的、端点间迁移数据的工具，有着如下特性。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>采用简单，易用的任务管理方式，实现完全自动化的重试机制，无须人工介入。</p>
+</li>
+<li>
+<p>创建迁移任务时，支持 <code>copy</code>，<code>fetch</code>，<code>delete</code> 等迁移任务类型；支持迁移指定时间后上传的文件；支持对任务请求次数的限制，从而全面覆盖用户的迁移需求。</p>
+</li>
+<li>
+<p>执行迁移任务时，支持从任务中断处续传，从而节省用户的时间，提高迁移效率。</p>
+</li>
+<li>
+<p>迁移任务执行中，统计当前已成功迁移的总容量与总的文件数以及迁移任务的中间状态，并输出相应的统计信息，方便用户实时了解迁移任务的执行状态。</p>
+</li>
+<li>
+<p>在最终迁移任务完成时，输出各统计信息，并将迁移失败的文件列表显示。</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_命令详解">命令详解</h3>
+<div class="paragraph">
+<p>qscamel 的各命令行，使用方法类似。这里以 <code>run</code> 命令为例，对其参数与用法进行说明。</p>
+</div>
+<div class="paragraph">
+<p>用户可通过 <code>run</code> 命令来创建或者恢复一个迁移任务。当调用该命令时，qscamel 会根据任务名查询数据库，并检查任务文件内容是否有更新。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>若有同名任务，且任务文件内容有更新，qscamel 会报错并退出。</p>
+</li>
+<li>
+<p>若有同名任务，且任务文件没有更新，qscamel 将恢复该任务，继续执行。</p>
+</li>
+<li>
+<p>若无同名任务，qscamel 会对任务内容的 sha256 校验和进行计算，并将结果保存于数据库中。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>同时，使用 <code>run</code> 命令，有如下注意事项。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>数据迁移任务在创建成功后就不能修改。</p>
+</li>
+<li>
+<p>创建后的任务，无论执行完成或执行失败，均不会自动从数据库中删除。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>操作说明</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>查看 <code>run</code> 的使用教程</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel run -h</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>命令行回显</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">Create or resume a task
+
+Usage:
+  qscamel run [task name or task path] [flags]
+
+Flags:
+  -h, --help          help for run
+  -t, --task string   task path
+
+Global Flags:
+  -c, --config string   config path (default &#34;~/.qscamel/qscamel.yaml&#34;)</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用户可以通过 <code>-c</code> 或者 <code>--config</code> 参数来指定自定义配置文件的位置。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>创建一个新的数据迁移任务</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel run &lt;task-name&gt; -t &lt;/path/to/task/file&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task-name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>为新建数据迁移任务名，须唯一。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/path/to/task/file</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>任务文件。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>恢复一个数据迁移任务</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel run &lt;task-name&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>由于该操作用于恢复一个历史任务，故 <code>&lt;task-name&gt;</code> 须为原任务名。</p>
+</li>
+<li>
+<p>由于任务文件没有更新，故命令行中省略了任务文件名，qscamel 会自动调用历史任务文件。</p>
+</li>
+<li>
+<p>命令行中也可添加原任务文件 <code>-t /path/to/task/file</code>，若添加该参数，则须确保任务文件没有变更，否则该操作会报错。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>再次创建同名任务</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>删除任务</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel delete &lt;task-name&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>创建任务</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel run &lt;task-name&gt; -t &lt;/path/to/task/file&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_命令简介">命令简介</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;"/>
+<col style="width: 42.8571%;"/>
+<col style="width: 42.8572%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">命令</th>
+<th class="tableblock halign-left valign-top">说明</th>
+<th class="tableblock halign-left valign-top">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">run</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用来创建或者恢复一个迁移任务。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>qscamel run task-name -t /path/to/task/file</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用来删除一个已经创建的任务。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>qscamel delete task-name</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用来查询展示所有任务的状态。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>qscamel status</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clean</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用来删除所有已经完成的任务。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>qscamel clean</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用来查询当前 qscamel 的版本信息。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>qscamel version</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用流程">使用流程</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>使用 qscamel 工具进行数据迁移的操作流程如下。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>根据操作系统，分别获取适用于 Linux，MacOS 以及 Windows 操作系统的最新版本的 qscamel 工具。</p>
+<div class="paragraph">
+<p>获取链接为 <code><a href="https://github.com/qingstor/qscamel/releases" class="bare">https://github.com/qingstor/qscamel/releases</a></code>。</p>
+</div>
+</li>
+<li>
+<p>更新配置文件 <code>~/.qscamel/qscamel.yaml</code>，文件内容如下。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">concurrency: 0
+log_level: info
+pid_file: ~/.qscamel/qscamel.pid
+log_file: ~/.qscamel/qscamel.log
+database_file: ~/.qscamel/db</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">concurrency</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于控制同时启用的任务并发数量。
+若没有设置，或者设置为 <code>0</code>， qscamel 将会使用 <code>逻辑 CPU 数量 * 100</code> 作为该项的值。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log_level</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于控制日志的级别。日志内容显示从多到少依次可设置为 <code>debug</code>、<code>info</code>、<code>warn</code>、<code>error</code>、<code>fatal</code>、<code>panic</code>。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pid_file</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于指定 PID 文件存放目录。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log_file</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于指定日志文件存放目录。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database_file</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于指定数据库文件存放目录。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>各配置项均有默认值，无特殊需求，用户无需对其进行修改。</p>
+</li>
+<li>
+<p>qscamel 默认从 <code>~/.qscamel/qscamel.yaml</code> 读取配置文件，用户也可以自定义配置文件路径。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>创建数据迁移任务文件，文件格式为 <code>.yaml</code>，文件内容如下。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">type: copy
+
+source:
+  type: s3
+  path: /path/to/source
+  options:
+    ......
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    ......
+
+multipart_boundary_size: 2147483648
+ignore_existing: last_modified
+
+# 忽略这个时间之前的数据, 无默认值
+ignore_before: 2023-01-30 12:00:00
+# 一秒钟限制请求数, 默认 1000
+rate_limit: 1000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于定义该任务的类型。可选值说明如下。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>copy</code> 将会从 <code>source</code> 指定的端点读取文件，并写入到 <code>destination</code> 指定的端点。</p>
+</li>
+<li>
+<p><code>fetch</code> 将会从 <code>source</code> 指定的端点获取文件的下载链接，并使用 <code>destination</code> 指定的端点的 <code>fetch</code> 功能对其进行拉取。</p>
+</li>
+<li>
+<p><code>delete</code> 将会从 <code>source</code> 指定的端点获取文件的信息，并在 <code>destination</code> 指定的端点将其删除。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识后续字段为任务的源端点信息。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">destination</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识后续字段为任务的目标端点信息。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当前端点的类型。可选值参考<a href="#_任务示例">任务示例</a>中各端点的设置。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>source</code> 端点可选值为 <code>qingstor</code>、<code>s3</code>、<code>fs</code>、<code>filelist</code>、<code>oss</code>、<code>azblob</code>、<code>cos</code>、<code>gcs</code>、<code>hdfs</code>、<code>qiniu</code>、<code>upyun</code>。</p>
+</li>
+<li>
+<p><code>destination</code> 端点可选值为 <code>qingstor</code>、<code>s3</code>、<code>fs</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当前端点的路径，须为目录名。以 <code>/</code> 结尾。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果是迁移根目录或者 Bucket 下所有文件，则填写内容为 <code>path: /</code>。</p>
+</li>
+<li>
+<p>如果需要迁移指定目录或者 Bucket 下指定前缀的文件，则填写内容为 <code>path: /log/2023/06/</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">options</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识后续字段为可选字段。不同端点的可选字段，会有区别，详情可参考<a href="#_任务示例">任务示例</a>中各端点的设置。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multipart_boundary_size</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>设置使用分段上传的文件大小，单位为 <code>Byte</code>，当文件大于该数值时，将会使用分段上传。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>可选值为 <code>1 ~ 5368709120</code></p>
+</li>
+<li>
+<p>默认值为 <code>2147483648</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ignore_existing</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于控制是否跳过已经存在的文件，为空或未配置时将会禁用该配置，即总是覆盖。可选值如下。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>last_modified</code> 将会检查目标的 LastModified 是否比源站要大，比源站大，则跳过。</p>
+</li>
+<li>
+<p><code>md5sum</code> 将会对文件做完整的 MD5 计算，当 MD5 相同时会跳过。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ignore_before</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>这个时间点之前上传或创建的数据不作迁移，无默认值，需根据实际情况进行填写。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rate_limit</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>一秒钟内对目标端上传请求的次数限制，默认值为 <code>1000</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>执行如下命令行，创建数据迁移任务。命令行各参数参考<a href="#_命令详解">命令详解</a>。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qscamel run &lt;task-name&gt; -t &lt;task-file-path&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>命令行输出结果示例</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>示例一</p>
+<div class="paragraph">
+<p>迁移任务执行中，统计当前已成功迁移的总容量与总的文件数以及迁移任务的中间状态，并输出相应的统计信息。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">INFO[2023-06-26T16:34:21+08:00] ====Success Count: 15  Success Size: 501326====</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>示例二</p>
+<div class="paragraph">
+<p>迁移任务完成时，输出各统计信息。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">INFO[2023-06-26T16:34:28+08:00] ====Final Success Count: 19  Final Success Size: 21926478====
+INFO[2023-06-26T16:34:28+08:00] ====Final Failed Count: 1  Final Failed filename: [test/test.txt]====</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>示例三</p>
+<div class="paragraph">
+<p>执行迁移任务时，支持从任务中断处续传。该过程中的输出结果如下所示。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>第一次上传</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">INFO[2023-06-26T16:47:03+08:00] Current version: 2.0.22.
+INFO[2023-06-26T16:47:03+08:00] Task test-01 migrate started.
+INFO[2023-06-26T16:47:04+08:00] Start listing job /.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object 2021-7-13.md.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object a/b/c/d/e/object-181420.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object abyss.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object config.yaml.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object debuglog.txt.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test$.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test-abort-01.txt.
+INFO[2023-06-26T16:47:04+08:00] Single object 2021-7-13.md copied.
+INFO[2023-06-26T16:47:04+08:00] Single object abyss copied.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test-abort.txt.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test-meta.
+INFO[2023-06-26T16:47:04+08:00] Single object config.yaml copied.
+INFO[2023-06-26T16:47:04+08:00] Single object test$ copied.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test.txt.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test/aaaa/hhhh/test.txt.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test/check.
+INFO[2023-06-26T16:47:04+08:00] Single object test-meta copied.
+INFO[2023-06-26T16:47:04+08:00] Start copying single object test/config.yaml.</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>中断</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">INFO[2023-06-26T17:15:49+08:00] Single object workdir/ ?? copied. INFO[2023-06-26T17:15:49+08:00] Single object 新建文本文档.txt copied. INFO[2023-06-26T17:15:49+08:00] Single object test_rust-01.txt copied.
+INFO[2023-06-26T17:15:52+08:00] Single object test/qscamel_timing_task_windows_amd64.exe copied. INFO[2023-06-26T17:15:52+08:00] ====Success Count: 16 Success Size: 3052110====
+^CINFO[2023-06-26T17:15:54+08:00] Signal interrupt received, exit for now.
+INFO[2023-06-26T17:15:54+08:00] ====Final Success Count: 16  Final Success Size: 3052110====
+INFO[2023-06-26T17:15:54+08:00] ====All objects migrated successfully====</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>继续任务</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">INFO[2023-06-26T17:15:57+08:00] Current version: 2.0.22.
+INFO[2023-06-26T17:15:57+08:00] Task test-01 migrate started.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test-abort.txt.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test.txt.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/check.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test-abort-01.txt.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/qscamel.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object a/b/c/d/e/object-181420.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/qscamel_v2.0.21_windows_amd64.exe.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/mc.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/qsctl.
+INFO[2023-06-26T17:15:57+08:00] Start copying single object test/httpie.
+INFO[2023-06-26T17:16:02+08:00] ====Success Count: 16  Success Size: 3052110====
+INFO[2023-06-26T17:16:05+08:00] Single object test-abort-01.txt copied.
+INFO[2023-06-26T17:16:07+08:00] ====Success Count: 17  Success Size: 7246414====
+INFO[2023-06-26T17:16:07+08:00] Single object a/b/c/d/e/object-181420 copied.
+INFO[2023-06-26T17:16:12+08:00] ====Success Count: 18  Success Size: 11440718====
+INFO[2023-06-26T17:16:15+08:00] Single object test-abort.txt copied.
+INFO[2023-06-26T17:16:17+08:00] ====Success Count: 19  Success Size: 19829326====
+INFO[2023-06-26T17:16:17+08:00] Single object test/check copied.
+INFO[2023-06-26T17:16:19+08:00] Single object test.txt copied.
+INFO[2023-06-26T17:16:22+08:00] ====Success Count: 21  Success Size: 40283653====
+INFO[2023-06-26T17:16:25+08:00] Single object test/mc copied.
+INFO[2023-06-26T17:16:26+08:00] Single object test/qsctl copied.
+INFO[2023-06-26T17:16:27+08:00] ====Success Count: 23  Success Size: 81933953====
+INFO[2023-06-26T17:16:32+08:00] Single object
+test/qscamel_v2.0.21_windows_amd64.exe copied.
+INFO[2023-06-26T17:16:33+08:00] Single object test/qscamel copied.
+INFO[2023-06-26T17:16:37+08:00] ====Success Count: 25  Success Size: 144635527====
+INFO[2023-06-26T17:17:20+08:00] Single object test/httpie copied.
+INFO[2023-06-26T17:17:20+08:00] Task test-01 has been finished.
+INFO[2023-06-26T17:17:20+08:00] ====Final Success Count: 26  Final Success Size: 227581527====
+INFO[2023-06-26T17:17:20+08:00] ====All objects migrated successfully====</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_任务示例">任务示例</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_qingstor_端点信息">Qingstor 端点信息</h3>
+<div class="paragraph">
+<p>QingStor 对象存储服务，能够用做 qscamel 数据迁移任务中的 <code>source</code> 与 <code>destination</code> 端点，使用 <code>qingstor</code> 作为端点时，需在 <code>options</code> 字段下添加如下配置内容。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    zone: pek3b
+    bucket_name: example_bucket
+    access_key_id: example_access_key_id
+    secret_access_key: example_secret_access_key
+    storage_class: STANDARD
+    disable_uri_cleaning: false
+    timeout_config:
+      connect_timeout: 30
+      read_timeout: 30
+      write_timeout: 30</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">protocol</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 QingStor 对象存储的协议类型。可选值 <code>https</code>、<code>http</code>。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识访问 QingStor 对象存储的云服务器名。填写 QingStor 对象存储的 Global Domain。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识访问 QingStor 对象存储的端口号。<code>https</code> 协议，端口号为 <code>443</code>，<code>http</code> 协议端口号为 <code>80</code>。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zone</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识访问 QingStor 对象存储 Bucket 的所在区域，无需手动配置。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待操作的 QingStor 对象存储的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access_key_id</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>QingStor 对象存储的 Access Key ID。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_access_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>QingStor 对象存储的 Access Key。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage_class</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>QingStor 对象存储所使用的存储级别。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>可选值 <code>STANDARD</code>、<code>STANDARD_IA</code>。</p>
+</li>
+<li>
+<p>默认值为 <code>STANDARD</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable_uri_cleaning</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否自动清理 URL，默认为 <code>false</code>。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>当 <code>path</code> 指定目录中，包含名称为 <code>/</code> 的目录时，该参数需设置为 <code>true</code>。</p>
+</li>
+<li>
+<p>如 <code>path</code> 指定目录为 <code>abc//bcd</code>，该参数需设置为 <code>true</code> 时，目录不作变动，仍然为 <code>abc//bcd</code>；该参数需设置为 <code>false</code> 时，目录转化为 <code>abc/bcd</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timeout_config</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>超时相关配置。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将本地文件拷贝至_qingstor">将本地文件拷贝至 QingStor</h3>
+<div class="paragraph">
+<p><code>fs</code> 是指符合 POSIX 标准的文件系统，如 local fs、nfs、s3fs 等。可作为 qscamel 数据迁移任务中的 <code>source</code> 端点与 <code>destination</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如用户需将本地目录 <code>/path/to/source</code> 下的文件 copy 至 QingStor 对象存储的 <code>example_bucket</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: fs
+  path: /path/to/source
+  options:
+    enable_link_follow: false
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: example_bucket
+    access_key_id: example_access_key_id
+    secret_access_key: example_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable_link_follow</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>遇到软连接时，是否上传指向的文件，默认值为 <code>false</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将本地文件列表拷贝至_qingstor">将本地文件列表拷贝至 QingStor</h3>
+<div class="paragraph">
+<p><code>filelist</code> 是本地文件列表，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如用户需将本地目录 <code>/path/to/list</code> 下的文件列表 copy 至 QingStor 对象存储的 <code>example_bucket</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: filelist
+  path: /path/to/source
+  options:
+    list_path: /path/to/list
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: example_bucket
+    access_key_id: example_access_key_id
+    secret_access_key: example_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list_path</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待迁移的文件列表，qscamel 将会逐行来读取该列表。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_s3_迁移到_qingstor">将数据从 S3 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>S3 是 AWS 提供的对象存储服务，支持 S3 协议的终端可作为 qscamel 数据迁移任务中的 <code>source</code> 和 <code>destination</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如用户需将 S3 的 <code>example_bucket</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: s3
+  path: /path/to/source
+  options:
+    bucket_name: example_bucket
+    endpoint: example_endpoint
+    region: example_region
+    access_key_id: example_access_key_id
+    secret_access_key: example_secret_access_key
+    disable_ssl: false
+    use_accelerate: false
+    path_style: true
+    enable_list_object_v2: false
+    enable_signatrue_v2: false
+    disable_uri_cleaning: false
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>S3 的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endpoint</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>S3 的端点地址。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>例如 AWS 公有云作为 <code>endpoint</code> 时，填写格式为：<code>endpoint: s3.ap-southeast-1.amazonaws.com</code>。</p>
+</li>
+<li>
+<p>也可以写 IP 地址，如 <code>endpoint: 10.89.79.195</code>，填写 IP 地址时，同时需设置 <code>disable_ssl: false</code> 以及 <code>path_style: true</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">region</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>S3 bucket 所在的区域。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access_key_id</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 S3 的 access_key_id。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_access_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 S3 的 secret_access_key。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable_ssl</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否禁用 SSL。如需要通过 <code>http</code> 访问，或者是 IP 访问，则设置为 <code>false</code>。如需通过 <code>https</code> 协议访问，则设置为 <code>ture</code>。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use_accelerate</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否启用加速。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable_uri_cleaning</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否自动清理 URL，默认为 <code>false</code>。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>当 <code>path</code> 指定目录中，包含名称为 <code>/</code> 的目录时，该参数需设置为 <code>true</code>。</p>
+</li>
+<li>
+<p>如 <code>path</code> 指定目录为 <code>abc//bcd</code>，该参数需设置为 <code>true</code> 时，目录不作变动，仍然为 <code>abc//bcd</code>；该参数需设置为 <code>false</code> 时，目录转化为 <code>abc/bcd</code>。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_style</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否强制请求使用路径样式寻址。默认为 <code>false</code>，即使用 <code><a href="http://s3.amazonaws.com/BUCKET/KEY" class="bare">http://s3.amazonaws.com/BUCKET/KEY</a></code> 格式。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable_list_object_v2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否使用 ListObjectsV2。默认为 <code>false</code>，即使用 ListObjects。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable_signature_v2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否强制客户端使用 <code>v2.SignRequestHandler</code>。默认为 <code>false</code>，即使用 <code>v4.SignRequestHandler</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_oss_迁移到_qingstor">将数据从 OSS 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>OSS 是阿里云提供的对象存储服务，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 OSS 的 <code>example_bucket</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: oss
+  path: /path/to/source
+  options:
+    endpoint: example_endpoint
+    bucket_name: example_bucket
+    access_key_id: example_access_key_id
+    access_key_secret: example_access_key_secret
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endpoint</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于标识访问的 OSS 端点地址。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待操作的 OSS 的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access_key_id</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于访问 OSS 的 Access Key ID。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_access_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于访问 OSS 的 Access Key。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_azblob_迁移到_qingstor">将数据从 Azblob 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>Azblob 是 Microsoft 提供的存储服务，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 Azblob 的 <code>bucket_name</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: azblob
+  path: /path/to/source
+  options:
+    account_name: example_account_name
+    account_key: example_account_key
+    bucket_name: example_bucket
+    endpoint: example_endpoint
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">account_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 Azblob 的账号。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">account_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 Azblob 的密码。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>标识待操作的 Azblob 的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endpoint</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于标识访问的 Azblob 端点地址。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_cos_迁移到_qingstor">将数据从 COS 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>COS 是 Tencent 提供的对象存储服务，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 COS 的 <code>example_bucket_url</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: cos
+  path: /path/to/source
+  options:
+    bucket_url: example_bucket_url
+    secret_id: example_secret_id
+    secret_key: example_secret_key
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_url</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Tencent COS 的 Bucket URL 地址。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_id</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 Tencent COS 的 secret_id。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 Tencent COS 的 secret_key。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_gcs_迁移到_qingstor">将数据从 GCS 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>GCS 是 Google 提供的对象存储服务，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 GCS 的 <code>bucket_name</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: gcs
+  path: /path/to/source
+  options:
+    api_key: example_api_key
+    bucket_name: exmaple_bukcet
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">api_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于访问 GCS 的 api_key。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待访问的 GCS 的 Bucket 名。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_hdfs_迁移到_qingstor">将数据从 HDFS 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>HDFS 是 Hadoop 的分布式文件系统，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 HDFS 的 <code>example_address</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: hdfs
+  path: /path/to/source
+  options:
+   address: example_address
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_qiniu_迁移到_qingstor">将数据从 Qiniu 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>Qiniu 是 Qiniu 提供的对象存储服务，可用作 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 Qiniu 的 <code>example_bucket</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: qiniu
+  path: /path/to/source
+  options:
+    bucket_name: example_bucket
+    access_key: example_access_key
+    secret_key: example_secret_key
+    domain: example_domain
+    use_https: false
+    use_cdn_domains: false
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待访问的 Qiniu 的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于访问 Qiniu 的 Access Key。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>用于访问 Qiniu 的 Secret Key。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">domain</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待访问的 Qiniu Bucket 的域名。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use_https</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否使用 <code>https</code> 来访问 Qiniu。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use_cdn_domains</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>是否使用 CDN 加速域名来访问 Qiniu。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_将数据从_upyun_迁移到_qingstor">将数据从 Upyun 迁移到 QingStor</h3>
+<div class="paragraph">
+<p>Upyun 是 Upyun 提供的对象存储服务，可作为 qscamel 数据迁移任务中的 <code>source</code> 端点。</p>
+</div>
+<div class="paragraph">
+<p>如，将 Upyun 的 <code>example_bucket</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储的 <code>bucket_name</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: upyun
+  path: /path/to/source
+  options:
+    bucket_name: example_bucket
+    operator: example_operator
+    password: example_password
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: bucket_name
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>source options 参数说明</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bucket_name</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>待访问的 Upyun 的 Bucket 名称。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">operator</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Upyun 的 Operator。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>访问 Upyun 的 Password。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_qingstor_同区域不同账户间进行数据迁移">QingStor 同区域不同账户间进行数据迁移</h3>
+<div class="paragraph">
+<p>将 QingStor 对象存储源账户的 <code>source_bucket</code> 下 <code>/path/to/source</code> 目录下的文件 copy 至 QingStor 对象存储目标账户的 <code>destination_bucket</code> 下的 <code>/path/to/destination</code> 目录，则可参考以下内容配置任务文件。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">type: copy
+
+source:
+  type: qingstor
+  path: /path/to/source
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: source_bucket
+    access_key_id: source_access_key_id
+    secret_access_key: source_secret_access_key
+    disable_uri_cleaning: false
+
+
+destination:
+  type: qingstor
+  path: /path/to/destination
+  options:
+    protocol: https
+    host: qingstor.com
+    port: 443
+    bucket_name: destination_bucket
+    access_key_id: qingstor_access_key_id
+    secret_access_key: qingstor_secret_access_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>参数说明</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>source</code> 字段的 <code>access_key_id</code> 与 <code>secret_access_key</code> 填写源账户的 AK/SK，<code>destination</code> 字段的 <code>access_key_id</code> 与 <code>secret_access_key</code> 填写目标账户的 AK/SK。</p>
+</li>
+<li>
+<p>若源账户已授权目标账户可读访问权限，则 <code>source</code> 字段的 <code>access_key_id</code> 与 <code>secret_access_key</code> 可填写目标账户的 AK/SK。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_工具介绍">工具介绍</a>
+      <ul>
+        <li><a href="#_命令详解">命令详解</a></li>
+        <li><a href="#_命令简介">命令简介</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用流程">使用流程</a></li>
+    <li><a href="#_任务示例">任务示例</a>
+      <ul>
+        <li><a href="#_qingstor_端点信息">Qingstor 端点信息</a></li>
+        <li><a href="#_将本地文件拷贝至_qingstor">将本地文件拷贝至 QingStor</a></li>
+        <li><a href="#_将本地文件列表拷贝至_qingstor">将本地文件列表拷贝至 QingStor</a></li>
+        <li><a href="#_将数据从_s3_迁移到_qingstor">将数据从 S3 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_oss_迁移到_qingstor">将数据从 OSS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_azblob_迁移到_qingstor">将数据从 Azblob 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_cos_迁移到_qingstor">将数据从 COS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_gcs_迁移到_qingstor">将数据从 GCS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_hdfs_迁移到_qingstor">将数据从 HDFS 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_qiniu_迁移到_qingstor">将数据从 Qiniu 迁移到 QingStor</a></li>
+        <li><a href="#_将数据从_upyun_迁移到_qingstor">将数据从 Upyun 迁移到 QingStor</a></li>
+        <li><a href="#_qingstor_同区域不同账户间进行数据迁移">QingStor 同区域不同账户间进行数据迁移</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

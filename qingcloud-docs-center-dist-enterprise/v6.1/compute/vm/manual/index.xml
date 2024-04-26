@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/compute/vm/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创建云服务器</title>
+      <link>/v6.1/compute/vm/manual/vm_instance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/manual/vm_instance/</guid>
+      <description>云平台支持快速创建并购买云服务器。
+操作步骤 登录管理控制台，选择产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器页签。
+在云服务器页签中，点击创建，弹出创建云服务器页面。
+步骤 1：基础配置 选择区域。
+说明 建议选择靠近业务的区域，可以减少网络时延，提升访问速度。
+不同区域的资源价格可能有差异，可以根据价格选择合适的区域。
+选择规格，云平台提供了多种类型的云服务器。针对不同的应用场景，可以选择不同规格的云服务器。
+根据实际需要勾选热扩容配置。用于设置当前云服务器可支持的在线扩容的最高配置。
+根据实际需要勾选 CPU 拓扑结构配置。勾选该配置后，需用户设置插槽数、核心数以及线程数。
+选择镜像，参数说明如下。
+镜像类型 说明 标准镜像
+常见的标准操作系统镜像，所有用户可见，包括操作系统以及预装的公共应用。请根据您的实际情况自助配置应用环境或相关软件。
+自有镜像
+基于云服务器创建的个人镜像，仅用户自己可见。
+共享镜像
+其他用户共享的私有镜像，作为自己的镜像进行使用。
+配置系统盘。根据实例规格的不同，默认指定系统盘类型。用户可以根据需要配置数据盘大小。勾选高级设置，可选择指定存储池。若不指定存储池，系统将会根据均衡策略对系统盘进行安置。
+配置数据盘。可选择已有数据盘，或新建数据盘。选择新建数据盘时，勾选高级配置，可选择指定存储池。若不指定存储池，系统将会根据均衡策略对数据盘进行安置。
+配置完成后，点击下一步：网络配置，进入网络配置页面。
+步骤 2：网络配置 配置网络，参数说明如下：
+参数类型 说明 基础网络
+基础网络由云平台统一管理和规划，自动分配内网IP，同一账号同一可用区内互通，更适合对网络易用性要求比较高的用户。
+VPC 网络
+选择已创建的 VPC 网络和私有网络，若没有已创建的 VPC 网络和私有网络，则点击创建 VPC 网络和新建私有网络/子网，创建新的 VPC 网络和私有网络。 可以根据自己的需要选择自动分配 IP 地址或者手动分配 IP 地址。
+附加网卡
+若需要加入多个网络，可以新增附加网卡。
+说明 针对弹性裸金属服务器创建私有网络时，工作模式需选择弹性裸金属服务器。
+针对弹性裸金属服务器创建 VPC 网络时，需关联边界路由器。
+配置弹性公网 IP。弹性公网 IP 是指将公网 IP 地址和云服务器绑定，以实现 VPC 内的云服务器通过固定的公网 IP 地址对外提供访问服务。</description>
+    </item>
+    
+    <item>
+      <title>云服务器网卡</title>
+      <link>/v6.1/compute/vm/manual/nic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/manual/nic/</guid>
+      <description>介绍 云平台网卡是基于虚拟化技术模拟的网卡设备，此设备是基于虚拟机所在的物理设备。云平台可以将集群内的虚拟网络统一起来，进行再分配。用户毋需关心具体的网卡在什么位置，有需要申请、挂接即可。
+说明 每个云平台的云服务器最多可以绑定 64 张网卡（其中主网卡 1 张，从网卡 63 张），而每个中网络最多可以有 252 张网卡。
+操作步骤 前提条件 在进行申请网卡操作之前，需要先建立一个私有网络：
+登录管理控制台，选择产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。
+在左侧的计算基础服务导航栏，点击网络 &amp;gt; 私有网络，然后点击创建按钮。
+点击右键，选择加入 VPC 网络，如下图所示。
+创建云服务器网卡 登录管理控制台，选择产品与服务 &amp;gt; 计算 &amp;gt; 云服务器，进入云服务器列表页面。
+在左侧的计算基础服务导航栏，点击计算 &amp;gt; 网卡。如下所示：
+在计算 &amp;gt; 网卡页面中，点击申请，创建网卡。
+点击选择私有网络，将新申请的网卡加入到刚刚建立的私有网络中，如下图所示。
+点击提交，然后返回到网卡申请对话框，此时需要为其分配一个 IP 地址：
+点击提交。
+挂载 建立网卡是为了有效的使用它，那么接下来就将刚才建立的网卡（从）分配到具体的云服务器中。
+有一台云服务器（操作系统为Ubunt 16.04），只有一张网卡。
+root@hosta:~# ifconfig eth0 Link encap:Ethernet HWaddr 52:54:9b:19:cf:38 inet addr:10.120.7.40 Bcast:10.120.7.255 Mask:255.255.255.0 inet6 addr: fe80::5054:9bff:fe19:cf38/64 Scope:Link UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1 RX packets:3819 errors:0 dropped:0 overruns:0 frame:0 TX packets:3290 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:1000 RX bytes:6290512 (6.</description>
+    </item>
+    
+    <item>
+      <title>自定义数据</title>
+      <link>/v6.1/compute/vm/manual/userdata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/manual/userdata/</guid>
+      <description>User Data，即用户自定义数据，可让用户在创建云服务器时通过上传一些自定义的参数或脚本，来对云服务器做一些定制化配置或完成特定任务。
+与此同时，用户可能也需要获得一些云服务器的运行参数，作为定制行为的判断依据之一，这些系统参数被称为 MetaData，也会随 User Data 功能一起提供给用户。
+MetaData MetaData 是云平台定义的一组关于云服务器运行参数的字段，主要包括云服务器 ID，云服务器 CPU 和内存配置，操作系统，挂载的硬盘，所在的子网等。
+1. 通过文件写入 云平台可以通过将 MetaData 写入云服务器内文件的方式提供给用户，用户对文件做一定处理后即可获得 MetaData 值。
+为方便用户编程时对参数值的调取，对 MetaData 文件的参数格式做了特殊规定，目前支持两种：
+JSON 格式：参数与参数值写成 JSON 格式，与目前云平台 API 的提供方式类似。
+ENV 格式：参数与参数值写成类似于系统环境变量的形式，方便 bash 等的读取。
+这两个文件，分别命名为 metadata.json 和 metadata.env，默认会放在云服务器的相应目录下（可通过自定义路径更改），用户可自行选择使用其中一种。
+目前 MetaData 提供的字段如下：
+Name Type Description instance_id
+String
+云服务器 ID。
+instance_name
+String
+云服务器名称。
+instance_type
+String
+云服务器类型，为云平台预定义的一些配置类型。
+vcpus_current
+Integer
+CPU 核数，有效值为 1, 2, 4 等。
+memory_current
+Integer
+内存大小，单位 MB，有效值为 1024, 2048, 4096 等。</description>
+    </item>
+    
+  </channel>
+</rss>

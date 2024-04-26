@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应用开发平台 on 用户指南</title>
+    <link>/v6.1/appcenter/dev-platform/</link>
+    <description>Recent content in 应用开发平台 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/appcenter/dev-platform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>License 应用上架指南</title>
+      <link>/v6.1/appcenter/dev-platform/release_license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/release_license/</guid>
+      <description>创建应用 首先登录应用管理平台，点击应用部分的+号按钮，开始创建第一个应用：
+输入应用名称，应用类型选择 License 应用， 点击创建应用。
+在【应用设置】页面输入应用的基本信息：
+设置应用信息 在【应用信息】页面输入应用的详细信息：
+概述：应用的概述会出现在 AppCenter 首页，字数请勿超过 30 字。
+应用描述: 应用的说明会出现在应用展示详情页面。
+交付 SLA：用户下单后，规定期限内交付用户，单位：自然日。
+软件资质（可选）：该软件的《软件著作权》和《开源软件申明》等，格式支持 PDF、JPG 和PNG，一共可以上传 6 个文件，单个文件大小需不超过5M。
+应用类别: 对应用进行分类，会影响到应用在 appcenter 首页出现的位置。
+网站: 应用说明网站。
+使用说明: 《使用说明》支持 Markdown 编辑模式和外部链接模式(直接输入链接地址)。
+服务条款: 《服务条款》支持 Markdown 编辑模式和外部链接模式(直接输入链接地址)。
+应用图标: 应用图标尺寸为 96×96 px，格式支持 JPG 和 PNG。
+应用截图: 应用截图尺寸为 1024×768 px，格式支持 JPG 和 PNG，一共可以上传 6 张截图。
+删除应用: 没有用户使用时才能删除应用。
+完整、准确的应用信息可以让您的应用更容易被用户搜索到，在应用提交审核的时候以上信息也是管理员严格审核的内容之一。
+设置应用价格 License 价格，可以最多定义20种价格计划，有效期支持按月或者按年设置。
+规格名称：该应用的规格分类。
+价格计划：每个规格下，可以有多种价格计划，最多支持20种价格计划，每种规格的价格计划不可重复。
+提交应用审核 完成应用信息设置、应用价格设置保存后，提交应用审核。
+上架应用 审核通过后，自动上架应用到应用市场，上架后，即可在应用市场查看到该应用的详细信息。用户通过应用市场，可查看、购买该应用。</description>
+    </item>
+    
+    <item>
+      <title>API 应用上架指南</title>
+      <link>/v6.1/appcenter/dev-platform/release_api_app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/release_api_app/</guid>
+      <description>服务商或开发者可以在 AppCenter 应用开发平台创建 API 应用，并将部署的 API 服务上架到 AppCenter 应用市场进行售卖。用户选购 API 应用后，可以通过 API 服务调用地址来获取相关的服务、数据或算法。
+前提条件 已入驻 AppCenter 应用市场。具体操作请参见服务商入驻流程。
+已在云平台 API 网关上部署您的 API 服务。具体操作请参考 API 网关文档。
+上架流程 在 API 网关上部署相关 API 服务，操作详情可参见 API 网关文档。
+在 AppCenter 应用开发平台创建 API 应用并提交 AppCenter 管理后台审核。
+审核通过后，该 API 自动上架到应用市场。
+操作步骤 登录 AppCenter 应用开发平台，点击应用部分的+号按钮，弹出创建应用窗口。
+应用类型选择API 应用，然后设置应用名称及应用概述，点击创建应用，进入应用设置页面。
+点击增加规格，设置规格信息及套餐价格。
+可新增规格配置，最多支持 50 个规格。规格参数说明如下表。
+参数 — 说明 规格信息
+规格排序
+输入 0-10000 的整数值，值越大，排序越靠前
+规格名称
+规格是用户购买时的重要参考，请规范命名。
+API 服务
+选择当前 API 应用需要关联的 API 服务。操作是需先选择区域，然后选择区域下的 API 服务。API 服务需要提前在 API 网关进行部署</description>
+    </item>
+    
+    <item>
+      <title>常见问题</title>
+      <link>/v6.1/appcenter/dev-platform/cluster-faqs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/appcenter/dev-platform/cluster-faqs/</guid>
+      <description>1. 作为新手，如何从一个最简单的例子入手？ 我们在 GitHub 上提供了大量的基于 AppCenter 开发的实例代码和配置文件， 作为新手我们建议从 Zookeeper 或者 Redis 入手。
+2. App Ggent 是什么？如何安装 App Ggent？ 下载云平台提供的 App Ggent：Linux 版本 与 Windows 版本。解压后运行 ./install.sh (Windows 下双击 install.bat)。
+3. 如何创建 toml 和 tmpl 的模板文件？ 可参考文档 创建模板文件。
+4. 什么是 Metadata 服务，如何查询 Metadata 上的值？ 云平台 AppCenter 的 metadata service 是在 etcd 基础之上进行了二次开发，主要增加了 self 属性，即每个节点只能从该服务获取到自身相关的信息，如本机 IP、server ID 等，此项目已在 github 上开源。
+在创建好一个集群后，登录到任意一个节点，查看文件 /etc/confd/confd.toml 里 nodes 这一行，这一行定义的是 metadata server 的 IP 地址，任取其中一个 IP，运行下面命令即可看到所有信息。由于同一 VPC 里所有集群的 /etc/confd/confd.</description>
+    </item>
+    
+  </channel>
+</rss>

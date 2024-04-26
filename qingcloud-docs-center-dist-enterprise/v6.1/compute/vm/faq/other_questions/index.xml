@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他问题 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/other_questions/</link>
+    <description>Recent content in 其他问题 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/other_questions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>国内云服务器无法访问 GitHub</title>
+      <link>/v6.1/compute/vm/faq/other_questions/domestic_to_github/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/domestic_to_github/</guid>
+      <description>由于 Github 的部署环境，国内访问G itHub 会异常缓慢，在 clone 仓库时经常会非常慢，甚至会出现 GitHub 的 web 界面因为无法登录。
+下面我们通过修改系统 hosts 文件的办法，直接访问 GitHub 的 CDN 节点，从而达到加速的目的。
+获取 GitHub 官方 CDN 地址 访问 http://github.com.ipaddress.com/
+记录下查询到的IP地址。
+修改系统 Hosts 文件 Windows 云服务器修改 Hosts 文件 打开系统 hosts 文件（需管理员权限）.
+在路径：C:\Windows\System32\drivers\etc 的 hosts 文件最后添加第一步获取到的IP地址及域名
+如：140.82.112.3 github.com
+# Copyright (c) 1993-2009 Microsoft Corp. # # This is a sample HOSTS file used by Microsoft TCP/IP for Windows. # # This file contains the mappings of IP addresses to host names.</description>
+    </item>
+    
+    <item>
+      <title>为什么我的云服务器不能访问外网？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_outside/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_outside/</guid>
+      <description>只有绑定了公网 IP 的云服务器才可以访问外网。</description>
+    </item>
+    
+    <item>
+      <title>云服务器绑定了公网 IP 之后，为什么我无法通过 IP SSH 登录，也不能 ping 通该 IP？ </title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_ping_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_ping_ssh/</guid>
+      <description>为了加强位于基础网络 vxnet-0 中的云服务器的安全性，云平台在云服务器之前放置了一个防火墙（Security Group）。 初始状态下，每个防火墙都不包含任何规则，即，全部端口都是封闭的，您需要建立规则以打开相应的端口。
+说明 如果云服务器使用的是默认防火墙，那么 ping 和 ssh 的端口都是默认打开的，无需再进行操作。
+例如需要访问云服务器的 22 号端口，需要手动为云服务器的防火墙添加一条 接受 tcp 22 端口的下行规则，然后再点击 更新规则 使其应用到云服务器。
+同理，如果想开启 ping 功能，需要在防火墙里头添加接受 ICMP echo request 的下行规则。</description>
+    </item>
+    
+    <item>
+      <title>如果我有多台云服务器需要访问外网，是不是每台云服务器都需要绑定一个公网 IP？ </title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_numbers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_numbers/</guid>
+      <description>当然不是这样。您可以将需要访问外网的云服务器加入到您的某个受管私有网络中，再将该受管私有网络连接到您创建的路由器上，然后再给路由器上绑定一个公网 IP。这样， 位于受管私有网络中的所有云服务器都可以连接互联网了，既节省钱，也节约 IP 地址。</description>
+    </item>
+    
+    <item>
+      <title>为什么我的云服务器无法获取 IP 地址？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_ip-address/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_ip-address/</guid>
+      <description> 云平台官方提供的 Linux 映像使用 NetworkManager 来自动化云服务器的网络配置， 其默认配置是通过 DHCP 方式来获取 IP 地址，你需要保证 NetworkManager 相关的 daemon 正常运行。 如果工作不正常，你可以手动重启：
+RHEL/CentOS
+# service NetworkManager restart Fedora
+# systemctl restart NetworkManager Debian
+# service network-manager restart Ubuntu
+# service network-manager restart 必要时，你可能需要重启 messagebus daemon 后才能正常启动 NetworkManager：
+RHEL/CentOS
+# service messagebus restart # service NetworkManager restart Fedora
+# systemctl restart messagebus # systemctl restart NetworkManager Debian
+# service messagebus restart # service network-manager restart Ubuntu
+# service dbus restart # service network-manager restart </description>
+    </item>
+    
+    <item>
+      <title>SSH 客户端连接 timeout 问题 ？ </title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_ssh_timeout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_ssh_timeout/</guid>
+      <description> ssh 的默认配置为了安全考虑，当发现客户端一段时间内没有输入，就会断开这个 session， 这给使用者带来些许不便。解决这个问题有两种办法：
+修改 ssh server 端配置
+# vi /etc/ssh/sshd_config ClientAliveInterval 60 ClientAliveCountMax 3 修改后请重启 ssh server。
+修改 ssh client 端配置
+# vi /etc/ssh/ssh_config ServerAliveInterval 60 ServerAliveCountMax 3 </description>
+    </item>
+    
+    <item>
+      <title>忘记云服务器密码怎么办 ？ </title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_forget_password/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_forget_password/</guid>
+      <description>Linux 云服务器 对于 Linux 云服务器，你可以通过 SSH 密钥登录来获取 root 权限，然后通过 passwd 命令来修改密码。 关于 SSH 密钥登录可以参见 如何使用 SSH 密钥来访问云服务器。
+Windows 云服务器 对于 Windows 云服务器，你可以提交工单，由管理员帮你重置密码。</description>
+    </item>
+    
+    <item>
+      <title>为什么我的云服务器的私有 IP 会发生变化？ </title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_ip_change/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_ip_change/</guid>
+      <description>仅在 SDN1.0 的区中，基础网络（vxnet-0）的 IP 可能会发生变化。在 SDN2.0 的区中，在云服务器运行期间，基础网络的 IP 不会变化。
+如果您的云服务器位于基础网络 vxnet-0 中，那么私有 IP 是有可能发生变化的。 因为云平台系统在 vxnet-0 网络里面内置了一个 DHCP 服务器， 网内云服务器的内网 IP 都是通过 DHCP 方式获取的。 一般而言，持续运行中的云服务器的内网 IP 很少会发生 IP 改变（当然不能保证不变）。 如果云服务器停机了再启动，则由于 DHCP lease 时间已过，一般变化可能性就比较大。 你可以使用我们提供的内网域名解析服务来规避这个问题，例如云服务器 ID 是 i-12345678 ，则 i-12345678.pek3.domain.com 解析的就是内网 IP 。 也就是说，虽然云服务器 IP 有可能变化，但是域名是不变的。
+如果您的云服务器位于自己创建的私有网络中，并且该私有网络是受管私有网络， 则云服务器的私有 IP 也是通过 DHCP 服务器分配的，且是固定 IP 。
+如果您的云服务器位于自己创建的私有网络中，并且该私有网络是自管私有网络。 在这种情况下，由于私有 IP 都是您自己管理的，所以私有 IP 也是不会发生变化的。</description>
+    </item>
+    
+    <item>
+      <title>云平台的公网带宽上下行速率是对称相等的吗？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_width_equal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_width_equal/</guid>
+      <description>为了提高用户在云平台中的下载体验，对于公网 IP 的带宽小于 10 Mbps 的，下行（出云）带宽等于公网 IP 带宽，上行（入云）带宽自动提高到 10 Mbps; 带宽大于 10 Mbps 的，上下行带宽保持和申请带宽相同。</description>
+    </item>
+    
+    <item>
+      <title>网卡多队列 Nic Multi Queue 功能如何使用</title>
+      <link>/v6.1/compute/vm/faq/other_questions/nic_multi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/nic_multi/</guid>
+      <description>背景介绍 云平台的云服务器支持开启网卡多队列功能。您可以在创建云服务器的基本信息展开高级选项，选择启用网卡多队列。对于已经创建的云服务器，您可以在详情页 &amp;gt; 配置，找到网卡多队列的当前设置。如果想要启用或禁用该服务，可以关机之后点击相应的操作按钮。
+网卡多队列是利用 hash 算法，将网络流量分散到多个网卡队列中，交由多个 CPU 同时处理请求，利用CPU多核特性提高网络处理能力。 开启这个功能后，虚拟机挂载的网卡会有多队列功能，但是 Linux 系统还需要做相关配置，才能使用到这一特性，包括：
+设置网卡队列数，数值应等于 cpu 数量
+给网卡接收队列绑定 cpu
+给网卡发送队列绑定 cpu
+操作方法 为了方便使用，我们提供了 网卡队列配置脚本 配置这些参数，请把脚本放到 /etc/rc.local 中，开机自动配置。 详情请参考 linux network scaling。
+系统要求 Linux kernel &amp;gt;= 3.8
+安装了 ethtool 工具
+Windows Server 版本&amp;gt;= 2012</description>
+    </item>
+    
+    <item>
+      <title>云服务器的 IO 限制是多少？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_io/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_io/</guid>
+      <description>为了保证用户之间的公平，云平台对云服务器硬盘 IO 限制是128 MB/s。 如果您的测试结果偏高，可能是操作系统的 cache 导致的，如果在 Linux 系统下， 请在 dd 命令里面使用 conv=fdatasync 参数避免操作系统 cache 对结果的影响。</description>
+    </item>
+    
+    <item>
+      <title>为何我的 Windows 云服务器无法向外发起远程桌面连接或 SQL Server 连接？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/window_connect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/window_connect/</guid>
+      <description>云平台系统判定了一些高危端口，默认将其加入了 防火墙 并禁止。 对于加入到 基础网络 的 Windows 云服务器，云平台系统默认限制了几个 “上行防火墙” 规则：
+说明 协议 tcp，端口 3389,1433,445,135,139;
+协议 udp，端口 1434,445,135,137,138。
+Windows 云服务器向外发起远程桌面连接，您需要在 防火墙 放行规则 tcp 上行 3389 端口;
+Windows 云服务器向外发起 SQL Server连 接，您需要在 防火墙 放行规则 tcp 上行 1433 端口。</description>
+    </item>
+    
+    <item>
+      <title>我的云服务器由于误操作不小心销毁了，还可以恢复吗？</title>
+      <link>/v6.1/compute/vm/faq/other_questions/vm_miss_cancel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/other_questions/vm_miss_cancel/</guid>
+      <description>对于某些资源，例如云服务器、硬盘和映像，被删除后可以在 2 个小时之内恢复。 对于其他资源，例如公网 IP 和路由器，销毁后不可以被恢复。</description>
+    </item>
+    
+  </channel>
+</rss>

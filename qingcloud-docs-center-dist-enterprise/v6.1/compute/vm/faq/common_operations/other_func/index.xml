@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他功能 on 用户指南</title>
+    <link>/v6.1/compute/vm/faq/common_operations/other_func/</link>
+    <description>Recent content in 其他功能 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/vm/faq/common_operations/other_func/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>云服务器测试带宽速度</title>
+      <link>/v6.1/compute/vm/faq/common_operations/other_func/slow_download/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/other_func/slow_download/</guid>
+      <description>问题背景 为了提高用户在云平台中的下载体验，对于公网IP的带宽小于 10Mbps 的，下行（出云）带宽等于公网IP带宽，上行（入云）带宽自动提高到 10Mbps; 带宽大于 10Mbps 的，上下行带宽保持和申请带宽相同。
+下面我们用实际案例简单说明下：
+案例1 假设通过控制台申请了一个 5 Mbps 的公网 IP，分配给云服务器。此时，云服务器实际下行（出云）的带宽为 5 Mbps，也就是此时通过本地电脑从云服务器获取数据的带宽为 5 Mbps，速度为 625 KB/s 左右；从互联网下载数据到云服务器上行（入云）带宽为 10 Mbps，速度为 1.25 MB/s 左右。
+案例2 假设通过控制台申请了一个 20 Mbps 的公网 IP，分配给云服务器。此时，云服务器实际下行（出云）的带宽为 20 Mbps，也就是此时通过本地电脑地从云服务器获取数据的带宽为 20 Mbps，速度为 2.5 MB/s 左右；从互联网下载数据到云服务器上行（入云）带宽为 20 Mbps，下载速度为 2.5 MB/s 左右。
+那么如何知晓自己申请的到的公网 IP 的速度是否符合正常的速度呢，我们可以通过如下方法进行测试，此处我们仍然以申请了一个 5 Mbps 的公网 IP，分配给云服务器为例：
+操作步骤 Windows 云服务器测试公网 IP 网速 登录 Windows 云服务器，打开浏览器输入如下网站 URL 地址 www.speedtest.cn，点击 测试，等待测速结束即可获取到公网 IP 的上下行带宽，参考如下截图：
+我们可以看到云服务器上传带宽为 5.94 Mbps，符合案例 1 中的下行（出云）的带宽为 5 Mbps；云服务器下载带宽为 10.</description>
+    </item>
+    
+    <item>
+      <title>云服务器如何连接数据库集群</title>
+      <link>/v6.1/compute/vm/faq/common_operations/other_func/instance_connect_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/vm/faq/common_operations/other_func/instance_connect_cluster/</guid>
+      <description>用户在云平台购买数据库产品，购买后想要通过公网或内网去连接数据库，本文主要介绍使用云平台数据库集群如何进行连接。
+配置连接云数据库 云数据库在购买时，会要求加入到私有网络环境中，因此，同 VPC 下的云服务器和云数据库都是可以通过内网地址进行连接。
+私有网络云服务器连接 情形一：云服务器和云数据库在同一私有网络，不需要修改配置即可通过内网地址连接。
+情形二：云服务器和云数据库在不同私有网络，但是在同一个 VPC 下面，不需要修改配置即可通过内网地址进行连接。
+情形三：云服务器和云数据库在不同私有网络，且不在同一个 VPC 下面。需要修改云服务器或云数据库添加到同VPC网络下。
+右键云服务器 &amp;gt; 网络 &amp;gt; 加入 &amp;gt; 选择私有网络 &amp;gt; 提交 &amp;gt; 切换网络 &amp;gt; 离开当前受管网络 &amp;gt; 加入
+基础网络云服务器连接 云服务器在基础网络，且绑定公网 IP，云数据库在 VPC 下面。需要修改云服务器添加到云数据库所在 VPC 网络下。
+右键云服务器 &amp;gt; 公网 IPv4 &amp;gt; 解绑，右键云服务器 &amp;gt; 网络 &amp;gt; 加入 &amp;gt; 选择私有网络 &amp;gt; 提交 &amp;gt; 切换网络 &amp;gt; 离开当前受管网络 &amp;gt; 加入
+非云平台云服务器连接 非云平台云服务器。需要连接云平台云数据库。需要在 VPC 中配置云数据库端口的端口转发规则，并在 VPC 绑定的安全组中放行端口。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可视化控制台 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/console/</link>
+    <description>Recent content in 可视化控制台 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/console/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>概述</title>
+      <link>/v6.1/container/qke_plus/manual/console/console_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/console_intro/</guid>
+      <description>QKE 除了自身的控制界面，还可扩展安装其他可视化集群管理控制台，以更好的管理您的容器及应用。
+QKE 支持在创建集群时或创建集群后一键安装 KubeSphere 或 KSE。
+说明 KubeSphere 是在 Kubernetes （简称 K8s，开源容器调度平台）之上构建的企业级分布式多租户容器管理平台，提供全栈的 IT 自动化运维的能力，简化企业的 DevOps 工作流。是 CNCF 会员，已通过 Kubernetes 一致性验证。
+KSE 是源于 KubeSphere 开源社区的企业级容器管理平台。
+安装 KubeSphere/KSE 后，您便可以在集群的可视化控制台界面看到控制台的使用入口。</description>
+    </item>
+    
+    <item>
+      <title>安装可视化控制台</title>
+      <link>/v6.1/container/qke_plus/manual/console/install_ks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/install_ks/</guid>
+      <description>QKE 支持在创建集群时或创建集群后一键安装 KubeSphere 或 KSE 可视化控制台。
+创建集群时安装 创建集群时，在对接服务区域，选择安装可视化控制台 KubeSphere 或 KSE。具体操作请参见创建集群。
+创建集群后安装 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击目标集群名称，进入集群概览页面。
+在左侧导航栏，点击可视化控制台，进入可视化控制台页面。
+点击安装 KubeSphere 可视化控制台或安装 KSE 可视化控制台，弹出提示框。
+设置是否开启通过外部网络访问。
+若开启外部网络访问，系统将自动为可视化控制台创建一个负载均衡器，并为负载均衡器创建和绑定一个公网 IP，实现通过外网访问可视化控制台。或者您也可以点击选择已有EIP与负载均衡器进行绑定。
+若不开启外部网络访问，将默认为可视化控制台创建一个负载均衡器，实现可通过集群内部网络访问可视化控制台。
+点击确定，开始进行安装。耐心等待安装完成即可。
+安装过程中，集群状态为更新中，待状态变为活跃，则安装完成。
+说明 默认最小化安装，若需要安装更多内置组件，请在控制台安装完成后，按需进行安装。具体操作请参见安装 KubeSphere/KSE 内置组件。</description>
+    </item>
+    
+    <item>
+      <title>修改控制台访问方式</title>
+      <link>/v6.1/container/qke_plus/manual/console/bind_eip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/bind_eip/</guid>
+      <description>您可以在安装可视化控制台后随时修改控制台的访问方式，设置是否开启通过外网访问或者修改控制台 EIP。
+前提条件 已安装可视化控制台。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击目标集群名称，进入集群概览页面。
+在左侧导航栏，点击可视化控制台，进入可视化控制台页面。
+点击控制台 IP 地址后的修改访问方式。
+在弹出的窗口中，点击通过外部网络访问的开关按钮，即开启或关闭外网访问方式。
+开启外网访问（按钮为绿色）：表示可同时通过公网和集群内网访问可视化控制台。您可以点击选择已有EIP选择使用已有公网 IP，若不选择，系统将自动创建一个公网 IP 进行绑定。
+关闭外网访问（按钮为灰色）：表示可通过集群内网访问可视化控制台。
+修改后，点击确定。</description>
+    </item>
+    
+    <item>
+      <title>登录控制台</title>
+      <link>/v6.1/container/qke_plus/manual/console/access_ks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/access_ks/</guid>
+      <description>如果您安装了可视化控制台，则可以使用浏览器登录控制台。
+本小节介绍如何在本地通过公网访问控制台。
+前提条件 已安装可视化控制台，且控制台后端正常运行。
+如果您通过外网访问控制台，请确保用于访问的机器具备访问外网能力。
+如果您通过内网访问控制台，请确保用于访问的机器与集群所在 VPC 能正常通信。您可以通过隧道或 VPN 方式打通本地与集群内网。
+背景信息 首次登录控制台请使用系统预置的默认管理员账户及密码，登录后需要立即修改密码。
+用户名：admin
+密码：P@88w0rd
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击目标集群名称，进入集群概览页面。
+在左侧导航栏，点击可视化控制台，进入可视化控制台页面。
+点击初始账号及密码可查看及复制账号密码。
+可通过以下几种方式进入控制台登录页面。
+点击控制台名称下方的 IP 地址，进入到控制台登录页面。
+点击前往控制台，进入到控制台登录页面。
+在浏览器地址栏中，输入控制台 IP 地址并按下回车，进入到控制台登录页面。
+输入用户及密码，点击登录。</description>
+    </item>
+    
+    <item>
+      <title>安装控制台组件</title>
+      <link>/v6.1/container/qke_plus/manual/console/install_component/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/install_component/</guid>
+      <description>本文介绍如何在集群创建后安装 KubeSphere/KSE 内置组件。
+背景信息 KubeSphere/KSE 将一些核心功能组件进行解耦。这些组件设计成了可插拔式，您可以在安装 KubeSpahere/KSE 时选择需要安装的组件，也可以在 KubeSphere/KSE 安装后根据需要随时进行组件安装。
+各组件的功能详细说明可参考 KubeSphere 官方文档。
+注意事项 安装内置组件将产生额外资源使用费用。安装组件需要一定的存储资源，故安装时会自动挂载一定数量的云硬盘，并对这些云硬盘进行收费。
+请确保有足够的磁盘配额，否则可能因为缺乏资源导致安装失败。
+目前在 QKE 控制台仅支持安装组件，不支持卸载。若需要卸载，请前往可视化控制台进行操作。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击目标集群名称，进入集群概览页面。
+在左侧导航栏，点击可视化控制台，进入可视化控制台页面。
+在内置组件区域，列出了支持安装的组件。
+点击安装组件，系统便会自动安装组件。
+安装过程中，组件显示安装中，待组件安装成功后，组件显示已安装。</description>
+    </item>
+    
+    <item>
+      <title>升级 KubeSphere</title>
+      <link>/v6.1/container/qke_plus/manual/console/upgrade_ks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/console/upgrade_ks/</guid>
+      <description>您可以将 KubeSphere 升级为 KSE，以体验更丰富的功能。
+升级说明 升级后不可回退。
+升级期间不支持组件的安装操作，待升级完成后可按需进行安装。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击目标集群名称，进入集群概览页面。
+在左侧导航栏，点击可视化控制台，进入可视化控制台页面。
+点击升级 &amp;gt; 升级为 KSE，弹出升级对话框。
+点击升级，等待升级成功即可。
+升级过程中，集群状态变为更新中，当集群状态显示活跃，服务状态显示健康，表示已升级成功。</description>
+    </item>
+    
+  </channel>
+</rss>

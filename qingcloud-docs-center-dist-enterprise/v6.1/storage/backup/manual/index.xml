@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/storage/backup/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/backup/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创建备份</title>
+      <link>/v6.1/storage/backup/manual/create_snapshot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/create_snapshot/</guid>
+      <description>您可以对一块或多块硬盘（包括系统盘和数据盘）创建备份，具体操作请参见 备份云硬盘。</description>
+    </item>
+    
+    <item>
+      <title>删除备份</title>
+      <link>/v6.1/storage/backup/manual/delete_snapshot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/delete_snapshot/</guid>
+      <description>删除前须知 您可以删除整个备份链，也可以删除某一个备份点。
+注意 需要注意的是，同一条备份链上的备份点之间的数据有依赖关系。当删除备份链上的全量备份点时，会删除整条备份链； 当删除增量备份点，所有直接或者间接依赖于这个备份点的后序节点都会被删除。请谨慎操作。
+操作步骤 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 备份，进入 备份 页面。
+若是删除全量备份点：
+在备份链列表，右键单击备份链ID号，选择 删除，弹出提示框。
+点击 确认，删除整条备份链。
+若是删除增量备份点：
+在备份链列表，点击需要操作的备份链ID，进入备份链详情页面。
+在链路的结构示意图中，点击想要删除的增量备份点右侧的 ···，选择 删除，弹出提示框。
+单击 确认，删除该增量备份点及其所有子节点（若有）。</description>
+    </item>
+    
+    <item>
+      <title>备份回滚</title>
+      <link>/v6.1/storage/backup/manual/rollback_snapshot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/rollback_snapshot/</guid>
+      <description>操作场景 当用户因为误操作或者应用逻辑的 bug 而导致业务数据的丢失时，可以通过 “回滚” 操作恢复到某个备份点的状态。
+操作步骤 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 备份，进入 备份 页面。
+在备份链列表，点击需要操作的备份链 ID，进入备份链详情页面。
+在链路的结构示意图中，点击想要删除的增量备份点右侧的 ···，选择 回滚。
+弹出提示框，点击 继续。
+选择要回滚的备份点，点击 提交，开始回滚并应用备份，待回滚完成即可。</description>
+    </item>
+    
+    <item>
+      <title>基于备份制作镜像</title>
+      <link>/v6.1/storage/backup/manual/bak_create_mirror/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/bak_create_mirror/</guid>
+      <description>操作场景 当备份点是基于云服务器系统盘创建时，则可以通过这个备份点制作成新镜像，基于该镜像可以创建多台和备份点状态相同的云服务器。
+操作步骤 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 备份，进入 备份 页面。
+右键点击备份链 ID 号，选择 创建硬盘，弹出 根据硬盘备份制作镜像 页面。
+操作前，仔细阅读页面的注意事项。
+输入镜像名称及描述、选择一个基础镜像及根目录分区号。
+点击 提交。</description>
+    </item>
+    
+    <item>
+      <title>基于备份创建硬盘</title>
+      <link>/v6.1/storage/backup/manual/bak_create_disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/bak_create_disk/</guid>
+      <description>操作场景 当备份点是基于硬盘创建时，通过这个备份点可以创建新的硬盘，该新硬盘将拥有和备份点相同的数据。
+操作步骤 登录管理控制台。
+在页面左上角标题栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 备份，进入 备份 页面。
+在备份链列表所在行右键单击，选择 创建硬盘。
+在名称框里填入新硬盘的名称，选择硬盘类型，点击 提交。
+创建成功后，在左侧菜单栏中，选择 存储 &amp;gt; 硬盘，可在硬盘列表中查看到新建的硬盘。</description>
+    </item>
+    
+    <item>
+      <title>其他备份相关操作</title>
+      <link>/v6.1/storage/backup/manual/backup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/backup/manual/backup/</guid>
+      <description>进入备份页面 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 备份，进入 备份 页面。
+修改备份名称或描述 在备份链列表所在行右键单击，选择 修改。
+输入修改后的名称及描述，点击 提交。
+共享备份 云硬盘备份可共享给子账号或共享给其他账号。
+在备份链列表所在行右键单击，选择 共享备份。
+选择要共享给的子账号或填写要给共享的其他用户 ID/注册邮箱地址，点击 提交。
+点击备份链 ID 号，可以看到共享列表，显示已添加成功的共享账号列表。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>集群管理 on 用户指南</title>
+    <link>/v6.1/compute/hpc/manual/cluster/</link>
+    <description>Recent content in 集群管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/compute/hpc/manual/cluster/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用户与权限组</title>
+      <link>/v6.1/compute/hpc/manual/cluster/user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/compute/hpc/manual/cluster/user/</guid>
+      <description>在用户与权限组页面可以为 EHPC 集群添加普通用户，并通过添加的用户名远程登录到此 EHPC 集群的登录节点进行作业提交等操作。在添加用户时可以为用户选择是否进行存储隔离。
+用户添加成功后，系统会在集群挂载目录下自动创建与用户名同名的文件夹。各个用户均可在自己的目录下操作文件及软件等。
+普通用户只能在自己的目录下操作文件和软件。
+admin 用户为系统最高权限的管理账号。
+约束限制 仅支持为 EHPC 集群新增普通用户。
+在该页面创建的用户，仅可登录当前 EHPC 集群。
+不支持删除 admin 用户。
+新增用户 登录管理控制台。
+选择产品与服务 &amp;gt; 计算 &amp;gt; 弹性高性能计算 EHPC，默认进入快速入门页面。
+点击 EHPC 集群名称进入集群详情页面，点击用户与权组，进入用户管理页面。
+点击新增用户，弹出新增用户窗口。
+用户根据需要自定义设置用户名和密码。其中，密码可以选择自定义或者自动生成。
+点击确定新增，完成新增用户操作。返回用户管理列表，可查看到新增的用户，包含用户名、创建时间、挂载点等。
+点击左侧导航栏的文件存储，选择当前 EHPC 集群的挂载点，点击其 ID 进入挂载点的详情页面，在文件目录下已创建与新增用户名一样的文件夹。
+重置密码 选择所属集群，进入相应集群的用户与权限组页面。
+说明 普通用户和 admin 用户的密码均可以重置。
+在待需重置密码的用户名所在行，点击重置密码，弹出重置密码窗口。
+用户可以选择手动输入新密码或者自动生成随机密码。
+点击确定重置，完成重置密码操作。若界面弹出修改用户成功提示信息，则说明重置密码成功。
+删除用户 删除用户，不会删除用户数据（ home 目录下的文件等）。
+选择所属集群，进入相应集群的用户与权限组页面。
+说明 只支持删除普通用户，不支持删除 admin 用户。
+在待删除用户名所在行，点击删除用户，弹出删除用户窗口。
+点击确定删除，完成删除用户操作。若界面弹出删除用户成功提示信息，则说明删除用户成功。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>财务管理 on 用户指南</title>
+    <link>/v6.1/services/bill_center/manual/finance/</link>
+    <description>Recent content in 财务管理 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/services/bill_center/manual/finance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>钱包</title>
+      <link>/v6.1/services/bill_center/manual/finance/wallet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/finance/wallet/</guid>
+      <description>钱包支持查看账户余额及充值记录，以及账户充值及汇款。
+查看充值记录
+在余额数值后，点击充值记录，弹出充值记录页面，即可查看每次充值金额及时间。
+充值
+支持线上和线下两种方式进行充值。
+说明 建议您采用线上充值方式，可即时到账。
+单笔充值金额最少 ¥100，若充值金额大于 ¥10000 需要使用线下汇款方式。
+线上充值（推荐）
+在线上充值页面，输入充值金额，选择支付方式，点击立即充值。
+线下汇款（专属汇款账号）
+专属汇款账号充值到账速度较旧版银行转账方式有大幅度提升，方便客户、企业和银行对各个账户内资金的记录、管理。
+点击获取专属汇款账号，便可在页面查看到您的汇款专属账号。您也可以输入手机号，然后点击立即发送，将账号信息发送到您的手机。
+通过银行柜台或网银向此专属汇款账号汇款。汇款成功后，系统会自动匹配您的账户，并充值到您的账户余额。
+到账时间一般为：招行汇款 1-2 天，跨行汇款 3-5 天（具体到账时间以银行的实际到账时间为准）。</description>
+    </item>
+    
+    <item>
+      <title>优惠券</title>
+      <link>/v6.1/services/bill_center/manual/finance/discount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/finance/discount/</guid>
+      <description>优惠券由平台发放或赠送，您可以通过使用优惠券来获得订单实际金额对应档次的现金减免。
+优惠券页面提供了优惠券查询及优惠券激活功能。
+查看优惠券：包括效优惠券及已过期优惠券，您可以查看优惠券的面值、余额、适用资源及有效期。支持视图及列表查看方式。
+激活优惠券：点击通过 ID 激活，弹出激活优惠券页面，输入优惠券 ID 进行激活。</description>
+    </item>
+    
+    <item>
+      <title>发票管理</title>
+      <link>/v6.1/services/bill_center/manual/finance/invoice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/services/bill_center/manual/finance/invoice/</guid>
+      <description>客户想要对云平台产品消费的金额进行报销等操作时，可以申请开具发票。开票信息中填写的公司（或个人）视为实际交易的法律主体。
+前提条件 开票仅针对已消费金额，充值未消费部分无法开具发票。
+注意事项 最少开票金额为 ¥1000。
+发票金额可以是多次充值金额之和，建议您积累到一定金额后一并申请。
+企业增值税专用发票会在申请后 5-7 个工作日开具，若您在超过 15 工作日仍未收到发票，请提交工单与我们联系。个人和企业普通发票会在申请后 3-5 个工作日开具，若您在超过 10 工作日仍未收到发票，请提交工单与我们联系。
+发票自开票日期起超过 1 年期限的发票退回不予处理（不分发票类型）。
+由于客户方提交的开票信息有误、发票遗失、发票损坏等原因造成的退回要求不予处理。
+申请发票 可选：设置发票信息。
+在发票抬头区域，点击管理，弹出管理发票抬头页面。
+根据实际情况，设置发票信息。
+点击提交。
+可选：设置邮寄地址。
+在默认邮寄地址区域，点击管理，进入邮寄地址管理页面。
+点击添加，弹出新增地址页面。
+输入地址信息。可勾选是否将当前地址设置为默认地址。
+点击提交。
+申请发票。
+点击申请发票，弹出申请发票页面。
+填写开票金额，选择或修改发票抬头及邮寄地址。
+点击提交。</description>
+    </item>
+    
+  </channel>
+</rss>

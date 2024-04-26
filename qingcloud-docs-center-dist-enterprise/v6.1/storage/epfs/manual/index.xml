@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/storage/epfs/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/epfs/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创建 EPFS</title>
+      <link>/v6.1/storage/epfs/manual/epfs/</link>
+      <pubDate>Thu, 30 Jan 2020 00:39:25 +0900</pubDate>
+      
+      <guid>/v6.1/storage/epfs/manual/epfs/</guid>
+      <description>开通 EPFS 服务 登录管理控制台，选择产品与服务 &amp;gt; 存储 &amp;gt; 文件存储 EPFS，进入 文件存储 EPFS 页面，点击 立即开通。
+进入开通文件存储 EPFS 页面，点击确定开通，开通文件存储 EPFS 服务.
+创建 EPFS 进入文件存储 EPFS 页面，点击去创建。
+在弹出的创建挂载点对话框内，根据实际情况配置如下参数后，点击确认即可。
+成功创建后的挂载点如图所示：
+扩容 EPFS 进入文件存储 EPFS 页面，点击左导航栏中的文件系统。
+选择目标挂载点，右键或者点击页面上的更多操作 &amp;gt; 扩容，可对当前挂载点进行扩容操作。
+弹出扩容挂载点提示框，根据需求修改存储配额后，点击确认。
+在文件存储 EPFS 页面，确认扩容后的配额：
+查看 EPFS 信息 点击创建的挂载点名称处链接，进入文件系统详情界面，可以查看基本属性，包括共享目录，配额，使用率，创建时间，gid/uid等信息：</description>
+    </item>
+    
+    <item>
+      <title>添加 EPFS 规则</title>
+      <link>/v6.1/storage/epfs/manual/epfs_rules/</link>
+      <pubDate>Thu, 30 Jan 2020 00:39:25 +0900</pubDate>
+      
+      <guid>/v6.1/storage/epfs/manual/epfs_rules/</guid>
+      <description>点击创建的挂载点名称处链接，进入文件系统详情界面，在权限组点击添加规则：
+弹出添加规则对话框：
+说明 添加授权 IP，该权限组内所添加的授权 IP 地址允许以最高权限(读写)访问共享目录。为了最大限度保障您的数据安全，建议您谨慎添加权限组规则，仅为必要的地址授权。如添加 1 条 ACL，比如添加 6.6.6.6，就是允许后端(IB 网络) IP 为 6.6.6.6 的主机挂载这个挂载点对应的目录。
+选择待删除的挂载点，点击删除，弹出删除挂载点对话框，点击确定，即可删除该规则：
+说明 删除授权 IP，就是删除该权限组内所添加的授权 IP 地址对该挂载点的最高权限(读写)访问共享目录。删除 1 条 ACL，比如删除 6.6.6.6，就是移除后端(IB 网络) IP 为 6.6.6.6 的主机对这个挂载点的挂载权限。</description>
+    </item>
+    
+    <item>
+      <title> EPFS 文件管理</title>
+      <link>/v6.1/storage/epfs/manual/epfs_manage/</link>
+      <pubDate>Thu, 30 Jan 2020 00:39:25 +0900</pubDate>
+      
+      <guid>/v6.1/storage/epfs/manual/epfs_manage/</guid>
+      <description>对 EPFS 挂载点的文件进行操作。
+点击创建的挂载点名称处链接，进入文件系统详情界面，点击文件管理。
+点击创建文件夹，弹出创建文件夹对话框，填写文件夹名称后点击确定。
+点击上传文件，弹出上传文件对话框，可以上传属于该挂载点的文件。
+点击上传本地文件，可以将本地文件上传到该挂载点：
+选择文件，点击更多操作 &amp;gt; 下载，可下载该文件。
+说明 如需下载文件，只可对单个文件进行下载，无法批量下载文件，也无法对文件夹进行下载。
+选择文件，点击更多操作 &amp;gt; 删除，可删除该文件：
+选择文件夹，点击更多操作 &amp;gt; 删除，可删除该文件夹：</description>
+    </item>
+    
+  </channel>
+</rss>

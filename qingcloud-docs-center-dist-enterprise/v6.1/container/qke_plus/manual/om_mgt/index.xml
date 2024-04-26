@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>集群运维 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/om_mgt/</link>
+    <description>Recent content in 集群运维 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/om_mgt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看集群日志</title>
+      <link>/v6.1/container/qke_plus/manual/om_mgt/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/om_mgt/log/</guid>
+      <description>QKE 集群日志包含了用户在集群上进行的操作记录信息。您可以随时查看集群日志。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择集群运维 &amp;gt; 日志管理，进入日志管理页面，查看日志。
+日志信息包括：操作类型、操作者、状态、操作内容及操作时间。</description>
+    </item>
+    
+    <item>
+      <title>升级集群</title>
+      <link>/v6.1/container/qke_plus/manual/om_mgt/upgrade_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/om_mgt/upgrade_cluster/</guid>
+      <description>当 QKE 集群有新版本时，您可以在控制台上一键升级，从而体验更丰富的功能。
+升级说明 支持跨版本升级。
+当支持 Kubernetets 新版本时，升级 QKE 集群将同步升级 Kubernetets。
+集群升级前需检查当前版本集群的配置，符合标准方可升级。
+为避免影响业务服务，请在业务低峰期进行升级操作。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎 QKE，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择集群运维 &amp;gt; 升级检查，进入升级检查页面。
+若无新版本可升级，页面将显示当前 QKE 及 K8s 版本信息并告知当前已是最新版本。
+若存在新版本可升级，页面将显示新版本信息，并可进行升级操作。
+若需要升级，则选择升级版本，点击立即升级，开始进行集群配置检查及升级。
+等待升级进度条显示 100%，集群状态由更新中变为活跃，则升级完成。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作指南 on 用户指南</title>
+    <link>/v6.1/operation/tools/manual/</link>
+    <description>Recent content in 操作指南 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/operation/tools/manual/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>标签</title>
+      <link>/v6.1/operation/tools/manual/label/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/manual/label/</guid>
+      <description>快速上手 下面为一组云服务器贴标签为例，来描述标签的使用方式。
+创建和管理标签 在控制台，选择运维与管理 &amp;gt; 标签页面，点击创建，进入创建标签页面。
+给资源贴标签 以云服务器为例，选择计算 &amp;gt; 云服务器页面，选中要打标签的云服务器，点击绑定标签，进入选择标签页面。
+利用标签来过滤资源 以云服务器为例，选择计算 &amp;gt; 云服务器页面，使用搜索框旁边的标签按钮，过滤想要的资源。</description>
+    </item>
+    
+    <item>
+      <title>操作日志</title>
+      <link>/v6.1/operation/tools/manual/activity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/manual/activity/</guid>
+      <description>本区操作日志 在控制台，打开运维与管理 &amp;gt; 操作日志页面，即可看到您近期的操作。
+全局操作日志 若没有做过跨区的操作，全局操作日志为空。本节以镜像的跨区复制为例。
+只有跨区的操作，这里才会显示，我们先来做一次镜像的跨区复制，在控制台，选择计算 &amp;gt; 镜像，打开自有镜像，选择跨区复制操作。
+在控制台，选择管理 &amp;gt; 操作日志页面，可查看到全局操作日志。
+导出 另外，操作日志也支持导出到用户邮箱。如下图所示，选择导出操作的区域、月份，填写要导到的邮箱地址即可。</description>
+    </item>
+    
+    <item>
+      <title>定时器</title>
+      <link>/v6.1/operation/tools/manual/scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/manual/scheduler/</guid>
+      <description>创建定时器 创建定时器时，要指定为仅执行一次还是重复执行，其中：重复执行还分为 每天、每周、每月三种，并且可以详细指定每周几或每月几号执行。
+例如：每周一、周四、周六执行，可如下图设置。
+例如：每月的 10 日、20 日、月末执行，可如下图设置。
+如果设置为每月执行，在选择日期时除了数字的日期外，还有一个月末选项，选择它则表示会在每月的最后一天执行，无论那天是几号。假如既选择了 28 号和月末， 且当年的 2 月也是 28 天，在这一天也只会执行一次。
+添加定时任务 定时器目前支持的定时任务有：
+开启云服务器
+关闭云服务器
+重启云服务器
+创建备份（定时备份）
+跨区复制备份
+调整公网 IP 带宽上限（每天每个公网 IP 带宽调整次数最多 100 次）
+调整公网 IP 计费模式
+开启 VPC 网络
+关闭 VPC 网络
+启动负载均衡器
+关闭负载均衡器
+启用防火墙规则
+禁用防火墙规则
+每种任务都可支持最多 5 个资源批量操作，还可通过多个任务将资源分组执行。每个定时器可创建 5 个任务，任务类型可以重复，每个任务都支持对资源的批量操作。
+当到达设定好的执行时间时，多个任务会同时开始执行。每个任务在执行后都会保留执行结果到历史记录中。
+任务在创建后，状态是已启用，你可以随时禁用某些任务，这样在到达设定的执行时间时，会忽略这些禁用状态的任务。
+下面是一张创建完任务的页面。
+立即执行任务 默认情况下，任务都是在到达设定的时间才会被触发。 为了更便于用户使用，我们提供了立即执行功能，可以随时触发已创建的定时任务。 每次执行完也会将结果保存到历史记录中。
+执行方式是在任务列表中，鼠标右键要执行的任务，并点击执行。
+查看脚本
+定时器任务设定后，会生成为类 python 的脚本，操作时会编译并执行这个脚本。在控制台通过点击任务列表中脚本栏下面的查看可以浏览这个脚本。
+未来我们考虑将脚本的编写功能开放，让用户可以根据自己的需要自行编写脚本，让定时器支持更丰富、自定义的资源调度行为，满足有复杂需求的用户。
+查看历史记录 定时器的每次执行结果都会保存在历史记录中，包括：
+每个任务执行后，会有相应的执行记录，包括执行过程中的所有 API 调用情况，以及脚本中的输出信息。
+发送通知给通知列表后，也会有相应的记录。
+创建备份（定时备份） 前提条件</description>
+    </item>
+    
+    <item>
+      <title>回收站</title>
+      <link>/v6.1/operation/tools/manual/recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/operation/tools/manual/recycle_bin/</guid>
+      <description>本文以删除一台云服务器然后恢复的过程为例，介绍回收站功能。
+删除一台云服务器 在控制台，选择计算 &amp;gt; 云服务器页面，选中要删除的云服务器，然后点击删除。
+找到回收站中被删除的云服务器 选择运维与管理 &amp;gt; 回收站页面，查找刚刚删除的云服务器。
+恢复被删除的云服务器 选择运维与管理 &amp;gt; 回收站页面，选中刚刚删除的云服务器，然后点击恢复。
+注意 回收站只会保留被删除的资源 2 个小时。2 个小时后，资源会被彻底销毁，不可恢复。</description>
+    </item>
+    
+  </channel>
+</rss>

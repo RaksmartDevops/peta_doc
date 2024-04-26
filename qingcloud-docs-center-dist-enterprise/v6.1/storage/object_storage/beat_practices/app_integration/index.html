@@ -1,0 +1,2560 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="云计算,青云,QingCloud,文档">
+
+
+<meta name="description" content="这里是企业云文档页面">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>移动 App 接入方案 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/storage/object_storage/">
+          
+            对象存储
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/intro/product/">对象存储</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/intro/function_list/">功能概览</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/">操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Console</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/overview/">概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Bucket 管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/basic_opt/">基础操作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/access_control/">访问控制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/monitor/">监控与报表</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/logging/">日志归档</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/lifecycle/">生命周期管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/replication/">跨区域复制</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/notification/">事件通知</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/version/">版本管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/cname/">存储空间域名别名</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/bucket_manage/worm/">WORM</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >Object 管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/basic_opt/">基础操作</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/change_level/">变更存储级别</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/object_manage/modify_meta/">修改元数据</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >数据处理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/data_process/image_process/">图片处理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/console/data_process/tupu_porn/">图普鉴黄</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/tool/">客户端工具</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/tool/qsctl/">qsctl</a>
+            
+            
+              
+                
+              
+            
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/tool/qscamel/">qscamel</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/tool/qsftpd/">qsftpd</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/tool/mountain_duck/">Mountain Duck</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/">第三方数据集成</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/logstash_input/">Logstash Input QingStor</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/logstash_output/">Logstash Output QingStor</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/manual/third_party_integration/wordpress_plugin_for_qingstor/">WordPress QingStor </a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a href="/v6.1/storage/object_storage/beat_practices/">最佳实践</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/migrate/">数据迁移方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/backup/">实时增量数据备份解决方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/linux_uses_object_storage_as_a_local_disk/">Linux 使用对象存储作为本地盘</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/storage/object_storage/beat_practices/app_integration/">移动 App 接入方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/web_hosting/">静态网站托管方案</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/beat_practices/policy/">Bucket Policy 白名单和黑名单使用实例</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >常见问题</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/faq/cidr_ip/">CIDR 地址划分</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/storage/object_storage/faq/object-faq/">FAQ</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage" data-url="/v6.1/storage/object_storage">对象存储</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/beat_practices" data-url="/v6.1/storage/object_storage/beat_practices">最佳实践</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/beat_practices/app_integration" data-url="/v6.1/storage/object_storage/beat_practices/app_integration">移动 App 接入方案</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    移动 App 接入方案</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/storage/object_storage/beat_practices">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_准备工作">准备工作</a>
+      <ul>
+        <li><a href="#_创建_bucket">创建 Bucket</a></li>
+        <li><a href="#_创建_access_key">创建 Access Key</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用_sdk">使用 SDK</a>
+      <ul>
+        <li><a href="#_配置_cocoapods">配置 CocoaPods</a></li>
+        <li><a href="#_开始编码">开始编码</a></li>
+      </ul>
+    </li>
+    <li><a href="#_开发者实现签名服务器">开发者实现签名服务器</a>
+      <ul>
+        <li><a href="#_注意事项">注意事项</a></li>
+        <li><a href="#_安装签名服务器">安装签名服务器</a></li>
+        <li><a href="#_配置认证信息">配置认证信息</a></li>
+        <li><a href="#_运行认证服务器">运行认证服务器</a></li>
+        <li><a href="#_获得请求签名">获得请求签名</a></li>
+      </ul>
+    </li>
+    <li><a href="#_表单_post_上传">表单 POST 上传</a></li>
+    <li><a href="#_请求参数签名">请求参数签名</a></li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p>伴随着移动互联网的浪潮，移动应用 App 的开发需求越来越多样化，无论何种功能都离不开文件存储。在以前，应用开发者需要自行开发构建文件服务器，用于保存数据文件，并面向互联网提供访问，例如社交网络中的用户照片，视频网站中的影音内容，电商平台中的商品图片。</p>
+</div>
+<div class="paragraph">
+<p>然而这些数据通常由终端用户直接生产和消费，伴随着用户增长，服务器的压力也会日益增大，开发者很难构建一个兼具高可用性、高扩展性和低成本的文件服务器。对象存储刚好填补了这方面的需求，可为移动开发者提供一站式的文件存储解决方案。</p>
+</div>
+<div class="paragraph">
+<p>对象存储提供 HTTP RESTful 风格的访问接口，并辅助于编程语言相关的 SDK 工具，帮助开发者用极少的开发成本，将移动应用 App 对接到对象存储。本文将介绍几种种不同使用场景下，与对象存储对接的方案：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>使用对象存储 SDK</p>
+</li>
+<li>
+<p>开发者实现签名服务器</p>
+</li>
+<li>
+<p>表单 POST 上传</p>
+</li>
+<li>
+<p>最后再介绍一种特殊的签名认证方式：请求参数签名，用于当 Bucket 为私有权限时，在用户之间分享 Bucket 中的文件链接。</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_准备工作">准备工作</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_创建_bucket">创建 Bucket</h3>
+<div class="paragraph">
+<p>使用对象存储之前，用户需创建相应的 Bucket，用于储存 Object。详细操作可参考 <a href="../../manual/console/bucket_manage/basic_opt/#创建-bucket">创建 Bucket</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_创建_access_key">创建 Access Key</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>选择 <strong>产品与服务 &gt; 访问与授权 &gt; API 密钥</strong>，进入 API 密钥主页面。</p>
+</li>
+<li>
+<p>在 API 密钥主页面，点击 <strong>创建</strong>，按要求输入相关信息后，点击 <strong>提交</strong> 按钮。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用_sdk">使用 SDK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>对象存储目前已提供多种语言的 SDK，包括开发 iPhone App 使用的 Swift 语言，以及开发 Android App 使用的 Java 语言。App 开发者将 SDK 嵌入到客户端程序中，通过调用 SDK 提供的方法和接口与对象存储服务端通信。</p>
+</div>
+<div class="paragraph">
+<p>这里将以开发一个上传照片的 iPhone App 为例，讲解如何使用对象存储的 SDK for Swift 将 App 接入到对象存储。</p>
+</div>
+<div class="sect2">
+<h3 id="_配置_cocoapods">配置 CocoaPods</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>如果你还没有安装 CocoaPods，可以执行以下命令来安装，版本需为：CocoaPods 1.1.0+</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">gem install cocoapods</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>在项目工程根目录下，输入以下命令来初始化 CocoaPods</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pod init</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>打开 Podfile，增加 <code>pod &#39;QingStorSDK&#39;</code> 至对应的 Target，内容参考如下：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">target &#39;&#39; do
+  use_frameworks!
+  pod &#39;QingStorSDK&#39;
+end</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>最后，输入以下命令来安装对象存储 SDK 的依赖包</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pod install</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_开始编码">开始编码</h3>
+<div class="paragraph">
+<p>本文目的是学习对象存储的 SDK，而不是花费时间来研究 UI，关于例子中用到的页面大概讲解如下：</p>
+</div>
+<div class="paragraph">
+<p><strong>Main.storyboard UI结构图：</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/object_storage/main_storyboard.png" alt="main storyboard"/>
+</div>
+</div>
+<div class="paragraph">
+<p>使用一个 BucketListController 显示当前的 Bucket 列表，一个 ObjectListController 显示 Bucket 下面的对象列表。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>创建一个 Config.plist，并添加到工程。在 plist 文件里面填写申请的 API 密钥信息，内容参考如下</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">access_key_id
+ACCESS_KEY_ID
+secret_access_key
+SECRET_ACCESS_KEY</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>打开工程的 AppDelegate.swift 文件，在文件的顶部添加如下代码，导入 SDK：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">import QingStorSDK</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>在程序的启动入口，添加全局的注册操作，代码如下：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
+    // Register QingStorSDK
+    let url = URL(fileURLWithPath: Bundle.main.path(forResource: &#34;Config&#34;, ofType: &#34;plist&#34;)!)
+    try! Registry.registerFrom(plist: url)
+
+    return true
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>打开 BucketListController，在 viewDidLoad 方法里面初始化我们的对象存储服务：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">fileprivate var qsService: QingStor!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    qsService = QingStor()
+
+    setupView()
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>为了灵活使用，除了上述初始化对象存储服务的方法之外，SDK 也支持在服务初始化的时候传入配置信息：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>首先修改 Config.plist 内容如下：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">    access_key_id
+    ACCESS_KEY_ID
+    secret_access_key
+    SECRET_ACCESS_KEY
+    protocol
+    https
+    host
+    qingstor.com
+    port
+    443</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>修改 qsService 的初始化方式：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">let url = URL(fileURLWithPath: Bundle.main.path(forResource: &#34;Config&#34;, ofType: &#34;plist&#34;)!)
+let context = try! APIContext(plist: url)
+qsService = QingStor(context: context)</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>有了 qsService 实例，我们可以用它来获取 Bucket 列表，请求操作代码如下，并把得到的响应数据存储到 <code>listBucketsOutput</code>：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">private func requestBucketList() {
+    qsService.listBuckets(input: ListBucketsInput()) { response, error in
+        if let response = response {
+            if response.output.errMessage == nil {
+                self.listBucketsOutput = response.output
+                self.tableView.reloadData()
+            } else {
+                print(&#34;error: \(response.output.errMessage)&#34;)
+            }
+        } else {
+            print(&#34;error: \(error)&#34;)
+        }
+
+        self.refreshControl?.endRefreshing()
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>刷新 TableView 的时候根据输出显示对应的内容，最终效果如下图所示：</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/object_storage/bucket_list.png" alt="bucket list"/>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>说明：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mobile-bucket-test</code> 是之前为了测试创建的 Bucket。</p>
+</li>
+<li>
+<p>点击该列表项，会跳转至 ObjectListController 页面，并把当前列表项的 Bucket 数据传递过去。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>打开 ObjectListController 文件，在监听 <code>bucketModel</code> 的事件里，初始化 Bucket 服务：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">fileprivate var bucketService: Bucket!
+var bucketModel: BucketModel! {
+    didSet {
+        title = bucketModel.name
+        bucketService = QingStor().bucket(bucketName: bucketModel.name!, zone: bucketModel.location!)
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>增加 <strong>requestObjectList</strong> 方法来请求 Object 列表，并把得到的响应数据存储到 <code>listObjectsOutput</code>：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">private func requestObjectList() {
+    bucketService.listObjects(input: ListObjectsInput()) { response, error in
+        if let response = response {
+            if response.output.errMessage == nil {
+                self.listObjectsOutput = response.output
+                self.tableView.reloadData()
+            } else {
+                print(&#34;error: \(response.output.errMessage)&#34;)
+            }
+        } else {
+            print(&#34;error: \(error)&#34;)
+        }
+
+        self.refreshControl?.endRefreshing()
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>刷新 TableView 的时候根据输出显示对应的内容，最终效果如下图所示：</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/storage/object_storage/object_list.png" alt="object list"/>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>说明：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>点击右上角 <code>+</code> 符号，会触发选择图片事件</p>
+</li>
+<li>
+<p>使用 UIImagePickerController 来做图片选择器</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>当选择完图片时会触发 UIImagePickerController 的回调方法，可以在该方法做一些图片上传的处理，代码如下</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    dismiss(animated: true, completion: nil)
+
+    var contentType: String? = nil
+    if let UTI = info[UIImagePickerControllerMediaType], let type = UTTypeCopyPreferredTagWithClass(UTI as! CFString, kUTTagClassMIMEType)?.takeRetainedValue() {
+        contentType = type as String
+    } else {
+        contentType = &#34;image/jpeg&#34;
+    }
+
+    var pathExtension = &#34;jpg&#34;
+    if let url = info[UIImagePickerControllerReferenceURL] as? URL {
+        pathExtension = url.pathExtension.lowercased()
+    }
+
+    if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        let originRightBarButtonItem = navigationItem.rightBarButtonItem
+
+        spinner.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+
+        let data = UIImageJPEGRepresentation(image, 0.8)!
+        let input = PutObjectInput(contentLength: data.count, contentType: contentType, bodyInputStream: InputStream(data: data))
+        let key = &#34;\(Int(Date().timeIntervalSince1970)).\(pathExtension)&#34;
+        bucketService.putObject(objectKey: key, input: input) { response, error in
+            if let response = response {
+                if response.output.errMessage == nil {
+                    self.beginRefresh()
+                } else {
+                    print(&#34;error: \(response.output.errMessage)&#34;)
+                }
+            } else {
+                print(&#34;error: \(error)&#34;)
+            }
+
+            self.navigationItem.rightBarButtonItem = originRightBarButtonItem
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>代码有点长，不过我们应该关注的地方只有下面这一段代码</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">let data = UIImageJPEGRepresentation(image, 0.8)!
+let input = PutObjectInput(contentLength: data.count, contentType: contentType, bodyInputStream: InputStream(data: data))
+let key = &#34;\(Int(Date().timeIntervalSince1970)).\(pathExtension)&#34;
+bucketService.putObject(objectKey: key, input: input) { response, error in
+    if let response = response {
+        if response.output.errMessage == nil {
+            self.beginRefresh()
+        } else {
+            print(&#34;error: \(response.output.errMessage)&#34;)
+        }
+    } else {
+        print(&#34;error: \(error)&#34;)
+    }
+
+    self.navigationItem.rightBarButtonItem = originRightBarButtonItem
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>说明：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>首先把图片信息转换成 Data，方便后续转成 InputStream，也可以将 Image 存到本地文件，再转成 InputStream。</p>
+</li>
+<li>
+<p>再把文件的一些信息传给 Input 对象，比如 ContentLength 和 ContentType。</p>
+</li>
+<li>
+<p>key 值是存储的文件名，用于后续的删除下载操作，这里只是简单的获取了一下时间戳当做文件名。</p>
+</li>
+<li>
+<p>最后用 bucketService 来把文件上传到对象存储，通过调用 putObject 方法来实现。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>这个简单的教程到这里就告一段落了，例子里面还加了一个侧滑删除的操作，大家有兴趣可以 <a href="https://github.com/qychrisyang/qingstor-sdk-swift-demo">下载源码</a> 看看。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_开发者实现签名服务器">开发者实现签名服务器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>上文中介绍的使用 SDK 对接对象存储服务，适用于 Bucket 被个人用户所拥有的情况。如果 Bucket 为 App 开发者所拥有，由于需要将签名密钥内置到客户端程序中，会带来安全方面的隐患。为了保证签名密钥的安全，开发者可以根据对象存储签名方法，自己搭建并实现一个签名服务器。用于签名的密钥只需要在服务端保存，客户端不需要拿到，从而避免了认证信息泄漏的隐患。</p>
+</div>
+<div class="paragraph">
+<p>对象存储提供了一个签名服务器的 <a href="https://github.com/yunify/qingstor-demo-auth-server">样例</a> 供 App 开发者参考。网页端使用 JavaScript SDK 配合签名服务器进行上传可以参考官方提供的 <a href="https://github.com/yunify/qingstor-sdk-js-demo">Demo 项目</a>。</p>
+</div>
+<div class="sect2">
+<h3 id="_注意事项">注意事项</h3>
+<div class="paragraph">
+<p>若用户需自己开发签名服务，需要注意：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>签名服务需要考虑，由于在浏览器环境中，<code>Date</code> 字段是被保护的不能设置，所以 JavaScript SDK 在签名时需要将 <code>Date</code> 头字段留空，并且设置 <code>x-qs-date</code> 头字段。</p>
+</li>
+<li>
+<p>签名服务需要把计算签名时所有的时间戳，返回给客户端，客户端根据这个时间戳设置 <code>Date</code> 头字段（一般客户端）或 <code>x-qs-date</code> 头字段（JavaScript客户端）</p>
+</li>
+<li>
+<p>由于没有权限验证，该样例不适合直接运行在生产环境，若暴露在公网上，任何人都可以访问并进行签名认证。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>样例的使用步骤如下：</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_安装签名服务器">安装签名服务器</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git clone https://github.com/yunify/qingstor-demo-auth-server.git
+cd qingstor-demo-auth-server
+pip install -r requirements</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_配置认证信息">配置认证信息</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export ACCESS_KEY_ID=&#34;ACCESS_KEY_ID_EXAMPLE&#34;
+export SECRET_ACCESS_KEY=&#34;SECRET_ACCESS_KEY_EXAMPLE&#34;
+export ZONE=&#34;pek3a&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>其中 ZONE 可以在服务器端进行配置，也可以在每一次请求中指定。如果都没有的话，服务器将会抛出异常。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_运行认证服务器">运行认证服务器</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python demo.py</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_获得请求签名">获得请求签名</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>从客户端发送签名请求</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">curl -H &#34;Content-Type: application/json&#34; -d &#39;{&#34;method&#34;:&#34;GET&#34;, &#34;url&#34;:&#34;/&#34;, &#34;headers&#34;:{&#34;Date&#34;:&#34;Wed, 10 Dec 2014 17:20:31 GMT&#34;}}&#39; 127.0.0.1:5000</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>客户端将会获得如下的返回结果</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">QS PLLZOBTTZXGBNOWUFHZZ:vIWg/qAxvXlcFRb9uzYmdIM9tiF6EuM6SC3i13yLzH8=</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>将该结果附加到请求头中，作为最终发送给对象存储的请求</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">GET /mybucket/music.mp3 HTTP/1.1
+Authorization: QS PLLZOBTTZXGBNOWUFHZZ:vIWg/qAxvXlcFRb9uzYmdIM9tiF6EuM6SC3i13yLzH8=
+Host: pek3a.qingstor.com
+Date: Mon, 14 Nov 2016 14:05:00 GMT</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_表单_post_上传">表单 POST 上传</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>表单上传是专门为浏览器设计的一种文件上传方式，表单上传分为以下几步：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>用户通过浏览器请求开发者的 Web Server</p>
+</li>
+<li>
+<p>Web Server 生成包含 <code>signature</code> 字段的表单返回给浏览器，例如</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">    Upload
+    .pek3a.qingstor.com method=&#34;POST&#34; enctype=&#34;multipart/form-data&#34;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>用户通过表单上传文件以及 Signature 给对象存储。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_请求参数签名">请求参数签名</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>最后我们介绍一种不同于请求头签名的认证方式，该方法适用于 Bucket 为私有权限，但是需要分享文件下载链接给其它用户，或者其它设置请求头签名不方便的客户端。如果开发者想要生成一个对象存储的访问链接，并将链接分享给其他用户，可以使用该签名方式，即请求参数签名。下面是一个请求示例</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">GET /music.mp3?access_key_id=PLLZOBTTZXGBNOWUFHZZ&amp;expires=1479107162&amp;signature=tuXu/KcggHWPAfEmraUHDwEUdiIPSXVRsO%2BT2rxomBQ%3D HTTP/1.1
+Host: mybucket.pek3a.qingstor.com
+Date: Mon, 14 Nov 2016 14:05:00 GMT</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>参数签名使用的场合较为广泛，它所能达成的效果跟请求头签名完全一样，只是让附带签名的过程更加方便和易于使用。</p>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_准备工作">准备工作</a>
+      <ul>
+        <li><a href="#_创建_bucket">创建 Bucket</a></li>
+        <li><a href="#_创建_access_key">创建 Access Key</a></li>
+      </ul>
+    </li>
+    <li><a href="#_使用_sdk">使用 SDK</a>
+      <ul>
+        <li><a href="#_配置_cocoapods">配置 CocoaPods</a></li>
+        <li><a href="#_开始编码">开始编码</a></li>
+      </ul>
+    </li>
+    <li><a href="#_开发者实现签名服务器">开发者实现签名服务器</a>
+      <ul>
+        <li><a href="#_注意事项">注意事项</a></li>
+        <li><a href="#_安装签名服务器">安装签名服务器</a></li>
+        <li><a href="#_配置认证信息">配置认证信息</a></li>
+        <li><a href="#_运行认证服务器">运行认证服务器</a></li>
+        <li><a href="#_获得请求签名">获得请求签名</a></li>
+      </ul>
+    </li>
+    <li><a href="#_表单_post_上传">表单 POST 上传</a></li>
+    <li><a href="#_请求参数签名">请求参数签名</a></li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

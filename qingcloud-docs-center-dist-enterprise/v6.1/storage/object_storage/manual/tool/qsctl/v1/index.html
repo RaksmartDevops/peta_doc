@@ -1,0 +1,559 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[云计算, 对象存储]">
+
+
+
+<meta name="description" content="本小节主要介绍 qsctl 相关内容。">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>qsctl v1 文档 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+    
+  
+
+
+  
+    
+  
+
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage" data-url="/v6.1/storage/object_storage">对象存储</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual" data-url="/v6.1/storage/object_storage/manual">操作指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual/tool" data-url="/v6.1/storage/object_storage/manual/tool">客户端工具</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual/tool/qsctl" data-url="/v6.1/storage/object_storage/manual/tool/qsctl">qsctl</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/storage/object_storage/manual/tool/qsctl/v1" data-url="/v6.1/storage/object_storage/manual/tool/qsctl/v1">qsctl v1 文档</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    qsctl v1 文档</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+      
+    
+    
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_安装">安装</a>
+      <ul>
+        <li><a href="#_pip_安装">pip 安装</a></li>
+        <li><a href="#_下载安装包">下载安装包</a></li>
+      </ul>
+    </li>
+    <li><a href="#_配置">配置</a></li>
+    <li><a href="#_使用">使用</a>
+      <ul>
+        <li><a href="#_命令列表">命令列表</a></li>
+        <li><a href="#_查看帮助">查看帮助</a></li>
+        <li><a href="#_示例">示例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>qsctl 是对象存储服务的高级命令行工具。它提供了更强大的类 UNIX 命令，使管理对象存储的资源变得像管理本地资源一样方便。这些命令包括：<code>cp</code>、<code>ls</code>、<code>mb</code>、<code>mv</code>、<code>rb</code>、<code>rm</code>、<code>sync</code> 和 <code>presign</code>。所有 qsctl 的命令都支持批量操作。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_安装">安装</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>qsctl 支持 pip 进行安装，用户也可以直接下载并运行对象存储提供的可执行文件。详细操作分别如下：</p>
+</div>
+<div class="sect2">
+<h3 id="_pip_安装">pip 安装</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>类 Unix 操作系统的服务器上，执行如下命令进行安装:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install qsctl -U</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>若没有安装 virtualenv，则执行如下命令</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">sudo pip install qsctl -U</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>在 Windows 服务器上，请使用管理员权限打开命令行窗口，运行如下命令进行安装：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install qsctl -U</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_下载安装包">下载安装包</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>用户根据操作系统，下载相应的安装包：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows 用户 <a href="https://pek3a.qingstor.com/releases-qs/qsctl/qsctl-latest-windows.zip">qsctl-latest.zip</a></p>
+</li>
+<li>
+<p>Linux <a href="https://pek3a.qingstor.com/releases-qs/qsctl/qsctl-latest-linux.tar.gz">qsctl-latest.tar.gz</a></p>
+</li>
+<li>
+<p>Mac OS X 用户 <a href="https://pek3a.qingstor.com/releases-qs/qsctl/qsctl-latest-darwin.tar.gz">qsctl-latest.tar.gz</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>部分 Windows 用户可能出现缺少 dll 文件的错误，根据自己系统下载并安装合适的依赖包即可：</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pek3a.qingstor.com/releases-qs/qsctl/vc_redist.x64.exe">64位系统</a></p>
+</li>
+<li>
+<p><a href="https://pek3a.qingstor.com/releases-qs/qsctl/vc_redist.x86.exe">32位系统</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_配置">配置</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在正式使用 qsctl 工具前，用户需修改相应的配置文件，从而使其能正常工作。在载入配置文件时，qsctl 会按照如下顺序进行尝试，一旦读取成功便不再尝试下一个配置文件：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>用户通过 <code>-c</code> 参数指定的路径</p>
+</li>
+<li>
+<p>配置文件：<code>~/.qingstor/config.yaml</code></p>
+</li>
+<li>
+<p>配置文件：<code>~/.qingcloud/config.yaml</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>以上为类 Unix 系统下的配置文件路径，对 Windows 用户而言，配置文件路径为 <code>%USERPROFILE%\.qingstor\config.yaml</code>。</p>
+</div>
+<div class="paragraph">
+<p><strong>详细操作步骤如下：</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在 管理控制台申请 API 密钥，并下载保存。</p>
+</li>
+<li>
+<p>根据前文信息，依次查看是否存在默认配置文件：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cat ~/.qingstor/config.yaml
+cat ~/.qingcloud/config.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>若以上文件均不存在，即说明无默认配置文件，需按照如下步骤手动创建配置文件：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">touch qsctl_config.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>按如下格式填写配置相关信息：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">access_key_id: &#39;ACCESS_KEY_ID_EXAMPLE&#39;
+secret_access_key: &#39;SECRET_ACCESS_KEY_EXAMPLE&#39;
+
+host: &#39;qingstor.com&#39;
+port: 443
+protocol: &#39;https&#39;
+connection_retries: 3
+
+# Valid levels are &#39;debug&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;, and &#39;fatal&#39;.
+
+log_level: &#39;debug&#39;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>说明：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>access_key_id</code> 与 <code>secret_access_key</code> 根据步骤 1 中下载的 API 密钥进行填写。</p>
+</li>
+<li>
+<p><code>host</code>，<code>port</code> 与 <code>protocol</code> 参数为待访问的对象存储的域名，端口号及协议类型。公有云维持默认即可，私有云环境需根据实际情况进行填写。</p>
+</li>
+<li>
+<p>qsctl 提供了对旧版的 <code>qs_access_key_id</code>，<code>qs_secret_access_key</code> 参数的兼容，旧版的配置文件可直接使用，其中 <code>zone</code> 参数将忽略。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用">使用</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_命令列表">命令列表</h3>
+<div class="paragraph">
+<p>qsctl 支持的操作命令如下表所示：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">命令</th>
+<th class="tableblock halign-left valign-top">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ls</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>列出所有的 Bucket，或给定 Bucket 给定前缀下的所有对象。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cp</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>复制本地文件至对象存储 Bucket，或复制对象存储 Bucket 中的对象到本地。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mb</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>创建一个新的 Bucket。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rb</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>删除一个空的 Bucket，或强制删除一个非空的 Bucket。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mv</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>移动本地文件至对象存储的 Bucket，或移动对象存储的 Bucket 中的对象到本地。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rm</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>删除一个对象存储 Bucket 中的对象或给定前缀下的所有对象。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sync</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>在本地目录和对象存储 Bucket 目录之间同步。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">presign</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>生成指定对象的临时下载链接。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_查看帮助">查看帮助</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>可执行如下命令行查看 qsctl 的参数和简易使用教程:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qsctl -h</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>如需查看 qsctl 的详细手册和示例，请运行:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">qsctl help</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_示例">示例</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>列出 Bucket 下的所有对象:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&gt; qsctl ls qs://mybucket
+Directory                          test/
+2016-04-03 11:16:04     4 Bytes    test1.txt
+2016-04-03 11:16:04     4 Bytes    test2.txt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>同步目录至本地文件夹:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&gt; qsctl sync qs://mybucket/test/ test/
+File &#39;test/README.md&#39; written
+File &#39;test/commands.py&#39; written</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_安装">安装</a>
+      <ul>
+        <li><a href="#_pip_安装">pip 安装</a></li>
+        <li><a href="#_下载安装包">下载安装包</a></li>
+      </ul>
+    </li>
+    <li><a href="#_配置">配置</a></li>
+    <li><a href="#_使用">使用</a>
+      <ul>
+        <li><a href="#_命令列表">命令列表</a></li>
+        <li><a href="#_查看帮助">查看帮助</a></li>
+        <li><a href="#_示例">示例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

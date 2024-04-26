@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>内网 IP on 用户指南</title>
+    <link>/v6.1/network/vpc/manual/vip/</link>
+    <description>Recent content in 内网 IP on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/network/vpc/manual/vip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>内网 IP 概述</title>
+      <link>/v6.1/network/vpc/manual/vip/01_vip_description/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/vpc/manual/vip/01_vip_description/</guid>
+      <description>什么是内网 IP 内网 IP 包括 VBC 网络 IP 和 VPC 网络 IP。
+VBC 网络 IP 是从基础网络子网 CIDR 分配的一个内网 IP 地址，是云平台租户公有的 IP 地址，租户可以预先占用、查看和释放地址。
+VPC 网络 IP 是从 VPC 网络子网 CIDR 分配的一个内网 IP 地址，是云平台租户私有的 IP 地址，由租户自己管理，租户可分配、查看和释放地址。
+每个 VBC/VPC 下可以申请多个内网 IP 地址。一般由网络管理员预先申请并分配 IP 地址，使用者需要使用时再进行绑定或配置。内网 IP 可以与负载均衡器或云服务器进行绑定，并可搭配高可用软件（例如 Keepalived）使用，搭建高可用主备服务，提高业务的可用性。
+使用场景 部署高可用服务
+例如，您需要避免单点故障，提高服务的高可用性，可以用“一主一备”或“一主多备”的方法组合使用云服务器，这些云服务器用内网 IP 作为统一对外的 IP。当主服务器故障时，备服务器可以转为主服务器，继续对外提供服务。
+部署高可用负载均衡集群
+例如，部署负载均衡集群时，在负载均衡之间做 HA，后端机器做集群。因此部署负载均衡的两台服务器间要部署 HA，用内网 IP 作为统一对外的 IP。
+限制说明 内网 IP 具有子网属性，只能绑定到同一子网下的资源。
+内网 IP 与云服务器绑定时，不支持手动在控制台将内网 IP 绑定指定云服务器，需要在云服务器上进行配置。</description>
+    </item>
+    
+    <item>
+      <title>使用 VPC 网络 IP</title>
+      <link>/v6.1/network/vpc/manual/vip/02_use_vpc_vip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/vpc/manual/vip/02_use_vpc_vip/</guid>
+      <description>VPC 网络 IP 是从私有网络 CIDR 分配的一个内网 IP 地址，是云平台租户私有的 IP 地址，由租户自己管理，租户可分配、查看和释放地址。
+本文介绍如何在控制台申请、绑定、释放 VPC 网络 IP。
+申请 VPC 网络 IP 登录管理控制台。
+在控制台顶部导航栏中，选择产品与服务 &amp;gt; 网络 &amp;gt; VPC 网络，进入VPC 网络 页面。
+在左侧导航树中，选择网络 &amp;gt; 内网 IP。
+点击 VPC 网络 IP 页签，进入 VPC 网络 IP 管理页面。
+点击申请 IP，在弹出的窗口中配置 VPC 网络 IP 参数。
+参数名称 说明 名称
+VPC 网络 IP 的名称。 用户绑定 VPC 网络 IP 时，可通过名称识别该 IP。
+数量
+需要申请的 IP 数量。 可一次性申请多个 IP。
+网络
+选择 IP 所属的私有网络。 私有网络的选择决定了 IP 地址所属网段。</description>
+    </item>
+    
+    <item>
+      <title>使用 VBC 网络 IP</title>
+      <link>/v6.1/network/vpc/manual/vip/03_use_basic_vip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/vpc/manual/vip/03_use_basic_vip/</guid>
+      <description>VBC 网络 IP 是从基础网络子网 CIDR 分配的一个内网 IP 地址，是云平台租户公有的 IP 地址，租户可以预先占用、查看和释放地址。
+本文介绍如何在控制台申请、绑定、释放 VBC 网络 IP。
+申请 VBC 网络 IP 登录管理控制台。
+在控制台顶部导航栏中，选择产品与服务 &amp;gt; 网络 &amp;gt; VPC 网络，进入VPC 网络 页面。
+在左侧导航树中，选择网络 &amp;gt; 内网 IP。
+在 VBC 网络 IP 页签，点击申请 IP，在弹出的窗口中配置 VBC 网络 IP 参数。
+参数名称 说明 名称
+VBC 网络 IP 的名称。 用户绑定 VBC 网络 IP 时，可通过名称识别该 IP。
+数量
+需要申请的 IP 数量。 可一次性申请多个 IP。
+网络
+选择 IP 所属的基础网络子网。 子网的选择决定了 IP 地址的网段范围。
+虚拟 IP 地址</description>
+    </item>
+    
+    <item>
+      <title>为云服务器配置内网 IP</title>
+      <link>/v6.1/network/vpc/manual/vip/04_vip_bind_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/network/vpc/manual/vip/04_vip_bind_vm/</guid>
+      <description>本文介绍如何将申请的内网 IP 绑定到云服务器上。
+前提条件 已申请内网 IP。
+在 CentOS 系统上配置 以下方法以 CentOS7 系统为例。
+固化配置：
+复制一份 ifcfg-eth0 配置文件，命名为 “ifcfg-eth0:0”。
+cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0:0 修改 ifcfg-eth0:1 配置文件。
+vim /etc/sysconfig/network-scripts/ifcfg-eth0:0 按 i 进入编辑模式，修改配置。
+将 “IPADDR=” 后面的 IP 改为您申请到的内网 IP。
+将 DEVICE=&amp;#34;eth0&amp;#34; 改为 DEVICE=&amp;#34;eth0:0&amp;#34;。
+删除 &amp;#34;GATEWAY=&amp;#34; 这一行。
+修改后，保存并退出文件。
+重启网络。
+service network restart 检查 VIP 是否添加成功。
+ip a 使用 arping 命令通告 arp 信息。
+假设您申请的内网 IP 为 10.10.1.x，执行如下命令。
+arping -U 10.10.1.x 临时配置：
+说明 该方法临时生效，服务器重启或网络重启将失效，需要重新添加。
+添加内网 IP。
+假设您申请的内网 IP 为 10.</description>
+    </item>
+    
+  </channel>
+</rss>

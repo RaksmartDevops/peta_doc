@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/service/</link>
+    <description>Recent content in 服务 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/service/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>服务概述</title>
+      <link>/v6.1/container/qke_plus/manual/service/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/service/introduction/</guid>
+      <description>什么是服务 服务是将运行在一组 Pods 上的应用程序公开为网络服务的抽象方法。每一个服务后面都有很多对应的容器来提供支持，对外表现为一个单一访问接口。借助服务，应用可以方便的实现服务发现与负载均衡，并实现应用的零宕机升级。
+服务有一个固定 IP 地址（在创建 QEK 集群时有一个 “Service 网段”的设置，这个网段专门用于给服务分配 IP 地址），服务将访问它的流量转发给 Pod，具体转发给哪些 Pod 通过 Label 来选择，而且服务可以给这些 Pod 做负载均衡。
+服务类型 Kubernetes 允许在您创建服务时，指定你所需要的服务类型。类型的取值及行为如下表说明。
+服务类型 说明 ClusterIP
+通过集群的内部 IP 暴露服务，即服务只能够在集群内部访问。 这也是默认的服务类型。 当您的服务只需要在集群内部被访问时，请使用该类型。
+NodePort
+在每个节点的 IP 上开放一个静态端口，通过静态端口对外暴露服务。 NodePort 服务会路由到自动创建的 ClusterIP 服务。通过请求 &amp;lt;节点 IP&amp;gt;:&amp;lt;节点端口&amp;gt;，你可以从集群的外部访问一个 NodePort 服务。
+注意 除了测试以及非生产环境以外，不推荐在生产环境中直接通过集群节点对外甚至公网提供服务。从安全上考虑，使用该类型会直接暴露集群节点，容易受到攻击。
+LoadBalancer
+使用云提供商的负载均衡器向外部暴露服务。 外部负载均衡器可以将流量路由到自动创建的 NodePort 服务和 ClusterIP 服务上。 LoadBalancer 服务一般为需要暴露到公网的服务。
+externalName
+通过返回 CNAME 和对应值，可以将服务映射到 externalName 字段的内容（例如 foo.bar.example.com），无需创建任何类型代理。
+说明 需要使用 kube-dns 1.7 及以上版本或者 CoreDNS 0.0.8 及以上版本才能使用 ExternalName 类型。</description>
+    </item>
+    
+    <item>
+      <title>查看服务</title>
+      <link>/v6.1/container/qke_plus/manual/service/view_service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/service/view_service/</guid>
+      <description>服务创建后，您可以在 QKE 控制台查看。
+前提条件 服务已创建，包括系统创建及用户手动创建的服务。
+说明 目前无法在 QKE 控制台创建服务，可通过 KubeSphere 等集群可视化工具进行创建。
+操作步骤 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 服务，进入服务页面。
+页面展示了服务的名称、所属命名空间、类型及访问 IP 等信息。
+在服务类型列进行条件过滤，可分别查看不同类型的服务。
+可在搜索栏输入名称或命名空间查找符合条件的服务。</description>
+    </item>
+    
+    <item>
+      <title>将服务暴露给外网</title>
+      <link>/v6.1/container/qke_plus/manual/service/lb_service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/service/lb_service/</guid>
+      <description>通过为服务资源绑定一个“公网”类型的负载均衡器，使该服务对应的容器应用能够通过外部网络进行访问。
+背景信息 负载均衡（LoadBalancer）访问类型的服务可以通过负载均衡器从公网访问到工作负载，与弹性 IP 方式相比提供了高可靠的保障，一般用于系统中需要暴露到公网的服务。
+负载均衡访问方式由公网负载均衡器服务地址以及设置的访问端口组成，例如 “10.10.10.10:80”。
+约束与限制 不能使用集群内部自动创建的负载均衡器绑定到服务资源。
+只能选择集群同一私有网络（Vxnet）下的负载均衡器绑定到服务资源。
+负载均衡器目前支持 TCP/HTTP/HTTPS 协议监听。
+根据工信部规范，公网 IP 必须提交 ICP 备案信息，未备案公网 IP 80/443 端口的服务将被禁用。若负载均衡器公网 IP 未进行备案，请不要使用 80/443 端口。
+前提条件 请提前创建好用于绑定服务的公网负载均衡器。
+负载均衡器与 QKE 集群在同一私有网络下且已绑定公网 IP。
+通过 QKE 控制台 登录管理控制台。
+在控制台顶部的导航菜单中，选择产品与服务 &amp;gt; 容器服务 &amp;gt; 容器引擎，进入 QKE 集群列表页面。
+在集群列表，点击待查看集群的名称，进入集群概览页面。
+在左侧导航栏，选择资源管理 &amp;gt; 服务，进入服务页面。
+在负载均衡器列，点击选择负载均衡器，弹出负载均衡器选择对话框。
+在下拉列表中选择需要使用的负载均衡器。
+选择监听协议及端口，若选择 HTTPS 协议，还需要添加服务器证书。
+说明 若未创建服务器证书，请参见创建服务器证书进行创建。
+配置完成后，点击确定。
+通过 YAML 文件配置 通过服务 YAML 文件中的 Annotation（注解），可以实现丰富的负载均衡功能。
+为服务创建一个公网负载均衡器并指定负载均衡器规格，配置示例如下：
+apiVersion: v1 kind: Service metadata: annotations: service.beta.kubernetes.io/qingcloud-load-balancer-eip-ids: &amp;#34;${loadbalancer_eip}&amp;#34; service.</description>
+    </item>
+    
+    <item>
+      <title>配置负载均衡器</title>
+      <link>/v6.1/container/qke_plus/manual/service/ccm_config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/service/ccm_config/</guid>
+      <description>本文主要介绍需要对接负载均衡器插件时，如何通过配置服务的注解（Annotation）来实现服务的一些高级配置功能。
+背景信息 进行配置操作前，您需要了解以下背景知识：
+关于服务注解（Annotation）：
+服务的注解记录了关于当前服务的额外配置，使用 key/value 键值对的形式进行定义。详细介绍及使用说明请参见 Kubernetes 官方文档。
+关于负载均衡器插件（cloud-controller-manager）：
+cloud-controller-manager 是云平台负载均衡器插件，自动集成于 QKE 中。支持将 Kubernetes 内部服务和负载均衡器关联起来，可自动创建负载均衡器、公网 IP，通过负载均衡器将服务暴露给集群外部调用。
+约束与限制 除本文介绍的相关配置外，更多的功能支持，如转发规则定义、透明代理等功能还在开发中，目前暂不支持。建议您可以在负载均衡器控制台进行负载均衡器的更多更全面的配置。
+注意 请勿随意修改集群内部系统自动创建的负载均衡器配置，尤其是 K8s apiserver 使用的负载均衡监听器（监听协议/端口为 TCP/6443），若修改将导致 K8s apiserver 不可用。
+配置负载均衡器属性 配置方法
+通过在 Service 的 annotations 中添加 ServiceAnnotationLoadBalancerType 来配置负载均衡器的规格。不添加此 key 的 Service 在 Event 中会有错误。其值范围 CreateLoadBalancer 接口中的 loadbalancer_typ 取值范围相同。
+负载均衡器支持 http/https 协议的负载均衡，如果想要使用负载均衡器的七层能力，请将服务的特定的端口 name 指定为 http 或 https。
+配置示例
+kind: Service apiVersion: v1 metadata: name: mylbapp annotations: service.beta.kubernetes.io/qingcloud-load-balancer-type: &amp;#34;0&amp;#34; #这里指定负载均衡器实例的规格 spec: selector: app: mylbapp type: LoadBalancer ports: - name: http #这里指定 port name,如果有多个http端口，都可以指定为http port: 8088 targetPort: 80 配置负载均衡器公网 IP 使用负载均衡器时需要配置一个公网 IP，cloud-controller 带有 IP 管理功能。</description>
+    </item>
+    
+  </channel>
+</rss>

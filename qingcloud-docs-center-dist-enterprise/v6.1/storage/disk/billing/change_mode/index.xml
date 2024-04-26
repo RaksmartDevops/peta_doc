@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计费方式变更 on 用户指南</title>
+    <link>/v6.1/storage/disk/billing/change_mode/</link>
+    <description>Recent content in 计费方式变更 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/disk/billing/change_mode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>包年包月转按需</title>
+      <link>/v6.1/storage/disk/billing/change_mode/change1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/billing/change_mode/change1/</guid>
+      <description>相关说明 用户可以将按包年包月计费方式的硬盘资源转为按需计费。开启 到期转需 的设定，待包年包月计费模式到期后，按需的计费模式生效。
+操作步骤 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 云硬盘，进入 硬盘 页面。
+选择计费模式为 包年包月 的硬盘，右键点击该硬盘 ID，选择 到期转按需。
+点击 到期转按需，确认变更计费模式即可。
+撤销修改计费模式 说明 对于未生效的计费方式，支持用户进行撤销操作。
+在 硬盘 界面，右键点击需要撤销计费模式修改的硬盘，选择 撤销修改计费模式。
+在弹出的 撤销修改计费模式 的窗口，选择 撤销设置 进行确认即可。</description>
+    </item>
+    
+    <item>
+      <title>按需转包年包月</title>
+      <link>/v6.1/storage/disk/billing/change_mode/change2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/billing/change_mode/change2/</guid>
+      <description>相关说明 用户可以将硬盘资源的计费模式由按需计费修改为包年包月的计费模式。开启 按需转包年包月 设定后，会生成新的订单，确认支付以后，该订单会立即生效，用户需补充相应费用。
+操作步骤 登录管理控制台。
+在控制台导航栏中，选择 产品与服务 &amp;gt; 存储服务 &amp;gt; 云硬盘，进入 硬盘 页面。
+右键点击计费模式为 按需计费 的硬盘，选择 按需转包年包月。
+在 按需转包年包月 窗口。用户可根据需要自主选择硬盘资源的购买时长、是否开启自动续费以及续费时长。
+说明 自动续费只支持按月或按年进行续费。
+点击 立即支付，确认变更计费模式。一经确认，包年包月的计费模式会立刻生效。</description>
+    </item>
+    
+  </channel>
+</rss>

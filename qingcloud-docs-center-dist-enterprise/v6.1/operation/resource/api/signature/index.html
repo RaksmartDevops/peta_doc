@@ -1,0 +1,2503 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="keywords" content="[秘钥签名, 签名方法, API]">
+
+
+<meta name="description" content="这里是企业云文档页面">
+
+<link rel="icon" href="https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico" type="image/x-icon">
+
+<title>签名方法 - 用户指南</title>
+<link href="/css/bulma.css" rel="stylesheet">
+<link href="/css/bulma-tooltip.min.css" rel="stylesheet">
+<link href="/css/atom-one-light.css" rel="stylesheet" />
+<link href="/css/magnific-popup.css" rel="stylesheet" />
+
+
+<link href="/scss/main.min.e407fb236ca21333e8c63516ab2f144dd2cdbdaf2eca08e58895ff89ce74abc3.css" rel="stylesheet" integrity="sha256-5Af7I2yiEzPoxjUWqy8UTdLNva8uygjliJX/ic50q8M=">
+
+<script src="/js/jquery-2.2.4.js"></script>
+<body
+        class="root   "
+        style=""
+        ><header>
+  <nav class="navbar">
+    
+      <a href="/" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">企业云</div>
+      </a>
+    
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version "
+        style="display:none;">
+        
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            v6.1
+          </span>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="search navbar-search">
+      <form action="/v6.1/search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    
+      
+      
+        
+          <a class="navbar-item-right btn primary-btn navbar-btn "
+            target="_blank"
+            data-url="https://console.petaexpress.com"
+            data-text="控制台"
+            href="https://console.petaexpress.com">
+            控制台
+          </a>
+        
+      
+    
+  </nav>
+</header><script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+
+<script id="search-result-item-template" type="text/x-js-template">
+  <div class="search-result-content-item">
+    <div class="search-result-content-item-title">
+      <a href="${href}">${title}</a>
+    </div>
+    <div class="search-result-content-item-content">
+      ${content}
+    </div>
+    <div class="search-result-content-item-ref">
+      <ul class="content-breadcrumb">
+      </ul>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="search-breadcrumb-template" type="text/x-js-template">
+  <li class="icon-slash_fill">
+    <a href="${href}">${title}</a>
+  </li>
+</script>
+
+<script id="search-result-total-template" type="text/x-js-template">
+  <div class="search-result-total">
+    共为您找到 ${count} 个结果
+  </div>
+</script>
+<script id="search-result-page-template" type="text/x-js-template">
+  <nav class="search-result-pagination pagination is-centered">
+    <a class="pagination-previous icon-chevron_left_fill"></a>
+    <a class="pagination-next icon-chevron_right_fill"></a>
+    <ul class="pagination-list">
+    </ul>
+  </nav>
+</script>
+<div class="container">
+
+  
+
+
+  
+    
+  
+
+
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    
+      <div class="sidebar-title" >
+        <a href="/v6.1/operation/resource/">
+          
+            资源管理
+        </a>
+        
+          <span class="icon-menu_fill"></span>
+        
+      </div>
+      
+        <div class="search-sidebar-wrapper">
+          
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  
+    <div class="column">
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-computing_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">计算</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/compute/vm/">
+      云服务器
+    </a>
+    
+    <a href="/v6.1/compute/hpc/">
+      弹性高性能计算 EHPC
+    </a>
+    
+    <a href="/v6.1/compute/image/">
+      镜像
+    </a>
+    
+    <a href="/v6.1/compute/ssh/">
+      SSH 密钥
+    </a>
+    
+    <a href="/v6.1/compute/instance_group/">
+      安置策略组
+    </a>
+    
+    <a href="/v6.1/compute/migration/">
+      跨区域迁移
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-database_cache_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据库</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/database/mysql/">
+      关系型数据库 MySQL Plus
+    </a>
+    
+    <a href="/v6.1/database/postgresql/">
+      关系型数据库 PostgreSQL
+    </a>
+    
+    <a href="/v6.1/database/radondb/">
+      分布式数据库 RadonDB
+    </a>
+    
+    <a href="/v6.1/database/polondb/">
+      分布式数据库 PolonDB
+    </a>
+    
+    <a href="/v6.1/database/chronusdb/">
+      时序数据库 ChronusDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb/">
+      文档数据库 MongoDB
+    </a>
+    
+    <a href="/v6.1/database/mongodb_cluster/">
+      文档数据库 MongoDB Cluster
+    </a>
+    
+    <a href="/v6.1/database/redis_standalone/">
+      键值数据库 Redis Standalone
+    </a>
+    
+    <a href="/v6.1/database/redis_cluster/">
+      键值数据库 Redis Cluster
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-container_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">容器</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/container/qke_plus/">
+      容器引擎 QKE
+    </a>
+    
+    <a href="/v6.1/container/harbor/">
+      Harbor 镜像仓库
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-operation_manage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">运维与管理</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/operation/migration/">
+      服务器迁移中心
+    </a>
+    
+    <a href="/v6.1/operation/topology/">
+      资源编排
+    </a>
+    
+    <a href="/v6.1/operation/resource/">
+      资源管理
+    </a>
+    
+    <a href="/v6.1/operation/autoscaling/">
+      自动伸缩
+    </a>
+    
+    <a href="/v6.1/operation/tools/">
+      运维工具
+    </a>
+    
+    <a href="/v6.1/operation/vmware/">
+      VMware 纳管
+    </a>
+    
+  </div>
+</div>
+        
+      
+        
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-storage_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">存储</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/storage/disk/">
+      硬盘
+    </a>
+    
+    <a href="/v6.1/storage/backup/">
+      备份
+    </a>
+    
+    <a href="/v6.1/storage/object_storage/">
+      对象存储
+    </a>
+    
+    <a href="/v6.1/storage/epfs/">
+      文件存储 EPFS
+    </a>
+    
+    <a href="/v6.1/storage/vnas/">
+      文件存储 vNAS
+    </a>
+    
+    <a href="/v6.1/storage/qfs/">
+      文件存储 QFS
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-mq_middleware_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">消息队列与中间件</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/middware/kafka/">
+      Kafka 服务
+    </a>
+    
+    <a href="/v6.1/middware/rabbitmq/">
+      RabbitMQ 服务
+    </a>
+    
+    <a href="/v6.1/middware/etcd/">
+      Etcd 服务
+    </a>
+    
+    <a href="/v6.1/middware/api_gateway/">
+      API 网关
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-shield_key_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">安全</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/security/firewall/">
+      云防火墙 CFW
+    </a>
+    
+    <a href="/v6.1/security/srp/">
+      安全资源池
+    </a>
+    
+    <a href="/v6.1/security/hss/">
+      主机安全
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-data_warehouse_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">用户服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/services/bill_center/">
+      费用中心
+    </a>
+    
+    <a href="/v6.1/services/notification-center/">
+      消息中心
+    </a>
+    
+    <a href="/v6.1/services/vdc/">
+      企业管理
+    </a>
+    
+  </div>
+</div>
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-nat_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">网络服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/network/vpc/">
+      VPC 网络
+    </a>
+    
+    <a href="/v6.1/network/nat_gateway/">
+      NAT 网关
+    </a>
+    
+    <a href="/v6.1/network/eip/">
+      弹性公网 EIP
+    </a>
+    
+    <a href="/v6.1/network/loadbalancer/">
+      负载均衡
+    </a>
+    
+    <a href="/v6.1/network/border_router/">
+      边界路由器
+    </a>
+    
+    <a href="/v6.1/network/security_group/">
+      安全组
+    </a>
+    
+    <a href="/v6.1/network/acl/">
+      网络访问控制
+    </a>
+    
+    <a href="/v6.1/network/mcn/">
+      流量牵引服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bigdata_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">大数据服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/bigdata/elk/">
+      ELK 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/opensearch/">
+      OpenSearch 服务
+    </a>
+    
+    <a href="/v6.1/bigdata/zookeeper/">
+      ZooKeeper 服务
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-monitor_service_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">监控服务</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/monitor_service/cloudsat/">
+      云监控 CloudSat
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="column">
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-apps_5_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">AppCenter</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/appcenter/market/">
+      AppCenter 控制台
+    </a>
+    
+    <a href="/v6.1/appcenter/dev-platform/">
+      应用开发平台
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-bi_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">数据仓库与 BI</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/dwh_bi/clickhouse/">
+      ClickHouse
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="search-sidebar-result-item">
+  <div class="search-sidebar-result-item-title">
+    
+    <span class="search-sidebar-result-item-title-icon content-item-title-icon icon-human_gear_duotone">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+      <span class="path9"></span>
+      <span class="path10"></span>
+      <span class="path11"></span>
+      <span class="path12"></span>
+      <span class="path13"></span>
+      <span class="path14"></span>
+      <span class="path15"></span>
+    </span>
+    
+    <span class="search-sidebar-result-item-title-text">访问与鉴权</span>
+  </div>
+  <div class="search-sidebar-result-item-children">
+    
+    <a href="/v6.1/authorization/iam/">
+      访问鉴权管理
+    </a>
+    
+    <a href="/v6.1/authorization/account/">
+      账户中心
+    </a>
+    
+    <a href="/v6.1/authorization/access_key/">
+      API 密钥
+    </a>
+    
+  </div>
+</div>
+      
+      
+      
+      
+      
+      
+    </div>
+  
+</div>
+        </div>
+      
+    
+    <nav class="sidebar-menu">
+      
+        
+        <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >产品简介</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/intro/project_intro/">什么是项目管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/intro/region_intro/">什么是区域及可用区</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/intro/resource_intro/">什么是资源共享</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/intro/quota_intro/">什么是配额管理</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >操作指南</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >项目管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/project/management/">项目使用</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/project/resources/">项目资源管理</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/project/member_role/">成员与角色</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/project/statistics/">消费与用量</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/project/upgrade_description/">升级资源组</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >资源共享</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/resource_share/create_unit/">创建共享单元</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/resource_share/edited_unit/">编辑共享单元</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/resource_share/check_unit/">查看共享给我的资源</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/resource_share/unit_performance/">共享效果</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >配额管理</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/quota/view_quota/">查看我的配额</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/quota/apply_quota/">提升资源配额</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >区域及可用区</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/region/area_resource/">区域资源</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/region/region_resource/">可用区资源</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/region/region_to_area/">可用区资源升级为区域资源</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/manual/region/other/">其他</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item active ">
+            <a >API 参考</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_up_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/overview/">概述</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/parameters/">公共参数</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item active current">
+            <a href="/v6.1/operation/resource/api/signature/">签名方法</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/api_overview/">API 概览</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+        
+          <li
+            class="sidebar-item collapsed ">
+            <a >项目接口</a>
+            
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+              
+                
+                  
+                
+              
+            
+            
+              <span
+                class="menu-switch-icon icon-caret_down_fill">
+              </span>
+            
+          </li>
+          
+          <ul>
+  
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/create_project/">CreateProject</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/delete_project/">DeleteProjects</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/modify_project/">ModifyProjectAttributes</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/check_project/">DescribeProjects</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/create_group_roles/">CreateGroupRoles</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/deleter_group_roles/">DeleteGroupRoles</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/modify_group_roleattr/">ModifyGroupRoleAttributes</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/desc_groups_roles/">DescribeGroupRoles</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/add_group_tolerules/">AddGroupRoleRules</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/delete_group_rolerules/">DeleteGroupRoleRules</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/modify_group_roleruleattr/">ModifyGroupRoleRuleAttributes</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/desc_group_rolerules/">DescribeGroupRoleRules</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/add_project_mem/">AddProjectMember</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/deleter_project_mem/">DeleteProjectMembers</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/modify_project_memberattr/">ModifyProjectMemberAtrributes</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/desc_project_members/">DescribeProjectMembers</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/desc_project_alarms/">DescribeProjectAlarms</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/get_project_resstat/">GetProjectResourceStat</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/get_total_estmateed/">GetTotalEstimatedConsumption</a>
+          </li>
+        
+      
+    
+  
+    
+      
+      
+      
+      
+          
+          <li class="sidebar-item  ">
+            <a href="/v6.1/operation/resource/api/project/desc_project_reszones/">DescribeProjectResourceZones</a>
+          </li>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+        
+      
+    
+  
+</ul>
+      
+    </nav>
+
+  </div>
+</aside>
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper"><ul class="content-breadcrumb">
+      <li class="icon-slash_fill"><a href="/v6.1" data-url="/v6.1">用户指南</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/operation/resource" data-url="/v6.1/operation/resource">资源管理</a></li>
+        
+        <li class="icon-slash_fill"><a href="/v6.1/operation/resource/api/overview/" data-url="/v6.1/operation/resource/api">API 参考</a></li>
+      <li class="icon-slash_fill"><a href="/v6.1/operation/resource/api/signature" data-url="/v6.1/operation/resource/api/signature">签名方法</a></li></ul><div class="post-wrapper"><div class="post">
+  <h1 class="post-title">
+    签名方法</h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：2024-03-07 19:06:53
+    </div>
+    
+    
+    
+    
+    
+    
+    
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="/v6.1/operation/resource/api">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      
+    
+  </div><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_api_密钥签名">API 密钥签名</a>
+      <ul>
+        <li><a href="#_步骤_1按参数名进行升序排列">步骤 1：按参数名进行升序排列</a></li>
+        <li><a href="#_步骤_2参数_url_编码">步骤 2：参数 URL 编码</a></li>
+        <li><a href="#_步骤_3构造_url_请求">步骤 3：构造 URL 请求</a></li>
+        <li><a href="#_步骤_4构造被签名串">步骤 4：构造被签名串</a></li>
+        <li><a href="#_步骤_5计算签名">步骤 5：计算签名</a></li>
+        <li><a href="#_步骤_6添加签名">步骤 6：添加签名</a></li>
+      </ul>
+    </li>
+    <li><a href="#_iam_身份签名">IAM 身份签名</a>
+      <ul>
+        <li><a href="#_步骤_1获取_iam_身份的临时凭证">步骤 1：获取 IAM 身份的临时凭证</a></li>
+        <li><a href="#_步骤_2计算签名">步骤 2：计算签名</a></li>
+        <li><a href="#_步骤_3添加签名">步骤 3：添加签名</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div><div class="post-content">
+    
+      
+      
+<div class="paragraph">
+<p>这里介绍 API 请求中签名（signature） 的生成方法。您可以根据实际情况选择使用 <strong>API 密钥</strong>或 <a href="/v6.1/authorization/iam/">IAM</a> <strong>身份</strong>来完成签名。</p>
+</div>
+<div class="sect1">
+<h2 id="_api_密钥签名">API 密钥签名</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>您需要先在控制台创建 API 密钥，获得 <code>accesss_key_id</code> 和 <code>secret_access_key</code>，这里假设：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>access_key_id = &#39;QYACCESSKEYIDEXAMPLE&#39;
+secret_access_key = &#39;SECRETACCESSKEY&#39;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请求参数如下:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+  &#34;count&#34;:1,
+  &#34;vxnets.1&#34;:&#34;vxnet-0&#34;,
+  &#34;zone&#34;:&#34;pek3a&#34;,
+  &#34;instance_type&#34;:&#34;small_b&#34;,
+  &#34;signature_version&#34;:1,
+  &#34;signature_method&#34;:&#34;HmacSHA256&#34;,
+  &#34;instance_name&#34;:&#34;demo&#34;,
+  &#34;image_id&#34;:&#34;centos64x86a&#34;,
+  &#34;login_mode&#34;:&#34;passwd&#34;,
+  &#34;login_passwd&#34;:&#34;login20130712&#34;,
+  &#34;version&#34;:1,
+  &#34;access_key_id&#34;:&#34;QYACCESSKEYIDEXAMPLE&#34;,
+  &#34;action&#34;:&#34;RunInstances&#34;,
+  &#34;time_stamp&#34;:&#34;2013-08-27T14:30:10Z&#34;
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>你可以使用上述的 <code>AccessKey</code> 和 <code>Request</code> 调试你的代码，当得到跟后面一致的签名结果后（即表示你的代码是正确的），可再换为你自己的 <code>AccessKey</code> 和其他 API 请求。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_步骤_1按参数名进行升序排列">步骤 1：按参数名进行升序排列</h3>
+<div class="paragraph">
+<p>排序后的参数为:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+  &#34;access_key_id&#34;:&#34;QYACCESSKEYIDEXAMPLE&#34;,
+  &#34;action&#34;:&#34;RunInstances&#34;,
+  &#34;count&#34;:1,
+  &#34;image_id&#34;:&#34;centos64x86a&#34;,
+  &#34;instance_name&#34;:&#34;demo&#34;,
+  &#34;instance_type&#34;:&#34;small_b&#34;,
+  &#34;login_mode&#34;:&#34;passwd&#34;,
+  &#34;login_passwd&#34;:&#34;login20130712&#34;,
+  &#34;signature_method&#34;:&#34;HmacSHA256&#34;,
+  &#34;signature_version&#34;:1,
+  &#34;time_stamp&#34;:&#34;2013-08-27T14:30:10Z&#34;,
+  &#34;version&#34;:1,
+  &#34;vxnets.1&#34;:&#34;vxnet-0&#34;,
+  &#34;zone&#34;:&#34;pek3a&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_2参数_url_编码">步骤 2：参数 URL 编码</h3>
+<div class="paragraph">
+<p>对参数名称和参数值进行 URL 编码，编码后的请求串为:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+  &#34;access_key_id&#34;:&#34;QYACCESSKEYIDEXAMPLE&#34;,
+  &#34;action&#34;:&#34;RunInstances&#34;,
+  &#34;count&#34;:1,
+  &#34;image_id&#34;:&#34;centos64x86a&#34;,
+  &#34;instance_name&#34;:&#34;demo&#34;,
+  &#34;instance_type&#34;:&#34;small_b&#34;,
+  &#34;login_mode&#34;:&#34;passwd&#34;,
+  &#34;login_passwd&#34;:&#34;login20130712&#34;,
+  &#34;signature_method&#34;:&#34;HmacSHA256&#34;,
+  &#34;signature_version&#34;:1,
+  &#34;time_stamp&#34;:&#34;2013-08-27T14%3A30%3A10Z&#34;,
+  &#34;version&#34;:1,
+  &#34;vxnets.1&#34;:&#34;vxnet-0&#34;,
+  &#34;zone&#34;:&#34;pek3a&#34;
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch admon note">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>编码时，空格要转换成 <code>%20</code>，而不是 <code>+</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch admon attention">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>转码部分的字符要用大写，如 <code>:</code> 应转成 <code>%3A</code>，而不是 <code>%3a</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_步骤_3构造_url_请求">步骤 3：构造 URL 请求</h3>
+<div class="paragraph">
+<p>参数名和参数值之间用 <code>=</code> 号连接，参数和参数之间用 <code>＆</code> 号连接，构造后的 URL 请求为</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>access_key_id=QYACCESSKEYIDEXAMPLE&amp;action=RunInstances&amp;count=1&amp;image_id=centos64x86a&amp;instance_name=demo&amp;instance_type=small_b&amp;login_mode=passwd&amp;login_passwd=login20130712&amp;signature_method=HmacSHA256&amp;signature_version=1&amp;time_stamp=2013-08-27T14%3A30%3A10Z&amp;version=1&amp;vxnets.1=vxnet-0&amp;zone=pek3a</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_4构造被签名串">步骤 4：构造被签名串</h3>
+<div class="paragraph">
+<p>被签名串的构造规则为: 被签名串 = <code>HTTP请求方式</code> + <code>\n</code> + <code>uri</code> + <code>\n</code> + <code>url 请求串</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch admon attention">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>“\n” 是换行符，不要将 “\” 转义。也就是说，不要用 “\n” ，有些语言，比如 php 和 ruby，请用 “\n” , 而不是 ‘\n’。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>假设 HTTP 请求方法为 <code>GET</code> 请求的 uri 路径为 “/iaas/”, 则被签名串为</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>GET\n/iaas/\naccess_key_id=QYACCESSKEYIDEXAMPLE&amp;action=RunInstances&amp;count=1&amp;image_id=centos64x86a&amp;instance_name=demo&amp;instance_type=small_b&amp;login_mode=passwd&amp;login_passwd=login20130712&amp;signature_method=HmacSHA256&amp;signature_version=1&amp;time_stamp=2013-08-27T14%3A30%3A10Z&amp;version=1&amp;vxnets.1=vxnet-0&amp;zone=pek3a</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_5计算签名">步骤 5：计算签名</h3>
+<div class="paragraph">
+<p>计算被签名串的签名 signature。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>将 API 密钥的私钥（secret_access_key） 作为 key，生成被签名串的 HMAC-SHA256 或者 HMAC-SHA1 签名，更多信息可参见 <a href="http://www.ietf.org/rfc/rfc2104.txt">RFC2104</a>。</p>
+</li>
+<li>
+<p>将签名进行 Base64 编码。</p>
+</li>
+<li>
+<p>将 Base64 编码后的结果进行 URL 编码。</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch admon attention">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>当 Base64 编码后存在空格时，不要对空格进行 URL 编码，而要直接将空格转为 <code>+</code>。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>以 Python（版本 2.7）代码为例（其他语言类似，需要使用 <code>sha256</code> + <code>base64</code> 编码，最后需要再进行  编码，URL 编码时需要将原有的空格转为 <code>+</code>）。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>import base64
+import hmac
+import urllib
+from hashlib import sha256
+
+# 前面生成的被签名串
+string_to_sign = &#39;GET\n/iaas/\naccess_key_id=QYACCESSKEYIDEXAMPLE&amp;action=RunInstances&amp;count=1&amp;image_id=centos64x86a&amp;instance_name=demo&amp;instance_type=small_b&amp;login_mode=passwd&amp;login_passwd=login20130712&amp;signature_method=HmacSHA256&amp;signature_version=1&amp;time_stamp=2013-08-27T14%3A30%3A10Z&amp;version=1&amp;vxnets.1=vxnet-0&amp;zone=pek3a&#39;
+h = hmac.new(secret_access_key, digestmod=sha256)
+h.update(string_to_sign)
+sign = base64.b64encode(h.digest()).strip()
+signature = urllib.quote_plus(sign)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_6添加签名">步骤 6：添加签名</h3>
+<div class="paragraph">
+<p>将签名参数附在原有请求串的最后面，最终的 HTTP 请求串为（为了查看方便，我们人为地将参数之间用<code>回车键</code>分隔开）</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>access_key_id=QYACCESSKEYIDEXAMPLE
+&amp;action=RunInstances
+&amp;count=1
+&amp;image_id=centos64x86a
+&amp;instance_name=demo
+&amp;instance_type=small_b
+&amp;login_mode=passwd
+&amp;login_passwd=login20130712
+&amp;signature_method=HmacSHA256
+&amp;signature_version=1
+&amp;time_stamp=2013-08-27T14%3A30%3A10Z
+&amp;version=1
+&amp;vxnets.1=vxnet-0
+&amp;zone=pek3a
+&amp;signature=byjccvWIvAftaq%2BoublemagH3bYAlDWxxLFAzAsyslw%3D</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>完整的请求 URL 为（为了查看方便，将参数之间用<code>回车键</code>分隔开）</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://api.qingcloud.com/iaas/?access_key_id=QYACCESSKEYIDEXAMPLE
+&amp;action=RunInstances
+&amp;count=1
+&amp;image_id=centos64x86a
+&amp;instance_name=demo
+&amp;instance_type=small_b
+&amp;login_mode=passwd
+&amp;login_passwd=login20130712
+&amp;signature_method=HmacSHA256
+&amp;signature_version=1
+&amp;time_stamp=2013-08-27T14%3A30%3A10Z
+&amp;version=1
+&amp;vxnets.1=vxnet-0
+&amp;zone=pek3a
+&amp;signature=byjccvWIvAftaq%2BoublemagH3bYAlDWxxLFAzAsyslw%3D</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>实际 URL 为</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://api.qingcloud.com/iaas/?access_key_id=QYACCESSKEYIDEXAMPLE&amp;action=RunInstances&amp;count=1&amp;image_id=centos64x86a&amp;instance_name=demo&amp;instance_type=small_b&amp;login_mode=passwd&amp;login_passwd=login20130712&amp;signature_method=HmacSHA256&amp;signature_version=1&amp;time_stamp=2013-08-27T14%3A30%3A10Z&amp;version=1&amp;vxnets.1=vxnet-0&amp;zone=pek3a&amp;signature=byjccvWIvAftaq%2BoublemagH3bYAlDWxxLFAzAsyslw%3D</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_iam_身份签名">IAM 身份签名</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>您需要先到 IAM 控制面板创建一个基于特定信任载体类型的身份，并将身份绑定到 API 执行设备上。</p>
+</div>
+<div class="paragraph">
+<p>这里我们假设您的 API 执行设备为 id 为 <code>i-7lchv5u3</code> 的云服务器。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/cloud_service/authorization/iam/iam_role.png" alt="iam_role"/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_1获取_iam_身份的临时凭证">步骤 1：获取 IAM 身份的临时凭证</h3>
+<div class="paragraph">
+<p>在云服务器中执行如下命令，即可取得身份的临时凭证。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>curl -i -H &#34;Accept: application/json&#34; http://169.254.169.254/latest/meta-data/security-credentials</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回信息：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&#34;{\&#34;jti\&#34;:\&#34;0z7dO3oN03byx1CepBDTyl\&#34;,\&#34;id_token\&#34;:\&#34;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3IiOiIxIiwiYXVkIjoiaWFtIiwiYXpwIjoiaWFtIiwiY29ucyI6ImFkbWluIiwiY3VpZCI6ImlhbXItejU3dm42anIiLCJlaXNrIjoieUxjcFViRXZVOWZQZmJSQTA2eUFQMUtMS21keVpoX1JueDJmNmRmeFZZZz0iLCJleHAiOjE1OTAzMTk1MjMsImlhdCI6MTU5MDMxNTkyMywiaXNzIjoic3RzIiwianRpIjoiMHo3ZE8zb04wM2J5eDFDZXBCRFR5bCIsIm5iZiI6MCwib3JnaSI6ImFwcC0xMjM0NTY3OCIsIm93dXIiOiJ1c3ItQ29qOGFIZ24iLCJwcmVmIjoicXJuOnFpbmdjbG91ZDppYW06Iiwicm91ciI6InVzci1Db2o4YUhnbiIsInJ0eXAiOiJyb2xlIiwic3ViIjoic3RzIiwidHlwIjoiSUQifQ.YrCnvySApej2zHsn9cfn3D7tgOahDzeTP1TRBVMZ_3TyToo-H7hB2_mx_J_Qy1NY5K-WykYE4NFxqVN7PqsnAmskqAnRM2D7Gza_PffO7ajEJhtVF7Fo7nsmPKs7y1kryQ2Rvj3ABBJThHjQDtYVsk_pLUio5P0Nl9zb1sSswN4\&#34;,\&#34;access_key\&#34;:\&#34;0z7dO3oN03byx1CepBDTyl\&#34;,\&#34;secret_key\&#34;:\&#34;5qlKnUc3esKJp3G\&#34;,\&#34;expiration\&#34;:1590319523}&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为了查看方便，将参数之间用<code>回车键</code>分隔开。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&#34;jti&#34;:&#34;0z7dO3oN03byx1CepBDTyl&#34;,
+&#34;id_token&#34;:&#34;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3IiOiIxIiwiYXVkIjoiaWFtIiwiYXpwIjoiaWFtIiwiY29ucyI6ImFkbWluIiwiY3VpZCI6ImlhbXItejU3dm42anIiLCJlaXNrIjoieUxjcFViRXZVOWZQZmJSQTA2eUFQMUtMS21keVpoX1JueDJmNmRmeFZZZz0iLCJleHAiOjE1OTAzMTk1MjMsImlhdCI6MTU5MDMxNTkyMywiaXNzIjoic3RzIiwianRpIjoiMHo3ZE8zb04wM2J5eDFDZXBCRFR5bCIsIm5iZiI6MCwib3JnaSI6ImFwcC0xMjM0NTY3OCIsIm93dXIiOiJ1c3ItQ29qOGFIZ24iLCJwcmVmIjoicXJuOnFpbmdjbG91ZDppYW06Iiwicm91ciI6InVzci1Db2o4YUhnbiIsInJ0eXAiOiJyb2xlIiwic3ViIjoic3RzIiwidHlwIjoiSUQifQ.YrCnvySApej2zHsn9cfn3D7tgOahDzeTP1TRBVMZ_3TyToo-H7hB2_mx_J_Qy1NY5K-WykYE4NFxqVN7PqsnAmskqAnRM2D7Gza_PffO7ajEJhtVF7Fo7nsmPKs7y1kryQ2Rvj3ABBJThHjQDtYVsk_pLUio5P0Nl9zb1sSswN4&#34;,
+&#34;access_key&#34;:&#34;0z7dO3oN03byx1CepBDTyl&#34;,
+&#34;secret_key&#34;:&#34;5qlKnUc3esKJp3G&#34;,
+&#34;expiration&#34;:1590319523</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_2计算签名">步骤 2：计算签名</h3>
+<div class="paragraph">
+<p>将身份临时凭证中的 <code>access_key</code> 和 <code>secret_key</code> 按照前文 API 密钥同样的方法进行签名计算。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_步骤_3添加签名">步骤 3：添加签名</h3>
+<div class="paragraph">
+<p>将请求的 URL 路径改为 “/iam/”，最后在请求中附上 <code>token</code> 参数（参数值为临时凭证中的 <code>id_token</code> ）。</p>
+</div>
+<div class="paragraph">
+<p>以 <code>DescribeInstances</code> 为例，最后请求的 URL 为（为了查看方便，参数之间用<code>回车键</code>分隔开）</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://api.qingcloud.com/iam/?access_key_id=0z7dO3oN03byx1CepBDTyl
+&amp;action=DescribeInstances
+&amp;req_id=35430c022b694133a6a758b62e21067b
+&amp;signature_method=HmacSHA256
+&amp;signature_version=2
+&amp;status.1=running
+&amp;status.2=stopped
+&amp;time_stamp=2020-05-25T07%3A20%3A28Z
+&amp;token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3IiOiIxIiwiYXVkIjoiaWFtIiwiYXpwIjoiaWFtIiwiY29ucyI6ImFkbWluIiwiY3VpZCI6ImlhbXItejU3dm42anIiLCJlaXNrIjoieUxjcFViRXZVOWZQZmJSQTA2eUFQMUtMS21keVpoX1JueDJmNmRmeFZZZz0iLCJleHAiOjE1OTAzMTk1MjMsImlhdCI6MTU5MDMxNTkyMywiaXNzIjoic3RzIiwianRpIjoiMHo3ZE8zb04wM2J5eDFDZXBCRFR5bCIsIm5iZiI6MCwib3JnaSI6ImFwcC0xMjM0NTY3OCIsIm93dXIiOiJ1c3ItQ29qOGFIZ24iLCJwcmVmIjoicXJuOnFpbmdjbG91ZDppYW06Iiwicm91ciI6InVzci1Db2o4YUhnbiIsInJ0eXAiOiJyb2xlIiwic3ViIjoic3RzIiwidHlwIjoiSUQifQ.YrCnvySApej2zHsn9cfn3D7tgOahDzeTP1TRBVMZ_3TyToo-H7hB2_mx_J_Qy1NY5K-WykYE4NFxqVN7PqsnAmskqAnRM2D7Gza_PffO7ajEJhtVF7Fo7nsmPKs7y1kryQ2Rvj3ABBJThHjQDtYVsk_pLUio5P0Nl9zb1sSswN4
+&amp;verbose=0
+&amp;version=1
+&amp;zone=pekt3
+&amp;signature=o8TW8DUQ3wyHz5YSkpMd9fSj4pJ24U7%2Buf7CeWKMoQw%3D</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>实际 URL 为</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://api.qingcloud.com/iam/?access_key_id=0z7dO3oN03byx1CepBDTyl&amp;action=DescribeInstances&amp;req_id=35430c022b694133a6a758b62e21067b&amp;signature_method=HmacSHA256&amp;signature_version=2&amp;status.1=running&amp;status.2=stopped&amp;time_stamp=2020-05-25T07%3A20%3A28Z&amp;token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3IiOiIxIiwiYXVkIjoiaWFtIiwiYXpwIjoiaWFtIiwiY29ucyI6ImFkbWluIiwiY3VpZCI6ImlhbXItejU3dm42anIiLCJlaXNrIjoieUxjcFViRXZVOWZQZmJSQTA2eUFQMUtMS21keVpoX1JueDJmNmRmeFZZZz0iLCJleHAiOjE1OTAzMTk1MjMsImlhdCI6MTU5MDMxNTkyMywiaXNzIjoic3RzIiwianRpIjoiMHo3ZE8zb04wM2J5eDFDZXBCRFR5bCIsIm5iZiI6MCwib3JnaSI6ImFwcC0xMjM0NTY3OCIsIm93dXIiOiJ1c3ItQ29qOGFIZ24iLCJwcmVmIjoicXJuOnFpbmdjbG91ZDppYW06Iiwicm91ciI6InVzci1Db2o4YUhnbiIsInJ0eXAiOiJyb2xlIiwic3ViIjoic3RzIiwidHlwIjoiSUQifQ.YrCnvySApej2zHsn9cfn3D7tgOahDzeTP1TRBVMZ_3TyToo-H7hB2_mx_J_Qy1NY5K-WykYE4NFxqVN7PqsnAmskqAnRM2D7Gza_PffO7ajEJhtVF7Fo7nsmPKs7y1kryQ2Rvj3ABBJThHjQDtYVsk_pLUio5P0Nl9zb1sSswN4&amp;verbose=0&amp;version=1&amp;zone=pekt3&amp;signature=o8TW8DUQ3wyHz5YSkpMd9fSj4pJ24U7%2Buf7CeWKMoQw%3D</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>
+<div class="post-placeholder"><div class="post-menu">
+  <div class="post-menu-title">本页目录</div>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_api_密钥签名">API 密钥签名</a>
+      <ul>
+        <li><a href="#_步骤_1按参数名进行升序排列">步骤 1：按参数名进行升序排列</a></li>
+        <li><a href="#_步骤_2参数_url_编码">步骤 2：参数 URL 编码</a></li>
+        <li><a href="#_步骤_3构造_url_请求">步骤 3：构造 URL 请求</a></li>
+        <li><a href="#_步骤_4构造被签名串">步骤 4：构造被签名串</a></li>
+        <li><a href="#_步骤_5计算签名">步骤 5：计算签名</a></li>
+        <li><a href="#_步骤_6添加签名">步骤 6：添加签名</a></li>
+      </ul>
+    </li>
+    <li><a href="#_iam_身份签名">IAM 身份签名</a>
+      <ul>
+        <li><a href="#_步骤_1获取_iam_身份的临时凭证">步骤 1：获取 IAM 身份的临时凭证</a></li>
+        <li><a href="#_步骤_2计算签名">步骤 2：计算签名</a></li>
+        <li><a href="#_步骤_3添加签名">步骤 3：添加签名</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </body><script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+
+<script type="text/javascript" src="/js/common.428b8a7f426567136e0501d49705f10dac2e4539d10c2f396d7c9ee45df1469eaa38e983928589e0e35ed30c1732ddbcda694ac0928ffffffee76b4a0017adf2.js" integrity="sha512-QouKf0JlZxNuBQHUlwXxDawuRTnRDC85bXye5F3xRp6qOOmDkoWJ4ONe0wwXMt282mlKwJKP///&#43;52tKABet8g=="></script>
+
+<script type="text/javascript" src="/js/search.d8001c3e1b66b9a0b48e0c23ad0dbfc0906f194f8925ae78a9900b960679cfa7e41cebd9efd654f84535d02cbce7c4971f226e6f07288c26c3c4560c36d7655b.js"></script>
+<script>
+  $(function() {
+    
+    hljs.highlightAll();
+    
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>
+</html>

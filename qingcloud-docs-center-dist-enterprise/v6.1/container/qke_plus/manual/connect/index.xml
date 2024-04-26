@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>集群连接 on 用户指南</title>
+    <link>/v6.1/container/qke_plus/manual/connect/</link>
+    <description>Recent content in 集群连接 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/container/qke_plus/manual/connect/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 kubectl 连接集群</title>
+      <link>/v6.1/container/qke_plus/manual/connect/kubectl_cnect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/connect/kubectl_cnect/</guid>
+      <description>本小节将指导您如何在本地使用 kubectl 工具连接到集群。
+说明 kubectl 是标准的 Kubernetes 命令行管理工具，您可以通过 Kubectl 来管理和控制 QKE 集群。
+您可以通过 kubectl 连接托管版和自管版集群。对于自管版集群，您还可以通过 SSH 方式登录集群。
+前提条件 集群已成功创建并正常运行。
+已配置 K8s apiserver EIP。具体操作请参见集群参数配置。
+操作步骤 步骤一：安装 kubectl 在本地电脑下载并安装 kubectl，具体安装操作请参见安装和设置 kubectl。
+说明 请确保您的电脑可以访问外网。
+步骤二：配置 Kubeconfig kubectl 工具默认会从客户端机器的 $HOME/.kube 目录下查找名为 config 的文件，该文件用于存储所要管理集群的访问凭证，kubectl 会根据该配置文件连接至集群。
+在集群信息页面，点击 查看 kubeconfig，然后点击复制，复制 kubeconfig 文件中的内容。
+注意 请确保 server 字段值为 https://K8s apiserver EIP:443。
+将 kubeconfig 内容拷贝到 kubectl 客户端机器的 $HOME/.kube/config 文件中并保存退出。
+说明 如果安装目录 $HOME/ 下没有 .kube 目录和 config 文件，请自行创建。
+步骤三：验证集群连通性 集群凭证配置完成后，您可以执行 kubectl 命令以验证集群的连通性。</description>
+    </item>
+    
+    <item>
+      <title>通过 SSH 登录自管版集群节点</title>
+      <link>/v6.1/container/qke_plus/manual/connect/ssh_login_cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/container/qke_plus/manual/connect/ssh_login_cluster/</guid>
+      <description>为了方便您的集群管理与维护，QKE 自管版支持通过 SSH 方式登录到集群节点。本文介绍如何为自管版集群开通 SSH 登录，以及如何通过 SSH 方式连接到集群节点。
+前提条件 当前集群为自管版 QKE 集群。
+约束限制 自管版提供的 SSH 登录集群功能，默认登录的节点为主节点 master1（默认主机名），不能直接从本地登录到其他节点，但可通过 master1 节点登录到其他节点。
+开启 SSH 登录 开启 SSH 登录，可选择使用 SSH 密钥登录或密码登录。
+密钥登录：登录用户为 root，登录方式参见 SSH 密钥登录。
+密码登录：登录用户为 ubuntu，登录方式参见密码登录 。
+您可以在创建集群时或创建集群后，在集群参数配置中开启 SSH 登录集群的功能。具体操作方法如下：
+集群未创建 在自管版集群创建页面的环境配置参数区域，找到 K8s apiserver EIP 参数。
+选择绑定已有公网 IP 或新建公网 IP。
+点击 SSH 登录集群后的开关按钮，开启 SSH 登录集群功能。
+选择登录方式，支持通过 SSH 密钥或密码登录。
+SSH 密钥：选择已创建好的 SSH 密钥。若未创建，点击新建密钥前往 SSH 密钥页面进行创建。
+密码：根据密码规则设置登录密码。登录用户为 ubuntu，不可修改。
+说明 创建 SSH 密钥时，请及时下载私钥文件。
+集群已创建 在集群信息页面的环境参数区域，找到 K8s apiserver EIP 参数，点击图标，参数值变为可编辑状态。</description>
+    </item>
+    
+  </channel>
+</rss>

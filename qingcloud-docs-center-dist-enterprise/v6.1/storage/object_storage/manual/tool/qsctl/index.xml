@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>qsctl on 用户指南</title>
+    <link>/v6.1/storage/object_storage/manual/tool/qsctl/</link>
+    <description>Recent content in qsctl on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/object_storage/manual/tool/qsctl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>qsctl v1 文档</title>
+      <link>/v6.1/storage/object_storage/manual/tool/qsctl/v1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/object_storage/manual/tool/qsctl/v1/</guid>
+      <description>qsctl 是对象存储服务的高级命令行工具。它提供了更强大的类 UNIX 命令，使管理对象存储的资源变得像管理本地资源一样方便。这些命令包括：cp、ls、mb、mv、rb、rm、sync 和 presign。所有 qsctl 的命令都支持批量操作。
+安装 qsctl 支持 pip 进行安装，用户也可以直接下载并运行对象存储提供的可执行文件。详细操作分别如下：
+pip 安装 类 Unix 操作系统的服务器上，执行如下命令进行安装:
+pip install qsctl -U 若没有安装 virtualenv，则执行如下命令
+sudo pip install qsctl -U 在 Windows 服务器上，请使用管理员权限打开命令行窗口，运行如下命令进行安装：
+pip install qsctl -U 下载安装包 用户根据操作系统，下载相应的安装包：
+Windows 用户 qsctl-latest.zip
+Linux qsctl-latest.tar.gz
+Mac OS X 用户 qsctl-latest.tar.gz
+部分 Windows 用户可能出现缺少 dll 文件的错误，根据自己系统下载并安装合适的依赖包即可：
+64位系统
+32位系统
+配置 在正式使用 qsctl 工具前，用户需修改相应的配置文件，从而使其能正常工作。在载入配置文件时，qsctl 会按照如下顺序进行尝试，一旦读取成功便不再尝试下一个配置文件：
+用户通过 -c 参数指定的路径
+配置文件：~/.qingstor/config.yaml
+配置文件：~/.qingcloud/config.yaml
+以上为类 Unix 系统下的配置文件路径，对 Windows 用户而言，配置文件路径为 %USERPROFILE%\.</description>
+    </item>
+    
+  </channel>
+</rss>

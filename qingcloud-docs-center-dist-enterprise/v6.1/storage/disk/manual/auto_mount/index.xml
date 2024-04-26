@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>配置自动挂载 on 用户指南</title>
+    <link>/v6.1/storage/disk/manual/auto_mount/</link>
+    <description>Recent content in 配置自动挂载 on 用户指南</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>©2022 QingCloud, Inc. All rights reserved</copyright><atom:link href="/v6.1/storage/disk/manual/auto_mount/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自动挂载 Linux 硬盘</title>
+      <link>/v6.1/storage/disk/manual/auto_mount/linux_auto_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/manual/auto_mount/linux_auto_mount/</guid>
+      <description>初始化待挂载的硬盘 请参见 初始化硬盘。
+使用磁盘 UUID 方式 使用 blkid 命令获取磁盘的 uuid。
+# blkid /dev/sdb /dev/vdc: UUID=&amp;#34;70fc59fe-d388-49ba-be56-b06cfbcc01ed&amp;#34; TYPE=&amp;#34;ext4&amp;#34; 说明 /dev/sdb：磁盘盘符，需根据实际情况进行修改。
+使用以下命令，备份 fstab 配置文件。
+# cp /etc/fstab /etc/fstab.bak 执行以下命令，将配置内容写入 fstab 文件。
+# echo &amp;#34;UUID=70fc59fe-d388-49ba-be56-b06cfbcc01ed /mnt ext4 defaults 0 0&amp;#34; &amp;gt;&amp;gt;/etc/fstab 说明 UUID：为步骤1查询出的磁盘uuid ，需根据实际情况进行修改； /mnt：为磁盘挂载的目录，需根据实际情况进行修改； ext4：为文件系统类型。
+若磁盘已手动挂载，请用 umount 命令将挂载的磁盘卸载；再使用 mount -a 命令测试是否能自动挂载成功。
+# umount -v /dev/sdb # mount -a 执行df -h命令，确认是否挂载成功。
+# df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 20G 859M 18G 5% / tmpfs 499M 0 499M 0% /dev/shm /dev/sdb 9.</description>
+    </item>
+    
+    <item>
+      <title>自动挂载 Windows 硬盘</title>
+      <link>/v6.1/storage/disk/manual/auto_mount/win_auto_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v6.1/storage/disk/manual/auto_mount/win_auto_mount/</guid>
+      <description>Windows 云服务器挂载硬盘之后，如果云服务器发生重启，硬盘可能没法自动挂载，需要人工登录并进行手动 “联机” 操作， 以下方法可设置硬盘自动挂载。
+打开 Windows 命令行工具, 即 cmd。
+运行 diskpart，进入 diskpart 交互模式。
+输入 san policy=OnlineAll：
+至此， Windows 硬盘自动挂载设置完成。</description>
+    </item>
+    
+  </channel>
+</rss>
