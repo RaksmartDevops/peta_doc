@@ -1,0 +1,111 @@
+---
+title: "create_oss_policies"
+description: 本小节主要介绍 ChronusDB 创建存储策略接口。 
+keywords: ChronusDB 创建存储策略,创建存储策略
+weight: 60
+collapsible: false
+draft: false
+---
+ChronusDB 通过创建对象存储策略，并在创建表时添加语句指定对象存储策略，将冷数据存储到对象存储服务磁盘中，实现数据多磁盘存储。
+
+include::../../../../../../_components/attention.adoc[]
+
+* 开启存储策略将重启集群。为避免数据丢失，请在业务低峰期开启存储策略。
+* 当多个表共用一个存储策略时，在对象存储桶的数据统一存在同一目录下，不会按照表进行划分目录，可能对运维不友好。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+== 请求参数
+
+[cols="1,1,3,1"]
+|===
+| 参数 | 类型 | 描述 | 是否必选
+
+| cluster
+| String
+| 集群 ID。 +
+取值示例 `cl-yxgxofd3`。
+| Yes
+
+| service
+| String
+| 自定义服务类型。 +
+取值 `delete_oss_policies`，表示删除存储策略服务。
+| Yes
+
+| service_params
+| String
+a| 自定义服务功能配置参数。 +
+取值示例 ``{"policies_name":"ossp","end_point":"","key_secret":"","key_id":"""}``。 
+
+
+* `policies_name` 表示存储策略名称。 +
+* `end_point` 表示对象存储地址。s3 协议的对象存储地址必须以 '`/`' 结尾  。 +
+* `key_id` 表示 API 密钥的 ID。 +
+* `key_secret` 表示 API 密钥的私钥。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该配置参数输入格式，需为 URL 编码。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Yes
+|===
+
+== 响应消息
+
+[cols="1,1,2"]
+|===
+| 参数 | 类型 | 描述
+
+| service
+| String
+| 执行任务对应的服务。
+
+| cluster_id
+| String
+| 集群 ID。
+
+| action
+| String
+| 响应动作。
+
+| job_id
+| String
+| 执行任务的 Job ID。
+
+| ret_code
+| Integer
+| 执行成功与否。 +
+取值 `0` 表示成功，其他值则为错误代码。
+|===
+
+== 示例
+
+=== 请求示例
+
+[,url]
+----
+https://api.qingcloud.com/iaas/?access_key_id=CCCVEESNVLHNZFPLUYZX
+&action=RunClusterCustomService
+&cluster=cl-yxgxofd3
+&service=create_oss_policies
+&service_params=%7B%22policies_name%22%3A%22ossp%22%2C%22end_point%22%3A%22https%3A%2F%2Fs3.pek3b.qingcloud.com%2Fqingstor%bucketname%2Fpath%2F%22%2C%22key_secret%22%3A%22e1O5aUrS8FhgSwjanP%22%2C%22key_id%22%3A%22TEM%22%7D
+&zone=pek3
+&<COMMON_PARAMS>
+----
+
+=== 响应示例
+
+[,json]
+----
+{
+    "action": "RunClusterCustomServiceResponse",
+    "cluster_id": "cl-ggfkekwg",
+    "job_id": "j-2kuqg0giddu",
+    "service": "create_oss_policies",
+    "ret_code": 0
+}
+----

@@ -1,0 +1,219 @@
+---
+title: Linux 云服务器部署 Docker
+weight: 240
+---
+
+== 简介
+
+本文介绍了如何在 Linux 云服务器实例中部署 Docker，并提供了 Docker 常用操作命令及简单的镜像制作过程。
+
+本文档示例环境为 CentOS7.9。
+
+== Docker 相关术语
+
+=== Docker 镜像
+
+Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+
+=== Docker容器
+
+镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+
+容器的实质是进程，但与直接在宿主机执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。
+
+=== Docker仓库
+
+镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务。
+一个 Docker Registry 中可以包含多个 仓库（Repository）；每个仓库可以包含多个 标签（Tag）；每个标签对应一个镜像。
+
+include::../../../../../../_components/note.adoc[]
+更多关于镜像、容器、仓库的基础知识，请参见 link:https://docs.docker.com/[Docker Documentation]。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+== 部署Docker
+
+Docker 支持 64 位版本 CentOS 7/8，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 `overlay2` 存储层驱动）无法使用，并且部分功能可能不太稳定。
+
+. 添加 yum 源。
++
+[,shell]
+----
+ yum install epel-release -y  # 安装 EPEL YUM 源
+----
+
+. 安装 yum-util。
++
+[,shell]
+----
+yum install -y yum-utils device-mapper-persistent-data lvm2
+----
+
+. 设置 docker yum 源。
++
+[,shell]
+----
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+----
+
+. 更新、安装并运行 Docker。
++
+[,shell]
+----
+yum makecache fast	# 生成缓存
+yum -y install docker-ce	# 安装 docker
+systemctl enable docker	# 设置开机自启
+systemctl start docker	# 启动 docker服务
+----
+
+. 查看安装的 docker 版本
++
+[,shell]
+----
+docker --version
+----
+
+== Docker 基本用法
+
+. Docker 进程管理
+
+* 运行 Docker
++
+[source,shell]
+----
+systemctl start docker
+----
+
+* 停止 Docker
++
+[source,shell]
+----
+systemctl stop docker
+----
+
+* 重启 Docker
++
+[source,shell]
+----
+systemctl restart docker
+----
+
+. 镜像管理
+
+.. 拉取镜像。此处以 Nginx 和 CentOS 官方镜像为例。
++
+[source,shell]
+----
+docker pull  nginx	# 拉取 nginx 镜像
+docker pull centos	# 拉取 centos 镜像
+----
+
+.. 查看已有镜像。
++
+[source,shell]
+----
+docker images
+----
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment1.png[]
+
+.. 强制删除镜像。
++
+[source,shell]
+----
+docker rmi centos
+----
++
+. Docker 容器创建。
+
+.. 创建一个容器并运行。
++
+[source,shell]
+----
+docker run -it -d -p 80:80 --name nginx nginx	# 使用镜像 Nginx，以交互模式启动一个容器，将容器的 80 端口映射到云服务器的 80 端口，并返回容器 ID。
+----
++
+启动参数说明如下：
++
+
+include::../../../../../../_components/note.adoc[]
+
+* -i：以交互模式运行容器，通常与 -t 同时使用。
+* -t：为容器重新分配一个伪输入终端，通常与 -i 同时使用。
+* -d：后台运行容器。
+* -p：端口映射，格式为 `云服务器端口:容器端口`。
+* --name：为容器指定一个名称。
+* -v：把云服务器的一个目录挂载到容器里，格式为 `云服务器目录:容器内挂载的路径`，必须为绝对路径。
+
+include::../../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment2.png[]
+
+.. 查看容器启动情况。
++
+[source,shell]
+----
+docker ps -a
+----
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment3.png[]
+
+.. 测试容器服务是否正常运行。
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment4.png[]
+
+== Docker镜像制作
+
+通过 Dockerfile 定制一个简单的 Nginx 镜像。
+
+. 创建 Dockerfile 文件。
++
+[source,shell]
+----
+mkdir test	# 创建存放文件夹
+cd test  	# 打开文件夹
+touch Dockerfile	# 创建 Dockerfile 空白文件
+----
+
+. 编辑 Dockerfile。
++
+[source,shell]
+----
+vim Dockerfile	# 修改Dockerfile文件，添加以下内容
+
+FROM nginx
+RUN echo '<h1>example</h1>' > /usr/share/nginx/html/index.html
+----
+
+. 构建镜像。
++
+[source,shell]
+----
+docker build -t nginx:v1 .	 # 注意最后有一个点，代表当前目录
+----
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment5.png[]
++
+
+include::../../../../../../_components/note.adoc[]
+
+-t nginx:v1：指定镜像的名称和版本。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 查看部署的镜像。
++
+[source,shell]
+----
+docker images
+----
++
+image::/images/cloud_service/compute/vm/bestp_docker_deployment6.png[]
+
+. 通过构建的镜像部署容器。
++
+[source,shell]
+----
+docker run -it -d -p 80:80 --name nginx nginx:v1
+----

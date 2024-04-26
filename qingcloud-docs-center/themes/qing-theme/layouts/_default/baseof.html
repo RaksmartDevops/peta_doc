@@ -1,0 +1,19 @@
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$searchString := print $FirstSection.RelPermalink `search/`}}
+{{$BackgroundImage := $FirstSection.Params.bannerImage}}
+{{$IsEmbed := (eq .Site.Params.isEmbed true)}}
+{{$IsSearchPage := (eq .RelPermalink $searchString)}}
+{{$IsSearchHome := (and $FirstSection.Params.isSearchPage (or (eq .RelPermalink $FirstSection.RelPermalink) (eq .RelPermalink `/`)))}}
+<!DOCTYPE html>
+<html lang="{{- .Site.Language.Lang -}}">
+    {{- partial "head.html" . -}}
+    <body
+        class="root {{cond $IsEmbed `is-embed` ``}} {{if $IsSearchPage}}is-search-page{{end}} {{if $IsSearchHome}}is-search-home{{end}}"
+        style="{{if and (and $IsSearchHome $BackgroundImage) (not $IsEmbed)}}background-image:url('{{$BackgroundImage}}');background-size: auto 280px;
+        background-position-x: center;background-repeat:no-repeat;{{end}}"
+        >
+        {{- partial "header.html" . -}}
+        {{- block "main" . }}{{- end }}
+    </body>
+    {{- partialCached "scripts.html" . -}}
+</html>

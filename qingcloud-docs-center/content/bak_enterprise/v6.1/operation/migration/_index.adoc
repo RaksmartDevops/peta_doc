@@ -1,0 +1,43 @@
+---
+
+title: "服务器迁移中心"
+linkTitle: "服务器迁移中心"
+weight: 1
+description: 提供V2V迁移服务，可将其它虚拟化平台的云主机系统及数据完整迁移至云平台。
+
+
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是服务器迁移中心
+            url: /v6.1/operation/migration/intro/introduction/
+          - title: 使用限制
+            url: /v6.1/operation/migration/intro/use_restrictions/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 迁移前准备
+            url: /v6.1/operation/migration/manual/preparation/
+          - title: 迁移基本操作
+            url: /v6.1/operation/migration/manual/basic_use/
+          - title: 迁移后检查
+            url: /v6.1/operation/migration/manual/check_server/
+      - title: 常见问题
+        children:
+          - title: 迁移中FAQ
+            url: /v6.1/operation/migration/faq/migration_faq/
+          - title: 迁移后FAQ
+            url: /v6.1/operation/migration/faq/after_migration_faq/
+          - title: 故障排查
+            url: /v6.1/operation/migration/faq/troubleshooting_faq/
+
+---
+
+

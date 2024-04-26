@@ -1,0 +1,12 @@
+{{- $.Scratch.Add "pagesIndex" slice -}}
+{{- range $index, $page := .Site.Pages -}}
+  {{- $pageData := (dict "title" (cond (le (split $page.RelPermalink "/" | len) 3) .Site.Title $page.Title) "href" $page.RelPermalink "content" $page.Plain "linkkey" $page.Params.linkkey "isSection" (or $page.Params.isSearchPage $page.Params.study_section)) -}}
+  {{- if or $page.Params.isSearchPage $page.Params.study_section | or $page.Plain | not -}}
+    {{- $FirstChildPage := (partial "get-first-child-page.html" $page) -}}
+    {{- $pageData = merge $pageData (dict "firstChild" (dict "title" $FirstChildPage.Title "href" $FirstChildPage.RelPermalink)) -}}
+  {{end}}
+  {{- $.Scratch.Add "pagesIndex" $pageData -}}
+  {{/* - if gt (len $page.Content) 0 - */}}
+  {{/* - end - */}}
+{{- end -}}
+{{- $.Scratch.Get "pagesIndex" | jsonify -}}

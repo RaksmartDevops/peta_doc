@@ -1,0 +1,135 @@
+---
+title: "权限组管理"
+draft: false
+weight: 1
+keywords: 云计算, 文件存储, QFS
+linkkey: storage_qfs_auth_guide
+---
+
+本小节主要介绍文件存储 QFS 权限管理的相关操作。系统默认提供 NFS 和 SMB 两个权限组，如无特殊权限要求，用户可直接使用该默认权限组。用户也可提前创建所需权限组后再创建文件系统共享，并在创建的文件系统共享中使用该权限组。
+
+针对已创建的 NFS 权限组，用户还需创建相应的 ACL 规则来满足其具体的权限控制需求。
+
+== 权限组列表
+
+在**权限管理**主页面，列表显示了当前系统中，已创建的权限组。创建文件系统时，用户可根据需求选用合适的权限组或新建权限组。
+
+. 登录{platform_name_cn}的{console_name}。
+
+. 点击**产品与服务** > **存储服务** > **文件存储 QFS**，默认进入**文件系统**主页面。
+
+. 点击左侧导航栏中的**权限管理**，进入**权限管理**主页面。该页面列表显示当前系统中，已创建的权限组。
++
+image::/images/cloud_service/storage/qfs/auth_list.png[auth_list,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* **协议类型**：说明该权限组针对何种协议类型生效。
+
+* **ACL 数量**：说明该权限组已创建的 ACL 数量。
+
+* 名为 `DEFAULT_ACCESS_GROUP_NFS` 与 `DEFAULT_ACCESS_GROUP_SMB` 的两个权限组，分别为系统默认提供的 NFS 和 SMB 权限组，不支持用户修改与删除操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 创建权限组
+
+. 进入link:#_权限组列表[权限管理]主页面。
+
+. 点击 **+ 创建权限组**，弹出**创建权限组**对话框。
++
+image::/images/cloud_service/storage/qfs/auth_create.png[auth_create,60%]
+
+. 用户根据页面提示信息，正确填写各项参数后，点击**确定**按钮，即完成创建。
++
+
+include::../../../../../_components/note.adoc[]
+
+* **协议类型**：说明该权限组针对何种协议类型生效。
+
+* **描述**：用户可根据实际情况填写该权限组的用途、适用对象等相关信息，选填项。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 成功创建的权限组，可在link:#_权限组列表[权限管理]主页面查看。
+
+== 修改权限组
+
+include::../../../../../_components/note.adoc[]
+
+* 针对已创建的权限组，系统仅支持名称与描述信息的修改，不支持协议类型的修改。
+
+* 修改后的权限组，自动生效。无需重新挂载。
+
+include::../../../../../_components/table_footer.adoc[]
+
+在link:#_权限组列表[权限管理]主页面，点击目标权限组的**修改**操作，弹出**修改权限组**对话框，用户根据页面提示信息，修改相关参数后，点击**确定**按钮，即可完成修改。
+
+image::/images/cloud_service/storage/qfs/auth_modify.png[auth_modify,60%]
+
+== 删除权限组
+
+include::../../../../../_components/note.adoc[]
+
+* 正在使用的权限组不能删除。执行该操作之前，用户需确认当前无文件系统使用待删除的权限组。
+* 默认权限组不支持删除操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+在link:#_权限组列表[权限管理]主页面，点击目标权限组的**删除**操作，弹出确认对话框，用户确认该删除操作无误后，点击**删除**按钮，即可完成删除操作。
+
+
+== 查看 ACL
+
+
+. 进入link:#_权限组列表[权限管理]主页面。
+
+. 点击目标权限组名称后，进入目标权限组 ACL 列表页面。该页面列表显示当前权限组所创建的所有 ACL 规则。
++
+image::/images/cloud_service/storage/qfs/acl_list.png[acl_list,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+创建权限组时，系统会默认创建一条 ACL 规则，该默认 ACL 规则不支持优先级与授权地址的修改。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+== 创建 ACL
+
+. 进入link:#_查看_acl[ ACL 列表]页面。
+
+. 点击** + 创建 ACL**，弹出**创建 ACL** 对话框，用户根据页面提示信息，填写相关参数后，点击**确定**按钮，即完成 ACL 规则的创建。
++
+image::/images/cloud_service/storage/qfs/acl_create.png[acl_create,60%]
++
+
+include::../../../../../_components/note.adoc[]
+
+该页面各参数，可参考link:../../intro/keyword_list/#_acl_规则[前文相关说明]。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 成功创建的 ACL 规则，可在link:#_查看_acl[ ACL 列表]页面查看。
+
+== 修改 ACL
+
+对已创建的 ACL 规则，系统支持用户对其进行修改。
+
+. 进入link:#_查看_acl[ ACL 列表]页面。
+
+. 点击目标 ACL 规则的**修改**操作，弹出**修改规则**对话框，用户根据页面提示信息，修改相关参数后，点击**确定**按钮，即可完成修改。
++
+image::/images/cloud_service/storage/qfs/acl_modify.png[acl_modify,60%]
+
+. 修改后的 ACL 规则自动生效。
+
+== 删除 ACL
+
+删除 ACL 规则，系统立马生效。该操作会影响到所有正在使用该权限组进行共享的文件系统。
+
+. 进入link:#_查看_acl[ ACL 列表]页面。
+
+. 点击目标 ACL 规则的**删除**操作，弹出确认对话框，用户该操作无误后，点击**删除**按钮，即可完成删除。

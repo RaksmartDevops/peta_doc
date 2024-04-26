@@ -1,0 +1,59 @@
+---
+title: 修改出口带宽监控交换机端口信息（Boss2ModifySnmpSwitchInterfaceAttributes）
+weight: 17
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifySnmpSwitchInterfaceAttributes
+
+=== Method
+POST
+
+=== 接口描述
+修改指定交换机的端口信息，修改成功则返回端口id信息。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifySnmpSwitchInterfaceAttributes",
+    "zone":"test",  // [必须]指定交换机所在的zone
+    "switch_id": "testbandwidth", // [必须]指定交换机id
+    "interface": "Ethernet1/10", // [必须]指定端口号
+    "customer": "测试客户", // 设定端口对应客户
+    "standard": "10GE", // 设定端口的规格
+    "remarks": "测试123"  // 设定端口备注信息
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "zone": "test",
+   "switch_id": "testbandwidth",
+   "interface": "Ethernet1/10",
+   "new": false,
+   "ret_code": 0,
+   "action": "Boss2ModifySnmpSwitchInterfaceAttributesResponse"
+}
+----

@@ -1,0 +1,52 @@
+---
+title: 管理网络服务实例
+description: 介绍如何创建或销毁网络管理服务实例。
+keywords: 流量牵引服务, MCN
+draft: false
+weight: 10
+linkkey: network_mms_example_guide
+---
+本小节介绍如何管理网络服务实例。
+
+== 前提条件
+
+已获取网络服务实例名称、 VLAN ID、实例 IP 以及回源 IP 地址。
+
+
+== 创建网络服务实例
+
+. 登录管理控制台，在控制台导航栏中，选择**产品与服务** > *网络* > *流量牵引服务*。
++
+进入**流量牵引服务**页面。
+
+. 在**网络服务实例列表**，点击**创建实例**。
+. 根据提示信息输入参数项，完成后点击**确定**。
++
+
+include::../../../../../_components/attention.adoc[]
+* 同一个 VLAN ID 只能创建一个网络服务实例。
+* 回源 IP 与实例 IP 需配置在同一网段，如回源 IP 为 100.100.0.2/30，实例 IP 为 100.100.0.3/30。
+* 需提前配置互联实例侧的路由到回源 IP，具体操作请参见link:../config_ip/[配置路由到回源 IP]。
+
+include::../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/network/mcn/mcn_create.png[创建实例]
+
+. 点击实例所在行的**查看**，可查看该实例详细信息。
+
+== 销毁网络服务实例
+
+. 登录管理控制台，在控制台导航栏中，选择**产品与服务** > *网络* > *流量牵引服务*。
++
+进入**流量牵引服务**页面。
+
+. 在待销毁网络服务实例所在行操作一栏点击**销毁**。
+. 在提示框点击**销毁**，销毁实例。
++
+
+include::../../../../../_components/attention.adoc[]
+
+网络服务实例销毁后，将不能进行 EIP 引流。
+
+include::../../../../../_components/table_footer.adoc[]
+

@@ -1,0 +1,69 @@
+---
+title: 【已废弃】获取告警压制列表（Boss2DescribeAlertSuppress）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertSuppress
+
+=== Method
+POST
+
+=== 接口描述
+该接口只会返回当前仍然有效的压制记录。如果只筛选某个节点的压制记录，建议查询参数中同时传 zone ID 和 节点 ID，保证唯一性。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertSuppress",
+    "node_id": "tr02n20",    // 按 节点ID 筛选，可选
+    "zone": "test",         // 按 zone ID 筛选，可选
+    "owner": 188,           // 按 owner 筛选，传 BOSS 用户ID，可选
+    "sort_key": "end_time",
+    "reverse": 0,
+    "limit": 1,
+    "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "suppress_set": [
+      {
+         "id": 2,
+         "zone": "test",
+         "node_id": "tr02n20",
+         "start_time": "2019-12-26T02:36:41.321Z",
+         "end_time": "2019-12-26T02:37:41.321Z",
+         "owner_id": 3,
+         "owner_email": "admin@alphacloud.com",
+         "owner_name": null
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertSuppressResponse"
+}
+----

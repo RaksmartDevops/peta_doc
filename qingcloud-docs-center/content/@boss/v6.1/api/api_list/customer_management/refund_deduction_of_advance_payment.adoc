@@ -1,0 +1,80 @@
+---
+title: 退款/扣除垫付（Boss2Discharge）
+weight: 23
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2Discharge
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了IAAS的充值接口(Recharge)，加入了更多的字段用于操作的描述。
+
+退款
+`{`
+`"action": "Boss2Discharge",`
+`"charge_type": "discharge",`
+`"user": "usr-i3K70DIf",`
+`"fee": "1",`
+`"reason": "不想用了",`
+`"ticket": "tk-xxxxx",`
+`"pay_method": "alipay",`
+`"company":"公司名称",`
+`"remarks": "测试退款"`
+`}`
+
+扣除垫付
+`{`
+`"action": "Boss2Discharge",`
+`"payback": "on",`
+`"charge_type": "payback",`
+`"user": "usr-i3K70DIf",`
+`"fee": "10",`
+`"remarks": "测试扣除垫付"`
+`}`
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2Discharge",
+   "charge_type": "discharge",
+   "user": "usr-i3K70DIf",
+   "fee": "1",
+   "reason": "不想用了",
+   "ticket": "tk-xxxxx",
+   "pay_method": "alipay",
+   "remarks": "测试退款"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DischargeResponse",
+   "user_id": "usr-i3K70DIf",
+   "ret_code": 0
+}
+----

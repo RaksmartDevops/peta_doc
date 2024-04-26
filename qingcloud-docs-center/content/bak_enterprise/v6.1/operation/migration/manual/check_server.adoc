@@ -1,0 +1,85 @@
+---
+title: "迁移后检查"
+description: 本小节主要介绍迁移后的检查工作。
+weight: 3
+---
+
+
+迁移任务完成后，可在云服务器页面查看相关资源，需检查相关配置。
+
+== 查看云服务器
+
+. 登录 *管理控制台*，选择 *产品与服务* > *计算* > *云服务器*，进入 *云服务器* 页面，可查看到迁移成功的云服务器展示在列：
++
+image::/images/cloud_service/operation/migration/check_server_1.png[]
+
+. 点击云服务器 ID 处链接，进入详情页面，可查看当前云服务器的详细信息：
++
+image::/images/cloud_service/operation/migration/check_server_2.png[]
+
+. 点击 ID 后图标，如下所示，检查云服务器是否能正常启动到登录界面：
++
+image::/images/cloud_service/operation/migration/check_server_3.png[]
+
+== 检查云服务器时间
+
+登录云服务器，检查云服务器的时间和时区是否与当前时间保持一致。
+
+=== Linux 系统
+
+. 登录云服务器。
+. 执行如下命令查看云服务器的系统时间：
++
+[source,shell]
+----
+timedatectl
+----
+
+
+=== Windows 系统
+
+. 点击 *开始* > *设置*。
+. 选择 *时间和语言* > *日期和时间*，即可查看云服务器的时间和时区。
+
+== 更新 virtio 驱动
+
+当云服务器系统为 Windows 系统，控制器类型选择 virtio 时，需更新 virtio 驱动。
+
+=== 操作步骤
+
+. 登录 *服务器迁移中心*，进入 *迁移任务* 页面：
++
+image::/images/cloud_service/operation/migration/check_server_4.png[]
+
+. 点击任务名称处链接，进入任务详情页面，可查看到云服务器所在物理节点：
++
+image::/images/cloud_service/operation/migration/check_server_5.png[]
+
+. 点击 https://yunify.anybox.qingcloud.com/s/8A0OKz2KhVJWfdYzSo1NLidpM1jDHFFq[此处]，下载 img.tar.gz。登录步骤 2 中的物理节点，拷贝 img.tar.gz 并解压至 `/root` 目录下：
++
+[source,shell]
+----
+tar -zxf img.tar.gz  -C /root
+----
+
+. 执行如下命令，进入指定目录：
++
+[source,shell]
+----
+cd img/
+----
+
+. 执行如下命令：
++
+[source,shell]
+----
+./add_disk.sh
+----
+
+. 执行后需指定 Instance ID，输入对应云服务器 ID。登录管理控制台，进入 *云服务器* 页面，即可查看对应云服务器 ID。
+. 登录云服务器，右键点击 *我的电脑* > *属性* > *设备管理器*。
+. 点击 *磁盘驱动器*，选择要操作的设备，右键选择 *更新驱动程序*。
+. 弹出 *更新驱动程序* 提示框，选择 *浏览我的计算机以查找驱动程序软件*。
+. 选择 virtio-win-0.1.171.zip 驱动所在目录，可参考 link:/v6.1/operation/migration/manual/preparation#_windows系统迁移前准备[Windows 系统迁移前准备]，点击**下一步**。
+. 根据提示完成更新 virtio 驱动。
+

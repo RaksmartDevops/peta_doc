@@ -1,0 +1,17 @@
+// iSCSI 相关'
+
+[cols="1,3a",options="header"]
+|===
+|术语 |说明
+|iSCSI 
+|Internet 小型计算机系统接口（Internet Small Computer System Interface ，iSCSI）是一个供硬件设备使用的可以在 IP 协议的上层运行的 SCSI 指令集，这种指令集合可以实现在 IP 网络上运行 SCSI 协议。iSCSI 技术是一种新储存技术，该技术是将现有 SCSI 接口与以太网络(Ethernet)技术结合，使服务器可与使用 IP 网络的储存设备互相交换数据
+
+|iSCSI Target 
+|iSCSI 存储服务端，位于 iSCSI 服务器上的存储资源。
+
+|iSCSI Initiator 
+|iSCSI 客户端iSCSI 服务器上的客户端，需配合相应的 iSCSI 存储服务端进行使用。
+
+| VIP 
+|虚拟 IP（Virtual IP Address），一种不与特定计算机或者特定计算机网卡相对应的 IP 地址。所有发往这个 IP 地址的数据包最后都会经过真实的网卡到达目的主机的目的进程。虚拟 IP 主要是用来网络地址转换，网络容错和可移动性。
+|===

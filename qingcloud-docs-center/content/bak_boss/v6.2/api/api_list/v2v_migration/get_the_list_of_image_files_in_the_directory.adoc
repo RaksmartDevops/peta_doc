@@ -1,0 +1,144 @@
+---
+title: 获取目录下镜像文件列表（Boss2DescribeV2VDirImages）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeV2VDirImages
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+
+dir 传目录路径。
+
+返回参数说明：
+
+|===
+| 参数 | 含义
+
+| file
+| 镜像文件路径
+
+| format
+| 镜像文件格式
+
+| st_size
+| 镜像文件大小校验值，单位B，
+
+| v_size
+| 磁盘空间大小，单位GB，这个是让用户设置的值，只能改大不能改小
+
+| url
+| 镜像文件下载路径，
+
+| volume_name
+| 镜像文件名
+|===
+
+v2v 开发人员建议，只展示 format\, v_size\, volume_name。
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| owner
+| String
+| 资源拥有者
+|
+
+| v2v_set
+| Array
+| v2v 任务详情列表
+|
+
+| file
+| String
+| 文件名
+|
+
+| format
+| String
+| 镜像格式
+|
+
+| st_size
+| String
+|
+|
+
+| url
+| String
+| 镜像地址
+|
+
+| v_size
+| Integer
+|
+|
+
+| volume_name
+| String
+| 硬盘名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VDirImages",
+   "zone": "test",
+   "dir": "/home/ubuntu/app01"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VDirImagesResponse",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "file": "/home/ubuntu/app01/disk1.img",
+         "format": "vmdk",
+         "st_size": 1376256,
+         "url": "172.31.20.99:'/home/ubuntu/app01/disk1.img'",
+         "v_size": 20,
+         "volume_name": "disk1.img"
+      },
+      {
+         "file": "/home/ubuntu/app01/disk2.img",
+         "format": "vmdk",
+         "st_size": 2686976,
+         "url": "172.31.20.99:'/home/ubuntu/app01/disk2.img'",
+         "v_size": 30,
+         "volume_name": "disk2.img"
+      }
+   ]
+}
+----

@@ -1,0 +1,122 @@
+---
+title: "配置主机安全服务"
+description: 主机安全
+draft: false
+weight: 40
+keywords: 云安全, 安全，主机安全
+---
+
+
+主机安全服务需在**主机安全及管理系统平台**进行资产和策略配置才可正常使用。且主机安全实例与防护主机需处于同一网络中，若防护主机与主机安全实例主机不在同一网络，两者需绑定到同一 VPC 网络中。
+
+本章节以绑定到 VPC 网络中的场景为例。该场景下主机安全实例主机（VM）创建时加入到基础网络，主机安全实例部署后需绑定到被防护主机所在的 VPC 网络中，实现主机安全实例主机和VPC内的主机通信且对 VPC 内的主机进行安全防护。
+
+image::/images/cloud_service/security/srp/zjv1.png[图,35%]
+
+== 前提条件
+
+* 已完成主机安全实例部署并能点击**控制台**进入**主机安全及管理系统**平台。
+* 已获取主机安全实例中主机绑定的 VPC 网络地址和 VPC 网络中被防护的主机 IP 地址。
+* 已在本地下载 Nmap 工具并绑定到与防护主机绑定的 EIP 中。
+
+== 操作步骤
+
+**配置主机安全服务**
+
+. 进入**安全资源池**页面。
+. 在左侧导航栏选择**主机安全**。进入**主机安全**页面。
+. 在目标主机安全实例**操作**一栏点击**加入网络**，选择防护主机所在的VPC，点击**提交**。
+. 在目标主机安全实例**操作**一栏点击**控制台**，进入**主机安全及管理系统**首页。
+. 选择**系统管理** > **添加资产**，在对应操作系统下点击**下载**。
++
+image::/images/cloud_service/security/srp/zjv2.png[下载]
+
+. 登录被防护的主机，并根据选择的操作系统类型执行**离线安装**下提示的安装命令。
++
+以本次截图的上显示的操作系统类型为例可执行以下命令：
++
+[,url]
+----
+tar --no-same-permissions --no-same-owner -zxvf linux_agent_setup_2.0.17.7.x64.tar.gz && chmod +x install_edr.sh
+----
+
+. 解压安装包并修改权限。
++
+image::/images/cloud_service/security/srp/zjv3.png[修改权限]
+
+. 将 `install_conf` 中SERVER_IP_PORT的地址改为主机安全实例在VPC中的IP地址，此处以**172.20.0.4**为例。
++
+image::/images/cloud_service/security/srp/zjv4.png[示例,40%]
+
+. 执行``./install_edr.sh``进行安装。
++
+image::/images/cloud_service/security/srp/zjv5.png[安装,55%]
+
+. 在**主机安全及管理系统**选择**资产管理** > **资产概况**，可查看被防护主机（172.20.0.2）的信息且防护状态为``防护中``，表示资产添加成功。
++
+image::/images/cloud_service/security/srp/zjv6.png[查看]
++
+**通过端口扫描验证主机安全**
++
+
+. 新建策略。
+ .. 选择**策略管理**，点击右上角加号并选择**新增**。
++
+其中已有的**默认模板、业务模板、审计模板**三个策略不可修改，需新增策略继承以上其中一个策略并进行规则的增加和修改。
++
+image::/images/cloud_service/security/srp/zjv7.png[,40%]
+
+ .. 选择策略继承并输入策略名称，点击**确定**。
++
+image::/images/cloud_service/security/srp/zjv8.png[确定,50%]
+
+ .. 点击新增策略名称，展示新增策略详情信息。
++
+image::/images/cloud_service/security/srp/zjv9.png[修改]
+
+ .. 在**防护网络**页签，打开**防端口扫描**滑动开关，点击**保存**。
++
+image::/images/cloud_service/security/srp/zjv10.png[保存]
+. 点击新增策略所在行的图标，点击**绑定资产**，将列表1中待绑定资产添加到列表2，点击**确定**。
++
+image::/images/cloud_service/security/srp/zjv11.png[,35%]
++
+image::/images/cloud_service/security/srp/zjv111.png[绑定策略]
+
+. 在本地使用**Nmap**工具执行以下命令对被保护主机进行端口扫描。
++
+[,url]
+----
+nmap -Pn <被防护主机IP地址>
+----
++
+例如：
++
+[,url]
+----
+nmap -Pn 192.168.8.123
+----
++
+image::/images/cloud_service/security/srp/zjv12.png[端口扫描,60%]
+
+. 选择**日志检索** > **防护日志**，查看端口扫描信息，并且无法登录被防护主机。
++
+主机安全开启防护，防护日志会记录扫描结果，且处理结果显示“已临时封锁IP”。
++
+image::/images/cloud_service/security/srp/zjv013.png[临时封锁IP]
++
+image::/images/cloud_service/security/srp/zjv14.png[登录主机]
+
+. 解除临时封锁 IP。
+ .. 选择**资产管理** > **资产概述**，点击待解除临时封锁 IP 的资产名称，进入资产详情页面。
++
+image::/images/cloud_service/security/srp/zjv15.png[资产详情]
+
+ .. 在**临时封锁IP**页签选择被防护主机IP点击**删除**，可解除临时封锁。
++
+image::/images/cloud_service/security/srp/zjv16.png[删除]
+
+ .. 在本地再次使用**Nmap**工具登录被防护主机，可成功登录。
++
+image::/images/cloud_service/security/srp/zjv17.png[再次登录,60%]
+

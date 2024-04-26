@@ -1,0 +1,40 @@
+---
+title: Windows 云服务器配置多用户同时登录
+weight: 30
+---
+
+== Windows 云服务器配置多用户同时登录
+
+. 在键盘上按 Win+R 键（也可以在开始菜单右键然后选择运行），在运行的输入框里输入 `gpedit.msc` 命令，然后点击确定。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_1.jpg[]
+
+. 在 *计算机组策略* 中依次点击 *计算机配置* > *管理模板* > *Windows 组件*， 然后在右边的菜单中选择远程桌面服务，双击打开。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_2.jpg[]
+
+. 在远程桌面服务界面双击打开 *远程桌面会话云服务器*。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_3.jpg[]
+
+. 在 *远程桌面会话云服务器* 界面中双击打开 *连接*。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_4.jpg[]
+
+. 在 *连接* 界面中双击打开 *将远程桌面服务用户限制到单独的远程桌面服务会话*。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_5.jpg[]
+
+. 在 *将远程桌面服务用户限制到单独的远程桌面服务会话* 界面中选择 *已禁用* 然后点击确定。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_6.jpg[]
+
+. 然后返回 *连接* 界面，在 *连接* 界面中双击打开 *限制连接的数量*。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_7.jpg[]
+
+. 在 *限制连接的数量* 界面中；选择 *已启用*，然后在选项里面 `允许的RD最大连接数` 里面选择你能接受的最大的同时远程的用户数，这里选择的是 3，也就是能支持同时 3 个远程桌面管理，然后点击 *确定*。
++
+image::/images/cloud_service/compute/vm/bestp_win_loggin_8.jpg[]
+
+. 用多台云服务器同时远程该云服务器，验证配置是否成功。

@@ -1,0 +1,1969 @@
+[
+  {
+    "name": "computing_basic_service",
+    "title": "Computing Basic Service",
+    "related_names": ["vnas", "management", "cloud_stat", "autoscaling", "topology"],
+    "items": [
+      {
+        "name": "computing",
+        "title": "Computing",
+        "zh-cn": "计算",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "instances",
+            "title": "Instances",
+            "zh-cn": "云服务器",
+            "dir_name": "compute/vm",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "images",
+            "title": "Images",
+            "zh-cn": "镜像",
+            "dir_name": "compute/image",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "keypairs",
+            "title": "Key Pairs",
+            "zh-cn": "SSH 密钥",
+            "dir_name": "compute/ssh",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "devices",
+            "title": "Devices",
+            "zh-cn": "设备",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "nics",
+            "title": "Nics",
+            "zh-cn": "网卡",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "networks",
+        "title": "Networks",
+        "zh-cn": "网络",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "routers",
+            "title": "VPC Networks",
+            "zh-cn": "VPC 网络",
+            "dir_name": "network/vpc",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "loadbalancers",
+            "title": "Load Balancers",
+            "zh-cn": "负载均衡器",
+            "dir_name": "network/loadbalancer",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "vxnets",
+            "title": "Vxnets",
+            "zh-cn": "私有网络",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "routing_tables",
+            "title": "Routing Tables",
+            "zh-cn": "路由表",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "eips",
+            "title": "Elastic IPs",
+            "zh-cn": "公网 IP",
+            "dir_name": "eip",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "nat",
+            "title": "NAT Gateways",
+            "zh-cn": "NAT 网关",
+            "dir_name": "nat_gateway",
+            "unSupportZones": [],
+            "enable": true,
+            "link": "/iaas/nat/"
+          },
+          {
+            "name": "dns_aliases",
+            "title": "DNS Aliases",
+            "zh-cn": "内网域名别名",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "intranet_routers",
+            "title": "Border Routers",
+            "zh-cn": "边界路由器",
+            "dir_name": "border_router",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "spans",
+            "title": "SPANs",
+            "zh-cn": "网络流量镜像",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "storage",
+        "title": "Storage",
+        "zh-cn": "存储",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "volumes",
+            "title": "Volumes",
+            "zh-cn": "硬盘",
+            "dir_name": "disk",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "shared_storage",
+            "title": "Shared Storage",
+            "zh-cn": "共享存储",
+            "dir_name": "share",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "snapshots",
+            "title": "Snapshots",
+            "zh-cn": "备份",
+            "dir_name": "backup",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "security",
+        "title": "Security",
+        "zh-cn": "安全",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "security_groups",
+            "title": "Security Groups",
+            "zh-cn": "安全组",
+            "dir_name": "security_group",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "waf",
+            "title": "Web Application Firewall",
+            "zh-cn": "Web 应用防火墙",
+            "dir_name": "waf",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "network_access_control",
+            "title": "Network Access Control",
+            "zh-cn": "网络访问控制",
+            "dir_name": "acl",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "kms",
+            "title": "KMS (Under measurement)",
+            "zh-cn": "密钥管理服务",
+            "dir_name": "key_management_service",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "cfw",
+            "title": "Cloud Firewall",
+            "zh-cn": "云防火墙",
+            "dir_name": "firewall",
+            "unSupportZones": [],
+            "enable": true,
+            "link": "/cfw/"
+          }
+        ],
+        "enable": true
+      }
+    ],
+    "enable": true,
+    "cate": "Computing Basic Service"
+  },
+  {
+    "name": "sdwan",
+    "title": "Evervite SD-WAN",
+    "zh-cn": "SD WAN",
+    "related_names": ["routers", "cloud_stat"],
+    "items": [
+      {
+        "name": "wan_nets",
+        "title": "WAN Nets",
+        "zh-cn": "SD-WAN（旧版）",
+        "dir_name": "sdwan",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_cpes",
+        "title": "WAN CPEs",
+        "zh-cn": "光盒",
+        "dir_name": "light-box",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_gateways",
+        "title": "WAN Gateways",
+        "zh-cn": "网关",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_lines",
+        "title": "WAN Lines",
+        "zh-cn": "专线",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "",
+        "title": "User Configuration",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_global_configs",
+        "title": "Global Settings",
+        "zh-cn": "全局配置",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "",
+        "title": "Equipment Application",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_physical_cpe_orders",
+        "title": "Physical Cpe",
+        "zh-cn": "物理光盒",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "wan_physical_line_orders",
+        "title": "Physical Line",
+        "zh-cn": "物理专线",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "vnas",
+    "title": "VNASs",
+    "zh-cn": "文件存储 vNAS",
+    "dir_name": "storage/vnas",
+    "parent": "storage",
+    "related_names": ["vxnets", "routers"],
+    "items": [
+      {
+        "name": "vnass",
+        "title": "vnass",
+        "zh-cn": "文件存储 vNAS",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "s2_groups",
+        "title": "S2 Groups",
+        "zh-cn": "权限组",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "s2_accounts",
+        "title": "S2 Accounts",
+        "zh-cn": "账户",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "cdn_service",
+    "title": "CDN Service",
+    "zh-cn": "内容分发网络（CDN）",
+    "parent": "networks",
+    "dir_name": "network/cdn",
+    "related_names": [],
+    "items": [
+      {
+        "name": "cdns",
+        "title": "CDN",
+        "zh-cn": "CDN",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "cdns/purges",
+        "title": "CDN Purge",
+        "zh-cn": "清空 CDN 缓存",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "cdns/prefetches",
+        "title": "CDN Prefetch",
+        "zh-cn": "内容预取",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "cdns/domains",
+        "title": "Domain Management",
+        "zh-cn": "域名管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "cdns/certs",
+        "title": "Cert",
+        "zh-cn": "证书",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "cdns/portal/consumption",
+        "title": "Dosage display",
+        "zh-cn": "用量统计",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "increase"
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "resource_management",
+    "title": "RESOURCE_TITLE",
+    "zh-cn": "资源",
+    "related_names": [],
+    "items": [
+      {
+        "name": "shares",
+        "title": "Share (open beta)",
+        "zh-cn": "共享",
+        "dir_name": "operation/resource/manual/resource_share",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "myShare",
+            "title": "My Share",
+            "zh-cn": "我的共享",
+            "dir_name": "operation/resource/manual/resource_share",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "ssl-shared"
+          },
+          {
+            "name": "shareToMe",
+            "title": "Share with me",
+            "zh-cn": "共享给我",
+            "dir_name": "operation/resource/manual/resource_share",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "desktop-group"
+          }
+        ],
+        "enable": true,
+        "icon": "backup-shared"
+      },
+      {
+        "name": "quota",
+        "title": "My Quota",
+        "zh-cn": "我的配额",
+        "dir_name": "operation/resource/manual/quota/view_quota",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "container_group",
+    "title": "Container Instances(QCI)",
+    "zh-cn": "弹性容器实例 QCI",
+    "dir_name": "container/qci",
+    "parent": "container",
+    "related_names": ["routers", "vxnets"],
+    "items": [
+      {
+        "name": "container_groups",
+        "title": "Container Instances",
+        "zh-cn": "弹性容器实例",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "image_caches",
+        "title": "Image Caches",
+        "zh-cn": "容器镜像缓存",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "docker_images",
+    "title": "Docker Images",
+    "zh-cn": "Docker 镜像仓库",
+    "related_names": [],
+    "items": [
+      {
+        "name": "docker_images/docker_repos",
+        "title": "docker_repos",
+        "zh-cn": "镜像仓库",
+        "dir_name": "container/dockerhub/manual/images_repo/",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "docker_images/docker_namespaces",
+        "title": "docker_namespaces",
+        "zh-cn": "命名空间",
+        "dir_name": "container/dockerhub/manual/mge_namespace",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "docker_images/docker_users",
+        "title": "docker_users",
+        "zh-cn": "用户管理",
+        "dir_name": "container/dockerhub/manual/user_manage",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "cloud_stat",
+    "title": "CloudSat",
+    "zh-cn": "云监控 CloudSat",
+    "dir_name": "monitor_service/cloudsat",
+    "related_names": [],
+    "items": [
+      {
+        "name": "monitoring_overview",
+        "title": "Monitor Overview",
+        "zh-cn": "监控概览",
+        "dir_name": "monitor_service/cloudsat/manual/monitoring_overview",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "monitors",
+        "title": "Monitor Dashboard",
+        "zh-cn": "Dashboard",
+        "dir_name": "monitor_service/cloudsat/manual/dashboard",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "resource_groups",
+        "title": "Resource Groups",
+        "zh-cn": "分组管理",
+        "dir_name": "monitor_service/cloudsat/manual/group_management",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "events",
+        "title": "Event Monitor",
+        "zh-cn": "事件监控",
+        "dir_name": "monitor_service/cloudsat/manual/event_monitor",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "alarms",
+        "title": "Alarms",
+        "zh-cn": "告警服务",
+        "dir_name": "monitor_service/cloudsat/manual/alarm_service",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "custom_monitoring",
+        "title": "Custom Monitor",
+        "zh-cn": "自定义监控",
+        "dir_name": "monitor_service/cloudsat/manual/custom_monitor",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "autoscaling",
+    "title": "AutoScaling",
+    "zh-cn": "自动伸缩",
+    "dir_name": "operation/autoscaling",
+    "parent": "management",
+    "related_names": [],
+    "items": [
+      {
+        "name": "autoscaling_policies",
+        "title": "AutoScaling",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "launch_configurations",
+        "title": "Launch Configurations",
+        "zh-cn": "云服务器启动配置",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "ssl_certificate",
+    "title": "SSL Certificate",
+    "zh-cn": "SSL 证书服务",
+    "dir_name": "site/ssl",
+    "related_names": [],
+    "parent": "security",
+    "items": [
+      {
+        "name": "ssl_certificates",
+        "title": "My Certificates",
+        "zh-cn": "我的证书",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "shared_certificates",
+        "title": "Shared Certificates",
+        "zh-cn": "共享证书",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "ssl_orders",
+        "title": "SSL Orders",
+        "zh-cn": "订单列表",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "topology",
+    "title": "Resource Orchestration",
+    "zh-cn": "资源编排",
+    "dir_name": "operation/topology",
+    "parent": "management",
+    "related_names": [],
+    "items": [
+      {
+        "name": "topology_templates",
+        "title": "Topology Templates",
+        "zh-cn": "编排模板",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "topologies",
+        "title": "Created Topologies",
+        "zh-cn": "已生成编排",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "management",
+    "title": "Operation & Manage",
+    "zh-cn": "运维与管理",
+    "related_names": [],
+    "items": [
+      {
+        "name": "dr_managers/dr_group",
+        "title": "DR Manager",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": false
+      },
+      {
+        "name": "tags",
+        "title": "Tags",
+        "zh-cn": "标签",
+        "dir_name": "operation/tools/manual/label",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "schedulers",
+        "title": "Schedulers",
+        "zh-cn": "定时器",
+        "dir_name": "operation/tools/manual/scheduler",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "activities",
+        "title": "Activities",
+        "zh-cn": "操作日志",
+        "dir_name": "operation/tools/manual/activity",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "recyclebin",
+        "title": "Recycle Bin",
+        "zh-cn": "回收站",
+        "dir_name": "operation/tools/manual/recycle_bin",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "appcenter",
+    "title": "AppCenter Console",
+    "zh-cn": "APPcenter",
+    "related_names": ["management", "autoscaling_policies", "topology"],
+    "items": [
+      {
+        "name": "apps",
+        "title": "App Market",
+        "zh-cn": "应用中心",
+        "dir_name": "appcenter/app_center",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "app_mgmt",
+        "title": "App Management",
+        "zh-cn": "应用管理",
+        "dir_name": "appcenter/app_center/manual/30_mgmt_app",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "clusters",
+        "title": "Cluster Management",
+        "zh-cn": "集群管理",
+        "dir_name": "appcenter/app_center/manual/40_mgmt_cluster",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "clusters_snapshots",
+        "title": "Snapshots Management",
+        "zh-cn": "备份管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "alias": "clusters_logic_snapshots"
+      },
+      {
+        "name": "",
+        "title": "Recommend Apps",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "database",
+        "title": "Database & Cache",
+        "zh-cn": "数据库与缓存",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "app-00r26u27",
+            "title": "MySQL Plus",
+            "zh-cn": "关系型数据库 MySQL Plus",
+            "dir_name": "database/mysql",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-gtusp816",
+            "title": "PostgreSQL",
+            "zh-cn": "关系型数据库 PostgreSQL",
+            "dir_name": "database/postgresql",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-x87yr57g",
+            "title": "RadonDB",
+            "zh-cn": "分布式数据库 RadonDB",
+            "dir_name": "database/radondb",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-72yzfivw",
+            "title": "PolonDB",
+            "zh-cn": "分布式数据库 PolonDB",
+            "dir_name": "database/polondb",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-0jcy7q9u",
+            "title": "ChronusDB",
+            "zh-cn": "时序数据库 ChronusDB",
+            "dir_name": "database/chronusdb",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-o1rl71en",
+            "title": "MongoDB",
+            "zh-cn": "文档数据库 MongoDB",
+            "dir_name": "database/mongodb",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-2a5k5lx6",
+            "title": "MongoDB Cluster",
+            "zh-cn": "文档数据库 MongoDB Cluster",
+            "dir_name": "database/mongodb",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-zydumbxo",
+            "title": "Redis Standalone",
+            "zh-cn": "键值数据库 Redis Standalone",
+            "dir_name": "database/redis_standalone",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-y6i338bf",
+            "title": "Redis Cluster",
+            "zh-cn": "键值数据库 Redis Cluster",
+            "dir_name": "database/redis_cluster",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-xsrhlw0l",
+            "title": "Memcached",
+            "zh-cn": "键值数据库 Memcached",
+            "dir_name": "database/memcached",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "middleware",
+        "title": "MQ & Middleware",
+        "zh-cn": "消息队列与中间件",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "app-n9ro0xcp",
+            "title": "Kafka",
+            "zh-cn": "Kafka 服务",
+            "dir_name": "middware/kafka",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-n28v5lhg",
+            "title": "RabbitMQ",
+            "zh-cn": "RabbitMQ 服务",
+            "dir_name": "middware/rabbitmq",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-j8lnxify",
+            "title": "RocketMQ",
+            "zh-cn": "RocketMQ 服务",
+            "dir_name": "middware/rocketmq",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-fdyvu2wk",
+            "title": "Etcd",
+            "zh-cn": "Etcd 服务",
+            "dir_name": "middware/etcd",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "analytics",
+        "title": "Analytics",
+        "zh-cn": "大数据服务",
+        "dir_name": "/bigdata/",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "app-6iuoe9qs",
+            "title": "QingMR",
+            "zh-cn": "QingMR 服务",
+            "dir_name": "bigdata/qingmr",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-p6au3oyq",
+            "title": "ELK",
+            "zh-cn": "ELK 服务",
+            "dir_name": "bigdata/elk",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-vfq8tq2k",
+            "title": "OpenSearch",
+            "zh-cn": "OpenSearch 服务",
+            "dir_name": "bigdata/opensearch",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-3k61fkmg",
+            "title": "HBase",
+            "zh-cn": "HBase 服务",
+            "dir_name": "bigdata/hbase",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-tg3lbp0a",
+            "title": "ZooKeeper",
+            "zh-cn": "ZooKeeper 服务",
+            "dir_name": "bigdata/zookeeper",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-66xhycwj",
+            "title": "Kyligence",
+            "zh-cn": "Kyligence 服务",
+            "dir_name": "bigdata/kyligence",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "datahouse",
+        "title": "Data Warehouse & BI",
+        "zh-cn": "数据仓库与 BI",
+        "dir_name": "dwh_bi",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "app-jsyrsk15",
+            "title": "ClickHouse",
+            "zh-cn": "ClickHouse ",
+            "dir_name": "dwh_bi/clickhouse",
+            "unSupportZones": [],
+            "enable": true
+          },
+          {
+            "name": "app-iwacxg9z",
+            "title": "HashData",
+            "zh-cn": "HashData",
+            "dir_name": "dwh_bi/hashdata",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      },
+      {
+        "name": "containers",
+        "title": "Container Platform",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "app-cmgbd5k2",
+            "title": "KubeSphere®(QKE OLD)",
+            "zh-cn": "容器引擎 QKE（旧版）",
+            "unSupportZones": [],
+            "enable": true
+          }
+        ],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "iam",
+    "title": "IAM",
+    "zh-cn": "访问鉴权管理",
+    "dir_name": "authorization/iam",
+    "related_names": [],
+    "items": [
+      {
+        "name": "iam/roles",
+        "title": "Role Management",
+        "zh-cn": "身份管理",
+        "dir_name": "authorization/iam/manual/role",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "role"
+      },
+      {
+        "name": "iam/policies",
+        "title": "Policy Management",
+        "zh-cn": "策略管理",
+        "dir_name": "authorization/iam/manual/policy",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "security-policy"
+      },
+      {
+        "name": "iam/portal/users",
+        "title": "User Management(Open Test)",
+        "zh-cn": "用户管理",
+        "dir_name": "authorization/iam/manual/user",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "human"
+      },
+      {
+        "name": "iam/activity",
+        "title": "Activities",
+        "zh-cn": "操作日志",
+        "dir_name": "authorization/iam/manual/log",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "operation-log"
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "finance",
+    "title": "Cost Center",
+    "zh-cn": "费用中心",
+    "dir_name": "services/bill_center",
+    "related_names": [],
+    "items": [
+      {
+        "name": "finance/overview",
+        "title": "Account overview",
+        "zh-cn": "账户总览",
+        "dir_name": " ",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "",
+        "title": "Finance Management",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/wallet",
+        "title": "Wallet",
+        "zh-cn": "钱包",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/coupons",
+        "title": "Coupons",
+        "zh-cn": "优惠券",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/redeem_management",
+        "title": "Redeem Management",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "isReload": true
+      },
+      {
+        "name": "",
+        "title": "Consumption Bills",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/billing",
+        "title": "Billing Overview",
+        "zh-cn": "账单总览",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/statistic",
+        "title": "Statistic",
+        "zh-cn": "消费明细",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/estimated",
+        "title": "Estimated",
+        "zh-cn": "消费预估",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "",
+        "title": "Order management",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/order",
+        "title": "Order management",
+        "zh-cn": "订单管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/renewal_management",
+        "title": "Renewal management",
+        "zh-cn": "续费管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "",
+        "title": "Invoices Management",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/invoices",
+        "title": "Invoice Management",
+        "zh-cn": "发票管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "finance/contract_management",
+        "title": "Contract Management",
+        "zh-cn": "合同管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "isReload": true
+      },
+      {
+        "name": "finance/address",
+        "title": "Mail Address",
+        "zh-cn": "邮寄地址管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "dns",
+    "title": "Cloud analytical DNS",
+    "zh-cn": "云解析 DNS",
+    "dir_name": "site/dns",
+    "related_names": [],
+    "items": [
+      {
+        "name": "dns",
+        "title": "DNS",
+        "zh-cn": "域名解析",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "gslb",
+        "title": "GSLB",
+        "zh-cn": "全局负载均衡",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "qingstor",
+    "title": "QingStor",
+    "zh-cn": "对象存储",
+    "dir_name": "storage/object-storage",
+    "parent": "storage",
+    "related_names": [],
+    "items": [
+      {
+        "name": "qingstor",
+        "title": "QingStor",
+        "zh-cn": "对象存储",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true,
+    "portal_name": "qingstor",
+    "icon": "object-storage"
+  },
+  {
+    "name": "live_cdn",
+    "title": "Live CDN",
+    "zh-cn": "视频直播",
+    "dir_name": "audio_and_video/live_cdn",
+    "parent": "audio_and_video",
+    "related_names": [],
+    "items": [
+      {
+        "name": "live_cdn",
+        "title": "Live CDN",
+        "zh-cn": "视频直播",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "tickets",
+    "title": "Tickets",
+    "zh-cn": "工单服务",
+    "dir_name": "services/tickets",
+    "related_names": [],
+    "items": [
+      {
+        "name": "tickets",
+        "title": "Tickets List",
+        "zh-cn": "工单列表",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      },
+      {
+        "name": "tickets/create",
+        "title": "Open Ticket",
+        "zh-cn": "创建工单",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true
+      }
+    ],
+    "enable": true
+  },
+  {
+    "name": "nat",
+    "title": "NAT Gateways",
+    "zh-cn": "NAT 网关",
+    "dir_name": "network/nat_gateway",
+    "related_names": [],
+    "items": [],
+    "enable": true,
+    "portal_name": "nat",
+    "prefix": "Network Services",
+    "icon": "nat",
+    "en": "NAT Gateways",
+    "link": "/iaas/nat/"
+  },
+  {
+    "name": "cfw",
+    "title": "Cloud Firewall",
+    "zh-cn": "云防火墙",
+    "dir_name": "security/firewall",
+    "related_names": [],
+    "items": [
+      {
+        "name": "overview",
+        "title": "Business System Assets",
+        "zh-cn": "业务系统资产",
+        "dir_name": "security/firewall/manual/checkdata",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "assets",
+        "link": "",
+        "en": "Overview"
+      },
+      {
+        "name": "security_policy",
+        "title": "Security Policy",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "",
+        "link": "",
+        "zh-cn": "安全策略",
+        "en": "Security Policy"
+      },
+      {
+        "name": "access_control_policy",
+        "title": "Access Control Policy",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "net_firewall",
+            "title": "Net Firewall",
+            "zh-cn": "互联网防火墙",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "ip",
+            "link": "",
+            "en": "Net Firewall"
+          }
+        ],
+        "enable": true,
+        "icon": "security-policy",
+        "link": "",
+        "zh-cn": "访问控制策略",
+        "en": "Access Control Policy"
+      },
+      {
+        "name": "defense_policy",
+        "title": "Defense Policy",
+        "zh-cn": "入侵防御策略",
+        "dir_name": "security/firewall/manual/attck_protect",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "resist",
+        "link": "",
+        "en": "Defense Policy"
+      },
+      {
+        "name": "traffic_policy",
+        "title": "Traffic Policy",
+        "zh-cn": "流量控制策略",
+        "dir_name": "security/firewall/manual/flow",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "monitor",
+        "link": "",
+        "en": "Traffic Policy"
+      },
+      {
+        "name": "black_white_list",
+        "title": "Black White List",
+        "zh-cn": "黑白名单",
+        "dir_name": "security/firewall/manual/black_white_list",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "paper",
+        "link": "",
+        "en": "Black White List"
+      },
+      {
+        "name": "common_manage",
+        "title": "Common Manage",
+        "zh-cn": "通用管理",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "address_book",
+            "title": "Address Book",
+            "zh-cn": "地址簿",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "address-book",
+            "link": "",
+            "en": "Address Book"
+          },
+          {
+            "name": "service_port/local",
+            "title": "Service Port",
+            "zh-cn": "服务端口",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "os-service",
+            "link": "",
+            "en": "Service Port"
+          },
+          {
+            "name": "applications",
+            "title": "Application",
+            "zh-cn": "应用组",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "application",
+            "link": "",
+            "en": "Application"
+          }
+        ],
+        "enable": true,
+        "icon": "general-management",
+        "link": "",
+        "en": "Common Manage"
+      },
+      {
+        "name": "dialog",
+        "title": "Dialog",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "",
+        "link": "",
+        "zh-cn": "日志",
+        "en": "Dialog"
+      },
+      {
+        "name": "dialog_audit",
+        "title": "Dialog Audit",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "security_log",
+            "title": "Security Log",
+            "zh-cn": "安全日志",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "safe-notice",
+            "en": "Security Log"
+          },
+          {
+            "name": "traffic_log",
+            "title": "Traffic Log",
+            "zh-cn": "流量日志",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "insert-chart",
+            "en": "Traffic Log"
+          },
+          {
+            "name": "operation_dialog",
+            "title": "Operation Dialog",
+            "zh-cn": "操作日志",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "file",
+            "en": "Operation Dialog"
+          }
+        ],
+        "enable": true,
+        "icon": "operation-log",
+        "link": "",
+        "zh-cn": "日志审计",
+        "en": "Dialog Audit"
+      },
+      {
+        "name": "setting",
+        "title": "Setting",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "",
+        "link": "",
+        "zh-cn": "设置",
+        "en": "Setting"
+      },
+      {
+        "name": "product_setting",
+        "title": "Product Setting",
+        "zh-cn": "产品设置",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "cogwheel",
+        "link": "",
+        "en": "Product Setting"
+      }
+    ],
+    "enable": true,
+    "portal_name": "cfw",
+    "prefix": "",
+    "icon": "firewall"
+  },
+  {
+    "name": "demand",
+    "title": "DEMAND",
+    "zh-cn": "云点播",
+    "dir_name": "audio_and_video/vod",
+    "related_names": [],
+    "items": [
+      {
+        "name": "library",
+        "title": "Media database",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "",
+        "link": "",
+        "zh-cn": "媒资库",
+        "en": "Media database"
+      },
+      {
+        "name": "management",
+        "title": "Audio and video management",
+        "zh-cn": "音视频管理",
+        "dir_name": "audio_and_video/vod/um/mgmt_video",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "live-cdn",
+        "link": "",
+        "en": "Audio and video management"
+      }
+    ],
+    "enable": true,
+    "portal_name": "demand",
+    "prefix": "",
+    "icon": "demand"
+  },
+  {
+    "name": "apig",
+    "title": "API Gateway",
+    "zh-cn": "API 网关",
+    "dir_name": "middware/api_gateway",
+    "related_names": [],
+    "items": [
+      {
+        "name": "overview",
+        "title": "Overview",
+        "zh-cn": "概览",
+        "isSubTitle": false,
+        "unSupportZones": ["beta"],
+        "items": [],
+        "enable": true,
+        "icon": "assets",
+        "link": "",
+        "en": "Overview"
+      },
+      {
+        "name": "instance",
+        "title": "Instance manage",
+        "zh-cn": "实例管理",
+        "isSubTitle": false,
+        "unSupportZones": ["beta"],
+        "items": [],
+        "enable": true,
+        "icon": "templet",
+        "link": "",
+        "en": "Instance"
+      },
+      {
+        "name": "security_policy",
+        "title": "Service",
+        "isSubTitle": true,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "",
+        "link": "",
+        "zh-cn": "服务",
+        "en": "Service"
+      },
+      {
+        "name": "apiservice",
+        "title": "API_service",
+        "zh-cn": "API 服务",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "api",
+        "link": "",
+        "en": "API_service"
+      },
+      {
+        "name": "plugin_manage",
+        "title": "Plugin manage",
+        "zh-cn": "插件管理",
+        "dir_name": "/middware/api_gateway/manual/plugin_manage/",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "templet",
+        "link": "",
+        "en": "Plugin manage"
+      },
+      {
+        "name": "secretkey",
+        "title": "Secretkey manage",
+        "zh-cn": "密钥管理",
+        "dir_name": "/middware/api_gateway/manual/secretkey/",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "ssh",
+        "link": "",
+        "en": "Secretkey manage"
+      },
+      {
+        "name": "httpscert",
+        "title": "Httpscert",
+        "zh-cn": "SSL 证书",
+        "dir_name": "/middware/api_gateway/manual/ssl/",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "paper",
+        "link": "",
+        "en": "Httpscert"
+      }
+    ],
+    "enable": true,
+    "portal_name": "apig",
+    "prefix": "MQ & Middleware",
+    "icon": "gateway",
+    "en": "API Gateway",
+    "link": "/apig/"
+  },
+  {
+    "name": "srp",
+    "title": "Security Resource Pool",
+    "zh-cn": "安全资源池",
+    "dir_name": "/security/srp/",
+    "related_names": [],
+    "items": [
+      {
+        "name": "ahvlog",
+        "title": "Log Audit",
+        "zh-cn": "日志审计",
+        "dir_name": "/security/srp/ahvlog",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "paper"
+      },
+      {
+        "name": "cloud-firewall",
+        "title": "云防火墙",
+        "dir_name": "security/srp/ahvngfw",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "ahvngfw",
+            "title": "Firewall Example",
+            "unSupportZones": [],
+            "enable": true,
+            "isSubTitle": false,
+            "items": [],
+            "icon": "security-policy",
+            "zh-cn": "防火墙实例"
+          },
+          {
+            "name": "eip_protection",
+            "title": "EIP protection configuration",
+            "unSupportZones": [],
+            "enable": true,
+            "icon": "eip-object",
+            "isSubTitle": false,
+            "items": [],
+            "zh-cn": "EIP防护配置"
+          }
+        ],
+        "enable": true,
+        "icon": "firewall"
+      },
+      {
+        "name": "ahvwaf",
+        "title": "Web应用防火墙",
+        "dir_name": "security/srp/ahvwaf",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "waf-object"
+      },
+      {
+        "name": "ahvusm",
+        "title": "堡垒机",
+        "dir_name": "security/srp/ahvusm",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "login-accounts"
+      },
+      {
+        "name": "ahvras",
+        "title": "漏洞扫描",
+        "dir_name": "security/srp/ahvras",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "middleware"
+      },
+      {
+        "name": "ahvdb",
+        "title": "数据库审计",
+        "dir_name": "security/srp/ahvdb",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "cloudsat"
+      },
+      {
+        "name": "host-security",
+        "title": "主机安全",
+        "dir_name": "security/srp/ahvedr",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [
+          {
+            "name": "ahvedr",
+            "title": "Host Security Example",
+            "unSupportZones": [],
+            "enable": true,
+            "isSubTitle": false,
+            "items": [],
+            "icon": "security-policy",
+            "zh-cn": "主机安全实例"
+          },
+          {
+            "name": "vm_protection",
+            "title": "Asset Protection Allocation",
+            "unSupportZones": [],
+            "enable": true,
+            "isSubTitle": false,
+            "items": [],
+            "icon": "vsan",
+            "zh-cn": "资产防护配置"
+          }
+        ],
+        "enable": true,
+        "icon": "storage"
+      }
+    ],
+    "enable": true,
+    "portal_name": "srp"
+  },
+  {
+    "name": "hpc",
+    "title": "HPC",
+    "zh-cn": "高性能计算 HPC123",
+    "dir_name": "compute/hpc",
+    "related_names": ["networks"],
+    "items": [
+      {
+        "name": "clusters",
+        "title": "Clusters",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "cluster",
+        "zh-cn": "集群",
+        "en": "Clusters"
+      },
+      {
+        "name": "jobs",
+        "title": "Jobs",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "job",
+        "zh-cn": "作业",
+        "en": "Job"
+      },
+      {
+        "name": "nas",
+        "title": "epfs",
+        "dir_name": "storage/epfs",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": false,
+        "icon": "vnas",
+        "zh-cn": "文件存储 EPFS",
+        "en": "EPFS"
+      },
+      {
+        "name": "software",
+        "title": "Software",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "application",
+        "zh-cn": "软件中心",
+        "en": "Software"
+      },
+      {
+        "name": "logs",
+        "title": "Logs",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": true,
+        "icon": "log",
+        "zh-cn": "操作日志",
+        "en": "Logs"
+      }
+    ],
+    "enable": true,
+    "portal_name": "hpc",
+    "icon": "fuse",
+    "prefix": "",
+    "en": "HPC",
+    "link": "/hpc/",
+    "relation_items": [
+      {
+        "isSubTitle": true,
+        "name": "",
+        "title": "Associated services",
+        "zh-cn": "关联服务",
+        "en": "Associated services",
+        "enable": true
+      },
+      {
+        "name": ":zone/routers/",
+        "title": "VPC Networks",
+        "icon": "vpc",
+        "zh-cn": "VPC 网络",
+        "en": "VPC Networks",
+        "enable": true
+      },
+      {
+        "name": ":zone/vxnets/",
+        "title": "Vxnet",
+        "icon": "network",
+        "zh-cn": "私有网络",
+        "en": "Vxnet",
+        "enable": true
+      },
+      {
+        "name": ":zone/eips/",
+        "title": "Elastic IPs",
+        "icon": "eip-object",
+        "zh-cn": "公网 IP",
+        "en": "Elastic IPs",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "name": "dr_managers",
+    "title": "DR Manager",
+    "related_names": [],
+    "items": [
+      {
+        "name": "dr_managers/dr_group",
+        "title": "DR Group Manager",
+        "isSubTitle": false,
+        "unSupportZones": [],
+        "items": [],
+        "enable": false
+      }
+    ],
+    "enable": false
+  }
+]

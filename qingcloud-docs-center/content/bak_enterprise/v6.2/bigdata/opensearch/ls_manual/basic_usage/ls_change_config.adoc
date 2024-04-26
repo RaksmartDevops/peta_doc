@@ -1,0 +1,49 @@
+---
+title: "Logstash 配置的修改生效"
+description: 本小节主要介绍如何修改 Logstash 配置。
+keywords: Logstash 自定义启动配置文件,
+weight: 50
+collapsible: false
+draft: false
+---
+
+默认情况下，修改 Logstash 配置不会立即生效，本小节主要介绍如何使修改 Logstash 的配置生效。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* 已完成 Logstash 的配置。
+
+== 操作步骤
+
+=== 方法一：重启 Logstash 服务
+
+. 登录控制台。
+. 选择**产品与服务** > *大数据服务* > *OpenSearch 服务*，进入集群管理页面。
+. 点击目标集群 ID，进入集群详情页面。
+. 在**基本属性**模块，点击集群操作下拉菜单。
+. 展开下拉菜单，点击**重启**。
++
+image::/images/cloud_service/bigdata/opensearch/restart_logstash.png[重启]
+
+. 选择一个集群角色，这里勾选 `Logstash 节点`。
++
+image::/images/cloud_service/bigdata/opensearch/restart_logstash_node.png[选择节点]
++
+重启完成后，则配置生效。
+
+=== 方法二：修改 Logstash 的参数值
+
+. 登录管理控制台。
+. 选择**产品与服务** > *大数据服务* > *OpenSearch 服务*，进入集群管理页面。
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
+. 点击**配置参数**页签，进入集群配置参数管理页面。
+. 参数类型选择 *Logstash 节点*，切换到相应节点参数页面。
+. 点击**修改属性**，公共参数**值**进入可编辑状态。
+. 将 logstash 的 `config.reload.automatic` 参数值修改为 `true`。
++
+image::/images/cloud_service/bigdata/opensearch/ls_change_config.png[修改参数]
+
+. 重启 logstash 服务，详细操作请参见<<_方法一重启_logstash_服务,方法一>>。
++
+重启完成后，若再修改 Logstash 的 input、filter、output 配置，将会立即生效，不需要重启 logstash 服务。

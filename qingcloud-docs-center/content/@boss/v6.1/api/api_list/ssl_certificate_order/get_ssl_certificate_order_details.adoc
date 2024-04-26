@@ -1,0 +1,83 @@
+---
+title: 获取SSL证书订单详情（Boss2SSLCertShopGetOrderDetail）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SSLCertShopGetOrderDetail
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2SSLCertShopGetOrderDetail",
+   "order_id": "oid-2c3d2f4e9f63"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": {
+      "status": "completed",
+      "dns_auth": {
+         "auth_value": "2020100809511062dqtmjx39lpfu0bl6xkuvlggnzumhrc507jb8dpy87n0f1qhh",
+         "auth_key": "test.mrchi.cc"
+      },
+      "last_name": "阿迪舒服",
+      "san": "",
+      "company_phone": "4008000880",
+      "order_id": "oid-2c3d2f4e9f63",
+      "brand": "TrustAsia",
+      "organization_unit": "阿斯顿发送到发",
+      "cert_type": "DV",
+      "period": 1,
+      "price": 0,
+      "wild_count": 0,
+      "mobile_phone": "13122223333",
+      "postal_code": "430070",
+      "pay_time": "2020-09-23T02:19:56Z",
+      "address": "阿斯顿发送到发",
+      "common_name": "test.mrchi.cc",
+      "city": "北京",
+      "first_name": "鞍山市",
+      "user_id": "usr-9rDQUQtl",
+      "product_id": "TrustAsiaDVG5",
+      "title": "阿斯顿发",
+      "country": "CN",
+      "region": "北京",
+      "dv_auth_method": "dns",
+      "support_flag": 8,
+      "file_auth": {},
+      "product_name": "TrustAsia 域名型 SSL证书 (G5)",
+      "standard_count": 1,
+      "organization": "阿斯顿发",
+      "encrypt_algo": "RSA-2048",
+      "email": "212@q.com"
+   },
+   "ret_code": 0,
+   "action": "Boss2SSLCertShopGetOrderDetailResponse"
+}
+----

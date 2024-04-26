@@ -1,0 +1,10 @@
+{
+  "params": {
+    "favicon": {
+      "ui:widget": "upload"
+    },
+    "logo": {
+      "ui:widget": "upload"
+    }
+  }
+}

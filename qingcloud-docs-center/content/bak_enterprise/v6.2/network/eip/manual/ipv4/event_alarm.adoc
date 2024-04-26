@@ -1,0 +1,8 @@
+---
+title: 配置事件告警
+weight: 45
+draft: false
+---
+
+include::../../../../../../_cloud_service/eip/event_alarm.adoc[]
+

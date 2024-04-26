@@ -1,0 +1,45 @@
+---
+title: "共享效果"
+description: test
+weight: 20
+draft: false
+keywords: 共享效果, 云计算
+---
+
+
+== 共享资源拥有者
+
+. 登录管理控制台，选择**产品与服务** > **网络服务** > **VPC 网络**，进入 **VPC 网络**页签。
+. 进入 VPC 详情，可见共享 VPC 中共享资源的使用者添加的主机，无编辑权限。
++
+image::/images/cloud_service/operation/resource/rs_12.png[]
+
+. 进入私有网络详情，可见共享私有网络中共享资源的使用者添加的主机，无编辑权限。
++
+image::/images/cloud_service/operation/resource/rs_13.png[]
+
+== 资源使用者（被共享者）
+
+. 登录管理控制台，选择**产品与服务** > **网络服务** > **VPC 网络** ，进入 **VPC 网络**页签。
+. VPC 网络中可查看共享给我的 VPC。
++
+image::/images/cloud_service/operation/resource/rs_14.png[]
+
+. 进入VPC详情：可以进行主机创建，无权进行其余 VPC 有关操作（红框内操作）。
++
+image::/images/cloud_service/operation/resource/rs_15.png[]
+
+. 点击创建资源选项，进入主机创建流程，创建主机时可选择共享网络。
++
+image::/images/cloud_service/operation/resource/rs_16.png[]
+
+ .. 创建主机，可选择共享网络：
++
+image::/images/cloud_service/operation/resource/rs_17.png[]
+
+ .. 已创建主机，加入共享网络：
++
+image::/images/cloud_service/operation/resource/rs_18.png[]
++
+image::/images/cloud_service/operation/resource/rs_19.png[]
+

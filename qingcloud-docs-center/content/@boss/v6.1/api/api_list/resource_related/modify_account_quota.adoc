@@ -1,0 +1,57 @@
+---
+title: 修改账号配额（Boss2UpdateAccountQuotas）
+weight: 20
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2UpdateAccountQuotas
+
+=== Method
+POST
+
+=== 接口描述
+该接口由BOSS2封装，可批量发起对多个用户的配额修改。结果中将会返回修改成功用户个数，及修改失败的用户id列表。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2UpdateAccountQuotas",
+    "user": "usr-UHWauERO", // 可指定单个用户
+    "users": ["usr-UHWauERO", "usr-j2x8RjLL"],  // 也可指定多个用户，如果users和user同时出现，则仅使用users参数
+    "sub_user": 5  // 指定配额
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "success_count": 1,
+   "failed_users": [
+      "usr-j2x8RjLL"
+   ],
+   "ret_code": 0,
+   "action": "Boss2UpdateAccountQuotasResponse"
+}
+----

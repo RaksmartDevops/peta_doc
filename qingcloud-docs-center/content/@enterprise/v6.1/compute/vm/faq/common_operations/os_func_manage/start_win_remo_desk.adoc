@@ -1,0 +1,35 @@
+---
+title: "开启 Windows 云服务器远程登录"
+weight: 40
+---
+== 操作步骤
+
+. 登录管理控制台，在云服务器列表里找到待操作的云服务器。
+
+. 通过管理控制台，选择 *网络* > *公网 IP* > *申请*，进入**公网 IP** 申请页面。
+
+. 通过右键选择 *eip* > *分配到云服务器*，找到对应的云服务器完成绑定。
+
+. 点击云服务器 id 旁边小电脑的标志，通过 web vnc 登录到云服务器，开启远程桌面访问。
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_1.png[]
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_2.png[]
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_3.png[]
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_4.png[]
+
+. 确认云服务器内部防火墙已关闭，通过 *控制面板* > *系统和安全* > *windows 防火墙* > *启用或者关闭 windows 防火墙*，关闭专有网络和共用网络防火墙。
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_5.png[]
+
+. 放行云平台云服务器绑定的安全组规则下行 3389 端口。并应用修改安全组。
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_6.png[]
+
+. 通过客户端测试远程桌面云服务器，通过 *开始* > *运行* > *mstsc*，点击回车。
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_7.png[,60%]
++
+image::/images/cloud_service/compute/vm/faq_start_winremodest_8.png[,60%]

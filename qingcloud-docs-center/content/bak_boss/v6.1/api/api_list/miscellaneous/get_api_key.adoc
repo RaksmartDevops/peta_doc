@@ -1,0 +1,126 @@
+---
+title: 获取API密钥（Boss2DescribeAccessKeys）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAccessKeys
+
+=== Method
+POST
+
+=== 接口描述
+该接口为iaas的DescribeAccessKeys的封装，该接口解决了一些可能的安全问题。
+响应数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| status
+a|
+api密钥状态，支持状态：
+
+* active: 活跃
+* inactive: 暂停
+
+|
+
+| description
+| 描述
+|
+
+| access_key_id
+| api密钥公钥
+|
+
+| ip_white_list
+| ip白名单，多个IP白名单规则由"`\r\n`"进行分割
+|
+
+| console_id
+| 对应的console id
+|
+
+| root_user_id
+| 主账户id
+|
+
+| owner
+| 用户id
+|
+
+| controller
+a|
+来源，可分为：
+
+* self: 租户自己创建
+* pitrix: 系统创建
+|
+
+| create_time
+| 创建时间
+|
+
+| status_time
+| 修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAccessKeys",
+    "owner": "usr-xsP6sTJF",  // 支持通过owner进行过滤
+    "access_keys": ["TSPBVYFZVUHFCFMEEOLW"], // 支持通过access_key进行过滤
+    "root_user": "usr-xsP6sTJF",   // 支持通过主账户id进行过滤
+    "search_word": "TSPBVYFZVUHFCFMEEOLW",  // 支持搜索，可搜索名称、access_key
+    "controller": "pitrix",  // 支持通过来源进行过滤，支持pitrix(系统)，self(租户)
+    "offset": 0,
+    "limit": 10
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeAccessKeysResponse",
+   "total_count": 1,
+   "access_key_set": [
+      {
+         "status": "active",
+         "description": "uI6u2MDBLQDVtP15bxlvsaiVTvQ0ipBrHcISKrX3",
+         "access_key_id": "DBWOKBYHLAEQVHUPPUFV",
+         "ip_white_list": "192.168.3.1-192.168.3.7\r\n192.168.1.1",
+         "console_id": "testingcloud",
+         "root_user_id": "usr-xsP6sTJF",
+         "create_time": "2022-01-06T10:06:48Z",
+         "access_key_name": "pitrix access key for mgmt",
+         "owner": "usr-xsP6sTJF",
+         "status_time": "2022-01-06T10:06:48Z",
+         "controller": "pitrix"
+      }
+   ],
+   "ret_code": 0
+}
+----

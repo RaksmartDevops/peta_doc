@@ -1,0 +1,176 @@
+---
+title: 获取通知组（Boss2DescribeNotifyGroup）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNotifyGroup
+
+=== Method
+POST
+
+=== 接口描述
+正常获取通知组列表时，建议的 `name` 参数是这样的：
+
+* `name` 传 `[]` 或不传；
+
+在新建通知组表单上有个功能，用户输入 name 后，需要发请求检查该 name 是否已存在。这里可以复用这个接口：
+
+* `name` 传 `['user_input_name']`；
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的条目总数
+|
+
+| notify_group_set
+| Array
+| 通知组详情信息
+|
+
+| phones
+| Array
+| 电话联系方式详情
+|
+
+| emails
+| Array
+| 电子邮件联系方式详情
+|
+
+| webhooks
+| Array
+| 网络钩子详情信息
+|
+
+| syslogs
+| Array
+| syslog 服务器详情
+|
+
+| imrobots
+| Array
+| 企业聊天工具机器人详情
+|
+
+| snmptraps
+| Array
+| snmp trap receiver 详情
+|
+
+| status_time
+| String
+| 上次更新时间
+|
+
+| create_time
+| String
+| 创建时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeNotifyGroup",
+    "name": ["test1"],   // name 传列表，精确匹配
+    "search_word": "test",     // 关键字搜索，可以模糊匹配name
+    "offset": 0,
+    "limit": 10,
+    "fields": ["id", "name"]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+  "notify_group_set": [
+    {
+      "id": 1,
+      "name": "test3",
+      "phones": [
+        {
+          "contact": "13111112222",
+          "remark": "联通"
+        },
+        {
+          "contact": "13712345678",
+          "remark": "移动"
+        }
+      ],
+      "emails": [
+        {
+          "contact": "test1@example.com",
+          "remark": "invoker"
+        }
+      ],
+      "webhooks": [
+        {
+          "contact": "http://localhost:8887/webhook",
+          "remark": "测试用"
+        }
+      ],
+      "syslogs": [
+        {
+          "host": "localhost",
+          "port": 514,
+          "remark": "test",
+          "protocol": "UDP"
+        }
+      ],
+      "imrobots": [
+        {
+          "url": "https://oapi.dingtalk.com/robot/send?access_token=65f26ba613b9c67b389c7045120ea38cfeabb337f7ae592ff9ae24fd6069462e",
+          "remark": "钉钉群",
+          "im_type": "dingtalk",
+          "secret_key": "SEC18ccd7c67ebc253e0345b175407f8cad88a61939b1240f3d3f0261xxx",
+          "mentioned_all": true,
+          "mentioned_list": [
+            "13163259133"
+          ]
+        }
+      ],
+      "snmptraps": [
+        {
+          "host": "localhost",
+          "port": 161,
+          "version": "v1",
+          "community":"public",
+          "remark": "test",
+        }
+      ],
+      "status_time": "2020-06-01T09:41:58.984Z",
+      "create_time": "2020-06-01T09:33:25.419Z"
+    }
+  ],
+  "total_count": 1,
+  "ret_code": 0,
+  "action": "Boss2DescribeNotifyGroupResponse"
+}
+----

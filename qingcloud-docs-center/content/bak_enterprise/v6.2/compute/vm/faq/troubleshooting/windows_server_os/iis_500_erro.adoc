@@ -1,0 +1,28 @@
+---
+title: "IIS搭建的网站显示“500 - 内部服务器错误”"
+weight: 100
+
+---
+== 概述
+
+Windows 实例使用 IIS 作为 Web 服务的网站，访问时出现 “500 - 内部服务器错误”，如下图所示。此报错并没有输出具体的错误项，给排查问题带来一些困难。本文主要介绍如何显示程序的真实报错，以便针对性分析网站错误。
+
+image::/images/cloud_service/compute/vm/faq_trouble_iis_500erro1.png[]
+
+== 详细信息
+
+. 登录 Windows 实例.
+. 在菜单栏，依次选择 *开始* > *管理工具* > *Internet Information Service(IIS)管理器*。
+. 在左侧导航窗格点击 *网站*，然后点击报错站点，找到并点击 *错误页*，如下图所示。
++
+image::/images/cloud_service/compute/vm/faq_trouble_iis_500erro2.png[]
+
+. 在右侧的操作栏中点击 *编辑功能设置*。
++
+image::/images/cloud_service/compute/vm/faq_trouble_iis_500erro3.png[]
+
+. 在弹出的 *编辑错误页设置* 窗口中，选择 *详细错误* 后，点击 *确定*。
++
+image::/images/cloud_service/compute/vm/faq_trouble_iis_500erro4.png[]
+
+. 打开网站，按 *Ctrl* + *F5* 键强制刷新浏览器，确认重新访问时可以看到真实报错信息。

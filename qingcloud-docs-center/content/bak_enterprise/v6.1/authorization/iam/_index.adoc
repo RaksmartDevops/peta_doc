@@ -1,0 +1,41 @@
+---
+title: 访问鉴权管理
+linkTitle: 访问鉴权管理
+weight: 1
+description: 访问鉴权管理（Identity and Access Management，IAM）是一款在 QingCloud
+  平台上提供身份识别和访问控制的 Web 服务。通过使用 IAM 来统一管理和控制接入实体的认证和授权，能更安全地自主管控本账户下的任意资源访问权限。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是访问鉴权管理
+            url: intro/intro
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 身份管理
+            url: manual/role/
+          - title: 策略管理
+            url: manual/policy/
+          - title: 用户管理
+            url: manual/user/
+          - title: 策略模拟器
+            url: manual/policies_simulate/
+          - title: 操作日志
+            url: manual/log/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 免密钥应用开发
+            url: best-practices/scenario1/
+          - title: 跨账号管理协作
+            url: best-practices/scenario2/
+linkkey: admin_iam_guide
+---

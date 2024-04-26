@@ -1,0 +1,85 @@
+---
+title: 获取所有节点（Boss2DescribeNodes）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNodes
+
+=== Method
+POST
+
+=== 接口描述
+用于获取所有计算节点和管理节点的列表。
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| hostname
+| string
+| 节点hostname
+|
+
+| type
+| string
+a|
+节点类型：
+
+* ksnode - 管理节点
+* hypernode - 计算节点
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeNodes",
+    "zone": "staging", // [必须]指定zone
+    "type": ["ksnode", "hypernode"], // 指定节点类型进行过滤，如不指定将返回所有类型的节点，支持ksnode - 管理节点，hypernode - 计算节点
+    "limit": 10,
+    "offset": 0,  // 与limit组合进行结果的分页
+    "search_word": "dns" // 使用节点hostname进行模糊查询
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "node_set": [
+      {
+         "hostname": "sr01n21",
+         "type": "hypernode"
+      },
+      {
+         "hostname": "s-rsserver1",
+         "type": "ksnode"
+      }
+   ],
+   "total_count": 38,
+   "ret_code": 0,
+   "action": "Boss2DescribeNodesResponse"
+}
+----

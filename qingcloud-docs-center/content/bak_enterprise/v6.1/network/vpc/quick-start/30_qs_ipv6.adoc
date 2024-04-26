@@ -1,0 +1,8 @@
+---
+title: "搭建 IPv6 VPC 网络"
+keyword: VPC, 搭建 VPC 网络
+description: 如何介绍搭建一个具有 IPv6 CIDR 的 VPC 网络。
+draft: false
+weight: 30
+---
+include::../../../../../_cloud_service/vpc/qs_ipv6.adoc[]

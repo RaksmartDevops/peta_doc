@@ -1,0 +1,43 @@
+---
+title: "远程控制 Windows 远程桌面无法连接"
+weight: 130
+
+---
+== 问题背景
+
+出现提示 “未启用对服务器的远程访问” 等等。
+
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-01.png[]
+
+== 解决方案
+
+这个时候需要检查一下被访问的电脑的设置：
+
+. 是否开机
+. 防火墙是否关闭
+. 远程访问权限是否已经打开
+. 查看云服务器监控是否正常
+
+=== 关闭防火墙的方法
+
+. 打开 *控制面板（查看方式：大图标）* > *windows 防火墙* > *启用或关闭 windows 防火墙*。
+
+. 点击 *关闭* ，然后确认。
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-02.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-03.png[]
+
+=== 打开远程权限的方法
+
+选择 *控制面板* > *系统* > *远程设置* > *勾选* 或鼠标右键点击 *计算机* 图标，在弹出的选项中点击 *属性* 选项。
+
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-04.png[]
+
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-05.png[]
+
+=== 查看云服务器监控
+
+image::/images/cloud_service/compute/vm/faq_trouble_win_not_work03-06.png[]
+
+若 cpu 和内存异常，并且到 100%，很可能中毒，建议做好数据的备份，然后重置系统。

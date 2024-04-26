@@ -1,0 +1,93 @@
+---
+title: 获取region_zone列表（Boss2DescribeZones）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeZones
+
+=== Method
+POST
+
+=== 接口描述
+返回region和zone列表，用于界面展示使用。
+如果没有启用region，则该zone对应的region为空字符串
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| zone_set
+| Array
+| 可用区信息列表
+|
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| region_id
+| String
+| region id
+|
+
+| is_global
+| Boolean
+| 是否是global区域，true: 是 false: 否
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeZones",
+  "all": false // 是否显示所有的zone，设置为true则会返回所有的zone，默认设置为false，此时按照用户的角色来返回zone列表
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "zone_set": [
+      {
+         "zone_id": "devopsa",
+         "region_id": "devops",
+         "is_global": false
+      },
+      {
+         "zone_id": "devopsb",
+         "region_id": "devops",
+         "is_global": false
+      },
+      {
+         "zone_id": "global",
+         "region_id": "",
+         "is_global": true
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeZonesResponse"
+}
+----

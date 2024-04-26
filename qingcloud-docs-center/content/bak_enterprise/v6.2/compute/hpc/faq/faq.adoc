@@ -1,0 +1,12 @@
+---
+title: "常见问题"
+linkTitle: "常见问题"
+date: 2020-02-28T10:08:56+09:00
+description: hpc常见问题
+keywords: 云计算, hpc,s,EHPC
+draft: false
+weight: 2
+---
+
+
+include::../../../../../_cloud_service/ehpc/faq.adoc[]

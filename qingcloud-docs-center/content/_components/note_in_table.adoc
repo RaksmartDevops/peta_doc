@@ -1,0 +1,14 @@
+ifeval::["{file_output_type}" != "pdf"]
+[.admon.note,cols="a"]
+!===
+! 说明
+
+!
+endif::[]
+ifeval::["{file_output_type}" == "pdf"]
+
++++<div class="admon note">+++
++++<div id="_说明">说明</div>+++
++++<div class="paragraph">+++
+
+endif::[]

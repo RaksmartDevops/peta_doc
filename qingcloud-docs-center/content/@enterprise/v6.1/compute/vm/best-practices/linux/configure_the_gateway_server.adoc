@@ -1,0 +1,129 @@
+---
+title: 配置云服务器为网关服务器(外部绑定公网 IP)
+weight: 210
+---
+
+== 项目概览
+
+在本项目中，您将了解如何使用云服务器外部绑定公网 IP 作为网关服务器，让其他云服务器可以使用网关服务访问互联网。
+
+== 环境准备
+
+* 创建一个 VPC 网络。
+* 创建一个私有网络并加入到 VPC 网络。
+* 创建两台云服务器加入到上面创建的私有网络。
+* 创建一个公网 IP，外部绑定到网关服务器。
+
+=== 网络拓扑
+
+image::/images/cloud_service/compute/vm/bestp_linuxconfigurethegatewayserver_1.png[]
+
+== 配置步骤
+
+=== 网关服务器配置
+
+. 测试网络连通性
++
+[source,shell]
+----
+ping www.baidu.com
+----
+
+. 开启路由功能
++
+* 临时更改
++
+[source,shell]
+----
+echo 1 > /proc/sys/net/ipv4/ip_forward
+----
++
+* 永久生效
++
+[source,shell]
+----
+vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+
+
+sysctl -p /etc/sysctl.conf
+----
+
+. 配置 SNAT
++
+[source,shell]
+----
+iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o eth0 -j MASQUERADE
+----
+
+=== 客户端及 DNS 配置
+
+==== 路由配置
+
+* 方案一：
++
+[source,shell]
+----
+route add default gw 172.16.0.200
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+云服务器中添加网关路由，云服务器重启会失效。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+* 方案二：
++
+*网络* > *VPC 网络* > *管理配置* > *路由推送*
++
+image::/images/cloud_service/compute/vm/bestp_linuxconfigurethegatewayserver_2.gif[]
++
+
+include::../../../../../../_components/note.adoc[]
+
+VPC 中添加路由推送，云服务器需要重启网络。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+* 方案三：
++
+*网络* > *路由表*
++
+image::/images/cloud_service/compute/vm/bestp_linuxconfigurethegatewayserver_3.gif[]
++
+
+include::../../../../../../_components/note.adoc[]
+
+私有网络绑定路由表，需要熟悉网络基础知识。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+* 网络连通性测试：
++
+[source,shell]
+----
+ping 114.114.114.114
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+私有网络的云服务器绑定了公网 IP 默认会加一层防火墙，需要手动在安全组中放行一下 DNS 服务的 UDP 53端口，否则无法实现域名解析。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+==== DNS 配置
+
+image::/images/cloud_service/compute/vm/bestp_linuxconfigurethegatewayserver_4.gif[]
+
+测试域名解析：
+
+[source,shell]
+----
+ping www.domain.com
+----

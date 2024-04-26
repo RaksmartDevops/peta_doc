@@ -1,0 +1,27 @@
+---
+title: "升级集群"
+draft: false
+description: 介绍如何升级 Harbor 集群。
+keywords: Harbor, 镜像仓库, 升级集群
+weight: 15
+---
+== 升级须知
+
+* Harbor 镜像仓库应用不支持滚动升级，需要关闭集群后进行手动升级。
+* Harbor 1.7.1 以前的版本在升级前请手工备份修改过的 Harbor 配置，包括 *LDAP认证* 、*邮箱*、**系统配置**及**复制管理**，升级完毕后需要手动重新填写；Harbor 1.7.1 以上的版本不再需要备份及重设配置。
++
+image::/images/cloud_service/container/harbor/man15_config_page.png[man15_config_page]
+
+* 目前暂不支持低版本升级至 Harbor 2.2.1 版本。
+
+== 升级操作
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *AppCenter* > *集群管理*，进入**集群管理**页面。
+. 勾选需要升级的集群，点击**关闭** > *确认*，待集群状态变为``已关闭``。
+. 点击集群 ID，进入集群详情页面。
+. 在左侧的**基本属性**区域，点击image:/images/cloud_service/container/harbor/man05_menu_icon.png[icon]图标，选择**升级**，弹出**升级集群**窗口。
+. 选择需要升级的目标版本，下方显示该版本对应的更新特性。
+. 点击**升级**，等待升级成功。
++
+image::/images/cloud_service/container/harbor/man15_upgrade.png[]

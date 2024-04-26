@@ -1,0 +1,83 @@
+---
+title: 获取告警分类（Boss2DescribeAlertCategories）
+weight: 16
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertCategories
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警分类列表。
+返回数据：
+
+|===
+| 字段 | 解释 | 备注
+
+| id
+| 告警分类ID
+|
+
+| verbose_name
+| 告警分类名称
+|
+
+| description
+| 分类描述
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertCategories",
+    "ids": ["00a3570d-ea73-4e69-813b-b89c7037e7e1"], // 可通过告警分类的id来进行过滤
+
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "网络", // 用于部分字段的模糊搜索
+    "fields": ["id", "verbose_name", "description"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "alert_category_set": [
+      {
+         "id": "00a3570d-ea73-4e69-813b-b89c7037e7e1",
+         "verbose_name": "网络服务异常",
+         "description": "网络相关的服务异常"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertCategoriesResponse"
+}
+----

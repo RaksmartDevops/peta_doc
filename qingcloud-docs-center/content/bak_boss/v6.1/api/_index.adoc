@@ -1,0 +1,63 @@
+---
+title: "API 手册"
+description: "API 手册"
+weight: 5
+---
+
+== 概述
+
+BOSS2（Business & Operation Support System 2） 是一款为云管理人员打造的功能全面、界面至美、操作至简的云管理操作系统。
+
+BOSS2-Manager 作为其后端服务程序，为用户提供了规范且高效的 API 接口。本文将详细说明各 API 接口的语法、参数、返回结果等。
+
+== 约定
+
+=== API 命名
+
+本文档中包含了 IaaS 及 BOSS2 的 API 接口，这些接口的命名方式遵循以下规则：
+
+* 命名以 BOSS2 开头，表明该接口由 BOSS2 接管，并进行了请求的包装或请求结果的修改。
+* 不以 BOSS2 开头的接口，表明该接口通过 BOSS2 进行了转发，除权限相关的限制外，BOSS2 未对请求及请求结果进行修改。
+
+=== 日期格式
+
+系统中按照需求返回多种日期：
+
+* 时间：返回 UTC 时间，格式为 `yyyy-mm-ddThh:MM:ssZ`。
+* 时间戳：如有需求可直接返回时间戳。
+
+== 请求方式
+
+本系统对 API 的请求使用 POST 方式，用户直接传入 Json 数据即可。
+
+include::../../../_components/note.adoc[]
+
+* 除了登录认证、文件上传等接口外，其他接口均使用 `/api` 作为请求路径即可。
+
+* 在本文档中，部分接口的 `path` 形式类似于 `/api/?action=Boss2DescribeBossUsers`，其中 url 参数并无实际功能，仅为了便于调试使用。
+
+include::../../../_components/table_footer.adoc[]
+
+
+== API 请求结构
+
+[cols="2,4,4", options="header"]
+|===
+| 元素 | 描述 | 备注
+
+| API 入口
+| 向 BOSS2-Manager 发送请求的入口。
+| 形如 `http://boss2.testing.com/api`
+
+| 公共参数
+| 每个 API 调用都需要包含公共参数。
+| 详情见link:parameters/[公共参数]说明。
+
+| 指令名称
+| API 指令的名称，例如 `Boss2GetDashboardStats` 等。
+| 完整的指令名称列表名称请参见 API 指令列表。
+
+| 指令参数
+| 指令参数请参见每个指令的相关文档。
+|-
+|===

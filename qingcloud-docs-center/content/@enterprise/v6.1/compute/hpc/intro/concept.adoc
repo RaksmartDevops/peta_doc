@@ -1,0 +1,9 @@
+---
+title: "基本概念"
+draft: false
+weight: 5
+---
+本章节介绍弹性高性能计算的基本概念。
+
+include::../../../../../_cloud_service/ehpc/intro/concept.adoc[]
+

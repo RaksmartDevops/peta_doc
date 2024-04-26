@@ -1,0 +1,76 @@
+---
+title: 配置 EIP 一键引流
+description: 如何配置VPC网络中主机防火墙
+draft: false
+weight: 5
+keywords: 配置云防火墙服务, 云防火墙服务
+linkkey: security_srp_ahvngfw_eip_guide
+---
+EIP 防护配置通过一键读取您账号下该区域内所有 EIP 资产，您可根据实际业务需求将EIP一键加入到对应的防火墙实例中进行防护，简化繁琐的引流配置操作。
+
+include::../../../../../../_components/note.adoc[]
+
+若云防火墙部署了 MCN（流量牵引服务）则 支持 EIP 一键引流，若没有部署 MCN，云防火墙路由配置请参见link:../vpc_cfw/[配置 VPC 网络中云防火墙服务]。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+本小节介绍如何配置 EIP 一键引流。
+
+== 前提条件
+
+* 已购买云防火墙并完成云防火墙实例部署。
+* 云防火墙已部署 MCN 服务。
+
+== 操作步骤
+
+. 进入**安全资源池**页面。
+. 在左侧导航栏选择**云防火墙** > *EIP防护配置*。
++
+进入**EIP防护配置**页面。
+
+. 选择资产并在资产所在行点击**开启防护**。
+. 选择待配置的云防火墙实例，点击**确定**。
++
+等待系统引流配置完成，当防护状态显示为``防护中``表示配置成功。
++
+image::/images/cloud_service/security/srp/cfw_eip_01.png[防护状态]
+
+== 结果验证
+
+. 在本地执行以下命令测试公网 IP 是否能连通。
++
+[source]
+----
+ping <公网 IP>
+----
++
+此处以 192.168.204.176 为例。
++
+image::/images/cloud_service/security/srp/cfw_eip_02.png[测试]
+
+. 选择**云防火墙** > *防火墙实例*。
++
+进入**云防火墙**页面。
+
+. 在目标云防火墙实例**操作**一栏点击**控制台**，进入云防火墙实例控制台首页。
+. 选择**配置策略** > *控制策略*，点击操作一栏下的编辑图标。
++
+弹出**控制策略**界面。
++
+image::/images/cloud_service/security/srp/cfw_eip_03.png[编辑]
+
+. 将**行为**设置为``拒绝``，点击**提交**。
++
+image::/images/cloud_service/security/srp/cfw_eip_04.png[设置行为]
+
+. 再次在本地执行以下命令测试公网 IP 是否能连通。
++
+[source]
+----
+ping <公网 IP>
+----
++
+此处以 192.168.204.176 为例，显示类似以下信息表示不能连通，且 EIP 一键引流配置生效。
++
+image::/images/cloud_service/security/srp/cfw_eip_05.png[测试]

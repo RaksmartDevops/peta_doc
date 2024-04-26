@@ -1,0 +1,121 @@
+{{- $Section := partial "get-recent-section.html" . -}}
+<div class="post">
+  <h1 class="post-title">
+    {{$title := partial "get-title.html" .}}
+    {{- $title -}}
+  </h1>
+  <div class="post-info">
+    <div class="post-date">
+      更新时间：{{dateFormat "2006-01-02 15:04:05" .Lastmod.UTC}}
+    </div>
+    <!-- <div class="post-tag export-word">
+      <img src="/images/icons/format_word_fill.svg" />
+      <span>Word</span>
+    </div> -->
+    {{$hidePDFDownloadBtn := false }}
+    {{$RelPermalink := .RelPermalink}}
+    {{range .Site.Params.pdf.pdf_exclude}}
+      {{if hasPrefix $RelPermalink .}}
+        {{$hidePDFDownloadBtn = true}}
+      {{end}}
+    {{end}}
+    {{if or .Params.not_show .Parent.Params.not_show}}
+      {{$hidePDFDownloadBtn = true}}
+    {{end}}
+    {{if .Site.Params.disablePdf}}
+      {{$hidePDFDownloadBtn = true}}
+    {{end}}
+    {{if not $hidePDFDownloadBtn}}
+      <div
+        class="tag post-tag export-pdf has-tooltip-top has-tooltip-arrow"
+        data-tooltip="下载范围：所属一级目录的全部内容"
+        data-url="{{path.Join $Section.RelPermalink (index (split (replace .RelPermalink $Section.RelPermalink ``) `/`) 0)}}">
+        <span class="icon-format_pdf_2_fill"></span>
+        PDF
+      </div>
+      {{if .Site.Params.enableExportWord}}
+        <div
+          class="tag post-tag export-word has-tooltip-top has-tooltip-arrow"
+          data-tooltip="下载范围：所属一级目录的全部内容"
+          data-url="{{path.Join $Section.RelPermalink (index (split (replace .RelPermalink $Section.RelPermalink ``) `/`) 0)}}">
+          <span class="icon-format_word_fill"></span>
+          WORD
+        </div>
+      {{end}}
+    {{end}}
+  </div>
+  {{- partial "toc.html" . -}}
+  <div class="post-content">
+    {{if .Params.product}}
+      <section class="product_dynamics">
+        <div class="container td-outer product_dynamics">
+          <div class="">
+            <ul class="timeline product_dynamics_ul" id="learn_content">
+              {{ range .Params.product }}
+              <li class="row">
+                <div class="timeline-outer-line timeline-product"></div>
+                <div class="col-sm-12 timeline-outer">
+                  <p>{{ .time }}</p>
+                  <h2 id="{{ .title }}">{{ .title }}{{if .tags}}{{ $length := len .tags}}{{ range $i,$v:=(first 3
+                    .tags)}}<span class="news-tag-{{$i}} {{if eq (add $i 1) $length}}news-tag-max{{end}}">{{$v}}</span>{{ end
+                    }}{{ end }}</h2>
+                  {{if .zone}}
+                  <p>适用范围：{{.zone}}</p>
+                  {{ end }}
+                  <p class="product_dynamics_p">{{ .content | markdownify }}</p>
+                  {{ if .url}}
+                  <a href="{{ .url }}">查看相关文档</a>
+                  {{ end }}
+                </div>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </section>
+      {{ $newsJs := resources.Get "js/news.js" | resources.Fingerprint "sha512" }}
+      <script type="text/javascript" src="{{ $newsJs.RelPermalink }}" integrity="{{ $newsJs.Data.Integrity }}"></script>
+    {{ else }}
+      {{ with .Params.video_section}}
+        {{ range . }}
+          <h2>{{ .title }}</h2>
+          <div class="row">
+            {{range .children}}
+              <div class="col-sm-4 video-main">
+                <div class="card" data-toggle="modal" data-target="#myModal" data-url="{{ .url }}">
+                  <img class="video-bg" src="{{ .poster }}">
+                  <p class="adjust_p video_title textline-2">{{ .title }}</p>
+                  <div class="play-btn">
+                    <div class="play-btn-subscript"></div>
+                  </div>
+                  <p class="adjust_p time_duration">{{ .time_duration }}</p>
+                </div>
+                <div class="video_bottom textline-2">{{ .description }}</div>
+              </div>
+            {{end}}
+          </div>
+        {{ end }}
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog video-modal-dialog">
+            <div class="modal-content video-modal-content bg-black">
+              <video id="video" width="500" height="700" class="product-video" autoplay="autoplay" controls="controls"
+                src=""></video>
+              <span class="video-close"></span>
+            </div>
+          </div>
+        </div>
+      {{end}}
+      {{.Content}}
+    {{ end }}
+
+  </div>
+  <div class="post-footer">
+    <div class="post-prev">
+    </div>
+    <div class="post-next">
+    </div>
+  </div>
+  <div class="post-back-to-top">
+    <span class="icon-up_3_fill"></span>
+  </div>
+</div>

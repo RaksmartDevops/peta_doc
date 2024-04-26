@@ -1,0 +1,13 @@
+{{$IsEmbed := (eq .Site.Params.isEmbed true)}}
+{{if $IsEmbed}}
+  <footer>
+    <a href="{{- .Site.Params.docHostPort -}}{{- .RelPermalink -}}" target="_blank">
+      在文档中心打开
+      <span class="icon-share_box_fill"></span>
+    </a>
+  </footer>
+{{else if .Site.Params.footer}}
+  <footer>
+    {{.Site.Params.footer | safeHTML}}
+  </footer>
+{{end}}

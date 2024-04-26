@@ -1,0 +1,44 @@
+{{- $Section := partial "get-recent-section.html" . -}}
+<div class="content-card">
+  {{range $Section.Sections.ByWeight}}
+    {{if not .Params.not_show}}
+      <div class="search-home-item-content">
+        <div class="content-title" id="_{{.Title}}">
+          {{if hasPrefix .Params.icon `/images/`}}
+            <img src="{{.Params.icon}}" />
+          {{else}}
+            <span class="content-item-title-icon-wrapper">
+              <span class="content-item-title-icon {{.Params.icon}}">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                <span class="path3"></span>
+                <span class="path4"></span>
+                <span class="path5"></span>
+                <span class="path6"></span>
+                <span class="path7"></span>
+                <span class="path8"></span>
+                <span class="path9"></span>
+                <span class="path10"></span>
+                <span class="path11"></span>
+                <span class="path12"></span>
+                <span class="path13"></span>
+                <span class="path14"></span>
+                <span class="path15"></span>
+              </span>
+            </span>
+          {{end}}
+          {{.Title}}
+        </div>
+        <div class="content-description">
+          {{range .Sections.ByWeight}}
+            {{if not .Params.not_show}}
+              <a class="content-description-item" href="{{.RelPermalink}}">
+                {{.Title}}
+              </a>
+            {{end}}
+          {{end}}
+        </div>
+      </div>
+    {{end}}
+  {{end}}
+</div>

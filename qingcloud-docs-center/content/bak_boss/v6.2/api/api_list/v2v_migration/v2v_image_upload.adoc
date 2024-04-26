@@ -1,0 +1,94 @@
+---
+title: V2V映像上传（v2v_upload）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/file/v2v_upload/upload_host/?dir=/tmp/testdir
+
+=== Method
+POST
+
+=== 接口描述
+用于V2V映像文件的上传。
+使用方法与映像注册时的上传接口类似，但略有不同：
+1. url中需带上传服务器的ip及端口，以此方式将镜像上传至不同zone的v2v虚拟机上，上传服务器的ip和端口可通过Boss2DescribeV2VZones获得，如对v2vtest这个zone进行操作，Boss2DescribeV2VZones的结果中该zone对应的upload字段值为：192.168.5.46:45670，则上传镜像的url为：/file/v2v_upload/192.168.5.46:45670/，注意结尾的"`/`"必须携带
+2. url中需带上v2v创建任务时选择的目录，以将此文件上传至指定的目录，如在界面上选择了目录为/home/ubuntu/testdir，则上传使用的url为: /file/v2v_upload/192.168.5.46:45670/?dir=/home/ubuntu/testdir
+
+{blank} +
+请使用form方式上传文件，文件上传后将会返回文件的实际路径，支持大文件上传。
+
+注意，本接口暂时不支持直接在yapi上进行测试。
+
+本接口上传时需要制定文件的key为file (使用其他的key会导致返回结果为空)
+
+{blank} +
+返回数据：
+
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| path
+| String
+| 文件在服务器上的实际路径
+|
+
+| filename
+| String
+| 上传文件的原始文件名
+|
+
+| md5
+| String
+| 上传文件的 hash
+|
+
+| dir
+| String
+| 上传时指定的dir
+|
+
+| size
+| String
+| 上传文件的体积
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/x-www-form-urlencoded
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+file
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "filename": "test.img",
+   "path": "/tmp/testdir/test.img",
+   "md5": "c56ca2afd79e578b216e2ac72079938b",
+   "dir": "/tmp/testdir",
+   "size": "3561"
+}
+----

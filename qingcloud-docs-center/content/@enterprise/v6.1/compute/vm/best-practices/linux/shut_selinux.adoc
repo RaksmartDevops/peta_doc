@@ -1,0 +1,36 @@
+---
+title: "关闭 SeLinux"
+weight: 60
+---
+
+== 问题背景
+
+初学者配置 Linux 服务器时不成功，却没有头绪，那是因为在 Linux 操作系统中默认开启了防火墙，SeLinux 也处于启动状态，一般状态为 Enforing。致使很多服务端口默认是关闭的。所以好多服务初学者明明配置文件正确，等验证时有时连 ping 也 ping 不通，建议初学者配置服务器把 SeLinux 这项关掉。
+
+== SeLinux 状态释义
+
+SeLinux 有三种状态，分别如下：
+
+* Enforcing：强制模式，表示 SeLinux 运作当中，所有违反其规则的操作都会被阻止执行；
+
+* Permissive：宽容模式， 表示 SeLinux 运作当中，不会限制违反其规则的操作，只会给出警告信息；
+
+* Disabled：禁用模式，不使用 SeLinux 机制。
+
+== 关闭SeLinux
+
+. 临时关闭，但重启后失效。
++
+[source,shell]
+----
+setenforce 0
+----
+
+. 永久关闭，修改 `/etc/selinux/config` 文件，编辑 `SELINUX=disabled`，重启后生效。
++
+[source,shell]
+----
+vi /etc/selinux/config
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_shut_selinux_1.jpg[selinux_config]

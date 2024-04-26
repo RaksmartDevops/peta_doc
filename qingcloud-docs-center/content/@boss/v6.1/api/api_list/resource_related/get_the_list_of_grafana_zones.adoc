@@ -1,0 +1,56 @@
+---
+title: 获取Grafana可用区列表（Boss2DescribeGrafanaZones）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeGrafanaZones
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取已配置好的grafana可用区列表，将会返回可用区及对应的grafana url。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeGrafanaZones"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "zone_set": [
+      {
+         "zone": "zone_a",
+         "base_url": "http://192.168.9.63:8999/"
+      }
+   ],
+   "total_count": 1,
+   "ret_code": 0,
+   "action": "Boss2DescribeGrafanaZonesResponse"
+}
+----

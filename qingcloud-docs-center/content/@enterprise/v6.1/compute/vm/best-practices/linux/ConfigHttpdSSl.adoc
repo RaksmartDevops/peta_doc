@@ -1,0 +1,100 @@
+---
+title: httpd 服务配置 SSL
+weight: 180
+---
+
+== 一、在服务器上部署 httpd 服务（Ubuntu 为例）
+
+. 部署 httpd 服务。
++
+[source,shell]
+----
+sudo apt install apache2 -y
+----
+
+. 启动 apache2 服务并设置为开机自启。
++
+[source,shell]
+----
+systemctl enable apache2
+systemctl start  apache2
+----
+
+. 检查服务器 80 端口是否监听。
++
+[source,shell]
+----
+ss -nutlp | grep 80
+----
+
+== 二、配置安装并启用 httpd 所需的 SSL 相关组件
+
+. 安装 httpd 相关 SSL 组件，并启用相关模块。
++
+[source,shell]
+----
+# ubuntu apt 安装会自动安装所需组件，centos 还需运行如下命令安装组件：yum install mod_ssl openssl
+# 启用 ssl 模块
+root@web:/etc/apache2/sites-available# sudo a2enmod ssl
+Considering dependency setenvif for ssl:
+Module setenvif already enabled
+Considering dependency mime for ssl:
+Module mime already enabled
+Considering dependency socache_shmcb for ssl:
+Module socache_shmcb already enabled
+Module ssl already enabled                   # 这一行表示 ssl 模块已启用
+----
+
+. 配置 httpd 的 SSL。
+
+.. 创建目录/etc/apache2/ssl,并将申请到的域名证书复制进来。
++
+[source,shell]
+----
+root@web:/etc/apache2/ssl# mkdir /etc/apache2/ssl
+root@web:/etc/apache2/ssl# ls
+www.test.com.crt  www.test.com.key
+----
+
+.. 编辑默认的 https 配置文件。
++
+[source,shell]
+----
+root@web:/etc/apache2/sites-available# cp default-ssl.conf default-ssl.conf.bak
+root@web:/etc/apache2/sites-available# grep -Ev "^*#|^$" default-ssl.conf.bak >default-ssl.conf
+root@web:/etc/apache2/sites-available# cat default-ssl.conf
+<IfModule mod_ssl.c>
+	<VirtualHost *:443>
+        ServerName www.test.com        # 填写你所申请的证书的域名
+		ServerAdmin webmaster@localhost
+		DocumentRoot /var/www/html
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+		SSLEngine on
+		SSLCertificateFile	/etc/apache2/ssl/www.test.com.crt  # 填写你证书的位置
+		SSLCertificateKeyFile /etc/apache2/ssl/www.test.com.key # 填写你证书的位置
+	</VirtualHost>
+</IfModule>
+----
+
+.. 重启 apache2 服务，并查看 443 端口是否存活。
++
+[source,shell]
+----
+root@web:/etc/apache2/sites-available# systemctl restart apache2
+root@web:/etc/apache2/sites-available# ss -nutlp | grep 443
+tcp    LISTEN   0        128         *:443     *:*      users:(("apache2",pid=20985,fd=6),("apache2",pid=20984,fd=6),("apache2",pid=20981,fd=6))
+----
+
+== 三、验证
+
+在浏览器中访问证书中的域名。
+
+image::/images/cloud_service/compute/vm/bestp_linux_confighttpdssi_1.png[,100%]
+
+include::../../../../../../_components/attention.adoc[]
+
+这里由于是自签证书，所浏览器认为是不安全的。正式使用的时候需要到相关机构签发SSL证书。
+
+include::../../../../../../_components/table_footer.adoc[]
+

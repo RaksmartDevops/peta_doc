@@ -1,0 +1,39 @@
+// IPv6 概述
+
+弹性公网 EIP 支持公网 IPv4 和公网 IPv6。其中，公网 IPv6 为您提供独立的 IPv6 公网资源，包括公网 IPv6 地址及公网出口带宽服务。
+
+
+ifdef::pub[]
+include::../../_components/note.adoc[]
+目前北京3-A区，北京3区，广东2区和上海1区支持 IPv6。
+include::../../_components/table_footer.adoc[]
+endif::[]
+
+== 公网 IPv6 地址类型
+
+公网 IPv6 地址有两种：
+
+* 第一种是将云服务器在私有网络内分配得到的 IPv6 地址接入公网后生成的公网 IPv6 地址，不需要申请及分配。私网 IPv6 地址接入公网后，可以在**公网 IPv6** 页面查看到对应的公网 IPv6 地址。
+
+* 第二种是手动申请的公网 IPv6 地址，可以与负载均衡器绑定，也可以通过内部绑定的方式绑定到云服务器，为负载均衡器和云服务器提供公网 IPv6 的访问。
+
+== IPv6 公网应用场景
+
+* IPv4/IPv6 双栈网络
++
+通过启用 VPC 网络及私有网络的 IPv6 功能，并在私有网络中创建支持 IPv6 的云服务器，云服务器便可以使用 IPv4/IPv6 双栈网络，实现 IPv4/IPv6 的内网及公网通信。
+
++
+image::/images/cloud_service/network/eip/ipv4_ipv6_net_apply.png[]
+
+* IPv6 EIP 网络
++
+通过申请 IPv6 EIP 地址，并绑定到云服务器，为云服务器提供公网 IPv6 的访问。
+
++
+image::/images/cloud_service/network/eip/ipv6_eip_apply.png[]
+
+
+
+
+

@@ -1,0 +1,8 @@
+---
+title: "步骤二：安装 Agent"
+weight: 10
+---
+:discrete:
+
+include::../../../../../_cloud_service/hss/install_agent.adoc[]
+

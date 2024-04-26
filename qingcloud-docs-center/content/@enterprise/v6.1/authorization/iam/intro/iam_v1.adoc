@@ -1,0 +1,82 @@
+---
+title: "IAM V1.0 版发布概要"
+description: IAM V1.0 版本发布说明
+keywords: IAM , IAM V1.0, 发布说明, 版本说明
+weight: 23
+draft: false
+---
+
+
+== 关于 IAM
+
+*访问鉴权管理（Identity and Access Management，IAM）* 是一款在云平台上提供身份识别和访问控制的 Web 服务。通过使用 IAM 来统一管理和控制接入实体的认证和授权，能更安全地自主管控本账户下的任意资源访问权限。
+
+更多产品相关介绍请参阅link:../intro/[IAM 产品概述]。
+
+== 本版已发布的主要功能列表
+
+=== 身份信任载体
+
+. 支持云平台账户作为身份信任载体，使得被信任的账户能访问到自己的视图来参与运维。
+. 支持云服务器作为身份信任载体，使得云服务器上的应用开发可以不必使用账户 API 密钥就能按需访问到自己的账户资源
++
+image::/images/cloud_service/authorization/iam/iamV11.png[图片]
+
+使用详情请参见：link:../../faq/principal[常见问题 -- 信任载体]。
+
+=== 身份管理
+
+. 支持设定身份凭证会话有效期。
++
+image::/images/cloud_service/authorization/iam/iamV12.png[图片]
+
+. 支持管理身份上附加的策略权限。
++
+image::/images/cloud_service/authorization/iam/iamV13.png[图片]
+
+. 支持为账户类信任载体配置控制台 UI 访问模块。
++
+image::/images/cloud_service/authorization/iam/iamV14.png[图片]
+
+. 支持为云服务器类信任载体更换同类身份。
++
+image::/images/cloud_service/authorization/iam/iamV15.png[图片]
+
+关于身份管理的更多使用细节请参见：link:../../manual/role[操作指南 -- 身份管理]。
+
+=== 策略权限配置
+
+. 支持为弹性云服务器、虚拟专用网、弹性负载均衡和资源云监控四大服务配置策略。参见：link:../../faq/supported_services[常见问题 -- 支持的服务列表]。
+. 支持为弹性云服务器、虚拟专用网和弹性负载均衡服务配置策略时限定到特定资源。
++
+image::/images/cloud_service/authorization/iam/iamV16.png[图片]
+
+. 支持策略多重预期效力叠加，支持复合策略。
+. 支持可视化和代码编辑模式无缝切换。
++
+image::/images/cloud_service/authorization/iam/iamV17.png[图片]
+
+=== 策略管理
+
+. 支持为任意策略引用身份或离开身份。
++
+image::/images/cloud_service/authorization/iam/iamV18.png[图片]
+
+. 支持修改自定义策略，并可视化管理版本。
++
+image::/images/cloud_service/authorization/iam/iamV19.png[图片]
+
+关于策略管理的更多使用细节请参见：link:../../manual/policy[操作指南 -- 策略管理]。
+
+=== 策略模拟器
+
+. 支持为身份上的复合策略模拟测试和调整。
++
+image::/images/cloud_service/authorization/iam/iamV20.png[图片]
+
+. 支持针对策略列表中的任意策略单一或复合模拟测试。
++
+image::/images/cloud_service/authorization/iam/iamV21.png[图片]
+
+关于策略模拟器的更多使用细节请参见：link:../../manual/policies_simulate[操作指南 -- 策略模拟器]。
+

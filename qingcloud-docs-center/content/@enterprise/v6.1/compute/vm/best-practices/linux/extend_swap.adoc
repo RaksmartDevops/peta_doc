@@ -1,0 +1,51 @@
+---
+title: 扩容 swap 大小
+weight: 330
+---
+
+. 在根目录下新建一个文件夹 swap。
++
+[source,shell]
+----
+mkdir /swap
+----
+
+. 使用 dd 命令生成一个空文件，给 swap 划分一块 4G 大小的空间。
++
+[source,shell]
+----
+cd /swap
+dd if=/dev/zero of=swap.img bs=1M count=4096
+----
+
+. 使用 `mkswap` 命令将生成的空文件格式化为 swap 格式。
++
+[source,shell]
+----
+mkswap swap.img
+----
+
+. 激活 swap。
++
+[source,shell]
+----
+swapon swap.img
+----
+
+. 执行 `free -m` 查看。
++
+[source,shell]
+----
+free -m
+            total     used      free      shared  buff/cache   available
+Mem:        990       110       68         6        811         728
+Swap:       5119      0         5119
+----
+
+. 并将分区信息写入 `/etc/fstab`，添加如下信息。
++
+[source,shell]
+----
+vi /etc/fstab
+  /swap/swap.img swap swap defaults 0 0
+----

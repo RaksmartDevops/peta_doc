@@ -1,0 +1,73 @@
+---
+title: "信任载体"
+description: 介绍 IAM 信任载体。
+keywords: IAM , 信任载体
+draft: false
+weight: 10
+linkkey: admin_iam_principal_faq
+---
+
+被身份信任的使用实体叫做信任载体，只有信任载体才能代入该身份。
+
+== 信任载体类型
+
+目前，云平台 IAM 身份信任载体包含三类：
+
+. *云服务器类型信任载体*：供客户在云服务器上开发应用时使用。
+. *集群类型信任载体*：供客户在集群节点上植入开发时使用。
+. *账户类型信任载体*：供客户邀请他人来辅助自己协同运维时使用。
+
+== 如何创建信任
+
+当您成功link:../../manual/role/#_创建身份[创建身份]时，便为该身份指定了信任载体类型或信任实体且不可更改。
+
+. 当身份指定为云服务器或集群类型的信任载体时，需要添加相应类型的资源。
++
+点击进入对应身份的详情页，查看下方的**信任载体详情**选项卡。
++
+image::/images/cloud_service/authorization/iam/demo1_CredLoader.png[]
++
+选择可用区后点击**关联资源**，在弹出的对话框中选中要添加的资源（资源类型与信任载体类型一致）。
++
+image::/images/cloud_service/authorization/iam/demo1_AttachInstance.png[]
++
+点击**添加**，成功添加后该资源将会显示在**信任载体详情**下方的列表框中。
++
+image::/images/cloud_service/authorization/iam/demo1_SuccessAttachInstance.png[]
++
+
+include::../../../../../_components/note.adoc[]
+同一个身份可以添加多个对应信任载体类型的资源作为信任实体，但任意资源都只能关联到一个身份上。
+
+因此您可能会遇到资源添加不成功的情况，此时您需要去检查下该云服务器/集群是否已关联到别的身份上并考虑直接link:../../manual/role/#_为信任载体资源更换身份[更换身份]。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 当身份指定云平台账户为信任载体时，身份创建时便已指定到特定的账户，从而无需再次为该身份指定具体的信任实体。
++
+image::/images/cloud_service/authorization/iam/demo1_DescribeAccountRole.png[demo1_DescribeAccountRole]
++
+
+include::../../../../../_components/note.adoc[]
+账户类信任载体，身份与账户为一一对应关系，不可更改；点击**解除信任**将删除身份，对方将不再能使用此身份辅助您管理云平台。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 如何解除信任
+
+与创建信任相反，当您删除身份或移除身份上关联的资源时即自动解除信任关系。
+
+账户类信任载体，您需要直接删除身份来解除信任（当您在身份详情页点击**解除信任**时等同于删除身份）。
+
+针对云服务器和集群类信任载体，您可以在身份详情页勾选对应资源后点击**移除**。
+
+image::/images/cloud_service/authorization/iam/trustoff1.png[trustoff]
+
+或进入资源详情页找到身份信息卡片，点击卡片右上角后选择**解除信任**。
+
+image::/images/cloud_service/authorization/iam/trustoff2.png[trustoff]
+
+然后确认操作即可。
+
+image::/images/cloud_service/authorization/iam/trustoff3.png[trustoff]
+

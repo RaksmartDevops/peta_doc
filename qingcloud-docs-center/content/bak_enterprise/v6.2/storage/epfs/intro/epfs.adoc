@@ -1,0 +1,9 @@
+---
+title: "文件存储 EPFS"
+description: 本小节主要介绍文件存储 EPFS。
+draft: false
+weight: 10
+keywords: 云计算, 文件存储, EPFS
+---
+
+文件存储 EPFS（Elastic Parallel File System）是{platform_name_cn}提供的并行文件系统服务，用于面向超级计算服务等高性能场景。

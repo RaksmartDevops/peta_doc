@@ -1,0 +1,12 @@
+---
+title: "跨区域迁移方案"
+description: 跨区域迁移
+draft: false
+keywords: 云计算, 跨区域迁移
+weight: 10
+---
+
+本迁移方案适用于云平台跨区域迁移。迁移流程如下：
+
+image::/images/cloud_service/compute/migration/intro_migration_1.png[]
+

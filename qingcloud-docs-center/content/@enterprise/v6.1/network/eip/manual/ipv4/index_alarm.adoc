@@ -1,0 +1,7 @@
+---
+title: 配置指标告警
+weight: 43
+draft: false
+---
+
+include::../../../../../../_cloud_service/eip/index_alarm.adoc[]

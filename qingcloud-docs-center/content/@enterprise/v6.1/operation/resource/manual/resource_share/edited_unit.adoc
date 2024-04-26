@@ -1,0 +1,30 @@
+---
+title: "编辑共享单元"
+description: test
+weight: 10
+draft: false
+keywords: 编辑共享单元, 云计算
+---
+
+
+资源所有者可以在共享单元列表中编辑已创建的共享单元详情。
+
+== 操作步骤
+
+. 登录管理控制台，选择**资源**，进入**资源**页签。
+. 选择**我的共享**，点击共享单元名称，进入共享单元详情。
++
+image::/images/cloud_service/operation/resource/rs_6.png[]
+
+=== 共享单元移除
+
+image::/images/cloud_service/operation/resource/rs_7.png[]
+
+=== 添加共享资源
+
+进行资源的添加与删除，若共享的 VPC 中，已被共享资源的使用者添加资源，则删除失败。
+
+image::/images/cloud_service/operation/resource/rs_8.png[]
+
+image::/images/cloud_service/operation/resource/rs_9.png[]
+

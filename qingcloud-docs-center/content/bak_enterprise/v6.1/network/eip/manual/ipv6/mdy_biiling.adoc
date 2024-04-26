@@ -1,0 +1,8 @@
+---
+title: 修改计费模式
+weight: 31
+draft: false
+---
+:ipv6:
+
+include::../../../../../../_cloud_service/eip/mdy_billing.adoc[]

@@ -1,0 +1,89 @@
+---
+title: 获取告警来源（Boss2DescribeAlertSources）
+weight: 15
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertSources
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警来源列表。
+返回数据：
+
+|===
+| 字段 | 解释 | 备注
+
+| service
+| 告警来源ID
+|
+
+| name
+| 告警来源名称
+|
+
+| remarks
+| 描述
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertSources",
+    "services": ["IAAS", "SDN"], // 可通过告警来源ID进行过滤
+
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "service", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "测试", // 用于部分字段的模糊搜索
+    "fields": ["service", "name", "remarks"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+    "all": true // 当传值为true时返回所有的告警来源 传值为false仅返回关联有NfPattern的告警来源
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "alert_source_set": [
+      {
+         "service": "SDN",
+         "name": "网络服务",
+         "remarks": "SDN相关组件发来的告警，包含 vpc/vbc/kvr/dvr/vip/rt"
+      },
+      {
+         "service": "IAAS",
+         "name": "IAAS",
+         "remarks": "指从alert-agent发来的，iaas相关的告警，例如计算节点内存占用过高、ks服务异常等告警"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertSourcesResponse"
+}
+----

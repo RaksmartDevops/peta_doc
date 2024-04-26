@@ -1,0 +1,114 @@
+// IP/端口集合
+
+您可以将具有相同特征的一组 IP 或者一组端口设置成为 IP/端口集合，并在配置安全组规则时进行引用，实现 IP 或端口的批量管理。
+
+
+[#create]
+== 创建 IP/端口集合
+
+include::./common_operation.adoc[tag=ip_port]
++
+image::/images/cloud_service/network/sg/ip_port_list.png[]
+
+. 点击**创建**，弹出**创建 IP/端口集合**窗口。
+. 按照界面提示，配置 IP 或端口集合。
++
+参数说明如下表所示。
++
+[cols="1,3"]
+|===
+|参数|说明
+
+|名称
+|IP 或端口集合的名称。
+
+|类型
+|选择 ``IP 地址``或``端口``其中一种。
+
+|IP 地址/端口
+a| * **类型**选择 ``IP 地址``时，请填写 IP 地址集合。可输入 IP 地址、IP 段和 IP 地址范围，并使用换行符进行分隔，例如： +
+192.168.1.1 +
+192.168.2.0/24 +
+192.168.3.1-192.168.3.7 +
+
++
+include::../../_components/note_in_table.adoc[]
+单个 IP 地址集合最多允许添加 65535 个地址。如需配置超过 65535 个 IP 地址，您需要创建多个 IP 集合。
+include::../../_components/footer_in_table.adoc[]
+
+* **类型**选择``端口``时，请填写端口集合。可输入端口、端口范围，并使用换行符进行分隔，例如： +
+8080 +
+80-90 +
+10000-15000
+|===
+
+. 点击**提交**，完成创建。
+
+== 使用 IP/端口集合
+
+IP /端口集合创建后，可以在link:../rule_mgt/add/[添加安全组规则]时进行引用，如下图所示：
+
+* 在**起始端口**输入框后，点击image:/images/cloud_service/network/sg/ip_port_select_icon.png[]可选择已创建的端口集合。
+* 在**源/目标 IP**输入框后，点击image:/images/cloud_service/network/sg/ip_port_select_icon.png[]可选择已创建的 IP 集合。
++
+image::/images/cloud_service/network/sg/ip_port_select.png[]
+
+在 IP/端口集合列表的**安全组/规则子集**列，显示了该 IP/端口集合所关联的安全组及规则子集。
+
+image::/images/cloud_service/network/sg/ip_port_related.png[]
+
+== 修改 IP/端口集合
+
+您可以随时修改已创建的 IP/端口集合。
+
+include::../../_components/note.adoc[]
+若 IP/端口集合已被关联到安全组或规则子集，修改 IP/端口集合后，需要在关联的安全组规则或规则子集中执行**应用修改**，才能使修改生效。
+include::../../_components/table_footer.adoc[]
+
+include::./common_operation.adoc/[tag=ip_port]
+
+. 右键点击待修改的 IP/端口集合，选择**修改**，弹出**修改 IP/端口集合**窗口。
+. 根据需要，修改名称、IP 地址或端口信息，点击**提交**，修改成功。
++
+image::/images/cloud_service/network/sg/ip_port_mdy.png[]
++
+修改时，填写要求与<<create,创建>>时相同。
+
+. 可选：若当前 IP/端口集合已被关联到安全组或规则子集，则继续执行以下步骤：
+
+.. 在**安全组/规则子集**所在列，点击关联的安全组或规则子集，进入到**规则**页面。
+.. 在规则列表中，找到 IP/端口集合关联的规则，点击起始端口或 IP 后的**应用修改**，使更新生效。
+
+== 复制 IP/端口集合
+
+支持同区域/可用区或跨区域/可用区复制 IP/端口集合。可对单个 IP/端口集合进行复制，也可同时对多个 IP/端口集合进行复制，并可同时复制到多个不同的区域或可用区中。
+
+include::./common_operation.adoc[tag=ip_port]
+
+. 右键点击需要复制的 IP/端口集合，选择**复制**，弹出区域选择窗口。
++
+或者您也可以勾选（可多选）需要复制的 IP/端口集合，然后点击列表上方的**复制**。
++
+image::/images/cloud_service/network/sg/ip_port_copy.png[]
+. 选择复制的目标区域，点击**提交**。
++
+待页面提示“复制成功”，您可以前往目标区域的 IP/端口集合列表，查看复制的 IP/端口集合。
+
+
+== 删除 IP/端口集合
+
+您可以删除不再需要的 IP/端口集合。
+
+include::../../_components/note.adoc[]
+删除前，需要解除该 IP/端口集合与安全组或规则子集的关联，即该 IP/端口集合没有被任何安全组或规则子集使用，否则无法删除。
+include::../../_components/table_footer.adoc[]
+
+
+include::./common_operation.adoc[tag=ip_port]
+
+. 右键点击需要删除的 IP/端口集合，选择**删除**，弹出确认提示框。
++
+或者您也可以勾选（可多选）需要删除的 IP/端口集合，然后点击列表上方的**更多操作** > **删除**。
+. 点击**确认**，完成删除。
+
+

@@ -1,0 +1,394 @@
+---
+title: 获取资源池用量列表（Boss2GetResourcePoolUsage）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourcePoolUsage
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于返回指定类型资源池的使用情况列表。
+注意：当预测数据未生成时，available_time\, available_by\, available_data\, due_date\, scaling_recommendation\, prediction 这些涉及到用量预测的字段不会返回。
+
+支持资源池类型如下：
+
+== 安置组
+
+topic: place_group
+支持使用安置组和zone进行过滤：
+
+----
+{
+    "filters": {
+        "place_groups": [
+            {
+                "zone": "staging",
+                "id": "plg-00000000"
+            }
+        ],
+        "zones": [
+            "staging"
+        ]
+    }
+}
+----
+
+返回数据：
+
+[.allow_break_inside]
+|===
+| 字段 | 说明 | 备注
+
+| zone_id
+| zone id
+|
+
+| plg_id
+| 安置组id
+|
+
+| plg_name
+| 安置组名称
+|
+
+| bot_count
+| 安置组中计算节点总数
+| 单位：个
+
+| free_disk
+| 空余物理硬盘
+| 单位：MB
+
+| free_vcpu
+| 空余vcpu
+| 单位：核
+
+| used_disk
+| 已使用物理硬盘
+| 单位：MB
+
+| used_vcpu
+| 已使用vcpu
+| 单位：核
+
+| total_disk
+| 总物理硬盘
+| 单位：MB
+
+| total_vcpu
+| 总vcpu核心数
+| 单位：核
+
+| free_memory
+| 空闲虚拟内存
+| 单位：MB
+
+| used_memory
+| 已使用虚拟内存
+| 单位：MB
+
+| running_inst
+| 运行中的主机数
+| 单位：台
+
+| total_memory
+| 总虚拟内存
+| 单位：MB
+
+| used_cpu_pct
+| cpu使用率
+|
+
+| virtual_disk
+| 虚拟磁盘已占用量
+| 单位：MB
+
+| total_virtual_disk
+| 虚拟磁盘总量
+| 单位：MB
+
+| volume_count
+| volume数量
+| 单位：个
+
+| used_disk_pct
+| 物理硬盘使用率
+|
+
+| used_vcpu_pct
+| vcpu使用率
+|
+
+| used_memory_pct
+| 虚拟内存使用率
+|
+
+| real_free_memory
+| 空余物理内存
+| 单位：MB
+
+| real_used_memory
+| 已使用物理内存
+| 单位：MB
+
+| virtual_disk_pct
+| 虚拟磁盘使用率
+|
+
+| real_total_memory
+| 总物理内存
+| 单位：MB
+
+| real_used_memory_pct
+| 物理内存使用率
+|
+
+| available_time
+| 剩余可用天数
+| 单位：天 +
+如果天数为999999则表明资源用量无增长或处于下降的趋势
+
+| available_by
+| 基于何种数据进行剩余可用天数的预测
+a|
+安置组维度可能的取值：
+
+* total_cpu: 物理CPU使用率
+* total_vcpu: vcpu使用率
+* toal_memroy：虚拟内存
+* real_total_memory: 物理内存
+* total_disk: 物理硬盘
+* virtual_disk: 虚拟硬盘
+
+| available_data
+a|
+预测数据
+
+* max_value: 最大值(相当于总量)
+* last_value: 最后一个值(相当于当前值)
+* first_value: 用于预测的第一个值
+* available_days: 剩余可用天数
+* avg_incremental: 平均日增长量
+* threshold_value: 阈值
+|
+
+| due_date
+| 预计到期日期
+|
+
+| scaling_recommendation
+a|
+扩容建议
+
+* type: 扩容类型
+* specification: 单台计算节点对应指标的容量
+* predict_days: 扩容后达到的可用天数
+* scaling_count: 扩容数量
+a|
+扩容类型：
+
+* hypernode: 扩容计算节点，此时scaling_count对应扩容计算节点的数量，单位：台
+* disk: 扩容磁盘，此时scaling_count对应了磁盘的体积，单位：MB
+
+| prediction
+| 详细预测数据
+| 仅在verbose=1时输出
+|===
+
+{blank} +
+ +
+
+== EIP组
+
+topic: eip_group
+支持使用安置组和zone进行过滤：
+
+----
+{
+    "filters": {
+        "eip_groups": [
+            {
+                "zone": "staging",
+                "id": "eipg-ivuh5nkv"
+            }
+        ],
+        "zones": [
+            "staging"
+        ]
+    }
+}
+----
+
+返回数据：
+
+[.allow_break_inside]
+|===
+| 字段 | 说明 | 备注
+
+| zone_id
+| zone id
+|
+
+| eip_group_id
+| eip组id
+|
+
+| eip_group_name
+| eip组名称
+|
+
+| total
+| eip总数
+| 单位：个
+
+| occupied
+| eip已占用数量
+| 单位：个
+
+| available
+| eip可用数量
+| 单位：个
+
+| available_time
+| 剩余可用天数
+| 单位：天 +
+如果天数为999999则表明资源用量无增长或处于下降的趋势
+
+| available_by
+| 基于何种数据进行剩余可用天数的预测
+| eip组维度可能的取值： +
+* total_eip_count: ip地址用量
+
+| available_data
+a|
+预测数据
+
+* max_value: 最大值
+* last_value: 最后一个值
+* first_value: 第一个值
+* available_days: 剩余可用天数
+* avg_incremental: 平均日增长量
+* threshold_value: 阈值
+|
+
+| due_date
+| 预计到期时间
+|
+
+| scaling_recommendation
+a|
+扩容建议
+
+* type: 扩容类型
+* predict_days: 扩容后达到的可用天数
+* scaling_count: 扩容数量
+| 扩容类型： +
+* eip: 指扩容eip数量，此时scaling_count指eip的数量，单位：个
+
+| prediction
+| 详细预测数据
+| 仅在verbose=1时输出
+|===
+
+{blank} +
+ +
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetResourcePoolUsage",
+    "topic": "eip_group",   // [必须]指定资源池类型
+    "filters": {
+        "zones": [
+            "staging"
+        ],
+        "eip_groups": [
+            {
+                "zone": "staging",
+                "id": "eipg-ivuh5nkv"
+            }
+        ]
+    },  // 指定过滤选项
+    "all_data": false,  // 为true则返回所有数据，如果为false则仅返回关注的数据，默认为false
+    "columns": ["occupied", "total"], // 指定返回的列
+    "verbose": 0,  // 控制返回数据的细节程度
+    "search_word": "large", // 可对zone_id，资源池名称等数据进行搜索
+    
+    // 分页及排序
+    "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "available_time", // 指定用于排序的字段，指定available_time使用剩余可用时间来排序
+    "reverse": 1, // 是否进行逆序, 1-逆序，其他值为顺序，本接口默认为顺序
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 13,
+   "collect_time": "2020-11-29T16:00:00Z",
+   "data": [
+      {
+         "total": 243,
+         "occupied": 232,
+         "available": 11,
+         "eip_group_id": "eipg-00000000",
+         "eip_group_name": "TEST multi-channel",
+         "zone_id": "staging",
+         "available_time": 0,
+         "available_by": "total_eip_count",
+         "available_data": {
+            "max_value": 243,
+            "last_value": 232,
+            "first_value": 207,
+            "available_days": 0,
+            "avg_incremental": 0.86,
+            "threshold_value": 218
+         },
+         "due_date": "2020-12-24T16:00:00Z",
+         "scaling_recommendation": {
+            "type": "eip",
+            "specification": null,
+            "predict_days": 90,
+            "scaling_count": 78
+         },
+         "prediction": {
+            "total_eip_count": {
+               "max_value": 243,
+               "last_value": 232,
+               "first_value": 207,
+               "available_days": 0,
+               "avg_incremental": 0.86,
+               "threshold_value": 218
+            }
+         }
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetResourcePoolUsageResponse"
+}
+----

@@ -1,0 +1,38 @@
+<ul>
+  {{$currentRelPermalink := .Scratch.Get `currentRelPermalink`}}
+  {{range .Pages.ByWeight}}
+    {{if eq .File.Ext `adoc`}}
+      {{if not .Params.not_show}}
+      {{$isCurrent := eq $currentRelPermalink .RelPermalink}}
+      {{$title := partial "get-title.html" .}}
+      {{if .IsSection}}
+        {{$active := hasPrefix $currentRelPermalink (print `/` (.File.Dir | lower))}}
+          <li
+            class="sidebar-item {{if $active}}active{{else}}collapsed{{end}} {{if $isCurrent}}current{{end}}">
+            <a {{if .Content}}href="{{.RelPermalink}}"{{end}}>{{$title}}</a>
+            {{$s := slice}}
+            {{range .Pages.ByWeight}}
+              {{if eq .File.Ext `adoc`}}
+                {{if not .Params.not_show}}
+                  {{$s = $s | append .RelPermalink}}
+                {{end}}
+              {{end}}
+            {{end}}
+            {{if ne (len $s) 0}}
+              <span
+                class="menu-switch-icon {{if $active}}icon-caret_up_fill{{else}}icon-caret_down_fill{{end}}">
+              </span>
+            {{end}}
+          </li>
+          {{ .Scratch.Set `currentRelPermalink` $currentRelPermalink}}
+          {{ partial "loop-section.html" . }}
+        {{else}}
+          {{$active := hasPrefix $currentRelPermalink .RelPermalink}}
+          <li class="sidebar-item {{if $active}}active{{end}} {{if $isCurrent}}current{{end}}">
+            <a href="{{.RelPermalink}}">{{$title}}</a>
+          </li>
+        {{end}}
+      {{end}}
+    {{end}}
+  {{end}}
+</ul>

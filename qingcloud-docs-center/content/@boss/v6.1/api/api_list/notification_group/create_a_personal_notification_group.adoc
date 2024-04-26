@@ -1,0 +1,53 @@
+---
+title: 创建个人通知组（Boss2CreateMyNotifyGroup）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateMyNotifyGroup
+
+=== Method
+POST
+
+=== 接口描述
+用于创建个人通知组，请求后将会返回个人通知组id。
+启用个人通知组为当前用户创建了一个特殊的通知组，接口执行后将会使用当前用户的邮箱和手机号创建通知组，该通知组仅用于为当前用户发送通知使用。
+当个人通知组已启用的情况下，再次调用该接口将会直接返回已创建的个人通知组id。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2CreateMyNotifyGroup",
+  "init_data": true // 是否初始化数据，如为true，则会将用户的邮箱和手机号带入这个个人通知组中，默认为true
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 3,
+   "ret_code": 0,
+   "action": "Boss2CreateMyNotifyGroupResponse"
+}
+----

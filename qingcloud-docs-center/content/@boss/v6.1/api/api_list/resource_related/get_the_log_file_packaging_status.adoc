@@ -1,0 +1,88 @@
+---
+title: 获取日志文件打包状态（Boss2GetPackagingLog）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetPackagingLog
+
+=== Method
+POST
+
+=== 接口描述
+请求报错
+{
+
+"action"
+:
+"Boss2GetPackagingLogResponse"
+,
+
+"ret_code"
+:
+5000
+,
+
+"message"
+:
+"Send request to installer API failed."
+
+}
+
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetPackagingLog",
+    "zone": "testing",
+    "offset": 0,             //分页下标  非必传默认0
+    "limit": 20,             //每页数量  非必传默认20
+    "sort_key": "file_name", //排序字段 可传file_name, status_time 非必传默认status_time
+    "reverse": 1,            //倒序 非必传 默认1倒序
+    "search_word": "sr"      //搜索关键字 可搜索file_name包含的word 非必传
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "total_count": 6,                        //文件总数
+    "file_set": [
+        {
+            "file_name": "sr01n38_20221020_110036.tar.gz",        // 打包后文件名
+            "file_status": "packaging",                      //文件状态 packaging_done 打包完成 packaging 打包中
+            "size": "45.0B",                                      //文件大小
+            "status_time": "2022-10-20T07:47:39Z"                 //文件创建时间
+        },
+        {
+            "file_name": "sr01n38_20221020_110035.tar.gz",
+            "file_status": "packaging_done",
+            "size": "45.0B",
+            "status_time": "2022-10-20T07:47:12Z"
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2GetPackagingLogResponse"
+}
+----

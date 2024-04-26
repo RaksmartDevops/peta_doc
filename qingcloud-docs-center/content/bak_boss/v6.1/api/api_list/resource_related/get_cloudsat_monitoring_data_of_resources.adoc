@@ -1,0 +1,116 @@
+---
+title: 获取资源的CloudSat监控数据（Boss2GetResourceMonitorData）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourceMonitorData
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于从CloudSat获取监控数据，支持通过监控数据进行排序。
+支持监控数据及命名空间:
+
+|===
+| 监控数据来源 | 命名空间 | 支持监控项 | 备注
+
+| 云服务器相关监控数据
+| namespace-cloudsat-instance
+a|
+
+* cpu: cpu使用率
+* memory: 内存使用率
+* disk_us: 系统盘使用率
+* disk_ri: 系统盘iops(读)
+* disk_wi: 系统盘iops(写)
+* disk_rd: 系统盘吞吐量(读)，单位为Byte/s
+* disk_wr: 系统盘吞吐量(写)，单位为Byte/s
+* if_rx: 网卡进带宽，单位为bps
+* if_tx: 网卡出带宽，单位为bps
+* if_rp: 网卡进pps
+* if_tp: 网卡出pps
+|
+
+| eip相关监控数据
+| namespace-cloudsat-eip
+a|
+
+* rx: 进带宽
+* tx: 出带宽
+* f_rx: 进流量
+* f_tx: 出流量
+* p_rx: pps入
+* p_tx: pss出
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetResourceMonitorData",
+    "zone": "staging",   // [必须]传入资源所在zone
+    "namespace": "namespace-cloudsat-instance", // [必选]监控数据命名空间，请参考备注。
+     "metrics": [
+        "disk_us",
+        "memory",
+        "cpu"
+    ], // [必须]指定返回的监控数据项
+    
+    "resources": ["i-7ytdmnjg"], // 可通过资源id进行过滤
+    "user_id": "usr-rrPKHDpJ",  // 可通过用户id进行过滤
+    "controller": "self", // 可通过资源来源进行过滤，支持参数: self - 租户,  pitrix - 系统
+    "offset": 0,
+    "limit": 100,
+    "sort_key": "cpu", // 可通过监控指标进行排序
+    "reverse": 1,
+    
+    // 支持指定时间范围
+    "start_time": "2022-05-30T08:36:50.906Z",
+    "end_time": "2022-05-30T09:36:50.906Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "controller": "pitrix",
+         "monitor_data": {
+            "cpu": 99,
+            "disk_us": 1,
+            "memory": 4
+         },
+         "owner": "admin",
+         "resource_id": "i-aytr6h01",
+         "resource_name": "nfv-aqzowg8x"
+      }
+   ],
+   "ret_code": 0,
+   "total_count": 1,
+   "action": "Boss2GetResourceMonitorDataResponse"
+}
+----

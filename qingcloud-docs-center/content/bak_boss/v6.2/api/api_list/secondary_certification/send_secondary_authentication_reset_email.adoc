@@ -1,0 +1,51 @@
+---
+title: 发送二次认证重置邮件（send_email_action）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/reset_totp/send_email_action/
+
+=== Method
+POST
+
+=== 接口描述
+触发 1 分钟操作限制时，ret_code 为 1640
+token 无效或过期时，ret_code 为 2000
+用户状态异常时，ret_code 为 1662
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "token": "71ed51fbb7bb45c891ee12a38e3c7007"   // 用户开了二次认证后，输入用户名和密码后返回的 token
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Response"
+}
+----

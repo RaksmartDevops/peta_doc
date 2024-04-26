@@ -1,0 +1,72 @@
+---
+title: 修改审查项目（Boss2ModifyAuditActionAttributes
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAuditActionAttributes
+
+=== Method
+POST
+
+=== 接口描述
+审核操作日志。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| success
+| Integer
+| 成功操作的次数
+|
+
+| audit_actions
+| list
+| 审核的指令
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyAuditActionAttributes",
+    "id": ["Ping"], // 审查项目的id类别，即api列表
+    "status": "enabled", // 启用或禁用审核项目，enabled:启用 disabled:禁用
+    "sensitive_fields": ["users"], // 设置脱密的字段列表
+    "remarks": "测试备注" // 备注
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "success": 1,
+   "audit_actions": [
+      "Ping"
+   ],
+   "ret_code": 0,
+   "action": "Boss2ModifyAuditActionAttributesResponse"
+}
+----

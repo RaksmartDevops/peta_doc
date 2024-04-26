@@ -1,0 +1,14 @@
+---
+title: "设置镜像队列 HA"
+description: 本小姐主要介绍如何设置镜像队列 HA。
+keywords: 云计算,大数据,消息队列,中间件,RabbitMQ,rabbitmq,消息队列服务,消息中间件,镜像队列 HA
+weight: 25
+draft: false
+---
+
+支持通过 **Web 界面**和 **HTTP API** 两种方式进行设置。
+
+* **Web 界面**：推荐使用该方式，可视化界面更方便。
+* **HTTP API**：若对 RabbitMQ API 比较熟悉，也可以使用 HTTP API 方式。
+
+详细内容请参考link:https://www.rabbitmq.com/ha.html[官方文档]。

@@ -1,0 +1,22 @@
+---
+title: "Windows 时间不同步解决办法"
+weight: 230
+
+---
+== 概述
+
+Windows 系统默认的时间同步间隔是 7 天，不能自由选择。我们也可以通过修改注册表来手动修改它的自动同步间隔以提高同步精度。
+
+== 操作步骤
+
+. 键盘上按 Win+R 键（也可以在开始菜单右键然后选择运行），在运行的输入框里输入 `regedit` 命令，然后点击确定。
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_time01.jpg[]
+
+. 展开  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpClient 分支，并双击 SpecialPollInterval 键值，将对话框中的 *基数栏* 选择到 *十进制* 上。
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_time02.jpg[]
+
+. 对话框中显示的数字正是自动对时的间隔（以秒为单位），比如默认的 604800 就是由 7（天）× 24（时）× 60（分）× 60（秒）计算来的。设定时间同步周期（建议设为 900 = 15 分钟或 3600 = 1 小时等周期值），填入对话框，点击确定保存关闭对话框。
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_time03.jpg[]

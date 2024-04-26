@@ -1,0 +1,21 @@
+//登录管理中心控制台
+
+本节介绍如何登录到管理中心控制台。登录控制台后，您可以进行主机安全 Agent 安装/卸载、安全防护策略配置、资产状态及安全态势查看等操作。
+
+== 前提条件
+
+* 已购买/开通主机安全服务。
+* 服务未到期，且正常运行。
+
+== 操作步骤
+
+include::./srv_entrance.adoc[]
+
+. 在管理中心列表，点击**操作**列的**登录**，系统在浏览器新页面中自动登录到管理中心控制台。
++
+image::/images/cloud_service/security/hss/login_edr.png[]
++
+登录成功后，进入控制台**首页**页面。
++
+image::/images/cloud_service/security/hss/edr_index.png[]
+

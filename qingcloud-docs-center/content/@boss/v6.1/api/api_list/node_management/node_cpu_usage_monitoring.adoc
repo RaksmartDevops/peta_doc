@@ -1,0 +1,168 @@
+---
+title: 节点 CPU 使用率监控（Boss2GetNodeCpuMonitor）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeCpuMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的cpu使用率监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostname
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+
+| columns
+| 否
+| 无
+| 指定要获取的监控数据，如不指定将返回所有的监控数据
+a|
+可指定字段为：
+
+1. cpu_usage cpu使用率
+2. usage_user
+3. usage_system
+4. usage_iowait
+
+| step
+| 否
+| 60s
+| 指定步长，单位为s
+|
+
+| start_time
+| 否
+| 当前时间前60分钟
+| 开始时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+
+| end_time
+| 否
+| 当前时间
+| 结束时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+|===
+
+注意：
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| data
+| Array
+| 包含各个统计项的具体数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetNodeCpuMonitor",
+  "zone": "test",
+  "hostname": "tr02n20",
+  "columns": [
+    "cpu_usage", // cpu 使用率
+    "usage_user",
+    "usage_system",
+    "usage_iowait"
+  ],
+  "step": "60s",
+  "start_time": "2018-12-18T06:42:00Z",
+  "end_time": "2018-12-18T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "cpu_usage",
+            "data": [
+               17.59789159635212,
+               18.09604434744797,
+               17.662743482845574,
+               17.03720565563291
+            ]
+         },
+         {
+            "name": "usage_user",
+            "data": [
+               4.868770665971724,
+               5.1549584526827195,
+               4.9207035521229185,
+               4.787920176083073
+            ]
+         },
+         {
+            "name": "usage_system",
+            "data": [
+               12.729120930380395,
+               12.941085894765251,
+               12.742039930722656,
+               12.249285479549837
+            ]
+         },
+         {
+            "name": "usage_iowait",
+            "data": [
+               0.07803262651815318,
+               0.07591650226976245,
+               0.07589289816792821,
+               0.07081973847300892
+            ]
+         },
+         {
+            "name": "time",
+            "data": [
+               1545115320,
+               1545115380,
+               1545115440,
+               1545115500
+            ]
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeCpuMonitorResponse"
+}
+----

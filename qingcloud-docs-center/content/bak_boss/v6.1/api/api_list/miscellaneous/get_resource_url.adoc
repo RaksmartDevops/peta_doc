@@ -1,0 +1,54 @@
+---
+title: 获取资源URL（Boss2GetResourcePath）
+weight: 16
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourcePath
+
+=== Method
+POST
+
+=== 接口描述
+该接口可直接获取指定资源的URL路径信息，可供前端直接进行链接跳转使用。
+如未找到资源路径，则path为null，请注意检查返回结果。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetResourcePath",
+    "resource_id": "i-wfae3zm3",  // [必须]指定资源id
+    "zone": "staging" // [可选]可指定资源的zone，如果指定zone的话可获得更好的速度
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "path": "/res_management/staging/instances/i-wfae3zm3",
+   "type": "主机",
+   "ret_code": 0,
+   "action": "Boss2GetResourcePathResponse"
+}
+----

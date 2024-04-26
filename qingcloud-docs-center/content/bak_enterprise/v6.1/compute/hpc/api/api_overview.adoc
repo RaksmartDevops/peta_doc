@@ -1,0 +1,136 @@
+---
+title: "API 概览"
+description: 本小节主要介绍 EHPC 集群的 api 接口。
+keywords: EHPC 概览,api 概览
+draft: false
+weight: 20
+collapsible: false
+---
+== 集群接口
+
+|===
+| 参数 | 描述
+
+| link:../cluster/listcluster/[listcluster]
+| 集群列表
+
+| link:../cluster/createcluster/[createcluster]
+| 创建集群
+
+| link:../cluster/modifycluster/[modifycluster]
+| 修改集群
+
+| link:../cluster/deletecluster/[deletecluster]
+| 删除集群
+
+| link:../cluster/startcluster/[startcluster]
+| 启动集群
+
+| link:../cluster/stopcluster/[stopcluster]
+| 关闭集群
+
+| link:../cluster/resizecluster/[resizecluster]
+| 扩、缩容集群
+|===
+
+== 队列接口
+
+|===
+| 参数 | 描述
+
+| link:../queue/describequeue[describequeue]
+| 查看队列详情
+
+| link:../queue/getqueuelist/[getqueuelist]
+| EHPC 队列列表
+
+| link:../queue/addqueues/[addqueues]
+| EHPC 增加队列
+
+| link:../queue/modifyqueue/[modifyqueue]
+| EHPC 修改队列
+
+| link:../queue/queuedelqueues/[queuedelqueues]
+| EHPC 删除队列
+
+| link:../queue/queueaddnodes/[queueaddnodes]
+| EHPC 队列增加节点
+
+| link:../queue/queueremovenodes/[queueremovenodes]
+| EHPC 队列移除节点
+|===
+
+== 用户接口
+
+|===
+| 参数 | 描述
+
+| link:../users/deleteuser/[deleteuser]
+| 删除集群用户
+
+| link:../users/users/[users]
+| 集群用户列表
+
+| link:../users/adduser/[adduser]
+| 新增集群用户
+
+| link:../users/modifyuser/[modifyuser]
+| 修改集群用户
+|===
+
+== 节点接口
+
+|===
+| 参数 | 描述
+
+| link:../nodes/listnodes/[listnodes]
+| 节点列表
+
+| link:../nodes/addnodes/[addnodes]
+| 新增节点
+
+| link:../nodes/deletenodes/[deletenodes]
+| 删除节点
+
+| link:../nodes/restartnodes/[restartnodes]
+| 重启节点
+|===
+
+== 作业接口
+
+|===
+| 参数 | 描述
+
+| link:../jobs/listjobs/[listjobs]
+| 作业列表
+
+| link:../jobs/submitjob/[submitjob]
+| 提交作业
+
+| link:../jobs/stopjobs/[stopjobs]
+| 取消作业
+
+| link:../jobs/deletejobs/[deletejobs]
+| 删除作业
+
+| link:../jobs/jobdetail/[jobdetail]
+| 查看作业详情
+|===
+
+== 软件中心接口
+
+|===
+| 参数 | 描述
+
+| link:../software/softwarelist/[softwarelist]
+| 软件中心
+|===
+
+== 操作日志接口
+
+|===
+| 参数 | 描述
+
+| link:../logs/operation/[operation]
+| 操作日志
+|===

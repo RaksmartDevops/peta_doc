@@ -1,0 +1,256 @@
+---
+title: 查看充值记录（Boss2GetRechargeRecords）
+weight: 26
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetRechargeRecords
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了IAAS的GetRechargeRecords接口，提供了更加丰富的充值记录信息。
+目前支持的charge_type为：
+
+* recharge: 充值
+* advance：垫付
+* discharge：扣款
+* payback：扣除垫付
+* transfer_in：资金转入
+* transfer_out：资金转出
+
+响应数据：
+通用的响应数据如下：
+
+|===
+| 字段 | 含义 | 备注
+
+| charge_type
+| 充值/交易类型
+|
+
+| fee
+| 充值/交易金额
+|
+
+| user_id
+| 充值对象，指对哪个云用户发起操作
+|
+
+| charge_time
+| 充值时间
+|
+
+| operator
+| 充值操作人，指API的调用者
+| 由于充值的操作仅由几个固定的用户调用API发起，该字段意义不大
+
+| console_id
+| console id
+|
+
+| currency
+| 货币
+|
+
+| trade_id
+| 交易操作id，指tr-开头的id
+| 该id在用户从console发起充值操作时存在
+
+| remarks
+| 备注
+| 该备注为boss2解析处理后的备注
+
+| origin_remarks
+| 原始备注
+| 该备注对应iaas接口原生的备注信息，内容较多
+
+| source
+| 操作来源 +
+指操作是在BOSS上完成还是在IAAS上完成
+|
+
+| boss_operator_id
+| 在boss平台上进行充值操作时的用户id
+|
+
+| boss_operator_name
+| 在boss平台上进行充值操作时的用户名
+|
+
+| boss_operator_email
+| 在boss平台上进行充值操作时的用户邮箱
+|
+|===
+
+根据charge_type不同响应数据会带有不同的字段：
+recharge - 充值:
+
+|===
+| 字段 | 含义 | 备注
+
+| payer
+| 付款客户/公司名称
+|
+
+| pay_date
+| 付款日期/客户打款时间
+|
+
+| pay_method
+a|
+支付方式
+
+* bank 银行转账
+* wxpay 微信
+* alipay 支付宝
+|
+
+| ticket
+| 关联工单号
+|
+|===
+
+advance - 垫付：
+
+|===
+| 字段 | 含义 | 备注
+
+| advance_by
+| 垫付人
+|
+
+| pay_method
+a|
+支付方式
+
+* bank 银行转账
+* wxpay 微信
+* alipay 支付宝
+|
+
+| company
+| 公司名称
+|
+
+| ticket
+| 关联工单号
+|
+|===
+
+discharge - 退款：
+
+|===
+| 字段 | 含义 | 备注
+
+| reason
+| 退款原因
+|
+
+| pay_method
+| 退款途径
+|
+
+| company
+| 公司名称
+|
+
+| ticket
+| 关联工单号
+|
+|===
+
+payback - 扣除垫付：
+暂无额外增加字段
+
+transfer_in - 资金转入
+transfer_out - 资金转出
+
+|===
+| 字段 | 含义 | 备注
+
+| account_type
+| 账户类型
+|
+
+| from_user
+| 源用户
+|
+
+| to_user
+| 目标用户
+|
+
+| ticket
+| 关联工单号
+|
+|===
+
+{blank} +
+ +
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetRechargeRecords",
+    "charge_type": "recharge", // 指定查询的充值类型
+    "currency": "cny", // 支持使用币种进行过滤，支持cny,usd,hkd
+    
+    // 分页及排序
+    "limit": 10,
+    "offset": 0,
+    "verbose": 1,
+    "reverse": 1,
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2GetRechargeRecordsResponse",
+   "total_count": 9,
+   "ret_code": 0,
+   "recharge_record_set": [
+      {
+         "charge_type": "transfer_out",
+         "fee": "10",
+         "user_id": "usr-KpUdZffH",
+         "charge_time": "2020-03-09T12:38:51Z",
+         "operator": "usr-KpUdZffH",
+         "console_id": "alphacloud",
+         "currency": "cny",
+         "trade_id": "",
+         "remarks": "transfer [balance] [100000] from [usr-KpUdZffH] to [usr-0vrOT3Oo]: 转移资金 @boss by admin@alphacloud.com",
+         "origin_remarks": "transfer [balance] [100000] from [usr-KpUdZffH] to [usr-0vrOT3Oo]: 转移资金 @boss by admin@alphacloud.com",
+         "ticket": "",
+         "source": "",
+         "boss_operator_id": "",
+         "boss_operator_name": "",
+         "boss_operator_email": ""
+      }
+   ],
+   "total_sum": "192645"
+}
+----

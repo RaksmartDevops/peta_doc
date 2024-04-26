@@ -1,0 +1,28 @@
+---
+title: "系统版本"
+weight: 6
+---
+
+用于展示 BOSS 平台、{platform_name_cn}、第三方 APP 以及 NeonSAN 的版本信息，并支持版本数据的导出。
+
+
+. 成功登录 BOSS。
+
+. 点击**系统管理** > **系统版本**，默认进入**系统版本**的**云平台**标签页面。
+
+
++
+image::/images/boss/manual/system_mgt/system_version_console.png[system_version_console,100%]
+
+. 用户根据需求，点击 `云平台`、`BOSS`、`BOSS APPS`、`NeonSAN` 可分别查看其版本信息。
+
+. 如上图所示，系统版本信息支持分别导出与全部导出。用户根据需求，分别点击**导出**与**全部导出**。
++
+
+include::../../../../_components/note.adoc[]
+
+* `导出` 仅导出当前页面版本信息。
+* `全部导出` 整体导出 BOSS 平台、{platform_name_cn}、第三方 APP 以及 NeonSAN 的版本信息。
+
+include::../../../../_components/table_footer.adoc[]
+

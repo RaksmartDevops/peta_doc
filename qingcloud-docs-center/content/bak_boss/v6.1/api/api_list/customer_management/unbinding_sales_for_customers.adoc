@@ -1,0 +1,52 @@
+---
+title: 为客户解绑销售（Boss2RemoveUserSales）
+weight: 39
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RemoveUserSales
+
+=== Method
+POST
+
+=== 接口描述
+将客户当前绑定的销售进行解绑。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2RemoveUserSales",
+    "users": ["usr-nv6A6kKC"]  // [必须]指定要解绑销售的客户id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "success_count": 1,
+   "total_count": 1,
+   "ret_code": 0,
+   "action": "Response"
+}
+----

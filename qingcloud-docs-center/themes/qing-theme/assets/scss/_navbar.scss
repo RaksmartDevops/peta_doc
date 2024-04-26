@@ -1,0 +1,201 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-bottom: 1px solid $border-color;
+  .navbar-split {
+    color: $logo-split-color;
+    margin: auto 12px;
+  }
+  .navbar-right-split {
+    margin: auto 20px;
+  }
+  .navbar-logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    .navbar-logo-text {
+      color: $logo-text-color;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .navbar-logo-link {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-logo-home .content-item-title-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      font-size: 20px;
+    }
+  }
+  .navbar-nav {
+    flex-grow: 1;
+    display: flex;
+    height: 60px;
+    .navbar-nav-item {
+      margin-left: 20px;
+      font-size: 14px;
+      line-height: 58px;
+      &.active,
+      &:hover {
+        color: #00a870;
+      }
+      &.navbar-nav-version {
+        &.dropdown {
+          cursor: pointer;
+        }
+        position: relative;
+        .dropdown-trigger{
+          color: $active-color;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          .icon::before {
+            color: $active-color;
+          }
+        }
+        .dropdown-menu {
+          min-width: 7em;
+        }
+        .dropdown-content {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          a {
+            line-height: 36px;
+            &:hover,
+            &.active {
+              color: $active-color;
+            }
+          }
+        }
+      }
+    }
+  }
+  .navbar-search {
+    position: relative;
+    .control .input {
+      width: 320px;
+      height: 36px;
+      box-shadow: none;
+    }
+    .control .icon {
+      width: 36px;
+      height: 36px;
+    }
+    .clear-search-input {
+      right: 14px;
+      top: 10px;
+    }
+    .navbar-search-result {
+      position: absolute;
+      top: 100%;
+      margin-top: 12px;
+      z-index: 100;
+      display: none;
+      width: 460px;
+      padding: 8px 0 24px;
+      box-shadow: 0px 1px 4px rgba(2, 5, 8, 0.04), 0px 4px 10px rgba(2, 5, 8, 0.08);
+      border-radius: 2px;
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+      .search-result-total {
+        margin-top: 12px;
+        margin-bottom: 8px;
+        padding: 0 20px;
+      }
+      .search-result-none {
+        margin-top: 16px;
+      }
+      .search-result-content-item {
+        padding: 12px 20px;
+        margin-top: 0;
+        &:hover {
+          background-color: $theme-background-color;
+          .search-result-content-item-title a {
+            color: $active-color;
+          }
+        }
+      }
+    }
+  }
+  .navbar-item-link {
+    color: $logo-text-color;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .navbar-btn {
+    margin-left: 24px;
+    height: 36px;
+  }
+
+  .navbar-item-link:not(:nth-of-type(1))::before {
+    content: '|';
+    color: $logo-split-color;
+    margin-right: 20px;
+    &:hover {
+      color: $logo-text-color;
+    }
+  }
+
+  .navbar-item-link {
+    padding-right: 20px;
+  }
+
+  .navbar-item-link:nth-of-type(1) {
+    margin-left: 4px;
+    padding-left: 20px;
+  }
+
+  a.navbar-logo-link:hover .navbar-logo-text,
+  a.navbar-item-link:hover {
+    color: $active-color;
+  }
+}
+
+.root.is-embed .navbar {
+  padding: 20px;
+  background: $theme-background-color;
+  height: 76px;
+  .navbar-logo-wrapper,
+  .navbar-nav,
+  .navbar-btn {
+    display: none;
+  }
+  .navbar-search .control .input {
+    width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .navbar .navbar-item-right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .navbar .navbar-logo-wrapper .navbar-logo-text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 578px) {
+  .navbar .navbar-search .control .input {
+    width: 180px;
+  }
+  .navbar .navbar-search .navbar-search-result {
+    width: 210px;
+  }
+}

@@ -1,0 +1,50 @@
+---
+title: 检查二次认证邮件token有效性（check_token_action）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/reset_totp/check_token_action/
+
+=== Method
+POST
+
+=== 接口描述
+这里的token，指的是邮件链接中的token了。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "token": "088daebb38674bef9e9ef572cd9e8834"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "valid": false,
+   "ret_code": 0,
+   "action": "Response"
+}
+----

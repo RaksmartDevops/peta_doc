@@ -1,0 +1,33 @@
+//修改收费模式
+
+按带宽计费和按流量计费支持互相转换，您可以根据业务需要随时修改 EIP 的收费模式。
+
+== 操作影响
+
+* 修改收费模式不会更换 EIP 的地址，也不会中断 EIP 的使用，对您的业务不会产生影响。
+* 修改收费模式后，配置立即生效，EIP 按照新的计费方式计费。
+
+== 约束限制
+
+EIP 的收费模式不可频繁修改，每天只能修改 2 次。
+
+== 操作步骤
+
+include::./common_operation.adoc/[tag=ipv4]
+
+ifdef::ipv4[]
+. 在 EIP 列表，右键点击需要修改的 EIP，在弹出的快捷菜单中，选择**修改收费模式**。
++
+image::/images/cloud_service/network/eip/mdy_billing.png[]
+endif::[]
+
+ifdef::ipv6[]
+. 点击**公网 IPv6** 页签，进入**公网 IPv6** 页面。
+. 在 EIP 列表，点击需要修改的 EIP ID，进入 EIP 详情页。
+. 在**基本属性**区域，点击image:/images/cloud_service/network/eip/menu_icon.png[]图标，在弹出的菜单中，选择**修改计费模式**
++
+image::/images/cloud_service/network/eip/mdy_billing_ipv6.png[]
+endif::[]
+. 在弹出的窗口中，选择新的收费模式，点击**提交**，完成修改。
++
+修改成功后，可以在列表中**收费模式**列看到修改后的收费模式。

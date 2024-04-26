@@ -1,0 +1,117 @@
+---
+title: 登录（login_action）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/auth/login_action/
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于使用邮箱和密码的登录操作。
+
+include::../../../../../_components/note.adoc[]
+
+在进行其他请求时请先运行该请求，以便于生成身份信息。
+
+include::../../../../../_components/note.adoc[]
+
+== 登录成功
+
+根据 `2fa_enabled` 字段判断是否开启了二次认证。
+
+* 未开启二次认证时，登录完成后将会返回用户名、邮箱等信息，同时会设置cookie：boss2_sk作为session key；
+* 开启二次认证时，返回token，用于提交二次认证验证码；
+
+[,json]
+----
+{
+    "2fa_enabled": true,
+    "token": "b9fd3040407849d1822d2c87786e3c99",
+    "ret_code": 0,
+    "action": "LoginResponse"
+}
+----
+
+== 登录失败
+
+如果未配置登录保护，则登录失败后会返回如下的信息：
+
+[,json]
+----
+{
+    "action": "LoginResponse",
+    "ret_code": 1600,
+    "message": "LoginFailed, user or password not matched"
+}
+----
+
+如果配置了登录保护，则登录失败后还会返回剩余可重试的次数：
+
+[,json]
+----
+{
+    "action": "LoginResponse",
+    "ret_code": 1600,
+    "message": "LoginFailed, user or password not matched",
+    "attempt_left": 5   # 还可以重试5次
+}
+----
+
+如果账户因重试多次失败而被锁定，结果中会返回解锁的时间：
+
+[,json]
+----
+{
+    "action": "LoginResponse",
+    "ret_code": 1600,
+    "message": "LoginFailed, you are locked temporarily due to multiple login failures, please try again later.",
+    "end_lock_time": "2021-05-09T12:57:29.537Z"  # 账户将会在这个时间后可重新进行登录
+}
+----
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "email": "admin@example.com",
+   "password": "zhu88jie"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+// 未开启二次认证返回值
+{
+  "id": 1,
+  "username": "admin",
+  "email": "admin@example.com",
+  "boss2_sk": "44meqouzicnty05osrfih6sbv4wi09c5", // boss2_sk
+  "expiry_age": 1209600, // session过期时间，单位为秒，用于cookie的设置
+  "2fa_enabled": false,  // 是否开启了二次认证
+  "ret_code": 0,
+  "action": "LoginResponse"
+}
+----

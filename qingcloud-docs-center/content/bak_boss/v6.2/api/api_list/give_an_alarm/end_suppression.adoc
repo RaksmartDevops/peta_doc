@@ -1,0 +1,55 @@
+---
+title: 【已废弃】结束压制（Boss2TerminateAlertSuppress）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TerminateAlertSuppress
+
+=== Method
+POST
+
+=== 接口描述
+立即结束对当前节点的告警压制。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2TerminateAlertSuppress",
+    "node_id": "tr02n20",   // 节点 ID
+    "nodes": ["tr02n21", "tr02n22"], // 支持传入节点列表，最多可传入100个节点，node_id和nodes至少需要指定一个
+    "zone": "test"          // zone ID，必传
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+  "ret_code": 0,
+  "nodes": [
+    "tr02n22"
+  ], // 传入的节点ID
+  "action": "Boss2TerminateAlertSuppressResponse"
+}
+----

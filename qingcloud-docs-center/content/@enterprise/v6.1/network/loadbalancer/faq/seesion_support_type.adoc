@@ -1,0 +1,8 @@
+---
+title: "负载均衡器支持什么类型的会话保持？"
+keywords: 负载均衡器, 会话保持
+description:
+draft: false
+weight: 40
+---
+负载均衡器支持基于源 IP 和 cookie 植入的会话保持。详见link:../../manual/monitor/lb_session_hold/[会话保持说明]。

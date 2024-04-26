@@ -1,0 +1,27 @@
+// 软件架构'
+
+
+[cols="1,3a",options="header"]
+|===
+|术语|说明
+|接入服务 
+|用于业务访问存储系统的标准访问接口或驱动，支持 QBD、iSCSI、FC、NVMe-oF、QEMU、Cinder、CSI 接口协议或驱动
+
+|QBD  
+|Qingcloud block driver，青云专为 {qingstor_neon} 研发的一款内核态客户端，它可以将 NeonSAN 的 Volume 映射到本地，用户可以在物理机上方便使用 {qingstor_neon} 存储系统。
+
+|QEMU
+|Quick EMUlator，是{qingstor_neon}支持的另一种应用广泛的客户端虚拟化组件，用于虚拟机
+
+|mysql galera_cluster
+|元数据服务，用于保存存储系统节点及卷的元数据。
+
+|neoncenter 服务
+|提供集群管理服务，比如节点上下线，卷的创建、删除、挂载、卸载等。
+
+|neonstore 服务
+|存储服务，采用对等设计，每个存储服务都能提供数据读写服务，卷实际数据落盘、快照、克隆、重删、压缩在这一服务层实现。
+
+|ZooKeeper 服务
+|负责其他组件的注册和仲裁选主。
+|===

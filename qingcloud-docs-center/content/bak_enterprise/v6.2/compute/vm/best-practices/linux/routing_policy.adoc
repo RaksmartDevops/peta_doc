@@ -1,0 +1,109 @@
+---
+title: "配置多网卡路由策略"
+weight: 340
+---
+== 网卡介绍
+
+对于弹性裸金属服务器来说，网卡就是服务器的网络设备，用于接入以太网络，和其它计算机进行通信。云平台 网卡是基于虚拟化技术模拟的网卡设备，此设备是基于虚拟机所在的物理设备。云平台 云平台可以将集群内的虚拟网络统一起来，进行再分配。用户毋需关心具体的网卡在什么位置，有需要申请、挂接即可。
+
+== 网卡使用限制
+
+每个云服务器最多可以绑定 64 张网卡（其中主网卡 1 张，从网卡 63 张），而每个网络最多可以有 252 张网卡。
+
+. 登录管理控制台，选择 *计算* > *网卡* > *申请网卡*，目前只能网卡只能分配私有网络地址，不支持分配基础网络地址，申请方式如图所示。
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_1.png[]
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_2.png[]
+
+. 将网卡与云服务器绑定。
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_3.png[]
+
+. 登录到云服务器，查看网卡 ip 地址信息。
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_4.png[]
+
+. 使用以下的命令创建两张路由表。
++
+[source,shell]
+----
+echo "200  net1" >>/etc/iproute2/rt_tables
+
+echo "201  net2" >>/etc/iproute2/rt_tables
+
+echo "202  net3" >>/etc/iproute2/rt_tables
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+路由表名称（net1、net2、net3）和路由表优先级（200、201、202，优先级数值越小表示优先级越高）。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 查看路由表。
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_5.png[]
+
+. 执行以下命令，增加网卡路由策略。
++
+[source,shell]
+----
+ip r f t 200    # 清空路由表 200 的路由规则
+ip r replace default via 172.16.10.1 dev eth0 src 172.16.10.2 table 200  # 添加默认路由到路由表 200
+ip ru a from 172.16.10.2 lookup 200  # 加路由规则，凡是到 172.16.10.2 这个地址的 ip 就走路由表 200
+
+ip r f t 201    # 清空路由表 201 的路由规则
+ip r replace default via 172.16.10.1 dev eth1 src 172.16.10.4 table 201  # 添加默认路由到路由表 201
+ip ru a from 172.16.10.4 lookup 201  # 添加路由规则，凡是到 172.16.10.4 这个地址的 ip 就走路由表 201
+
+ip r f t 202    # 清空路由表 202 的路由规则
+ip r replace default via 172.16.10.1 dev eth2 src 172.16.10.3 table 202  # 添加默认路由到路由表
+ip ru a from 172.16.10.3 lookup 202  # 添加路由规则，凡是到 172.16.10.3 这个地址的 ip 就走路由表 202
+----
+
+. 查看路由表的路由规则。
++
+image::/images/cloud_service/compute/vm/bestp_routing_policy_6.png[]
+
+. 测试网卡的连通性。
+
+. 配置策略路由永久生效。
+
+.. 在 `/opt` 目录新建一个 `sh` 脚本文件，并编辑以下内容，如图所示。
++
+[source,shell]
+----
+#!/bin/bash
+#automake route
+
+ip r f t 200
+ip r replace default via 172.16.10.1 dev eth0 src 172.16.10.2 table 200
+ip ru a from 172.16.10.2 lookup 200
+
+ip r f t 201
+ip r replace default via 172.16.10.1 dev eth1 src 172.16.10.4 table 201
+ip ru a from 172.16.10.4 lookup 201
+
+ip r f t 202
+ip r replace default via 172.16.10.1 dev eth2 src 172.16.10.3 table 202
+ip ru a from 172.16.10.3 lookup 202
+----
+
+.. 打开 `/etc/rc.d/rc.local` 文件，在末尾增加如下内容，如图所示。
++
+[source,shell]
+----
+echo "sleep 10s" >> /etc/rc.local
+echo "/opt/network.sh" >> /etc/rc.local
+----
+
+.. 分别给两个新增的文件增加执行权限。
++
+[source,shell]
+----
+ chmod +x /etc/rc.local
+ chmod +x /opt/network.sh
+----

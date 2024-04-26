@@ -1,0 +1,242 @@
+---
+title: 基础组件监控（Boss2GetOsServiceMonitor）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetOsServiceMonitor
+
+=== Method
+POST
+
+=== 接口描述
+本接口展示postgresql，redis等基础组件的监控信息。不同的基础组件监控信息不同。
+以下是每种类型监控的列表，取自ifcloud中。
+
+Postgresql
+
+|===
+| column | 内容 | 备注
+
+| connections
+| 当前连接数(单位：个)
+|
+
+| deadlocks
+| 死锁数(单位：个)
+|
+
+| xact_commit
+| 事务总数（单位：个）
+|
+|===
+
+Pgpool
+
+|===
+| column | 内容 | 备注
+
+| wait_for_connection_request
+| 可用连接数(单位：个)
+| 等待建立连接数
+|===
+
+Apache
+
+|===
+| column | 内容 | 备注
+
+| ReqPerSec
+| 每秒请求数(单位：次)
+|
+
+| ConnsTotal
+| 总连接数(单位：个)
+|
+
+| BusyWorkers
+| 繁忙进程数(单位：个)
+|
+
+| IdleWorkers
+| 空闲进程数(单位：个)
+|
+|===
+
+Redis
+
+|===
+| column | 内容 | 备注
+
+| mean_used_memory
+| 已使用内存(单位：Byte)
+| 最终可显示为M
+
+| clients
+| 客户端连接数(单位：个)
+|
+
+| mean_evicted_keys
+| 删除的key(单位：个)
+|
+
+| mean_expired_keys
+| 过期的key(单位：个 )
+|
+
+| mean_keyspace_hitrate
+| 平均命中率(单位：%)
+|
+
+| mean_keyspace_hits
+| 平均命中数(单位：个)
+|
+
+| mean_uptime
+| 持续运行时间(s)
+| 取最后一个值即可
+|===
+
+memcached
+
+|===
+| column | 内容 | 备注
+
+| total_connections
+| 总连接数(单位：个)
+|
+
+| total_items
+| 总数量(单位：个)
+|
+
+| get_hits
+| 总命中数(单位：次)
+|
+
+| get_misses
+| 总未命中数(单位：次)
+|
+
+| uptime
+| 持续运行时间
+| 取最后一个值即可
+|===
+
+cassandra
+
+|===
+| column | 内容 | 备注
+
+| CurrentlyBlockedTasks_Count
+| 当前阻塞任务(单位：个)
+|
+
+| PendingTasks_Value
+| 待完成任务(单位：个)
+|
+|===
+
+zookeeper
+
+|===
+| column | 内容 | 备注
+
+| num_alive_connections
+| 连接数（单位：个）
+|
+
+| watch_count
+| 监听事件数(单位：个)
+|
+
+| outstanding_requests
+| 未完成请求数(单位：个)
+|
+
+| avg_latency
+| 平均时延(单位：ms)
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetOsServiceMonitor",
+    "zone": "test", // [必须]指定zone
+    
+    // 一下参数用于筛选
+    "service_id": "postgresql",
+    "service_type": "postgresql", // 服务类型, 不同的服务类型其图表内容不同，后端解析方式也不同
+    "node": {
+        "dbname": "zone",
+        "host": "pgmaster0",
+        "port": 5433,
+        "user": "admin"
+    }, // 需要查询的节点的信息，将基础组件列表中的node_info填入即可
+    "columns": ["connections", "deadlocks"], // 限制查询的曲线图
+    "step": "60s",
+    "start_time": "2018-12-24T06:42:00Z",
+    "end_time": "2018-12-24T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "connections",
+            "data": [
+               800,
+               800,
+               800,
+               800
+            ]
+         },
+         {
+            "name": "deadlocks",
+            "data": [
+               0.8,
+               0.8,
+               0.8,
+               0.8
+            ]
+         },
+         {
+            "name": "time",
+            "data": [
+               1545633720,
+               1545633780,
+               1545633840,
+               1545633900
+            ]
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetOsServiceMonitorResponse"
+}
+----

@@ -1,0 +1,28 @@
+---
+title: "VMware 纳管"
+linkTitle: "VMware 纳管"
+weight: 30
+description: "VMware vSphere 纳管，是指通过 VMWare 提供的公开 API 接口完成 VMware vSphere 的纳管。"
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 产品简介
+            url: "intro/intro"
+
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: VMware vSphere 平台相关操作
+            url: "manual/basic_opt"
+          - title: 虚拟机相关操作
+            url: "manual/vm_opt"
+
+---

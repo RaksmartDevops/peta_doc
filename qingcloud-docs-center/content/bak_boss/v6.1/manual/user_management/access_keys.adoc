@@ -1,0 +1,26 @@
+---
+title: "API 密钥"
+weight:  40
+---
+
+
+== 场景描述
+
+API 密钥（Access Key）可以让用户通过发送 API 指令来访问{platform_name_cn}服务。*API 密钥* 页面记录{platform_name_cn}用户创建的 API 秘钥列表信息。
+
+== 功能描述
+
+该任务指导用户在云计算运维管理平台查看{platform_name_cn}用户在{platform_name_cn}上创建的 API 密钥列表信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *用户管理* > *API 密钥*，进入 *API 密钥* 页面，可查看所有{platform_name_cn}用户创建的 API 密钥状态、名称、用户邮箱等信息。
++
+image::/images/boss/manual/user_management/access_key.png[]
+
+. 参数填写完成后，点击 *创建*。

@@ -1,0 +1,143 @@
+---
+title: 【已废弃】告警策略列表/详情（Boss2DescribeAlertNotifyPolicy）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertNotifyPolicy
+
+=== Method
+POST
+
+=== 接口描述
+展示汇总后的告警信息。
+结果数据：
+
+|===
+| 字段 | 用途 | 备注
+
+| id
+| 策略d，用于后续查询策略的详情
+|
+
+| verbose_name
+| 监控项
+|
+
+| description
+| 描述
+|
+
+| recipient
+| 告警接收通知组
+|
+
+| enable
+| 启用或禁用
+| true为启用，false为禁用
+
+| level
+| 告警级别
+|
+
+| alert_type
+| 告警类型
+|
+
+| suggestion
+| 处理建议
+|
+
+| send_notify
+| 是否发送通知
+|
+
+| notify_merge_count
+| 告警几次后合并
+|
+
+| notify_merge_time
+| 合并告警时间
+| 单位为秒
+
+| status_time
+| 更新时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeAlertNotifyPolicy",
+  "type": "event", // [必须]选择是事件告警(event)还是阈值告警(threshold)，目前仅支持event
+  
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "status_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "search_word": "异常退出", // 用于部分字段的模糊搜索
+  "fields": ["id", "verbose_name"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+  
+  // 以下参数用于筛选
+  "id": [1], // 获取指定id的策略信息，用于详情展示
+  "enable": true, // 用于状态过滤，获取启用true或禁用false的策略 
+  "recipient": [3, 4], // 获取包含指定通知组的策略信息
+  "level": ["CRITICAL"], // 获取指定告警级别的数据
+  "start_time": "2019-01-21T01:36:01.938Z", // 指定起始时间
+  "end_time": "2019-01-21T02:36:01.938Z" // 指定结束时间
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "policy_set": [
+      {
+         "id": 1,
+         "service_id": "supervisord",
+         "name": "PROCESS_EXIT",
+         "verbose_name": "服务异常退出",
+         "description": "服务异常退出",
+         "recipient": [
+            {
+               "id": 1,
+               "username": "test1"
+            }
+         ],
+         "enable": true,
+         "level": "CRITICAL",
+         "alert_type": "进程退出",
+         "suggestion": "检查服务日志，尝试重启服务，如服务退出为一过现象，则可暂时进行观察",
+         "send_nofify": true,
+         "notify_merge_count": 2,
+         "notify_merge_time": 3600,
+         "status_time": "2019-01-11 18:17:09"
+      }
+   ],
+   "total_count": 1,
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertNotifyPolicyResponse"
+}
+----

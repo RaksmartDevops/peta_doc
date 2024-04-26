@@ -1,0 +1,253 @@
+---
+title: 创建迁移任务（Boss2CreateV2VTask）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateV2VTask
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+请求参数中的 owner，是迁移后主机拥有者（云用户）的 id。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| job_id
+| String
+| 任务 id
+|
+
+| owner
+| String
+| 资源所有者
+|
+
+| v2v_set
+| Array
+| v2v 任务详细信息
+|
+
+| _job_id
+| String
+| 任务 id
+|
+
+| block_bus
+| String
+| 块总线
+|
+
+| console_id
+| String
+| 控制台 id
+|
+
+| cpu
+| Integer
+| cpu 核数
+|
+
+| create_time
+| String
+| 任务创建时间
+|
+
+| features
+| Integer
+| 特性数量
+|
+
+| image_id
+| String
+| 镜像 id
+|
+
+| instance_class
+| String
+| 主机类型
+|
+
+| memory
+| Integer
+| 内存大小
+|
+
+| nic_type
+| String
+| 网卡种类
+|
+
+| os_family
+| String
+| 操作系统类型
+|
+
+| owner
+| String
+| 资源拥有者
+|
+
+| passwd
+| String
+| 密码
+|
+
+| platform
+| String
+| 运行平台
+|
+
+| size
+| Integer
+|
+|
+
+| status
+| String
+| 任务状态
+|
+
+| user
+| String
+| 使用者
+|
+
+| status_time
+| String
+| 修改事件
+|
+
+| user_id
+| String
+| 用户 id
+|
+
+| v2v_id
+| String
+| v2v 资源 id
+|
+
+| v2v_name
+| String
+| v2v 资源名称
+|
+
+| volumes
+| Array
+| 涉及的硬盘信息
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2CreateV2VTask",
+   "zone": "test",
+   "v2v_set": [
+      {
+         "v2v_name": "helo world",
+         "owner": "usr-kjDQQJeD",
+         "volumes": [
+            {
+               "file": "/home/ubuntu/app01/disk1.img",
+               "format": "qcow2",
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk1.img'\"",
+               "v_size": 10,
+               "volume_name": "disk1.img"
+            },
+            {
+               "file": "/home/ubuntu/app01/disk2.img",
+               "format": "qcow2",
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk2.img'\"",
+               "v_size": 20,
+               "volume_name": "disk2.img"
+            }
+         ]
+      }
+   ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2CreateV2VTaskResponse",
+   "job_id": "job-0857f22b",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "_job_id": "job-0857f22b",
+         "block_bus": "hd",
+         "console_id": "alphacloud",
+         "cpu": 4,
+         "create_time": "Fri Mar 29 15:59:30 2019",
+         "features": 4,
+         "image_id": "img-k62593iq",
+         "instance_class": 0,
+         "memory": 4,
+         "nic_type": "e1000",
+         "os_family": "centos",
+         "owner": "usr-kjDQQJeD",
+         "passwd": "default",
+         "platform": "linux",
+         "size": 10,
+         "status": "new",
+         "status_time": "Fri Mar 29 15:59:30 2019",
+         "user": "root",
+         "user_id": "usr-kjDQQJeD",
+         "v2v_id": "v2v-qh6nul75",
+         "v2v_name": "helo world",
+         "volumes": [
+            {
+               "file": "/home/ubuntu/app01/disk1.img",
+               "format": "qcow2",
+               "is_os_img": true,
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk1.img'\"",
+               "v_size": 10,
+               "volume_name": "disk1.img",
+               "volume_type": 0
+            },
+            {
+               "file": "/home/ubuntu/app01/disk2.img",
+               "format": "qcow2",
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk2.img'\"",
+               "v_size": 20,
+               "volume_name": "disk2.img",
+               "volume_type": 0
+            }
+         ]
+      }
+   ]
+}
+----

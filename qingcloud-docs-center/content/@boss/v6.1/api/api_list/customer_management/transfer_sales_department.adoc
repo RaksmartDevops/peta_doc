@@ -1,0 +1,53 @@
+---
+title: 转移销售部门（Boss2TransferSalesDept）
+weight: 37
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TransferSalesDept
+
+=== Method
+POST
+
+=== 接口描述
+将销售人员从一个部门转移到另一个部门。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2TransferSalesDept",
+    "sales": [1, 3],  // [必须]要转移部门的销售id
+    "sales_dept_id": 5  // [必须]销售转移的目标部门id，可使用99作为未分配部门。
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "success_count": 2,
+   "ret_code": 0,
+   "action": "Boss2TransferSalesDeptResponse"
+}
+----

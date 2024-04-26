@@ -1,0 +1,57 @@
+// 启用 IPv4/IPv6 双栈
+
+VPC 网络及私有网络支持启用 IPv6，启用后，私有网络将支持 IPv4/IPv6 双栈，您在私有网络中创建的云服务器可以同时使用 IPv4 IP 地址和 IPv6 IP 地址进行内网及公网通信。
+
+== 背景信息
+
+由于 IPv4 网络地址资源有限。在 IPv4 网络地址的场景下，网络工程师需要花费时间和精力去解决各种地址冲突的问题。开通 IPv6 网段后，IPv6 的地址数量不仅能解决网络地址资源数量的问题，还可以解决多种接入设备连入互联网的障碍。开通 IPv6 网段有以下两种方式：
+
+* <<m1,新建 IPv4/IPv6 双栈 VPC>>
+* <<m2,为已有 VPC 开通 IPv6 网段>>
+
+ifdef::pub[]
+
+== 约束与限制
+亚太2区-A 的 VPC 不支持启用 IPv6。
+
+endif::pub[]
+
+[#m1]
+== 新建 IPv4/IPv6 双栈 VPC
+
+参考link:../../vpcnet/10_create_vpc/[创建 VPC 网络]的操作方法新建 VPC 及私有网络，并在配置 VPC 基本信息及初始私有网络信息时，将 **IPv6 地址范围**均设置为``系统自动分配``。
+
+* 基本信息配置：
++
+image::/images/cloud_service/network/vpc/4020_create_ipv6_vpc_info.png[基本信息]
+
+* 初始私有网络：
++
+image::/images/cloud_service/network/vpc/4020_create_ipv6_vpc_vxnet.png[初始私有网络]
+
+
+[#m2]
+== 为已有 VPC 开通 IPv6 网段 
+
+. 在 VPC 网络列表，找到已创建的 VPC 网络，点击**更多操作** > **启用 IPv6**。
++
+image::/images/cloud_service/network/vpc/vpc_eable_ipv6.png[]
+. 在弹出的确认框中，点击**确认**，等待 VPC 更新完成。
+. 点击 VPC 名称，进入 VPC 详情页。
+. 在**私有网络**页签，右键点击需要启用 IPv6 的私有网络，然后选择**启用 IPv6**。
++
+image::/images/cloud_service/network/vpc/vxnet_eable_ipv6.png[]
+. 在弹出的**启用 IPv6** 窗口中，选择``系统自动分配``或``手动指定`` IPv6 地址段，点击**提交**，等待 VPC 更新完成。
+
+== 云服务器支持 IPv4/IPv6 双栈
+
+云服务器支持 IPv4/IPv6 双栈，需要满足以下两个条件： 
+
+* 云服务器创建在已启用 IPv6 的私有网络中。
+* 云服务器支持 IPv6 自动化配置。
++
+有两种方式实现：
++
+** 创建云服务器时，在镜像选择的下拉列表中，选择标注``支持 IPv6`` 的镜像。
+** 手动开启云服务器的 IPv6 自动化配置。详细操作，请参见link:../ipv6_auto_cfg/[开启云服务器 IPv6 自动化配置]。
+

@@ -1,0 +1,27 @@
+---
+title: "Linux 云服务器网卡丢失 IP"
+weight: 230
+
+---
+== 问题背景
+
+客户的云服务器无法登录，经排查发现是云服务器的网卡没有获取到 IP 地址，如截图所示。
+
+image::/images/cloud_service/compute/vm/faq_trouble_nic_loss_ip1.png[]
+
+== 解决方法
+
+. 可以执行命令 `dhclient + 网卡名`，以 eth0 例
++
+[,shell]
+----
+dhclient eth0
+----
+
+. 重启网卡
++
+[,shell]
+----
+ifdown eth0
+ifup eth0
+----

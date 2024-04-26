@@ -1,0 +1,135 @@
+---
+title: 获取全部数据权限列表（Boss2DescribePerms）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribePerms
+
+=== Method
+POST
+
+=== 接口描述
+获取全部可配置的数据权限信息，用于角色数据权限的配置。
+注意：
+结果中的id用于后端使用，前端无需进行展示。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribePerms"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "perm_set": [
+      {
+         "key": "boss_zone",
+         "type": "multilevel_choices",
+         "choices": [
+            {
+               "L1": {
+                  "id": "82a9c478ad8a357776e7c7ab632f348b",
+                  "value": "beta"
+               }
+            },
+            {
+               "L1": {
+                  "id": "c3987ba678fe931fbbec9217c62a90b6",
+                  "value": "staging"
+               },
+               "L2": [
+                  {
+                     "id": "58c333dbce45238a7c2d210eb2c9e215",
+                     "value": "delta"
+                  },
+                  {
+                     "id": "8dd13619758b0242c7ec1e3195657ee0",
+                     "value": "gamma"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "key": "bi_resource",
+         "type": "multilevel_choices",
+         "choices": [
+            {
+               "L1": {
+                  "id": "ad07f7d1c2cddf07112365fdc05afc88",
+                  "value": "计算"
+               },
+               "L2": [
+                  {
+                     "id": "21412be93ca96baec1c799d120197a9a",
+                     "value": "主机"
+                  },
+                  {
+                     "id": "2df3eeb0024bdd35d05b0e4b60b085ab",
+                     "value": "映像"
+                  },
+                  {
+                     "id": "5995807826c1b854224e8a1252882015",
+                     "value": "专属宿主机组"
+                  },
+                  {
+                     "id": "dd7899814c0f6126105923a55c60be36",
+                     "value": "物理主机"
+                  }
+               ]
+            },
+            {
+               "L1": {
+                  "id": "a81a13fa59580312461e788ae2c74cff",
+                  "value": "存储"
+               },
+               "L2": [
+                  {
+                     "id": "a439a28e3293cebdb9ee4610d775de92",
+                     "value": "硬盘"
+                  },
+                  {
+                     "id": "91120ca0b7b892ff037be3addf04f902",
+                     "value": "共享存储"
+                  },
+                  {
+                     "id": "04acef0b63552f8abd6c6c3a8ac8788d",
+                     "value": "对象存储"
+                  },
+                  {
+                     "id": "c6be7497f4fa42c67d184101a7803c8b",
+                     "value": "备份"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribePermsResponse"
+}
+----

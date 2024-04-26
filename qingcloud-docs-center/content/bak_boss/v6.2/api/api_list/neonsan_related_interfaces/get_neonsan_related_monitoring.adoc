@@ -1,0 +1,234 @@
+---
+title: 获取NeonSAN相关监控（Boss2GetNeonSANMonitor）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNeonSANMonitor
+
+=== Method
+POST
+
+=== 接口描述
+本接口为neonsan监控数据接口的封装，提供了neonsan相关的监控数据曲线：
+参数约定：
+
+* rg 指定存储池的id，为整形
+* instance用于取监控数据时指定存储节点，使用list_store后返回的store数据中的mngt_ip
+
+*结果数据约定：*
+
+. 返回曲线中name为曲线名称，其中name为time表示此条曲线为时间轴
+. tag是为了区别同名曲线而存在的，例如查询多个存储节点的iops后一次返回了多台机器的iops曲线，此时name均一致，但使用tag来进行不同存储节点的区分
+. *如不传step，则曲线仅返回最近时间点的一个数据，可用于仅需一个统计数据的场景。*
+
+[cols="2,2,4a,2", options="header"]
+|===
+| topic | 描述 | filters | 备注
+
+| rg_iops
+| 存储池的iops读写统计
+a|
+
+* rg: 指定存储池的id
+* rw:  指定读/写，可同时传入多个指标
+  - read 读
+  - write 写
+| 单位：次
+
+| [.line-through]#rg_network_tcp#(*已废弃*)
+| 存储池的吞吐量统计
+a|
+
+* rg: 指定存储池的id
+* net: 指定网络流向，可同时传入多个指标
+  - recv 进
+  - send 出
+| 单位：Byte/s +
+*该统计项由于数据不准确，已废弃*
+
+| rg_network_transmit
+| 存储池的出流量
+| rg: 指定存储池的id
+| 单位：Byte/s
+
+| rg_network_receive
+| 存储池的入流量
+| rg: 指定存储池的id
+| 单位：Byte/s
+
+| store_iops
+| 存储节点的iops读写统计
+a|
+
+* instances: 指定存储节点，可传入多个instance
+* rw: 指定读/写，可同时传入多个指标
+  - read 读
+  - write 写
+| 单位：次 +
+请使用tag字段来区分不同的存储节点
+
+| [.line-through]#store_network_tcp#(*已废弃*)
+| 存储节点的吞吐量统计/TCP流量
+a|
+
+* instances: 指定存储节点，可传入多个instance
+* net: 指定网络流向，可同时传入多个指标
+  - recv 进
+  - send 出
+a|
+单位：Byte/s
+请使用tag字段来区分不同的存储节点
+*该统计项由于数据不准确，已废弃*
+
+| store_network_transmit
+| 存储节点的出流量
+| hostnames: 指定存储节点，可传入多个hostname
+| 单位Byte/s +
+请使用tag字段来区分不同的存储节点
+
+| store_network_receive
+| 存储节点的入流量
+| hostnames: 指定存储节点，可传入多个hostname
+| 单位Byte/s +
+请使用tag字段来区分不同的存储节点
+
+| store_network_rdma
+| 存储节点的rdma流量
+a|
+
+* instances: 指定存储节点，可传入多个instance
+* net: 指定网络流向，可同时传入多个指标
+  - recv 进
+  - send 出
+| 单位：Byte/s +
+请使用tag字段来区分不同的存储节点
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4a,2", options="header"]
+|===
+| topic | 描述 | filters | 备注
+
+endif::[]
+
+| store_ssd
+| 单个磁盘的监控
+| instances: 指定存储节点，可传入多个instance +
+ssd: 指定磁盘，例如：/dev/vdc 可传入多个参数
+ +
+type: 指定统计的项目，可传入多个指标： +
+  - capacity 总容量
+  - used 使用量  +
+  - wear 磨损度 +
+  - freePct 可用百分比
+a|
+单位：Byte
+请使用tag字段来区分不同的磁盘
+使用instance字段来区分不同的存储节点
+
+| store_ssd_sum
+| 存储节点的磁盘监控
+a|
+
+* instances: 指定存储节点，请仅传入一个instance
+type：指定统计的项目，请仅传入一个type：
+
+  - capacity 总容量
+  - used 使用量
+  - wear 磨损度
+  - freePct 可用百分比
+| 单位：Byte
+
+| store_cpu
+| 存储节点的cpu监控
+| instances: 指定存储节点，可传入多个instance
+| 单位：% +
+请使用tag字段来区分不同的存储节点
+
+| store_memory
+| 存储节点的内存监控
+a|
+
+* instances: 指定存储节点，可传入多个instance
+mem：指定统计的项目，可传入多个指标：
+
+  - available  可用容量
+  - used  使用量 +
+  - total  总量 +
+  - percent 使用量百分比(used/total)
+| 单位：Byte +
+请使用tag字段来区分不同的存储节点
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetNeonSANMonitor",
+    "zone": "test", // [必须]指定zone
+    
+    // 以下参数用于筛选
+    "topic": "rg_iops", // 指定需要统计的topic, 该参数与topics必须存在其中一个
+    "topics": ["rg_network_transmit", "rg_network_receive"], // 指定需要统计的多个topic，该参数与topic必须存在其中一个
+    "filters": {
+        "rg": 1,
+        "rw": "read"
+    }, // 对指定的topic指定过滤选项，过滤项可用数值请参考文档
+    "step": "60s", // 指定step，支持单位为s、m、h、d
+    "start_time": "2019-12-02T04:18:55Z", // 指定开始时间
+    "end_time": "2019-12-02T05:18:55Z"  // 指定结束时间
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "time",
+            "data": [
+               1575260335,
+               1575260395,
+               1575260455
+            ],
+            "tag": "send"
+         },
+         {
+            "name": "rg_network_tcp_send",
+            "data": [
+               15,
+               15,
+               15
+            ],
+            "tag": "send"
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNeonSANMonitorResponse"
+}
+----

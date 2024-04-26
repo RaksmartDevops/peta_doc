@@ -1,0 +1,34 @@
+---
+title: "备份"
+linkTitle: "备份"
+weight: 2
+collapsible: true
+type: "product"
+description: 备份是用于捕捉硬盘在某一个时刻的状态，未来可以随时恢复到这个状态。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 备份概述
+            url: intro/introduction/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建备份
+            url: manual/create_snapshot/
+          - title: 备份回滚
+            url: manual/rollback_snapshot/
+          - title: 基于备份创建硬盘
+            url: manual/bak_create_disk/
+          - title: 其他备份相关操作
+            url: manual/backup/
+
+
+
+
+---

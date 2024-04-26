@@ -1,0 +1,46 @@
+---
+title: 开启二次认证（Boss2EnableTOTP）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2EnableTOTP
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2EnableTOTP",
+    "code": "111947" // 二次认证验证码
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2EnableTOTPResponse"
+}
+----

@@ -1,0 +1,197 @@
+---
+title: "使用云服务器搭建一个基于 LNMP 的 Wordpress 博客"
+weight: 370
+---
+== 项目概览
+
+在本项目中，您将了解如何使用云平台 > 计算 > 云服务器部署具备高可用性的 LNMP Web 应用程序。本项目相关的技术栈有 Linux、Nginx、MySQL 和 PHP。
+
+== 准备事项
+
+* 云平台账号：您需要注册一个云平台账户并充值来购买资源。
+
+* 操作系统：本地需使用 Windows 7 及以上版本的 Windows 操作系统。
+
+* 技能水平：基本了解 Web 技术、命令行和 LNMP。
+
+== 前期小知识
+
+Wordpress 是被广泛使用的、免费的、开放源代码的博客程序。相对于网易 163 博客或 QQ 空间等现成的博客网址，Wordpress 具备更高的自定义特性：可以自定义网站的外观样式、可以自由地发表文章、可以绑定自己的域名、甚至可以在博客里面集成购物功能。国外的许多企业网址、摄影博客都是基于Wordpress构建的。
+
+搭建一个 Wordpress 有非常多的方式，本文推荐的是通过 LNMP 一键包进行安装，帮助用户熟悉云平台后台的基本操作以入门云计算。
+
+LNMP 就是 Linux + Nginx + MySQL + PHP。针对非常小型的网址，可以不必完全使用 LNMP 方式来搭建，但 LNMP 可以良好应对未来流量上升而对服务器造成的压力，接触 LNMP 可以让我们在未来更好地深入学习。
+
+* Linux：是一类 Unix 计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora等。使用 Linux 而非 Wordpress 是因为 Linux 更省资源，Linux 默认没有远程桌面也使得其比 Windows 更安全；
+* Nginx：这是一个 HTTP 及反向代理引擎，其作用是作为一个中间人，让用户得以访问服务器上的资源。在用户量大后，也可作控制流量用，将用户分散到不同的服务器以减缓单个服务器的压力；
+* MySQL：数据库软件，博客文章数据以及用户数据等都存储在 MySQL 的数据表里。数据库可以使数据的存储更有条理，也有方便快捷的语法可以批量调整数据；
+* PHP：PHP 是一个编程语言，Wordpress 便是基于 PHP 编写，在服务器上配置好 PHP 才能使 Wordpress 正常运行。
+
+== 具体操作
+
+. 创建云服务器
++
+云服务器是通过虚拟化隔离出来具备特定算力的资源。以往机房会将 CPU，硬盘，内存以固定的配比装配在一台服务器内。现在公有云机房会将 CPU、硬盘、内存分散放在不同机柜，然后通过虚拟化技术对其进行调度，以有效地降低成本。云服务器则可以让用户不必顾虑底层的调度技术，而可以直接使用算力资源。
+
+.. 如下图所示，依次选择服务器地理区域（本次实践建议选择离您比较近的区域）> 计算 > 云服务器 > 创建 > Ubuntu Server 16.04.5 LTS 64bit 操作系统。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_1.png[]
+
+.. 云服务器类型选择基础型，1 核 1G 内存。其他选项可保持不变。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_2.png[]
+
+.. 点击 *下一步* 后，选择基础网络。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_3.png[]
+
+.. 计费方式选择按需计费（按需计费可以满足短时间的云服务器使用需求，预留方式则以月来扣费，但价格相对便宜）- 云服务器名称可以随意填写，SSH 登录方式选择密码（熟悉公有云及 Linux 后建议选择 SSH 密钥），设定好您自己的密码。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_4.png[]
+
+.. 点击创建后，耐心等待数秒完成云服务器的创建。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_5.png[]
+
+.. 待云服务器变成 `运行中` 状态后，按下图点击进入云服务器详情页。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_6.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_7.png[]
+
+.. 找到下图所示的地方，我们需要配置安全组以及添加公网IP。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_8.png[]
+
+. 配置安全组。
+
+.. 点击进入 *安全* > *安全组* > *缺省安全组* > *添加规则*。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_9.png[]
+
+.. 在协议选择 `TCP`，起始端口填写 `80`。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_10.png[]
+
+.. 点击提交，然后点击 *应用修改*。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_11.png[]
+
+. 绑定公网 IP。
+
+.. 接下来需要申请公网 IP 并绑定到云服务器。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_12.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_13.png[]
+
+.. 计费模式选择按带宽付费，1 Mbps 可以满足前期使用。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_14.png[]
+
+.. 点击 *计算* > *云服务器*，进入云服务器详情页。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_15.png[]
+
+.. 点击图形化，可以看到云服务器和其他资源配合的拓扑结构，以后在添加了硬盘，VPC 网络等搭配产品后也可以在这里查看结构。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_16.png[]
+
+.. 进入以后点击绑定公网 IPv4，选择自己刚刚创建的云服务器，绑定即可。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_17.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_18.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_19.png[]
+
+. 远程连接服务器。
+
+.. 接下来需要准备一个 xshell 软件进行服务器的远程控制。xshell 提供免费的家庭版，可以在 link:https://www.netsarang.com/zh/free-for-home-school/[这里下载]。
+
+.. 安装完成后，按照下图操作。云服务器位置需填入刚刚申请的 IPv4。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_20.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_21.png[]
+
+.. 点击 用户身份验证，用户名填写 ubuntu，密码填写创建云服务器时设定的 SSH 密码。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_22.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_23.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_24.png[]
+
+. 安装 LNMP 一键包。
+
+.. 进入命令行后，输入 `sudo su` 以获取 root 权限，之后再一次输入创建云服务器时设定的 SSH 密码（输入的密码不会在命令行显示，输入完成后直接回车即可）。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_25.png[]
+
+.. 输入以下命令。
++
+[source,shell]
+----
+screen -S lnmp
+wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh lnmp
+----
++
+PHP版本等都保持默认即可。遇到下图所示情况，需要输入 MySQL 密码，请勿和 SSH 密码保持一致，本文为了演示方便使用了弱密码，请在实际操作时使用高强度的密码。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_26.png[]
++
+接下来一路回车即可。
+
+.. LNMP 的安装时长视服务器的配置以及网络状态而定，安装完成时长普遍在 20 - 40 分钟。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_27.png[]
+
+.. 安装完成后打开浏览器，地址栏填入自己的 IP 即可查看是否安装成功。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_28.png[]
+
+. 安装 Wordpress。
+
+.. 在浏览器输入 `(您的ip)/phpmyadmin`，如 `123.123.123.123/phpmyadmin`，进入后新建一个名为 `wordpress` 的数据库。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_29.png[]
+
+.. 在 Xshell 终端依次输入：
++
+[source,shell]
+----
+cd /home/wwwroot/default/
+wget https://wordpress.org/latest.tar.gz
+tar -zxvf latest.tar.gz
+----
+
+.. 在浏览器输入 `(您的ip)/wordpress`，如 `123.123.123.123/wordpress`，就可以到达如下界面：
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_30.png[]
+
+.. 单击 *Let's go!* 按钮，在下图中，需要输入数据库信息，Database Name 就是刚刚创建的 `wordpress`，`Usernmae` 输入 root，`Password` 输入在安装 lnmp 时设置的数据库密码。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_31.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_32.png[]
+
+.. 如果在 `Submit` 后出现如下图所示问题：
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_33.png[]
++
+此时需要在Xshell终端输入 `vi wp-config.php` 创建一个 `wp-config.php` 文件，点击键盘 `i` 进入编辑模式，并将图中文本框内容复制进去，然后点击键盘 `esc` 并输入 `:wq` 保存退出，然后回到浏览器点击 `Run the installation` 继续。
+
+.. 安装完成后需要配置站点，在这里您需要设置的用户名和密码是网站的用户名和密码，是区别于云服务器，数据库的另一套系统，作用是访问网站管理后台。
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_34.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_wordpress_35.png[]
+
+.. 安装完成后，再次访问 `(您的ip)/wordpress`，如 `123.123.123.123/wordpress`，就可以成功登录到 wordpress 了。
+
+== 后期备案
+
+若您希望正常运行自己的 Wordpress 博客，您便需要购买域名并解析到云平台的 ip。
+
+根据中国大陆工信部的规定，所有在大陆境内运行的服务都必须进行 ICP 备案。只要在互联网能访问并且使用大陆公网 IP 地址的域名都需要备案。

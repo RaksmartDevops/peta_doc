@@ -1,0 +1,43 @@
+---
+title: "在 VPC 网络及私有网络中配置网络 ACL "
+description: VPC 和私有网络 Vxnet 的网络 ACL 配置和操作
+draft: false
+weight: 30
+keywords: 云计算, 私有网络Vxnet, 绑定和解绑网络ACL
+---
+
+为了方便您使用网络 ACL，我们在 VPC 和私有网络页面中也增加了网络 ACL 配置操作。
+
+include::../../../../../_components/attention.adoc[]
+网络 ACL 可以绑定到多个私有网络，ACL 规则的应用修改会同步给所有绑定的私有网络，因此请您谨慎增删或者修改规则，建议您在复制后的网络 ACL 中修改。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 在 VPC 网络页面中配置
+
+在 VPC 的**私有网络**界面下，每个私有网络都新增了**网络 ACL** 页面，您可以在资源列表中查看当前 ACL 中的全部资源。
+
+. 登录管理控制台，选择**产品与服务** > *网络* > *VPC 网络*，进入**VPC 网络**页签。
+. 在**VPC 网络**页签中，选择**私有网络**界面，每个私有网络都新增了**网络 ACL** 页面，您可以在资源列表中查看当前 ACL 中的全部资源。
++
+image::/images/cloud_service/security/acl/create_acl_13.png[]
+
+. 点击**网络 ACL** ，就进入私有网络的网络 ACL 页面，您可以查看、添加、修改、禁用、删除当前绑定的网络 ACL 中的规则。
++
+image::/images/cloud_service/security/acl/create_acl_14.png[]
++
+您还可以点击提示中的**创建或管理 ACL** 快速跳转到网络 ACL 页面。
++
+当有规则没有应用修改时，您可以点击**应用修改**将规则的修改应用到所有关联的 Vxnet。
+
+== 在私有网络页面中配置
+
+. 登录管理控制台，选择**产品与服务** > *网络* > *VPC 网络*，进入**VPC 网络**页签。
+. 在**VPC 网络**页签中，选择**私有网络**界面，每个私有网络都新增了**网络 ACL** 页面，您可以在资源列表中查看当前 ACL 中的全部资源。
++
+image::/images/cloud_service/security/acl/create_acl_13.png[]
+
+. 右键点击私有网络名称，选择**网络 ACL** ，选择**绑定 / 解绑**来对私有网络的 ACL 进行操作。
++
+image::/images/cloud_service/security/acl/create_acl_15.png[]
+

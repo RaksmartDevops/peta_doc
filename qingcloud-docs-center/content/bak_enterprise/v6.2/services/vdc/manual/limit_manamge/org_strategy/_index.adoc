@@ -1,0 +1,15 @@
+---
+title: "组织策略"
+weight: 1
+linkkey: vdc_organization_strategy_management
+---
+
+在组织策略中，您可以使用初始化全局策略，还可以自定义其他策略，以及查看和管理策略权限、为策略引用角色。针对组织策略，企业空间支持以下操作：
+
+* link:strategy_create/[创建策略]
+* link:strategy_sim[策略模拟]
+* link:strategy_edit[管理策略]
+
+
+
+

@@ -1,0 +1,52 @@
+title: "云计算运维管理平台（简称 BOSS）文档中心"
+
+# 扩展样式
+externalStyles: theme.json # 相对于当前位置的文件位置，用,作为分隔符的字符串
+externalStylesMap:
+  $active-color: primary
+  $icon-dark-color: primary
+  $primary-btn-hover-color: primary-hover
+  $active-light-color: secondary
+  $icon-light-color: secondary-hover
+  $font-title-color: title1
+  $menu-switch-active-color: title3
+  $banner-description-color: title3
+  $font-light-color: help2
+  $input-placeholder-color: help2
+  $theme-background-color: light-background
+  $table-header-background-color: light-background
+  $normal-background-color: white-background
+
+markup:
+  asciidocExt:
+    attributes:
+      toc:
+      toclevels: 2
+      file_output_type: html
+      # 全局变量
+      platform_name_cn: 企业云平台
+
+params:
+  description: "这是云计算运维管理平台（简称 BOSS）文档页面"
+  favicon: "/images/favicon.ico"
+  keywords: "云计算,青云,QingCloud,文档"
+  logo: "/images/qingcloud-logo.svg"
+  logoInfo: "BOSS"
+  logoLink: /v6.2/
+  disableVersions: true
+
+  # PDF 配置
+  pdf:
+    pdf_projectName: 云计算运维管理平台（简称 BOSS）
+    pdf_docVersion: 02
+    pdf_copyright: 版权所有 © 北京青云科技股份有限公司
+    pdf_legalInfo: 版权所有 © 北京青云科技股份有限公司 2022。保留所有权利。
+    pdf_projectVersion: v6.2
+    pdf_companyFullName: 北京青云科技股份有限公司
+    pdf_companyName: 青云
+    pdf_companyUrl: https://www.qingcloud.com
+    pdf_companyIcon: /images/pdf/qingcloud-logo-icon.png
+    pdf_coverDocName: QingCloud 云计算运维管理平台（简称 BOSS）
+    pdf_coverDocLogo: /images/pdf/qingcloud-logo-color.png
+    pdf_coverDocImage: /images/pdf/cover_doc_image.svg
+    pdf_timeout: 40

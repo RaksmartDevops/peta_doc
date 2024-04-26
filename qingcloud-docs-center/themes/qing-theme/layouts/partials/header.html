@@ -1,0 +1,117 @@
+{{- $Section := partial "get-recent-section.html" . -}}
+{{- $FirstSection := partial "get-first-section.html" . -}}
+<header>
+  <nav class="navbar">
+    {{if .Site.Params.homeLink}}
+    <div class="navbar-logo-wrapper">
+      <a class="navbar-logo-link" target="_blank" href="{{.Site.Params.homeLink}}">
+        <img class="navbar-logo" src="{{.Site.Params.logo}}" />
+      </a>
+      <div class="navbar-split navbar-left-split">|</div>
+      <a class="navbar-logo-link navbar-logo-home" href="{{.Site.Params.logoLink}}">
+        <span class="content-item-title-icon icon-house_duotone1">
+          <span class="path1"></span>
+          <span class="path2"></span>
+          <span class="path3"></span>
+          <span class="path4"></span>
+        </span>
+        <div class="navbar-logo-text">{{.Site.Params.logoInfo}}</div>
+      </a>
+    </div>
+    {{else}}
+      <a href="{{.Site.Params.logoLink}}" class="navbar-logo-wrapper">
+        <img class="navbar-logo" src="{{.Site.Params.logo}}" />
+        <div class="navbar-split navbar-left-split">|</div>
+        <div class="navbar-logo-text">{{.Site.Params.logoInfo}}</div>
+      </a>
+    {{end}}
+    <div class="navbar-nav">
+      <div
+        class="navbar-nav-item navbar-nav-version {{if gt (len .Site.Sections) 1}}dropdown{{end}}"
+        style="{{if (.Site.Params.disableVersions)}}display:none;{{end}}">
+        {{$VersionName := (path.Base $FirstSection.RelPermalink)}}
+        <div class="dropdown-trigger">
+          <span class="project-version">
+            {{$VersionName}}
+          </span>
+          {{if gt (len .Site.Sections) 1}}
+            <span class="icon icon-chevron_down_fill"></span>
+          {{end}}
+        </div>
+        {{if gt (len .Site.Sections) 1}}
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              {{ range $navbarIndex, $navbarElement := .Site.Sections.ByWeight }}
+              <a
+                class="{{if eq (path.Base .RelPermalink) $VersionName}}active{{end}}"
+                href="{{if .Params.hasNavHeader}}{{(index .Sections.ByWeight 0).RelPermalink}}{{else}}{{.RelPermalink}}{{end}}"
+              >
+                {{path.Base .RelPermalink}}
+              </a>
+              {{ end }}
+            </div>
+          </div>
+        {{end}}
+      </div>
+      {{if $FirstSection.Params.hasNavHeader}}
+        {{ range $navbarIndex, $navbarElement := $FirstSection.Sections.ByWeight }}
+          <a class="navbar-nav-item {{if hasPrefix $.RelPermalink $navbarElement.RelPermalink}}active{{end}}"
+            data-link="{{.RelPermalink}}"
+            href="{{.RelPermalink}}"
+          >
+            {{.Title}}
+          </a>
+        {{ end }}
+      {{end}}
+    </div>
+    <div class="search navbar-search">
+      <form action="{{$FirstSection.RelPermalink}}search/" method="GET">
+        <div class="control has-icons-left has-icons-right docs-search-input">
+          <span class="icon is-left">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入关键字快速获取帮助"
+            autocomplete="off"
+          />
+          <span class="icon is-right"> </span>
+        </div>
+        <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      </form>
+      <div class="search-result navbar-search-result">
+        <div class="search-result-loading"></div>
+        <div class="search-result-content"></div>
+        <div class="search-result-none">
+          没有找到搜索结果， 请更换关键词重新搜索
+        </div>
+      </div>
+    </div>
+    {{ if .Site.Params.navLink }}
+      {{$navLen := len .Site.Params.navLink}}
+      {{range $navIndex, $navItem := .Site.Params.navLink}}
+        {{if eq (sub $navLen 1) $navIndex}}
+          <a class="navbar-item-right btn primary-btn navbar-btn {{$navItem.class}}"
+            {{if ne $navItem.class `is-hidden`}}target="_blank"{{end}}
+            data-url="{{$navItem.url}}"
+            data-text="{{$navItem.title | safeHTML}}"
+            href="{{$navItem.url}}">
+            {{$navItem.title | safeHTML}}
+          </a>
+        {{else}}
+          <a class="navbar-item-right navbar-item-link {{$navItem.class}}"
+            {{if ne $navItem.class `is-hidden`}}target="_blank"{{end}}
+            data-url="{{$navItem.url}}"
+            data-text="{{$navItem.title | safeHTML}}"
+            href="{{$navItem.url}}">
+            {{$navItem.title}}
+          </a>
+        {{end}}
+      {{end}}
+    {{ end }}
+  </nav>
+</header>
+
+{{- partialCached "search-tmpl.html" . -}}

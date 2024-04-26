@@ -1,0 +1,102 @@
+---
+title: "MongoDB Cluster 4.0.3 - v1.0.0"
+description: 本小节介绍 MongoDB Cluster 4.0.3 - v1.0.0 的测试数据。
+keywords: MongoDB Cluster , 4.0.3 - v1.0.0，性能测试, 测试数据
+weight: 10
+collapsible: false
+draft: false
+---
+本文介绍 MongoDB Cluster 4.0.3 - v1.0.0 在不同测试场景下的测试结果。
+
+== 测试环境
+
+* 客户端配置
++
+云服务器规格为 8 核 32GB ，企业型 e3
+
+* 测试对象配置
++
+MongoDB Cluster 4.0.3 - v1.0.0 ，各节点资源配置如下：
+
+ ** Mongos 节点配备 2 核 4G 和 4 核 8G 企业型 e2 资源配置
+ ** Config Server 节点固定 1核2G 基础型配置
+ ** Shard 节点固定 4 核 8G 企业型 e2配置
+
+== 测试场景
+
+[cols="1,2"]
+|===
+| 场景 | 说明
+
+| workloada
+| 读写均衡型，Reads/Writes 50:50
+
+| workloadb
+| 读多写少型，Reads/Writes 95:5
+|===
+
+== 测试目标
+
+准备约 10GB 测试数据，对于不同 MongoDB Cluster 规格核读写比场景下，分别测试 100 和 200 并发数条件下的 QPS、平均读时延（RAL）、平均写时延（WAL）的性能数据。
+
+== 测试步骤
+
+. link:../../../../../compute/vm/quickstart/create_vm/[创建云服务器]，配置云服务器与 MongoDB Cluster 集群在相同可用区、VPC、私有网络和安全组。
+. 在云服务器上安装 YCSB 测试工具。
+. 在云服务器上准备约 10GB 的数据。
++
+[,shell]
+----
+$ ./bin/ycsb.sh load mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongos_ip>:<mongos_port>/ycsb?authSource=admin -p mongodb.writeConcern=unacknowledged >loadlog.txt &
+----
+
+. 在云服务上执行相关<<_测试命令,测试命令>>。
+
+=== 测试命令
+
+* 读写均衡场景（读写比 50:50），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongos_ip>:<mongos_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读写均衡场景（读写比 50:50），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongos_ip>:<mongos_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读多写少场景（读写比 95:5），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongos_ip>:<mongos_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读多写少场景（读写比 95:5），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongos_ip>:<mongos_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+== 测试结果
+|===
+|并发数 |QPS （ops/s） |RAL （us） |WAL （us）
+
+4+|*2 核 4G，读写比 50:50*
+|100 |5427 |36295 |125
+|200 |5475 |54343 |18189
+4+|*2 核 4G，读写比 95:5*
+|100 |6432 |16294 |39
+|200 |6405 |31917 |15618
+4+|*4 核 8G，读写比 50:50*
+|100 |12904 |15176 |146
+|200 |13041 |22690 |7680
+4+|*4 核 8G，读写比 95:5*
+|100 |14860 |7007 |200
+|200 |14698 |13865 |6924
+
+|===

@@ -1,0 +1,141 @@
+---
+title: "MongoDB 3.6.8-v1.0.1"
+description: 本小节介绍 MongoDB 3.6.8 - v1.0.1 的测试数据。
+keywords: MongoDB , 3.6.8-v1.0.1，性能测试, 测试数据
+weight: 10
+collapsible: false
+draft: false
+---
+本文介绍 MongoDB 3.6.8-v1.0.1 在不同测试场景下的测试结果。
+
+== 测试环境
+
+* 客户端配置
++
+云服务器规格为 8 核 32GB ，企业型 e3
+
+* 测试对象配置
++
+MongoDB 3.6.8-v1.0.1 ，Replica 节点资源配置如下：
+
+ ** 云服务器 企业型 e3
+ ** 磁盘 100G 企业型
+
+== 测试场景
+
+[cols="1,2"]
+|===
+| 场景 | 说明
+
+| workloada
+| 读写均衡型，Reads/Writes 50:50
+
+| workloadb
+| 读多写少型，Reads/Writes 95:5
+|===
+
+== 测试目标
+
+准备约 10GB 测试数据，对于不同 MongoDB 规格核读写比场景下，分别测试 100 和 200 并发数条件下的 QPS、平均读时延（RAL）、平均写时延（WAL）的性能数据。
+
+== 测试步骤
+
+. link:../../../../../compute/vm/quickstart/create_vm/[创建云服务器]，配置云服务器与 MongoDB 集群在相同可用区、VPC、私有网络和安全组。
+. 在云服务器上安装 YCSB 测试工具。
+. 在云服务器上准备约 10GB 的数据。
++
+[,shell]
+----
+$ ./bin/ycsb.sh load mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.writeConcern=unacknowledged >loadlog.txt &
+----
+
+. 在云服务上执行相关<<_测试命令,测试命令>>。
+
+=== 测试命令
+
+* 读写均衡场景（读写比 50:50），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读写均衡场景（读写比 50:50），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读多写少场景（读写比 95:5），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+* 读多写少场景（读写比 95:5），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+== 测试结果
+
+=== 读写比 50:50
+|===
+|并发数 |QPS （ops/s） |RAL （us） |WAL （us）
+
+4+|*规格：2 核 4G*
+|100 |9238 |22156 |108
+|200 |6966 |42379 |14068
+4+|*规格：2 核 8G*
+|100 |10128 |19311 |147
+|200 |10740 |27476 |9314
+4+|*规格：4 核 8G*
+|100 |7473 |26465 |116
+|200 |25278 |11384 |4035
+4+|*规格：4 核 16G*
+|100 |20790 |9553 |25
+|200 |21786 |13669 |4604
+4+|*规格：8 核 16G*
+|100 |26848 |7396 |27
+|200 |28758 |10356 |3500
+4+|*规格：8 核 32G*
+|100 |34708 |5683 |30
+|200 |39275 |7536 |2591
+4+|*规格：16 核 64G*
+|100 |65669 |2989 |32
+|200 |67774 |3839 |2039
+
+|===
+
+
+=== 读写比 95:5
+
+|===
+|并发数 |QPS （ops/s） |RAL （us） |WAL （us）
+
+4+|*规格：2 核 4G*
+|100 |15010 |6869 |68
+|200 |15407 |13174 |6521
+4+|*规格：2 核 8G*
+|100 |15278 |6732 |87
+|200 |16580 |12225 |6034
+4+|*规格：4 核 8G*
+|100 |35742 |2856 |121
+|200 |37584 |5352 |2843
+4+|*规格：4 核 16G*
+|100 |40907 |2557 |21
+|200 |40653 |5023 |2507
+4+|*规格：8 核 16G*
+|100 |50011 |2089 |33
+|200 |50763 |4019 |2033
+4+|*规格：8 核 32G*
+|100 |95014 |1097 |30
+|200 |123344 |2477 |2094
+4+|*规格：16 核 64G*
+|100 |122876 |2459 |2272
+|200 |166616 |622 |42
+
+|===

@@ -1,0 +1,31 @@
+---
+title: "Windows 配置多用户登录后，登录出现闪屏怎么办？"
+weight: 220
+
+---
+== 概述
+
+Windows 服务器配置多用户登录后，Administrator 登录正常，普通用户登录后出现闪屏，或者打开 *我的电脑* 出现自动关闭，不能正常使用。
+
+== 操作步骤
+
+. 选择 *开始* > *管理工具* > *事件查看器* > *应用程序* 中查看相关事件。
+
+. 查看事件日志信息，模块发送的错误及时间。
++
+image::/images/cloud_service/compute/vm/faq_trouble_splash_method_1.png[]
+
+. 打开 *运行* > *cmd*，进入到错误文件所在目录。
+
+. 执行如下命令。
++
+[source,shell]
+----
+cd C:\Program Files (x86)\GifRecord
+----
+. 通过命令清理异常文件`regsvr32.exe /u` 文件名 ，进行移除，移除后恢复正常。
++
+[source,shell]
+----
+regsvr32.exe /u GifRecord64.dll
+----

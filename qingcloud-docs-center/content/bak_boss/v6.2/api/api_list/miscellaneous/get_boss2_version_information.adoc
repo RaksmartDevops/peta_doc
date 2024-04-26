@@ -1,0 +1,140 @@
+---
+title: 获取BOSS2版本信息（Boss2GetModulesVersion）
+weight: 15
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetModulesVersion
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于返回BOSS2各模块的版本信息。
+注意：modules 参数不传或者传空列表时，会返回所有模块的版本信息。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| module
+| 模块ID
+|
+
+| verbose
+| 模块名称
+|
+
+| help
+| 功能描述
+|
+
+| build_time
+| 构建时间
+|
+
+| build_info
+| 构建信息
+|
+
+| commit
+| 代码提交ID
+|
+
+| branch
+| 版本
+|
+
+| tag
+| 补丁版本
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetModulesVersion",
+    "modules": []   // 模块名称，可传入 console/common/manager/env/transit
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "version_set": [
+        {
+            "module": "console",                    // 模块
+            "verbose": "BOSS2 Console",             // 描述
+            "help": "BOSS2 FrontEnd Module",        // 帮助
+            "build_time": null,                     // 构建时间
+            "build_info": null,                     // 构建任务名称
+            "commit": null,                         // 最新的提交
+            "branch": null,                         // 构建的分支
+            "tag": null                             // 分支打的tag
+        },
+        {
+            "module": "manager",
+            "verbose": "BOSS2 Manager",
+            "help": "BOSS2 Backend Module",
+            "build_time": "20221230_092205",
+            "build_info": "jenkins-boss2-manager-autobuild-master-to-new-testing-pipeline-413",
+            "commit": "1b0cf9876a0f248033d68dae49e970b9013fd7ae",
+            "branch": "origin/master",
+            "tag": null
+        },
+        {
+            "module": "common",
+            "verbose": "BOSS2 Common",
+            "help": "BOSS2 Common Utils",
+            "build_time": "20230103_110732",
+            "build_info": "jenkins-boss2-common-autobuild-master-to-new-testing-pipeline-57",
+            "commit": "1ebeee482c8af2fcb4b6b2de5bfdc1bf666442dc",
+            "branch": "origin/master",
+            "tag": null
+        },
+        {
+            "module": "env",
+            "verbose": "BOSS2 Environment",
+            "help": "BOSS2 Runtime Environment",
+            "build_time": "20220909_092738",
+            "build_info": "jenkins-boss2-env-deb-build-85",
+            "commit": "581b9f4a5128ff366a93cfac0729bb39fbf944a8",
+            "branch": "origin/master",
+            "tag": null
+        },
+        {
+            "module": "transit",
+            "verbose": "Transit Upload Server",
+            "help": "Server for Uploading Images and Reports",
+            "build_time": "20211119_144042",
+            "build_info": "jenkins-transit-upload-server-dpkg-build-67",
+            "commit": "2ba37e51b82bfbf6d70953606e50d6a5844c858f",
+            "branch": "origin/master",
+            "tag": null
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2GetModulesVersionResponse"
+}
+----

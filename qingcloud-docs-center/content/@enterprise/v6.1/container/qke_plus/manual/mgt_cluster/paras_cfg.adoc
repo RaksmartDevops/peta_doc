@@ -1,0 +1,158 @@
+---
+title: "配置集群参数"
+description: 介绍如何修改 QKE 集群参数。
+draft: false
+weight: 10
+keywords: QKE 参数
+---
+QKE 支持自定义部分参数的值，您可以根据自己的业务情况对集群运行参数进行调整。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *容器服务* > *{k8s_engine_fullname}*，进入 QKE 集群列表页面。
+. 在集群列表，点击待查看集群的名称，进入**集群概览**页面。
+. 在左侧导航栏，点击**集群信息**，进入**集群信息**页面。
+. 在页面右侧的**环境参数**区域，展示了集群当前的参数配置。
++
+参数包括**镜像参数**、**存储参数**、*网络参数*、**kubernetes 配置**及**其他参数**。
++
+image::/images/cloud_service/container/qke/paras_setting_ep.png[参数配置]
+
+. 点击**修改参数**，参数值变为可编辑状态。
++
+
+include::../../../../../../_components/note.adoc[]
+
+* 部分参数仅支持在创建集群时配置，此处不可修改，仅作为展示。
+
+* 可同时修改不同类型的参数。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 根据实际情况进行参数值修改。
++
+详细说明请参见下述<<_参数说明>>。
+
+. 修改完成后，点击**确认修改**进行保存，弹出提示框。
+. 确认无误后，点击**确认**。
+
+== 参数说明
+
+[discrete]
+==== 镜像参数
+
+[cols="1,2"]
+|===
+| 参数名称 | 配置说明
+
+| registry-mirrors
+| 填写完整的 Docker 镜像服务地址。 +
+填写示例：`https://mirror.harbor.local`。多个地址之间使用逗号（,）分隔。
+
+| insecure-registries
+| 若需要通过非安全的 HTTP 或不受信任的 HTTPS 访问的 Docker 仓库，则在此处填写仓库地址。 +
+填写示例：`mirror.harbor.local`。多个地址之间使用逗号（,）分隔。
+
+| docker-auths
+| 填写镜像仓库密钥，以获得访问、拉取、推送镜像得权限。 +
+填写示例：`{"dockerhub.domain.com":{"auth":"YWRtaW46MTIzNDU2"},"index.docker.io":{"auth":"YWRtaW46MTIzNDU2"}}`。 +
+具体配置说明请参见link:../../../quickstart/cfg_mirror_repo/#_步骤二配置镜像仓库信息[配置镜像仓库信息]。
+|===
+
+[discrete]
+==== 存储参数
+
+[cols="1,2"]
+|===
+| 参数名称 | 参数说明
+
+| 存储插件
+| 集群默认存储插件为 csi-qingcloud-controller（云平台块存储），您可以添加其他插件提供更多类型集群存储服务，如 csi-u10000（QingStor U10000 存储）。添加前，需要已完成存储与 QKE 的对接，否则无法在界面中添加。
+
+| 持久卷默认插件
+| 在支持的存储插件中，选择一款存储插件作为容器持久卷对应的后端存储。
+|===
+
+[discrete]
+==== 网络参数
+
+[cols="1,2"]
+|===
+| 参数名称 | 参数说明
+
+| Proxy Mode
+| 选择 kube-proxy 的模式：iptables 或 ipvs。 +
+kube-proxy 用于在服务和其后端 Pod 之间进行负载均衡。其详细说明，请参考 https://feisky.gitbooks.io/kubernetes/content/components/kube-proxy.html[Kubernetes 指南]。
+
+
+| 网卡插件
+| 选择一种网卡插件：calico、flannel、hostnic。 +
+插件具体说明，可参考link:../../../intro/plugin/[插件支持]。
+
+
+| Pod 网段
+| 网卡插件选择 calico 或 flannel 时需要设置。 +
+设置 Pod 使用的网段。 +
+请按照标准的 CIDR 格式填写，例如：`10.10.0.0/16`。
+
+
+| hostnic 子网大小
+| 网卡插件选择 hostnic 时需要设置。 +
+IPAM 模块会依据子网大小进行私有网络的切割。比如私有网络网段是 172.16.0.0/24，指定子网大小为 26 后，会将私有网络切割为 4 个子网，用户可以通过 hostnic IPAM 配置 Namespace 与 子网（subnet）的映射关系。
+
+
+| hostnic 私有网络
+| 网卡插件选择 hostnic 时需要设置。 +
+可选择与当前 QKE 集群互通的多个私有网络，选择的私有网络要求未被使用且后续仅供本集群使用。建议选择两个或以上的私有网络来保障 hostnic 有足够的 IP 地址分配给 Pod。
+
+
+| hostnic IPAM 配置
+| 网卡插件选择 hostnic 时需要设置。 +
+默认开启自动映射。IPAM 模块会根据私有网络自动创建对应的 IPPool，并将 IPPool 依据子网大小切割为 subnet，实现 Namespace 与 subnet 的映射，Namespace 中的 Pod 的 IP 都会从对应 subnet 中进行分配。
+
+
+| Service 网段
+| 设置 Service 使用的网段。 +
+请按照标准的 CIDR 格式填写，例如：`10.96.0.0/16`。
+
+|===
+
+[discrete]
+==== Kubernetes 配置
+
+[cols="1,2"]
+|===
+| 参数名称 | 参数说明
+
+| K8s apiserver EIP
+| 如果希望通过公网访问 K8s apiserver，可在此处选择可用的公网 IP或新建公网 IP，系统将会自动创建一个 LB 并绑定此公网 IP。
+
+*SSH 登录集群*：自管版集群支持设置是否开启 SSH 登录集群功能。开启后，用户可以通过 SSH 的方式登录集群。详细说明，请参见link:../../connect/ssh_login_cluster/[通过 SSH 登录自管版集群]。
+
+
+| 集群内 DNS 域名
+| 集群内的 DNS 域名，用于 Kubernetes Services。
+
+
+| NodePort 范围
+| 每个节点可分配的 NodePort 范围，例如 `30000-32767`。 +
+由于 KubeSphere 的对外端口号是 30880，若您需要安装 KubeSphere，请保证 30880 在该范围内。
+
+
+| 最大 pod 数量
+| 每个节点上可运行的最大 pod 数量，默认为 120。
+
+|===
+
+
+[discrete]
+==== 其他参数
+
+[cols="1,2"]
+|===
+| 参数名称 | 参数说明
+
+| API 密钥 ID
+| 此密钥用于创建云平台的资源，比如负载均衡器、PV 挂盘等。
+|===

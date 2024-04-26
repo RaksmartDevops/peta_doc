@@ -1,0 +1,55 @@
+---
+title: "费用中心"
+weight: 2
+description: 在费用中心可以清晰查看到自己账户下的订单、账单及合约等相关信息。
+bannerImage: /images/pic-banner.png
+
+study_section:
+
+  - title: 快速入门
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 
+        children:
+          - title: 了解费用中心
+            url: qs/10/
+          - title: 快速上手指引
+            url: qs/20/
+
+  - title: 进阶实践
+    icon: icon-apps_2_duotone
+    children:
+      - title: 
+        children:
+          - title: 充值
+            url: manual/finance/wallet
+          - title: 消费账单
+            url: manual/consump_bill/overview/
+          - title: 订单管理
+            url: manual/order/
+          - title: 续费管理
+            url: manual/renewal/
+          - title: 发票管理
+            url: manual/finance/invoice/
+
+
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 
+        children:
+          - title: 欠费相关问题
+            url: faq/account/
+          - title: 充值相关问题
+            url: faq/recharge/
+          - title: 续费相关问题
+            url: faq/renewal/
+          - title: 订单相关问题
+            url: faq/order/
+          - title: 账单相关问题
+            url: faq/bill/
+          - title: 优惠券相关问题
+            url: faq/coupon/
+          - title: 发票相关问题
+            url: faq/invoice/
+---

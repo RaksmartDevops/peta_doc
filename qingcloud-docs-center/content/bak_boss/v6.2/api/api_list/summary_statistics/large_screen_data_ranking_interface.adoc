@@ -1,0 +1,386 @@
+---
+title: 大屏数据排行接口（Boss2GetDashboardTop）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetDashboardTop
+
+=== Method
+POST
+
+=== 接口描述
+本接口为大屏的数据排行提供数据。
+目前支持排行如下：
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+| hypernodes
+| 返回计算节点相关的top统计
+a|
+
+* top_cpu: cpu占用的top排行，百分比
+* top_mem: 内存占用的top排行，百分比
+top_data_disk：数据盘占用空间的排行，百分比
+|
+
+| instances
+| 返回云服务器相关的top统计
+a|
+
+* top_cpu: cpu使用率的top排行，百分比
+* top_mem: 内存占用率的top排行，百分比
+* top_disk_usage: 系统盘占用率的top排行，百分比
+* top_disk_read_iops: 系统盘读取IOPS top排行，单位为次数
+* top_disk_write_iops: 系统盘写入IOPS top排行，单位为次数
+* top_disk_read_throughput: 系统盘吞吐量(读取)排行，单位为byte/s
+* top_disk_write_throughput: 系统盘吞吐量(写入)排行，单位为byte/s
+* top_bandwidth_tx: 内网出带宽，单位为bps
+* top_bandwidth_rx: 内网入带宽，单位为bps
+* top_pps_tx: 内网出包转发率，单位为pps
+* top_pss_rx: 内网入包转发率，单位为pps
+a|
+可通过传入filter以过滤云服务器的创建者：
+
+* controller=self: 租户自己创建的云服务器
+* controller=pitrix: 系统创建的云服务器
+* controller=all: 不区分是否为租户自己创建的云服务器
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| user_eips
+| 返回eip相关的top统计
+a|
+
+* top_bandwidth_tx: 出带宽，单位为bps
+* top_bandwidth_rx: 入带宽，单位为bps
+* top_traffic_tx: 出流量，单位为byte
+* top_traffic_rx: 入流量，单位为byte
+* top_pps_tx: 出包转发率，单位为pps
+* top_pps_rx: 入包转发率，单位为pps
+|
+
+| eips
+| 返回VPC/基础网络维度的eip排行
+| traffic_out: eip带宽(出) +
+traffic_in：eip带宽(进)
+| 需要传入filters，以获取指定vpc或基础网络下的统计数据：
+vpcs: 传入多个vpc的ID(VPC id使用rtr-开头的id) +
+vxnets: 传入多个基础网络ID +
+(如果同时传入vpc和vxnet，则仅显示vpc的数据)
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| loadbalancers
+| 返回VPC/基础网络维度的负载均衡器排行
+a|
+
+* tcp_total_conn:[TCP连接数]累计连接数
+* tcp_concurrent_conn_max:[TCP连接数]并发连接数最大值
+* tcp_concurrent_conn_avg:[TPC连接数]并发连接数平均值
+* http_resp_latency_max:[http]响应最大延迟
+* http_resp_latency_min:[http]响应最小延迟
+* http_resp_latency_avg:[http]响应平均延迟
+* http_req_num:[http]请求数
+* http_valid_resp:[http]正确响应数
+* http_resp_1xx:[http]后端服务响应数1xx
+* http_resp_2xx:[http]后端服务响应数2xx
+* http_resp_3xx:[http]后端服务响应数3xx
+* http_resp_4xx:[http]后端服务响应数4xx
+* http_resp_5xx:[http]后端服务响应数5xx
+* https_resp_latency_max:[https]响应最大延迟
+* https_resp_latency_min:[https]响应最小延迟
+* https_resp_latency_avg:[https]响应平均延迟
+* https_req_num:[https]请求数
+* https_valid_resp:[https]正确响应数
+* https_resp_1xx:[https]后端服务响应数1xx
+* https_resp_2xx:[https]后端服务响应数2xx
+* https_resp_3xx:[https]后端服务响应数3xx
+* https_resp_4xx:[https]后端服务响应数4xx
+* https_resp_5xx:[https]后端服务响应数5xx
+| 需要传入filters，以获取指定vpc或基础网络下的统计数据：
+vpcs: 传入多个vpc的ID(VPC id使用rtr-开头的id) +
+
+vxnets: 传入多个基础网络ID +
+
+(如果同时传入vpc和vxnet，则仅显示vpc的数据)
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| tags
+| 基于标签的数据排行，目前仅提供物理主机基于tag的排行
+| baremetal：物理主机按照标签统计
+|
+
+| users
+| 基于云用户的数据排行，目前提供子账户数量、虚拟主机数量、虚拟硬盘体积、物理主机数量排行
+a|
+
+* sub_user_count: 按子账户数量排行
+* instance_count: 按虚拟主机数量排行(不包括物理主机)
+* total_instance_count: 按主机数量排行
+* volume_size: 按虚拟磁盘容量排行(数据单位为GB)
+* bm_count: 按物理主机数量排行
+| 如查询时不带zone，将会返回所有zone的汇总数据
+
+| ksnodes
+| 返回管理节点性能排行
+a|
+
+* top_cpu: 按照管理节点cpu占用率排序
+* top_mem: 按照管理节点内存占用率排序
+* top_disk_usage: 按照管理节点系统盘占用率排序
+|
+
+| place_group
+| 基于安置组的数据排行，目前提供预计可用时间，cpu使用率，内存使用率排行
+a|
+
+* available_time: 按预计可用时间排序
+* used_cpu_pct: 按cpu使用率排序
+* used_memory_pct: 按虚拟内存使用率排序
+* used_vcpu_pct: 按vcpu使用率排序
+* real_used_memory_pct: 按物理内存使用率排序
+* running_inst: 按运行中的虚拟机数排序
+| 如查询时不带zone，将会返回所有zone的汇总数据
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| neonsan_rg
+| 基于存储池的数据排行，目前提供预计可用时间排行
+| available_time: 按预计可用时间排序 +
+used_pct: 按使用率排序
+| 如查询时不带zone，将会返回所有zone的汇总数据
+
+| neonsan_rg_cached
+| 基于存储池使用率的数据排行，目前提供存储使用率排行
+| used_pct: 使用率
+|
+
+| eip_group
+| 基于ip池的数据排行，目前提供预计可用时间排行
+| available_time: 按预计可用时间排序 +
+used_pct: 按使用率排序
+| 如查询时不带zone，将会返回所有zone的汇总数据
+|===
+
+排行数据中的metric指用于排行的数据。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetDashboardTop",
+    "zone": "test", // [部分情况下非必须]指定zone
+    
+    // 以下参数用于筛选
+    "topic": ["hypernodes"], // [必须]指定需要统计的topic，可指定多个topic
+    "top": 5, // 指定top数值，默认为5
+    "fields": {
+        "hypernodes": ["top_cpu"]
+    },
+    "filters": {
+        "eips": {
+            "vpc": "rtr-test123"
+        }
+    } // 对指定的topic指定过滤选项
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "hypernodes": {
+      "top_cpu": [
+         {
+            "host": "tr02n26",
+            "metric": 29.75641025562283,
+            "ip": "172.31.20.36",
+            "cpu": 8,
+            "memory": 61070
+         },
+         {
+            "host": "tr02n13",
+            "metric": 23.44743337150895,
+            "ip": "172.31.20.23",
+            "cpu": 40,
+            "memory": 160937
+         }
+      ],
+      "top_mem": [
+         {
+            "host": "tr02n11",
+            "metric": 83.8385858894589,
+            "ip": "172.31.20.21",
+            "cpu": 32,
+            "memory": 61064
+         },
+         {
+            "host": "tr02n20",
+            "metric": 69.48248468824461,
+            "ip": "172.31.22.11",
+            "cpu": 40,
+            "memory": 64304
+         }
+      ],
+      "top_data_disk": [
+         {
+            "host": "tr02n11",
+            "metric": 71.74699327292761,
+            "ip": "172.31.20.21",
+            "cpu": 32,
+            "memory": 61064
+         },
+         {
+            "host": "tr02n23",
+            "metric": 54.32595573440644,
+            "ip": "172.31.22.14",
+            "cpu": 40,
+            "memory": 64313
+         }
+      ]
+   },
+   "instances": {
+      "top_cpu": [
+         {
+            "email": "test@test.com",
+            "owner": "usr-VN7zeq5p",
+            "metric": 100,
+            "user_name": "test",
+            "controller": "self",
+            "resource_id": "i-znh0kr1q",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "h1_NOT_DELETE"
+         }
+      ],
+      "top_mem": [
+         {
+            "email": "test@test.test#srp",
+            "owner": "usr-MVsfwvud",
+            "metric": 98.3,
+            "user_name": "srp",
+            "controller": "self",
+            "resource_id": "i-qnchjzr7",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "si-14kfl0gw3b3"
+         }
+      ],
+      "top_disk_usage": [
+         {
+            "email": "test@test.com",
+            "owner": "usr-VN7zeq5p",
+            "metric": 85,
+            "user_name": "test",
+            "controller": "self",
+            "resource_id": "i-znh0kr1q",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "h1_NOT_DELETE"
+         }
+      ],
+      "top_disk_read_iops": [
+         {
+            "email": "tester@staging.com",
+            "owner": "usr-dcSU9FcE",
+            "metric": 43,
+            "user_name": "tester",
+            "controller": "pitrix",
+            "resource_id": "i-163os0wr",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "lb-11s7lr0b"
+         }
+      ],
+      "top_disk_write_iops": [
+         {
+            "email": "test@test.com",
+            "owner": "usr-i3K70DIf",
+            "metric": 35.8,
+            "user_name": "test",
+            "controller": "self",
+            "resource_id": "i-8i8s3s72",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "boss2test"
+         }
+      ],
+      "top_disk_read_throughput": [
+         {
+            "email": "tester@staging.com",
+            "owner": "usr-dcSU9FcE",
+            "metric": 20516.8,
+            "user_name": "tester",
+            "controller": "pitrix",
+            "resource_id": "i-163os0wr",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "lb-11s7lr0b"
+         }
+      ],
+      "top_disk_write_throughput": [
+         {
+            "email": "cloudsat@test.com",
+            "owner": "usr-rrPKHDpJ",
+            "metric": 901041.12,
+            "user_name": "cloudsat",
+            "controller": "self",
+            "resource_id": "i-mjcfqat0",
+            "collect_time": "2022-11-21T05:45:00Z",
+            "resource_name": "kafka-3"
+         }
+      ]
+   },
+   "ret_code": 0,
+   "action": "Boss2GetDashboardTopResponse"
+}
+----

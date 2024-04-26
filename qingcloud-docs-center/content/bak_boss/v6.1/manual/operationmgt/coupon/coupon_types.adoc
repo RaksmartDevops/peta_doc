@@ -1,0 +1,110 @@
+---
+title: "优惠券类型"
+weight: 10
+---
+ 
+
+== 场景描述
+
+该任务指导管理员进入优惠券类型页面，查看所有优惠券类型，并为{platform_name_cn}用户创建新的优惠券类型，或修改删除已有的优惠券类型。
+
+== 功能描述
+
+优惠券类型页面集中展示了{platform_name_cn}上所有已有的优惠券类型列表， 并展示了优惠券类型的名称/ID、流通类型、剩余金额/总金额、已分配/已创建、可用区、资源类型、创建时间、有效期等信息
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *运营管理* > *优惠券* > *优惠券类型*，进入优惠券类型页面。
++
+image::/images/boss/manual/operationmgt/coupon_type_operation.png[]
+
+. 点击优惠券类型的名称，进入优惠券类型详情页面。
++
+在页面左下方可查看优惠券的分配者 ID、优惠券状态以及剩余金额/总金额。点击image:/images/boss/manual/icon.png[]，点击 *修改优惠券配额*，进行配额修改。
++
+在页面右下方可查看优惠券明细，包括优惠券实例和优惠券配额。在优惠券实例所在行，点击image:/images/boss/manual/icon.png[]，点击 *激活优惠券*，可使优惠券投入使用。
++
+
+include::../../../../../_components/note.adoc[]
+仅当优惠券状态为 *正常* 时，可修改优惠券配额或激活优惠券，已过期的优惠券不可进行操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+=== 创建配额
+
+include::../../../../../_components/note.adoc[]
+
+优惠券类型的流通类型为 *公开* 时，可执行以下操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在优惠券类型详情页面点击创建配额。
++
+弹出 *创建配额* 对话框。
+
+. 选择用户并输入单人金额。
+. 点击 *确认*。
++
+image::/images/boss/manual/operationmgt/coupon_type_createqu.png[]
+
+=== 创建优惠券类型
+
+. 在优惠券类型页面右上角点击 *创建优惠券类型*。
++
+弹出 *创建优惠券类型* 对话框。
+
+. 根据提示输入参数信息。
++
+
+include::../../../../../_components/note.adoc[]
+
+* 私有：只能通过云计算运维管理平台发放给确定的云用户，发放时可直接激活。
+
+* 公开：线下交给用户优惠券码，由用户在{platform_name_cn}输入此码激活。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 点击 *确认*。
++
+image::/images/boss/manual/operationmgt/coupon_type_createty.png[]
+
+=== 修改优惠券类型
+
+. 在优惠券类型所在行点击image:/images/boss/manual/icon.png[]，点击 *修改*。
++
+弹出 *修改优惠券类型* 对话框。
+
+. 根据提示输入参数信息。
++
+
+include::../../../../../_components/note.adoc[]
+
+其中面值和总金额不可修改。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 点击 *确认*。
++
+删除优惠券类型
++
+
+include::../../../../../_components/note.adoc[]
+
+一般剩余金额与总金额一样的优惠券类型为未使用类型，未使用的优惠券类型可删除。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在优惠券类型所在行点击image:/images/boss/manual/icon.png[]，点击 *删除*。
++
+弹出 *删除优惠券类型* 对话框。
+
+. 输入操作原因，点击 *删除*。

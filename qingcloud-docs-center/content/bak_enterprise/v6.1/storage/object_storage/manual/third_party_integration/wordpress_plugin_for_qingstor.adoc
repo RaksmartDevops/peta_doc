@@ -1,0 +1,48 @@
+---
+title: "WordPress QingStor "
+description: 本小节主要介绍 WordPress QingStor 相关内容。
+keywords: 云计算, 对象存储
+draft: false
+weight: 3
+collapsible: false
+---
+:experimental:
+
+wp-qingstor 是对象存储服务的 WordPress 插件，用于定时备份，自动同步媒体库。
+
+该插件已在 GitHub 开源，本文为简要使用文档。更多详细信息请参见：link:https://github.com/yunify/wp-qingstor[GitHub 项目]。
+
+== 安装
+
+. 在 WordPress 已正确安装的前提下，用户可通过如下三种方式安装该插件：
+
+* 在 WordPress 插件库中搜索 wp-qingstor 并下载安装。
+* 在 link:https://github.com/yunify/wp-qingstor/releases[GitHub Releases] 中下载最新的 zip 格式的安装包，并使用 WordPress 自带的上传插件进行安装。
+* 在 link:https://github.com/yunify/wp-qingstor/releases[GitHub Releases] 中下载最新的任意格式安装包，并将安装包解压后移动至 `/wp-content/plugins/` 目录下。
+
+. 成功安装完插件后，须在插件库中找到并启用该插件。
+
+== 前期准备
+
+. 在 {console_name}申请 Access Key。
+. 在对象存储中，创建一个用于 WrodPress 的 Bucket。详细操作可参考 link:../../../manual/console/bucket_manage/basic_opt/#创建-bucket[创建 Bucket]。
+
+== 配置
+
+. 启用插件后，点击 **设置 -> QingStor**。
+. 在 *Bucket 设置* 页面中填写创建的 Access Key，Secret Key 和用于 WordPress 的 Bucket，填写完成后点击 *保存设置*。
++
+image::/images/cloud_service/storage/object_storage/wordpress_set_bucket.png[]
+
+. 在 *上传设置* 页面中，设置 `文件类型`，`指定前缀`，`Bucket URL` 以及是否开启 `自动替换资源文件 URL`，填写完成后点击 *保存设置*。
++
+image::/images/cloud_service/storage/object_storage/wordpress_set_upload.png[]
+
+. 在 *备份设置* 页面中，设置 `指定前缀（备份文件保持目录）`，`定时备份`，`保存备份文件的最大数量` 以及是否开启 `邮件通知`，填写完成后点击 *保存设置*。
++
+image::/images/cloud_service/storage/object_storage/wordpress_set_backup.png[]
+
+== 说明
+
+* 上传设置中，开启自动替换资源文件 URL，插件会在文章渲染时自动替换资源文件的 URL 为 Bucket 地址。
+* 备份功能需安装 zip 和 mysqldump 程序。用户可分别在终端使用 `zip --version` 和 `mysqldump --version` 命令查看相应的版本号。定时备份的邮件通知依赖 PHP email 的相关设置。

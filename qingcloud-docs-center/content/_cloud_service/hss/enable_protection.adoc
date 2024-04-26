@@ -1,0 +1,34 @@
+//配置防护策略
+
+
+== 前提条件
+
+已在防护主机上完成 link:../../qs/install_agent/[Agent 安装]。
+
+== 开启主机安全防护
+
+在防护主机上成功安装 Agent 后，系统将自动分配一个云服务器防护授权给该主机。授权分配后，即表示已开启主机防护（不包括防篡改）。此时，您便可以通过管理中心控制台进行主机安全管理及策略配置等操作。
+
+
+== 开启防篡改功能
+
+网页防篡改为主机安全附加功能，安装 Agent 后，您需要在管理中心控制台单独分配许可，才能启用防篡改功能。
+
+. link:../../manual/login_edr/[登录管理中心控制台]。
+. 在左侧导航栏，选择**系统管理** > **许可分配**，进入**许可分配**页面。
++
+image::/images/cloud_service/security/hss/license_assign.png[]
+
+. 找到**模块类型**为 `EDR-MODULE-SERVER-WEB` 的许可授权，点击**许可分配**，弹出**选择终端**窗口。
++
+include::../../_components/note.adoc[]
+* **模块类型**为 `EDR-MODULE-SERVER-WEB` 代表防篡改授权许可，需要手动分配授权。
+* **模块类型**为 `EDR-MODULE-SERVER` 代表云服务器防护授权许可，在云服务器上安装 Agent 成功后，自动分配 1 个授权。
+include::../../_components/table_footer.adoc[]
+. 在**终端列表**区域，勾选需要分配的云服务器，点击image:/images/cloud_service/security/hss/move_icon.png[20px,20px]图标，移动到**已选择终端列表**区域，点击**确定**，完成分配。
++
+分配后，即可开启网页防篡改功能。默认保护所有子目录，您可通过自定义终端策略来新增白名单实现对目录的排除。详细操作，请参见link:../../manual/edr_guide/[《管理中心控制台用户手册》]中的“策略管理”部分。
+
+
+
+

@@ -1,0 +1,14 @@
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$Sidebar := slice }}
+{{range $FirstSection.Sections.ByWeight }}
+  {{if not .Params.not_show}}
+    {{$SidebarChildren := slice}}
+    {{range .Sections.ByWeight}}
+      {{if not .Params.not_show}}
+        {{$SidebarChildren = $SidebarChildren | append (dict "title" .Title "href" .RelPermalink)}}
+      {{end}}
+    {{end}}
+    {{$Sidebar = $Sidebar | append (dict "title" .Title "icon" .Params.icon "children" $SidebarChildren)}}
+  {{end}}
+{{end}}
+{{return $Sidebar}}

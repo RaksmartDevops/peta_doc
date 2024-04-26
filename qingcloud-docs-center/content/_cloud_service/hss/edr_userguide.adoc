@@ -1,0 +1,9 @@
+//管理中心操作指南
+
+ifeval::["{file_output_type}" != "pdf"]
+关于管理中心控制台的详细功能及操作介绍，请查看link:/images/cloud_service/security/hss/EDR_User_Guide.pdf.zip[《管理中心控制台用户手册》]。
+endif::[]
+
+ifeval::["{file_output_type}" == "pdf"]
+关于管理中心控制台的详细功能及操作介绍，请查看link:https://box.yunify.com/f/603243[《管理中心控制台用户手册》]。
+endif::[]

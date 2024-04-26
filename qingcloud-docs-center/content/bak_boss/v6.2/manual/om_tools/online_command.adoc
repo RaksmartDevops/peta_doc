@@ -1,0 +1,94 @@
+---
+title: "在线命令"
+weight: 30
+---
+
+== 场景描述
+
+该任务指导管理员进入 *在线命令* 页面，并指导用户输入命令并执行从而查询指定物理机各类信息。
+
+== 功能描述
+
+在线命令页面为了简化对物理主机的管理，{platform_name_cn}提供了远程执行检查命令的功能。管理员只需要在该界面选择指定物理主机命令，界面通过日志输出和错误输出返回查询结果。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *运维工具* > *在线命令*，进入在线命令页面。
++
+image::/images/boss/manual/om_tools/online_command_operation.png[]
+
+. 选择区、输入计算节点 ID/管理节点 ID、选择命令。
++
+命令参数说明详情请参见<<_命令参考>>。
+
+. 输入云服务器 ID。
+. 点击 *执行*。
+
+=== 命令参考
+[cols="3,4,3", options="header"]
+|===
+|命令|显示命令|描述
+|agent-cat-dns|safe-guest-sh \{instance} 'cat /etc/resolv.conf'|查看虚拟机中的 DNS 服务器信息
+|agent-cat-fstab|safe-guest-sh \{instance} '`cat /etc/fstab`'|查看虚拟机中的挂载配置
+|agent-cat-haproxy-cfg|safe-guest-sh \{instance} 'cat /etc/haproxy/haproxy.cfg'|查看虚拟机中的 haproxy 配置
+|agent-df|safe-guest-sh \{instance} '`df -h`'|查看虚拟机磁盘使用情况
+|agent-dmesg|safe-guest-sh \{instance} 'dmesg \| tail -n \{number}'|查看虚拟机系统的内核日志
+|agent-fdisk|safe-guest-sh \{instance} 'fdisk -l'|查看虚拟机磁盘分区
+|agent-free|safe-guest-sh \{instance} '`free -m`'|查看虚拟机的内存使用情况
+|agent-ifconfig+|safe-guest-sh \{instance} 'ifconfig'|查看虚拟机网卡信息
+|agent-iostat|safe-guest-sh \{instance} 'iostat -x 1 \{batch_count}`'|查看虚拟机中的 IO 活动统计
+|agent-iotop|safe-guest-sh \{instance} 'iotop -b -d 1 -n \{batch_count} \| head -n \{head_n}`'|查看虚拟机中的 IO 活动情况（iotop）
+|agent-ip-a+++</td|safe-guest-sh \{instance} 'ip a'|查看虚拟机中的 ip 信息
+|agent-ip-n|safe-guest-sh \{instance} 'ip neighbour'|查看虚拟机中的 ARP 信息
+|agent-ip-r|safe-guest-sh \{instance} 'ip r'|查看虚拟机路由信息
+|agengt-iptables-S|safe-guest-sh \{instance} 'iptables -S'|查看虚拟机中的防火墙信息（iptables）
+|agengt-iptables-nat-S|safe-guest-sh \{instance} 'iptables -t nat -S'|查看虚拟机中的 NAT 规则
+|agengt-kill-centos-setup-prosess|safe-guest-sh \{instance} 'pkill -9 -f setup'|终止 centos 的设置进程
+|agent-mount-l|safe-guest-sh \{instance} 'mount -l'|查看虚拟机中的磁盘挂在情况
+|agent-netstat-a|safe-guest-sh \{instance} 'netstat -anp'|查看虚拟机中网络连接情况
+|agengt-netstat-l|safe-guest-sh \{instance} 'netstat -lnp'|查看虚拟机中网络监听情况
+|agengt-ping|safe-guest-sh \{instance} 'ping -c \{batch_count} \{ip_or_host}' \{batch_count}|在虚拟机中运行 ping 测试
+|agengt-ps-grep|safe-guest-sh \{instance} 'ps -ef \| grep -i \{keyword}'|查看虚拟机中的进程信息
+|agent-sysctl-grep|safe-guest-sh \{instance} 'sysctl -a \| grep -i \{keyword}'|查看虚拟机系统的内核参数
+|agent-top|safe-guest-sh \{instance} 'COLUMNS=999 top -c -b -d 1 -n \{batch_count} \| head -n \{head_n}'|查看虚拟机中的资源活动前情况
+|agengt-ulimit-a|safe-guest-sh \{instance} 'ulimit -a'|查看虚拟机系统的资源限制（ulimit）
+|agent-uptime|safe-guest-sh \{instance} 'uptime'|查看虚拟机的开机运行时长
+|cat_file|cat \{file}|查看文件内容
+|df|df -h|查看磁盘使用量
+|dmesg|dmesg|查看内核日志
+|drbd-overview|drbd-overview|drbd overview
+|free|free -m|查看内存使用情况（free）
+|head_and_grep|head -n \{large_number} \{file} \| grep \{keyword}|查看指定文件头部的内容，支持 grep
+|head_file|head -n \{number} \{file}|查看指定文件同步的内容
+|ifconfig|ifconfig \{nic}|查看网卡信息
+|iostat|iostat -x 1 \{batch_count}|查看 io 活动统计
+|iotop|iotop -b -d 1 -n \{batch_count} \| head -n \{head_n}|查看 io 活动情况（iotop）
+|ip-a|ip a|查看 ip 地址
+|ip-r|ip r|查看路由信息
+|ipset-list|ipset list \{keyword} \| head -n \{number}|查看 IP 地址集合
+|iptables-S|iptables -S \| grep \{keyword}|获取所有防火墙规则
+|ptables-mangle-S|iptables -t mangle -S \| grep \{keyword}|获取所有策略路由
+|iptables-nat-S|iptables -t nat -S \| grep \{keyword}|获取所有 NAT 规则
+|list_files|ls -lh \{path}|列文件(ls)
+|mpstat|COLUMNS=999 mpstat -P ALL -u 1 \{batch_count}|mpstat
+|net-flow|/pitrix/bin/net-flow -k \{key} -L \{limit} -c \{batch_count} -t \{type}|查看流量
+|ns-ip-a|ip netns exec \{netns} ip a|获取指定 network namespace 中的 ip 地址
+|ns-ip-r|ip netns exec \{netns} ip r|获取指定 network namespace 中的路由信息
+|ns-iptables-S|ip netns exec \{netns} iptables -S|获取指定 network namespace 中的防火墙规则
+|ns-iptables-nat-S|ip netns exec \{netns} iptables -t nat -S|获取指定 network namespace 中的 NAT 规则
+|ns-ping|ip netns exec \{netns} ping -c \{batch_count} \{ip_or_host}|在指定 network namespace 中执行 ping 命令
+|ps-cpu|ps -Ao user,uid,args,pid,pcpu,psr,pmem,tty,etimes,cputime --sort=-pcpu \| head -n \{head_n}|ps ordered by cpu
+|repl_overview|repl-overview -v|repl overview
+|supervisorctl_status|supervisorctl status|查看服务状态（supervisor）
+|tail_and_grep|tail -n \{large_number} \{file} \| grep \{keyword}|查看指定文件尾部内容，支持 grep
+|tail_file|tail -n \{number} \{file}|查看指定文件尾部的内容（tail）
+|top|COLUMNS=999 top -c -b -d 1 -n \{batch_count} \| head -n \{head_n}|获取系统资源活动情况
+|top-pid|COLUMNS=999 top -p \{pid} -c -b -d 1 -n \{batch_count} \| head -n \{head_n}|top by pid in batch mode
+|zpool_list|zpool list|查看 ZFS 存储池信息（zpool）
+|zpool_status|zpool status|查看 ZFS 存储池状态（zpool）
+|===

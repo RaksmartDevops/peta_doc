@@ -1,0 +1,67 @@
+---
+title: NF 告警接收（PushAlert）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/alert_receiver/nf/
+
+=== Method
+POST
+
+=== 接口描述
+用于接收nf服务发过来的告警信息，告警信息将会被存储到队列中进行处理。
+本接口请求后将会返回异步任务ID。
+本接口中除alertDesc和alertTime外其他的字段暂时无作用。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "PushAlert",
+    "data": {
+        "alertList": [ // 目前alertlist为nf预解析好的数据，可能会有多条
+            {
+                "status": "pending",
+                "alertDesc": "[devops] [tr02n19] has alerts |@@|=== compute_agent.log.wf ===|@@|2019-02-05 15:31:22,622 CRITICAL -140164152149760- hyper load is high: [15] (/pitrix/lib/pitrix-bots/bot/compute/agent/inspector/hypernode.py:268)", // 告警信息
+                "alertTime": "2019-03-23 19:23:34", //告警上报时间
+                "type": null,
+                "alertName": null,
+                "level": null,
+                "assetId": "tr02n19",
+                "resourceId": null,
+                "originalId": ""
+            }
+        ]
+    }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "task": "33aa24e6-1ba3-4e8d-8679-d87145c88030",
+   "ret_code": 0,
+   "action": "Boss2RecvNfAlertResponse"
+}
+----

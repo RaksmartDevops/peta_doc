@@ -1,0 +1,8 @@
+---
+title: 启用 IPv4/IPv6 双栈网络
+weight: 5
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/vpc/enable_ipv4n6.adoc[]

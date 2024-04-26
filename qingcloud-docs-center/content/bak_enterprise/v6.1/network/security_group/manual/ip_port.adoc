@@ -1,0 +1,7 @@
+---
+title: 管理 IP/端口集合
+draft: false
+weight: 50
+---
+
+include::../../../../../_cloud_service/sg/04_ip_port.adoc[]

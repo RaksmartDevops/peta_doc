@@ -1,0 +1,39 @@
+---
+title: "客户端工具"
+linkTitle: "客户端工具"
+weight: 2
+collapsible: true
+description: 本小节主要介绍 客户端工具 相关内容。
+keywords: 云计算, 对象存储
+---
+
+
+对象存储提供了多种命令行和 GUI 工具，便于用户高效操作、管理对象存储资源，迁移数据至{platform_name_cn}的对象存储。
+
+== qsctl 
+
+对象存储服务的高级命令行工具。详情可参考link:qsctl/[文档]。
+
+== qscamel 
+
+对大批量数据进行迁移的工具。详情可参考link:qscamel/[文档]。
+
+== qsftpd 
+
+对象存储提供的 FTP 服务。详情可参考link:qsftpd/[文档]。
+
+== Mountain Duck
+
+支持 Windows 平台的本地挂载盘。详情可参考link:mountain_duck/[文档]。
+
+== s3fs
+
+s3fs 允许用户在 Linux 与 macOs 系统中通过 FUSE 挂载一个 S3 桶作为本地盘。s3fs 保留本地文件格式，并允许用户使用其他工具，例如 AWS CLI.
+
+可参考link:https://github.com/s3fs-fuse/s3fs-fuse[详情]。
+
+== RClone
+
+由第三方开发，类似 rsync 方式进行多种数据源之间同步的工具。可参考link:http://rclone.org[详情]。
+
+

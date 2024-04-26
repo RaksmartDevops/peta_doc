@@ -1,0 +1,50 @@
+---
+title: 删除通知模板（Boss2DeleteNotifyTemplate）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeleteNotifyTemplate
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DeleteNotifyTemplate",
+    "ids": [1,2,5]         // 支持传多个id的数组
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "success_delete_notify_templates": [
+        2,
+        1
+    ],      // 成功删除的模板id 数组
+    "ret_code": 0,
+    "action": "Boss2DeleteNotifyTemplateResponse"
+}
+----

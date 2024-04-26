@@ -1,0 +1,37 @@
+---
+title: Etcd 服务
+weight: 10
+description: etcd 是一个为分布式系统设计的高可用键值存储系统，用于共享配置和服务发现。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 etcd 集群
+            url: intro/introduction
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建 Etcd 集群
+            url: quickstart/qs10_deploy_etcd
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 集群管理
+            url: manual/cluster_lifecycle/cluster_info
+          - title: 节点管理
+            url: manual/mgt_node/add_node/
+linkkey: middleware_etcd_guide
+---

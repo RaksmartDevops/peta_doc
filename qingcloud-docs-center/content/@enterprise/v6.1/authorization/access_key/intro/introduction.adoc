@@ -1,0 +1,21 @@
+---
+title: "API 密钥简介"
+description: API 密钥（Access Key）是调用 API 访问云服务资源的身份凭证，包括 accesss_key_id（API 密钥 ID）和 secret_access_key（API 密钥的私钥）。
+keywords: API 密钥
+draft: false
+weight: 5
+---
+
+API 密钥（Access Key）是调用 API 访问云服务资源的身份凭证，包括 accesss_key_id（API 密钥 ID）和 secret_access_key（API 密钥的私钥）。
+
+* **API 密钥 ID**：作为参数包含在每一个 API 请求串中，用于标识用户。
+* **API 密钥的私钥**：负责生成 API 请求串的签名，用于验证用户。用户身份验证成功后将可以操作相应资源。
+
+API 密钥功能用于主账户和子账户管理自己的访问密钥。IAM 用户的密钥可由管理员在 IAM 中进行管理，具体操作请参见link:../../../iam/manual/user/#_编程访问设置[访问方式管理-编程访问设置]。
+
+include::../../../../../_components/attention.adoc[]
+云平台主账户的 API 密钥泄露会威胁该账户名下所有资源的安全。建议您使用子账户/IAM 用户的 Access Key 进行操作，降低 Access Key 泄露的风险。
+
+如果某个 API 密钥出现泄漏风险，建议及时删除该 API 密钥，然后创建新的 API 密钥。
+
+include::../../../../../_components/table_footer.adoc[]

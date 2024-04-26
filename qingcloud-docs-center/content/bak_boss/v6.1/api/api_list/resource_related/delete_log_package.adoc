@@ -1,0 +1,73 @@
+---
+title: 删除日志文件包（Boss2DeletePackagingLog）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeletePackagingLog
+
+=== Method
+POST
+
+=== 接口描述
+请求报错
+{
+
+"action"
+:
+"Boss2DeletePackagingLogResponse"
+,
+
+"ret_code"
+:
+5000
+,
+
+"message"
+:
+"Send request to installer API failed."
+
+}
+
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DeletePackagingLog",
+    "zone": "testing1a",
+    "file_list": [
+        "sr01n34_20221108_092637.tar.gz",      // 要删除的日志包列表
+        "sr01n24_20221103_093402.tar.gz"
+    ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "message": "success",
+   "ret_code": 0,
+   "action": "Boss2DeletePackagingLogResponse"
+}
+----

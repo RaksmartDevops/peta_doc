@@ -1,0 +1,104 @@
+---
+title: 获取任务类型列表（Boss2DescribeTaskTypes）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeTaskTypes
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取可用于定时器的任务类型列表。
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| id
+| 任务类型的id，为一个uuid4串
+|
+
+| name
+| 任务类型的命名
+|
+
+| description
+| 任务类型的详细描述
+|
+
+| enabled
+| 是否启用
+|
+
+| sched_type
+a|
+该任务类型支持的定时方法：
+
+* clocked: 仅执行一次
+* crontab: 重复执行
+|
+
+| args
+| 创建定时任务时需要填写的参数列表
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2DescribeTaskTypes",
+    "id":["9188011a-242e-4cd2-9181-9136a143c047"], // 指定任务类型ID，可指定多个
+    "enabled": true, // 获取启用(true)或禁用的(false)的任务类型
+    "search_word":"123", // 可对任务名称或描述进行过滤
+    "fields": ["id", "name", "description"]  // 可对结果中返回的字段进行过滤，减少返回的数据量
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+  "tasktype_set": [
+    {
+      "id": "9188011a-242e-4cd2-9181-9136a143c047",
+      "name": "测试任务",
+      "description": "测试用的任务",
+      "enabled": true,
+      "sched_type": [
+                "clocked",
+                "crontab"
+       ],
+      "args": [ // 格式未确定
+        {
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "total_count": 1,
+  "ret_code": 0,
+  "action": "Boss2DescribeTaskTypesResponse"
+}
+----

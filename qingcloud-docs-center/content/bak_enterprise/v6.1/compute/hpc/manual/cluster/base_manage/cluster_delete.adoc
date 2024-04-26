@@ -1,0 +1,24 @@
+---
+title: "删除集群"
+linkTitle: "删除集群"
+description: 删除 HPC 或 EHPC 集群
+keywords: 云计算, EHPC，删除集群
+draft: false
+weight: 50
+---
+本章节介绍如何对已创建完成 EHPC 集群进行删除操作。
+
+== 前提条件
+
+* 已创建 EHPC 集群。
+* 集群内的所有业务均已停止，所有数据均已备份。
+
+== 操作步骤
+
+. 登录管理控制平台。
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，进入**集群管理**页面。选在待删除的集群，点击**更多操作**的下拉选框，选择**删除**。
++
+image::/images/cloud_service/compute/hpc/cluster_delete_1.png[cluster_delete_1]
+
+. 在弹出的注销集群的提示窗口中，点击**确定**即可。
+

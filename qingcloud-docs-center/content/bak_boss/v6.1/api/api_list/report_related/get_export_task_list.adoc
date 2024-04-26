@@ -1,0 +1,127 @@
+---
+title: 获取导出任务列表（Boss2DescribeReportTasks）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeReportTasks
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的条目总数
+|
+
+| task_set
+| Array
+| 任务详情
+|
+
+| api
+| String
+| 接口类型
+|
+
+| api_name
+| String
+| 接口名称
+|
+
+| api_description
+| String
+| 接口描述
+|
+
+| api_category
+| String
+| 接口类型
+|
+
+| api_category_name
+| String
+| 接口类型名称
+|
+
+| remarks
+| String
+| 备注
+|
+
+| sensitive_fields
+| Array
+| 敏感字段列表
+|
+
+| status_time
+| String
+| 状态时间
+|
+
+| status
+| String
+| 状态
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeReportTasks",
+    "limit": 10,
+    "offset": 0,
+    "sort_key": "create_time",
+    "reverse": 1,
+    "token": ["5dd5ac27-d733-42d0-b6e0-ed257409d9e1"],   // 按照 token 筛选，传列表
+    "status": ["finished"],                                         // 按照 status 筛选，传列表
+    "search_word": "xx"                 // 搜索，目前只支持文件名
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "total_count": 2,
+    "task_set": [
+        {
+            "token": "a242bf78-3d85-441f-bca3-583948447577",    // 任务 token
+            "create_time": "2019-03-08T06:44:59.237Z",          // 任务创建时间
+            "status_time": "2019-03-08T06:44:59.237Z",          // 任务更新时间
+            "topic": "计算节点",                                // 报表类型
+            "status": 2,                                        // 报表任务状态，0-排队中，1-生成中，2-生成完毕，3-已过期，4-任务出错，5-文件已删除，只有状态为 2 的报表能够下载
+            "remarks": null,                                    // 备注，在状态为 3 时，表示出错原因
+            "filename": "计算节点_201901011122.csv"             // 文件名
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2DescribeReportTasksResponse"
+}
+----

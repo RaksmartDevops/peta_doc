@@ -1,0 +1,67 @@
+---
+title: 修改告警屏蔽规则（Boss2ModifyAlertSuppressRule）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAlertSuppressRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于修改告警屏蔽规则的细节。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyAlertSuppressRule",
+    "id": 29,  // [必须]指定需要修改的告警屏蔽规则id
+    "status": "deleted", // 可设置告警屏蔽规则的状态，支持状态：active - 活跃中, disabled - 禁用，deleted - 彻底删除(删除后无法恢复)
+    "remarks": "测试修改", // 可修改告警屏蔽规则的描述
+    "rule": {
+        "nodes": [
+            "node1",
+            "node2"
+        ],
+        "zones": [
+            "zone_a"
+        ],
+        "node_regex": "node\\d+",
+        "synopsis": "测试",
+        "message": "test alert"
+    }, // 可设置告警屏蔽规则的细节
+    "start_time": "2022-05-27T00:00:00.000Z", // 可设置告警屏蔽规则的开始建，注意屏蔽开始和结束时间需要同时进行设置
+    "end_time": "2022-05-27T10:00:00.000Z" // 可设置告警屏蔽规则的结束时间，注意屏蔽开始和结束时间需要同时进行设置
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 29,
+   "ret_code": 0,
+   "action": "Boss2ModifyAlertSuppressRuleResponse"
+}
+----

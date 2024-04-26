@@ -1,0 +1,180 @@
+---
+title: 获取告警项（Boss2DescribeAlertPatterns）
+weight: 17
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertPatterns
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警项列表。
+返回数据：
+
+|===
+| 字段 | 解释 | 备注
+
+| id
+| 告警项ID
+|
+
+| code
+| 告警项编号
+|
+
+| alert_source_id
+| 告警来源ID
+|
+
+| alert_source_name
+| 告警来源名称
+|
+
+| alert_category_id
+| 告警分类ID
+|
+
+| alert_category_name
+| 告警分类名称
+|
+
+| self_healing
+a|
+告警是否可以自愈
+
+* true - 告警可自愈
+* false - 告警无法自愈
+|
+
+| level
+a|
+告警级别，包括：
+
+* CRITICAL
+* ERROR
+* WARNING
+* INFO
+| 该级别可进行修改
+
+| original_level
+| 原始告警级别，如果level字段被用户修改，则可以使用该字段进行还原
+|
+
+| description
+| 告警项描述
+|
+
+| influence
+| 告警可能带来的影响
+|
+
+| synopsis
+| 告警项概要
+|
+
+| reason
+| 告警发生原因
+|
+
+| handling
+| 告警处理方法，注意该字段为HTML格式
+|
+
+| service_id
+| 告警相关服务
+|
+
+| alert_type
+a|
+告警类型，分为：
+
+* event: 事件告警
+* threshold: 阈值告警
+|
+
+| create_time
+| 创建时间
+|
+
+| status_time
+| 修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertPatterns",
+    "ids": ["8a459903-fb72-4830-a453-143a6c97782d"], // 可通过告警项的id来进行过滤
+    "codes": ["ALM-EIP-00004", "ALM-IAAS-00001"], // 可通过告警编号来进行过滤
+    "levels": ["CRITICAL", "ERROR"], // 可通过告警级别来进行过滤
+    "source": "IAAS", // 可通过告警来源ID进行过滤
+    "category": "00a3570d-ea73-4e69-813b-b89c7037e7e1", // 可通过告警类型进行过滤 
+    "alert_types": ["event", "threshold"], // 可通过告警分类进行过滤，支持参数event - 事件告警, threshold - 阈值告警
+    "self_healing": true, // 可通过是否可自愈进行过滤，支持参数true - 告警可自愈，false - 告警不可自愈
+    "service_id": "compute_server", // 可通过告警发出的服务ID进行过滤
+    
+
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "网络", // 用于部分字段的模糊搜索
+    "fields": ["id", "verbose_name", "description"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "alert_pattern_set": [
+      {
+         "id": "8a459903-fb72-4830-a453-143a6c97782d",
+         "code": "ALM-EIP-00004",
+         "alert_source_id": "EIP",
+         "alert_source_name": "EIP",
+         "alert_category_id": "00a3570d-ea73-4e69-813b-b89c7037e7e1",
+         "alert_category_name": "网络服务异常",
+         "self_healing": false,
+         "level": "CRITICAL",
+         "original_level": "ERROR",
+         "description": "告警模块每1分钟检测compute_server服务状态，当检测到获取EIP的BGP信息失败时会产生此告警。",
+         "influence": "可能导致EIP的工作不正常",
+         "synopsis": "获取受管 BGP 数据时发生错误",
+         "reason": "可能是conf server.conf文件配置问题, 检查该文件中novg相关配置",
+         "handling": "<p>重启compute_server或gobgpd时会对bgp信息进行恢复，恢复过程中出现错误。需要根据前面的日志分析具体错误位置。</p>",
+         "service_id": "compute_server",
+         "alert_type": "event",
+         "create_time": "2022-04-19T05:04:24.663Z",
+         "status_time": "2022-06-08T06:29:03.664Z"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertPatternsResponse"
+}
+----

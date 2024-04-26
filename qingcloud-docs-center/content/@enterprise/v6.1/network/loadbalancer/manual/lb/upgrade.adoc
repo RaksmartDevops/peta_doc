@@ -1,0 +1,8 @@
+---
+title: 升级实例版本
+description: 介绍如何进行负载均衡器的镜像版本检查与版本升级。
+keyword: 负载均衡器,实例,升级
+draft: false
+weight: 31
+---
+include::../../../../../../_cloud_service/lb/upgrade.adoc[]

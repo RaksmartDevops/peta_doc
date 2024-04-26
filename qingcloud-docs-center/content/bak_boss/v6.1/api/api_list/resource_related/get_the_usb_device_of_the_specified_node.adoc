@@ -1,0 +1,95 @@
+---
+title: 获取指定节点的USB设备（Boss2GetNodeUSBDevices）
+weight: 19
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeUSBDevices
+
+=== Method
+POST
+
+=== 接口描述
+获取指定节点的USB备列表，用于设备管理功能。本接口暂不支持分页。
+返回数据：
+device_set中为usb设备列表：
+
+|===
+| 字段 | 描述 | 备注
+
+| bus
+| bus id
+|
+
+| device
+| device id
+|
+
+| vendor
+| 设备厂商id
+|
+
+| product
+| 产品id
+|
+
+| device_name
+| 设备名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetNodeUSBDevices",
+    "zone": "test", // [必须]指定节点所在zone
+    "node_id": "tr02n03", // [必须]指定节点id
+    "search_word": "aten" // 支持模糊查询
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "device_set": [
+      {
+         "bus": "003",
+         "device": "003",
+         "vendor": "0557",
+         "product": "2419",
+         "device_name": "ATEN International Co., Ltd "
+      },
+      {
+         "bus": "003",
+         "device": "002",
+         "vendor": "0557",
+         "product": "7000",
+         "device_name": "ATEN International Co., Ltd Hub"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeUSBDevicesResponse"
+}
+----

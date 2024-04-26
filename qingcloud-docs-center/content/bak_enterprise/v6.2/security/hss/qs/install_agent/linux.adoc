@@ -1,0 +1,8 @@
+---
+title: "Linux 版本"
+weight: 10
+---
+
+include::../../../../../../_cloud_service/hss/install_agent.adoc[tag=before_install]
+
+include::../../../../../../_cloud_service/hss/install_agent.adoc[tag=linux,leveloffset=-1]

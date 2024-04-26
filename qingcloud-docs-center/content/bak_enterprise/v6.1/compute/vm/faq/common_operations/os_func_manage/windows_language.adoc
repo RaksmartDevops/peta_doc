@@ -1,0 +1,30 @@
+---
+title: "更改 Windows 云服务器系统语言"
+weight: 20
+---
+== 背景信息
+
+用户使用 Windows 云服务器系统语言版本不符合使用需求，需更改系统语言。本例为 Windows Server 2019 英文版，更改为中文版语言。
+
+== 操作步骤
+
+. 连接 Windows 云服务器，可使用控制台 VNC 窗口连接云服务器或远程桌面服务连接云服务器。
+. 在系统开始 Settings > Time & Language > Language > Add a language 中选择相应语言包，并点击添加安装。
++
+image::/images/cloud_service/compute/vm/faq_windows_language_1.png[cs_]
++
+image::/images/cloud_service/compute/vm/faq_windows_language_2.png[cs_]
++
+image::/images/cloud_service/compute/vm/faq_windows_language_3.png[cs_]
++
+image::/images/cloud_service/compute/vm/faq_windows_language_4.png[cs_]
+
+. 添加完成语言包后点击 options ，Language pack中点击 Download 下载语言包并安装。
++
+image::/images/cloud_service/compute/vm/faq_windows_language_5.png[cs_]
++
+image::/images/cloud_service/compute/vm/faq_windows_language_6.png[cs_]
+
+. 重启 windows 云服务器，登录并查看系统语言。
++
+image::/images/cloud_service/compute/vm/faq_windows_language_7.png[cs_]

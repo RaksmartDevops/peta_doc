@@ -1,0 +1,38 @@
+---
+title: "绑定手机号"
+description: 介绍如何绑定手机号。
+keywords: 绑定手机号,
+weight: 30
+draft: false
+---
+
+
+若您首次使用**邮箱**登录管理控制台，可以在**账户设置**的**基本信息**页面为云平台账号绑定手机号。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码。
+* 通过**邮箱**登录管理控制台。
+
+== 操作步骤
+
+. 进入基本信息页面。
+. 在**登录方式**区域，点击**手机**右侧的**绑定**，弹出**身份校验**对话框。
++
+image::/images/cloud_service/authorization/account/identity_verify_email.png[,50%]
+
+. 选择**邮箱验证**，并输入邮箱接收到的验证码。
++
+
+include::../../../../../../_components/note.adoc[]
+由于云平台账号未绑定手机号，只能通过**邮箱验证**完成身份校验。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 点击**确定**，弹出绑定对话框。
++
+image::/images/cloud_service/authorization/account/bind_phone.png[,50%]
+
+. 输入手机号，并输入手机号接收到的验证码。
+. 点击**确认**，页面上弹出**修改成功**提示信息。
+

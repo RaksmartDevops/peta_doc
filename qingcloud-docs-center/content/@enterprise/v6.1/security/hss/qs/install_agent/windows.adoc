@@ -1,0 +1,7 @@
+---
+title: "Windows 版本"
+weight: 15
+---
+include::../../../../../../_cloud_service/hss/install_agent.adoc[tag=before_install]
+
+include::../../../../../../_cloud_service/hss/install_agent.adoc[tag=windows,leveloffset=-1]

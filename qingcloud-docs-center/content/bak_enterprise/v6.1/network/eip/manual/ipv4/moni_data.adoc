@@ -1,0 +1,6 @@
+---
+title: 查看监控数据
+weight: 41
+draft: false
+---
+include::../../../../../../_cloud_service/eip/moni_data.adoc[]

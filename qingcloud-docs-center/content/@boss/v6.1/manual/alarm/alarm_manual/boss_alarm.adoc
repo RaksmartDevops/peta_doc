@@ -1,0 +1,81 @@
+---
+title: "BOSS 服务告警"
+weight: 1
+---
+ 
+== 1. ALM-BOSS-00001  监控服务异常，无法获取监控数据
+
+[cols="5*", options="header"]
+|===
+| 告警类型 | 告警等级 | 告警来源 | 告警分类 | 能否自愈
+
+| 事件告警
+| 重要
+| BOSS 服务（BOSS）
+| 关键服务异常告警
+| 能
+|===
+
+*告警描述:* 
+
+该区域对应的基础设施监控服务异常，无法提供监控数据。
+
+*影响范围:* 
+
+云计算运维管理平台的界面中展示数据会出现异常：计算节点、管理节点等功能无法正常使用，监控数据将会展示错误，同时告警区域的宕机告警等告警也会停止发出。
+
+*可能原因:*
+
+. 告警区域的 cronus-api 服务可能配置错误，无法正常访问；
+. 告警区域的 influxdb 服务可能出现异常；
+
+*处理方法:*
+
+. 请先登录作为 global 的区域的 proxy 节点，检查 9091 端口是否开放：
++
+[source,shell]
+----
+netstat -nlp|grep 9091
+----
+
+. 如果该端口开放，则请继续检查 8081 端口是否开放：
++
+[source,shell]
+----
+netstat -nlp|grep 8081
+----
+
+. 如果 8081 端口开放，且由 cronus-api 提供服务，则表明 cronus-api 服务属于启动状态，如 8081 端口未开发，则请使用以下命令尝试启动 cronus-api 服务：
++
+[source,shell]
+----
+supervisorctl restart cronus-api
+----
+
+. 如果 8081 端口开放，但服务并非是 cronus-api 提供的，那么则表明服务配置错误，请重新配置端口。
+
+. 如果问题仍然未解决，则可以尝试查看 cronus-api 的日志：
++
+[source,shell]
+----
+tail /var/log/cronus-api/cronus-api.log
+----
+
+. 如果 cronus-api 服务正常，则可尝试检查告警区域的 influxdb 服务是否正常：
+
+.. 使用 ssh 登录 influxdb 所在的节点，该节点的主机名一般会是 `ZONE_ID-influxdb0`，如 `testing1a-influxdb0`；
+
+.. 检查该节点的 influxdb 服务是否运行正常，如服务未正常运行，则尝试对服务进行重启：
++
+[source,shell]
+----
+systemctl status influxdb
+----
+
+.. 如果服务运行正常，则尝试查看服务的日志是否有报错：
++
+[source,shell]
+----
+journalctl -u influxdb -n 100
+----
+

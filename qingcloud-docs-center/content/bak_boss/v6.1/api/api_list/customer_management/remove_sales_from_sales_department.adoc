@@ -1,0 +1,52 @@
+---
+title: 从销售部门中移除销售（Boss2RemoveSalesFromDept）
+weight: 36
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RemoveSalesFromDept
+
+=== Method
+POST
+
+=== 接口描述
+从销售部门中移除指定的销售，移除后销售的部门信息会变成未分配。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2RemoveSalesFromDept",
+    "sales": [1]  // [必须]要移除的销售id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "success_count": 1,
+   "ret_code": 0,
+   "action": "Boss2RemoveSalesFromDeptResponse"
+}
+----

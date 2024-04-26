@@ -1,0 +1,17 @@
+---
+title: "功能入口"
+weight: 1
+draft: false
+keyword: 云计算, 费用中心, 发票, 订单, 账单
+---
+
+您可以通过以下方式进入费用中心：
+
+. 登录管理控制台。
+. 将鼠标移到页面顶部右上方的**费用**选项，显示费用中心相关功能入口，如点击**账户总览**，便可进入到费用中心的**账户总览**页面。
++
+image::/images/cloud_service/services/bill_center/entrance.png[费用中心入口,50%]
+
+. 在页面左侧导航栏中，点击功能菜单，便可进入对应页面进行操作。
++
+image::/images/cloud_service/services/bill_center/bill_center_page.png[费用中心]

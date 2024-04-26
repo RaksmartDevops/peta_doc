@@ -1,0 +1,52 @@
+---
+title: 修改公网 IP 池信息（ModifyEipPoolAttributes）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=ModifyEipPoolAttributes
+
+=== Method
+POST
+
+=== 接口描述
+iaas接口，用于在公网IP池中修改某个公网IP的信息，可修改字段包括公网IP名称和描述
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "ModifyEipPoolAttributes",
+  "eip": "192.168.5.172", // [必须]指定需要修改的公网IP地址，作为唯一id
+  "eip_name": "测试修改名称", //IP地址的名称
+  "description": "测试修改下备注" //IP地址的描述
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "ModifyEipPoolAttributesResponse",
+   "ret_code": 0
+}
+----

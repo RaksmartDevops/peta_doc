@@ -1,0 +1,61 @@
+---
+title: "集群挂载 Lustre 文件系统"
+draft: true
+weight: 3
+---
+
+== 应用场景
+
+使用高性能计算集群进行深度学习等需要高速的数据传输能力的作业时，需要将集群的文件存储与 GPU 云服务器之间建立 IB 网络，可参考如下步骤进行。
+
+== 前提条件
+
+已创建完成 EHPC 集群。
+
+== 操作步骤
+
+. 登录 {console_name}，点击**产品与服务** > *计算* > *云服务器*。
+. 在云服务器列表页面，点击 **+创建**。
+. 弹出的**购买云服务器**的页面中，创建 **GPU 加速型**云服务器，并且选择 CentOS 且**支持 IB 网络**的标准镜像。
++
+image::/images/cloud_service/compute/hpc/lustre_1.png[]
+
+. 其他参数根据实际情况进行设置后，点击**立即购买**即可。并记录当前 GPU 云服务器的 IP 地址。
+. GPU 云服务器创建完成后，点击顶部导航栏**产品与服务** > **存储服务** > *文件存储 EPFS*。
+
+. 点击右侧导航栏中的**文件存储**，选择挂载至 EHPC 集群上的文件存储，点击其**名称/ID**。
+
+. 进入相应文件存储目录的详情页面，在**权限组**页签，点击**添加规则**。
++
+image::/images/cloud_service/compute/hpc/lustre_2.png[]
+
+. 在弹出的**添加规则**的窗口中，输入步骤 4 已创建完成的主机的 IP 地址，点击**确定**即可。
++
+image::/images/cloud_service/compute/hpc/lustre_3.png[,60%]
+
+. 登录至步骤 4 创建完成的主机，执行如下命令将文件存储系统挂载至相应的挂载点上。
++
+[,shell]
+----
+// 创建挂载点
+$ mkdir /mnt/data_lustre
+
+// 执行挂载命令
+$  mount -t  lustre 10.103.100.93@o2ib:10.103.100.94@o2ib:/es01  /mnt/data_lustre
+----
++
+
+include::../../../../../_components/note.adoc[]
+* 10.103.100.93@o2ib:10.103.100.94@o2ib:/es01 为固定的 lustre 信息，无需修改。
+* /mnt/data_lustre 为挂载点名称，需根据实际情况进行修改。
+* 登录主机可参考link:../../../vm/quickstart/login_vm/[云服务器]相关内容。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+
+
+
+
+
+

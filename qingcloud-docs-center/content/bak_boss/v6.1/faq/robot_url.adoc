@@ -1,0 +1,17 @@
+---
+title: "如何获取 Webhook 地址"
+weight: 1
+draft: false
+---
+
+BOSS 支持将系统相关信息以企业通讯的方式，通知到相关人员或群组。目前支持的企业通讯方式有企业微信、钉钉、飞书。如需使用企业通讯方式，来接收 BOSS 的相关通知，可进行如下操作：
+
+. 终端用户需自行创建企业通讯机器人。
+
+. 获取已在企业微信、钉钉、飞书等应用中添加的机器人 Webhook 信息。操作步骤参考：
++
+* 钉钉：link:https://open.dingtalk.com/document/orgapp/custom-robot-access#title-jfe-yo9-jl2[获取 Webhook 地址]。
+* 企业微信：link:https://open.work.weixin.qq.com/help2/pc/14931#%E4%BA%94%E3%80%81%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BAWebhood%E5%9C%B0%E5%9D%80[获取 Webhook 地址]。
+* 飞书：link:https://open.feishu.cn/document/ukTMukTMukTM/ucTM5YjL3ETO24yNxkjN#d3815c88[获取 Webhook 地址]。
+
+. 将以上获取到的 Webhook 地址，添加至 BOSS 的通知组中，详情参考link:../../manual/system_management/system_setting/notification_group/#_添加通知方式[添加通知方式]。

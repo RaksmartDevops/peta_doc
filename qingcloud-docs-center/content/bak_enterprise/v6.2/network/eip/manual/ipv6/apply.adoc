@@ -1,0 +1,8 @@
+---
+title: 申请 IPv6 EIP
+weight: 10
+draft: false
+---
+:ep:
+
+include::../../../../../../_cloud_service/eip/apply_ipv6_eip.adoc[]

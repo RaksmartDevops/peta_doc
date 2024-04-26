@@ -1,0 +1,30 @@
+---
+title: 文件存储 QFS
+linkTitle: 
+weight: 7
+collapsible: true
+type: product
+description: 文件存储 QFS 是面向海量非结构化数据的通用数据存储平台。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 产品概述
+            url: intro/introduction
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 步骤一：创建文件系统
+            url: manual/file_system/#_创建文件系统
+          - title: 步骤二：设置访问权限
+            url: manual/auth/#_创建权限组
+          - title: 步骤三：创建挂载点
+            url: manual/file_system/#_创建挂载点
+          - title: 步骤四：客户端使用文件系统
+            url: manual/use/
+linkkey: storage_qfs_guide
+---

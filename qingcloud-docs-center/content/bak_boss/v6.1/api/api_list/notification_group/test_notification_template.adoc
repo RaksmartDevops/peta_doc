@@ -1,0 +1,57 @@
+---
+title: 测试通知模板（Boss2TestNotifyTemplate）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TestNotifyTemplate
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2TestNotifyTemplate",
+    "id": 6,
+    "params": {
+        "bb": "bt",
+        "aa": "python"
+    },                      //模板内容对应的参数
+    "topic": "alert_merge",       //模板内容的topic
+    "im_type": "feishu"     //当模板类型为imrobot时 模板内容的im发送方式
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "subject": "hello python country",     //模板渲染成功后的标题
+    "body": "hello bt world",              //模板渲染成功后的内容
+    "status": 1,                           //1表示成功 0表示失败
+    "err_msg": "KeyError('aa')",           // 错误信息 status为0才有
+    "ret_code": 0,
+    "action": "Boss2TestNotifyTemplateResponse"
+   
+}
+----

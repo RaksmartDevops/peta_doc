@@ -1,0 +1,46 @@
+---
+title: Kafka 连接地址说明
+description: 本小节主要介绍如何获取 Kafka 集群的连接地址。 
+keyword: 云计算,大数据,Kafka,外部访问,公网访问,内部访问
+weight: 40
+collapsible: false
+draft: false
+---
+
+本文主要介绍如何获取 Kafka 的连接地址，包括内网连接地址和公网连接地址。
+
+* 内网连接：使用内网通过同一 VPC 访问 Kafka。
+* 公网连接：使用公网 IP 地址访问 Kafka。
+
+== 地址格式
+
+Kafka 连接地址格式为：``host_ip1:port,host_ip2:port,host_ip3:port``。
+
+* **host_ip** 为 Kafka 节点的 IP 地址。
+
+** 内网连接：IP 地址为节点内网 IP。
+** 公网连接：IP 地址为 Kafka 节点绑定的公网 IP。
+* **port** 为客户端节点的访问端口。
++
+通过内网访问和公网访问都是 `9092`。
+
+== 连接地址示例
+
+* 未开启公网访问
++
+下图表示仅支持通过内网连接 Kafka。根据 Kafka 节点的 IP 可知内网连接地址为：192.168.100.19:9092,192.168.100.21:9092,192.168.100.22:9092。
++
+image::/images/cloud_service/middware/kafka/kafka_node_list.png[节点列表]
+
+
+* 已开启公网访问
++
+下图表示支持通过公网和内网连接 Kafka，根据 Kafka 节点的 IP 可知连接地址为：
++
+--
+* 内网连接地址为：192.168.100.19:9092,192.168.100.21:9092,192.168.100.22:9092
+* 公网连接地址为：103.xx.xx.xx:9092,103.xx.xx.xx:9092,103.xx.xx.xx:9092
+--
++
+image::/images/cloud_service/middware/kafka/eip_bond_03.png[节点列表]
+

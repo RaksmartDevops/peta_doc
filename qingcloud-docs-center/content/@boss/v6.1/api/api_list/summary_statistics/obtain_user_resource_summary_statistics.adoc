@@ -1,0 +1,142 @@
+---
+title: 获取用户资源汇总统计（Boss2GetResourceSummary）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourceSummary
+
+=== Method
+POST
+
+=== 接口描述
+本接口封装了IAAS接口，可直接返回所有zone中指定资源的统计信息。
+在BOSS2的总览中，需要使用到vcpu、内存及存储的信息，仅传入volume和instance两个resource_type就可以了。
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| resource_summary_set
+| 资源信息
+|
+
+| resource_type
+| 资源类型
+|
+
+| active_count
+| 活跃的资源数量
+|
+
+| zone_active_count
+| 显示每个zone的active_count
+| 需指定verbose为1
+
+| total_count
+| 资源总数
+|
+
+| zone_total_count
+| 显示每个zone的total_count
+| 需指定verbose为1
+
+| status_summary
+| 按资源状态进行的数量统计
+|
+
+| zone_status_summary
+| 显示每个zone的status_summary
+| 需指定verbose为2
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetResourceSummary",
+  "zones": ["zone1", "zone2"],  // [可选]指定获取资源的zone，如不传将会获取所有zone的资源统计
+  "verbose": 0,  // 设置返回数据的细节程度
+  
+  //以下参数用于筛选
+  "resource_types": [
+    "volume",
+    "instance"
+  ], // 如不带该参数，将会返回所有资源的统计
+  "restrict_zone": 1, // 设置为1时为zone模式，数据按zone返回，为0时为region模式，数据按region汇总返回
+  "root_user": "admin", // root用户
+  "excluded_owner": "", // 排除掉指定用户
+  "owner": "", // 所有者，可用于云用户中按用户的统计
+  "include_pitrix": 1 // 设置为1时包含用户创建的(controller为self)和系统创建的资源(controller为pitrix)
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "resource_summary_set": [
+      {
+         "total_count": 7,
+         "resource_type": "volume",
+         "active_count": 7,
+         "status_summary": {
+            "available": 4,
+            "deleted": 0,
+            "in-use": 3,
+            "ceased": 0,
+            "suspended": 0,
+            "pending": 0
+         },
+         "zone_total_count": {
+            "beta": 0,
+            "staging": 7
+         },
+         "zone_active_count": {
+            "beta": 0,
+            "staging": 7
+         },
+         "zone_status_summary": {
+            "beta": {
+               "available": 0,
+               "deleted": 0,
+               "in-use": 0,
+               "ceased": 0,
+               "suspended": 0,
+               "pending": 0
+            },
+            "staging": {
+               "available": 4,
+               "deleted": 0,
+               "in-use": 3,
+               "ceased": 0,
+               "suspended": 0,
+               "pending": 0
+            }
+         }
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetResourceSummaryResponse"
+}
+----

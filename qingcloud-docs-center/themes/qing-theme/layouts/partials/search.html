@@ -1,0 +1,36 @@
+{{- $FirstSection := partial "get-first-section.html" . -}}
+<div class="post-search-wrapper">
+  <section class="post-search-header">
+    <div class="search post-search has-suggestions">
+      <form action="{{$FirstSection.RelPermalink}}search/" method="GET">
+        <div class="control has-icons-right docs-search-input">
+          <input
+            class="input"
+            name="q"
+            type="input"
+            placeholder="请输入问题关键词"
+            autocomplete="off"
+          />
+          <span class="icon is-right">
+            <img src="/images/icons/magnifier_duotone.svg" />
+          </span>
+        </div>
+      </form>
+      <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+      <div class="search-result search-suggestions"></div>
+    </div>
+  </section>
+  <div class="search-result post-search-result-wrapper">
+    <div class="post-search-result">
+      <div class="search-result-loading"></div>
+      <div class="search-result-content"></div>
+      <div class="search-result-none">
+        <img src="/images/search-none.svg" />
+        <div class="search-result-none-info">
+          未找到要查询的内容，您探索到了知识的荒原！
+        </div>
+      </div>
+    </div>
+  </div>
+  {{- partial "footer.html" . -}}
+</div>

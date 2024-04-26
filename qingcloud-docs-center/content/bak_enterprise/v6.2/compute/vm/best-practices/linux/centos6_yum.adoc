@@ -1,0 +1,43 @@
+---
+title: CentOS6 更新 yum源
+weight: 70
+---
+
+== 问题背景
+
+由于 centos6 的版本有点老了，很多镜像站都不在维护 centos6 的 yum 源；新建的 centos6 云服务器我们已经更新了 yum 源，之前创建的 centos6 云服务器的 yum 源需要手动更新一下，可以参考以下步骤。
+
+== 操作步骤
+
+. 先备份源文件
++
+[,shell]
+----
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo-backup
+----
+
+. 编辑文件：vi /etc/yum.repos.d/CentOS-Base.repo
++
+[,shell]
+----
+vi /etc/yum.repos.d/CentOS-Base.repo
+[base]
+name=CentOS-6
+failovermethod=priority
+baseurl=http://mirrors.sohu.com/centos/6.10/os/x86_64/
+gpgcheck=0
+----
+
+. 清理软件源
++
+[,shell]
+----
+yum clean all
+----
+
+. 建立源数据缓存
++
+[,shell]
+----
+yum makecache
+----

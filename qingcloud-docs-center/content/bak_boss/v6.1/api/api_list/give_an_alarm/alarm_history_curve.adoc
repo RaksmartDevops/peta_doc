@@ -1,0 +1,133 @@
+---
+title: 告警历史曲线（Boss2GetAlertGraph）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetAlertGraph
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetAlertGraph",
+    "zone": "testing", //区域 非必传
+    "start_time": "2022-07-01T16:50:15Z", //开始时间 非必传
+    "end_time": "2022-07-08T16:50:15Z",  //结束时间 非必传
+    "step": "1d", // 曲线的步长 单位m,h,d 最小5m 非必传
+    "alert_levels": ["WARNING"], //告警级别 非必传
+    "alert_sources": ["IAAS"],  //告警来源 非必传
+    "alert_categories": ["cc36982b-e635-46a9-80e3-d3ddbb3c5b1c"], //告警类型id 非必传
+    "search_word": "alarm"  // 模糊搜索关键字
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "data": [
+        {
+            "name": "time",      //时间
+            "data": [
+                "2022-09-08T00:00:00Z",
+                "2022-09-09T00:00:00Z",
+                "2022-09-10T00:00:00Z",
+                "2022-09-11T00:00:00Z",
+                "2022-09-12T00:00:00Z",
+                "2022-09-13T00:00:00Z",
+                "2022-09-14T00:00:00Z",
+                "2022-09-15T00:00:00Z"
+            ]
+        },
+        {
+            "name": "count",     //总数
+            "data": [
+                63,
+                57,
+                24,
+                28,
+                28,
+                56,
+                64,
+                72
+            ]
+        },
+        {
+            "name": "CRITICAL",   //紧急
+            "data": [
+                36,
+                9,
+                7,
+                11,
+                11,
+                15,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "ERROR",       //重要
+            "data": [
+                25,
+                25,
+                17,
+                17,
+                17,
+                37,
+                36,
+                44
+            ]
+        },
+        {
+            "name": "WARNING",        //次要
+            "data": [
+                9,
+                23,
+                0,
+                0,
+                0,
+                4,
+                26,
+                9
+            ]
+        },
+        {
+            "name": "INFO",           //提示
+            "data": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2GetAlertGraphResponse"
+}
+----

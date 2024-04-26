@@ -1,0 +1,95 @@
+---
+title: Region带宽监控（Boss2GetZoneBandwidthMonitor）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetZoneBandwidthMonitor
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取指定region中各zong的带宽情况，包括了region中zone与zone之间的带宽，及各zone与公网的带宽。
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| src_zone
+| 发起带宽检测的zone id
+|
+
+| dest_type
+a|
+带宽检测的目标：
+
+* internet: 与公网的带宽情况
+* zone id: 与region中其他zone的带宽情况
+|
+
+| inbound
+| 入站带宽，单位为bps
+|
+
+| outbound
+| 出站带宽，单位为bps
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetZoneBandwidthMonitor",
+    "zone": "dsry1", // [必须]选择进行带宽检测的region
+    "src_zones": ["dsry1a"], // [可选]可通过发起带宽检测的源zone进行过滤
+    "dest_types": ["internet", "dsry1b"], // [可选]可过滤带宽检测的对象，
+    // 可选项目为：internet: 显示zone与公网的带宽  zone_id: 可显示与指定zone之间的带宽
+    "start_time": "2020-04-29T12:12:12Z",   // [可选]开始时间, 将会获取指定时间内最后的带宽值，默认可不指定，将会返回实时的数据
+    "end_time": "2020-04-29T12:20:12Z",   // [可选]结束时间，将会获取指定时间内最后的带宽值，默认可不指定，将会返回实时的数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "src_zone": "dsry1a",
+         "dest_type": "dsry1b",
+         "inbound": 4380999330.4,
+         "outbound": 3471395914.4
+      },
+      {
+         "src_zone": "dsry1a",
+         "dest_type": "internet",
+         "inbound": 34028,
+         "outbound": 36330.4
+      }
+   ],
+   "total_count": 2,
+   "ret_code": 0,
+   "action": "Boss2GetZoneBandwidthMonitorResponse"
+}
+----

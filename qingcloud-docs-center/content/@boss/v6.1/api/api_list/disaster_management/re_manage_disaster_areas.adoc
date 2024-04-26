@@ -1,0 +1,51 @@
+---
+title: 重新纳管灾难区（Boss2ActiveDisasterZone）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ActiveDisasterZone
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于重新纳管之前出现灾难的zone。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ActiveDisasterZone",
+    "failback_zone": "dsry1a" // [必须]灾难恢复的zone id，即之前发生灾难的区
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "failback_zone": "dsry1a",
+   "action": "Boss2ActiveDisasterZoneResponse"
+}
+----

@@ -1,0 +1,8 @@
+---
+title: "修改资源"
+weight: 4
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/ehpc/user/modify_res.adoc[]

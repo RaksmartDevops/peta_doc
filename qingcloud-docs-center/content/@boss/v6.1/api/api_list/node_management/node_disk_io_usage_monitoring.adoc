@@ -1,0 +1,212 @@
+---
+title: 节点磁盘 IO 使用率监控（Boss2GetNodeDiskioMonitor）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeDiskioMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的磁盘IO使用率监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostname
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+
+| columns
+| 否
+| 无
+| 指定要获取的监控数据，如不指定将返回所有的监控数据
+|
+
+| step
+| 否
+| 60s
+| 指定步长，单位为s
+|
+
+| start_time
+| 否
+| 当前时间前60分钟
+| 开始时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+
+| end_time
+| 否
+| 当前时间
+| 结束时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+|===
+
+响应数据：
+
+|===
+| 响应参数 | 类型 | 描述 | 备注
+
+| data
+| Array
+a|
+所查询的监控数据信息
+read_throughput: 吞吐量-读，单位 MB/S
+write_throughput: 吞吐量-写，单位MB/S
+reads: IOPS-读
+writes: IOPS-写
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetNodeDiskioMonitor",
+   "zone": "test",
+   "hostname": "tr02n20",
+   "columns": [
+      "read_throughput",
+      "write_throughput",
+      "read_time",
+      "write_time"
+   ],
+   "step": "60s",
+   "start_time": "2018-12-18T06:42:00Z",
+   "end_time": "2018-12-18T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "read_throughput",
+            "data": [
+               0,
+               0.00026041666666666666,
+               0
+            ],
+            "tag": "sda1"
+         },
+         {
+            "name": "write_throughput",
+            "data": [
+               0.0034505208333333332,
+               0.0037109375,
+               0.0022786458333333335
+            ],
+            "tag": "sda1"
+         },
+         {
+            "name": "read_time",
+            "data": [
+               0,
+               1.6,
+               0
+            ],
+            "tag": "sda1"
+         },
+         {
+            "name": "write_time",
+            "data": [
+               0.06666666666666667,
+               0,
+               0
+            ],
+            "tag": "sda1"
+         },
+         {
+            "name": "time",
+            "data": [
+               "2018-11-29 09:29:00",
+               "2018-11-29 09:30:00",
+               "2018-11-29 09:31:00"
+            ],
+            "tag": "sda1"
+         }
+      ],
+      [
+         {
+            "name": "read_throughput",
+            "data": [
+               0.0009765625,
+               0.0024739583333333332,
+               0.0030598958333333333
+            ],
+            "tag": "sda3"
+         },
+         {
+            "name": "write_throughput",
+            "data": [
+               0.0634765625,
+               0.069140625,
+               0.056640625
+            ],
+            "tag": "sda3"
+         },
+         {
+            "name": "read_time",
+            "data": [
+               0.8666666666666667,
+               4.066666666666666,
+               2.8
+            ],
+            "tag": "sda3"
+         },
+         {
+            "name": "write_time",
+            "data": [
+               0.5333333333333333,
+               0.2,
+               0.26666666666666666
+            ],
+            "tag": "sda3"
+         },
+         {
+            "name": "time",
+            "data": [
+               1545115320,
+               1545115380,
+               1545115440
+            ],
+            "tag": "sda3"
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeDiskioMonitorResponse"
+}
+----

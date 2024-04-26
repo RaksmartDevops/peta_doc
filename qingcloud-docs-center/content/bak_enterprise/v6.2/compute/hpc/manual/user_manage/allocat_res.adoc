@@ -1,0 +1,11 @@
+---
+title: "分配资源"
+weight: 3
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/ehpc/user/allocat_res.adoc[]
+
+
+

@@ -1,0 +1,55 @@
+---
+title: "Linux 云服务器之间配置 SSH 互信（SSH 免密码登录）"
+weight: 100
+---
+
+== 操作场景
+
+通过配置 Linux 云服务器 SSH 互信可以实现云服务器间免密码登录。
+
+== 操作步骤
+
+. 在客户端生成公钥、私钥对
++
+[source,shell]
+----
+ssh-keygen -t rsa
+----
++
+默认点击回车，系统在/root/.ssh下生成id_rsa、id_rsa.pub
+
+. 查看系统生成的公钥私钥对。
++
+[source,shell]
+----
+ls /root/.ssh
+----
++
+可以看到如下的文件：
++
+[source,shell]
+----
+id_rsa  id_rsa.pub
+----
+
+. 将生成的公钥对 id_rsa.pub 发送到其它要连接的服务器上
++
+[source,shell]
+----
+ssh-copy-id   -i   /root/.ssh/id_rsa.pub  192.168.10.3
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_howtodeploysshtrust_1.png[]
++
+可以看到成功将公钥对发送到了其它服务器，更多服务器一样操作即可
+
+. 现在可以测试连接其它服务器是否不需要密码登录。
++
+[source,shell]
+----
+ssh 192.168.10.3    # 登录其它服务器命令
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_howtodeploysshtrust_2.png[]
++
+显示连接成功。

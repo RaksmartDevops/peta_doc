@@ -1,0 +1,105 @@
+---
+title: 获取BM关联用户列表（Boss2DescribeBMUsers）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeBMUsers
+
+=== Method
+POST
+
+=== 接口描述
+用于BM总览界面，获取绑定了BM的用户列表。
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| user_id
+| 用户id
+|
+
+| user_name
+| 用户名称
+|
+
+| user_email
+| 用户邮箱
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeBMUsers",
+  
+  // 以下为过滤项
+  "zone": "test", // [必须]指定zone,
+  
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "latest_notify_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "search_word": "测试", // 用于部分字段的模糊搜索
+  "fields": ["tag_id", "tag_name"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeBMUsersResponse",
+   "total_count": 5,
+   "user_set": [
+      {
+         "user_id": "usr-0VQUEFZ0",
+         "user_name": "angela",
+         "user_email": "angela@example.com"
+      },
+      {
+         "user_id": "usr-BynMzTWN",
+         "user_name": "oc",
+         "user_email": "oc@example.com"
+      },
+      {
+         "user_id": "usr-NJERo3PC",
+         "user_name": "lihui",
+         "user_email": "lihui@example.com"
+      },
+      {
+         "user_id": "usr-RAK8j9HV",
+         "user_name": "ryanlu",
+         "user_email": "ryanlu@example.com"
+      },
+      {
+         "user_id": "usr-t36tlGRR",
+         "user_name": "admin",
+         "user_email": "admin@example.com"
+      }
+   ],
+   "ret_code": 0
+}
+----

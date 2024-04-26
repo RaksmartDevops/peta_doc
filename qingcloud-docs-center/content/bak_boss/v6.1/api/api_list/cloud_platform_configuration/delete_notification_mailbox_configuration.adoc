@@ -1,0 +1,45 @@
+---
+title: 删除通知邮箱配置（Boss2DeleteNfEmailSettings）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeleteNfEmailSettings
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DeleteNfEmailSettings"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2DeleteNfEmailSettingsResponse"
+}
+----

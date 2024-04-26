@@ -1,0 +1,6 @@
+//制作 U 盘启动盘
+//任何版本
+
+服务器通常都提供多个 USB 端口，可以将 ISO 文件刻录到 U 盘，使用 U 盘启动盘为服务器安装操作系统。
+
+常用工具有 link:http://rufus.ie/zh/[rufus] 和 link:https://www.ventoy.net/cn/download.html[ventoy]，详细操作请参见工具的官方文档。

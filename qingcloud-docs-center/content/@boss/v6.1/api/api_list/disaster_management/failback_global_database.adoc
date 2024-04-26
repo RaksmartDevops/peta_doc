@@ -1,0 +1,53 @@
+---
+title: 回切全局数据库（Boss2FailbackGlobalPG）
+weight: 16
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2FailbackGlobalPG
+
+=== Method
+POST
+
+=== 接口描述
+用于数据库灾难恢复后手动将数据库主节点切换到原有的节点，将会返回link_id用于后续的查询，可通过接口Boss2GetFailoverProgress来查询切换的进度。
+
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2FailbackGlobalPG",
+    "pg": "recovery",  // [必须]指定需要恢复的数据库，global - 全局KS数据库 recovery - 全局灾备数据库
+    "pg_master": "dsry1a-ks0" // [必须]指定数据库主节点需要切换到的节点
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "link_id": "drl-iqoberrslnr",
+   "ret_code": 0,
+   "action": "Boss2FailbackGlobalPGSResponse"
+}
+----

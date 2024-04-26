@@ -1,0 +1,124 @@
+---
+title: "EIP 池"
+weight: 110
+---
+
+
+== 场景描述
+
+该任务指导管理员进入 EIP 池页面，查看 EIP 池相关信息，执行创建 IP、修改、标记被攻击、禁用/启用操作。
+
+== 功能描述
+
+EIP 池为多个 IP 资源的集合，配合 IP 组的使用，实现对池内资源的可见权限控制，以便于管理员做网络规划和 IP 地址分配等工作。
+
+该页面展示 IP 池状态、名称、IP 地址、用户 ID、注册、IP 组 ID、创建时间信息，可直接在此创建新的 IP 池。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网络* > *EIP 池*，在面板左上角选择区域或可用区，查看 EIP 池列表及相关信息。
++
+image::/images/boss/manual/resource_mgt/eip_pool_operation.png[]
+
+. 点击 EIP 池的名称，可查看 EIP 池详细信息。
+
+=== 创建 IP
+
+include::../../../../../_components/note.adoc[]
+创建 IP 之前，需预先在物理交换机上按需划分多个业务需要使用的 VLAN, 然后才可以在该功能中, 添加相应的信息（包括 IP 网段, VLAN 等）
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面右上角点击 *创建*。
++
+弹出 *创建 IP* 对话框。
+
+. 根据提示信息输入或选择参数，输入操作原因。
+. 点击 *创建*。
+
+=== 修改公网 IP 池
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *修改*。
++
+弹出 *修改公网 IP 池* 对话框。
+
+. 修改名称，输入备注和操作原因。
+. 点击 *修改*。
+
+=== 标记被攻击的 EIP 池
+
+include::../../../../../_components/note.adoc[]
+EIP 池状态为 *可用* 或 *已绑定* 时，可执行标记被攻击的操作。
+
+当带宽严重超限或受到攻击时（一般是受到了 DDoS 攻击），EIP 会被封堵。被攻击的 EIP 池子没有信息提示，不能再被分配使用。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *标记被攻击*。
++
+弹出 *标记被攻击公网 IP* 对话框。
+
+. 输入操作原因，点击 *标记*。
+
+=== 取消被攻击标记
+
+include::../../../../../_components/note.adoc[]
+EIP 池状态为 *被攻击* 时，可执行取消被攻击标记的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *取消被攻击标记*。
++
+弹出 *取消被攻击公网 IP* 对话框。
+
+. 输入操作原因，点击 *启用*。
+
+=== 禁用公网 IP
+
+include::../../../../../_components/note.adoc[]
+EIP 池状态为 *可用* 时，可执行禁用公网 IP 的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *禁用*。
++
+弹出 *禁用公网 IP* 对话框。
+
+. 输入操作原因，点击 *禁用*。
+
+=== 启用公网 IP
+
+include::../../../../../_components/note.adoc[]
+EIP 池状态为 *已禁用* 时，可执行启用公网 IP 的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *启用*。
++
+弹出 *启用公网 IP* 对话框。
+
+. 输入操作原因，点击 *启用*。
+
+=== 注销公网 IP
+
+include::../../../../../_components/note.adoc[]
+EIP 池状态为 *已禁用* 时，可执行启用公网 IP 的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：EIP 池* 页面搜索框中搜索待操作 EIP 池的 ID 、名称、IP 地址或 IP 组，按 *Enter*，找到待操作的 EIP 池。
+. 在待操作的 EIP 池所在行点击image:/images/boss/manual/icon.png[]，点击 *注销*。
++
+弹出 *注销公网 IP* 对话框。
+
+. 输入操作原因，点击 *注销*。

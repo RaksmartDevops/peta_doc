@@ -1,0 +1,32 @@
+---
+title: "更改云服务器配置"
+date: 2020-02-12T21:08:00+09:00
+description: 如何更改云服务器配置
+weight: 20
+draft: true
+keywords: 云计算, 云服务器，配置
+---
+== 操作说明
+
+客户购买了云服务器，在体验的过程中，觉得云服务器配置无法满足业务需求，需要做扩容或者变更，会涉及如下操作；做配置调整之前需要将云服务器关机。
+
+== 操作步骤
+
+. 登录管理控制台，选择 *产品与服务* > *计算* > *云服务器*，进入云服务器列表页面。
+. 右键云服务器的ID，选择 *关机*：
++
+image::/images/cloud_service/compute/vm/faq_howtochangetheconfigurationofthehost_1.png[]
+
+. 待云服务器关机后，选择 *更多操作* > *更改配置*：
++
+image::/images/cloud_service/compute/vm/faq_howtochangetheconfigurationofthehost_2.png[]
+
+. 操作完成之后开机即可。
+
++
+
+include::../../../../../../../_components/note.adoc[]
+
+系统盘扩容之后不支持缩容，请谨慎操作。
+
+include::../../../../../../../_components/table_footer.adoc[]

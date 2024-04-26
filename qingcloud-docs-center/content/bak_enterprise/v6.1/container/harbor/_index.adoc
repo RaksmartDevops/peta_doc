@@ -1,0 +1,96 @@
+---
+title: "Harbor 镜像仓库"
+weight: 10
+description: Harbor 镜像仓库将 Harbor 制作成应用，能直接在 AppCenter 进行一键部署，并提供了一个高可用、高安全、高性能的镜像仓库方案。
+
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 Harbor 镜像仓库
+            url: intro/introduction/
+          - title: 计费说明
+            url: billing/main/
+
+
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速使用
+        children:
+          - title: 部署 Harbor
+            url: quickstart/qs10_deploy_harbor/
+          - title: 登录 Harbor
+            url: quickstart/qs18_access_harbor/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 管理 Harbor 集群
+        children:
+          - title: 集群操作概述
+            url: manual/cluster_mgt/man05_operation_desc/
+          - title: 扩容集群
+            url: manual/cluster_mgt/man12_expan/
+          - title: 升级集群
+            url: manual/cluster_mgt/man15_upgrade_cluster/
+          - title: 修改配置参数
+            url: manual/config_para/modify_para/
+
+
+      - title: 管理节点
+        children:
+          - title: 更改服务器类型
+            url: manual/node_mgt/switch_node_mode/
+          - title: 扩容节点
+            url: manual/node_mgt/capacity_expansion/
+          - title: 新增节点
+            url: manual/node_mgt/add_node/
+          - title: 删除节点
+            url: manual/node_mgt/delete_node/
+
+      - title: 使用 Harbor
+        children:
+          - title: 推送拉取镜像
+            url: manual/use_harbor/man3001_img_basic/
+          - title: 配置镜像复制
+            url: manual/use_harbor/man3008_copy_img/
+          - title: 配置代理缓存
+            url: manual/use_harbor/man3012_proxy_cache/
+
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: Harbor 推荐配置
+            url: best-practice/recommend_cgf/
+
+  - title: 问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: 如何查看日志？
+            url: faq/faq02_log/
+          - title: 如何解决 HTTPS 访问超时？
+            url: faq/faq10_https_timeout/
+          - title: 如何配置 SSL 证书？
+            url: faq/faq05_use_ssl_certifcate/
+
+  - title: 故障
+    icon: icon-wrench_duotone
+    children:
+      - title: 故障处理
+        children:
+          - title: 大容量镜像上传失败
+            url: troubleshooting/mirror_upload_failed/
+          - title: 本地存储上传镜像报错
+            url: troubleshooting/500_interanl_error/
+          - title: 修改集群参数导致节点不健康
+            url: troubleshooting/node_unhealthy/
+---

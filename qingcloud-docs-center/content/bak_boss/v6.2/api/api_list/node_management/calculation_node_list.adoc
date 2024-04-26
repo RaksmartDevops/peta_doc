@@ -1,0 +1,1513 @@
+---
+title: 计算节点列表（Boss2DescribeBots）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeBots
+
+=== Method
+POST
+
+=== 接口描述
+获取计算节点列表，该接口封装了iaas的DescribeBots接口，并加入了IP、磁盘总量、额外运维数据等字段。
+返回结果：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的资源总数
+|
+
+| bot_set
+| Array
+| 计算节点信息列表
+|
+
+| host_machine
+| String
+| 物理主机 id
+|
+
+| memory_used
+| Integer
+| [虚拟]已使用的内存
+|
+
+| dvrs
+| Array
+| 路由详情数据
+|
+
+| router_id
+| String
+| 路由器 id
+|
+
+| role
+| Integer
+| 角色
+|
+
+| vxnet_id
+| String
+| 私有网络 id
+|
+
+| total_memory
+| Integer
+| 内存总量
+|
+
+| vcpu_used
+| Integer
+| 已使用的虚拟 cpu
+|
+
+| container_mode
+| String
+| 容器模式
+|
+
+| place_groups
+| Array
+| 安置组详情信息
+|
+
+| place_group_id
+| String
+| 安置组 id
+|
+
+| place_group_name
+| String
+| 安置组名称
+|
+
+| hyper_node_type
+| Integer
+| 计算节点种类
+|
+
+| conntrack
+| Integer
+| 连接跟踪数
+|
+
+| free_disk
+| Integer
+| 物理磁盘剩余空间
+|
+
+| memory_max
+| Integer
+| [虚拟]可使用的最大内存(为配置值)
+|
+
+| master_network
+| String
+| 管理网络地址
+|
+
+| has_brks
+| Integer
+| 所有的代理数目
+|
+
+| free_cpu
+| Integer
+| 剩余 cpu 数量
+|
+
+| used_memory
+| Integer
+| [虚拟]已使用的内存
+|
+
+| free_gpu
+| Object
+| 剩余 GPU 详情信息
+|
+
+| hyper_node_id
+| String
+| 计算节点 id
+|
+
+| mirror_node
+| String
+| 镜像节点
+|
+
+| cpu_cores
+| Integer
+| CPU 核心数
+|
+
+| free_memory
+| Integer
+| [虚拟]内存剩余空间
+|
+
+| virtual_disk
+| Value
+| 虚拟机申请的硬盘总量 * 超卖比，单位为 MB
+|
+
+| cpu_idle
+| Integer
+| 限制 CPU 数量
+|
+
+| vip_network
+| String
+| 虚拟 IP 网络地址
+|
+
+| hyper_node_name
+| String
+| 计算节点名称
+|
+
+| provider
+| String
+| 计算节点提供者
+|
+
+| service_type
+| String
+| 服务种类
+|
+
+| status_time
+| String
+| 上次更新时间
+|
+
+| used_vcpu
+| String
+| 已使用的 CPU 数量
+|
+
+| cpu_models
+| Integer
+| CPU 模板数
+|
+
+| status
+| String
+| 状态
+|
+
+| real_used_memory
+| Integer
+| [物理]已使用的内存
+|
+
+| total_vcpu
+| Integer
+| 虚拟 CPU 总数
+|
+
+| flash_node
+| Integer
+| 闪存节点
+|
+
+| vcpu_max
+| Integer
+| 虚拟 CPU 最大值
+|
+
+| used_disk
+| Integer
+| 已使用的磁盘数量
+|
+
+| running
+| Integer
+| 处于运行中状态的节点数量
+|
+
+| remarks
+| String
+| 备注
+|
+
+| kernel
+| Array
+| 内核列表
+|
+
+| kernel_verbose
+| String
+| 内核版本，可读模式
+|
+
+| box
+| String
+| 盒子
+|
+
+| storage_max
+| Integer
+| 最大存储容量
+|
+
+| total_gpu
+| Object
+| GPU 总数
+|
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| region_id
+| String
+| 地域 id
+|
+
+| real_free_memory
+| Integer
+| [物理]剩余的内存
+|
+
+| used_gpu
+| Object
+| 已使用的 GPU 信息
+|
+
+| real_total_memory
+| Integer
+| [物理]内存总量
+|
+
+| cpu_wa
+| Integer
+| IO 等待
+|
+
+| ctn_util
+| Integer
+| 统计时间内所有处理 CPU 等待硬件 IO 时间 / 总共统计时间，用于说明 CPU 等待磁盘写入完成的情况， +
+当这个值接近 100% 时，表示磁盘 IO 已占满
+|
+
+| place_group_ids
+| Array
+| 安置组 id 列表
+|
+
+| cpu_si
+| Integer
+| 软件中断
+|
+
+| rack
+| String
+| 机架
+|
+
+| bot_id
+| String
+| 计算节点 id
+|
+
+| ip
+| String
+| 计算节点 ip 地址
+|
+
+| total_disk
+| float
+| 磁盘总量，实际为free_disk+used_disk的值
+|
+
+| total_virtual_disk
+| float
+| 虚拟磁盘总量，实际为(free_disk+used_disk)/磁盘超卖比
+|
+
+| realtime_status
+| string
+a|
+通过cronus获取的计算节点状态，分为两种状态：
+
+0: 异常
+1: 正常
+|
+
+| extra_info
+| Object
+| 额外运维数据
+|
+|===
+
+extra_info 字段
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| rack_number
+
+| string
+| 机架编号
+
+|
+
+| rack_location
+
+| string
+| 机架位置
+|
+
+| system_manufacturer
+
+| string
+| 服务器厂商
+
+|
+
+| system_product
+| string
+| 服务器型号
+
+|
+
+| system_serial
+
+| string
+| 服务器序列号
+
+|
+
+| cpu_manufacturer
+
+| string
+| cpu厂商
+
+|
+
+| cpu_version
+
+| string
+| cpu型号
+
+|
+
+| cpu_current_speed
+
+| string
+| cpu基本频率
+
+|
+
+| cpu_architecture
+
+| string
+| cpu架构
+
+|
+
+| cpu_cores
+
+| Integer
+| cpu核心数
+
+|
+
+| cpu_threads_per_core
+
+| Integer
+| cpu线程数
+
+|
+
+| cpu_cores_per_socket
+
+| Integer
+| cpu(每插槽)物理核心数
+
+|
+
+| cpu_sockets
+
+| Integer
+| cpu插槽数
+
+|
+
+| os_distro
+| string
+| 操作系统发行版
+
+|
+
+| os_version
+
+| string
+| 操作系统版本
+
+|
+
+| ipmi_address
+| string
+| ipmi地址
+|
+|===
+
+free_disk: 物理磁盘剩余空间
+used_disk: 物理磁盘已使用空间
+virtual_disk: 虚拟机申请的硬盘总量*超卖比，单位为 MB
+
+*磁盘使用率的计算方法：*
+物理硬盘使用率：used_disk/total_disk
+虚拟磁盘使用率：virtual_disk/total_virtual_disk
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeBots",
+  "limit": 20,
+  "offset": 0,
+  "verbose": 1,
+  "reverse": 1,
+  "initialSelectedIndex": 1,
+  "status": [
+    "active"
+  ], // 该状态为用户手动标注的状态
+  "realtime_status": [0], // 该状态为cronus使用心跳采集的实时存活状态，目前仅支持过滤0(异常)一种状态
+  "zone": "test" //必须指定zone_id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeBotsResponse",
+   "total_count": 8,
+   "bot_set": [
+      {
+         "host_machine": "sr01n31",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 226114.2,
+         "vcpu_used": 0,
+         "conntrack": 722,
+         "virtual_disk": 2689653,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-m0000000",
+               "place_group_name": "large memory group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-ei7kud0r",
+            "img-k9rwfjkr",
+            "img-layyq1hz",
+            "img-lli88ttb",
+            "img-p75lxjjt",
+            "img-qmq2gtc0",
+            "img-uniopxtu",
+            "img-z0qakm9x",
+            "img-zm3abtth",
+            "img-zmheufay"
+         ],
+         "free_disk": 4849756.16,
+         "memory_max": 131072,
+         "master_network": "100.60.10.0/24",
+         "container_mode": "repl",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 133,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n31",
+         "mirror_node": "sr01n30",
+         "used_sriov_nic": 0,
+         "cpu_cores": 24,
+         "free_memory": 46914.20000000001,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 36,
+         "cpu_models": 7,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2022-04-23T07:14:20Z",
+         "used_vcpu": 107,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 115087,
+         "total_vcpu": 240,
+         "free_sriov_nic": 0,
+         "vcpu_max": 24,
+         "used_disk": 1054627.84,
+         "running": 66,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": 100,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "测试备注",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n31",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+         "real_free_memory": 10532,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 125619,
+         "cpu_wa": 0,
+         "used_memory": 179200,
+         "second_monitor_node": "",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": true,
+         "place_group_ids": [
+            "plg-00000001",
+            "plg-00000000",
+            "plg-00000002",
+            "plg-m0000000",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 1,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.14",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 5904384,
+         "total_virtual_disk": 6967170.054445175,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "31",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R720",
+            "system_serial": "6VVY622",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+            "cpu_current_speed": "2100 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 24,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 6,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      },
+      {
+         "host_machine": "sr01n241",
+         "memory_used": 0,
+         "vcpu_used": 0,
+         "container_mode": "nvmf",
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            }
+         ],
+         "hyper_node_type": 0,
+         "memory_max": 0,
+         "master_network": "100.60.11.0/24",
+         "hyper_node_id": "sr01n241",
+         "mirror_node": "sr01n240",
+         "vip_network": "172.31.60.0/24",
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2022-04-02T10:46:05Z",
+         "architecture": "aarch64",
+         "status": "faulty",
+         "vcpu_max": 16,
+         "remarks": "",
+         "box": "",
+         "zone_id": "testing1a",
+         "second_monitor_node": "",
+         "bot_id": "sr01n241",
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.21",
+         "region_id": "testing",
+         "kernel_verbose": null,
+         "realtime_status": 0,
+         "extra_info": {}
+      },
+      {
+         "host_machine": "sr01n240",
+         "memory_used": 0,
+         "vcpu_used": 0,
+         "container_mode": "nvmf",
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            }
+         ],
+         "hyper_node_type": 0,
+         "memory_max": 0,
+         "master_network": "100.60.11.0/24",
+         "hyper_node_id": "sr01n240",
+         "mirror_node": "sr01n241",
+         "vip_network": "172.31.60.0/24",
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2022-04-02T09:35:54Z",
+         "architecture": "aarch64",
+         "status": "faulty",
+         "vcpu_max": 16,
+         "remarks": "",
+         "box": "",
+         "zone_id": "testing1a",
+         "second_monitor_node": "",
+         "bot_id": "sr01n240",
+         "rack": "",
+         "storage_max": 3000,
+         "ip": null,
+         "region_id": "testing",
+         "kernel_verbose": null,
+         "realtime_status": 0,
+         "extra_info": {}
+      },
+      {
+         "host_machine": "sr01n33",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 226114.2,
+         "vcpu_used": 0,
+         "conntrack": 756,
+         "virtual_disk": 2800666,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-7brfnln2",
+            "img-ei7kud0r",
+            "img-k9rwfjkr",
+            "img-layyq1hz",
+            "img-lq10kdmb",
+            "img-lrf7febb",
+            "img-p75lxjjt",
+            "img-uniopxtu",
+            "img-xcg2q1p9",
+            "img-z0qakm9x",
+            "img-zm3abtth",
+            "img-zmheufay"
+         ],
+         "free_disk": 5007831.04,
+         "memory_max": 131072,
+         "master_network": "100.60.10.0/24",
+         "container_mode": "repl",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 119,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n33",
+         "mirror_node": "sr01n32",
+         "used_sriov_nic": 0,
+         "cpu_cores": 24,
+         "free_memory": 80706.20000000001,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 49,
+         "cpu_models": 7,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2021-11-29T05:18:49Z",
+         "used_vcpu": 121,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 70863,
+         "total_vcpu": 240,
+         "free_sriov_nic": 0,
+         "vcpu_max": 24,
+         "used_disk": 896552.96,
+         "running": 88,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": 100,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n33",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+         "real_free_memory": 54756,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 125619,
+         "cpu_wa": 0,
+         "used_memory": 145408,
+         "second_monitor_node": "",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": true,
+         "place_group_ids": [
+            "plg-00000001",
+            "plg-00000000",
+            "plg-00000002",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 1,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.12",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 5904384,
+         "total_virtual_disk": 6967170.054445175,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "33",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R720",
+            "system_serial": "DB1PQ42",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+            "cpu_current_speed": "2100 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 24,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 6,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      },
+      {
+         "host_machine": "sr01n38",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 342154.8,
+         "vcpu_used": 0,
+         "conntrack": 288,
+         "virtual_disk": 3363841,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-m0000000",
+               "place_group_name": "large memory group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-00d201a1",
+            "img-0becea92",
+            "img-0c150e57",
+            "img-142394ef",
+            "img-2kxf9xv5",
+            "img-61192fc9",
+            "img-8725e53d",
+            "img-8d2b87be",
+            "img-9b1ab9b3",
+            "img-a09jx91j",
+            "img-a610a1a0",
+            "img-a67be291",
+            "img-bf75278c",
+            "img-c107d9e7",
+            "img-dca429ff",
+            "img-e51546a9",
+            "img-edc7f280",
+            "img-ei7kud0r",
+            "img-f9acd0c6",
+            "img-k9rwfjkr",
+            "img-ko0p5hy6",
+            "img-layyq1hz",
+            "img-lli88ttb",
+            "img-lrbepbnk",
+            "img-lrf7febb",
+            "img-p75lxjjt",
+            "img-qmq2gtc0",
+            "img-uniopxtu",
+            "img-xyxzdztu",
+            "img-y1kd6sjf",
+            "img-y5390ar0",
+            "img-y5dkw5f1",
+            "img-z5tkizbd",
+            "img-zm3abtth",
+            "img-zmheufay"
+         ],
+         "free_disk": 5835302,
+         "memory_max": 196608,
+         "master_network": "100.60.11.0/24",
+         "container_mode": "pair",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 167,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n38",
+         "mirror_node": "sr01n37",
+         "used_sriov_nic": 0,
+         "cpu_cores": 32,
+         "free_memory": 97418.79999999999,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 70,
+         "cpu_models": 4111,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2021-10-18T08:10:54Z",
+         "used_vcpu": 153,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 137132,
+         "total_vcpu": 320,
+         "free_sriov_nic": 0,
+         "vcpu_max": 32,
+         "used_disk": 837540,
+         "running": 98,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": -1,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n38",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+         "real_free_memory": 52954,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 190086,
+         "cpu_wa": 0,
+         "used_memory": 244736,
+         "second_monitor_node": "",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": false,
+         "place_group_ids": [
+            "plg-00000002",
+            "plg-00000000",
+            "plg-00000001",
+            "plg-m0000000",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 0,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.18",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 6672842,
+         "total_virtual_disk": 7873950.095461957,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "38",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R730",
+            "system_serial": "70MZHD2",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+            "cpu_current_speed": "2400 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 32,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 8,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      },
+      {
+         "host_machine": "sr01n32",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 226114.2,
+         "vcpu_used": 0,
+         "conntrack": 549,
+         "virtual_disk": 3418006,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-m0000000",
+               "place_group_name": "large memory group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-c28a37a0",
+            "img-hp09rvuw"
+         ],
+         "free_disk": 4341309.44,
+         "memory_max": 131072,
+         "master_network": "100.60.10.0/24",
+         "container_mode": "repl",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 125,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n32",
+         "mirror_node": "sr01n33",
+         "used_sriov_nic": 0,
+         "cpu_cores": 24,
+         "free_memory": 81730.20000000001,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 35,
+         "cpu_models": 7,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2021-10-13T08:36:42Z",
+         "used_vcpu": 115,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 88649,
+         "total_vcpu": 240,
+         "free_sriov_nic": 0,
+         "vcpu_max": 24,
+         "used_disk": 1563074.56,
+         "running": 76,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": 76,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n32",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+         "real_free_memory": 36970,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 125619,
+         "cpu_wa": 0,
+         "used_memory": 144384,
+         "second_monitor_node": "sr01n241",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": false,
+         "place_group_ids": [
+            "plg-00000001",
+            "plg-00000000",
+            "plg-00000002",
+            "plg-m0000000",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 1,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.13",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 5904384,
+         "total_virtual_disk": 6967170.054445175,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "32",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R720",
+            "system_serial": "G81PQ42",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+            "cpu_current_speed": "2100 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 24,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 6,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      },
+      {
+         "host_machine": "sr01n30",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 226114.2,
+         "vcpu_used": 0,
+         "conntrack": 736,
+         "virtual_disk": 3326783,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-m0000000",
+               "place_group_name": "large memory group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-09bed4c7",
+            "img-1a0b39d2",
+            "img-487addb3",
+            "img-538ad89e",
+            "img-758487b0",
+            "img-863628dd",
+            "img-9b84506b",
+            "img-e1543a2c",
+            "img-k9rwfjkr",
+            "img-layyq1hz",
+            "img-lq10kdmb",
+            "img-lrf7febb",
+            "img-s2ag3cfo",
+            "img-uniopxtu",
+            "img-z0qakm9x",
+            "img-zm3abtth",
+            "img-zmheufay"
+         ],
+         "free_disk": 5448765.44,
+         "memory_max": 1310,
+         "master_network": "100.60.10.0/24",
+         "container_mode": "repl",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 101,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n30",
+         "mirror_node": "sr01n31",
+         "used_sriov_nic": 0,
+         "cpu_cores": 24,
+         "free_memory": 102722.20000000001,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 58,
+         "cpu_models": 7,
+         "hyper_node_name": "test",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2021-10-12T07:34:54Z",
+         "used_vcpu": 139,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 87721,
+         "total_vcpu": 240,
+         "free_sriov_nic": 0,
+         "vcpu_max": 24,
+         "used_disk": 455618.56,
+         "running": 105,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": 100,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n30",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+         "real_free_memory": 37898,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 125619,
+         "cpu_wa": 0,
+         "used_memory": 123392,
+         "second_monitor_node": "",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": true,
+         "place_group_ids": [
+            "plg-00000001",
+            "plg-00000000",
+            "plg-00000002",
+            "plg-m0000000",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 1,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.15",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 5904384,
+         "total_virtual_disk": 6967170.054445175,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "30",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R720",
+            "system_serial": "541PQ42",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz",
+            "cpu_current_speed": "2100 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 24,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 6,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      },
+      {
+         "host_machine": "sr01n37",
+         "memory_used": 0,
+         "all_qemu_system_version": [
+            "4.0.0.7"
+         ],
+         "total_memory": 342154.8,
+         "vcpu_used": 0,
+         "conntrack": 527,
+         "virtual_disk": 4001200.0000000005,
+         "place_groups": [
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": "sas group"
+            },
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-m0000000",
+               "place_group_name": "large memory group"
+            },
+            {
+               "place_group_id": "plg-qh0v5mhw",
+               "place_group_name": "logical-test"
+            }
+         ],
+         "total_ib_sriov": 0,
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-2a5sdbqj",
+            "img-2kxf9xv5",
+            "img-d322qq1d",
+            "img-ei7kud0r",
+            "img-h19q0ym3",
+            "img-h7ff9wue",
+            "img-k9rwfjkr",
+            "img-layyq1hz",
+            "img-lli88ttb",
+            "img-lq10kdmb",
+            "img-lrf7febb",
+            "img-nv77hfgn",
+            "img-oqdfzo5o",
+            "img-p75lxjjt",
+            "img-pe7y6kkf",
+            "img-qmq2gtc0",
+            "img-rbfddc2t",
+            "img-uniopxtu",
+            "img-y5390ar0",
+            "img-z0qakm9x",
+            "img-zm3abtth",
+            "img-zmheufay"
+         ],
+         "free_disk": 5981477,
+         "memory_max": 196608,
+         "master_network": "100.60.11.0/24",
+         "container_mode": "pair",
+         "has_brks": 0,
+         "cpu_si": 0,
+         "free_vcpu": 170,
+         "ctn_util": 0,
+         "used_ib_sriov": 0,
+         "hyper_node_id": "sr01n37",
+         "mirror_node": "sr01n38",
+         "used_sriov_nic": 0,
+         "cpu_cores": 32,
+         "free_memory": 126602.79999999999,
+         "vgpu_instance_class": -1,
+         "cpu_idle": 68,
+         "cpu_models": 4111,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2021-10-08T08:10:58Z",
+         "used_vcpu": 150,
+         "vip_network": "172.31.60.0/24",
+         "status": "active",
+         "real_used_memory": 138095,
+         "total_vcpu": 320,
+         "free_sriov_nic": 0,
+         "vcpu_max": 32,
+         "used_disk": 691365,
+         "running": 101,
+         "qemu_system_x86_64_version": "4.0.0.7",
+         "ssd_life_used": -1,
+         "disk_reserve_rate": 0.847458,
+         "architecture": "x86_64",
+         "remarks": "",
+         "ib_sriov_type": 0,
+         "kernel": [
+            4,
+            15,
+            0,
+            58
+         ],
+         "bot_id": "sr01n37",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "cpu_oversale_rate": 10,
+         "free_ib_sriov": 0,
+         "total_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "zone_id": "testing1a",
+         "cpu_model_name": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+         "real_free_memory": 51991,
+         "used_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "real_total_memory": 190086,
+         "cpu_wa": 0,
+         "used_memory": 215552,
+         "second_monitor_node": "sr01n240",
+         "free_gpu": {
+            "0": 0,
+            "1": 0
+         },
+         "intel_iommu_on": true,
+         "place_group_ids": [
+            "plg-00000002",
+            "plg-00000000",
+            "plg-00000001",
+            "plg-m0000000",
+            "plg-qh0v5mhw"
+         ],
+         "flash_node": 0,
+         "rack": "",
+         "storage_max": 3000,
+         "ip": "172.31.60.17",
+         "region_id": "testing",
+         "kernel_verbose": "4.15.0-58",
+         "total_disk": 6672842,
+         "total_virtual_disk": 7873950.095461957,
+         "realtime_status": 1,
+         "extra_info": {
+            "rack_number": "01",
+            "rack_location": "37",
+            "system_manufacturer": "Dell Inc.",
+            "system_product": "PowerEdge R730",
+            "system_serial": "70VVHD2",
+            "cpu_manufacturer": "Intel",
+            "cpu_version": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+            "cpu_current_speed": "2400 MHz",
+            "cpu_architecture": "x86_64",
+            "cpu_cores": 32,
+            "cpu_threads_per_core": 2,
+            "cpu_cores_per_socket": 8,
+            "cpu_sockets": 2,
+            "os_distro": "Ubuntu",
+            "os_version": "16.04.5.3"
+         }
+      }
+   ],
+   "ret_code": 0
+}
+----

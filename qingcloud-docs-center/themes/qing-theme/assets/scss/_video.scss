@@ -1,0 +1,240 @@
+
+.modal {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.modal .modal-dialog {
+  top: 17%;
+}
+
+.modal .video-modal-dialog {
+  width: 700px;
+  height: 500px;
+
+  .video-modal-content {
+    height: 500px;
+    width: 700px;
+    background-color: #000;
+  }
+}
+
+.video-close {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  right: 0.6rem;
+  top: 0.5rem;
+  caret-color: transparent;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: #ffffff;
+    transform: rotate(45deg);
+    top: calc(50% - 0.45vw);
+    left: 50%;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: #ffffff;
+    transform: rotate(-45deg);
+    top: calc(50% - 0.45vw);
+    left: 50%;
+    }
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal.show .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal.fade .modal-dialog {
+  transition: transform .3s ease-out;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
+.product-video {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
+
+.modal-content,
+.modal-card {
+  margin: 0;
+}
+
+.modal-content {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 0.3rem;
+  box-shadow: $primary-button-box-shadow;
+  outline: 0;
+}
+
+.card {
+  border-radius: 3px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05),
+    0 10px 20px 0 rgba(76, 94, 112, 0.05);
+  border: none;
+  position: relative;
+  transform: 0.8s linear;
+  cursor: pointer;
+
+  &:hover {
+    .play-btn {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  .card-body {
+    padding: 0;
+    min-height: 200px;
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #3e464c;
+      margin-bottom: 24px;
+    }
+
+    .card-title_private {
+      font-size: 14px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.71;
+      color: #68747f;
+      margin-bottom: 13px;
+    }
+
+    .card-text:last-child {
+      margin-bottom: 24px;
+    }
+
+    .card-link {
+      margin-left: 2rem;
+      font-size: 14px;
+      color: #68747f;
+
+      &:hover {
+        color: #00a870;
+      }
+    }
+  }
+
+  img.video-bg {
+    display: block;
+    width: 100%;
+  }
+  // 视频专区
+  .play-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    opacity: 0.5;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .play-btn-subscript {
+    display: inline-block;
+    margin-left: 2px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #443d4e;
+  }
+
+  .adjust_p {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 500;
+    font-family: PingFang SC;
+    text-align: center;
+  }
+
+  .video_title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 30px 0 0 16px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .time_duration {
+    position: absolute;
+    margin-left: 18px;
+    bottom: 15.2%;
+    margin-bottom: 0;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

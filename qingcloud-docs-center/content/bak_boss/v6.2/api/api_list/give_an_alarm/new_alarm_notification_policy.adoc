@@ -1,0 +1,71 @@
+---
+title: 新建告警通知策略（Boss2CreateAlertNotifyRule）
+weight: 19
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateAlertNotifyRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于创建告警通知策略。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateAlertNotifyRule",
+    "name": "测试告警通知策略", // [必须]通知策略名称 
+    "remarks": "测试告警屏蔽", // 描述信息
+    "rule": { 
+        "zones": ["zone_a", "zone_b"], // 可通过告警发出的区域进行屏蔽
+        "nodes": ["node1", "node2", "node[3-9]"], // 可通过发出告警的节点id进行屏蔽, 支持使用通配符，如?(代表单个字符)，*(代表多个字符), [1-9](代表数字范围)
+        "node_regex": ["node\\d+"], // 通过发出告警的节点id进行屏蔽，该字段支持使用正则表达式
+        "levels": ["CRITICAL"], // 通过告警的级别进行屏蔽，支持的级别从高到底有：CRITICAL, ERROR, WARNING, INFO
+        "synopsis": ["测试告警"], // 通过告警概要信息进行匹配，该字段支持使用正则表达式
+        "message": ["test alert"], // 通过告警的原始日志信息进行屏蔽，该字段支持使用正则表达式
+        "alert_codes": ["ALM-IAAS-00125", "ALM-IAAS-00131"], // 通过告警项ID进行屏蔽
+        "alert_categories": ["eae779e0-0aa8-4334-9812-845ea5a7e727"], // 通过告警分类进行过滤
+        "sources": ["IAAS", "NEONSAN"] // 通过告警来源进行过滤
+    }, // [必须]告警屏蔽规则，内含多种屏蔽规则条目
+    "match_mode": "AND", // 可指定规则的匹配方式：AND - 所有的规则都匹配才算命中， OR - 有任一条规则匹配即为命中
+    "recipients": [1, 2], // 可指定接收通知组ID
+    "send_resolved_notify": true, // 是否发送告警恢复通知：true - 发送恢复通知, false - 不发送恢复通知
+    "notify_send_count": 1, // 如果选择仅发送单次告警，可将该项设置为1，否则需要设置为0
+    "notify_merge_time": 3600, // 设置周期告警间隔，单位为秒，最小设置为3600(1个小时)，最高为86400(24小时),设置后在告警未恢复时将会使用该时间间隔进行告警的发送
+    "start_hhmm": "1900", // 可设置通知策略生效的起始时间，格式为"小时分钟",比如1900表示19时00分
+    "end_hhmm": "2400", // 可设置通知策略生效的结束时间，该选项与start_hhmm一起配合生效，表示该告警策略在这个时间范围内生效
+    "methods": ["emails", "phones"], // 告警的发送方式，支持的发送方式有：emails - 邮件, webhooks - webhook, phones - 短信, syslogs - syslog, imrobots - 企业通讯, private_wechats - 私有化企业微信
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 30,
+   "ret_code": 0,
+   "action": "Boss2CreateAlertNotifyRule"
+}
+----

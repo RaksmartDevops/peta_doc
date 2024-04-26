@@ -1,0 +1,87 @@
+---
+title: 获取任务统计（Boss2GetV2VSummary）
+weight: 15
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetV2VSummary
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| owner
+| String
+| 资源所有者
+|
+
+| v2v_set
+| Array
+| v2v 任务信息
+|
+
+| new
+| Integer
+| 新建的任务数量
+|
+
+| total_count
+| Integer
+| 总数
+|
+
+| updated
+| Integer
+| 已更新的数量
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetV2VSummary",
+   "zone": "test"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2GetV2VSummaryResponse",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "new": 11,
+         "total_count": 12,
+         "updated": 1
+      }
+   ]
+}
+----

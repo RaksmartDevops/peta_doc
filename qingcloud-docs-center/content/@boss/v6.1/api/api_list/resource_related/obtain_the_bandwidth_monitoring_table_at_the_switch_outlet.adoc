@@ -1,0 +1,100 @@
+---
+title: 获取交换机出口带宽监控表格（Boss2GetSwitchBandwidthChart）
+weight: 15
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetSwitchBandwidthChart
+
+=== Method
+POST
+
+=== 接口描述
+获取指定交换机端口的出口带宽统计，适用于生成表格使用，所有数据为5分钟粒度。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| collect_time
+| 时间，为UTC时间
+|
+
+| inbound
+| 端口入站带宽，单位为bps
+|
+
+| outbound
+| 端口出站带宽，单位为bps
+|
+
+| max_bandwidth
+| 入站与出站带宽取较大的值，单位为bps
+|
+
+| billing_bandwidth
+| 用于95计费的带宽值。接口会按照选择的时间段来生成95计费的计费带宽值。单位为bps
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetSwitchBandwidthChart",
+    "switch_id": 1, // [必须]指定交换机id
+    "interface": "Ethernet1/10", // [必须]指定交换机端口id
+    "source": "db",  // 指定数据来源，可选值：db-从数据库缓存获取，realtime-从cronus查询获取(仅用于调试，请勿用于生产)，默认为db
+    "start_time": "2020-04-29T12:12:12Z",   // 开始时间
+    "end_time": "2020-04-29T12:20:12Z",   // 结束时间
+    
+    // 分页参数，如不指定则不进行分页，请按照实际情况选择是否使用分页
+    "limit": 20,
+    "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "chart_set": [
+      {
+         "collect_time": "2020-05-01T02:30:00Z",
+         "inbound": 1927984.42666667,
+         "outbound": 1230910.4,
+         "max_bandwidth": 1927984.42666667,
+         "billing_bandwidth": 3810396.10666667
+      },
+      {
+         "collect_time": "2020-05-01T02:35:00Z",
+         "inbound": 2006808.32,
+         "outbound": 1256069.30666667,
+         "max_bandwidth": 2006808.32,
+         "billing_bandwidth": 3810396.10666667
+      }
+   ],
+   "total_count": 178,
+   "ret_code": 0,
+   "action": "Boss2GetSwitchBandwidthChartResponse"
+}
+----

@@ -1,0 +1,132 @@
+---
+title: 读取监控配置（Boss2GetMonitorConf）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetMonitorConf
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取监控配置，需传入topic。返回数据结构可参考Boss2SetMonitorConf接口。
+
+|===
+| topic | 说明 | 备注
+
+| watched_plgs
+
+| 用户关注的安置组
+|
+
+| watched_eip_groups
+
+| 用户关注的eip组
+|
+
+| plg_usage_notify
+
+| 安置组用量告警策略
+|
+
+| eippool_usage_notify
+
+| eip池用量告警策略
+|
+
+| plg_usage_threshold
+
+| 安置组用量阈值
+|
+
+| eippool_usage_threshold
+
+| eip组用量阈值
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetMonitorConf",
+    "topics": ["plg_usage_threshold", "watched_plgs"],  // [必须]传入配置的topic
+    "filters": {
+        "plg_usage_threshold": {
+            "zone": "beta",
+            "id": "plg-00000000"
+        },
+        "watched_plgs": {
+            "zone": "beta"
+        }
+    }  // 可传入对应的过滤选项
+}
+
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "conf": {
+      "plg_usage_threshold": [
+         {
+            "id": "plg-00000000",
+            "zone": "beta",
+            "threshold": {
+               "total_vcpu": {
+                  "type": "percentage",
+                  "threshold": 90
+               },
+               "total_memory": {
+                  "type": "value",
+                  "threshold": 864234
+               }
+            }
+         },
+         {
+            "id": "plg-00000001",
+            "zone": "staging",
+            "threshold": {
+               "total_vcpu": {
+                  "type": "percentage",
+                  "threshold": 90
+               },
+               "total_memory": {
+                  "type": "value",
+                  "threshold": 864234
+               }
+            }
+         }
+      ],
+      "watched_plgs": [
+         {
+            "id": "plg-00000000",
+            "zone": "beta"
+         }
+      ]
+   },
+   "ret_code": 0,
+   "action": "Boss2GetMonitorConfResponse"
+}
+----

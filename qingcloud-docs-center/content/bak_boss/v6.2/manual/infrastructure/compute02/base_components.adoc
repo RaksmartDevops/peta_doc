@@ -1,0 +1,29 @@
+---
+title: "基础组件"
+weight: 30
+
+---
+基础组件是系统底层 IaaS 平台依赖的基础第三方组件，这些组件的正常与否也直接决定了{platform_name_cn}的整体是否能正常运行，平台底层主要依赖 PostgreSQL，Pgpool 新增的内容， Redis， Cassandra， Zookeeper， Memcached 等组件。
+
+== 场景描述
+
+该任务指导用户进入基础组件页面，查看各个基础组件列表、配置及详情。
+
+== 功能描述
+
+基础组件页面罗列了{platform_name_cn}上所有的基础组件列表，并展示了基础组件的状态好配置节点信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *基础设施* > *计算* > *基础组件*，进入云基础组件页面。
++
+image::/images/boss/manual/infrastructure/base_components_operation.png[]
+
+. 点击基础组件列表，可进入基础组件。
++
+在详情页下方，可查看指定时间段内的服务监控信息。

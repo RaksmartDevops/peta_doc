@@ -1,0 +1,36 @@
+---
+title: "为什么云服务器绑定公网 IP 后仍无法通过公网连通？"
+draft: true
+weight: 1
+description: 公网 IP 连接问题
+keywords: 云计算, 公网IP, 弹性EIP
+---
+
+
+== 问题现象
+
+云服务器绑定了公网 IP 之后，无法通过 IP SSH 登录，也不能 ping 通该 IP。
+
+== 原因分析
+
+为了加强位于基础网络 vxnet-0 中的云服务器的安全性， 云平台在云服务器之前放置了一个防火墙（安全组）。 初始状态下，每个安全组都不包含任何规则，即所有端口都是关闭的，故无法连通。 需要建立规则以打开相应的端口。
+
+include::../../../../../_components/note.adoc[]
+
+如果您的云服务器使用的是默认安全组，那么 ping 和 ssh 所使用的端口默认就是放开的，您无需再进行操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 解决办法
+
+* 如果您需要访问云服务器的 22 号端口，需要手动为云服务器所在安全组下，添加一条接受 tcp 22 端口的下行规则。
+
+* 如果您想开启 ping 功能，则需要在安全组中添加接受 ICMP echo request 的下行规则。
+
+include::../../../../../_components/note.adoc[]
+
+添加规则后，需要点击**应用修改**使规则应用到云服务器。
+
+include::../../../../../_components/table_footer.adoc[]
+
+

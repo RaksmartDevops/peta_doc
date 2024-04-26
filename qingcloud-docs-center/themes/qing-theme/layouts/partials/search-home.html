@@ -1,0 +1,108 @@
+{{- $Section := partial "get-recent-section.html" . -}}
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{- if and (eq .Site.Params.isEmbed true) $FirstSection.Params.search_home_section -}}
+  <div class="search-home-section-wrapper">
+    {{range $FirstSection.Params.search_home_section}}
+      <div class="search-home-section-title">
+        {{.title}}
+      </div>
+      {{$Type := or .type `list`}}
+      {{with .children}}
+        <div class="search-home-section-content {{$Type}}">
+          {{if eq $Type `list`}}
+            <ul>
+              {{range .}}
+                <li>
+                  <a class="search-home-section-content-item" href="{{.url}}" {{if or (hasPrefix .url "http://" ) (hasPrefix .url "https://" )}}target="_blank"{{end}}>
+                    {{if hasPrefix .icon `/images/`}}
+                    <img src="search-home-section-content-item {{.icon}}" />
+                    {{else}}
+                    <span class="search-home-section-content-item {{.icon}}">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      <span class="path3"></span>
+                      <span class="path4"></span>
+                      <span class="path5"></span>
+                      <span class="path6"></span>
+                      <span class="path7"></span>
+                      <span class="path8"></span>
+                      <span class="path9"></span>
+                      <span class="path10"></span>
+                      <span class="path11"></span>
+                      <span class="path12"></span>
+                      <span class="path13"></span>
+                      <span class="path14"></span>
+                      <span class="path15"></span>
+                    </span>
+                    {{end}}
+                    <span>{{.title}}</span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+          {{ else }}
+            {{range .}}
+              <a class="search-home-section-content-item btn normal-btn {{if eq $Type `block-list`}}icon-chevron_right_fill{{end}}" href="{{.url}}" {{if or (hasPrefix .url "http://" ) (hasPrefix .url "https://" )}}target="_blank"{{end}}>
+                {{if hasPrefix .icon `/images/`}}
+                <img src="search-home-section-content-item btn-left-icon {{.icon}}" />
+                {{else}}
+                <span class="search-home-section-content-item btn-left-icon {{.icon}}">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                  <span class="path3"></span>
+                  <span class="path4"></span>
+                  <span class="path5"></span>
+                  <span class="path6"></span>
+                  <span class="path7"></span>
+                  <span class="path8"></span>
+                  <span class="path9"></span>
+                  <span class="path10"></span>
+                  <span class="path11"></span>
+                  <span class="path12"></span>
+                  <span class="path13"></span>
+                  <span class="path14"></span>
+                  <span class="path15"></span>
+                </span>
+                {{end}}
+                <span>{{.title}}</span>
+              </a>
+            {{end}}
+          {{end}}
+        </div>
+      {{end}}
+    {{end}}
+  </div>
+{{- else -}}
+  <div class="search-home-wrapper">
+    <div class="search-home-header-wrapper">
+      <div class="search-home-header">
+        <h1 class="search-home-header-title">
+          {{- .Site.Title -}}
+          <!-- <div class="tag section-tag export-pdf" data-title="{{.Title}}"
+            data-url="{{path.Join $Section.RelPermalink (index (split (replace .RelPermalink $Section.RelPermalink ``) `/`) 0)}}">
+            <span class="icon-format_pdf_2_fill"></span>
+            PDF
+          </div> -->
+        </h1>
+        <div class="search home-search has-suggestions">
+          <form action="{{$FirstSection.RelPermalink}}search/" method="GET">
+            <div class="control has-icons-right docs-search-input">
+              <input class="input" name="q" type="input" placeholder="请输入问题关键词" autocomplete="off" />
+              <span class="icon is-right">
+                <img src="/images/icons/magnifier_duotone.svg" />
+              </span>
+            </div>
+          </form>
+          <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+          <div class="search-result search-suggestions"></div>
+        </div>
+      </div>
+    </div>
+    <div class="search-home-content-wrapper">
+      <div class="search-home-content">
+        {{- partial "side.html" . -}} {{- partial "list-home.html" .}}
+      </div>
+    </div>
+    {{- partial "footer.html" . -}}
+  </div>
+{{- end -}}

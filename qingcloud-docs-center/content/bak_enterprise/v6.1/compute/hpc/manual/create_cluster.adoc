@@ -1,0 +1,20 @@
+---
+title: "创建集群"
+keyword: 云计算, EHPC，创建集群
+draft: false
+weight: 1
+---
+
+== 前提条件
+
+* 已获取{console_name}账号和密码。
+
+* 已完成个人实名认证且账户余额大于 0 元。
+
+* 已购买弹性高性能计算 EHPC 产品服务。
+
+== 创建集群
+
+详细内容可参考link:../../quick-start/create_ehpc[创建 EHPC 集群]相关内容。
+
+

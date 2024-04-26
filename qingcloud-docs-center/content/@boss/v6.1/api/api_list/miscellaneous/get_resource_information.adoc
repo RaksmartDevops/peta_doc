@@ -1,0 +1,69 @@
+---
+title: 获取资源信息（Boss2GetResourceInfo）
+weight: 13
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourceInfo
+
+=== Method
+POST
+
+=== 接口描述
+该接口为iaas的GetResourceInfo的封装，不同之处在于该接口可不传入zone id，boss2会自动寻找resource所属的zone并返回结果。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetResourceInfo",
+    "resources": ["i-pbplunm9","rtr-2ryp17xt"], // [必须]资源id列表
+    "zone_mode": false, // [可选]用zone模式或region模式来匹配资源，默认为关闭，结果使用region模式
+    "zone": "delta"  // [可选]zoneid
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "resource_info_set": [
+      {
+         "status": "running",
+         "resource_name": "rtr-2ryp17xt",
+         "resource_type": "instance",
+         "resource_id": "i-pbplunm9",
+         "zone": "staging"
+      },
+      {
+         "status": "active",
+         "resource_name": "lb_vxnet_router1",
+         "resource_type": "router",
+         "resource_id": "rtr-2ryp17xt",
+         "zone": "staging"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetResourceInfoResponse"
+}
+----

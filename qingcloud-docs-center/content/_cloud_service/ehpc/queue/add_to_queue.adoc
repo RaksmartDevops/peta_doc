@@ -1,0 +1,44 @@
+
+// 节点添加到队列
+
+
+
+== 前提条件
+
+已创建 EHPC 集群。
+
+== 使用限制
+
+仅计算节点可添加到队列。
+
+== 新节点添加到队列
+
+. 登录{console_name}。
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，默认进入**集群管理**页面。
+. 点击已创建完成的 EHPC 集群 ID，进入集群详情页面。 选择**节点列表**页签。
++
+image::/images/cloud_service/compute/hpc/add_to_queue_1.png[add_to_queue_1]
+
+. 点击**添加节点**，在添加节点窗口，节点类型选择**计算节点**，选择**所属队列**。
++
+image::/images/cloud_service/compute/hpc/add_to_queue_2.png[add_to_queue_2,60%]
+
+. 配置完成相关参数，并点击**确定添加**，完成新节点添加到队列操作。
+
+== 节点移动到队列
+
+. 进入**节点列表**页面。
++
+image::/images/cloud_service/compute/hpc/add_to_queue_3.png[add_to_queue_3]
+
+. 在计算节点所在行，点击image:/images/cloud_service/compute/hpc/more_operation.png[more_operation,60%]，选择**移动节点到队列**。
++
+image::/images/cloud_service/compute/hpc/add_to_queue_4.png[add_to_queue_4]
+
+. 在弹出的移动节点到队列窗口中，选择移动到的队列。
++
+image::/images/cloud_service/compute/hpc/add_to_queue_5.png[add_to_queue_5,60%]
+
+. 点击**确认移动**，完成节点移动到队列的操作。
++
+若界面弹出移动节点到队列成功的提示信息，则说明移动节点到队列成功。

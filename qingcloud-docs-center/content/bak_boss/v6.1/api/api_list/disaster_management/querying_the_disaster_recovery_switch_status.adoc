@@ -1,0 +1,150 @@
+---
+title: 查询灾备切换状态（Boss2GetFailoverStatus）
+weight: 18
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetFailoverStatus
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于查询当前是否有灾备切换任务在运行。
+使用type参数指定灾备切换的类型，当前支持的类型为：
+
+* failover_global_ks: 全局KS服务切换
+* failback_global_ks: 全局KS服务回切
+* failover_global_pg: global pg切换
+* failback_global_pg: global pg回切
+* failover_recovery_pg: 灾备数据库切换
+* failback_recovery_pg: 灾备数据库回切
+
+接口返回数据为：
+
+|===
+| 字段 | 说明 | 备注
+
+| type
+| 灾备切换类型
+|
+
+| link_id
+| 灾备切换任务的link_id
+| 当无任务进行时可能为null
+
+| link_data
+| 如当前返回的link_id有对应数据，则在此处进行显示 +
+link_data数据请参考接口"查询灾备切换进度(Boss2GetFailoverProgress)"
+| 当无link_id时此处可能为null
+
+| status
+a|
+当前灾备切换的状态：
+
+* done: 已完成
+* failed: 失败
+* active: 进行中
+| 当status为active时，最好不要再次发起切换的操作，否则接口会报错禁止重复执行灾备切换
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetFailoverStatus",
+    "type": "failover_global_ks" // [必须]指定灾备切换类型,可选类型请参考备注
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "type": "failover_global_ks",
+   "link_id": "drl-iqoberrslnr",
+   "status": "done",
+   "ret_code": 0,
+   "action": "Boss2GetFailoverStatusResponse",
+   "link_data": {
+      "status": "done",
+      "submitter": "dsry1b-ks0",
+      "zone_id": "dsry1b",
+      "link_data": "{\"sender\":{\"lang\":\"en\",\"user_id\":\"system\",\"console_id\":\"system\",\"root_user_id\":\"system\",\"role\":\"global_admin\",\"privilege\":10,\"channel\":\"internal\"},\"disaster_zone\":\"dsry1b\",\"ks_master_zone\":\"dsry1a\",\"expires\":\"2020-06-16T15:05:10z\",\"pg\":\"global\",\"req_type\":\"FailoverGlobalKS\",\"action\":\"FailoverGlobalKS\"}",
+      "node_set": [
+         {
+            "status": "done",
+            "node_data": "true",
+            "node_idx": 0,
+            "link_id": "drl-iqoberrslnr",
+            "node_id": "drn-8268wfcwzhk",
+            "create_time": "2020-06-16T23:05:11",
+            "manager_id": "",
+            "owner": "system",
+            "status_time": "2020-06-16T23:05:21",
+            "node_name": "recover_pg"
+         },
+         {
+            "status": "done",
+            "node_data": "{\"status_time\":\"2020-06-16T23:05:24\",\"ks_master_zone\":\"dsry1a\"}",
+            "node_idx": 1,
+            "link_id": "drl-iqoberrslnr",
+            "node_id": "drn-asmy908kfjo",
+            "create_time": "2020-06-16T23:05:23",
+            "manager_id": "",
+            "owner": "system",
+            "status_time": "2020-06-16T23:05:25",
+            "node_name": "failover_global_ks"
+         },
+         {
+            "status": "done",
+            "node_data": "true",
+            "node_idx": 2,
+            "link_id": "drl-iqoberrslnr",
+            "node_id": "drn-dj3nll47vlh",
+            "create_time": "2020-06-16T23:05:25",
+            "manager_id": "",
+            "owner": "system",
+            "status_time": "2020-06-16T23:05:25",
+            "node_name": "set_zone_status"
+         }
+      ],
+      "op_name": "",
+      "link_id": "drl-iqoberrslnr",
+      "owner": "system",
+      "link_name": "FailoverGlobalKS",
+      "create_time": "2020-06-16T15:05:11Z",
+      "manager_id": "",
+      "msg": "{\"action\":\"TaskFailoverGlobalKSResponse\",\"ks_master_zone\":\"dsry1a\",\"link_id\":\"drl-iqoberrslnr\",\"pg\":[\"dsry1b-ks0\",\"dsry1a-ks1\",\"dsry1a-ks0\"],\"ret_code\":0}",
+      "status_time": "2020-06-16T15:05:25Z",
+      "link_type": "ks",
+      "failover_conf": {
+         "disaster_zone": "dsry1b",
+         "ks_master_zone": "dsry1a",
+         "expires": "2020-06-16T15:05:10z",
+         "pg": "global",
+         "req_type": "FailoverGlobalKS",
+         "action": "FailoverGlobalKS"
+      }
+   }
+}
+----

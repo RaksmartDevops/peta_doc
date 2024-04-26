@@ -1,0 +1,32 @@
+---
+title: 直接下载报表（Boss2DownloadReport）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/download/report/
+
+=== Method
+GET
+
+=== 接口描述
+本接口通过GET方式来下载报表文件，可在url中提供token和encoding参数，在新窗口中打开链接，完成报表的下载。
+拼接的下载链接示例为：http://boss2.testing.com/download/report?token=8a4a2153-4310-4df5-926a-683f954e9c5f&encoding=gbk
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+

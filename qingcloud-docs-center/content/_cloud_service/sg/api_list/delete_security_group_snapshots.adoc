@@ -1,0 +1,66 @@
+
+//title: "DeleteSecurityGroupSnapshots"
+
+
+删除安全组备份。
+
+== 请求参数
+
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| security_group_snapshots.n
+| String
+| 安全组规则ID
+| Yes
+
+| zone
+| String
+| 区域 ID，注意要小写
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作
+
+| security_group_snapshots
+| Array
+| 成功删除的安全组备份ID列表
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+*请求示例*：
+
+[,json]
+----
+https://api.qingcloud.com/iaas/?action=DeleteSecurityGroupSnapshots
+&security_group_snapshots.1=sgs-wx55xhix
+&COMMON_PARAMS
+----
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"DeleteSecurityGroupSnapshotsResponse",
+  "security_group_snapshots":[
+    "sgs-wx55xhix"
+  ],
+  "ret_code":0
+}
+----
+

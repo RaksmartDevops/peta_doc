@@ -1,0 +1,120 @@
+---
+title: "配置堡垒机服务"
+description: 如何配置VPC网络中业务的堡垒机服务
+draft: false
+weight: 40
+keywords: 配置堡垒机服务, 堡垒机服务
+
+---
+
+
+
+:experimental:
+
+堡垒机服务需在**DASUSM**进行资产和策略配置才可正常使用。且堡垒机实例与防护主机需处于同一网络中，若防护主机与堡垒机实例主机不在同一网络，两者需绑定到同一VPC网络中。本章节以绑定到VPC网络中的场景为例。
+
+该场景下堡垒机主机（VM）创建时加入到基础网络，堡垒机实例部署后需绑定到VPC，实现堡垒机主机和VPC内的待防护主机通信且对VPC内的主机进行安全防护。
+
+image::/images/cloud_service/security/srp/asm2.png[,50%]
+
+== 前提条件
+
+* 已完成堡垒机实例部署并能点击**控制台**进入**DASUSM**平台。
+* 已获取堡垒机实例主机IP地址、VPC网络地址和VPC网络中堡垒机防护主机 IP地址。
+
+== 操作步骤
+
+**添加堡垒机IP地址**
+
+. 进入**安全资源池**页面。
+. 在左侧导航栏选择**堡垒机**。
++
+进入**堡垒机**页面。
+
+. 在目标堡垒机实例**操作**一栏点击**控制台**，进入**DASUSM**平台。
+. 选择**资产** > **主机管理**，点击**新建主机**。
+. 根据提示填写参数信息，并点击**创建主机**。
++
+主机IP填写堡垒机防护主机IP地址。
++
+image::/images/cloud_service/security/srp/asm00.png[图]
++
+**创建防护主机账户**
++
+. 进入防护主机云服务器详情页面，在**基本属性**模块，点击云服务器下拉菜单，点击**重置登录密码**，重置主机的账户名和密码。
++
+image::/images/cloud_service/security/srp/asm3.png[重置登录密码]
+
+. 选择**资产** > **主机管理**，点击主机IP地址，进入**主机信息**页面。
++
+image::/images/cloud_service/security/srp/asm4.png[图]
+
+. 在**主机账户**页签，点击**主机账户**，点击**添加主机账户**。
++
+image::/images/cloud_service/security/srp/asm5.png[图]
+
+. 根据提示信息填写参数，并点击**验证**。
++
+image::/images/cloud_service/security/srp/asm6.png[图]
+
+. 验证成功后，点击**创建主机账户**。
++
+**创建普通管理员**
++
+. 选择**用户** > **用户管理**，点击**新建用户**。
+. 根据提示信息输入参数，点击**创建用户**。并记录用户名和密码。
++
+image::/images/cloud_service/security/srp/asm7.png[图]
+
+. 退出**DASUSM**系统并进入堡垒机实例控制台登录页面。输入上一步骤的用户名和密码并点击登录普通管理员账号，完成初次登录密码修改并登录。
++
+image::/images/cloud_service/security/srp/asm8.png[图]
++
+**申请对主机的维护权限**
++
+
+. 选择**工单** > **我的工单**，点击**新建工单**。
++
+image::/images/cloud_service/security/srp/asm9.png[图]
+
+. 点击**添加资产** > **添加主机账户**。
++
+image::/images/cloud_service/security/srp/asm10.png[图]
+
+. 选择创建的主机账户，并点击**添加**。
++
+image::/images/cloud_service/security/srp/asm11.png[图]
+
+. 在目标堡垒机实例**操作**一栏点击**控制台**，进入**DASUSM**平台。
+. 选择**工单** > **工单审批**，勾选待审批工单，点击**批准**，显示成功后退出管理员账户。
++
+image::/images/cloud_service/security/srp/asm12.png[图]
+
+. 登录创建的普通管理员账户。
+. （可选）选择**授权** > **运维规则**，点击**新建运维规则**，添加对应的用户和资产。点击**创建运维规则**并启用。
++
+____
+若工单审核批准过后**工单信息**显示 "`资产不支持添加共享账号`"，或者创建的普通账户下menu:运维[主机运维]页面下显示"`暂无主机可运维`"时需执行此步骤。
+____
++
+image::/images/cloud_service/security/srp/asm13.png[图]
++
+image::/images/cloud_service/security/srp/asm14.png[图]
++
+image::/images/cloud_service/security/srp/asm15.png[图]
+
+. 查看选择**运维** > **主机运维**，在主机**登录**一栏点击图标，登录主机并对主机进行维护。
++
+image::/images/cloud_service/security/srp/asm16.png[图]
++
+image::/images/cloud_service/security/srp/asm17.png[图]
+
+. 在目标堡垒机实例**操作**一栏点击**控制台**，进入**DASUSM**平台。
+. 选择**审计** > **会话审计**，在对应主机所在行**操作**一栏点击**播放**。
++
+可查看普通管理员账户的所有操作。
++
+image::/images/cloud_service/security/srp/asm18.png[图]
++
+image::/images/cloud_service/security/srp/asm19.png[图]
+

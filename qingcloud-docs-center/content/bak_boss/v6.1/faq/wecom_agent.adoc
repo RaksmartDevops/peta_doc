@@ -1,0 +1,44 @@
+---
+title: "如何获取企业微信应用信息"
+weight: 2
+---
+
+BOSS 支持将系统相关信息通过企业微信应用的方式通知到相关人员或群组。用户可参考本文，获取企业微信应用的信息，然后在 BOSS 中添加该通知方式。添加企业微信应用的通知方式可参考link:../../manual/system_management/system_setting/notification_group/#_企业微信应用[企业微信应用通知方式]。
+
+== 基本信息查询
+. 使用管理员账号登录企业微信终端。
+
+. 点击图像，在弹出的菜单栏中点击**管理企业**。
++
+image::/images/boss/manual/system_mgt/notification_group_other_6.png[notification_group_other_6,40%]
+
+. 进入企业微信管理页面。点击**我的企业**，默认进入**企业信息**页面，记录**企业ID**。
++
+image::/images/boss/manual/system_mgt/notification_group_other_7.png[notification_group_other_7,80%]
+
+. 在企业微信管理页面，点击**应用管理**，默认进入**应用**列表页面。
+
+. 在**应用**列表页面，点击待查看的应用。这里以自建的 BOSS 告警通知应用为例。
++
+image::/images/boss/manual/system_mgt/notification_group_other_8.png[notification_group_other_8,80%]
+
+. 进入应用详情页面，记录** AgentId**，并点击查看** Secret **信息。
++
+image::/images/boss/manual/system_mgt/notification_group_other_9.png[notification_group_other_9,80%]
+
+. 点击**通讯录**，进入**通讯录**页面。查找目标部门，点击目标部门的更多操作，记录**部门ID**，如下图所示。
++
+image::/images/boss/manual/system_mgt/notification_group_other_10.png[notification_group_other_10,80%]
+
+. 在**通讯录**页面，点击目标成员，进入**成员详情**页面，记录**帐号**，如下图所示。
++
+image::/images/boss/manual/system_mgt/notification_group_other_11.png[notification_group_other_11,80%]
+
+. 在**通讯录**页面，点击**标签**，进入标签列表页面，点击目标标签后，点击**标签详情**，记录**标签ID**。
++
+image::/images/boss/manual/system_mgt/notification_group_other_12.png[notification_group_other_12,80%]
+
+== API 接口查询
+
+企业微信的群聊 ID，需要通过 API 接口获取。详情可参考link:https://developer.work.weixin.qq.com/document/path/90244[应用发送消息到群聊会话]。
+

@@ -1,0 +1,26 @@
+---
+title: 边界路由器
+linkTitle: 边界路由器
+weight: 60
+description: 边界路由器是用于连接不同网络的路由器，云平台的边界路由器可以连接多种不同的网络场景。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是边界路由器
+            url: intro/border_router/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建边界路由器
+            url: manual/border_user_guide/#_创建边界路由器
+          - title: 关联边界路由器
+            url: manual/border_user_guide/#_关联边界路由器
+          - titile: 配置边界路由器静态路由
+            url: manual/border_user_guide/#_配置边界路由器静态路由
+linkkey: network_border_router_guide
+---

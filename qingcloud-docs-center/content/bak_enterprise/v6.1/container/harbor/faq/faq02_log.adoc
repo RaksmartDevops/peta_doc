@@ -1,0 +1,40 @@
+---
+title: "如何查看日志"
+draft: false
+description: 如何查看 Harbor 镜像日志。
+keywords: Harbor, 私有镜像仓库, 镜像仓库, 日志
+weight: 2
+---
+== Harbor 1.7.6 及以下版本
+. 登录**日志节点**的 VNC 。
++
+
+include::../../../../../_components/note.adoc[]
+
+登录默认用户名：*ubuntu* ，密码：*p12cHANgepwD*。
+
+include::../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/container/harbor/faq02_lognode.png[faq02_lognode]
+
++
+. 进入到 `/var/log/harbor`  目录下查看。
+
++
+image::/images/cloud_service/container/harbor/faq02_login_vnc.png[faq02_login_vnc]
+
+== Harbor 1.9.3 及以上版本
+
+
+在浏览器输入：`http://<日志节点 IP>` 即可查看，如图所示：
+
+
+image::/images/cloud_service/container/harbor/harbor-use-log-file-online.png[]
+
+include::../../../../../_components/note.adoc[]
+
+由于资源主机所在网络无法直接与外网连通，所以需要配置 link:/v6.1/network/vpc/manual/vpn/use_openvpn/[VPN] 或配置 VPC 端口转发。
+
+include::../../../../../_components/table_footer.adoc[]
+

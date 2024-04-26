@@ -1,0 +1,39 @@
+---
+title: "安全资源池"
+linkTitle: "安全资源池"
+weight: 50
+description: 安全资源池以资产为视角提供不同种类的安全能力，可提供涵盖网络层、主机层、应用层、数据层的整体安全防护能力，对云上资产进行全方位防护，快速实现等保合规建设。
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是安全资源池
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 应用场景
+            url: intro/application/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+        - title: 操作指南
+          children:
+            - title: 日志审计
+              url: ahvlog/create/
+            - title: 云防火墙
+              url: ahvngfw/create/
+            - title: Web 应用防火墙
+              url: ahvwaf/create/
+            - title: 堡垒机
+              url: ahvusm/create/
+            - title: 漏洞扫描
+              url: ahvras/create/
+            - title: 数据库审计
+              url: ahvdb/create/
+            - title: 主机安全
+              url: ahvedr/create/
+
+---

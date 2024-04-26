@@ -1,0 +1,51 @@
+---
+title: 删除销售部门（Boss2DeleteSalesDept）
+weight: 30
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeleteSalesDept
+
+=== Method
+POST
+
+=== 接口描述
+删除指定的销售部门。
+注意：如销售部门中仍有销售人员则无法进行删除，需先将销售人员移动到其他部门后再进行删除。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DeleteSalesDept",
+    "sales_dept_id": 2 // [必须]指定需要删除的销售部门id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2DeleteSalesDeptResponse"
+}
+----

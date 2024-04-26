@@ -1,0 +1,20 @@
+---
+title: "SaaS 应用入门指南"
+description: 创建 SaaS 应用的主要流程。
+draft: false
+---
+
+== 基本步骤
+
+AppCenter 创建一个 SaaS 应用的主要流程，如下所示。
+
+
+. link:../../saas-developer-guide/account/get_flow/[应用与平台账户对接]
+. link:../../saas-developer-guide/interface/spi_overview/[SPI 接口开发]
+. link:../../saas-developer-guide/release/#_创建应用[创建应用]
++
+* link:../../saas-developer-guide/release/#_设置应用信息[设置应用信息]
+* link:../../saas-developer-guide/release/#_设置应用权限[设置应用权限]
+
+. link:../../saas-developer-guide/release/#_提交应用审核[提交应用审核]
+. link:../../saas-developer-guide/release/#_发布上架应用[发布应用上架]

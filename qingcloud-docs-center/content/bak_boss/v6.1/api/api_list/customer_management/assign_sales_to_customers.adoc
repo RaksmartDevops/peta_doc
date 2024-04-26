@@ -1,0 +1,53 @@
+---
+title: 为客户分配销售（Boss2TransferUserSales）
+weight: 38
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TransferUserSales
+
+=== Method
+POST
+
+=== 接口描述
+为客户分配销售人员。将会返回客户总数和分配成功的数量。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2TransferUserSales",
+    "sales_id": 123, // [必须]指定销售id，如需要给客户删除销售，则可以将该值设置为：99999999
+    "users": ["usr-xxxxx", "usr-xxxx"] // [必须]指定需要分配给该销售的客户id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "success_count": 2,
+   "total_count": 2,
+   "ret_code": 0,
+   "action": "Boss2TransferUserSalesResponse"
+}
+----

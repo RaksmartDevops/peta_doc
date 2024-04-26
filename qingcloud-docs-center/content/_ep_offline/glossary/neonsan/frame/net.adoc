@@ -1,0 +1,18 @@
+// 网络架构
+
+
+[cols="1,3a",options="header"]
+|===
+|术语 |说明
+|业务网络（前端网络）
+|QBD 或 iSCSI 等客户端与存储节点间的网络，负责将上层业务的 IO 分发到具体的存储节点上。英文简称，data_port。
+
+|管理网络
+|{qingstor_neon} GUI 管理平台或云平台等与 Zookeeper、管理节点间的网络，通过查询ZK找到当前集群主管理节点，将 API 请求分发到主管理节点。英文简称，mgmt_port。
+
+|存储网络
+|{qingstor_neon} 存储节点间副本或纠删码数据同步的网络。英文简称，repl_port。
+
+|网关网络
+|{qingstor_neon} 异步复制功能，主站点集群与备站点集群进行数据异步复制的网络。英文简称，mrgw_port。
+|===

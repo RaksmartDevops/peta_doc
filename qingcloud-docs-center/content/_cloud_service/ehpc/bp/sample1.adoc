@@ -1,0 +1,107 @@
+// 使用界面提交并运行作业"
+
+本章节以运行 Lammps 软件应用程序为例，详细介绍提交作业、查看作业结果的具体流程。
+
+== 作业文件说明
+
+Lammps 软件应用过程中，需要用到的作业文件包括：
+
+* 计算文件，文件格式为 ``*in``，或 ``.lj``。
+* 其他相关文件，文件格式为``.restart``，``\__airebo``，``__lcbop``等。
+
+在本次示例中仅使用 ``.lj`` 计算文件即可，文件名为 ``ball.lj``，用户可在link:#_附录[附录]中查看或下载源码。
+
+== 操作步骤
+
+. link:../../quick-start/create_ehpc[创建 EHPC 集群]。
+. link:../../manual/epfs/epfs_details/#_上传删除本地文件[将示例代码 ball.lj 上传至集群文件存储的指定目录下]。
+
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，进入**集群管理**页面。点击**提交作业**，进入提交作业页面。
+
+. 用户根据实际情况，选择相应的软件及版本。此处选择 lammps 软件。
++
+include::../../../_components/note.adoc[]
+此处勾选 lammps 软件，版本号选择最新即可。
+include::../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/hpc/sample_2.png[]
+
+. **参数配置**项，**作业执行命令**选择**自定义参数提交**，点击**选择/上传 .lj 文件**，在弹出的**选择命令文件**窗口中，选择待执行的命令文件，并点击**确定**，``.lj`` 文件会自动写入。
++
+include::../../../_components/note.adoc[]
+Lammps 软件，平台做了内置的作业命令，不需要用户再提交其他命令文件，这里只需要上传计算执行文件即可。与计算执行文件相关的其他文件，需要放在共享存储的同一个目录文件夹下。
+include::../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/hpc/sample_3.png[sample_3]
+
+. 选择资源后，点击**提交作业**，系统将自动分配计算任务到计算节点，进入作业状态，等待作业运行结束即可。
+
+. 在作业列表中，点击指定作业右侧的**详情**。
++
+image::/images/cloud_service/compute/hpc/sample_4.png[]
+
+. 进入相应作业详细信息页面，选择**输出日志**页签，即可查看当前作业的**标准输出日志**。
++
+image::/images/cloud_service/compute/hpc/sample_5.png[]
+
+== 附录
+
+本次示例中使用到的 Lammps 作业的计算文件源码 ball.lj 内容如下，可从link:https://yunify-qingcloud-docs.pek3b.qingstor.com/code/ball.lj.zip[此处]下载。
+
+[,lj]
+----
+#原子数量
+variable npart  equal 800
+#体系单位lj
+units    lj
+#二维体系
+dimension 3
+#原子类型atomic
+atom_style  atomic
+#周期性边界
+boundary        p p p
+#近邻参数
+neighbor        6   bin
+#邻居列表更新频率
+neigh_modify    every 1 delay 0 check yes
+#  box 尺寸
+region box block -20 20 -20 20 -20 20
+#在 box 内生成 2 种原子
+create_box 2 box
+#转为二维计算
+#fix 3d  all enforce3d
+#在 box 内随机生成 800 个原子，原子类型为1
+create_atoms 1 random ${npart} 324523 box
+#随机生成 1 个类型为 2 的原子
+create_atoms 2 random 1 32524523 box
+#原子质量
+mass   1  1
+mass   2  5
+#设置力场参数， soft 势
+pair_style soft      1.0
+pair_coeff 1 1 10.0  1.0
+pair_coeff 1 2 10.0  3.0
+pair_coeff 2 2 10.0  3.0
+#温度初始化
+velocity all create 2.0  34234123 dist gaussian
+#能量最小化，防止原子重叠
+minimize 1e-4 1e-4 1000 1000
+#步数初始化为0
+reset_timestep 0
+#输出设置
+#dump        img all atom  10000 atom.xyz
+# nve 系综
+fix integrator all nve
+#热力学输出
+thermo_style custom step temp  ke pe
+thermo    100
+#模拟步长
+timestep  0.001
+#启动模拟
+#输出设置
+dump        DUMPFILE all xyz 100 atom.xyz
+run    500000
+----
+
+
+

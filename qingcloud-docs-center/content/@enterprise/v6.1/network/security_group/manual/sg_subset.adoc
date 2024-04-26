@@ -1,0 +1,9 @@
+---
+title: 管理规则子集
+draft: false
+weight: 40
+keyword: 云服务器, 安全，安全组，规则子集
+linkkey: security_security_group_rule_subset_guide
+---
+
+include::../../../../../_cloud_service/sg/04_sub_rule.adoc[]

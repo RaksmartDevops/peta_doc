@@ -1,0 +1,14 @@
+ifeval::["{file_output_type}" != "pdf"]
+[.admon.attention,cols="a"]
+!===
+! 注意
+
+!
+endif::[]
+ifeval::["{file_output_type}" == "pdf"]
+
++++<div class="admon attention">+++
++++<div id="_注意">注意</div>+++
++++<div class="paragraph">+++
+
+endif::[]

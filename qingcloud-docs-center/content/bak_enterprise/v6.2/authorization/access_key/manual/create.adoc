@@ -1,0 +1,48 @@
+---
+title: "创建 API 密钥"
+description: API 密钥（Access Key）是调用 API 访问云服务资源的安全口令，包括 accesss_key_id（API 密钥 ID）和 secret_access_key（API 密钥的私钥）。
+keywords: API 密钥
+weight: 10
+draft: false
+---
+
+本文介绍如何创建并下载 API 密钥。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 选择**产品与服务** > *访问与授权* > *API 密钥*，进入 **API 密钥**页面。
++
+也可以通过将鼠标移动至右上方的用户名，在下拉列表中选择 **API 密钥**，进入 **API 密钥**页面。
+. 点击**创建**，弹出**创建 API 密钥**对话框。
++
+image::/images/cloud_service/authorization/account/access_key_01.png[,60%]
+. 设置 API 密钥的**名称**和**描述信息**。
+. （可选）设置 API 密钥的 **IP 白名单**。
++
+默认所有 IP 地址都可使用此密钥调用 API，设置 IP 白名单后只有白名单范围内的 IP 地址才可使用此密钥。
++
+
+include::../../../../../_components/note.adoc[]
+* 可以在创建时设置，也可以根据需要在创建完成后再设置。
+
+* 白名单支持三种格式：IP 地址、IP 段和 IP 地址范围。多个 IP 请使用换行符进行分隔，例如：
++
+192.168.1.1 +
+192.168.2.0/24 +
+192.168.3.1-192.168.3.7
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 参数配置完成后，点击**提交**，生成 API 密钥并弹出**下载 API 密钥的私钥**对话框。
++
+image::/images/cloud_service/authorization/account/access_key_02.png[,60%]
++
+
+include::../../../../../_components/attention.adoc[]
+该下载链接仅保留 10 分钟，且这是获取 API 私钥的唯一途径。为了保障安全，请及时下载并妥善保管。
+
+include::../../../../../_components/table_footer.adoc[]
+. 点击**下载**，下载 API 密钥的私钥。
++
+您可以在下载的 .csv 文件中查看 accesss_key_id（API 密钥 ID）和 secret_access_key（API 密钥的私钥）。

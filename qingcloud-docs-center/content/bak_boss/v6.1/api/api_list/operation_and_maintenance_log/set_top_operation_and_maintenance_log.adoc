@@ -1,0 +1,75 @@
+---
+title: 置顶运维日志（Boss2TopOperationalLog）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TopOperationalLog
+
+=== Method
+POST
+
+=== 接口描述
+此接口用于置顶运维日志
+请求参数说明
+
+|===
+| 字段 | 类型 | 是否必须 | 说明 | 备注
+
+| action
+| string
+| 是
+| Boss2TopOperationalLog
+|
+
+| operational_log_id
+| integer
+| 是
+| 需要置顶的日志id
+|
+
+| top_weights
+| integer
+| 是
+| 置顶权重
+| 目前置顶都传1，取消置顶就传0
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2TopOperationalLog",
+   "operational_log_id": 2,
+   "top_weights": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "operational_log_id": 2,
+   "ret_code": 0,
+   "action": "Boss2TopOperationalLogResponse"
+}
+----

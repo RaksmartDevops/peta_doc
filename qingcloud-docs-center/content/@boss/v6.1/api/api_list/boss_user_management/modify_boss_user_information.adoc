@@ -1,0 +1,68 @@
+---
+title: 修改BOSS用户信息（Boss2ModifyBossUserAttributes）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyBossUserAttributes
+
+=== Method
+POST
+
+=== 接口描述
+修改用户信息。
+该接口仍在完善中，会加入更多的配置项目。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyBossUserAttributes",
+    "id": 123, // [必须]用户id
+    "username": "测试用户", // 修改用户名称，该名称为用户的真实名称，用于界面显示使用
+    "phone": "1111111", // 用户手机号
+    "status": "enabled", // 启用或禁用用户，enabled: 启用 disabled: 禁用
+    "lang": "en", // 修改用户语言，目前支持：zh-cn: 中文简体  en: 英文
+    "remarks": "测试修改备注", // 修改用户备注
+    "roles": ["c341ccf8-870a-40fc-b2c5-99dbe9c10fac", "0faed268-c707-448c-8a7a-6b52c92b5c981"] //[超管用户]在修改用户信息的时候直接修改用户的角色，设置为空列表将会清空所有角色
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 8,
+   "ret_code": 0,
+   "action": "Boss2ModifyBossUserAttributesResponse"
+}
+----

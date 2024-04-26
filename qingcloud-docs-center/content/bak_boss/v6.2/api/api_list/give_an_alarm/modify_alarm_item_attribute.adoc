@@ -1,0 +1,52 @@
+---
+title: 修改告警项属性（Boss2ModifyAlertPattern）
+weight: 18
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAlertPattern
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于修改告警项相关的属性。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertPatterns",
+    "id": "8a459903-fb72-4830-a453-143a6c97782d", // [必须]指定告警项的id
+    "level": "CRITICAL" // 可修改告警项的级别
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": "8a459903-fb72-4830-a453-143a6c97782d",
+   "ret_code": 0,
+   "action": "Boss2ModifyAlertPatternResponse"
+}
+----

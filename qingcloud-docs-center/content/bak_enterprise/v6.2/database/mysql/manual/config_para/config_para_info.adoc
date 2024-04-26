@@ -1,0 +1,643 @@
+---
+title: "参数介绍"
+description: 本小节主要介绍 MySQL Plus 常用配置项。
+keywords: 数据库,MySQL PLus,关系型数据库,MySQL,常用配置项,
+weight: 10
+collapsible: false
+draft: false
+---
+MySQL Plus 支持对常用配置参数的管理。
+
+本小节主要介绍 MySQL Plus 各配置参数的含义。
+
+== 数据备份参数
+
+[cols="2,2,4"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| 启用对象存储服务
+| false 或 true
+a| 表示是否启用对象存储服务。默认为 false。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+集群备份功能需要先启用对象存储服务。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Bucket_name
+| -
+| 表示对象存储服务 Bucket 名称。可选择已创建桶。
+
+| Access_key_id
+| -
+| 表示集群备份 API 密钥 ID。可选择已创建密钥。
+
+| Logical_backup_exec_timeout 
+| 7200~43200 
+a| 表示逻辑备份超时时间。单位秒。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+* 配置逻辑备份最大执行时间（比如 5 小时），当超过该时间，终止对应备份进程，以此保证不影响客户高峰期业务。
+* 适用于**金融版** MySQL Plus 和**高可用版** MySQL Plus。 
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+
+== 高可用参数
+
+[cols="2,2,4"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| Load_read_requests_to_nodes
+a| * All
+* All_exclude_master
+* Maininstance_exclude_master
+* Readinstance
+a| 表示数据库是否将读请求负载到节点，默认为 `All_exclude_master`，此时读请求只负载到 Follower 节点。
+
+* ``All``表示读请求负载到所有节点。
+* ``All_exclude_master`` 表示负载到除 Master 外的其他节点。
+* ``Maininstance``表示负载到所有主实例。
+* ``Maininstance_exclude_master``表示负载到除 Master 外的其他主实例。
+* ``Readinstance`` 表示负载到所有只读实例。
+
+| Not_load_read_to_much_delay_slave
+| 0～172800
+a| 默认为 0 ，忽略该机制。
+
+* 若设置大于 0，则读 vip 新请求不会分发到延迟秒数大于该值的从节点。
+* 若 *Load_read_requests_to_nodes* 中的所有从节点延迟都满足该条件且剔除了 master，此时忽略该机制。
+
+| Election-timeout
+a| * 10000
+* 20000
+* 30000
+a| 表示高可用组件选举超时时间。 +
+单位为毫秒。默认为 20000ms。
+
+| Semi-sync-timeout-for-two-nodes
+| 1000～10000
+a| 表示半同步超时参数，针对主实例数为 2 的集群有效。
+
+* 单位是毫秒。
+* 默认为10000ms。
+|===
+
+== 日志参数
+
+[cols="2,2,4"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| Audit_log_policy
+a| * ALL
+* LOGINS
+* QUERIES
+* NONE
+a| 表示写审计日志的策略。
+
+* 可选择 `ALLL`、`OGINS`、`QUERIES` 和 `NONE` 四种策略。
+* 默认为 `NONE`，此时不会记录审计日志。
+
+| Audit_log_format
+a| * OLD
+* NEW
+* JSON
+a| 表示审计日志文件格式。
+
+* 可选择 `OLD`、`NEW` 和 `JSON` 三种格式。
+* `OLD` 和 `NEW` 分别为旧的和新的 XML 格式。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Audit_log_rotate_on_size
+| 20971520 ~ 2147483648
+a| 表示单个审计日志文件大小。
+
+* 默认为 `100 MB`，范围为 `20 MB` ~ `2 GB`。
+* 若该参数不是 4096 的整数倍，将下调到 4096 的整数倍。
+
+| Audit_log_rotations
+| 6~48
+| 表示保留审计日志文件数量。默认为 `6`，支持最多保留 `48` 个文件。
+
+| Expire_logs_days
+| 2~14
+| 表示 binlog 日志文件保留时间，单位为天。默认为 7 天。
+
+| Binlog_cache_size
+| 4096~3221225472
+| 表示 binlog 事务语句日志缓存空间大小。默认为 32768。
+
+| Binlog_stmt_cache_size
+| 4096~3221225472
+| 表示 binlog 非事务语句日志缓存空间大小。默认为 32768。
+
+| Sync_relay_log
+| 0~
+a| 表示复制延迟。
+
+* 若设置为为 0，表示 MySQL 服务不会对中继日志文件进行同步操作，依赖于操作系统来定期进行同步。
+* 若设置为为 N，表示每 N 个 sync_relay_log 事件后，对中继日志文件执行一次同步。
+* 默认为 1000。
+
+| Sync_relay_log_info
+| 0~
+a| 表示日志信息复制延迟。
+
+* 若设置为为 0，表示 MySQL 服务不会对 relay-log.info 文件进行同步操作，依赖于操作系统来定期进行同步。
+* 若设置为为 N，表示每执行 N 个事务后将信息使用 fdatasync() 同步到 relay-log.info 文件。
+* 默认为 1000。
+
+| Log_slave_updates 
+| 0 
+a| 表示从、主节点间复制数据操作是否同步到 binlog 日志。0 表示否，1 表示是，默认为 0。
+
+include::../../../../../../_components/note_in_table.adoc[]
+对于 MySQL 5.6 内核版本，此参数始终开启，修改无效。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+
+== 性能调优参数
+
+[cols="2,2,4"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| 端口
+| 3306~8000
+a| 表示数据库端口。默认为3306。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Group_concat_max_len
+| 4~ 4294967295
+| 表示拼接字符串最大长度。默认为 1024。
+
+| Default_time_zone
+| -
+| 表示默认工作时区。默认为东八区。
+
+| Innodb_buffer_pool_size
+| -1~
+a| 无论设置的值多少，最终都会上调到 innodb_buffer_pool_chunk_size * innodb_buffer_pool_instances 的整数倍。
+
+* 若该值为 -1，则将该参数设置为内存的 60%。 
+* 若该值过大，最多只取内存的 80%。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Character_set_server
+a| 
+
+* utf8mb4
+* latin1
+* utf8
+* utf16
+* utf32
+a| 表示服务器安装时指定的默认字符集设定，默认值为 utf8mb4。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Collation_server 
+a| 
+
+* general_ci
+* bin 
+
+a| 表示服务器的默认排序规则。
+
+该参数仅展示后缀，实际值为 Character_set_server 值与后缀通过“_”拼接。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Interactive_timeout
+| 1~2147483
+| 表示服务器关闭交互式连接前等待的时间，单位为秒。默认为 3600s。
+
+| Back_log
+| 50~4096
+a| 表示 MySQL 缓存的尚未处理的连接数量。默认为 2048。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Ft_min_word_len
+| 1~4
+a| 表示最小索引长度。默认为 4。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Key_buffer_size
+| 1～1310720
+| 表示指定索引缓冲区的大小。 默认为 33554432。
+
+
+| Log_bin_trust_function_creators
+| 0～1
+a| 表示控制是否可以信任存储函数创建者，不会创建写入二进制日志引起不安全事件的存储函数。 只有当二进制日志启用后才会起作用。
+
+* 若设置为 0（默认值），用户不得创建或修改存储函数，除非用户同时具有 `CREATE ROUTINE或ALTER ROUTINE` 特权加 ``SUPER`` 权限。设置为 0 还强制使用 `DETERMINISTIC` 特性或 `READS SQL DATA` 或 `NO SQL` 特性声明函数的限制。
+* 若设置为 1，MySQL 不会对创建存储函数实施限制。
+
+| Long_query_time
+| 0~300
+| 表示慢查询日志时间，单位为秒。默认值为 3s。
+
+| Lower_case_table_names
+| 0～1
+a| 表示大小写敏感参数。默认为 0。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+使用 MySQL 8.0 内核版本时，仅在创建集群时可修改该参数。集群创建完成后，修改该参数不生效。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Max_connections
+a| * 0
+* 1024~16384
+a| 表示同时处理请求的最大数量。
+
+* 默认值为 0，表示根据集群初始化内存规格动态设定最大请求数。
+* 1G/2G/4G 内存规格默认最大连接数为 1024。
+* 8G/16G/32G 内存规格默认最大连接数为 2048。
+* 64G/128G/256G 内存规格默认最大连接数为 4096。
+
+| Max_connect_errors
+| 1~ 4294967295
+| 表示最大连接错误次数。该参数是 MySQL 中与安全有关的计数器值，负责阻止过多尝试失败的客户端以防止暴力破解密码。 +
+默认为 655360。
+
+| Query_cache_size
+| 0~
+| 表示查询返回缓存空间大小。 默认为 0。
+
+| Query_cache_type
+| 关闭或开启
+| 表示是否开启查询缓存功能。默认为 `关闭`。
+
+| Sync_master_info
+| 0~
+a| * 若设置为 1 表示每个 EVENT 都要执行刷盘操作（注意不是每个事务!）。
+* 若设置为为 0，表示有操作系统来决定何时刷盘。
+* 默认为 1000。
+
+| Table_open_cache
+| 512~10240
+| 表示文件描述符的缓存大小。默认为 2000。
+
+| Thread_cache_size
+| 0~16384
+| 表示线程缓存大小。默认为 128。
+
+
+| Wait_timeout
+| 1~2147483
+| 表示等待超时时间，单位为秒。默认为 3600。
+
+| Innodb_ft_max_token_size
+| 10~84
+a| 表示 InnoDB 搜索索引最大长度。默认为 84。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Innodb_ft_min_token_size
+| 0~16
+a| 表示 InnoDB 搜索索引最小长度。默认为 3。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Sql_mode
+a| * ONLY_FULL_GROUP_BY
+* STRICT_TRANS_TABLES
+* NO_ENGINE_SUBSTITUTION
+* NO_ZERO_IN_DATE
+* NO_ZERO_DAT
+* ERROR_FOR_DIVISION_BY_ZERO
+* PIPES_AS_CONCAT
+* IGNORE_SPACE
+* NULL
+a| 表示 SQL 模式。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Slave_rows_search_algorithms
+| 512~10240
+| 控制如何在行中搜索匹配项。使用 Hash Scan 后，设置后会立即对所有复制通道生效。可设置为 INDEX_SCAN、TABLE_SCAN、HASH_SCAN 中任意两个值组合，以逗号分隔。 +
+默认值为 INDEX_SCAN，TABLE_SCAN。
+
+| Max_allowed_packet
+| 1024~1073741824
+a| 表示限制 Server 接受的数据包大小。默认为 1073741824。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+若需修改该参数，须保证 `slave_pending_jobs_size_max` 值大于等于该参数值，否则可能会导致主从复制异常。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Slave_parallel_workers
+| 0~1024
+a| 表示多线程并行复制。默认为 8。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Slave_pending_jobs_size_max
+| 1024~1073741824
+a| 表示多线程复制最大工作大小。默认为 1073741824。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Event_scheduler
+a| * 关闭
+* 开启
+* 已禁用
+| 表示是否开启动态控制事件调度器功能。默认为``关闭``。
+
+| Innodb_print_all_deadlocks
+| 0、1
+| 表示是否开启死锁记录功能。默认值为 0，表示关闭。
+
+| Skip-name-resolve
+| 0、1
+a| 表示是否禁用 DNS 解析功能。默认为 0，表示关闭。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Autocommit
+| 0、1
+| 表示是否开启自动提交功能。默认为1，表示自动提交。
+
+| Transaction_isolation
+| read-uncommitted、read-committed、repeatable-read、serializable
+a| 表示隔离级别。
+
+* ``read-uncommitted``表示读未提交，允许脏读。
+* ``read-committed``（默认值）表示读提交，不允许脏读，但允许不可重复读。
+* ``repeatable-read``表示可重复读，不允许脏读、不可重复读，但允许幻读。
+* ``serializable``表示串行化，以上都不允许。
+
+| Innodb_log_buffer_size
+| 1048576~ 4294967295
+a| 表示 InnoDB 的索引和数据块缓存大小。 默认为 16777216。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Innodb_log_file_size
+| 4194304~ 5497558138
+a| 表示 InnoDB 的事物日志文件大小。默认为 1073741824。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Innodb_log_files_in_group
+| 2~10
+a| 表示 InnoDB 的控制日志文件数。默认为 2。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Validate_password_policy
+| MEDIUM、LOW
+a| 表示密码校验策略。
+
+* ``MEDIUM``（默认值）表示除了需要满足最小长度，还要同时包含数字、大小写字母和特殊字符。
+* ``LOW``表示只需要满足最小长度即可。
+
+| Validate_password_length
+| 4~8
+| 表示密码字符串的最小长度。默认为 8。
+
+
+| Innodb_flush_method
+| fsync、O_DIRECT
+a| 表示 Innodb 数据文件及 redo log 的打开、刷写模式。
+
+* `fsync`（默认）表示调用 fsync() 去刷数据文件与 redo log 的 buffer。 
+* `O_DIRECT` 表示 InnoDB 使用 O_DIRECT 打开数据文件，使用fsync() 刷写数据文件跟 redo log。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Innodb_use_native_aio
+a| * 0
+* 1
+a| 表示 InnoDB 的 AIO 特性开关。默认为 1，表示开启。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Connection_control_failed_connections_threshold
+| 0~ 2147483647
+| 表示允许账户连续登录失败的次数。 +
+设置为 0，关闭该机制。
+
+| Connection_control_min_connection_delay
+| 1000~ 2147483647
+| 表示账户连续登录失败次数达到上限后的最小延迟响应时间，单位是毫秒。默认为 1000。
+
+| Connection_control_max_connection_delay
+| 1000~ 2147483647
+| 表示账户连续登录失败次数达到上限后的最大延迟响应时间，单位是毫秒。设置为 2147483647。
+
+| Explicit_defaults_for_timestamp
+a| * 0
+* 1
+| 表示决定 MySQL 服务端对 timestamp 列值的处理功能。默认为 0，表示关闭。
+
+| Innodb_adaptive_hash_index
+a| * 0
+* 1
+| 表示是否开启控制 InnoDB 频繁访问的数据缓存在主内存功能。默认为 0，表示关闭。
+
+| Innodb_autoinc_lock_mode
+a| * 0
+* 1
+* 2
+a| 表示控制在向有 auto_increment 列的表插入数据时，相关锁的模式。 
+
+* 设置为 0，表示传统锁模式。
+* 设置为 1，表示 InnoDB 使用轻量级别的 mutex 锁来获取自增锁，替代最原始的表级锁。
+* 默认设置为 2，表示所有情况插入都使用轻量级别的 mutex 锁（只针对 row 模式）。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Performance_schema
+a| * 0
+* 1
+a| 用于监控 MySQL server 在一个较低级别的运行过程中的资源消耗、资源等待等情况。默认设置为 1，表示开启该功能。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数修改后，数据库将重启。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Block_encryption_mode
+a| * aes-128-ecb
+* aes-192-ecb
+* aes-256-ecb
+* aes-128-cbc
+* aes-192-cbc
+* aes-256-cbc
+| 系统变量控制基于块的加密算法的模式。 +
+默认值为 ``aes-128-ecb``，表示 table 使用 128 位密钥长度和 ECB 模式进行加密。
+
+| max_heap_table_size
+| 16777216~67108864
+a| 该参数用于设置使用 MEMORY 存储引擎的内存临时表的大小：
+
+* 用户自己创建的内存临时表大小：仅由 **max_heap_table_size** 决定。
+* 内部内存临时表（MySQL 处理查询时服务器动态创建的内存临时表）大小：由 **max_heap_table_size** 和 tmp_table_size（MySQL Plus 固定为 64M）一起限制，取两者中的较小值。
+
+单位为 bytes，默认为 33554432。
+
+include::../../../../../../_components/note_in_table.adoc[]
+* 若该参数的取值不是 1024 的整数倍，系统将自动向下调整为 1024 的整数倍。
+* 该参数只对使用 MEMORY 存储引擎的内存临时表生效。用户自己创建的内存临时表的存储引擎是在创建表时指定的；内部内存临时表的存储引擎由 internal_tmp_mem_storage_engine 决定（8.0 内核版本中内部内存临时表的存储引擎默认为 TempTable）。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+
+| Binlog_transaction_dependency_tracking
+a| * WRITESET
+* COMMIT_ORDER
+a| 用于控制事务依赖模式，让备库根据 Commit Timestamps 或者 Write Sets 并行回放事务。
+
+* 默认值为 ``WRITESET``，表示依赖信息根据源上 WRITESET 产生，写入不同元组（Tuples）的事务可以并发执行。 
+* ``COMMIT_ORDER``表示依赖信息根据源上事务提交的时间顺序产生。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+* MySQL 8.0.1、5.7.22 版本开始引入的该参数。
+* 该参数仅适用于 MySQL Plus `金融版` MGR 性能的优化。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| Group_replication_transaction_size_limit
+| 0~ 2147483647
+a| Group Replication 控制事务大小限值。若事务大小超过限值，事务将会回滚，并不在 Group Replication 广播。 默认值为 100000000。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+该参数仅适用于 MySQL Plus `金融版` MGR 性能的优化。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+
+== 不可修改参数
+
+[cols="2,2,4"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| 内核
+a| * MySQL-5.6
+* MySQL-5.7
+* MySQL-8.0
+| 表示当前数据库 MySQL 内核参数。不可修改。
+
+| Admit-defeat-heartbeat-count
+| 5
+| 表示高可用组件在连续失败心跳次数达到该值后发起选举。默认为 5 次，不可修改。
+
+| Default_storage_engine
+a| * InnoDB
+* RocksDB
+a| 表示默认存储引擎。默认为 InnoDB。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+* 该参数在创建集群时配置，集群创建后不支持修改。
+* 仅高可用版 MySQL 8.0 支持 RocksDB 存储引擎。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| ClickHouse_http_port
+| 8123~65535
+| 表示分析实例 ClickHouse 服务的 HTTP 端口。默认为 8123。
+
+| ClickHouse_tcp_port
+| 9000~65535
+| 表示分析实例 ClickHouse 服务的 TP 端口。默认为 9000。
+|===

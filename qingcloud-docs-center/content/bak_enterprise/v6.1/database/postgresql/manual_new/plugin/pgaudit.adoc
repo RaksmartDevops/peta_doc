@@ -1,0 +1,161 @@
+---
+title: 使用 pgaudit 插件
+description: 本小节主要介绍 pgaudit 插件使用示例。 
+keywords: pgaudit,PostgreSQL,关系型数据库,数据库
+weight: 25
+collapsible: false
+draft: false
+---
+
+通过 pgaudit 插件可以审计 PostgreSQL 数据库的操作。
+
+== 约束限制
+
+PostgreSQL 应用版本为 V2.2.0-高可用版、V2.2.0-基础版，及以上版本。
+
+== 创建审计用户
+
+在控制台创建一个用户，本文以 `auditor` 用户为例，权限为``普通权限``。创建用户的详细操作请参考link:../../mgt_account/create_account/[添加账号]。
+
+image::/images/cloud_service/database/postgresql/pgaudit_add_user.png[,60%]
+
+include::../../../../../../_components/note.adoc[]
+审计用户建议使用普通权限，然后用高级权限的用户通过 `grant` 命令为 `auditor` 用户授权需要记录审计日志的表的权限。
+
+如果使用高级权限，会记录大量无用日志。
+include::../../../../../../_components/table_footer.adoc[]
+
+== 安装 pgaudit 插件
+
+. 使用高级权限账号，通过高可用写 IP link:../../mgt_connect/access_pg[连接数据库]。
+. 执行以下命令，安装 pgaudit 插件。
++
+[source,sql]
+----
+create extension pgaudit;
+----
+
+== 配置 pgaudit 参数
+
+数据库中所有节点（包括主实例节点和只读实例节点）都需要配置 pgaudit 参数，即所有节点都需要执行以下步骤。
+
+. 使用高级权限账号，通过数据库节点 IP link:../../mgt_connect/access_pg[连接数据库]。
+. 执行以下命令更新 pgaudit 参数。
++
+[source,sql]
+----
+alter system set pgaudit.role = 'auditor';
+alter system set pgaudit.log = 'WRITE, DDL, ROLE';
+----
++
+--
+参数说明如下，更多详细介绍请参考link:https://github.com/pgaudit/pgaudit[官方文档]。
+
+[cols='1,5a'] 
+|===
+| 参数 | 说明
+
+| pgaudit.role
+| 该参数用于指定负责进行审计日志记录的角色。
+
+没有默认值，需要手动配置。例如配置为创建的审计用户 `auditor`。
+
+| pgaudit.log
+| 该参数用于指定哪些操作需要被审计记录。默认值为 ``none``。
+
+取值包括：
+
+- **none**：不记录任何操作。
+- **READ**：记录 SELECT 和 COPY 操作。
+- **WRITE**：记录 INSERT、UPDATE、DELETE、TRUNCATE 和 COPY 操作。
+- **FUNCTION**：记录函数调用和 DO 块。
+- **ROLE**：记录与角色和权限相关的操作，例如 GRANT、REVOKE、CREATE/ALTER/DROP ROLE。
+- **DDL**：记录除 ROLE 类外的所有 DDL 操作。
+- **MISC**：记录其它操作，例如 DISCARD、FETCH、CHECKPOINT、VACUUM、SET 等。
+- **MISC_SET**：记录其他 SET 操作，例如 SET ROLE。
+- **ALL**：记录所有操作。
+
+多个取值使用逗号分隔。
+
+还可以通过 ``-`` 符号排除特定值，例如，`pgaudit.log = 'all, -misc'` 表示记录除 MISC 外的所有操作。
+
+|===
+--
+
+. 执行以下命令，重载配置，使修改生效。
++
+[source,sql]
+----
+select pg_reload_conf();
+----
+
+. 执行以下命令，查看修改后的配置。
++
+[source,sql]
+----
+show pgaudit.role;
+show pgaudit.log; 
+----
+
+== 使用示例
+
+. 使用高级权限账号，通过高可用写 IP link:../../mgt_connect/access_pg[连接数据库]。
+. 执行以下命令，创建测试表，并插入测试数据。
++
+[source,sql]
+----
+create table account
+(
+    id int,
+    name text,
+    password text,
+    description text
+);
+
+insert into account (id, name, password, description)
+             values (1, 'user1', 'HASH1', 'blah, blah');
+
+grant select (password)
+   on public.account
+   to auditor;
+
+select id, name
+  from account;
+
+select password
+  from account;
+
+grant update (name, password)
+   on public.account
+   to auditor;
+
+update account
+   set description = 'yada, yada';
+
+update account
+   set password = 'HASH2';
+
+create table account_role_map
+(
+    account_id int,
+    role_id int
+);
+
+grant select
+   on public.account_role_map
+   to auditor;
+
+select account.password,
+       account_role_map.role_id
+  from account
+       inner join account_role_map
+            on account.id = account_role_map.account_id;
+----
+
+. 查看审计日志。
++
+进入 PostgreSQL 集群详情页面，点击**日志**页签即可查看日志，其中带有 `AUDIT` 关键字的日志即为审计日志。
++
+您也可以连接 PostgreSQL 数据库在线查看数据的日志，同时可以借助 sql 的能力进行日志的分析。
++
+详细操作请参见link:../../browse_log[日志管理]。

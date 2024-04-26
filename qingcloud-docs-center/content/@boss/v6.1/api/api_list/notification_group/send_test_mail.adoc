@@ -1,0 +1,64 @@
+---
+title: 发送测试邮件（Boss2SendTestEmail）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SendTestEmail
+
+=== Method
+POST
+
+=== 接口描述
+发送失败有两种
+第一种邮件发送服务错误
+{
+    "action": "Boss2SendTestEmailResponse",
+    "ret_code": 3400,
+    "message": "发送邮件失败，错误: send email error"
+}
+第二种邮件发送超时
+{
+    "action": "Boss2SendTestEmailResponse",
+    "ret_code": 3400,
+    "message": "发送邮件失败，错误: Send email timed out!"
+}
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2SendTestEmail",
+    "recipient": "test@example.com",     // 收件人邮箱 必传
+    "timeout": 10                         // 超时时间 单位秒 非必传
+} 
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+  "ret_code": 0,       //发送成功
+  "action": "Boss2SendTestEmailResponse" 
+}
+
+----

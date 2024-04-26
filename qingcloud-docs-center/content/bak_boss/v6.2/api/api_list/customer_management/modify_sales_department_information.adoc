@@ -1,0 +1,57 @@
+---
+title: 修改销售部门信息（Boss2ModifySalesDept）
+weight: 31
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifySalesDept
+
+=== Method
+POST
+
+=== 接口描述
+修改销售部门信息。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifySalesDept",
+    "sales_dept_id": 7, // [必须]指定需要修改的销售部门id
+    "sales_dept_name": "测试修改", // 可修改部门名称
+    "leader": 123, // 可修改部门负责人id
+    "leaders": [1 ,2], // 支持传入多个部门负责人id
+    "ka_type": 1, // 可修改部门类型id
+    "ka_type_name": "KA", // 可修改部门类型名称
+    "level": 2,   // 可设定部门的级别
+    "parent_id": 123   // 可设定部门的父级部门
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2ModifySalesDeptResponse"
+}
+----

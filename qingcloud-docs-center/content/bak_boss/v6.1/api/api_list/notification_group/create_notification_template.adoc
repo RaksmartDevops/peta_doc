@@ -1,0 +1,136 @@
+---
+title: 创建通知模板（Boss2CreateNotifyTemplate）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateNotifyTemplate
+
+=== Method
+POST
+
+=== 接口描述
+传值时 content 内容与template_type有关
+当template_type为"email"或"private_wechat"时 content必须是如下结构:
+
+----
+   "content": {
+        "alert": {
+            "subject": "hello {aa} country",
+            "body": "hello {{bb}} world"
+        },
+        "alert_merge": {
+            "subject": "hello {cc} country",
+            "body": "hello {{dd}} world"
+        },
+        "alert_resolved": {
+            "subject": "hello {ee} country",
+            "body": "hello {{ff}} world"
+        }
+    }
+----
+
+当template_type为"sms"或"syslog"时 content必须是如下结构:
+
+----
+   "content": {
+        "alert": {
+            "body": "hello {{bb}} world"
+        },
+        "alert_merge": {
+            "body": "hello {{dd}} world"
+        },
+        "alert_resolved": {
+           "body": "hello {{ff}} world"
+        }
+    }
+----
+
+当template_type为"imrobot"时 content必须是如下结构:
+
+----
+"content": {
+"dingtalk": {
+"alert": {
+"subject": "hello {aa} country",
+"body": "hello {{bb}} world"
+},
+"alert_merge": {
+"subject": "hello {{}} country",
+"body": "hello {{}} world"
+},
+"alert_resolved": {
+"subject": "hello {{}} country",
+"body": "hello {{}} world"
+}
+},
+"work_wechat": {
+"alert": {
+"subject": "hello {aa} country",
+"body": "hello {{bb}} world"
+},
+"alert_merge": {
+"subject": "hello {{}} country",
+"body": "hello {{}} world"
+},
+"alert_resolved": {
+"subject": "hello {{}} country",
+"body": "hello {{}} world"
+}
+}
+}
+----
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateNotifyTemplate",
+    "name": "test10",             //模板名称 必传
+    "content": {
+        "alert": {
+            "subject": "hello {aa} country",
+            "body": "hello {{bb}} world"
+        },
+        "alert_merge": {
+            "subject": "hello {cc} country",
+            "body": "hello {{dd}} world"
+        },
+        "alert_resolved": {
+            "subject": "hello {ee} country",
+            "body": "hello {{ff}} world"
+        }
+    },                           //模板内容 必传 
+    "topic": "alert",            // 模板属于哪个app模块 必传
+    "template_type": "sms"       // 模板通知类型 必传 ['sms', 'imrobot', 'email', 'private_wechat', 'syslog']其一
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 9,
+   "ret_code": 0,
+   "action": "Boss2CreateNotifyTemplateResponse"
+}
+----

@@ -1,0 +1,23 @@
+---
+title: "GPU 管理"
+weight: 70
+
+---
+== 场景描述
+
+该任务指导管理员进入 GPU 管理页面，查看 GPU 列表信息。
+
+== 功能描述
+
+GPU 管理页面集中展示了{platform_name_cn}上所有 GPU 信息，包括 GPU 状态、设备名称、显卡 PCI 号、显卡设备编号、声卡 PCI 号、声卡设备编号、计算节点、云服务器、创建时间和状态更新时间。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *基础设施* > *计算* > *GPU 管理*，进入 GPU 管理页面。
++
+image::/images/boss/manual/infrastructure/gpu_manage_operation.png[]

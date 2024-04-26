@@ -1,0 +1,9 @@
+---
+title: "功能特性"
+draft: false
+weight: 2
+---
+
+本章节介绍弹性高性能计算 EHPC 的相关功能，包含集群、作业、文件存储、软件中心和操作日志。
+
+include::../../../../../_cloud_service/ehpc/intro/functions.adoc[]

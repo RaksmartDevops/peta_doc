@@ -1,0 +1,63 @@
+---
+title: "Linux 云服务器配置静态 IP"
+weight: 120
+
+---
+== 问题背景
+
+网络配置默认为 DHCP 模式，如果您需要将网络配置修改为 Static 静态模式，可参考本文进行操作。
+
+== 操作步骤
+
+. 准备设置。
++
+关闭私有网络 DHCP，再开启 DHCP 设置获取范围，将需设置 IP 设置在 DHCP 自动获取的范围外，避免系统 HDCP 分配时将设置的静态 IP 分配，导致网络故障。
++
+示例为：Cento 7.5 操作系统
++
+image::/images/cloud_service/compute/vm/bestp_linux_static_ip_1.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_static_ip_2.png[]
+
+. 登录云服务器，执行以下任一命令，查看实例的 IP 地址和子网掩码。
++
+[source,shell]
+----
+ip a   
+----
++
+[source,shell]
+----
+ifconfig
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_static_ip_3.png[]
+
+. 编辑网卡文件，将 BOOTPROTO 的值修改为 static，并将以上步骤中记录的 IP 地址、网关信息、子网掩码填写到该配置文件中，保存并退出。
++
+[source,shell]
+----
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+BOOTPROTO=static
+ONBOOT=yes
+TYPE=Ethernet
+NM_CONTROLLED=no
+IPADDR=192.168.100.251
+NETMASK=255.255.255.0
+GATEWAY=192.168.100.1
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_static_ip_4.png[]
+
+. 执行下面命令，重启网卡服务。
++
+[source,shell]
+----
+systemctl restart network
+----
+
+. 检查网卡获取静态 IP 信息，并测试 IP 连通性。
++
+image::/images/cloud_service/compute/vm/bestp_linux_static_ip_5.png[]

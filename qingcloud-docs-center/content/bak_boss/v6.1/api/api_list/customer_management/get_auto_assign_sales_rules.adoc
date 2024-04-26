@@ -1,0 +1,128 @@
+---
+title: 获取自动分配销售规则（Boss2DescribeSalesTransferAutoRule）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeSalesTransferAutoRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取自动分配销售规则列表，返回数据如下：
+
+|===
+| 字段 | 含义 | 备注
+
+| create_time
+| 规则创建时间
+|
+
+| status_time
+| 规则修改时间
+|
+
+| start_time
+| 规则开始生效时间
+|
+
+| end_time
+| 规则结束生效时间
+|
+
+| operator_id
+| 操作人，指操作的boss用户id
+|
+
+| rule_id
+| 规则id
+|
+
+| sales_id
+| 销售id
+|
+
+| sales_dept_id
+| 销售部门id
+|
+
+| status
+a|
+规则状态：
+
+* enabled - 启用
+* disabled - 禁用
+|
+
+| expired
+a|
+规则是否已经过期
+
+* true: 规则已经过期，不会生效
+* false: 规则尚未过期
+| 使用end_time和当前时间判断得到
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeSalesTransferAutoRule",
+    "rule_id": 3,  // 可通过规则id进行过滤
+    "sales_id": 1,   // 可通过销售id进行过滤
+    "sales_dept": 22,  // 可通过销售部门id进行过滤
+    "start_time": "2021-07-21T06:57:38Z",  // 可通过规则开始生效时间和规则生效结束时间进行过滤，start_time和end_time需要同时指定
+    "end_time": "2021-07-30T06:57:38Z",
+    
+    // 分页及排序
+    "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeSalesTransferAutoRuleResponse",
+   "elapsed_time": 0.0032579898834228516,
+   "ret_code": 0,
+   "total_count": 1,
+   "transfer_auto_rule_sets": [
+      {
+         "create_time": "2021-03-25T06:58:32Z",
+         "end_time": "2021-03-26T15:59:59Z",
+         "operator_id": 1,
+         "rule_id": 3,
+         "sales_id": null,
+         "start_time": "2021-03-25T15:59:59Z",
+         "status": "enabled",
+         "status_time": "2021-03-25T06:58:32Z",
+         "sales_dept_id": 46,
+         "expired": true
+      }
+   ]
+}
+----

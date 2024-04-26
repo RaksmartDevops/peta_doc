@@ -1,0 +1,81 @@
+---
+title: 获取SSL证书订单列表（Boss2SSLCertShopGetOrderList）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SSLCertShopGetOrderList
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2SSLCertShopGetOrderList",
+    "limit": 10,
+    "offset": 0,
+    "sort_key": "create_time",
+    "reverse": 1,
+    "search_word": "oid-54aa33608139",
+    "status": ["wait_for_info_complemented"],   // 除原有的14种状态，还可以是
+    "user_id": "usr-jGys5Ecd",
+    "order_id": "oid-54aa33608139",
+    "start_time": "2020-10-05T13:04:41Z",
+    "end_time": "2020-10-05T13:04:41Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ssl_order_set": [
+      {
+         "status": "wf_company_completed",
+         "user_id": "usr-jGys5Ecd",
+         "product_id": "TrueBizID",
+         "order_id": "oid-54aa33608139",
+         "support_flag": 8,
+         "brand": "Geotrust",
+         "support_encrypt_algo": [
+            "RSA-2048",
+            "RSA-4096"
+         ],
+         "cert_type": "OV",
+         "period": 1,
+         "price": 1710,
+         "standard_count": 1,
+         "wild_count": 0,
+         "create_time": "2020-10-05T13:04:41Z",
+         "pay_time": "2020-10-05T13:05:10Z",
+         "common_name": "cu.test.cc",
+         "encrypt_algo": "RSA-4096",
+         "product_name": "Geotrust 企业型SSL证书",
+         "san": ""
+      }
+   ],
+   "total_count": 1,
+   "ret_code": 0,
+   "action": "Boss2SSLCertShopGetOrderListResponse"
+}
+----

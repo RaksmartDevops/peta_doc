@@ -1,0 +1,127 @@
+---
+title: 获取出口带宽监控交换机端口（Boss2GetSnmpSwitchInterfaces）
+weight: 16
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetSnmpSwitchInterfaces
+
+=== Method
+POST
+
+=== 接口描述
+获取指定交换机的端口列表。
+
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| switch_id
+| 交换机id
+|
+
+| zone_id
+| 交换机所在区域id
+|
+
+| swtich_ip
+| 交换机ip
+|
+
+| interface
+| 端口名称，可作为端口的id
+|
+
+| inbound
+| 入站带宽，为该端口最近5分钟的监控数据，单位为bps
+|
+
+| outbound
+| 出站带宽，为该端口最近5分钟的监控数据，单位为bps
+|
+
+| customer
+| 端口对应的客户
+|
+
+| standard
+| 端口规格，例如10GE, 100GE等
+|
+
+| remarks
+| 端口描述信息
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetSnmpSwitchInterfaces",
+    "zone": "test", // [必须]指定交换机所在zone
+    "switch_id": "testswitch", // [必须]指定交换机id
+    "interfaces": ["Ethernet1/39", "Ethernet1/10"], // 可通过端口号进行过滤
+    "standard": ["10GE"], // 可通过端口规格进行过滤,
+    "search_word": "测试", // 可搜索端口号、客户名称和备注
+    
+    // 分页
+    "limit": 20,
+    "offset": 0,
+    "reverse": 1,
+    "sort_key": "inbound", //排序字段，支持字段为：interface, inbound, outbound
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "interface_set": [
+      {
+         "zone_id": "test",
+         "switch_id": "testbandwidth",
+         "switch_ip": "172.31.20.254",
+         "interface": "Ethernet1/39",
+         "inbound": 28068528.08,
+         "outbound": 1590468.5066666666,
+         "customer": null,
+         "standard": null,
+         "remarks": null
+      },
+      {
+         "zone_id": "test",
+         "switch_id": "testbandwidth",
+         "switch_ip": "172.31.20.254",
+         "interface": "Ethernet1/10",
+         "inbound": 1882042.6666666667,
+         "outbound": 1695698.4533333334,
+         "customer": "测试客户",
+         "standard": "10GE",
+         "remarks": "测试123"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetSnmpSwitchInterfacesResponse"
+}
+----

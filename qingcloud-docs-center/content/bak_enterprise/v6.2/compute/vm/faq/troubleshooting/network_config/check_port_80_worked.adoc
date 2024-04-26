@@ -1,0 +1,129 @@
+---
+title: "80 端口无法访问"
+weight: 10
+
+---
+== 概述
+
+本文主要介绍在不同操作系统中检查 TCP 80 端口是否正常工作的方法。
+
+include::../../../../../../../_components/note.adoc[]
+
+以下文档是基于用户已经在云平台完成备案操作，关于未完成备案导致 80 端口无法访问，可以查看文档 link:../../../common_operations/os_func_manage/port_80_disabled[为什么 80 端口被禁用]。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+
+== 排查思路
+
+如果云服务器无法对外提供 HTTP 服务，可以按以下思路检查 Web 服务的端口（默认为 80 端口）是否正常工作。
+
+. 登录管理控制台，选择 *产品与服务* > *安全服务* > *安全组*，进入安全组列表页面。确认云服务器绑定的安全组已经放行该端口。（如云服务器是通过 vpc 网络进行访问，则修改 vpc 绑定的安全组，并添加端口转发规则）
+. 远程连接进入云服务器，确认 Web 服务已经开启。
+. 确认端口正常被监听。如没有，请修改监听地址。
+. 确认云服务器内部防火墙已经放行服务或端口。
+. 若仍无法解决，可提交工单协助解决。
+
+== 排查步骤示例
+
+以下介绍 Windows 和 Linux 排查端口是否正常工作的方法，示例环境分别为：
+
+* Windows Server 2008
+* CentOS7.2
+
+=== Windows Server 2008
+
+示例以 iis 服务为例
+
+. 确认已在云服务器绑定的安全组添加 80 端口下行规则，并应用修改。
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_1.png[]
++
+____
+
+如云服务器是通过vpc网络进行访问，则修改 vpc 绑定的安全组，并添加端口转发规则。
+
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_2.png[]
+____
+
+
+. 查看 IIS 服务是否已启动。
+.. 查看管理服务器是否启动，如未启动，请启动
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_3.png[]
+
+.. 查看网站服务是否启动，如未启动，请启动
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_4.png[]
+
+. 查看端口是否已监听
++
+打开 cmd 命令提示符，执行 `netstat -ano | findstr :80` 命令
++
+如果返回 TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4，则说明 80 端口正常监听。
+
+. 查看云服务器内部防火墙端口是否已放行
++
+进入云服务器内的控制面板 > 所有控制面板项 > Windows 防火墙，如果防火墙是开启状态，则需要在防火墙 > 高级设置 > 入站规则 > 新建规则，添加 80 端口的规则。
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_5.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_6.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_7.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_8.png[]
+
+. 如上述操作都已检查仍无法连接，可以提交工单咨询。
+
+=== CentOS7.2
+
+示例以 nginx 服务为例
+
+. 确认已在安全组添加 80 端口下行规则，并应用修改。
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_1.png[]
++
+____
+
+如云服务器是通过vpc网络进行访问，则修改vpc绑定的安全组，并添加端口转发规则。
+
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_2.png[]
+
+____
+
+. 查看 nginx 服务是否已启动。
++
+在云服务器上执行 `systemctl status nginx` 命令：
++
+查看显示为 Active: active (running) 表示服务正常。
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_9.png[]
+
+. 查看端口是否已监听
++
+打开 cmd 命令提示符，执行 `netstat -tlnp|grep 80` 命令
++
+如果返回 tcp 0 0 0.0.0.0:80 0.0.0.0:* LISTEN，则说明 80 端口正常监听。
+
+. 查看云服务器内部防火墙端口是否已放行
+.. 首先查看云服务器上 firewalld 服务是否运行：
++
+[source,shell]
+----
+systemctl status firewalld
+----
+
+.. 查看显示为 Active: active (running) 表示云服务器防火墙为开启状态
++
+image::/images/cloud_service/compute/vm/faq_trouble_check_port_80_worked_10.png[]
++
+如果是开启状态，则执行命令开放 80 端口并生效：
++
+[source,shell]
+----
+firewall-cmd --zone=public --add-port=80/tcp --permanent  # 添加 80 端口规则
+
+firewall-cmd --reload  # 重载生效
+----
+. 如上述操作都已检查仍无法连接，可以提交工单咨询。

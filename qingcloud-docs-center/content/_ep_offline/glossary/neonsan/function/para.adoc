@@ -1,0 +1,47 @@
+// 参数相关'
+
+
+[cols="1,3a",options="header"]
+|===
+|术语 |说明	
+|auto_recovery	
+|自动恢复卷，即自动恢复降级卷，开启 auto_recovery 设置之后，{qingstor_neon} 可自动恢复集群中降级的卷。
+
+|auto_balance		
+|自动负载均衡，针对同一存储池内的达到一定使用率的磁盘容量进行自动均衡。
+
+|recovery.replica_parallel	
+|执行 Recovery Volume 时，恢复副本的最大并发度。
+
+|db_ver	
+|不能人为设置
+
+|recovery.parallel
+|执行 Recovery Volume 恢复某一副本时，恢复 block 块的并发度。允许最大值为：4。
+	
+|recovery.fast_recovery	
+|卷的增量恢复，用于开启或关闭卷的增量恢复。
+	
+|volume_localized_access	
+|卷本地化访问，在 SANC 融合和云易捷超融合场景内，由于 IaaS（计算、网络）服务和 {qingstor_neon}（存储）服务部署在同一物理节点内，计算 Hyper 节点创建VM 时可以挂载本节点{qingstor_neon} 副本，使得 VM 内系统盘或数据盘无需跨节点访问存储，避免了由于网络或延迟带来的性能损耗，提高 VM 性能。
+
+|localized_access_retry_interval	
+|设置本地化访问重试的时间间隔。
+	
+|thick_prov_vol.accelerate_thresh	
+|厚置备卷置备速度，取值范围 0-1023，默认值为 10。值越大，置备速度越慢。
+
+
+|delete_volume.interval	
+|删除卷的时间间隔
+	
+|most_balanced_policy.ssd	
+|对全闪节点上的卷进行 most_balanced 策略的配置， +
+1：创建卷时使用 most_balanced 策略； +
+0:卷的策略由 center.conf 决定。
+
+|most_balanced_policy.cachedhdd	
+|对混插节点上的卷进行 most_balanced 策略的配置， +
+1：创建卷时使用 most_balanced 策略； +
+0:卷的策略由 center.conf 决定。
+|===

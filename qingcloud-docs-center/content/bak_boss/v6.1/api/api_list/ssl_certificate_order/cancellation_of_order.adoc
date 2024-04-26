@@ -1,0 +1,46 @@
+---
+title: 取消订单（Boss2SSLCertShopCancelOrder）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SSLCertShopCancelOrder
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2SSLCertShopSelfValidation",
+  "order_id": "oid-c6eed41a8139"    // 必须是DV证书，且订单状态不为完成
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2SSLCertShopCancelOrderResponse"
+}
+----

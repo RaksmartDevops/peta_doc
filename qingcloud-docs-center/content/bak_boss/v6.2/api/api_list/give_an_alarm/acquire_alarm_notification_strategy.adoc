@@ -1,0 +1,175 @@
+---
+title: 获取告警通知策略（Boss2DescribeAlertNotifyRules）
+weight: 20
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertNotifyRules
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警屏蔽规则列表。
+返回数据：
+
+|===
+| 字段 | 解释 | 备注
+
+| id
+| 告警通知策略id
+|
+
+| name
+| 通知策略名称
+|
+
+| start_hhmm
+| 策略生效开始时间
+|
+
+| end_hhmm
+| 策略生效结束时间
+|
+
+| create_time
+| 创建时间
+|
+
+| status_time
+| 修改时间
+|
+
+| remarks
+| 描述
+|
+
+| status
+a|
+告警通知策略的状态：
+
+* active： 活跃中
+* disabled:  已禁用
+|
+
+| owner_id
+| 创建者id
+|
+
+| owner_email
+| 创建者邮箱
+|
+
+| owner_name
+| 创建者用户名
+|
+
+| methods
+| 通知方式
+|
+
+| notify_send_count
+| 单次发送时的发送次数，如为0表明未使用单次发送功能
+|
+
+| notify_merge_time
+| 周期发送通知时的间隔时间，单位为秒
+|
+
+| send_resolved_notify
+a|
+是否在告警恢复后发送通知：
+
+* true: 发送告警恢复通知
+* false: 不发送告警恢复通知
+|
+
+| rule
+| 规则内容，可参考Boss2CreateAlertNotifyRule
+接口的描述
+|
+
+| match_mode
+| 策略规则匹配方式
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertNotifyRules",
+    "id": 1, // 可通过告警通知策略id进行过滤
+    "status": ["active", "disabled"], // 可通过策略的状态进行过滤
+    
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "测试", // 用于部分字段的模糊搜索
+    "fields": ["id", "name", "rule"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "notify_rule_set": [
+      {
+         "id": 9,
+         "name": "测试修改",
+         "create_time": "2022-06-21T10:13:03.350Z",
+         "status_time": "2022-06-21T10:34:17.032Z",
+         "remarks": "测试修改备注",
+         "status": "active",
+         "rule": {
+            "zones": [
+               "testing"
+            ]
+         },
+         "match_mode": "OR",
+         "start_hhmm": "1234",
+         "end_hhmm": "2345",
+         "methods": [
+            "emails"
+         ],
+         "notify_send_count": 0,
+         "notify_merge_time": 10,
+         "send_resolved_notify": true,
+         "owner_id": 1,
+         "owner_email": "admin@alphacloud.com",
+         "owner_name": "admin",
+         "recipients": [
+            {
+               "id": 1,
+               "name": "test1"
+            }
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertNotifyRulesResponse"
+}
+----

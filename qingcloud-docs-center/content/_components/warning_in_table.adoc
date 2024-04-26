@@ -1,0 +1,17 @@
+ifeval::["{file_output_type}" != "pdf"]
+[.admon.warning,cols="a"]
+!===
+! 警告
+
+!
+endif::[]
+ifeval::["{file_output_type}" == "pdf"]
+[.admon.warning]
+警告
++
+
++++<div class="admon warning">+++
++++<div id="_警告">警告</div>+++
++++<div class="paragraph">+++
+
+endif::[]

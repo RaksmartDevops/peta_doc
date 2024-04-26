@@ -1,0 +1,26 @@
+---
+title: "应用 License 管理"
+weight: 2
+---
+
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择**系统管理** > **许可管理** > **应用 License 管理**，进入**应用 License 管理**页面，可查看当前{platform_name_cn}所有已注册的应用 License 信息。
++
+image::/images/boss/manual/system_mgt/license_management_operation.png[]
+
+. 在**应用 License 管理**页面，点击**注册**，弹出**注册证书**对话框。
+
+. 在对话框内，输入注册码后点击**注册**。
++
+include::../../../../../_components/note.adoc[]
+注册码请联系相应工作人员获取。
+
+include::../../../../../_components/table_footer.adoc[]
+

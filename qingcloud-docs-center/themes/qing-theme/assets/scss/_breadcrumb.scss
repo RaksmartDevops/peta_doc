@@ -1,0 +1,38 @@
+.content-breadcrumb {
+  margin-top: 20px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  li{
+    display: flex;
+    align-items: center;
+    &::before {
+      color: $font-light-color;
+      margin: 0 4px;
+      padding-top: 3px;
+    }
+    &:first-child::before {
+      display: none;
+    }
+    a {
+      color: $breadcrumb-no-link-color;
+      line-height: 24px;
+      &:hover {
+        color: $active-color;
+      }
+      &.no-link {
+        cursor: default;
+        color: $breadcrumb-no-link-color;
+        &:hover {
+          color: $breadcrumb-no-link-color;
+        }
+      }
+    }
+    &:last-child a {
+      color: $font-normal-color;
+      &:hover {
+        color: $active-color;
+      }
+    }
+  }
+}

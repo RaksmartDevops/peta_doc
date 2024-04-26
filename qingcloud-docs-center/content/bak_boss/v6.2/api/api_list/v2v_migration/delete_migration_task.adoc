@@ -1,0 +1,87 @@
+---
+title: 删除迁移任务（Boss2DeleteV2VTask）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeleteV2VTask
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+响应数据:
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| job_id
+| String
+| 任务id
+|
+
+| owner
+| String
+| 资源所有者
+|
+
+| v2v_set
+| Array
+| v2v 任务详情
+|
+
+| v2v_id
+| String
+| v2v 资源 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DeleteV2VTask",
+   "zone": "test",
+   "v2v_set": [
+      {
+         "v2v_id": "v2v-bfzaswep"
+      }
+   ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DeleteV2VTaskResponse",
+   "job_id": "job-89v3as3c",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "v2v_id": "v2v-bfzaswep"
+      }
+   ]
+}
+----

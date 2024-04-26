@@ -1,0 +1,255 @@
+---
+title: 提交报表导出任务（Boss2SubmitReportTask）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SubmitReportTask
+
+=== Method
+POST
+
+=== 接口描述
+
+
+|===
+| action | 描述 | 备注
+
+| instance
+| 主机
+|
+
+| instance_performance
+| 主机性能
+|
+
+| bot
+| 计算节点
+|
+
+| bot_performance
+| 计算节点性能
+|
+
+| bot_with_instance
+| 计算节点性能带主机数据
+|
+
+| eip
+| 公网 IP
+|
+
+| volume
+| 硬盘
+|
+
+| alert
+| console 告警
+| *params 里需要 verbose=1*
+
+| security_group_with_rules
+| 安全组(包含规则)
+|
+
+| security_group_with_resource
+| 安全组(包含资源)
+|
+
+| security_group_ipset
+| IP端口集合
+| *params 里需要 verbose=1*
+
+| bi
+| BI数据报表
+| *params 里要有 widget_id*
+
+| security_group_rules_with_ipsets
+| 安全组详情，包含规则和IP端口集合，用于 console 导入
+| *params 传 DescribeSecurityGroupRules 的参数*
+
+| user_consumption
+| 客户消费额
+|
+
+| user_consumption_by_acct
+| 客户消费账户明细
+| *params 里需要 need_sum=true*
+
+| user_consumption_by_resource_summary
+| 客户消费资源汇总
+| *params 里需要 need_sum=true*
+
+| user_consumption_by_resource_detail
+| 客户消费资源详情
+| *params 里需要 need_sum=true*
+
+| user_consumption_by_project
+| 客户消费项目明细
+| *params 里需要 need_sum=true*
+
+| all_customers
+| 客户管理-所有客户
+|
+
+| non_dept_customers
+| 客户管理-待分配部门客户
+|
+
+| non_sales_customers
+| 客户管理-待分配销售客户
+|
+
+| my_dept_customers
+| 客户管理-部门客户
+|
+
+| my_customers
+| 客户管理-我的客户
+|
+
+| finance_recharge
+| 充值
+|
+
+| finance_advance
+| 垫付
+|
+
+| finance_transfer_in
+| 资金转入
+|
+
+| finance_transfer_out
+| 资金转出
+|
+
+| finance_payback
+| 扣除垫付
+|
+
+| finance_discharge
+| 退款
+|
+
+| invoice_list_for_express
+| 发票列表（用于生成快递单）
+|
+
+| warehouse_user
+| 用户分析
+| *params里要有 schema_id*
+
+| switchboard_bandwidth
+| 交换机接口带宽
+|
+
+| appcenter_cluster
+| AppCenter集群
+|
+
+| appcenter_management_cluster
+| AppCenter管理集群
+|
+
+| beian_alert_all_users
+| 所有未备案域名客户
+|
+
+| beian_alert_my_users
+| 我的未备案域名客户
+|
+
+| operation_log
+| 云平台操作记录
+|
+
+| management_nodes
+| 管理节点
+|
+|===
+
+'''
+
+security_group_rules_with_ipsets 报表 params 推荐为：
+
+[,json]
+----
+{
+    "verbose": 1,
+    "security_group": "SECURITY_GROUP_ID",
+    "zone": "test"
+}
+----
+
+另外，需要前端传 filename 参数指定文件名，PM 要求的格式为 `安全组规则_SECURITY_GROUP_ID`。
+
+'''
+
+导出报表的列，传空列表时导出后端可以导出的所有列（BI报表除外，BI 报表列完全按照前端传入的列进行导出）。
+导出报表参数：其实为发给相应接口的参数去掉 offset、limit 和 action（不去掉也可以，我会过滤掉的）。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| token
+| String
+| 任务id
+|
+
+| valid_fields
+| List
+| 报表实际导出的列
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2SubmitReportTask",
+    "topic": "instance",                                        // 导出报表的类型，见备注
+    "filename": "文件名",                                       // 自定义文件名，不传会使用默认文件名
+    "fields": ["instance_id", "instance_name", "create_time"],  // 导出报表的列，传空列表时导出后端可以导出的所有字段（BI报表不能传空）
+    "params": {                                                 // 导出报表参数：其实为发给相应接口的参数去掉 offset、limit 和 action（不去掉也可以，后端会进行过滤）。
+        "zone":"test",
+        "sort_key":"create_time",
+        "reverse":1,
+        "status":["stopped"]
+    }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "token": "9e7da772-229e-495e-9014-ffbd392565eb",    // 任务 ID
+    "valid_fields": [                                   // 报表实际导出的列
+        "instance_id",
+        "instance_name",
+        "create_time"
+    ],
+    "ret_code": 0,
+    "action": "Boss2SubmitReportTaskResponse"
+}
+----

@@ -1,0 +1,71 @@
+---
+title: 创建客户消息（Boss2CreateNotificationCenterPost）
+weight: 17
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateNotificationCenterPost
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了 IaaS 的CreateNotificationCenterPost接口，记录了操作接口的boss用户。
+返回数据：
+
+|===
+| 字段 | 含义 | 备注
+
+| notification_center_post_id
+| 消息发送后生成的消息id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2CreateNotificationCenterPost",
+   "user_filter_type": "specified",
+   "specified_users": [
+      "usr-ErSHAf5K"
+   ],
+   "post_type": "other",
+   "title": "测试发送",
+   "content": "<p>testtest</p>",
+   "notify_type": [
+      "email"
+   ],
+   "short_content": "test",
+   "expired_days": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2CreateNotificationCenterPostResponse",
+   "ret_code": 0,
+   "notification_center_post_id": "nfp-irlr8slq"
+}
+----

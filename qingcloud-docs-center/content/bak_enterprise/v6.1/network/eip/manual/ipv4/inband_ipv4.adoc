@@ -1,0 +1,9 @@
+---
+title: 内部绑定 IPv4 EIP
+description: 介绍如何内部绑定 IPv4 公网 IP。
+weight: 12
+draft: false
+linkkey: network_eips_inband_ipv4_manual
+---
+
+include::../../../../../../_cloud_service/eip/inbind_ipv4_eip.adoc[]

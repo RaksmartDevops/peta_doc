@@ -1,0 +1,133 @@
+---
+title: 注册映像（PullImageFileByHttp）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=PullImageFileByHttp
+
+=== Method
+POST
+
+=== 接口描述
+该接口为IAAS接口。
+本接口用于注册映像。
+改接口会生成一个异步任务，注册完成后仅检查ret_code是否为0即可。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| transit
+| Object
+| 操作详情
+|
+
+| ssh_port
+| Integer
+| SSH 登录端口
+|
+
+| host
+| String
+| 主机 ip
+|
+
+| type
+| String
+| 资源类型
+|
+
+| bwlimit
+| Integer
+| 带宽限制
+|
+
+| upload
+| Object
+| 上传操作信息
+a|
+
+* passwd: 密码
+* host: 主机 ip
+* user: 用户
+* dir: 上传目录
+
+| resource_id
+| String
+| 镜像资源 id
+|
+
+| job_id
+| String
+| 任务 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "PullImageFileByHttp",
+    "zone": "test", // [必须]指定zone_id
+    "image_name": "image_name", // [必须] 映像的名称
+    "upload_filename": "/pitrix/image_upload/8/0000000028.html", // [必须] 使用映像上传接口上传完成后的path字段值
+    "block_bus": "vd", // [必须]支持vd hd sd
+    "dst_user": "admin", // [必须]映像拥有者，如果映像类型为系统，则设置为system，如果为自有，则需要指定用户id
+    "processor_type": "64bit", // [必须] 支持32bit和64bit
+    "default_user": "root", // [可选] 必须但暂时没有作用，这里写死为root即可
+    "default_passwd": "p12cHANgepwD", // [可选] 必须但暂时没有作用，这里写死为p12cHANgepwD即可
+    "platform": "linux", // [必须] 平台类型，linux\windows\unix
+    "virt_format": "raw", // [必须] 虚拟化格式，支持raw和qcow2
+    "os_family": "debian", // [必须] 指定操作系统家族
+    "image_type": 1,  // 映像类型，0：普通映像，1：iso映像
+    "description": "用户名是XXXX密码是XXXX", // 备注信息，如不填写，将会根据default_user和default_passwd自动生成备注
+    "size": 30, // 系统盘容量，单位为G
+    "baremetal": "false", // 是否支持物理机，如果为"true"则支持物理机
+    "recommended_type": "c2m2", // 推荐配置
+    "ui_type": "tui", // 图形类型，支持tui(默认), gui
+    "nic_type": "virtio" // 网卡类型，支持virtio(默认), e1000
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "PullImageFileByHttpResponse",
+   "transit": {
+      "ssh_port": 22,
+      "host": "192.168.5.254",
+      "type": "host",
+      "bwlimit": 157286400,
+      "upload": {
+         "passwd": "zhu88jie",
+         "host": "192.168.5.254",
+         "user": "ftp",
+         "dir": "/var/ftp/pub"
+      }
+   },
+   "resource_id": "img-gtfsmrxf",
+   "job_id": "j-14ucmsk7a15",
+   "ret_code": 0
+}
+----

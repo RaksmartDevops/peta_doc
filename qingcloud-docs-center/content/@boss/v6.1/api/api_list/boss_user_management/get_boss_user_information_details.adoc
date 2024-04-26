@@ -1,0 +1,185 @@
+---
+title: 获取 BOSS 用户信息详情（Boss2DescribeBossUsers）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeBossUsers
+
+=== Method
+POST
+
+=== 接口描述
+获取Boss系统用户的列表。
+字段可参考：获取当前用户信息(Boss2DescribeCurrentUser)
+
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 所查询到的条目总数
+|
+
+| user_set
+| Array
+| 用户详情数据
+|
+
+| id
+| Integer
+| 用户 id
+|
+
+| username
+| String
+| 用户名
+|
+
+| email
+| String
+| 电子邮箱地址
+|
+
+| status
+| String
+| 用户状态
+|
+
+| is_superuser
+| Boolean
+| 是否是超级管理员
+|
+
+| phone
+| String
+| 手机号码
+|
+
+| auth_backend
+| String
+| 认证后台系统
+|
+
+| lang
+| String
+| 语言
+|
+
+| last_login
+| String
+| 上次登录时间
+|
+
+| password_update_time
+| String
+| 密码修改时间
+|
+
+| remarks
+| String
+| 备注信息
+|
+
+| 2fa_enable
+| Boolean
+| 是否启用二次认证
+|
+
+| roles
+| Value
+| 角色
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeBossUsers",
+    "id": [19, 18], // 指定用户id
+    "status": ["enabled"], // 指定用户的状态，enabled:启用 disabled:禁用
+    "email": ["admin@example.com"], // 使用email进行过滤
+    "search_word": "boss", // 对用户进行搜索，支持对用户名和email进行搜索
+    "phone": ["13275630939"], // 使用手机号进行过滤
+    "2fa_enabled": [true], // 是否开启二次认证
+    "roles": ["37ff7f5f-a21d-4747-8084-ac494797bcff"], // 使用角色id进行过滤
+    "exclude_roles": ["37ff7f5f-a21d-4747-8084-ac494797bcff"], // 使用角色id进行反向过滤，返回不包含此列表中的角色的用户
+    "create_time_start": "2019-01-21T01:36:01.938Z", // 使用创建时间进行过滤
+    "create_time_end": "2019-01-21T01:36:01.938Z",
+    "limit": 10,
+    "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 17,
+   "user_set": [
+      {
+         "id": 19,
+         "username": "sccc",
+         "email": "sccc@example.com",
+         "status": "enabled",
+         "is_superuser": false,
+         "phone": "13112345678",
+         "auth_backend": "boss2",
+         "lang": "zh-cn",
+         "create_time": "2019-04-23T06:52:46.832Z",
+         "last_login": "2019-06-03T08:25:41.812Z",
+         "password_update_time": "2019-06-03T08:25:41.812Z",
+         "remarks": "这是备注",
+         "2fa_enabled": false,
+         "roles": null
+      },
+      {
+         "id": 18,
+         "username": "test2",
+         "email": "test2@example.com",
+         "status": "enabled",
+         "is_superuser": true,
+         "phone": null,
+         "auth_backend": "boss2",
+         "lang": "zh-cn",
+         "create_time": "2019-04-23T04:24:22.375Z",
+         "last_login": "2019-06-03T08:25:41.812Z",
+         "password_update_time": "2019-06-03T08:25:41.812Z",
+         "remarks": null,
+         "2fa_enabled": false,
+         "roles": [
+            {
+               "id": "37ff7f5f-a21d-4747-8084-ac494797bcff",
+               "name": "工单",
+               "description": "处理工单的角色"
+            }
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeBossUsersResponse"
+}
+----

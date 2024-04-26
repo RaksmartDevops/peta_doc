@@ -1,0 +1,137 @@
+---
+title: "root 用户通过 ssh 登录 Linux 实例报 “Permission denied, please try again”"
+weight: 50
+
+---
+== 概述
+
+使用 root 用户通过 SSH 登录 Linux 实例时，报 “Permission denied, please try again” 错误。本文主要介绍如何解决该问题。
+
+== 背景信息
+
+当使用 SSH 登录 Linux 系统的云服务器时，如果是 root 用户，即便输入了正确的密码，也会出现类似如下的错误信息。
+
+include::../../../../../../../_components/note.adoc[]
+非root用户可以正常登录，而且root用户通过 link:https://help.aliyun.com/document_detail/25433.htm[管理终端]可以正常登录。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+
+* Permission denied, please try again.
+* SSH 服务器拒绝了密码，请再试一次。
+
+请检查 secure 日志，若包含如下错误信息，则该问题通常是由于系统启用了 SELinux 服务所致。请参考 link:https://help.aliyun.com/document_detail/41487.htm?spm=a2c4g.11186623.2.28.552b29e8VbzOF9#AQRff[SELinux 服务引起问题的解决方法]。其他情况请参考 link:https://help.aliyun.com/document_detail/41487.htm?spm=a2c4g.11186623.2.28.552b29e8VbzOF9#GaARQ[禁止 root 用户登录引起问题的解决方法]。
+
+[source,shell]
+----
+error: Could not get shadow infromation for root.
+----
+
+== 解决方法
+
+=== 禁止 root 用户登录引起问题的解决方法
+
+include::../../../../../../../_components/note.adoc[]
+
+* 本文相关 Linux 配置及说明已在 CentOS 6.5 64 位操作系统中进行过测试。其它类型及版本操作系统配置可能有所差异，具体情况请参阅相应发行版的官方文档。
+* 相关策略可以提高服务器的安全性。请用户基于安全性和易用性权衡后，再确定是否需要修改相关配置。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+请参考如下步骤，检查配置并修改。
+
+. 通过 link:https://help.aliyun.com/document_detail/25433.htm[管理终端] 登录 Linux 系统的云服务器。
+. 通过 cat 等命令查看 `/etc/ssh/sshd_config` 配置文件中是否包含类似如下的配置。
++
+[source,shell]
+----
+PermitRootLogin no
+----
++
+该参数的说明如下。
+* 未配置该参数（默认情况），或者将该参数值配置为 `yes`，都允许 root 用户登录。只有该参数值设置为 `no` 时，才会禁止 root 用户登录。
+* 该参数只会影响 root 用户的 SSH 登录，不影响 root 用户通过 link:https://help.aliyun.com/document_detail/25433.htm[管理终端] 等其它方式登录系统。
+
+
+. 使用 vi 等编辑器，将该参数值设置为 `yes`，或者删除该参数，或者注释（在最开头添加 “#” 号）整行配置。比如：
++
+[source,shell]
+----
+# PermitRootLogin yes
+----
++
+
+include::../../../../../../../_components/note.adoc[]
+
+在修改之前建议先对配置文件进行备份。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+
+. 执行如下命令，重启 SSH 服务。
++
+[source,shell]
+----
+service sshd restart
+----
+
+. 尝试再次使用 root 用户登录服务器。
+
+=== SELinux 服务引起问题的解决方法
+
+可以根据现场环境需求，选择临时或永久关闭 SELinux 服务解决 SSH 连接异常问题。
+
+==== 检查 SELinux 服务状态
+
+. 通过管理终端，登录 Linux 实例，执行如下命令，查看当前 SELinux 服务状态。
++
+[source,shell]
+----
+/usr/sbin/sestatus -v
+----
+
+. 系统显示类似如下。
++
+[source,shell]
+----
+SELinux status:       enabled
+----
++
+
+include::../../../../../../../_components/note.adoc[]
+
+如果 `SELinux status` 参数是 `enabled` 即处于开启状态，是 `disabled` 即处于关闭状态。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+
+==== 临时关闭 SELinux 服务
+
+登录 Linux 实例，执行如下命令，临时关闭 SELinux。
+
+include::../../../../../../../_components/note.adoc[]
+临时修改 SELinux 服务状态，属于实时生效无需重启系统或实例。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+[source,shell]
+----
+setenforce 0
+----
+
+==== 永久关闭 SELinux 服务
+
+登录 Linux 实例，执行如下命令，永久关闭 SELinux 服务。
+
+永久性修改 SELinux 服务状态，需重启系统或实例方可生效。
+
+[source,shell]
+----
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+----
+
+include::../../../../../../../_components/note.adoc[]
+
+此命令只适用当前 SELinux 服务为 `enforcing` 状态时使用。
+
+include::../../../../../../../_components/table_footer.adoc[]

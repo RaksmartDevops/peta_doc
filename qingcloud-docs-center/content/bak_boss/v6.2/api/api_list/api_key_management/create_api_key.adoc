@@ -1,0 +1,73 @@
+---
+title: 创建API KEY（Boss2CreateAPIKey）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateAPIKey
+
+=== Method
+POST
+
+=== 接口描述
+为当前用户生成access_key及secret_key
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| access_key
+| String
+| 用户 API 秘钥 ID
+|
+
+| secret_key
+| String
+| 用户 API 私钥
+|
+
+| remarks
+| String
+| 备注
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateAPIKey",
+    "remarks": "yoyo"   // 备注，后端限制最大长度 100，可以不传
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "access_key": "AHLEJRUCKVKELGTYMOOH",
+   "secret_key": "2ETNfmBZGbeVCbeil6IuoBFsHDPpeBCMEZ3U43Fb",
+   "remarks": "yoyo",
+   "ret_code": 0,
+   "action": "Boss2CreateAPIKeyResponse"
+}
+----

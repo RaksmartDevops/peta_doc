@@ -1,0 +1,12 @@
+---
+title: "如何访问"
+description: how to enter
+draft: false
+weight: 6
+keywords: 消息中心, 用户服务
+---
+
+您可以通过以下方式进入消息中心：
+
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/notification-center/notification-bell.png[]图标，进入消息中心。

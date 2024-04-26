@@ -1,0 +1,55 @@
+---
+title: "查看 SSL 配置"
+weight: 2
+---
+
+本小节主要介绍如何从客户端和服务端查看 SSL 加密开启状态及配置参数。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* 已创建灾备集群且集群状态为``活跃``。
+* 集群已开启 SSL 加密。
+
+== 查看服务端是否开启 SSL 加密
+
+. link:../../mgt_connect/access_pg/[连接 PostgreSQL 数据库]。
+
+. 执行如下命令，查看 PostgreSQL 服务端是否开启 SSL 加密。
++
+[,shell]
+----
+show ssl;
+----
++
+**返回参数说明**:
++
+* 若返回参数为 ``on``，表示服务端已开启 SSL 连接。
+* 若返回参数为 ``off``，表示服务端未开启 SSL 连接。
+
+== 查看客户端是否开启 SSL 加密
+
+. 登录至 PostgreSQL 客户端。
+. 可通过以下两种方式，查看客户端是否开启 SSL 加密。
+
+** 使用 psql 命令连接数据库时，连接成功后，返回如下提示信息，则表示客户端已开启 SSL 加密。
++
+[,shell]
+----
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+----
++
+image::/images/cloud_service/database/postgresql/ssl_conf_1.png[]
+
+** 连接至数据库后，执行如下命令，查询 ``pg_stat_ssl`` 视图，若返回结果中有相应的链接信息，则说明客户端已开启 SSL 加密。
++
+[,sql]
+----
+SELECT * FROM pg_stat_ssl;
+----
++
+image::/images/cloud_service/database/postgresql/ssl_conf_2.png[]
+
+
+
+

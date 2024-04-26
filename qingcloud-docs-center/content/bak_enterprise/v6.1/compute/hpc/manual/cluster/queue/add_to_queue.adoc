@@ -1,0 +1,10 @@
+---
+title: "节点添加到队列"
+linkTitle: "节点添加到队列"
+description: 节点添加到队列
+keywords: 云计算,  HPC, EHPC, 节点添加到队列
+draft: false
+weight: 30
+---
+
+include::../../../../../../../_cloud_service/ehpc/queue/add_to_queue.adoc[]

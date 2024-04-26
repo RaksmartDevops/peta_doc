@@ -1,0 +1,70 @@
+---
+title: 修改当前用户定时器属性（Boss2ModifyCurrentScheduler）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyCurrentScheduler
+
+=== Method
+POST
+
+=== 接口描述
+修改当前用户的定时器属性。如定时器ID不属于当前用户，则会返回ID不存在的错误。
+
+注意：不允许修改定时器的任务类型。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2ModifyCurrentScheduler",
+    "id": 19, // [必须]指定定时器的ID
+    
+    // 修改定时器的基本属性
+    "name": "test scheduler", // 定时器名称
+    "description": "测试定时器", // 定时器描述
+    "status": "active", // 修改定时器的状态，支持修改的状态为： active: 启用 disabled: 禁用  deleted: 删除
+    
+    // 修改定时器的任务执行时间
+    "type": "crontab", // 定时器类型，支持crontab(重复执行类任务)和clocked(只执行一次的任务)
+    "ymd":"2019-09-01",  // 年月日信息
+    "hhmm":"09:19", // 时、分信息
+    "period": "daily", // 周期信息
+    
+    // 以下配置用于修改定时器对应的任务
+    "task_conf": {
+        "a": 1,
+        "b": [1,2,3]
+    } // 任务配置，指任务类型对应的参数信息
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 19,
+   "ret_code": 0,
+   "action": "Boss2CreateSchedulerResponse"
+}
+----

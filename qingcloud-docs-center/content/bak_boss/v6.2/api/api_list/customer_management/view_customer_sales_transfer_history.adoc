@@ -1,0 +1,146 @@
+---
+title: 查看客户销售转移历史（Boss2DescribeUserSalesHistory）
+weight: 41
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeUserSalesHistory
+
+=== Method
+POST
+
+=== 接口描述
+查询销售转移的历史。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| current_id
+| 客户当前的销售id
+|
+
+| current_email
+| 客户当前的销售email
+|
+
+| current_username
+| 客户当前的销售名称
+|
+
+| current_phone
+| 客户当前销售的电话
+|
+
+| operate_time
+| 操作时间
+|
+
+| operate_type
+a|
+操作类型，包括：
+
+- modify: 修改销售
+- add: 添加销售，在此之前客户没有对应销售人员
+- remove: 删除销售，此后客户没有对应销售人员
+|
+
+| operator_id
+| 操作者id
+|
+
+| operator_email
+| 操作者email
+|
+
+| operator_username
+| 操作者用户名
+|
+
+| operator_phone
+| 操作者电话
+|
+
+| original_id
+| 修改前销售id
+|
+
+| original_email
+| 修改前销售邮箱
+|
+
+| original_username
+| 修改前销售用户名
+|
+
+| original_phone
+| 修改前销售电话
+|
+
+| user_id
+| 客户id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeUserSalesHistory",
+    "user_id": "usr-xxxxxx",
+    
+    // 分页及排序
+    "limit": 10,
+    "offset": 0,
+    "reverse": 1,
+    "sort_key": "operate_time"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeUserSalesHistoryResponse",
+   "ret_code": 0,
+   "sales_history_sets": [
+      {
+         "current_id": 123,
+         "operate_time": "2020-05-27T17:48:18",
+         "operate_type": "modify",
+         "operator_id": 1,
+         "original_id": 125,
+         "user_id": "usr-2Gnbon9M",
+         "current_email": null,
+         "current_username": null,
+         "current_phone": null,
+         "operator_email": "admin@alphacloud.com",
+         "operator_username": "admin",
+         "operator_phone": "12332111223",
+         "original_email": null,
+         "original_username": null,
+         "original_phone": null
+      }
+   ],
+   "total_count": 5
+}
+----

@@ -1,0 +1,113 @@
+---
+title: 获取迁移任务日志（Boss2DescribeV2VTaskLogs）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeV2VTaskLogs
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+resources_id 是必传参数，该参数即为 v2v_id
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| owner
+| String
+| 资源所有者
+|
+
+| total_count
+| Integer
+| 查询到的资源总数
+|
+
+| job_set
+| Array
+| v2v 任务详情
+|
+
+| info_set
+| Array
+| 信息列表
+|
+
+| job_id
+| Array
+| 任务 id
+|
+
+| status
+| String
+| 任务日志状态
+|
+
+| status_time
+| String
+| 上次更新时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VTaskLogs",
+   "zone": "test",
+   "keyword": {
+      "resources_id": "v2v-eomp10py",
+      "job-5tpj0tbm": "job-5tpj0tbm"
+   }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VTaskLogsResponse",
+   "job_set": [
+      {
+         "action": "AutoMigrateV2V",
+         "create_time": "Wed Mar 27 18:56:15 2019",
+         "info_set": [
+            {
+               "info": "开始创建虚机",
+               "time": "Wed Mar 27 18:56:21 2019"
+            }
+         ],
+         "job_id": "job-m81xhoq2",
+         "owner": "boss",
+         "status": "success",
+         "status_time": "Wed Mar 27 18:56:21 2019"
+      }
+   ],
+   "owner": "boss",
+   "ret_code": 0,
+   "total_count": 1
+}
+----

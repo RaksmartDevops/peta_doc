@@ -1,0 +1,206 @@
+---
+title: "MongoDB 4.0.3-v1.0.0"
+description: 本小节介绍 MongoDB 4.0.3 - v1.0.0 的测试数据。 
+keywords: MongoDB , 4.0.3-v1.0.0，性能测试, 测试数据
+weight: 10
+collapsible: false
+draft: false
+---
+本文介绍 MongoDB 4.0.3-v1.0.0 在不同测试场景下的测试结果。
+
+== 测试环境
+
+* 客户端配置
++
+云服务器规格为 8 核 32GB ，企业型 e3
+
+* 测试对象配置
++
+MongoDB 4.0.3-v1.0.0 ，Replica 节点资源配置如下：
+
+ ** 云服务器 企业型 e3
+ ** 磁盘 100G 企业型
+
+== 测试场景
+
+[cols="1,2"]
+|===
+| 场景 | 说明
+
+| workloada
+| 读写均衡型，Reads/Writes 50:50
+
+| workloadb
+| 读多写少型，Reads/Writes 95:5
+|===
+
+== 测试目标
+
+准备约 10GB 测试数据，对于不同 MongoDB 规格核读写比场景下，分别测试 100 和 200 并发数条件下的 QPS、平均读时延（RAL）、平均写时延（WAL）的性能数据。
+
+== 测试步骤
+
+. link:../../../../../compute/vm/quickstart/create_vm/[创建云服务器]，配置云服务器与 MongoDB 集群在相同可用区、VPC、私有网络和安全组。
+. 在云服务器上安装 YCSB 测试工具。
+. 在云服务器上准备约 10GB 的数据。
++
+[,shell]
+----
+$ ./bin/ycsb.sh load mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.writeConcern=unacknowledged >loadlog.txt &
+----
+
+. 在云服务上执行相关<<_测试命令,测试命令>>。
+
+=== 测试命令
+
+* 读写均衡场景（读写比 50:50），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读写均衡场景（读写比 50:50），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloada -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读多写少场景（读写比 95:5），并发数为 100 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 100 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+* 读多写少场景（读写比 95:5），并发数为 200 条件。
++
+[,shell]
+----
+$ ./bin/ycsb.sh run mongodb -s -P ./workloads/workloadb -p mongodb.url=mongodb://<mongodb_user_name>:<mongodb_user_password><mongod_ip>:<mongod_port>/ycsb?authSource=admin -p mongodb.upsert=true -threads 200 -p mongodb.writeConcern=unacknowledged >runlog.txt &
+----
+
+== 测试结果
+
+=== 读写比 50:50
+|===
+|并发数 |QPS （ops/s） |RAL （us） |WAL （us）
+
+4+|*规格：2 核 4G*
+|100 |9069 |21520 |175
+|200 |9372 |41283 |389
+4+|*规格：2 核 8G*
+|100 |12505 |15615 |97
+|200 |12293 |31386 |401
+4+|*规格：2 核 16G*
+|100 |12261 |15948 |128
+|200 |13483 |28464 |28
+4+|*规格：4 核 4G*
+|100 |19683 |9736 |214
+|200 |20210 |18551 |564
+4+|*规格：4 核 8G*
+|100 |21898 |8728 |166
+|200 |24783 |14938 |653
+4+|*规格：4 核 16G*
+|100 |25327 |7580 |133
+|200 |29648 |12691 |427
+4+|*规格：4 核 32G*
+|100 |28910 |6618 |128
+|200 |33648 |11002 |428
+4+|*规格：8 核 8G*
+|100 |39135 |4832 |152
+|200 |49534|7077 |624
+4+|*规格：8 核 16G*
+|100 |42698 |4431 |151
+|200 |57178 |6118 |582
+4+|*规格：8 核 32G*
+|100 |57242 |2808 |81
+|200 |58453 |6565 |199
+4+|*规格：8 核 64G*
+|100 |65703 |4118 |149
+|200 |66063 |5738 |282
+4+|*规格：16 核 16G*
+|100 |69470 |3792 |147
+|200 |77657|4138 |321
+4+|*规格：16 核 32G*
+|100 |70924 |3662 |146
+|200 |72442 |4576 |290
+4+|*规格：16 核 64G*
+|100 |85991 |2058 |149
+|200 |92933 |4046 |157
+4+|*规格：16 核 128G*
+|100 |85349 |2325 |68
+|200 |94504 |3954 |182
+4+|*规格：32 核 64G*
+|100 |90985 |2104 |52
+|200 |140307 |2663 |119
+4+|*规格：32 核 128G*
+|100 |97947 |1877 |91
+|200 |118906 |2925 |253
+4+|*规格：32 核 256G*
+|100 |98561 |1912 |62
+|200 |131089 |2858 |115
+|===
+
+
+=== 读写比 95:5
+
+|===
+|并发数 |QPS （ops/s） |RAL （us） |WAL （us）
+
+4+|*规格：2 核 4G*
+|100 |6165 |16742 |2310
+|200 |5888 |33904 |3005
+4+|*规格：2 核 8G*
+|100 |7739 |13358 |431
+|200 |8447 |23908 |11576
+4+|*规格：2 核 16G*
+|100 |17557 |5856 |118
+|200 |17303 |11829 |965
+4+|*规格：4 核 4G*
+|100 |32811 |3101 |203
+|200 |32224 |6276 |709
+4+|*规格：4 核 8G*
+|100 |37133 |2715 |201
+|200 |35373 |5724 |806
+4+|*规格：4 核 16G*
+|100 |36733 |2781 |145
+|200 |36054 |5663 |201
+4+|*规格：4 核 32G*
+|100 |43763 |2334 |112
+|200 |41573 |4872 |532
+4+|*规格：8 核 8G*
+|100 |57227 |1770 |113
+|200 |58028 |3381 |310
+4+|*规格：8 核 16G*
+|100 |58203 |1749 |80
+|200 |64478 |3051 |401
+4+|*规格：8 核 32G*
+|100 |56657 |1789 |189
+|200 |62897|3129 |270
+4+|*规格：8 核 64G*
+|100 |57900 |1756 |233
+|200 |61451 |4287 |289
+4+|*规格：16 核 16G*
+|100 |58861 |1729 |219
+|200 |76264 |2844 |311
+4+|*规格：16 核 32G*
+|100 |59126 |1727 |115
+|200 |86528 |2570 |275
+4+|*规格：16 核 64G*
+|100 |59276 |1615 |79
+|200 |100240 |2021 |152
+4+|*规格：16 核 128G*
+|100 |64911 |1705 |66
+|200 |102532 |1990 |196
+4+|*规格：32 核 64G*
+|100 |67051 |1554 |54
+|200 |114781 |1779 |146
+4+|*规格：32 核 128G*
+|100 |66869 |1557 |53
+|200 |108747 |1872 |119
+4+|*规格：32 核 256G*
+|100 |67066 |1553 |44
+|200 |111005 |1840 |174
+|===

@@ -1,0 +1,113 @@
+{{- $Section := partial "get-recent-section.html" . -}}
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$VersionName := (path.Base $FirstSection.RelPermalink)}}
+{{$RootPath := .RelPermalink}}
+<div class="content-card-wrapper">
+  <div class="content-card">
+    <div class="content-wrapper">
+      <div class="content-banner">
+        <div class="content-banner-text">
+          <div class="content-banner-title">
+            {{with $Section}}
+            {{$title := partial "get-title.html" .}}
+            <h1>{{- $title -}}</h1>
+            {{end}}
+            {{$hidePDFDownloadBtn := false }}
+            {{$RelPermalink := .RelPermalink}}
+            {{range .Site.Params.pdf.pdf_exclude}}
+              {{if hasPrefix $RelPermalink .}}
+                {{$hidePDFDownloadBtn = true}}
+              {{end}}
+            {{end}}
+            {{if .Params.not_show}}
+              {{$hidePDFDownloadBtn = true}}
+            {{end}}
+            {{if .Site.Params.disablePdf}}
+              {{$hidePDFDownloadBtn = true}}
+            {{end}}
+            {{if not $hidePDFDownloadBtn}}
+              <div class="tag section-tag export-pdf" data-title="{{$Section.Params.title}}"
+                data-url="{{path.Join $Section.RelPermalink (index (split (replace .RelPermalink $Section.RelPermalink ``) `/`) 0)}}">
+                <span class="icon-format_pdf_2_fill"></span>
+                PDF
+              </div>
+              {{if .Site.Params.enableExportWord}}
+                <div
+                  class="tag section-tag export-word"
+                  data-title="{{$Section.Params.title}}"
+                  data-url="{{path.Join $Section.RelPermalink (index (split (replace .RelPermalink $Section.RelPermalink ``) `/`) 0)}}">
+                  <span class="icon-format_word_fill"></span>
+                  WORD
+                </div>
+              {{end}}
+            {{end}}
+          </div>
+          {{if $Section.Params.description}}
+            <div class="content-banner-description">
+              {{partial "get-description.html" $Section}}
+            </div>
+          {{end}}
+        </div>
+        {{with $Section.Params.bannerImage}}
+          <div class="content-banner-media">
+            <img src="{{.}}"/>
+          </div>
+        {{end}}
+      </div>
+      <div class="content">
+        <div class="content-title">
+          学习路径
+        </div>
+        <div class="content-steps">
+          {{ $content := cond (not $Section.Params.study_section) $Section.Params.section $Section.Params.study_section  }}
+          {{range $content}}
+            <div class="content-steps-item">
+              <div class="content-steps-item-tail"></div>
+              <div class="content-steps-item-icon">
+                {{if hasPrefix .icon `/images/`}}
+                  <img src="{{.icon}}" />
+                {{else}}
+                  <span class="content-item-title-icon {{.icon}}">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                    <span class="path3"></span>
+                    <span class="path4"></span>
+                    <span class="path5"></span>
+                    <span class="path6"></span>
+                    <span class="path7"></span>
+                    <span class="path8"></span>
+                    <span class="path9"></span>
+                    <span class="path10"></span>
+                    <span class="path11"></span>
+                    <span class="path12"></span>
+                    <span class="path13"></span>
+                    <span class="path14"></span>
+                    <span class="path15"></span>
+                  </span>
+                {{end}}
+              </div>
+              <div class="content-steps-item-content">
+                <div class="content-steps-item-content-title">
+                  {{.title}}
+                </div>
+                <div class="content-steps-item-content-description">
+                  {{range .children}}
+                    <div class="content-steps-item-content-description-item-title">
+                      {{.title}}
+                    </div>
+                    <div class="content-steps-item-content-description-item-content">
+                      {{range .children}}
+                        <a href="{{if or (eq (substr .url 0 1) `/`) (ne $RootPath `/`)}}{{.url}}{{else}}{{path.Join $VersionName .url}}{{end}}">{{.title}}</a>
+                      {{end}}
+                    </div>
+                  {{end}}
+                </div>
+              </div>
+            </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{- partial "footer.html" . -}}
+</div>

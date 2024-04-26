@@ -1,0 +1,60 @@
+---
+title: 修改客户信息（Boss2ModifyCustomerAttributes）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyCustomerAttributes
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于修改客户详情信息。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2ModifyCustomerAttributes",
+  "user_id": "usr-z9aH3x2c", // [必须]指定用户id
+  "sales_dept_id": 99, // 指定销售部门
+  "industry_id": 999, // 指定行业id
+  "search_keyword": "test", // 搜索关键字
+  "area_id": 123, // 地区id
+  "province_id": 123, // 省份id
+  "city_id": 123 // 城市id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2ModifyCustomerAttributesResponse",
+   "elapsed_time": 0.013097047805786133,
+   "expect_cnt": 1,
+   "expect_oa": {},
+   "ret_code": 0,
+   "table": "dim_user"
+}
+----

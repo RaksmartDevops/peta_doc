@@ -1,0 +1,29 @@
+---
+title: "解决 df: no file systems processed"
+weight: 280
+---
+== 背景介绍
+
+Linux 运维开发时，在使用 df 命令时，偶尔会遇到以下报错：
+[source,shell]
+----
+df: no file systems processed
+----
+
+或者
+
+[source,shell]
+----
+“df：未处理文件系统”
+----
+
+== 解决方法
+
+. root 权限下，执行以下命令。
++
+[source,shell]
+----
+#cat /proc/mounts > /etc/mtab
+----
+
+. 让 /etc/mtab 与 /proc/mount 内容同步，然后再使用 `df -h` 就可以看到恢复正常了。

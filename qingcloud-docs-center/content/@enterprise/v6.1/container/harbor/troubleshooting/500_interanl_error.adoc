@@ -1,0 +1,42 @@
+---
+title: "本地存储上传镜像报错"
+draft: false
+description: 本文介绍使用本地存储上传镜像报 500 Internal Error 错误的处理办法。
+keywords: Harbor,镜像仓库,上传镜像报错,存储不足
+weight: 8
+---
+本文介绍使用本地存储上传镜像报 500 Internal Error 错误的处理办法。
+
+== 适用范围
+
+适用版本：Harbor 2.2.1
+
+== 问题描述
+
+使用本地存储上传镜像报 500 Internal Error 错误。报错信息如下图：
+
+image::/images/cloud_service/container/harbor/troubel_500_internal_error.png[]
+
+== 原因分析
+
+因本机使用本地存储，存储节点空间不足导致上传失败。
+
+== 解决办法
+
+=== 方案一：清理多余镜像
+
+. link:../../quickstart/qs18_access_harbor/#_浏览器登录[登录 Harbor Web 界面]。
++
+默认账户及密码为：admin/Harbor12345。
+
+. 进入项目，删除不需要使用的镜像。
+. 重新上传新镜像。
+
+=== 方案二：扩容存储节点
+
+. 登录管理控制台，在集群操作菜单中，选择**扩容集群**。
+. 选择扩容存储节点磁盘。
++
+image::/images/cloud_service/container/harbor/troubel_500_internal_error_1.png[,70%]
+
+. 扩容成功后，重新上传新镜像。

@@ -1,0 +1,27 @@
+---
+title: "扩容磁盘后，实际使用空间并未增加"
+weight: 20
+---
+== 问题背景
+
+客户创建系统盘超过 50G 大小的 Windows 云服务器，登录云服务器后发现系统盘空间大小是50G，并非实际创建时指定的值。
+
+== 处理方案
+
+. 打开磁盘管理。
++
+*开始* > *运行 diskmgmt.msc打开磁盘管理器*，如截图所示。
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_01.png[]
+
+. 发现有未分配的磁盘容量，右键 C 盘 > 扩展卷，请参考以下的流程处理即可。
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_02.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_03.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_04.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_05.png[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_expand_disk_06.png[]

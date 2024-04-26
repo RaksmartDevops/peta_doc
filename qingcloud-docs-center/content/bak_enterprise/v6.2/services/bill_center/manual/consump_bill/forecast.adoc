@@ -1,0 +1,31 @@
+---
+title: "消费预估"
+weight: 10
+description: 介绍如何查看和导出账单总览及消费明细。
+draft: false
+keywords: 云计算, 费用中心,消费账单, 账单总览, 消费明细, 消费预估
+---
+
+您可以在**消费预估**页面查看从现在开始的未来7天内的消费预估，包括按需计费及预留合约/包年包月的消费预估。
+
+include::../../../../../../_components/note.adoc[]
+
+费用预估仅供参考，系统将根据实际使用情况进行费用收取。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+image::/images/cloud_service/services/bill_center/consumption_forecast.png[消费预估]
+
+页面默认显示 7 天消费预估，可点击**默认预估时长配置**进行修改。也可手动切换查看 1 小时、1 天、30 天、3 月、1 年的消费预估。
+
+在主账户视图下，可以查看主账户和非独立计费的子账户的资源或服务的预估情况，在子账户视图下可查看自己所有的消费预估情况。详细情况如下表：
+
+image::/images/cloud_service/services/bill_center/forcast_detail.png[消费预估]
+
+include::../../../../../../_components/note.adoc[]
+
+在按项目预估的统计中，包括了项目中目前所有资源的预估。如果一个合约内的资源属于多个项目，将根据项目将预留合约的费用进行拆分预估。
+
+例如，用户有一个预留合约总共包括 5 台云服务器产品，预留合约自动续费的费用是 500 元，合约中有 4 台属于项目 A，1 台属于项目 B，合约在 30 天内会到期自动续费，那项目 A 的这 4 台资源的预估为 400 元，项目 B 中这 1 台的预估为 100元。
+
+include::../../../../../../_components/table_footer.adoc[]

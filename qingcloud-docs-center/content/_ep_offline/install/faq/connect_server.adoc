@@ -1,0 +1,19 @@
+//服务器带外默认密码
+//任何版本
+
+优先使用默认账号密码登录，若登录不上，应该是修改过密码，请联系客户或集成商获取修改后的密码。
+
+常见服务器带外默认用户名和密码如下：
+
+[%header,cols="1,1,1"]
+|===
+| 服务器厂商	| 默认用户名	| 默认密码
+| 华为/超聚变	| Administrator	| Admin@9000
+| 黄河	| Administrator	| Admin@9000
+| 华三	| Admin	| Password@_
+| 海康威视	| ADMIN	| hik12345+
+| 联想	| USERID	| PASSW0RD
+| 浪潮	| admin	| admin
+| Dell	| root	| calvin
+| 宝德	| ADMIN	| Admin123@pl
+|===

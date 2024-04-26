@@ -1,0 +1,169 @@
+---
+title: "公网 IP"
+weight: 70
+---
+
+公网 IP（Elastic IP）也叫弹性公网 IP，简称 EIP。是在互联网上合法的静态 IP 地址，是{platform_name_cn}提供的 IP 动态分配使用功能。
+
+`弹性` 的含义是支持动态申请、动态删除、动态绑定、动态解绑、动态调整带宽等。
+
+* 在{platform_name_cn}中，公网 IPv4 地址与用户的账户进行关联，而非与特定的资源进行关联。因此，用户可以将申请到的公网 IPv4 地址与任意主机（包括私有网络内的主机）/路由器/负载均衡器绑定，并可随时进行解绑，再将其分配到其他资源上。
+* {platform_name_cn}中的公网 IPv6 地址记录是将云服务器分配得到的 IPv6 地址接入公网后生成的，不支持 `申请` 与 `绑定` 操作。BOSS 平台中的公网 IPv6 页面用于 `公网带宽和流量` 信息的查询、计费、监控和管理。
+
+公网 IP 的 `绑定模式` 分为以下两类：
+
+* **外部绑定**
++
+是在主机外部通过网络地址转换（ NAT ）的方式将公网 IP 地址转换成用户私有网络地址或基础网络地址。
+
+* **内部绑定**
++
+是通过在主机内部添加一块连接到公网网关的网卡的方式来绑定公网 IP，该方式需要用户手动为这块网卡配置 IP 地址及相关路由。
+
+
+== 查看公网 IP 列表
+
+该页面列表展示{platform_name_cn}中用户已申请的公网 IP 的状态、名称及 ID、IP 地址、带宽上限、用户 ID、所属资源名称及 ID、隔离状态、锁定模式、创建时间信息。
+
+. 成功登录 BOSS。
+
+. 点击**资源管理** > **网络** > **公网 IP**，进入**公网 IP **列表页面。
++
+image::/images/boss/manual/resource_mgt/eip_list.png[eip_list,100%]
+
+. 如上图所示，该页面对公网 IP 的数量进行了统计，用户可点击统计栏中的各状态，分别查看各状态下的公网 IP 列表。
+
+. 点击列表右上方的**导出**，用户可将列表页面的内容进行导出下载。导出内容查看，可参考link:../../../report_center/report/[报表管理]相关操作。
+
+== 转移租户
+
+将租户下的公网 IP 资源转移给其他租户。当公网 IP 状态为**已绑定**或**可用**时，才能执行转移租户操作。进行租户转移时，系统不会对接收方的账户余额做校验。如果资源转移中，因为余额不足导致部分资源转移失败，系统会将失败的资源 `owner` 回滚到原租户。
+
+. 进入link:#_查看公网_ip_列表[公网 IP 列表]页面。在搜索框内输入目标公网 IP 的名称、ID 或 IP 地址搜索公网 IP。
+
+. 点击目标公网 IP 的更多操作中的**转移租户**进行单个公网 IP 的转移。
++
+image::/images/boss/manual/resource_mgt/eip_option_more.png[eip_option_more,100%]
+
+. 弹出转移公网 IP 对话框，用户根据页面提示信息，选择填写相关参数后，点击**转移**。
++
+image::/images/boss/manual/resource_mgt/eip_owner_change.png[eip_owner_change,50%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 资源租户转移过程会在系统中生成一个 Job，这个 Job 在link:../../../om_tools/operation_log/[操作日志]中可以查看到详细结果。
+* 若用户勾选了 `任务完成时通知我`，则系统会将执行结果同步给管理员。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. BOSS 支持批量操作公网 IP 进行租户转移。用户在公网 IP 列表页面，勾选多个目标 IP 后，点击**转移租户**。
++
+image::/images/boss/manual/resource_mgt/eip_owner_change_more.png[eip_owner_change_more,100%]
+
+. 弹出**批量转移租户**对话框，根据页面提示信息，确认需要转移的公网 IP，并设置转移参数后，点击**转移**。
+
+
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网络* > *公网 IP*，在面板左上角选择区域或可用分区，可查看该分区的所有公网 IP 列表及相关信息。
++
+image::/images/boss/manual/resource_mgt/eips_operation.png[]
+
+. 点击公网 IP 的名称，进入公网 IP 详情页。
++
+在 *资源监控* 页签，可查看该 IP 在指定时间段内的带宽、流量、包转发率、实时监控数据。
++
+
+include::../../../../../_components/note.adoc[]
+仅公网 IP 状态为 *已绑定* 时，可查看 *资源监控* 信息。
+
+*云计算运维管理平台* 根据用户对公网 IP 的操作不同将公网 IP 分为以下几种状态：
+
+* *可用：* 用户在{platform_name_cn}创建的公网 IP，待分配到服务器、绑定到 VPC 网络、分配到负载均衡器、关联 NAT 网关等操作。
+
+* *已销毁：* 已销毁的公网 IP 用户不可使用，其他用户也不可再创建。
+
+* *已暂停：* 用户在{platform_name_cn}对已经创建好的公网 IP 执行了暂停的操作，暂停后，该 IP 对应的带宽为 0（IP 不通）。
+
+* *等待中：* 用户在{platform_name_cn}创建公网 IP 时，后台从 IP 池为该用户分配的时间内控制台显示的一种状态。
+
+* *已释放：* 用户在{platform_name_cn}上对 IP 资源做了释放的操作，释放之后，该 IP 回归到 IP 池，可供其他用户购买创建使用。
+
+* *已绑定：* 用户在{platform_name_cn}将公网 IP 已分配到云服务器并绑定到 VPC 网络。
+
+include::../../../../../_components/table_footer.adoc[]
++
+在**租赁信息**页签，可查看该 IP 的租赁信息和消费记录。
++
+image::/images/boss/manual/resource_mgt/eips_view.png[]
+
+=== 导出公网 IP 列表
+
+. 在公网 IP 页面选择区域或可用区，选择待导出列表的状态，
+. 在右上角点击 *导出*。
++
+弹出 *创建导出任务成功* 提示信息。
+
+. 点击 *报表管理中心*。
+. 点击公网 IP 模块后的文件名称，公网 IP 列表以 *.csv* 文件形式保存到本地。
+
+=== 解绑公网 IP
+
+include::../../../../../_components/note.adoc[]
+公网 IP 状态为 *已绑定* 时，可执行解绑操作。且解绑之后为了防止非本人对 IP 做配置变更，管理员不可再绑定，请谨慎操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在公网 IP 页面搜索框中搜索待解绑公网 IP 的 ID、名称或 IP 地址，按 *Enter*，找到待解绑公网 IP。
+. 在待解绑公网 IP 所在行点击 image:/images/boss/manual/icon.png[]，点击 *解绑*。
++
+弹出 *解绑 IP* 对话框。
+
+. 输入操作原因，点击 *解绑*。
+
+=== 变更 IP
+
+include::../../../../../_components/note.adoc[]
+公网 IP 状态为 *可用* 时，可执行变更操作。可用的公网 IP 在调整带宽大小或者调整计费方式等操作时都需要执行变更操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在公网 IP 页面搜索框中搜索待操作公网 IP 的 ID、名称或 IP 地址，按 *Enter*，找到待操作公网 IP。
+. 在待操作公网 IP 所在行点击 image:/images/boss/manual/icon.png[]，点击 *变更*。
++
+弹出 *变更 IP* 对话框。
+
+. 输入新 IP 和操作原因。
+. 点击 *变更*。
+
+=== 暂停 IP
+
+include::../../../../../_components/note.adoc[]
+公网 IP 状态为 *已绑定*、*可用*、*等待中* 或 *已释放* 时，可执行暂停操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在公网 IP 页面搜索框中搜索待操作公网 IP 的 ID、名称或 IP 地址，按 *Enter*，找到待操作公网 IP。
+. 在待操作公网 IP 所在行点击 image:/images/boss/manual/icon.png[]，点击 *暂停*。
++
+弹出 *暂停 IP* 对话框。
+
+. 输入操作原因。点击 *暂停*。
+
+=== 恢复 IP
+
+include::../../../../../_components/note.adoc[]
+公网 IP 状态为 *已暂停* 时，可执行恢复操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在公网 IP 页面搜索框中搜索待操作公网 IP 的 ID、名称或 IP 地址，按 *Enter*，找到待操作公网 IP。
+. 在待操作公网 IP 所在行点击 image:/images/boss/manual/icon.png[]，点击 *恢复*。
++
+弹出 *恢复 IP* 对话框。
+
+. 输入操作原因。点击 *恢复*。

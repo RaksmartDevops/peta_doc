@@ -1,0 +1,102 @@
+---
+title: 全局ping检测（Boss2GetGlobalPingMonitor）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalPingMonitor
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取所有zone的连通情况。
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| src_zone
+| 发起ping检测的zone
+|
+
+| dest_type
+a|
+ping检测的目标：
+
+* global: 检测与global节点的连通性
+* internet: 检测与公网的连通性
+* zone_id: 检测与其他zone的连通性
+|
+
+| package_loss
+| ping检测是否存在丢包(true: 有丢包，false: 无丢包)
+|
+
+| connection_error
+| ping检测是否存在无法连通的情况(true: 有异常, false: 无异常)
+|
+
+| abnormal
+| ping检测是否异常(存在丢包或无法连通的情况即为true，表明连通性有异常)
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetGlobalPingMonitor",
+    "zones": ["dsry1"], // [可选]可指定需要进行检测的zone，如不指定将会返回所有zone检测结果
+    "src_zones": ["dsry1"], // [可选]按照ping检测发起的zone进行过滤
+    "dest_types": ["global", "internet"], // [可选]按照ping检测的对象进行过滤，
+    // 可选项目为：global: 通过ping global节点进行检测 internet: 通过ping外网进行检测  zone_id: 可指定需要检测的目标zone来进行过滤
+    "package_loss": true, // [可选]按照是否有丢包来进行过滤，如不传该字段则返回所有的数据，设置为true则返回所有存在丢包的结果
+    "connection_error": true, // [可选]按照是否连接错误来进行过滤，连接错误指ping检测时出现ping不通或无法找到主机等错误
+    "abnormal": true // [可选]按照连接是否有异常来进行过滤, 连接异常是指本次检测存在丢包或连接失败
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "src_zone": "dsry1",
+         "dest_type": "global",
+         "package_loss": false,
+         "connection_error": false,
+         "abnormal": false
+      },
+      {
+         "src_zone": "dsry1",
+         "dest_type": "internet",
+         "package_loss": false,
+         "connection_error": false,
+         "abnormal": false
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetGlobalPingMonitorResponse"
+}
+----

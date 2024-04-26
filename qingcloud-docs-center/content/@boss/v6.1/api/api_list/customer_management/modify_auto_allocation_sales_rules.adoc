@@ -1,0 +1,56 @@
+---
+title: 修改自动分配销售规则（Boss2ModifySalesTransferAutoRule）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifySalesTransferAutoRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于修改指定的自动分配销售规则。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifySalesTransferAutoRule",
+    "rule_id": 5, // [必须]指定规则id
+    "sales_dept": 39,  // 支持修改规则对应销售部门id
+    "sales_id": 123, // 支持修改规则对应的销售id
+    "status": "disabled",  // 可修改规则状态, enabled: 启用  disabled: 禁用
+    "start_time": "2021-03-26T07:59:59Z", // 可修改规则生效时间
+    "end_time": "2021-03-29T15:59:59Z"   // 可修改规则结束时间
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2ModifySalesTransferAutoRuleResponse",
+   "elapsed_time": 0.009552955627441406,
+   "ret_code": 0
+}
+----

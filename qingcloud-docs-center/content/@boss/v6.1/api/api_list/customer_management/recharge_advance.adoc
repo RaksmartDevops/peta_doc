@@ -1,0 +1,84 @@
+---
+title: 充值/垫付操作（Boss2Recharge）
+weight: 25
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2Recharge
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了 IaaS 的充值接口(Recharge)，加入了更多的字段用于操作的描述。
+
+充值
+`{`
+`"action": "Boss2Recharge",`
+`"charge_type": "recharge",`
+`"user": "usr-i3K70DIf",`
+`"fee": "1",`
+`"payer": "测试付款公司",`
+`"pay_date": "2020-03-01",`
+`"pay_method": "bank",`
+`"ticket": "tk-xxxxxxx",`
+`"remarks": "测试充值"`
+`}`
+
+垫付
+`{`
+`"action": "Boss2Recharge",`
+`"charge_type": "advance",`
+`"user": "usr-i3K70DIf",`
+`"fee": "10",`
+`"advance_by": "垫付人",`
+`"pay_method": "bank",`
+`"ticket": "tk-xxxxxxx",`
+`"company": "公司名称",`
+`"remarks": "测试垫付"`
+`}`
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2Recharge",
+   "charge_type": "recharge",
+   "user": "usr-i3K70DIf",
+   "fee": "1",
+   "payer": "测试付款公司",
+   "pay_date": "2020-03-01",
+   "pay_method": "bank",
+   "ticket": "tk-xxxxxxx",
+   "remarks": "测试充值"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2RechargeResponse",
+   "user_id": "usr-i3K70DIf",
+   "ret_code": 0
+}
+----

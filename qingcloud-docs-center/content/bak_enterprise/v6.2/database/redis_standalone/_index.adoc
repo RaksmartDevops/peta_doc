@@ -1,0 +1,89 @@
+---
+title: 键值数据库 Redis Standalone
+linkTitle: Redis Standalone
+weight: 10
+desciption: Redis 是一个使用 ANSI C 编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。Redis Standalone 将
+  Redis 封装成 App，采用 Redis 最近的稳定版本 3.2.9 构建，支持在 AppCenter 上一键部署，在原生 Redis
+  的基础上增加了其易用性、高可用的特性。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 Redis Standalone
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 实例规格
+            url: intro/instance_type/
+          - title: 应用场景
+            url: intro/scenarios/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 退款说明
+            url: billing/refund/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建集群
+            url: quickstart/create_cluster/
+          - title: 连接数据库
+            url: quickstart/cnect_redis/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 集群管理
+        children:
+          - title: 扩容集群
+            url: manual/cluster_lifecycle/capacity_expansion/
+          - title: 连接集群
+            url: manual/mgt_connect/access_redis_cli/
+          - title: 升级集群
+            url: manual/cluster_lifecycle/upgrade/
+          - title: 迁移集群
+            url: manual/migrate/rdb_files/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+      - title: 集群安全
+        children:
+          - title: 升级多可用区部署
+            url: manual/cluster_lifecycle/multi_zones/
+          - title: 备份与恢复
+            url: manual/backup_restoration/backup_info/
+          - title: 数据安全
+            url: manual/data_security/tls_config/
+      - title: 集群监控
+        children:
+          - title: 设置监控告警
+            url: manual/metrics_alarm/set_alarm_rules/
+          - title: Zabbix 监控服务
+            url: manual/metrics_alarm/zabbix_client_service/
+          - title: Redis Exporter 服务
+            url: manual/metrics_alarm/redis_exporter_service/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 多可用区容灾
+            url: best-practices/disaster_recovery/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: 数据库版本问题
+            url: faq/kernel_version/
+          - title: 数据库 key 问题
+            url: faq/para_faq/
+linkkey: database_redis_standalone_guide
+---

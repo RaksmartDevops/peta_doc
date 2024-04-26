@@ -1,0 +1,51 @@
+---
+title: 修改通知邮箱配置（Boss2ModifyNfEmailSettings）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyNfEmailSettings
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyNfEmailSettings",
+    "smtp_server": "172.16.1.1",
+    "smtp_port": 25,
+    "encrypt": "OFF",       // 可以传 OFF, SSL, STARTTLS 三个值
+    "login_user": "boss2@yunify.com",
+    "login_passwd": "zhu88jie",
+    "sender_email": "boss2@qincloud.com"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2ModifyNfEmailSettingsResponse"
+}
+----

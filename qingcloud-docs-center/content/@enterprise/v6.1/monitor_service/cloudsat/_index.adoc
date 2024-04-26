@@ -1,0 +1,61 @@
+---
+title: "云监控 CloudSat"
+linkTitle: "云监控 CloudSat"
+weight: 1
+description: "云监控服务 CloudSat 为云上用户提供开箱即用的企业级开放型一站式监控解决方案。"
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: CloudSat 简介
+            url: "intro/intro"
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: "billing/price/"
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 监控概述
+            url: manual/monitoring_overview/
+          - title: Dashboard
+            url: manual/dashboard/
+          - title: 分组管理
+            url: manual/group_management/
+          - title: 事件监控
+            url: manual/event_monitor/
+          - title: 告警服务
+            url: manual/alarm_service/
+          - title: 自定义监控
+            url: manual/custom_monitor/
+
+
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: webhook 配置钉钉通知
+            url: best-practices/webhook-dtalk/
+          - title: 全栈资源监控统一展示
+            url: best-practices/show-all-resource/
+          - title: 异常处理排查
+            url: best-practices/panic-check/
+
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: CloudSat 产品常见问题
+            url: faq/faq
+
+
+---

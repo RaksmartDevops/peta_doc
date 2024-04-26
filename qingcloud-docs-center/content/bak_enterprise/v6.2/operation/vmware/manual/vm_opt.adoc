@@ -1,0 +1,58 @@
+---
+title: 虚拟机相关操作
+weight: 2
+keywords: VMware 纳管, 云计算
+---
+
+
+== 查看虚拟机列表
+
+{platform_name_cn}支持用户在{console_name}上查看，当前已纳管的 Vmware vSphere 平台中的虚拟机列表。操作如下：
+
+. 用户登录云平台的{console_name}后，点击**产品与服务** > **运维与管理** > **VMware 纳管**，进入**VMware 纳管** 主页面。该页面列表显示已添加至{platform_name_cn}的 Vmware vSphere 平台。
++
+image::/images/cloud_service/operation/vmware/vmware_vsphere_list.png[vmware_vsphere_list,100%]
+
+. 点击目标 Vmware vSphere 平台的 ID，进入虚拟机列表页面。该页面列举当前 Vmware vSphere 平台中已创建的所有虚拟机。
++
+image::/images/cloud_service/operation/vmware/vm_list.png[vm_list,100%]
+
+
+
+== 查看虚拟机详情
+
+. 用户登录{platform_name_cn}的{console_name}。
+
+. 进入目标 Vmware vSphere 平台的link:#_查看虚拟机列表[虚拟机列表]页面。
+
+. 点击目标虚拟机 ID，进入**虚拟机详情**页面。点击**实例信息**标签，查看虚拟机详细信息。
++
+image::/images/cloud_service/operation/vmware/vm_info.png[vm_info,100%]
++
+如上图所示，该页面显示当前虚拟机参数，包括基本信息、硬件信息和相关对象。
+
+
+== 查看虚拟机监控
+
+. 用户登录{platform_name_cn}的{console_name}。
+
+. 进入目标 Vmware vSphere 平台的link:#_查看虚拟机列表[虚拟机列表]页面。
+
+. 点击目标虚拟机 ID，进入**虚拟机详情**页面。点击**监控**标签，查看虚拟机监控详情。
++
+image::/images/cloud_service/operation/vmware/vm_monitor.png[vm_monitor,100%]
++
+如上图所示，该页面可用于查看虚拟机的 CPU 使用率、内存使用率、磁盘使用率等信息。
+
+== 虚拟机相关操作
+
+支持虚拟机多种操作，包括开启/关闭电源、挂起、关闭操作系统、重启等操作。
+
+
+. 用户登录{platform_name_cn}的{console_name}。
+
+. 进入目标 Vmware vSphere 平台的link:#_查看虚拟机列表[虚拟机列表]页面。
+
+. 根据需求，点击目标虚拟机的相关操作，即可完成虚拟机的开启/关闭电源、挂起、关闭操作系统、重启等操作。
++
+image::/images/cloud_service/operation/vmware/vm_opt.png[vm_opt,100%]

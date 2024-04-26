@@ -1,0 +1,12 @@
+{{- define "main" -}}
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$searchString := print $FirstSection.RelPermalink `search/`}}
+<div class="container">
+  {{- if eq .RelPermalink $searchString -}}
+    {{- partialCached "search.html" . -}}
+  {{- else -}}
+    {{- partial "side.html" . -}}
+    {{- partial "single.html" . -}}
+  {{- end -}}
+</div>
+{{- end -}}

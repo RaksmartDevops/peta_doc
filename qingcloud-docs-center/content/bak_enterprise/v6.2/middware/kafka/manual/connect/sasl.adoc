@@ -1,0 +1,36 @@
+---
+title: 开启 SASL
+description: 本小节主要介绍如何开启 SASL。 
+keywords: 云计算,大数据,Kafka,SASL
+weight: 20
+collapsible: false
+draft: false
+---
+
+从 Kafka 3.1.0 - v3.0.0 版本开始，Kafka 提供 SASL 认证功能。
+
+SASL 认证功能通过 **ca_sasl** 参数进行控制，默认为``关闭``状态，用户可以选择是否开启 SASL。通过公网连接 Kafka 时，建议开启 SASL。开启 SASL 认证后，数据加密传输，安全性更高。
+
+用户可以在创建 Kafka 集群时设置服务环境参数或创建 Kafka 集群后再修改配置参数来开启/关闭 SASL。本小节主要介绍创建 Kafka 集群后开启 SASL 的详细步骤。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* Kafka 集群状态为``活跃``。
+* 已准备好 SASL 证书文件，包括 ca cert 文件、ca key 文件和 ca 密码。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+. 点击目标集群 ID，进入集群详情页面。
+. 点击**配置参数**页签，进入集群配置参数管理页面。
+. 点击**修改属性**，参数**值**进入可编辑状态。
+. 配置 SASL 相关参数。
+
+** 设置 *ca_sasl* 的值为 `true`。
+** 根据已准备好的证书文件填写 *ca_cert*、*ca_key* 和 **ca_password**。
++
+image::/images/cloud_service/middware/kafka/enable_sasl.png[开启 SASL]
+. 配置完成后，点击**保存**。
+. 在弹出的提示框中点击**确认**，返回参数列表页面。

@@ -1,0 +1,49 @@
+---
+title: 获取未分配部门的客户列表/详情（Boss2DescribeNonDeptCustomers）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNonDeptCustomers
+
+=== Method
+POST
+
+=== 接口描述
+用于销售超级管理员的视图，获取所有未分配销售部门的客户列表。
+请求参数及返回数据请参考Boss2DescribeCustomers的文档。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    // 请参考文档：Boss2DescribeCustomers
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    // 请参考文档：Boss2DescribeCustomers
+}
+----

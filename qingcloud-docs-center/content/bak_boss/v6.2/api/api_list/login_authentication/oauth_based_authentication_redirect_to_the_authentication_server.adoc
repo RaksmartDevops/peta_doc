@@ -1,0 +1,31 @@
+---
+title: 基于OAuth认证-重定向到认证服务器（oauth_redirect）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/oauth_redirect/
+
+=== Method
+GET
+
+=== 接口描述
+该接口返回一个 HTTP 302 重定向，带上OAuth 2.0 授权码模式所需要的认证参数，重定向到认证服务器。同时设置一个cookie，用于加密存储state参数，该cookie在OAuth授权回调中有用。
+
+
+== 返回数据
+
+[,javascript]
+----
+HTTP/1.1 302 Found
+Connection: keep-alive
+Content-Length: 0
+Content-Type: text/html; charset=utf-8
+Date: Sat, 1 Aug 2020 03:32:26 GMT
+Location: http://sso.alphacloud.com/sso/oauth2/?response_type=code&client_id=thapp-exJqSQom&redirect_uri=http%3A%2F%2Fboss2.testing.com%2Flogin_sso_auth&state=M8SHaoZkZhINvl1EYs3WIk0ib5cqtb
+Server: nginx
+Set-Cookie: state=Ik04U0hhb1prWmhJTnZsMUVZczNXSWswaWI1Y3F0YiI:1k5L1W:dpw1s72_VZey40OPmKqhPTNN9Ik; expires=Tue, 11 Aug 2020 03:37:26 GMT; Max-Age=300; Path=/
+
+----

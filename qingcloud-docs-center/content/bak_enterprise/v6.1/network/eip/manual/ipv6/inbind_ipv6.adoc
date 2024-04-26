@@ -1,0 +1,7 @@
+---
+title: IPv6 EIP 绑定云服务器
+weight: 20
+draft: false
+---
+
+include::../../../../../../_cloud_service/eip/inbind_ipv6_eip.adoc[]

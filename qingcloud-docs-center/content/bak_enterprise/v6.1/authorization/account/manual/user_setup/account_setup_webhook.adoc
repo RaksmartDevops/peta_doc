@@ -1,0 +1,33 @@
+---
+title: "添加和更改 Webhook 地址"
+description: 介绍如何添加和更改 Webhook 地址。
+keywords: Webhook地址,
+weight: 80
+draft: false
+---
+
+通过验证的 Webhook 地址可用于接收云平台消息。
+
+若您首次登录管理控制台，可以在**账户设置**的**基本信息**页面添加 Webhook 地址。当 Webhook 地址有变化时，还支持更改 Webhook 地址。
+
+== 前提条件
+
+已获取管理控制台登录账号和密码，并登录管理控制台。
+
+== 添加通知邮箱
+
+. 进入基本信息页面。
+. 在**其他通知方式**区域，点击**Webhook地址**右侧的**添加**，弹出**添加Webhook地址**对话框。
++
+image::/images/cloud_service/authorization/account/add_webhook.png[,50%]
+
+. 输入 Webhook 地址。
+. 点击**确认**，页面上弹出**修改成功**提示信息。
+
+== 更改通知邮箱
+
+. 进入基本信息页面。
+. 在**其他通知方式**区域，点击 **Webhook 地址**右侧的**更改**，弹出更改 Webhook 地址对话框。
+. 输入新 Webhook 地址。
+. 点击**确认**，页面上弹出**修改成功**提示信息。
+

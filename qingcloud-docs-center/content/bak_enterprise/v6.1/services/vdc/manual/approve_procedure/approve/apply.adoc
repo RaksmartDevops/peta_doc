@@ -1,0 +1,82 @@
+---
+title: "提交资源申请"
+description:
+weight: 15
+draft: false
+keywords: 资源申请, 用户服务
+---
+
+当申请者没有创建资源的权限时，可以提交资源申请，由申请者所属组织的组织负责人审批通过后，即可使用资源。
+
+include::../../../../../../../_components/note.adoc[]
+目前仅支持申请云服务器资源。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+== 前提条件
+
+* 主账户已link:../../../../prepare/subscribe/[开通企业空间]。
+* 申请者已link:../../../org_and_user/mgt_user/create_user[加入企业组织]。
+
+== 申请入口
+
+* 在云服务器页面提交申请
++
+. 登录管理控制台。
+. 在顶部的导航菜单中，选择**产品与服务** > **计算** > **云服务器**，进入**云服务器**页面。
++
+image::/images/cloud_service/services/approve/approve_apply_01.png[]
+. 点击**申请云服务器**，进入申请云服务器页面。
+
+* 在流程审批页面提交申请
++
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/approve/approve_icon_01.png[]图标，选择**发起申请**，进入发起申请页面。
++
+image::/images/cloud_service/services/approve/approve_apply_04.png[]
+. 点击**设置云服务器规格参数**，进入申请云服务器页面。
+
+== 提交申请
+
+. 在申请云服务器页面，根据界面提示完成**基础配置**、**网络配置**、**系统配置**。详细参数说明请参见link:../../../../../../compute/vm/quickstart/create_vm/[创建云服务器]。
++
+image::/images/cloud_service/services/approve/approve_apply_02.png[]
+
+. 云服务器参数配置完成后，点击**下一步：用途说明**，回到**发起申请**页面。
++
+image::/images/cloud_service/services/approve/approve_apply_03.png[]
++
+
+include::../../../../../../../_components/note.adoc[]
+在提交申请前，若需要重新配置云服务器参数，可点击**重设参数**清除之前的配置参数（清除后不可恢复，请谨慎操作）。
+
+include::../../../../../../../_components/table_footer.adoc[]
+. 填写**用途说明**后，点击**提交申请**。
++
+提交申请后，自动进入**我的申请** > **我发起的**页面，可以看到申请单的状态为``部门负责人审批``。
++
+image::/images/cloud_service/services/approve/approve_apply_05.png[]
+
+== 后续操作
+
+提交申请后，请及时联系审批人（默认为组织负责人）进行link:../wait_approve[审批]。
+
+可进入**我的申请** > **我发起的**页面查看审批进度：
+
+* **通过申请**
++
+通过申请后，进入**我的申请** > **我发起的**页面，可以看到申请单的状态为``流程结束``。
++
+image::/images/cloud_service/services/approve/approve_wait_02.png[]
++
+系统将自动根据资源申请中配置的资源规格，为申请者创建出对应的资源。
++
+等待一段时间后（约几分钟），进入云服务器页面，或进入**企业管理** > **资源与项目** > **资源管理**页面，即可查看并使用创建好的云服务器资源（资源所属组织为申请者所属组织）。
+
+* **拒绝申请**
++
+拒绝申请后，进入**我的申请** > **我发起的**页面，可以看到申请单的状态为``审批拒绝``。
++
+image::/images/cloud_service/services/approve/approve_wait_03.png[]
++
+申请被拒绝后，系统不会创建相应的资源。

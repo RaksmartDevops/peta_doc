@@ -1,0 +1,298 @@
+---
+title: "角色管理"
+weight: 2
+---
+
+BOSS 通过角色管理，来进行对应功能菜单的授权。不同的管理员账户，根据其运维操作目的的不同，分别赋予不同或相同的角色来操作使用 BOSS。
+
+角色管理功能仅针对超级管理员账户开放。
+
+// == 概述
+
+// BOSS 支持三员分立的权限管理方式，将超级管理员的权限分解为系统管理员、安全管理员以及安全审计员。
+
+== 查看角色列表
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在左侧导航栏选择**系统管理** > **权限管理** > **角色管理**，进入**角色管理**主页面。该页面列表显示当前系统中已创建的角色信息。
++
+image::/images/boss/manual/system_mgt/role_management_main.png[role_management_main,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+查看角色权限相关信息，需点击角色名称，进入角色详情页面进行查看。详情参考link:#_查看角色详情[角色详情]。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+
+== 创建角色
+
+当 BOSS 中已有的角色满足不了当前需求时，超级管理员可以创建新的角色覆盖新的需求。
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。点击**创建**，弹出**创建角色**对话框。用户根据页面提示信息，正确填写相关参数后，点击**创建**。
++
+image::/images/boss/manual/system_mgt/role_create.png[role_create,50%]
++
+**页面参数说明**
++
+[cols="1,3", options="header"]
+|===
+| 页面参数 |说明
+
+|角色名称 |用户自行定义，用于唯一定位该角色。
+|可用区 Zone a|可选择一个或多个。用于定义该角色可操作的区域。
+
+|===
+
+. 弹出提示框，提醒用户设置角色权限，详细操作请参见link:#_设置权限[设置权限]。需注意的是，未设置权限的角色，不能使用。
++
+image::/images/boss/manual/system_mgt/role_management_tips.png[role_management_tips,60%]
+
+. 在link:#_查看角色列表[角色管理]主页面，查看成功创建的角色信息。
+
+== 查看角色详情
+
+角色详情包括该角色的功能权限以及当前角色已绑定的账户信息。对于已创建的角色，BOSS 支持对其详情的查看，用于判断当前角色是否满足需求，或相应的账户拥有何种权限等。
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。
+
+. 点击目标角色的名称，进入目标角色的详细信息页面。
+
+. 点击**功能权限**，选择查看具体功能已设置的页面访问权限、页面选项卡的访问权限以及当前页面可执行的操作权限。
++
+image::/images/boss/manual/system_mgt/role_info_detail.png[role_info_detail,100%]
+
+. 点击**角色账户**，查看当前角色已绑定的账户列表。
++
+image::/images/boss/manual/system_mgt/role_account_list.png[role_account_list,100%]
+
+
+== 设置权限
+
+
+成功创建的角色，还需对其进行功能权限的设置，才能分配给账户使用。
+
+// 角色管理最重要的功能就是对已创建的角色选择 BOSS 的功能菜单以及针对具体功能菜单页面设置其访问权限及操作权限等。
+
+
+角色的功能权限是用于设置使用当前角色的账户登录 BOSS 时，能查看到的 BOSS 页面，以及对具体页面设置其访问权限及操作权限。
+
+例如：使用超级管理员账户登录 BOSS 时，BOSS 所有页面均可查看。若使用管理员账户登录 BOSS 时，**权限管理**页面为隐藏状态，不对其展示。
+
+. 使用超级管理员账户登录 BOSS。
++
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。
+
+. 点击目标角色的名称，进入角色详情页面，默认显示功能权限列表标签页。
+
+. 根据页面提示信息，**点击设置角色权限**，进入功能权限设置页面。
++
+image::/images/boss/manual/system_mgt/role_function_setting_1.png[role_function_setting_1,100%]
+
+. 超级管理员根据角色需求以及前期对角色的规划，在左边栏功能列表中，选择开启相应的权限后，点击**保存**。
++
+如针对某一类型角色，仅需用于查看**看板**中的监控数据，不用做其他用途，这里我们可以为该角色勾选**看板**的权限后，点击**保存**。
++
+
+include::../../../../../_components/note.adoc[]
+
+* BOSS 支持功能权限的设置具体到各功能的子页面。超级管理员可点击展开显示各功能下的子功能页面，根据需求进行勾选开启。
+* 针对具体页面，可选择设置当前页面的访问权限、页面选项卡的访问权限以及当前页面可执行的操作权限。如下图所示：
+
+image::/images/boss/manual/system_mgt/role_function_setting_3.png[role_function_setting_3,100%]
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 用户可在功能权限列表页面，查看成功设置的功能权限。
++
+如下图所示，这里开启了看板功能的所有子页面功能。
++
+image::/images/boss/manual/system_mgt/role_function_setting_2.png[role_function_setting_2,100%]
+
+== 添加角色账户
+
+角色的功能权限设置完成后，就可以对其进行账户添加，以便账户登录使用 BOSS。
+
+角色与账户的绑定有两种方式，一是创建账户的时候，绑定角色，参考link:../account_management/#_创建账户[创建账户]。再一个是在角色详情页面，直接添加账户。这里介绍的是第二种操作方式。
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。
+
+. 点击目标角色的名称，进入角色详情页面，点击**角色账户**标签，进入角色账户列表页面。
++
+image::/images/boss/manual/system_mgt/role_add_account.png[role_add_account,100%]
+
+. 点击** + 添加**，弹出**添加账户**对话框，在账户列表中，选择待添加的账户绑定当前角色后，点击**添加**。
++
+若当前账户列表中，没有满足需求的账户，此时可创建一个新的账户用于绑定使用当前角色。详细操作可参考link:../account_management/#_创建账户[创建账户]。
+
+
+. 成功添加的角色账户，可在角色账户列表页面查看。
++
+image::/images/boss/manual/system_mgt/role_account_list.png[role_account_list,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+使用已设置功能权限的角色账户登录 BOSS，则拥有该角色赋予的相应的功能权限。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+== 删除角色账户
+
+删除角色前，需删除当前角色下对应的角色账户。
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。
+
+. 点击目标角色的名称，进入角色详情页面，点击**角色账户**标签，进入角色账户列表页面。
++
+image::/images/boss/manual/system_mgt/role_account_list.png[role_account_list,100%]
+
+. 勾选待删除账户前的勾选框，出现**删除**按钮。
++
+image::/images/boss/manual/system_mgt/role_account_del.png[role_account_del,100%]
+
+. 点击**删除**，弹出对话框，确认操作无误后，点击**删除**即可。
+
+. 在角色账户列表页面，确认相应的账户已成功移除，不在列表显示。
+
+. 用户也可通过link:../account_management/#_修改账户信息[修改账户信息]，修改账户已绑定的角色参数。
+
+== 修改角色信息
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 进入link:#_查看角色详情[角色详情]主页面。点击**修改角色信息**，目前仅提供角色名称、可用区 Zone、描述以及操作原因的修改。
+
+. 用户根据实际需求，修改相应参数后，点击**修改**。
+
+. 用户也可在直接在link:#_查看角色列表[角色管理]主页面，查找到目标角色后，点击目标角色的**更多操作** > **修改角色信息**。
++
+image::/images/boss/manual/system_mgt/role_opt_more.png[role_opt_more,100%]
+
+== 复制角色
+
+
+为方便快速调整角色的权限，BOSS 提供了复制角色的功能，用来满足权限微调并验证的相关需求。
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。点击目标角色的**更多操作** > **复制角色**。
++
+image::/images/boss/manual/system_mgt/role_opt_more.png[role_opt_more,100%]
+
+
+. 弹出**复制角色**对话框，用户根据页面相关信息，填写参数后，点击**复制**。
++
+
+include::../../../../../_components/note.adoc[]
+
+* 角色复制，仅复制源角色的功能权限，不复制源角色已绑定的角色账户。
+* 角色复制完成后，仍然需要添加账户使用。操作参考link:#_添加账户[添加账户]。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+
+== 删除角色
+
+针对未使用的角色，BOSS 支持删除操作。若当前角色，仍绑定有账户，则删除角色前，需先将该角色用绑定的账户上删除后，再执行删除角色的操作。
+
+
+
+
+. 使用超级管理员账户登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_查看角色列表[角色管理]主页面。在搜索框内输入目标角色的名称或者描述信息，查找目标角色。若已确认当前角色没有绑定账户，则可直接点击目标角色的**更多操作** > **删除**。
++
+image::/images/boss/manual/system_mgt/role_opt_more.png[role_opt_more,100%]
+
+. 点击目标角色的名称，进入角色详情页面，点击**角色账户**标签，进入角色账户列表页面，确认当前角色账户列表为空，无关联账户。
++
+image::/images/boss/manual/system_mgt/role_add_account.png[role_add_account,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+若当前角色列表不为空，需先将角色账户列表清空，将当前角色从相应的账户信息中删除。可参考link:#_删除角色账户[删除角色账户]相关操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 点击**删除**，弹出**删除角色**对话框，确认当前删除操作无误后，点击**删除**即可。
+
+. 进入link:#_查看角色列表[角色管理]主页面，确认删除的角色不在列表显示。

@@ -1,0 +1,17 @@
+{{$attributes := .Site.Data.attributes}}
+{{$description := ""}}
+{{with .Params.description}}
+  {{$description = .}}
+  {{$descriptionKeys := findRE "{.+?}" .}}
+  {{if len $descriptionKeys}}
+    {{range $descriptionKeys}}
+      {{$key := replaceRE "^{(.+?)}$" "$1" .}}
+      {{if index $attributes $key}}
+        {{$oldString := print (print "{" $key) "}"}}
+        {{$newString := index $attributes $key}}
+        {{$description = replace $description $oldString $newString}}
+      {{end}}
+    {{end}}
+  {{end}}
+{{end}}
+{{return $description}}

@@ -1,0 +1,89 @@
+---
+title: ClickHouse
+linkTitle: ClickHouse
+weight: 1
+description: ClickHouse 服务是一款深度定制的 ClickHouse 集群应用。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 ClickHouse
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 应用场景
+            url: intro/scenarios/
+          - title: 产品优势
+            url: intro/superiority/
+          - title: 产品规格
+            url: intro/specification/
+          - title: 产品版本
+            url: intro/version/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 退款说明
+            url: billing/refund/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建集群
+            url: quickstart/create_cluster/
+          - title: 连接数据库
+            url: quickstart/access_clickhouse/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 集群管理
+        children:
+          - title: 版本升级
+            url: manual/cluster_lifecycle/upgrade/
+          - title: 修改集群计费模式
+            url: manual/cluster_lifecycle/switch_billing_mode/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+      - title: 节点管理
+        children:
+          - title: 扩容节点
+            url: manual/node_lifecycle/capacity_expansion/
+          - title: 增删节点
+            url: manual/node_lifecycle/create_node/
+          - title: 重启节点
+            url: manual/node_lifecycle/restart_node/
+      - title: 集群监控
+        children:
+          - title: 设置监控告警
+            url: manual/metrics_alarm/set_alarm_rules/
+          - title: 查看资源服务监控
+            url: manual/metrics_alarm/view_monitor_metrics/
+          - title: Prometheus 监控服务
+            url: manual/metrics_alarm/monitor_prometheus/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: ClickHouse 使用示例
+            url: best-practices/ck_use/
+          - title: 导入和导出数据(s3Cluster)
+            url: best-practices/table_function_storage/
+          - title: 性能测试
+            url: best-practices/benchmark_test/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: null
+        children:
+          - title: 常见报错
+            url: faq/error_list/
+linkkey: dwh_bi_clickhouse_guide
+---

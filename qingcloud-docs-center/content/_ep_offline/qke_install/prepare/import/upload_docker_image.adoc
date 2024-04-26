@@ -1,0 +1,116 @@
+// 上传 Docker 镜像
+
+仅安装 QKE v3.0.0 版本需要执行以下操作。
+
+== 背景信息
+
+在私有云部署 QKE 时，IaaS 侧不提供 QKE 集群所需的 Docker 镜像。
+
+所以在部署 QKE 之前需要自行上传 Docker 镜像到镜像仓库中。
+
+本文以上传 Docker 镜像到外置的 Harbor 镜像仓库为例。
+
+include::../../../../_components/note.adoc[]
+如果客户有自己的镜像仓库，也可以直接将镜像推送到客户的镜像仓库。
+include::../../../../_components/table_footer.adoc[]
+
+== 准备 Harbor 镜像仓库
+
+=== 安装 Harbor 应用
+
+如果云平台环境上没有 Harbor 应用，请先安装 Harbor 应用。安装步骤详见《应用 App 安装指南》。
+
+=== 创建 Harbor 镜像仓库
+
+创建 Harbor 镜像仓库时，选择**自定义**节点，使用 1 个存储节点，1 个服务节点即可。
+
+include::../../../../_components/attention.adoc[]
+该 Harbor 镜像仓库用于为 QKE 应用提供镜像服务，创建成功后请勿删除，否则将导致 QKE 应用无法正常创建。
+include::../../../../_components/table_footer.adoc[]
+
+详细操作步骤如下：
+
+. 登录{product_name} Console。
+. 在顶部的导航菜单中，选择**产品与服务** > **容器服务** > **Harbor 私有云镜像仓库**，进入 Harbor 镜像仓库部署页面。
+. 点击**立即部署**，进入应用部署页面。
+. 配置 Harbor 镜像仓库参数，包括基本信息、节点信息、网络信息、环境参数等。
+
+** 基本设置：**快速配置**选择``自定义``。
++
+image::/images/ep_offline/qke_install/prepare_create_harbor.png[,60%]
+
+** 主服务节点设置：选择已创建的**负载均衡器**；**节点数量**设置为 ``1``。
++
+image::/images/ep_offline/qke_install/prepare_create_harbor_01_1.png[,60%]
+
+** 存储节点设置：**节点数量**设置为 ``1``（默认为 0）。
++
+image::/images/ep_offline/qke_install/prepare_create_harbor_01.png[,60%]
+** 网络设置：支持选择私有网络（VPC）和基础网络（VBC）。
++
+
+include::../../../../_components/note.adoc[]
+请为网络配置一个 EIP 或全局 IP，确保 QKE 集群能访问该 Harbor 镜像仓库。
+
+建议 QKE 集群与 Harbor 镜像仓库处于同一网络，以保证更好的访问速度。
+
+include::../../../../_components/table_footer.adoc[]
++
+image::/images/ep_offline/qke_install/prepare_create_harbor_network.png[,60%]
+** 环境参数设置：配置 **Harbor 地址**。
++
+**Harbor 地址**为 ``LB 的地址 + 监听器的端口``。 
++
+例如：LB 的 IP 为 ``10.10.10.252``，监听器的端口为 ``80``，则 **Harbor 地址**配置为 ``\http://10.10.10.252:80`` 或者 ``\http://10.10.10.252``。
++
+image::/images/ep_offline/qke_install/prepare_create_harbor_02.png[,60%]
+
+=== 配置安全组规则
+
+网络选择的安全组，需要开放负载均衡器的监听器的端口。例如，Harbor 的地址是 ``\http://10.10.10.252:80``，需开放端口 ``80``。
+
+image::/images/ep_offline/qke_install/prepare_create_harbor_03.png[,60%]
+
+== 推送镜像
+
+. 使用传输工具将link:../../resources/#_qke_资源包[已下载的镜像包 qke_harbor.tar.gz] 上传到任意一台能够连接 Harbor 集群的节点（可以是 Harbor 集群的一个节点）。
+. 使用 SSH 远程连接工具登录已上传镜像包的节点。
+. 进入镜像包所在目录，执行以下命令，解压镜像包。
++
+[source]
+----
+tar -zxvf qke_harbor.tar.gz 
+----
++
+解压后 harbor 目录存在如下文件：
++
+* config-sample.yaml  
+* harbor_project.sh  
+* images.tar.gz
+* init_harbor.sh
+
+. 执行以下命令，将 `images.tar.gz` 推送到 Harbor 镜像仓库。
++
+[source]
+----
+cd harbor && ./init_harbor.sh <url>
+----
++
+**参数说明**：
++
+``<url> `` 为 Harbor 地址。
++
+**示例**：
++
+[source]
+----
+cd harbor && ./init_harbor.sh 139.20.0.1:9999
+----
++
+回显如下信息，表示推送成功（大约 10-15 分钟，请耐心等待）。
++
+image::/images/ep_offline/qke_install/prepare_docker_image.png[]
++
+include::../../../../_components/note.adoc[]
+由于环境问题，镜像可能需要多次推送。
+include::../../../../_components/table_footer.adoc[]

@@ -1,0 +1,45 @@
+---
+title: "告警记录"
+weight: 2
+draft: false
+linkkey: management_cloudsat_alarm_history
+---
+
+云监控提供告警记录功能，为用户提供半年内告警历史查询功能。
+
+== 查看告警记录
+
+. 用户登录云平台的{console_name}后，点击**产品与服务** > **运维与监控** > **监控服务** > **云监控 CloudSat**，进入**云监控 CloudSat** 主页面。
+
+. 在左侧导航栏点击**告警服务（新版）** > **告警记录**，进入**告警记录**主页面。
+
+. 在**告警记录**页面，通过筛选或搜索功能查找目标记录。
++
+image::/images/cloud_service/monitor_service/cloudsat/alarm_policy_history.png[alarm_policy_history,100%]
+
+. 点击指定告警记录的**详情**操作，可查看告警记录详情。
++
+image::/images/cloud_service/monitor_service/cloudsat/alarm_policy_history_detail.png[alarm_policy_history_detail,60%]
+
+== 告警状态说明
+
+告警状态目前分为：`告警中`、`正常`、`无监控数据` 以及 `无效`。各状态值说明如下：
+
+
+[cols="1,2"]
+|===
+|状态值|说明
+
+
+|告警中 | 资源处于告警状态。
+|正常 | 资源恢复到正常状态。
+|无监控数据 | 启用无监控数据告警设置，资源无数据上报时的告警状态。
+|无效 a| 
+
+* 告警策略删除
+* 告警策略停用
+* 云服务资源解绑告警策略
+* 云服务资源销毁
+
+|===
+

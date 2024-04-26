@@ -1,0 +1,27 @@
+---
+title: "进入企业空间"
+description:
+keywords:
+weight: 20
+collapsible: false
+draft: false
+---
+
+== 前提条件
+
+* 当前登录的账号类型必须为``主账户``。
+* 已开通企业空间。
+
+== 操作步骤
+
+. 登录管理控制台。
++
+可以看到登录用户的企业信息，包括账户类型、所属组织和拥有的角色权限。
++
+image::/images/cloud_service/services/vdc/access_console.png[进入管理控制台]
+. 点击页面右上方的**企业**。
++
+image::/images/cloud_service/services/vdc/access_vdc.png[进入企业空间]
+. 默认进入企业空间的组织管理页面。
++
+image::/images/cloud_service/services/vdc/org_list.png[组织管理]

@@ -1,0 +1,40 @@
+---
+title: "Topic 管理"
+description: 通过 Kafka Manager 管理和修改 Topic 配置。
+keywords: 云计算,大数据,消息队列,中间件,Kafka,Topic,Kafka Manager,平衡分区leader
+weight: 30
+draft: false
+---
+
+本小节主要介绍通过 Kafka Manager 管理和修改 Topic 配置。
+
+您也可以通过客户端节点使用命令行对 Topic 进行管理，详细操作请参见 link:../../kafka_client/kafka_client_topic/[Kafka 客户端命令行 > Topic 管理]。
+
+== 创建 Topic
+
+. 访问 Kafka Manager，进入 Kafka Manager 首页。
+. 点击目标 Cluster 名称，进入 Cluster 详情页面。
+. 选择 *Topic* > *Create*，进入 Create Topic 页面。
+. 配置相关参数，若不单独给 Topic 配置参数，会使用集群级别默认参数。
++
+image::/images/cloud_service/middware/kafka/create_topic.png[Create topic]
+
+. 配置完成后，单击 *Create*，完成 Topic 创建操作。
+
+== 修改 Topic
+
+点击 *Topic*，可以在 *List* 里找到 Topic 进行管理，修改 topic 参数：
+
+image::/images/cloud_service/middware/kafka/manage_topic.png[Manager topic]
+
+== 平衡分区 leader
+
+点击 *Preferred Replica Election*，通过 *Run* 执行。
+
+include::../../../../../../_components/note.adoc[]
+
+分区内必须有数据时才能使用。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+image::/images/cloud_service/middware/kafka/replica_election.png[replica_election]

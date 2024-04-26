@@ -1,0 +1,82 @@
+---
+title: 获取在线命令列表（Boss2DescribeCmds）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCmds
+
+=== Method
+POST
+
+=== 接口描述
+返回region和zone列表，用于界面展示使用。
+如果没有启用region，则该zone对应的region为空字符串
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| zone_set
+| Array
+| 可用区信息列表
+|
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| region_id
+| String
+| region id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeCmds",
+  "zone": "test" // 指定zone
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeCmds",
+   "total_count": 55,
+   "cmd_map": {
+      "agent-ip-r": {
+         "command": "safe-guest-sh {instance} 'ip r'",
+         "name": "查看虚拟机路由信息"
+      },
+      "ip-a": {
+         "command": "ip a",
+         "name": "查看IP地址"
+      }
+   },
+   "ret_code": 0
+}
+----

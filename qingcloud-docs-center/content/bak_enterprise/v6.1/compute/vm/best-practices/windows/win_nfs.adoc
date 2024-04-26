@@ -1,0 +1,108 @@
+---
+title: "Windows 云服务器配置 NFS 服务"
+weight: 140
+---
+
+本文以 Windows Server 2016 系统配置 NFS 服务为例。
+
+== Windows Server 端配置
+
+=== 开启 Server 服务
+
+. 点击 *开始* > *服务器管理器*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_1.png[,80%]
+
+. 在 *工具* > *服务* 中，找到 Server 服务。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_2.png[,80%]
+
+. 右键点击 *属性*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_3.png[,80%]
+
+. 设置启动类型为自动。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_4.png[,80%]
+
+. 启动服务。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_5.png[,80%]
+
+=== 安装 NFS 服务
+
+. 打开 *服务器管理器*，点击上方的 *添加角色和功能*，如图所示配置相关信息，点击 *下一步*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_6.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_7.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_8.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_9.png[,80%]
+
+. 在 *服务器角色* 中，点击 *文件和存储服务* > *NFS 服务器*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_10.png[,80%]
+
+. 在弹出的 *添加角色和功能向导* 中，点击 *添加功能*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_11.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_12.png[,80%]
+
+. 在 *功能* 处，勾选 *NFS 客户端*，点击 *下一步* 后，确认下需要安装的服务，然后点击安装。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_13.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_14.png[,80%]
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_15.png[,80%]
+
+=== 设置文件通过 NFS 共享
+
+. 安装完毕之后，右键需要分享的文件，点击 *属性*。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_16.png[,80%]
+
+. 选择 *NFS 共享*，点击 *管理 NFS 共享*，选择 *共享此文件夹*，然后点击下方的 *允许匿名访问*，点击 *权限* 可以设置用户访问权限，点击 *添加* 可以添加成员。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_17.png[,80%]
+
+. 在 *服务器管理器* > *文件和存储服务* 中，点击共享，可以确认下文件是否已共享。
++
+image::/images/cloud_service/compute/vm/bestp_win_nfs_18.png[,80%]
+
+== Windows 客户端访问
+
+在另一台 Windows 云服务器中，添加 *NFS 客户端* 后，使用 win + R，在调出的运行窗口中，输入 cmd，然后执行挂载命令，可以在文件管理中看到已成功挂载。
+
+[,shell]
+----
+mount \\192.168.0.5\shared F:
+----
+
+image::/images/cloud_service/compute/vm/bestp_win_nfs_19.png[,80%]
+
+image::/images/cloud_service/compute/vm/bestp_win_nfs_20.png[,80%]
+
+== Linux 客户端访问
+
+本文以 CentOS 7.9 64bit 为例。
+
+=== 安装 NFS 客户端
+
+[,shell]
+----
+yum -y install nfs-utils
+----
+
+=== 创建相应目录并挂载
+
+[,shell]
+----
+mkdir /mnt/shared
+mount -t nfs 192.168.0.5:/shared /mnt/shared
+----
+
+image::/images/cloud_service/compute/vm/bestp_win_nfs_21.png[,80%]

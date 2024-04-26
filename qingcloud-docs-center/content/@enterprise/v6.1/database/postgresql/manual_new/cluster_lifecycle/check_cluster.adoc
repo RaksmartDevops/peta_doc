@@ -1,0 +1,109 @@
+---
+title: "查看集群信息"
+description: 本小节主要介绍如何查看 PostgreSQL 集群信息。
+keywords: 集群信息,PostgreSQL,关系型数据库,数据库
+weight: 10
+collapsible: false
+draft: false
+---
+PostgreSQL 集群创建成功后，可在 AppCenter 查看集群信息，包括集群基本属性、服务端口信息、租赁信息、节点信息、配置参数、告警配置、备份信息、角色详情、账号等。
+
+本小节主要介绍如何查看集群信息。
+
+== 前提条件
+
+已获取管理控制台登录账号和密码，且已获取集群查看权限。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 选择**产品与服务** > *数据库与缓存* > *关系型数据库 PostgreSQL*，进入集群管理页面。
++
+可查看当前区域集群列表，以及集群基本信息。
++
+image::/images/cloud_service/database/postgresql/cluster1.png[集群列表]
+
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
++
+可查看集群各详细信息，以及执行集群的各项功能管理操作。
+
+. 当在对集群执行操作后，可在集群详情页面左下侧，查看集群操作日志。
++
+image::/images/cloud_service/database/postgresql/operate_log1.png[操作日志,50%]
+
+=== 基本属性
+
+在集群详情页面左侧**基本属性**区域，可查看集群基本状态、版本信息、节点数量、网络信息等。
+
+点击下拉栏图标，展开集群操作列表，可查看集群服务功能。
+
+image::/images/cloud_service/database/postgresql/basic_info1.png[基本属性,30%]
+
+=== 服务端口信息
+
+在集群详情页面左侧**连接信息**区域，可查看集群服务端口、高可用读写 IP等。
+
+* 高可用读 IP：内网访问高可用读 IP。默认可将请求在除 primary 节点外的所有节点间进行负载分担，提高读取性能，消除单点故障。
+* 高可用写 IP：内网访问高可用写 IP。始终指向 Primary 节点。
+
+include::../../../../../../_components/attention.adoc[]
+
+* 务必使用读 IP 执行读请求，以将所有读请求按轮询方式分摊到所有节点.
+* 务必使用写 IP 执行写请求，以保证切主后不影响业务。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+image::/images/cloud_service/database/postgresql/check_access_info1.png[连接信息,30%]
+
+=== 节点列表
+
+在**节点**页面，可查看集群各节点的 ID、服务状态、监控信息、资源配置等。
+
+image::/images/cloud_service/database/postgresql/check_node1.png[节点]
+
+=== 配置参数
+
+在**配置参数**页面，可查看集群性能优化配置参数项。
+
+include::../../../../../../_components/attention.adoc[]
+
+修改后将导致自动重启集群的参数，请在业务低峰时进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+image::/images/cloud_service/database/postgresql/config_list_1.png[配置参数]
+
+=== 监控告警
+
+在**告警**页面，可以查看集群告警配置信息，及时掌握集群的资源和服务状况。
+
+image::/images/cloud_service/database/postgresql/alarm_list1.png[监控告警]
+
+=== 备份
+
+在**备份**页面，可以查看集群节点备份状态。
+
+image::/images/cloud_service/database/postgresql/backup_info1.png[备份状态]
+
+=== 节点角色
+
+在**节点角色**页面，可以查看集群节点角色详情状态。
+
+* ``master`` 表示数据库主库。
+* ``standby`` 表示数据库从库。
+* ``unknown`` 表示集群状态不稳定，暂未识别主备库状态。
+* ``readonly`` 表示集群只读节点。
+
+image::/images/cloud_service/database/postgresql/node_role1.png[角色详情]
+
+=== 账户
+
+在**账户**页面，可以查看和管理数据库用户账号。
+
+image::/images/cloud_service/database/postgresql/user_list1.png[用户账号列表]
+
+=== 租赁信息
+
+在集群详情页面左侧**租赁信息**区域，可以查看集群当前计费信息。
+
+image::/images/cloud_service/database/postgresql/payment_info.png[租赁信息,30%]

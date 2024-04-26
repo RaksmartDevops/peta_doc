@@ -1,0 +1,26 @@
+---
+title: "如何修改 SQL Server 默认端口"
+weight: 30
+
+---
+== 问题背景
+
+SQL Server 默认使用 1433 端口来提供对外访问，1433 为高危端口，易被攻击，导致端口可能会被屏蔽。以下将介绍如何修改 SQL Server 的服务端口。
+
+== 操作步骤
+
+=== client 端
+
+云服务器上的 SQL Server 作为 client 连接外部服务器。打开 SQL Server 配置管理器，修改客户端协议，设置默认端口为 14330。
+
+image::/images/cloud_service/compute/vm/faq_trouble_sqlserver_change_default_port_1.png[]
+
+image::/images/cloud_service/compute/vm/faq_trouble_sqlserver_change_default_port_2.png[]
+
+=== server 端
+
+云服务器上的 SQL Server 作为 server 提供服务。打开 SQL Server 配置管理器，修改服务端协议，设置默认端口为 11433。
+
+image::/images/cloud_service/compute/vm/faq_trouble_sqlserver_change_default_port_3.png[]
+
+image::/images/cloud_service/compute/vm/faq_trouble_sqlserver_change_default_port_4.png[]

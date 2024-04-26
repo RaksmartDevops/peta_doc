@@ -1,0 +1,38 @@
+//调整带宽上限
+
+您可以根据业务需求，随时增加或降低 EIP 的带宽上限。
+
+== 操作影响
+
+按带宽计费和按流量计费的 EIP 均支持修改带宽上限，修改后，配置立即生效。
+
+* 对于按带宽计费的 EIP，修改带宽上限将影响费用结算，修改后，立即按照新的配置进行计费。
+* 对于按流量计费的 EIP，修改带宽上限不影响实际费用，带宽仅做限速使用。
+
+include::../../_components/attention.adoc[]
+降低带宽大小，可能会影响业务流量造成丢包，请确认对业务产生的影响，谨慎操作。
+include::../../_components/table_footer.adoc[]
+
+== 约束限制
+
+include::./limit.adoc[tag=bandwidth]
+
+== 操作步骤
+
+include::./common_operation.adoc/[tag=ipv4]
+
+ifdef::ipv4[]
+. 在 EIP 列表，右键点击需要修改的 EIP，在弹出的快捷菜单中，选择**调整带宽上限**。
++
+image::/images/cloud_service/network/eip/mdy_band.png[]
+endif::[]
+
+ifdef::ipv6[]
+. 点击**公网 IPv6** 页签，进入**公网 IPv6** 页面。
+. 在 EIP 列表，右键点击需要修改的 EIP，在弹出的快捷菜单中，选择**调整带宽上限**。
++
+image::/images/cloud_service/network/eip/mdy_band_ipv6.png[]
+endif::[]
+. 在弹出的**调整带宽上限**窗口中，输入目标带宽值，点击**修改**进行提交。
++
+修改成功后，可以在列表中**带宽上限（Mbps）**列看到修改后的带宽上限。

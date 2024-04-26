@@ -1,0 +1,11 @@
+---
+title: 包年包月
+weight: 8
+description: 介绍包年包月计费模式的适用场景及计费原则。
+draft: false
+enableToc: false
+keywords: 费用中心,计费规则,包年包月
+linkkey: compute_instances_reserved_termination_contracts_guide
+---
+
+include::../../../../../_cloud_service/bill/bill_mode_2.adoc[]

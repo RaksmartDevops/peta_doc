@@ -1,0 +1,41 @@
+---
+title: "查看申请单"
+description: 
+weight: 30
+draft: false
+keywords: 审批资源, 用户服务
+---
+
+申请者和审批者都可以查看审批单的详细信息。
+
+== 查看入口
+
+* 待我审批
++
+审批者可以通过**待我审批**页面查看待审批的申请单。
++
+进入**待我审批**页面，在目标申请单的操作列，点击**审批**。
++
+image::/images/cloud_service/services/approve/approve_view_02.png[]
+
+* 我发起的
++
+申请者可以通过**我发起的**页面查看已提交的申请单。
++
+进入**我发起的**页面，在目标申请单的操作列，点击**详情**。
++
+image::/images/cloud_service/services/approve/approve_view_01.png[]
+
+* 全部
++
+用户可以通过**全部**页面查看和自己相关的全部申请单。
++
+进入**全部**页面，在目标申请单的操作列，点击**详情**。
++
+image::/images/cloud_service/services/approve/approve_view_03.png[]
+
+== 申请单详细信息
+
+包括申请信息、资源参数、用途说明和流程记录。
+
+image::/images/cloud_service/services/approve/approve_view_04.png[]

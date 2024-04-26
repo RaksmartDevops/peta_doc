@@ -1,0 +1,33 @@
+---
+title: "云平台 License 管理"
+weight: 1
+---
+
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择**系统管理** > **许可管理** > **云平台 License 管理**，进入**云平台 License 管理**页面。
+. 下拉框内，选择目标区域，可查看该区域已注册的 License 信息。
+
+
+. 在**云平台 License 管理**页面，点击**注册**，弹出**注册证书**对话框。
++
+image::/images/boss/manual/system_mgt/license_management_iaas.png[license_management_iaas,60%]
+
+
+
+. 在对话框内，输入目标区域的注册码后点击**注册**。
++
+include::../../../../../_components/note.adoc[]
+
+拷贝当前页面的**环境信息**提供给相应的工作人员，以便申请注册码。
+
+
+include::../../../../../_components/table_footer.adoc[]
+
+

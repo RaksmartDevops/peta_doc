@@ -1,0 +1,26 @@
+---
+title: "Windows 云服务器安装.NET Framework 4.5"
+weight: 130
+---
+
+NET Framework 4.5 为轻松便捷的构架和运行应用程序提供了全面而一致的编程模型，这些应用程序可针对包括台式 PC、服务器、智能手机以及公共云和专有云在内的各种不同平台而构造。
+
+== Windows  Server 2012安装.NET Framework 4.5
+
+. Windows Server 2012 云服务器中，.NET Framework 4.5 功能默认已经安装了 2 个功能，如下图。
++
+image::/images/cloud_service/compute/vm/bestp_win_install_net45_1.png[net45]
+
+. 如果有需求安装 ASP.NET 4.5，可以勾选 ASP.NET 4.5 复选框。
++
+image::/images/cloud_service/compute/vm/bestp_win_install_net45_2.png[net45]
+
+. 选择下一步，再点击安装。
++
+image::/images/cloud_service/compute/vm/bestp_win_install_net45_3.png[net45]
+
+. 安装成功，点击关闭。
++
+image::/images/cloud_service/compute/vm/bestp_win_install_net45_4.png[net45]
+
+. 至此完成了 .NET Framework 4.5-ASP.NET 4.5 的安装。

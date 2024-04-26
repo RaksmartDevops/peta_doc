@@ -1,0 +1,103 @@
+---
+title: "Windows 云服务器内部绑定公网 IP"
+weight: 40
+---
+
+== 内部绑定方式与外部绑定方式的差异
+
+公网 IP 的绑定模式分为两类： 外部绑定与内部绑定 ；外部绑定是在云服务器外部通过网络地址转换（NAT）的方式将公网 IP 地址转换成用户私有网络地址或基础网络地址；内部绑定是通过在云服务器内部添加一块连接到公网网关的网卡的方式来绑定公网 IP ，该方式需要用户手动为这块网卡配置 IP 地址及相关路由。
+
+== 方式一
+
+=== 准备事项
+
+. 假设绑定的公网 IP 地址为 `139.198.1.188` ，网关为 `139.198.1.1`； 云服务器在基础网络中的 IP 地址为 `10.140.84.3` ，网关为 `10.140.84.1` ；内部绑定 eip 以后，会自动增加一个网卡，以 Windows Server 2012 为例来说明网络配置的步骤。
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_1.png[,60%]
+
+. 选择 *控制面板* > *网络和Internet* > *网络连接* > *以太网3* ，点击 *属性*，再双击 *Internet 协议版本4（TCP/IPv4）* > *高级*，并填写 ip 地址等信息，如图所示：
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_2.png[,60%]
+
+=== 路由配置
+
+. 打开 Windows 命令行终端进行路由配置。首先使用 `route` 命令查看网卡的编号：
++
+[source,shell]
+----
+route print -4
+----
++
+输出结果如下图所示，其中第一行与第二行分别为公网的网络连接与基础网络的网络连接，每行的第一个数字为网卡的编号。在本示例中，基础网络的网卡编号为 12 ，公网的网卡编号为 17 。
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_3.png[,60%]
+
+. 从截图上看，已经存在一条公网 ip 的默认路由，将此条路由的优先级调整为 1，使用以下命令调整，调整后如截图所示：
++
+[source,shell]
+----
+route -p change 0.0.0.0 mask 0.0.0.0 139.198.1.1 metric 1 if 17
+----
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_4.png[,60%]
+
+. 增加一条基础网络的路由，将此条路由的优先级调整为100，使用以下命令调整，调整后如截图所示：
++
+[source,shell]
+----
+route -p add 0.0.0.0 mask 0.0.0.0 10.140.84.1 metric 100 if 12
+----
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_5.png[,60%]
+
+. 调整完以上步骤，就可以测试网络了。
++
+
+include::../../../../../../_components/note.adoc[]
+-p 参数表示增加用久路由。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+=== 测试网络
+
+可以测试 `ping` 一下 `www.baidu.com` 是否正常。
+
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_6.png[,60%]
+
+== 方式二
+
+为了方便测试，将之前的路由全部删除，如截图所示：
+
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_7.png[,60%]
+
+=== 调整基础网络的路由优先级
+
+. 选择 *控制面板* > *网络和Internet* > *网络连接* > *以太网*，点击 *属性*，再双击 *Internet 协议版本4（TCP/IPv4）* > *高级*，如下图所示。
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_8.png[,60%]
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_9.png[,60%]
+
+. 填写默认网关和路由跃点数（取消自动跃点）
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_10.png[,60%]
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_11.png[,60%]
+
+=== 调整公网网卡的路由优先级
+
+. 选择 *控制面板* > *网络和Internet* > *网络连接* > *以太网 3*，点击 *属性*，再双击 *Internet 协议版本4（TCP/IPv4）* > *高级*，并填写IP地址等信息，如下图所示。
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_12.png[,60%]
+
+. 进入 tcp/ip 高级设置，配置默认路由和跃点数
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_13.png[,60%]
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_14.png[,60%]
++
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_15.png[,60%]
+
+=== 查看路由表及网络情况如下
+
+image::/images/cloud_service/compute/vm/bestp_method_of_inner_associateeip_16.png[,60%]

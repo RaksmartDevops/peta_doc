@@ -1,0 +1,78 @@
+---
+title: 非 root 用户配置 SSH 密钥登录
+weight: 320
+---
+
+== 背景介绍
+
+由于 root 用户的权限过大，正式环境中不建议使用 root 用户登录并操作，本文以 CentOS 8.2 系统为例，介绍了普通用户如何通过 ssh 密钥登录至云服务器中。
+
+== 操作步骤
+
+. 通过下列命令，创建一个用户 user，并切换到 user 的家目录下。
++
+[,shell]
+----
+useradd -m user  # 创建用户 user,并同时创建用户 user 的家目录 /home/user
+passwd user  # 设置用户 user 的密码，需键入两次
+su user  # 切换到用户 user
+cd ~  # 切换到用户 user 的家目录
+----
+
+. 创建 ssh 证书。
++
+[,shell]
+----
+ssh-keygen -b 2048 -t rsa  # 此时会提示密钥保存路径，若无需修改，回车即可。接着会提示输入密码，按提示输入两次密码，若无需密码，执行两次回车
+----
++
+通过以下命令，可以看到已经生成相应的私钥（id_rsa）和公钥（id_rsa.pub）。
++
+[,shell]
+----
+ls /home/user/.ssh/
+----
+
+. 添加公钥
++
+创建 `authorized_keys` 文件，将公钥加入至 `authorized_keys` 文件，并设置 .ssh 以及 `authorized_keys` 文件的权限。
++
+[,shell]
+----
+touch /home/user/.ssh/authorized_keys
+cat /home/user/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
+chmod 700 /home/user/.ssh
+chmod 600 /home/user/.ssh/authorized_keys
+----
+
+. 使用私钥登录
+
+* Windows 系统
++
+----
+本文使用客户端工具Xshell来实现。
+----
++
+.. 通过 Xftp 工具将私钥下载至本地，.ssh 文件需要在云服务器目录处键入 `/home/qinglcloud/.ssh` 访问。
++
+image::/images/cloud_service/compute/vm/bestp_linux_configuringsshkeyloginfornonrootusers1.png[]
+
+.. 导入私钥。点击 Xshell 客户端的 *工具* > *用户密钥管理者*，点击导入，再选择刚才创建下载的密钥。
++
+image::/images/cloud_service/compute/vm/bestp_linux_configuringsshkeyloginfornonrootusers2.png[]
+
+.. 在 Xshell 中新建一个会话，填写主机为登录的 ip 地址，左侧标签中切换到用户身份验证（Authentication），右侧表单中方法（Method）选择 Public Key ，用户名（Username）为之前创建的用户（user），选择刚才导入的密钥，即可连接主机。
++
+image::/images/cloud_service/compute/vm/bestp_linux_configuringsshkeyloginfornonrootusers3.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_configuringsshkeyloginfornonrootusers4.png[]
+
+* Linux系统
++
+将私钥拷贝至 Linux 客户端上，通过密钥登录云服务器。
++
+[,shell]
+----
+scp root@192.168.0.4:/home/user/.ssh/id_rsa /root/
+ssh -i id_rsa user@192.168.0.4
+----

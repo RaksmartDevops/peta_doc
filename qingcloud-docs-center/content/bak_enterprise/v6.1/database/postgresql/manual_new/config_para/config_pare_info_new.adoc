@@ -1,0 +1,297 @@
+---
+title: "参数介绍"
+description: 本小节主要介绍 PostgreSQL 常用配置项。
+keywords: 常用配置项,PostgreSQL,关系型数据库,数据库
+weight: 05
+collapsible: false
+draft: false
+---
+在 AppCenter 集群管理控制台，支持对 PostgreSQL 常用配置参数的管理，以下参数适用于PG 2.0 及以上版本。
+
+本小节主要介绍 PostgreSQL 服务环境参数的含义，参数配置可在创建或修改时进行调整。
+
+== 服务环境参数
+
+[cols='3,2,7']
+|===
+| 参数 | 取值范围 | 参数说明
+
+| 內核
+| -
+| 数据库内核版本，创建时选择，集群创建成功后不支持修改。
+
+| readonly_vip_include_slave
+ a|
+
+* true
+* false
+| 只读主实例，默认值 `true`。
+
+| synchronous_readonly
+ a|
+
+* 先写入内存，后写入硬盘
+* 同步写入内存和硬盘
+ a| 表示设置只读实例同步模式。
+
+* `async` 是流式传输的异步模式。
+* `sync` 是同步模式。
+
+| console_log
+ a|
+
+* log
+* calls
+* mean_time
+* total_time
+* max_time
+| 主实例日志。
+
+| 端口
+| 1025 ~ 65534
+ a| 表示PostgreSQL 端口号，默认值为 `5432`。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| fsync
+ a|
+
+* true
+* false
+| 表示强制将更新同步到磁盘，默认值为 *true*。
+
+| full_page_writes
+ a|
+
+* true
+* false
+| 表示在检查点后第一次修改时将整页写入 WAL，默认值为 *true*。
+
+| wal_compression
+ a|
+
+* true
+* false
+| 表示压缩写入 WAL 文件的整页写入，默认值为 *false*。
+
+| jit
+ a|
+
+* true
+* false
+| 表示允许 JIT 编译，默认值为 *false*。
+
+| autovacuum
+ a|
+
+* true
+* false
+| 表示启动 autovacuum 子进程，默认值为 *true*。
+
+| synchronous_commit
+ a|
+
+* 关闭
+* local
+* on
+* remote_write
+* remote_apply
+ a| 表示设置当前事务的同步级别。
+
+* `local` 表示流式传输的异步模式。
+* `on` 表示同步模式，默认值为 *on*。
+
+| wal_level
+ a|
+
+* Replica
+* logical
+ a| 表示设置写入 WALL 的信息级别。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| temp_buffers
+| 1 ~ 32768
+ a| 单位：MB +
+表示设置每个会话使用的最大临时缓冲区数，默认值为 `2`。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，可能将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| work_mem
+| 0 ~ 1024
+ a| 单位：MB +
+表示表示在写到临时磁盘文件之前被内部排序操作和哈希表使用的内存大小，根据内存大小自动设置值，默认值为内存的 0.0005。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，可能将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| maintenance_work_mem
+| 0 ~ 1024
+ a| 单位：MB +
+表示表示在维护性操作（例如 VACUUM、CREATE INDEX 和 ALTER TABLE ADD FOREIGN KEY）中使用的最大的内存大小，根据内存大小自动设置值，默认为内存的 0.0625。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，可能将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| shared_buffers
+| 0 ~ 64
+ a| 单位：GB +
+表示设置服务器使用的共享内存缓冲区的数量，根据内存大小自动设置值，默认为内存的 0.25。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| max_connections
+| 0 ~ 262143
+ a| 表示设置每个 PostgreSQL 节点的最大并发连接数。 +
+max_connections = 机器剩余内存 / (work_mem * 0.2 + temp_buffers + 2M 的栈内存)。
+
+* 假定只有 1/5 的连接会将 work_mem 全部用满。
+* 进程的堆的空间最多为 10M，但是通常情况下都是小于 2M。
+* 剩余内存 = 机器内存 - shared_buffers - maintenance_work_mem。
+* 当连接数 max_connections 不够用的时候，建议减小 work_mem 的设置。
+* 当不需要很多连接的时候，手动减小 max_connections 会自动增加 work_mem 的设置（work_mem 设置为 0 自动优化时）。
+* 不建议手动设置其他参数。
+
+include::../../../../../../_components/note_in_table.adoc[]
+* 该参数修改后，将重启 postgresql 服务，请在业务低峰期进行操作。
+* 由于参数自动调优，可能间接造成 max_connections 参数修改，进而引起postgresql 服务重启。
+* 参数的下方 ``restart`` 代表修改参数会重启；``restart-mayby`` 代码修改参数可能会重启；``unit`` 代表参数的单位；``0 is automatic set`` 代表该参数会根据当前的主机配置进行自动设置。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| max_worker_processes
+| 0 ~ 65536
+ a| 表示最大并发工作进程数，根据CPU数量自动设置值，默认为 CPU 的数量 * 2。
+
+include::../../../../../../_components/note_in_table.adoc[]
+该参数修改后，将重启 postgresql 服务，请在业务低峰期进行操作。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| wal_writer_delay
+| 1 ~ 10000
+| 单位：ms +
+表示表示WAL 写入器的活动轮次之间的延迟，默认值为 *10*。
+
+| wal_writer_flush_after
+| 1 ~ 1024
+| 单位：MB +
+表示WAL writer 写出的触发刷新的 WAL 数量，默认值为 *1*。
+
+| commit_delay
+| 0 ~ 100000
+| 单位：μs +
+表示设置事务提交和将 WAL 刷新到磁盘之间的延迟，默认值为 *0*。
+
+| commit_siblings
+| 0 ~ 1000
+| 表示设置执行 commit_delay 之前的最小并发打开事务，默认值为 *5*。
+
+| bgwriter_delay
+| 10 ~ 10000
+| 单位：ms +
+表示回合之间的后台写入器睡眠时间，默认值为 *10*。
+
+| bgwriter_lru_maxpages
+| 0 ~ 1073741823
+| 表示后台写入器每轮要刷新的最大 LRU 页数，默认值为 *1000*。
+
+| bgwriter_flush_after
+| 0 ~ 2048
+| 单位：kb +
+表示执行的写入刷新到磁盘的页数，默认值为 *512*。
+
+| statement_timeout
+| 0 ~ 2147483647
+| 单位：ms +
+表示设置任何语句的最大允许持续时间，默认值为 *0*。
+
+| idle_in_transaction_session_timeout
+| 0 ~ 2147483647
+| 单位：ms +
+表示设置任何空闲事务的最大允许持续时间，默认值为 *86400000*。
+
+| log_min_duration_statement
+| -1 ~ 2147483647
+| 单位：ms +
+表示设置将记录语句的最短执行时间，默认值为 *10000*。
+
+| checkpoint_timeout
+| 30 ~ 86400
+| 单位：s +
+表示设置自动 WAL 检查点之间的最长时间，默认值为 *300*。
+
+| autovacuum_vacuum_cost_delay
+| -1 ~ 100
+| 单位：ms +
+表示真空成本延迟时间，默认值为 *0*。
+
+| autovacuum_vacuum_cost_limit
+| -1 ~ 10000
+| 表示打盹前可用的真空成本量，默认值为 **10000**。
+
+| autovacuum_vacuum_scale_factor
+| 0.01 ~ 100
+| 表示清空之前的元组更新或删除数，占 reltuples 的一小部分，默认值为 *0.02*。
+
+| autovacuum_analyze_scale_factor
+| 0.01 ~ 100
+| 表示在分析之前插入、更新或删除的元组数，作为 reltuples 的一部分，默认值为 *0.05*。
+
+| vacuum_defer_cleanup_age
+| 0 ~ 1000000
+| 表示应该推迟 VACUUM 和 HOT 清理的事务数（如果有），并用于recoverydata事务数，默认值为 *1000*。
+
+| seq_page_cost
+| 0 ~ 100000000
+| 表示设置计划者对顺序获取的磁盘页面成本的估值，默认值为 *1*。
+
+| random_page_cost
+| 0 ~ 100000000
+| 表示设置计划者对非顺序获取磁盘页面成本的估值，默认值为 *1.1*。
+
+| cpu_tuple_cost
+| 0 ~ 100000000
+| 表示设置计划者对处理每个元组的成本的估值，默认值为 *0.01*。
+
+| cpu_index_tuple_cost
+| 0 ~ 100000000
+| 表示设置计划者对在索引扫描期间处理每个索引条目的成本的估值，默认值为 *0.005*。
+
+| log_min_messages
+ a|
+
+* DEBUG5
+* DEBUG
+* INFO
+* NOTICE
+* WARNING
+* ERROR
+
+| 表示设置记录的消息级别，默认值为 *WARNING*。
+
+| log_statement
+ a|
+
+* -
+* ddl
+* mod
+* 全部
+| 表示设置记录的语句类型，默认值为 `-`。
+|===

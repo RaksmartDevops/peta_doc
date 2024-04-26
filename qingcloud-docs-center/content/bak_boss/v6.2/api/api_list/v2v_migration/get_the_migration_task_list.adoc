@@ -1,0 +1,244 @@
+---
+title: 获取迁移任务列表（Boss2DescribeV2VTasks）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeV2VTasks
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+owner 可以忽略，通过 boss 创建的任务固定为 boss
+
+keyword 可以传多个参数，如果没有筛选，就不要传 keyword 参数。
+
+status 状态有：
+
+* new 新创建
+* updated 已更新
+* applyed 已应用
+* created 已创建
+* migrated 已迁移（即成功状态）
+* running 运行中
+* failed 失败
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| owner
+| String
+| 资源所有者
+|
+
+| total_count
+| Integer
+| 资源总数
+|
+
+| v2v_set
+| Array
+| v2v 任务详情信息
+|
+
+| block_bus
+| String
+| 块总线
+|
+
+| console_id
+| String
+| 控制台 id
+|
+
+| cpu
+| Integer
+| cpu 核数
+|
+
+| create_time
+| String
+| 创建时间
+|
+
+| features
+| Integer
+| 特性标识码
+|
+
+| image_id
+| String
+| 镜像 id
+|
+
+| instance_class
+| String
+| 主机类别
+|
+
+| memory
+| Integer
+| 内存大小
+|
+
+| nic_type
+| String
+| 网卡类型
+|
+
+| os_family
+| String
+| 操作系统类型
+|
+
+| owner
+| String
+| 资源所有者
+|
+
+| passwd
+| String
+| 密码
+|
+
+| platform
+| String
+| 平台类别
+|
+
+| size
+| Integer
+| 大小
+|
+
+| status
+| String
+| 任务状态
+|
+
+| status_time
+| String
+| 上次更新时间
+|
+
+| user
+| String
+| 用户
+|
+
+| user_id
+| String
+| 用户 id
+|
+
+| v2v_id
+| String
+| v2v id
+|
+
+| v2v_name
+| String
+| v2v 名称
+|
+
+| volumes
+| Array
+| 硬盘详情数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VTasks",
+   "zone": "test",
+   "offset": 0,
+   "limit": 100,
+   "keyword": {
+      "status": [
+         "new"
+      ],
+      "v2v_id": "v2v-eomp10py"
+   }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VTasksResponse",
+   "owner": "boss",
+   "ret_code": 0,
+   "total_count": 1,
+   "v2v_set": [
+      {
+         "block_bus": "hd",
+         "console_id": "alphacloud",
+         "cpu": 4,
+         "create_time": "Wed Mar 27 17:54:01 2019",
+         "features": 4,
+         "image_id": "img-8nkyjt5b",
+         "instance_class": 0,
+         "memory": 4,
+         "nic_type": "e1000",
+         "os_family": "centos",
+         "owner": "usr-kjDQQJeD",
+         "passwd": "default",
+         "platform": "linux",
+         "size": 10,
+         "status": "new",
+         "status_time": "Wed Mar 27 17:54:01 2019",
+         "user": "root",
+         "user_id": "usr-kjDQQJeD",
+         "v2v_id": "v2v-eomp10py",
+         "v2v_name": "helo world",
+         "volumes": [
+            {
+               "file": "/home/ubuntu/app01/disk1.img",
+               "format": "qcow2",
+               "is_os_img": true,
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk1.img'\"",
+               "v_size": 10,
+               "volume_name": "disk1.img",
+               "volume_type": 0
+            },
+            {
+               "file": "/home/ubuntu/app01/disk2.img",
+               "format": "qcow2",
+               "st_size": 197120,
+               "url": "200.1.1.101:\"'/home/ubuntu/app01/disk2.img'\"",
+               "v_size": 20,
+               "volume_name": "disk2.img",
+               "volume_type": 0
+            }
+         ]
+      }
+   ]
+}
+----

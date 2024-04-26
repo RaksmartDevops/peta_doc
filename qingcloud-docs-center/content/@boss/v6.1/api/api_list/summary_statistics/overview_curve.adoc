@@ -1,0 +1,522 @@
+---
+title: 总览曲线图（Boss2GetDashboardGraph）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetDashboardGraph
+
+=== Method
+POST
+
+=== 接口描述
+用于获取总览及大屏界面的曲线图数据。
+现有统计项目：
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+| system_disk_iops
+| 系统盘iops
+| system_read_iops: iops读 +
+system_write_iops:iops写
+|
+
+| system_disk_throughput
+| 系统盘吞吐量
+| system_read_throughput: 读，单位MB/S +
+system_write_throughput: 写，单位MB/S
+|
+
+| data_disk_iops
+| 数据盘iops
+| data_read_iops: iops读 +
+data_write_iops:iops写
+|
+
+| data_disk_throughput
+| 数据盘吞吐量
+| data_read_throughput: 读，单位MB/S +
+data_write_throughput: 写，单位MB/S
+|
+
+| instance_trend
+| [大屏]主机各状态趋势数据
+a|
+total：总数
+other：其他
+running： 运行中
+|
+
+| volume_trend
+| [大屏]磁盘各状态趋势数据
+a|
+
+* total:总数
+* in_use:已占用
+* available:可用
+|
+
+| eip_trend
+| [大屏]公网IP各状态趋势数据
+a|
+
+* total:总数
+* available: 可用
+* associated: 已占用
+|
+
+| physical_usage
+| [大屏]物理资源使用情况趋势 +
+对应大屏24小时压力趋势
+a|
+
+* cpu_usage: cpu使用率，百分比
+* mem_usage: 内存使用率，百分比
+* data_disk_usage: 数据盘使用率，百分比
+|
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| traffic_monitor
+| [网络大屏]VPC/基础网络南北向带宽和东西向带宽
+a|
+
+* ew_traffic_in: 东西向带宽(进)
+* ew_traffic_out: 东西向带宽(出)
+* ns_traffic_in: 南北向带宽(进)
+* ns_traffic_out: 南北向带宽(出)
+a|
+单位均为：bps
+(注意，按照console的算法，
+算成kbps的时候需要乘以1000)
+
+需指定过滤项： +
+vpcs: 指定多个vpc id +
+vxnets: 指定多个vxnet id
+
+| lb_monitor
+| [网络大屏]负载均衡器监控数据曲线
+a|
+
+* tcp_total_conn:[TCP连接数]累计连接数
+* tcp_concurrent_conn_max:[TCP连接数]并发连接数最大值
+* tcp_concurrent_conn_avg:[TPC连接数]并发连接数平均值
+* http_resp_latency_max:[http]响应最大延迟
+* http_resp_latency_min:[http]响应最小延迟
+* http_resp_latency_avg:[http]响应平均延迟
+* http_req_num:[http]请求数
+* http_valid_resp:[http]正确响应数
+* http_resp_1xx:[http]后端服务响应数1xx
+* http_resp_2xx:[http]后端服务响应数2xx
+* http_resp_3xx:[http]后端服务响应数3xx
+* http_resp_4xx:[http]后端服务响应数4xx
+* http_resp_5xx:[http]后端服务响应数5xx
+* https_resp_latency_max:[https]响应最大延迟
+* https_resp_latency_min:[https]响应最小延迟
+* https_resp_latency_avg:[https]响应平均延迟
+* https_req_num:[https]请求数
+* https_valid_resp:[https]正确响应数
+* https_resp_1xx:[https]后端服务响应数1xx
+* https_resp_2xx:[https]后端服务响应数2xx
+* https_resp_3xx:[https]后端服务响应数3xx
+* https_resp_4xx:[https]后端服务响应数4xx
+* https_resp_5xx:[https]后端服务响应数5xx
+a|
+需指定过滤项：
+
+* vpcs: 指定多个vpc id
+* vxnets: 指定多个vxnet id
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="1,1,4,1", options="header"]
+|===
+| 参数名称 | 描述 | 数据 | 备注
+
+endif::[]
+
+| neonsan_rg_iops
+| 存储池IOPS曲线(按存储池进行区分)
+| rg_iops_read: 存储池IOPS读 +
+rg_iops_write: 存储池IOPS写
+a|
+需要指定过滤项：
+
+* rg: 指定存储池id
+支持指定step
+
+| neonsan_rg_throughput
+| 存储池吞吐量曲线(按存储池进行区分)
+| rg_network_transimit: 存储池出带宽，单位Bytes/s +
+rg_network_receive: 存储池入带宽，单位Bytes/s
+a|
+需要指定过滤项：
+
+* rg: 指定存储池id
+支持指定step
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetDashboardGraph",
+  "zone": "test", // 指定zone
+  
+  // 以下参数用于筛选统计项目
+  "topic": [
+    "system_disk_iops",
+    "system_disk_throughput"
+  ], // 指定统计项目, 可以合并一些统计项目以减少前端的请求次数
+  "start_time": "2019-02-20T08:30:00Z",  // 指定开始时间，如不指定则将返回最近6个小时的数据
+  "end_time": "2019-02-20T09:30:00Z", // 指定结束时间，如不指定则将返回最近6个小时的数据
+  "step": "1h", // 指定统计的步长，例如: 5m(5分钟)、1h(1小时)和1d(1天)
+  "filters": {
+      "system_disk_iops": {
+          "vpc": "rtr-0rcvx3h0",
+          "start_time": "2019-02-20T08:30:00Z",  // 可在filters中针对不同的topic指定开始时间，如不指定则使用外部的开始时间
+          "end_time": "2019-02-20T09:30:00Z", // 可在filters中针对不同的topic指定结束时间，如不指定则使用外部的开始时间
+          "step": "5m" // 可在filters中针对不同的topic指定步长，如不指定则使用外部的步长
+      } 
+  }, // 配置指定的topic使用过滤项
+  "fields": {
+      "system_disk_iops": ["data_read_iops"]
+  } // 配置指定的topic仅返回指定的字段
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "system_disk_iops": [
+      {
+         "name": "time",
+         "data": [
+            1551534900,
+            1551535200,
+            1551535500,
+            1551536100,
+            1551536400,
+            1551536700,
+            1551537180,
+            1551537300,
+            1551537600,
+            1551537900,
+            1551538200,
+            1551538500,
+            1551538800,
+            1551539400,
+            1551539700,
+            1551540000,
+            1551540300,
+            1551540900,
+            1551541200
+         ]
+      },
+      {
+         "name": "system_read_iops",
+         "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+         ]
+      },
+      {
+         "name": "system_write_iops",
+         "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.333333333333333,
+            0,
+            0,
+            0,
+            0,
+            0
+         ]
+      }
+   ],
+   "system_disk_throughput": [
+      {
+         "name": "time",
+         "data": [
+            1551534900,
+            1551535200,
+            1551535500,
+            1551536100,
+            1551536400,
+            1551536700,
+            1551537180,
+            1551537300,
+            1551537600,
+            1551537900,
+            1551538200,
+            1551538500,
+            1551538800,
+            1551539400,
+            1551539700,
+            1551540000,
+            1551540300,
+            1551540900,
+            1551541200
+         ]
+      },
+      {
+         "name": "system_read_throughput",
+         "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+         ]
+      },
+      {
+         "name": "system_write_throughput",
+         "data": [
+            0.000260416666666667,
+            0.0005859375,
+            0.000325520833333333,
+            0.000260416666666667,
+            0.000325520833333333,
+            0.000260416666666667,
+            0.0143229166666667,
+            0.000260416666666667,
+            0.000390625,
+            0.000260416666666667,
+            0.000260416666666667,
+            0.000651041666666667,
+            0.000260416666666667,
+            0.00540364583333333,
+            0.000325520833333333,
+            0.000325520833333333,
+            0.0009765625,
+            0.00130208333333333,
+            0.0005859375
+         ]
+      }
+   ],
+   "data_disk_iops": [
+      {
+         "name": "time",
+         "data": [
+            1551534900,
+            1551535200,
+            1551535500,
+            1551536100,
+            1551536400,
+            1551536700,
+            1551537180,
+            1551537300,
+            1551537600,
+            1551537900,
+            1551538200,
+            1551538500,
+            1551538800,
+            1551539400,
+            1551539700,
+            1551540000,
+            1551540300,
+            1551540900,
+            1551541200
+         ]
+      },
+      {
+         "name": "data_read_iops",
+         "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.333333333333333,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.533333333333333,
+            0,
+            0,
+            0,
+            0.133333333333333,
+            0
+         ]
+      },
+      {
+         "name": "data_write_iops",
+         "data": [
+            0.2,
+            0.133333333333333,
+            0.266666666666667,
+            0.0666666666666667,
+            0.0666666666666667,
+            0.2,
+            10.6666666666667,
+            0.333333333333333,
+            0.133333333333333,
+            0.0666666666666667,
+            0.2,
+            0.133333333333333,
+            0.2,
+            14.2666666666667,
+            0.0666666666666667,
+            0.2,
+            0.266666666666667,
+            1.2,
+            0
+         ]
+      }
+   ],
+   "data_disk_throughput": [
+      {
+         "name": "time",
+         "data": [
+            1551534900,
+            1551535200,
+            1551535500,
+            1551536100,
+            1551536400,
+            1551536700,
+            1551537180,
+            1551537300,
+            1551537600,
+            1551537900,
+            1551538200,
+            1551538500,
+            1551538800,
+            1551539400,
+            1551539700,
+            1551540000,
+            1551540300,
+            1551540900,
+            1551541200
+         ]
+      },
+      {
+         "name": "data_read_throughput",
+         "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.0177083333333333,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.0378336588541667,
+            0,
+            0,
+            0,
+            0.0104166666666667,
+            0
+         ]
+      },
+      {
+         "name": "data_write_throughput",
+         "data": [
+            0.00325520833333333,
+            0.0044921875,
+            0.00501302083333333,
+            0.0029296875,
+            0.00234375,
+            0.00397135416666667,
+            0.291536458333333,
+            0.00397135416666667,
+            0.0046875,
+            0.00260416666666667,
+            0.0048828125,
+            0.00260416666666667,
+            0.00234375,
+            0.2623046875,
+            0.00338541666666667,
+            0.00442708333333333,
+            0.00416666666666667,
+            0.0380208333333333,
+            0.00227864583333333
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetDashboardGraph2Response"
+}
+----

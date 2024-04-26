@@ -1,0 +1,25 @@
+---
+title: "远程登录提示“内部错误”"
+weight: 200
+
+---
+== 问题描述
+
+使用 MSTSC 方式登录 Windows 云服务器时，系统报错提示 “内部错误”。
+
+== 解决方法
+
+. 在本地主机以管理员身份运行 cmd。
+
+. 执行 `netsh winsock reset` 命令。
++
+image::/images/cloud_service/compute/vm/faq_trouble_win_cant_loggin_1.png[]
+
+. 重启本地主机。
+
+include::../../../../../../../_components/note.adoc[]
+如果使用上述方法仍无法登录云服务器，我们首先建议您排查本地的网络是否正常，您可以尝试更换网络（例如：手机热点）测试是否可以远程登录。
+
+如果通过上述排查，仍然无法登录云服务器，请记录资源信息和问题时间，然后点击管理控制台右上方的 “工单”，填写工单信息，获取技术支持。
+
+include::../../../../../../../_components/table_footer.adoc[]

@@ -1,0 +1,7 @@
+---
+title: 云服务器
+description: 云服务器类型
+weight: 1
+linkkey: compute_instances_intro
+---
+云平台为您提供一种随时获取的、弹性的计算能力，这种计算能力的体现就是云服务器。IaaS 平台所交付的云服务器服务，是云计算的核心业务，也是用户最为关心的计算的核心。

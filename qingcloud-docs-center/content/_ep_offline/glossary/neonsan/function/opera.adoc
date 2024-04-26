@@ -1,0 +1,54 @@
+// 运维相关'
+
+
+[cols="1,3a",options="header"]
+|===
+|术语|说明
+|recovery_volume
+|恢复集群中降级（状态为 DEGRADED ）的卷。
+
+|repair_volume
+|将集群中状态为 ERROR 的卷，修复为 DEGRADED。当卷的状态为 ERROR 时，表明数据可能被损坏。可通过 repair_volume 将卷的状态强制修改为 DEGRADED 之后，对相应的卷进行完整备份。
+
+|rebalance_ssd
+|对集群中的磁盘做负载均衡处理。将相应磁盘上的副本迁移至其他磁盘上。
+
+|relocate
+|将制定卷的某一 ERROR 副本迁移到其他正常节点。。当一个 Volume 里面有一个 ERROR 状态的副 本，那么该 ERROR 状态的副本所在的节点状态或者 SSD 的状态异常， 此时，需将此副本迁移至其他正常节点。
+
+|异步任务
+|{qingstor_neon} 系统中的异步任务，可通过 `neonsan list_job` 查看各项异步任务的状态信息。异步任务的状态包括：
+
+* Succeeded：成功 
+* Failed：失败 
+* Processing：处理中 
+* Pending：等待执行 
+* waiting：等待中，还未到执行时间。
+
+|replica_location
+|卷的副本分布情况。
+
+|move_replica
+|迁移副本，将指定副本迁移至其他节点的某一磁盘上。
+
+|evict_ssd
+|迁移磁盘数据，将指定磁盘上的数据迁移至其他磁盘上。
+
+|remove_ssd
+|清理集群中无效的磁盘信息。
+
+|evict_store
+|迁移节点数据，将指定 Store 节点从 {qingstor_neon} 集群中剔除，该 Store 节点上的 OK 状态的 副本会迁移至 {qingstor_neon} 集群的其他 Store 节点上。
+
+|cluster_info
+|集群信息，主要包括当前集群内活跃的 Center 节点数、Store 节点总数、异常的 Store 节点数、磁盘总数、异常磁盘数、网口总数、异常网口数等信息。
+
+|gc
+|空间回收，对当前集群内的所有 store 节点或指定 store 节点上的空间进行回收。
+
+|move_volume
+|将指定卷迁移至其他存储池中，即跨存储池迁移数据，支持在线迁移。
+
+|evict_volume
+|将指定的卷从相应的存储（Store）节点迁移至其他存储节点上。
+|===

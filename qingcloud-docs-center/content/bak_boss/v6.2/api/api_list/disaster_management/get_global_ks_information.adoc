@@ -1,0 +1,65 @@
+---
+title: 获取全局KS信息（Boss2GetGlobalKSInfo）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalKSInfo
+
+=== Method
+POST
+
+=== 接口描述
+获取全局KS信息，将会返回主服务区和从服务区信息。
+
+|===
+| 字段 | 说明 | 备注
+
+| master_zone
+| 主服务所在可用区
+|
+
+| slave_zones
+| 从服务所在可用区
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetGlobalKSInfo"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "master_zone": "dsry1a",
+   "slave_zones": [
+      "dsry1b"
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetGlobalKSInfoResponse"
+}
+----

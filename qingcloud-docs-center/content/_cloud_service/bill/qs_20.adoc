@@ -1,0 +1,35 @@
+//快速上手指引
+
+本文指导您快速了解如何通过费用中心及控制台完成基础的资源采购及财务管理，如：注册账号、充值、购买、查看账单、索取发票等。
+
+整体流程如下图所示。
+
+image::/images/cloud_service/services/bill_center/qs_process.png[]
+
+. *完成准备工作。*
+
+.. link:../../../../authorization/account/manual/user_signup/[注册云平台账号]。
+.. 完成账号的link:../../../../authorization/account/manual/account_aut/account_intro/[实名认证]。
+
+. *完成账户充值及资源购买。*
+
+.. 在费用中心**钱包**页面，选择适用的充值类型，完成link:../../manual/finance/wallet[账户充值]。
+.. 通过**产品与服务**目录，找到目标产品或服务的控制台入口，进行资源创建或购买。
+.. 支付您的购买。
+
+
+. *查看或导出您的消费账单。*
+
+.. 在费用中心**账单总览**页面，link:../../manual/consump_bill/overview/[查看及导出账单总览]。
+.. 在费用中心**消费明细**页面，link:../../manual/consump_bill/details/[查看及导出账单明细]。
+
+. *索取您的发票。*
+
+.. 在费用中心**发票管理**页面，link:../../manual/finance/invoice/[申请发票]。
+.. 等待纸质发票邮寄给您。
+
+. *根据需要进行资源续费或停止。*
+
+.. 若您需要继续使用资源，则可以在费用中心的**续费管理**页面，进行link:../../manual/renewal/[资源续费]。
+.. 若您不再需要使用资源，则需要在控制台找到目标资源，手动删除按需计费资源或退订包年包月资源。
+

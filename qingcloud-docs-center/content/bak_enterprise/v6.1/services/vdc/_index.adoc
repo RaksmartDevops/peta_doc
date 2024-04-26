@@ -1,0 +1,54 @@
+---
+title: "企业管理"
+weight: 35
+description: 
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是企业空间
+            url: "intro/introduction"
+          - title: 基本概念
+            url: "intro/concept"
+          - title: 权限与角色
+            url: "intro/roles"
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 准备工作
+        children:
+          - title: 开通企业空间
+            url: prepare/subscribe
+          - title: 进入企业空间
+            url: prepare/access
+      - title: 用户与组织
+        children:
+          - title: 管理组织
+            url: manual/org_and_user/mgt_org/create_org/
+          - title: 管理用户
+            url: manual/org_and_user/mgt_user/create_user/
+          - title: 管理组织配额
+            url: manual/org_and_user/mgt_quota/overview/
+      - title: 资源与项目
+        children:
+          - title: 管理资源
+            url: manual/resource_and_project/mgt_resource/view/
+      - title: 流程管理
+        children:
+          - title: 流程审批
+            url: manual/approve_procedure/approve/introduction/
+        
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 使用问题
+        children:   
+          - title: 用户、子账户、主账户之间的关系
+            url: faq/iamuser_subuser/
+     
+---

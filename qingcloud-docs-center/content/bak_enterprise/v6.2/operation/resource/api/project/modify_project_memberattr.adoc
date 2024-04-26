@@ -1,0 +1,98 @@
+---
+title: "ModifyProjectMemberAtrributes"
+描述: 本小节主要介绍更新项目成员接口。 
+keywords: 创建项目
+weight: 150
+collapsible: false
+draft: false
+---
+
+更新项目成员。
+
+== 请求参数
+
+[cols="2,1,2,1"] 
+|===
+| 参数 | 类型 | 描述 | 是否必选
+
+| action
+| String
+| ModifyProjectMemberAtrributes（更新项目成员）
+| true
+
+| project_member_id
+| String
+| 项目成员 id
+| true
+
+| project_member_name
+| String
+| 项目成员名称
+| true
+
+| role_id
+| String
+| 角色组 id
+| true
+
+| project_id
+| String
+| 项目 id
+| true
+
+| owner
+| String
+| 所有者 id
+| false
+
+| zone
+| String
+| 区域 id
+| false
+|===
+
+== 响应消息
+
+[cols="1,1,2"] 
+|===
+| 参数 | 类型 | 描述
+
+| action
+| String
+| ModifyProjectMemberAtrributesResponse
+
+| project_member_id
+| String
+| 成员 id
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+=== 请求示例
+
+[,url]
+----
+https://api.qingcloud.com/iaas/?action=ModifyProjectMemberAtrributes
+&project_member_id=pm-ktheaopu
+&project_member_name=mrwel
+&role=gr-2je0hh8l
+&owner=usr-WantwZJ8
+&zone=test
+&project_id=pj-xzvlxlb5
+----
+
+=== 响应示例
+
+[,json]
+----
+{
+    "action": "ModifyProjectMemberAtrributesResponse",
+    "project_member_id": "pm-ktheaopu",
+    "ret_code": 0
+}
+----
+

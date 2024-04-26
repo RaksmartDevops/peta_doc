@@ -1,0 +1,5 @@
+---
+title: 产品购买与授权
+weight: 20
+---
+include::../../../../../_cloud_service/hss/faq.adoc[tag=lincense]

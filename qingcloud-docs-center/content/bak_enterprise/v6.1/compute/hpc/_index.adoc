@@ -1,0 +1,70 @@
+---
+title: "弹性高性能计算 EHPC"
+linkTitle: "高性能计算"
+weight: 2
+draft: false
+description: 弹性高性能计算 EHPC 是一站式超算平台，提供弹性和可扩展的高性能计算资源，是传统高性能计算技术与云计算技术的融合升级，从而可以提供丰富多样的使用模式以适配多种应用场景，其统一的管理系统可以为用户提供最优的使用体验。用户通过 EHPC 集群可突破本地高性能计算基础设施的限制，快速开始设计与创新。
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是高性能计算
+            url: /v6.1/compute/hpc/intro/intro
+          - title: 功能特性
+            url: /v6.1/compute/hpc/intro/functions
+          - title: 产品优势
+            url: /v6.1/compute/hpc/intro/advantage
+          - title: 基本概念
+            url: /v6.1/compute/hpc/intro/concept
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 步骤 1：创建集群
+            url: /v6.1/compute/hpc/quick-start/create_ehpc
+          - title: 步骤 2：提交作业
+            url: /v6.1/compute/hpc/quick-start/submit_job
+          - title: 步骤 3：查看作业结果
+            url: /v6.1/compute/hpc/quick-start/job_result
+  - title: 使用
+    icon: icon-simulation_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建集群
+            url: /v6.1/compute/hpc/manual/create_cluster
+          - title: 集群管理
+            url: /v6.1/compute/hpc/manual/cluster/base_manage/view_cluster
+          - title: 作业管理
+            url: /v6.1/compute/hpc/manual/job/joblist
+          - title: 文件存储
+            url: /v6.1/compute/hpc/manual/epfs/epfs
+          - title: 软件中心
+            url: /v6.1/compute/hpc/manual/software
+          - title: 操作日志
+            url: /v6.1/compute/hpc/manual/operation_log
+  - title: 实践
+    icon: icon-apps_2_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 使用界面提交并运行作业
+            url: /v6.1/compute/hpc/best-practices/sample1
+          - title: 使用命令提交并运行作业
+            url: /v6.1/compute/hpc/best-practices/sample2
+          - title: 使用容器环境提交并运行作业
+            url: /v6.1/compute/hpc/best-practices/sample3
+  - title: FAQ
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: 常见问题
+            url: /v6.1/compute/hpc/faq/faq
+
+linkkey: compute_hpc_guide
+---

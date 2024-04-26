@@ -1,0 +1,30 @@
+---
+title: "快捷菜单"
+weight: 2
+---
+ 
+
+== 场景描述
+
+该任务指导用户建立快捷菜单，并在快捷菜单出快速定位所需功能，执行相关任务。
+
+== 功能描述
+
+快捷菜单可以帮助新老用户快速定位到所需处理任务的功能页面，并在该页面执行操作。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *快捷菜单* > *自定义*，在右侧面板上点击待使用或者常用的功能。
++
+image::/images/boss/manual/shortcut_menu/shortcut_operation.png[]
+
+=== 删除快捷菜单
+
+在左侧导航栏点击 *快捷菜单*，将鼠标移动到待删除功能所在行，点击image:/images/boss/manual/shortcut_menu/shortcut_icon.png[,50%]。
+
+image::/images/boss/manual/shortcut_menu/shortcut_delete.png[,50%]

@@ -1,0 +1,533 @@
+---
+title: 获取neonsan卷列表（Boss2NeonSANListVolume）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2NeonSANListVolume
+
+=== Method
+POST
+
+=== 接口描述
+请求参数说明
+
+|===
+| 参数
+| 类型
+| 说明
+| 是否必须
+
+| name
+
+| string
+
+| 卷名
+
+| 否
+
+| pool_name
+
+| string
+
+| 卷组名
+
+| 否
+
+| group_name
+
+| string
+
+| 互斥存储池
+
+| 否
+
+| pn
+
+| int
+
+| page number ：分页显示时，显示第几页
+
+| 否
+
+| count
+
+| int
+
+| 分页显示时，每页显示的记录数
+
+| 否
+
+| stat_rep
+
+| b
+ool
+
+| 是否需要获取最新的ssd的剩余容量信息和
+卷已分配容量
+取值：
+true
+（获取）
+false(
+不获取
+)
+
+| 否
+
+| rg_name
+
+| +++<font color="#333333">+++string+++</font>+++
+| 存储池名称
+
+| 否
+
+| orderby_name
+
+| string
+
+| 结果按照卷名排序
+asc
+：升序
+desc
+：降序
+
+| 否
+
+| orderby_time
+
+| string
+
+| 结果按照卷的创建时间排序
+asc
+：升序
+desc
+：降序
+
+| 否
+
+| status
+
+| string
+
+| 按照指定状态筛选
+| 否
+|===
+
+返回信息说明
+
+|===
+| 参数
+| 说明
+
+| total_count
+| 总条数
+
+| id
+
+| 卷id
+
+
+| name
+
+| 卷名
+
+| pool_name
+
+| 卷组名
+
+
+| group_name
+
+| 互斥存储池
+
+
+| size
+
+| 卷的大小
+
+
+| replication_count
+
+| 卷的副本数量
+
+
+| status
+
+| 卷的状态：
+"OK",
+"DEGRADED",
+"ERROR"
+
+
+| min_replication_count
+
+| 卷的最小副本数量
+
+
+| role
+
+| 卷的角色
+
+
+| policy
+
+| 加密策略
+
+
+| create_time
+
+| 卷创建
+的
+时间
+
+
+| status_time
+
+| 卷最近一次状态变化时间
+
+
+| metro_replica
+
+| 同城灾备设置
+
+
+| provision_type
+
+| 卷的类型:
+"`thin`",
+"`thick`"
+
+
+| max_bs
+
+| block大小
+
+| volume_allocated
+
+| 卷已分配的物理容量
+
+
+| rg_name
+
+| 存储池名
+
+
+| encrypted
+
+| 是否加密
+
+
+| user_key_name
+
+| 加密卷的密钥信息
+
+
+| related_resources
+| 关联的资源id列表
+
+| related_resource_type
+| 关联的资源id类型 +
+volume/instance/swap/snapshot
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2NeonSANListVolume",
+   "zone": "gamma",
+   "count": 100,
+   "pn": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "total_count": 287,         //总条数
+    "volumes": [
+        {
+            "id": 82644566016,
+            "name": "vosi-abhhefiw.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T11:28:24+08:00",
+            "status_time": "2022-11-07T11:28:24+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-abhhefiw"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82627788800,
+            "name": "vos-186eplve.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 107374182400,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T10:58:57+08:00",
+            "status_time": "2022-11-07T10:58:57+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 0,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "vos-186eplve"
+            ],
+            "related_resource_type": "volume"
+        },
+        {
+            "id": 82611011584,
+            "name": "vos-o7t9sta9.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 107374182400,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T10:18:39+08:00",
+            "status_time": "2022-11-07T10:18:39+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 0,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "vos-o7t9sta9"
+            ],
+            "related_resource_type": "volume"
+        },
+        {
+            "id": 82594234368,
+            "name": "vos-vlk397j7.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 214748364800,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T09:18:45+08:00",
+            "status_time": "2022-11-07T09:18:45+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 4429185024,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "vos-vlk397j7"
+            ],
+            "related_resource_type": "volume"
+        },
+        {
+            "id": 82577457152,
+            "name": "vosi-2zwlsf2v.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T09:07:19+08:00",
+            "status_time": "2022-11-07T09:07:19+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-2zwlsf2v"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82560679936,
+            "name": "vosi-ygj2msy6.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T09:07:19+08:00",
+            "status_time": "2022-11-07T09:07:19+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-ygj2msy6"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82476793856,
+            "name": "vosi-w7jsiovl.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-07T01:04:44+08:00",
+            "status_time": "2022-11-07T01:04:44+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-w7jsiovl"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82325798912,
+            "name": "vosi-3551n8zq.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-06T08:42:26+08:00",
+            "status_time": "2022-11-06T08:42:26+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-3551n8zq"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82309021696,
+            "name": "vosi-wl5ffw2m.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-06T08:42:26+08:00",
+            "status_time": "2022-11-06T08:42:26+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-wl5ffw2m"
+            ],
+            "related_resource_type": "instance"
+        },
+        {
+            "id": 82275467264,
+            "name": "vosi-etwyrdah.img",
+            "pool_name": "vol",
+            "group_name": "",
+            "size": 21474836480,
+            "replication_count": 2,
+            "status": "OK",
+            "min_replication_count": 1,
+            "role": "alone",
+            "policy": "default",
+            "create_time": "2022-11-06T08:34:08+08:00",
+            "status_time": "2022-11-06T08:34:08+08:00",
+            "metro_replica": null,
+            "provision_type": "thin",
+            "max_bs": 65536,
+            "volume_allocated": 1610612736,
+            "rg_name": "SSD0",
+            "encrypted": "no",
+            "user_key_name": "",
+            "snapshot_count": 0,
+            "related_resources": [
+                "i-etwyrdah"
+            ],
+            "related_resource_type": "instance"
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2NeonSANListVolumeResponse"
+}
+----

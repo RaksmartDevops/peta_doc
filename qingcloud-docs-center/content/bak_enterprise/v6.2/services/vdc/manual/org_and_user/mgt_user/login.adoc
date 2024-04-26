@@ -1,0 +1,14 @@
+---
+title: 成员登录
+description: 
+keywords: 
+weight: 40
+collapsible: false
+draft: false
+---
+
+当创建成员成功后，登录管理控制台时，需选择** IAM 用户登录**入口进行登录。
+
+image::/images/cloud_service/services/vdc/iam_login0.png[IAM 用户登录,50%]
+
+image::/images/cloud_service/services/vdc/iam_login.png[IAM 用户登录,50%]

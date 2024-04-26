@@ -1,0 +1,12 @@
+---
+title: "快速入门"
+weight: 2
+
+---
+
+{platform_name_cn}安装部署完成后，系统会内置一个账户用于管理员登录 BOSS，并对整个 BOSS 系统进行初始化操作。整个初始化操作流程如下。
+
+. link:../manual/system_management/authority_management/account_management/#_创建账户[创建账户]，并按需求给该账户指定相应的角色权限。
+. 修改系统设置，如：link:../manual/system_management/system_setting/mail_service/[配置邮件服务器]、link:../manual/system_management/system_setting/notification_group/#_创建通知组[创建通知组]以及link:../manual/system_management/system_setting/notification_group/#_添加通知方式[添加通知方式]。
+. link:../manual/alarm/alert_strategy/#_创建通知策略[创建告警通知策略]，以便运维人员能及时获取{platform_name_cn}的相关信息。
+. link:../manual/view/[查看监控数据]，以确认当前环境运行正常。

@@ -1,0 +1,34 @@
+---
+title: "修改控制台访问方式"
+description: 介绍如何修改可视化控制台的网络访问方式，外网或内网访问。
+draft: false
+weight: 6
+keywords: 容器,QKE,KubeSphere,KSE
+---
+
+您可以在安装可视化控制台后随时修改控制台的访问方式，设置是否开启通过外网访问或者修改控制台 EIP。
+
+== 前提条件
+
+已安装可视化控制台。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *容器服务* > *{k8s_engine_fullname}*，进入 QKE 集群列表页面。
+. 在集群列表，点击目标集群名称，进入**集群概览**页面。
+
+. 在左侧导航栏，点击**可视化控制台**，进入**可视化控制台**页面。
+. 点击控制台 IP 地址后的**修改访问方式**。
++
+image::/images/cloud_service/container/qke/select_ks_eip_2.png[]
+
+. 在弹出的窗口中，点击**通过外部网络访问**的开关按钮，即开启或关闭外网访问方式。
++
+image::/images/cloud_service/container/qke/mdy_console_access.png[]
++
+* 开启外网访问（按钮为绿色）：表示可同时通过公网和集群内网访问可视化控制台。您可以点击**选择已有EIP**选择使用已有公网 IP，若不选择，系统将自动创建一个公网 IP 进行绑定。
+* 关闭外网访问（按钮为灰色）：表示可通过集群内网访问可视化控制台。
+. 修改后，点击**确定**。
++
+image::/images/cloud_service/container/qke/bind_eip_done.png[]

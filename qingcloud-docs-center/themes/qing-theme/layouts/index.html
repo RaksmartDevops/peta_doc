@@ -1,0 +1,11 @@
+{{- define "main" -}}
+<div class="container">
+  {{- $Section := partial "get-recent-section.html" . -}}
+  {{ if $Section.Params.isSearchPage}}
+    {{- partial "search-home.html" . -}}
+  {{ else }}
+    {{- partial "side.html" . -}}
+    {{- partial "list.html" . -}}
+  {{ end }}
+</div>
+{{- end -}}

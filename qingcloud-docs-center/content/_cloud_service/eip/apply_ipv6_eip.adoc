@@ -1,0 +1,81 @@
+//申请公网IPv6操作步骤
+
+当您需要为负载均衡器或云服务器绑定公网 IPv6 地址，您需要先申请 IPv6 EIP。本文介绍如何申请 IPv6 EIP。
+
+== 前提条件
+
+* 已link:../../../../../authorization/account/manual/user_signup/[注册云平台账号]，且已完成link:../../../../../authorization/account/manual/account_aut/account_intro/[实名认证]。
+* 账号余额足够。 
+
+== 操作步骤
+//tag::step[]
+. 登录管理控制台。
+. 在顶部菜单栏中选择**产品与服务** > *网络服务* > *弹性公网 EIP*，进入**公网 IPv4** 页面。
+. 点击**公网 IPv6** 页签，进入**公网 IPv6** 页面。
++
+image::/images/cloud_service/network/eip/ipv6_eip_homepage.png[]
+
+ifdef::pub[]
+. 点击**申请**，弹出实名认证和备案提示。
+. 点击**继续申请 IPv6 地址**，弹出**申请公网 IPv6** 窗口。
++
+image::/images/cloud_service/network/eip/create_ipv6_eip.png[]
+endif::[]
+
+ifdef::ep[]
+. 点击**申请**，弹出**申请公网 IPv6** 窗口。
++
+image::/images/cloud_service/network/eip/create_ipv6_eip_ep.png[]
+endif::[]
+
+. 填写公网 IPv6 信息。
++
+[cols="1,4"]
+|===
+|参数 |说明
+
+|名称
+|为您申请的 IPv6 EIP 取个名字，方便记忆与使用。可选。
+
+|模式
+a|选择 EIP 收费模式。
+
+* 按带宽计费：根据指定的带宽峰值计费，适用于流量峰值比较稳定的场景。
+* 按流量计费：根据实际发生的公网流量计费，适用于流量峰值波动较大或临时突发场景。
+
+更多信息，请参见link:../../../billing/[计费说明]。
+
+|带宽上限
+|设置 EIP 带宽峰值。
+
+|IP 组
+a|选择 EIP 资源组。不同 IP 组对应不同的 EIP 资源池。
+
+ifdef::pub[当前仅支持 IPv6 组，使用默认设置即可。]
+
+ifdef::ep[]
+include::../../_components/note_in_table.adoc[]
+管理员可针对每个 IP 组设置对云租户的可见权限。每个 IP 组可被划分到一个 EIP 池，从而实现对池内资源的可见权限控制。同一个 IP 组内的云租户对 IP 组所对应的 EIP 池有相同的可见权限。
+include::../../_components/footer_in_table.adoc[]
+endif::[]
+
+ifdef::pub[]
+|备案
+a|选择是否需要 ICP 备案。若您打算做公开的网站，在中国大陆需要备案。
+
+* 若选择``需要``，那么您申请到的 EIP 不能立刻投入使用，需要完成政府备案后才可以使用。
+* 若选择``不需要``，那么您申请到的 EIP 可以立刻开始使用。
+endif::[]
+
+|数量
+|输入所需要的 IP 个数。
+|===
+
+
+. 点击**提交**，完成申请，返回**公网 IPv6** 页面。
++
+申请成功 EIP 会在 IP 列表中显示，状态显示为``可用``。
+
+//image::/images/cloud_service/network/eip/create_ipv6_eip_ep_2.png[]
+
+//end::step[]

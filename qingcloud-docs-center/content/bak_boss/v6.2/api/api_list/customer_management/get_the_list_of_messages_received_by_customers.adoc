@@ -1,0 +1,129 @@
+---
+title: 获取客户接收到的消息列表（Boss2DescribeNotificationCenterUserPosts）
+weight: 19
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNotificationCenterUserPosts
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了 IaaS 的DescribeNotificationCenterUserPosts接口，使用了相同的查询参数，但在结果中添加了手动发送消息时的发送人。
+返回数据：
+
+{blank} +
+
+|===
+| 字段 | 含义 | 备注
+
+| sender_id
+| 手动发送消息的操作人id， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户id
+
+| sender_email
+| 手动发送消息的操作人邮箱， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户邮箱
+
+| sender_username
+| 手动发送消息的操作人用户名， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户用户名
+
+| status
+| 消息状态
+|
+
+| content
+| 消息内容
+|
+
+| short_content
+| 短版消息
+|
+
+| title
+| 消息标题
+|
+
+| create_time
+| 消息创建时间
+|
+
+| post_type
+| 消息类型
+|
+
+| notification_center_post_id
+| 消息id
+|
+
+| status_time
+| 记录修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeNotificationCenterUserPosts",
+    "users": ["usr-i3K70DIf"], // 指定接收的用户(云用户)
+    "notification_center_posts": ["nfp-1d2q7jcp"],  // 使用消息id进行过滤
+    "post_type": ["other"], // 使用消息类型进行过滤
+    "status": ["finished"], // 使用消息状态进行过滤
+    "search_word": "测试", // 支持对消息title进行过滤
+
+    // 分页及排序
+    "limit": 10,
+    "offset": 0,
+    "reverse": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeNotificationCenterUserPostsResponse",
+   "notification_center_post_set": [
+      {
+         "status": "new",
+         "title": "test",
+         "short_content": "test",
+         "content": "<p>testtest</p>",
+         "create_time": "2020-04-07T03:12:58Z",
+         "post_type": "other2",
+         "notification_center_post_id": "nfp-rg2vouz7",
+         "status_time": "2020-04-07T03:13:12Z",
+         "sender_id": 3,
+         "sender_email": "superuser@test.com",
+         "sender_username": "superuser"
+      }
+   ],
+   "ret_code": 0,
+   "total_count": 70
+}
+----

@@ -1,0 +1,5 @@
+[.admon.danger,cols="a"]
+|===
+|危险
+
+|

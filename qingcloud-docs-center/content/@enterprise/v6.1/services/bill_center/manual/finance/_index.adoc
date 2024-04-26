@@ -1,0 +1,13 @@
+---
+title: "财务管理"
+weight: 8
+---
+
+财务管理提供钱包、优惠券发票以及合同的管理功能。
+
+* link:wallet[钱包]
+
+* link:discount[优惠券]
+
+* link:invoice[发票管理]
+

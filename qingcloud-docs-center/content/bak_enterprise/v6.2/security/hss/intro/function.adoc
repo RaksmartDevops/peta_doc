@@ -1,0 +1,6 @@
+---
+title: "产品功能"
+weight: 5
+---
+
+include::../../../../../_cloud_service/hss/function.adoc[]

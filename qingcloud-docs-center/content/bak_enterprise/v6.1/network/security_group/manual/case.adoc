@@ -1,0 +1,6 @@
+---
+title: 安全组应用案例
+draft: false
+weight: 60
+---
+include::../../../../../_cloud_service/sg/04_case.adoc[]

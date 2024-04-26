@@ -1,0 +1,10 @@
+---
+title: "使用命令提交并行运行作业"
+draft: false
+weight: 2
+---
+
+
+include::../../../../../_cloud_service/ehpc/bp/sample2.adoc[]
+
+

@@ -1,0 +1,88 @@
+---
+title: "AppCenter 集群"
+weight: 1
+---
+
+该任务指导管理员进入 AppCenter 集群页面，查看 AppCenter 集群列表信息、执行导出 AppCenter 集群列表等操作。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 查看集群详情
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *AppCenter* > *AppCenter 集群*，在面板左上角选择**区域**或**可用区**，可查看所选区域所有 AppCenter 集群列表。
++
+image::/images/boss/manual/resource_mgt/cluster_operation.png[]
+
+. 点击 AppCenter 集群的名称，进入 AppCenter 集群详情页面。
++
+* 在 *集群监控* 页签：可查看在该 AppCenter 集群下各节点对应时间里的各项监控信息。
++
+
+include::../../../../../_components/note.adoc[]
+监控项是由产品本身决定的，所以每个集群的监控项可能存在差异。
+
+include::../../../../../_components/table_footer.adoc[]
++
+点击如下红框文字，可以选择集群节点。
++
+image::/images/boss/manual/resource_mgt/cluster_monitor.png[]
+
+* 在 *集群监控（新）* 页签：可在此查看自定义版本的监控数据。
++
+image::/images/boss/manual/resource_mgt/cluster_monitor_new.png[]
+
+* 在 *集群节点* 页签：可查看该集群下所关联节点的节点状态、服务状态、节点 ID、物理机、角色、资源 ID、虚拟化类型、节点类型、节点配置（CPU/内存/存储）以及 IP 地址等信息。
+* 在 *集群配置* 页签：可查看集群的配置参数，包括参数名称、参数值、参数描述和取值范围。
+* 在 *集群任务* 页签：可查看该集群下所有任务的状态、任务名称/ID、资源 ID、参数、执行时长、创建时间等信息。
+* 在 *租赁信息* 页签：可查看该集群的消费信息，包括开始计费时间、停止计费时间、集群计费价格、总价格以及详细的消费记录。
+* 在 *被依赖集群* 页签：可查看该集群被依赖集群的状态、集群名称、告警状态、健康状态、应用名称、应用版本、版本名称、节点数、用户 ID、以及创建时间等信息。
+* 在 *维护日志* 页签：可查看、创建集群的维护日志。
+
+== 导出 AppCenter 集群列表
+
+. 在 *AppCenter 集群* 页面右上角，点击 *导出*。
++
+集群列表会生成表单报表管理中心。
+
+. 点击 *报表管理中心*。
+. 在模块 *AppCenter 集群* 所在行，点击文件名称。
++
+AppCenter 集群列表保存到本地。
+
+== 重建集群
+
+. 进入待操作 AppCenter 集群详情页面，点击 *重建集群*。
++
+弹出 *重建集群* 对话框。
+
+. 选择 *虚拟化类型* 和 *网卡直通类型*，输入物理机 ID 和操作原因。
+. 点击 *确认*。
+
+== 暂停集群
+
+include::../../../../../_components/note.adoc[]
+当 AppCenter 集群的状态为 *活跃中* 时，可执行暂停操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入待操作 AppCenter 集群详情页面，点击 *暂停*。
++
+弹出 *暂停集群* 对话框。
+
+. 输入操作原因，点击 *暂停*。
+
+== 恢复集群
+
+include::../../../../../_components/note.adoc[]
+当 AppCenter 集群状态为 *已暂停* 时，可执行恢复操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入待操作 AppCenter 集群详情页面，点击 *恢复*。
++
+弹出 *恢复集群* 对话框。
+
+. 输入操作原因，点击 *恢复*。

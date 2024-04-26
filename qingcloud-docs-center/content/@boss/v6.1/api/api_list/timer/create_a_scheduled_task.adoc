@@ -1,0 +1,110 @@
+---
+title: 创建定时任务（Boss2CreateScheduler）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateScheduler
+
+=== Method
+POST
+
+=== 接口描述
+创建定时器，并返回定时器id。
+
+*设置重复执行的任务：*
+
+|===
+| 参数 | 说明 | 备注
+
+| sched_type
+| 设置为crontab
+|
+
+| period
+a|
+设置重复执行的周期，目前支持的周期为：
+
+1. daily  每天
+2. every_n_days:2  每2天
+3. every_n_hours:3  每3个小时
+* 4.weely:1,2  每周的周一和周二(周日为0)
+* 5.monthly:1,2,3 每月的1，2，3日
+|
+
+| hhmm
+a|
+
+* 设置执行的具体时分，格式为hh:mm
+* 如设置每天的9点51分执行，则为：09:51
+注意：在设置every_n_hours每n小时执行的任务时，仅需要设置分即可，
+例如设置每小时的5分执行任务，则该字段仅传入05即可
+|
+|===
+
+设置仅执行一次的任务：
+
+|===
+| 参数 | 说明 | 备注
+
+| sched_type
+| 设置为clocked
+|
+
+| ymd
+| 设置任务执行的年月日信息，格式为yyyy-MM-dd +
+如需要在2019年9月16日执行，则传入参数格式为：2019-09-16
+|
+
+| hhmm
+| 设置执行的具体时分，格式为hh:mm +
+如设置在10点5分执行，则该字段传入10:05
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2CreateScheduler",
+    "name": "test scheduler", // [必须]定时器名称
+    "sched_type": "crontab", // [必须]定时器类型，支持crontab(重复执行类任务)和clocked(只执行一次的任务)
+    "task_type_id": "e20f5bd1-0136-4d97-ba74-01e0c0645ece", // [必须]从Boss2DescribeTaskTypes接口获取到的任务类型id
+    "hhmm":"09:19", // [必须]时、分信息
+    "ymd":"2019-09-01",  // 年月日信息
+    "period": "daily", // 周期信息
+    "task_conf": {
+        "a": 1,
+        "b": [1,2,3]
+    } // 任务配置，指任务类型对应的参数信息
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 19,
+   "ret_code": 0,
+   "action": "Boss2CreateSchedulerResponse"
+}
+----

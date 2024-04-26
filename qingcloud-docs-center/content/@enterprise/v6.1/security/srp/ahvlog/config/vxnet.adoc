@@ -1,0 +1,94 @@
+---
+title: "配置基础网络中主机日志审计"
+description: 购买日志审计
+draft: false
+weight: 20
+keywords: 主机安全, 安全, 日志审计
+
+---
+
+
+
+:experimental:
+
+该场景下日志审计主机（VM）和被审计主机（VM）被创建在同一基础网络下，且两者能够直接通过默认安全组互相通信。
+
+image::/images/cloud_service/security/srp/blog1.png[图,70%]
+
+== 前提条件
+
+* 已完成日志审计实例部署并能点击**控制台**进入日志审计实例控制台。
+* 已获取日志审计VM和被日志审计 VM的IP地址。
+* 日志审计VM和被日志审计VM都绑定到默认安全组，且安全组需开启514 UDP端口，或者**接受**全部的TCP/UDP上下行端口。
++
+
+include::../../../../../../_components/note.adoc[]
+
+该操作需点击目标日志审计实例所属云服务器 ID 进入云服务器页面和对应的默认安全组页面进行操作，详细操作请参见云服务器用户文档**绑定安全组**绑定默认安全组。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+== 操作步骤
+
+. 进入**安全资源池**页面。
+. 在左侧导航栏选择**日志审计**。
++
+进入**日志审计**页面。
+
+. 在目标日志审计实例**操作**一栏点击**控制台**，进入日志审计实例控制台首页。
+. 选择**资产管理**>**全部资产**，点击**新增**。
++
+image::/images/cloud_service/security/srp/blog2.png[新增]
+
+. 根据实际情况选择资产类型。
++
+此处以在**安全类**一栏点击**安全管理系统**为例。
++
+image::/images/cloud_service/security/srp/blog3.png[安全管理系统]
+
+. 填写**资产名称**，其他选项根据其他需要选择是否填写，点击**保存**。
++
+image::/images/cloud_service/security/srp/blog4.png[保存]
+
+. 在资产信息识别信息页签填写主机 IP 地址，并点击**保存**。
++
+这里以上图所示主机 ID 为例，填写为**10.12.12.71**
++
+image::/images/cloud_service/security/srp/blog5.png[保存]
+
+. 进入**发送日志配置页签**，参数保持默认，点击**保存**。
++
+image::/images/cloud_service/security/srp/blog6.png[保存]
+
+. 若资产的状态信息未显示**已启用**，点击**启用**。
++
+image::/images/cloud_service/security/srp/blog7.png[保存]
+
+=== 配置VM中rsyslog日志
+
+. 登录10.12.12.71主机的进入**vi /etc/rsyslog.conf**文件并在该文件增加以下内容：`*.* @日志审计主机IP`
++
+例如：
++
+[,url]
+----
+*.* @10.12.12.67
+----
++
+
+include::../../../../../../_components/attention.adoc[]
+* *与@之间空格为tab键输入。
+* IP是日志审计主机的IP，例如本例中日志审计的IP为：10.12.12.67
+* *.*表示发送所有级别的日志。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/security/srp/blog8.png[保存]
+
+. 按**ESC**后输入**wq**保存修改。
+. 执行 ``service rsyslog restart`` 命令重启 ``rsyslog`` 服务。
+. 可在**首页**>**数据概要**或者**审计概要**获取审计日志。
++
+image::/images/cloud_service/security/srp/blog9.png[保存]
+

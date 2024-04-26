@@ -1,0 +1,68 @@
+---
+title: OpenSearch 服务
+linkTitle: OpenSearch
+weight: 23
+description: OpenSearch 服务是一种搜索引擎托管服务，支持在 AppCenter 管理并升级。为用户提供实时日志处理、全文搜索和数据分析等基础能力。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 OpenSearch
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 应用场景
+            url: intro/scenarios/
+          - title: 产品优势
+            url: intro/superiority/
+          - title: 产品版本
+            url: intro/version/
+          - title: 集群组件
+            url: intro/component/
+          - title: 基本概念
+            url: intro/basic_conception/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建 OpenSearch 集群
+            url: quickstart/create_cluster/
+          - title: 访问 OpenSearch (Dashboards 方式)
+            url: quickstart/access_dashboard/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 集群生命周期
+            url: manual/cluster_lifecycle/cluster_info/
+          - title: 节点生命周期
+            url: manual/node_lifecycle/node_info/
+          - title: 配置参数
+            url: manual/config_para/config_para_info/
+          - title: 监控指标与告警
+            url: manual/metrics_alarm/config_display_metrics/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 专有主节点数最佳配置
+            url: best_practices/dedicated_master_node/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: null
+        children:
+          - title: 原生 OpenSearch
+            url: faq/product/
+linkkey: bigdata_opensearch_guide
+---

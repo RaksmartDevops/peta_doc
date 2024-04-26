@@ -1,0 +1,78 @@
+---
+title: 重试导出任务（Boss2RetryReportTask）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RetryReportTask
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| token
+| String
+| 口令
+|
+
+| valid_fields
+| Array
+| 有效字段声明列表
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2RetryReportTask",
+   "token": "680743b8-5ce9-47b0-b1a1-99920737523c"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "token": "680743b8-5ce9-47b0-b1a1-99920737523c",
+   "valid_fields": [
+      "eip_id",
+      "eip_name",
+      "status",
+      "eip_addr",
+      "bandwidth",
+      "owner",
+      "resource.resource_id",
+      "resource.resource_name",
+      "is_quarantined",
+      "associate_mode",
+      "create_time"
+   ],
+   "ret_code": 0,
+   "action": "Boss2RetryReportTaskResponse"
+}
+----

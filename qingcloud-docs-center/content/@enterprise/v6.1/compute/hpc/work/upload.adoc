@@ -1,0 +1,96 @@
+---
+title: "集群文件上传/查看/下载"
+linkTitle: "集群文件上传/查看/下载"
+date: 2020-02-28T10:08:56+09:00
+description: 提交作业或查看作业结果时，需向集群上传/查看/下载相应的作业文件。
+keywords: 云计算, hpc，作业命令文件
+draft: false
+weight: 2
+---
+使用已创建完成的 EHPC 集群提交作时需要上传可执行文件，在作业运行结束后需查看或获取作业运行结果文件，本章节主要介绍集群上传、查看或下载文件的具体操作流程。
+
+以执行 Python3 程序为例，具体操作步骤如下所示：
+
+== 前提条件
+
+* EHPC 集群已创建成功。
+* 已申请外部访问的公网 IP。
+* EHPC 集群登录节点已绑定公网 IP。
++
+
+include::../../../../../_components/attention.adoc[]
+用于作业运行的执行命令文件需包括可执行命令文件以及其他文件，并且所有相关文件需放到同一个目录下。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 使用 FTP 工具
+
+以使用 Transmit 客户端为例。
+
+. 打开 Transmit 客户端，选择快速链接，**协议**选择 SFTP，**地址**填写登录节点已经绑定的公网 IP，输入用户名和密码，点击**链接**。
++
+
+include::../../../../../_components/note.adoc[]
+其中，用户名和密码为 EHPC 集群中存在的用户名和密码，可进入集群详情页面，点击**用户**页签，查看当前 EHPC 集群中已经存在的用户名。
+
+include::../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/hpc/upload_1.png[upload_1,70%]
+
+. 选择已创建完成的共享目录，将待执行的命令文件添加之相应的共享目录中即可。
++
+image::/images/cloud_service/compute/hpc/upload_2.png[]
++
+
+include::../../../../../_components/note.adoc[]
+如图所示，其中 */publice/data_j* 为 EHPC 集群中的共享目录，可在集群详情的存储信息进行查看。*/publice/data_j/project* 为执行命令文件及其相关文件所在的目录。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 使用 FTP 工具可直接对文件夹内的文件进行添加、下载、修改、删除等操作。
+
+== 使用本地终端
+
+. 打开本地终端，输入以下命令，点击``Enter``键，输入密码，连接 EHPC 集群的登录节点。
++
+----
+# ssh User@xx.xx.xx.xx
+----
++
+
+include::../../../../../_components/note.adoc[]
+* User：EHPC 集群中存在的用户名，可在集群详情页面，点击**用户**页签进行查看，需根据实际情况进行修改。
+* xx.xx.xx.xx：为 EHPC 集群登录节点绑定的公网 IP，需根据实际情况进行修改。
+* 登录密码为相应用户的密码。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 连接到登录节点后，执行如下命令查看 EHPC 集群的共享目录。
++
+----
+[admin@login1 ~]$ df -h
+文件系统                    容量  已用  可用 已用% 挂载点
+/dev/vda1                    20G  5.7G   13G   31% /
+devtmpfs                    909M     0  909M    0% /dev
+tmpfs                       920M     0  920M    0% /dev/shm
+tmpfs                       920M   17M  903M    2% /run
+tmpfs                       920M     0  920M    0% /sys/fs/cgroup
+172.20.1.8:/mnt/data_j       99G   60M   94G    1% /public/data_j
+10.10.10.16:/es01/software  197G   68G  122G   36% /es01/software
+tmpfs                       184M     0  184M    0% /run/user/17583
+----
++
+
+include::../../../../../_components/note.adoc[]
+其中/publice/data_j为 EHPC 集群中的共享目录，可在集群详情的存储信息进行查看。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 执行如下命令，退出当前登录节点。
++
+----
+[admin@login1 ~]$ exit
+登出
+----
+
+. 使用 `scp` 命令，将本地的执行命令文件上传至 EHPC 集群相应的共享集群中，或将集群中的文件下载至本地即可。

@@ -1,0 +1,202 @@
+---
+title: "开启 SFTP"
+weight: 65
+---
+SFTP 工具可以用来打开一次安全互动的 FTP 会话。它与 FTP 相似，只不过，它使用安全、加密的连接。它的一般语法是：sftp username@hostname.com。一旦通过验证，你可以使用一组和使用 FTP 相似的命令。
+
+== Ubuntu 云服务器开启 SFTP
+
+. 确认是否已经安装 openssh-server。
++
+[source,shell]
+----
+dpkg --get-selections |grep ssh
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_1.png[]
++
+如果没有安装，请手动执行下面的指令进行安装。
++
+[source,shell]
+----
+sudo apt-get install openssh-server
+----
+
+. 新建用户组 sftp-users，并新建用户 sftp。
++
+[source,shell]
+----
+sudo addgroup sftp-users
+sudo adduser sftp
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_2.png[]
+
+. 给 sftp 赋权并新建用户组 ssh-users。
+
+.. 将 sftp 从所有其他用户组中移除并加入到 sftp-users 组，并且关闭其 Shell 访问：
++
+[source,shell]
+----
+sudo usermod -G sftp-users -s /bin/false sftp
+----
+
+.. 创建 SSH 用户组，并把管理员加入到该组（注意 usermod 中的 `-a` 参数的意思是不从其他用户组用移除）。
++
+[source,shell]
+----
+sudo addgroup ssh-users
+sudo usermod -a -G ssh-users root
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_3.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_4.png[]
+
+. 创建并设置 sftp 用户目录。
++
+[source,shell]
+----
+sudo mkdir /home/sftp_root
+sudo mkdir /home/sftp_root/shared
+sudo chown root:sftp-users /home/sftp_root/shared
+sudo chmod 770 /home/sftp_root/shared
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_5.png[]
+
+. 修改 SSH 配置文件。
++
+[source,shell]
+----
+sudo vi  /etc/ssh/sshd_config
+----
++
+在 sshd_config 文件的最后，添加以下内容：
++
+[source,shell]
+----
+AllowGroups ssh-users sftp-users
+Match Group sftp-users
+ChrootDirectory /home/sftp_root
+AllowTcpForwarding no
+X11Forwarding no
+ForceCommand internal-sftp
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_6.png[]
+
+. 重启系统使配置生效。
++
+[source,shell]
+----
+sudo reboot now
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_7.png[]
+
+. 验证。
++
+[source,shell]
+----
+sftp sftp@192.168.8.2
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_8.png[]
+
+== CentOS 云服务器开启 SFTP。
+
+. 创建用户组 sftp。
++
+[source,shell]
+----
+groupadd sftp
+----
+
+. 创建用户 ftp 文件目录。
++
+[source,shell]
+----
+mkdir /home/sftp
+----
+
+. 创建用户 sftpuser。
++
+[source,shell]
+----
+useradd -g sftp -s /sbin/nologin -d /home/sftp/sftpuser sftpuser
+----
++
+	
+
+include::../../../../../../_components/note.adoc[]
+
+-g 加入到sftp组；-s 禁止登录；-d 指定用户的登入目录。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 设置密码。
++
+[source,shell]
+----
+passwd sftpuser
+----
+
+. 修改文件夹属组。
++
+[source,shell]
+----
+chown -R sftpuser:sftp /home/sftp/sftpuser
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_9.png[]
+
+. 修改 SSH 的配置文件。
++
+[source,shell]
+----
+vi /etc/ssh/sshd_config
+----
++
+注释 Subsystem 原配置
++
+#Subsystem sftp /usr/libexec/openssh/sftp-server
++
+添加下面几列：
++
+[source,shell]
+----
+启用 internal-sftp
+限制用户 SFTP 访问的根目录
+限制 ftpuser1 用户的根目录
+Subsystem sftp internal-sftp
+Match User ftpuser
+ChrootDirectory /home/sftp
+ForceCommand    internal-sftp
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_10.png[]
+
+. 重启 sshd 服务。
++
+[source,shell]
+----
+systemctl restart sshd
+----
+
+. 验证。
++
+[source,shell]
+----
+sftp sftpuser@192.168.8.2
+----
++
+	
+
+include::../../../../../../_components/note.adoc[]
+
+没有重启 sshd 时去连接 sftpuser，会提示 Received message too long 1416128883。
+
+include::../../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_sftp_11.png[]

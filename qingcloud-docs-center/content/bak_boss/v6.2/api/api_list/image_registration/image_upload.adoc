@@ -1,0 +1,81 @@
+---
+title: 映像上传（image_upload）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/file/image_upload/
+
+=== Method
+POST
+
+=== 接口描述
+用于映像文件的上传。
+请使用form方式上传文件，文件上传后将会返回文件的实际路径，支持大文件上传。
+
+注意，本接口暂时不支持直接在yapi上进行测试。
+
+本接口上传时需要制定文件的key为file (使用其他的key会导致返回结果为空)
+
+返回数据：
+
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| path
+| String
+| 文件在服务器上的实际路径，改数据字段需要在后续请求中作为upload_filename来使用
+|
+
+| filename
+| String
+| 上传文件的原始文件名
+|
+
+| md5
+| String
+| 上传文件的 hash
+|
+
+| size
+| String
+| 上传文件的体积
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/x-www-form-urlencoded
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+file
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "path": "/pitrix/image_upload/6/0000000026.html",
+   "size": "118518",
+   "md5": "c1f180fd84d01e02866104ac180fc6ba",
+   "filename": "api.html"
+}
+----

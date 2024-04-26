@@ -1,0 +1,15 @@
+---
+title: "总览"
+weight: 20
+
+---
+
+总览界面从以下几个页面，分别对不同的数据进行汇总展示，方便用户快速定位至目标内容进行查看。
+
+* link:resource_screen[资源总览]
+
+// * link:baremetal_screen[弹性裸金属服务器总览]
+
+// * link:network_screen[网络连通性总览]
+
+* link:userview_screen[用户总览]

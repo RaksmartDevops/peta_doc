@@ -1,0 +1,101 @@
+---
+title: 设定/修改配置项（Boss2SetConfiguration）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SetConfiguration
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于设置配置。
+该接口的value字段支持一些对数据的特殊处理，可将value中的key进行特殊命名：将处理器和key使用冒号(:)分隔
+
+|===
+| 处理器 | 作用 | key示例 | 处理效果
+
+| _decrypt
+| 使用RSA解密字符串
+| _descrypt:password
+| _descrypt:password key对应的数据将会被解密，同时该字段将会被key为password的字段替换
+|===
+
+{blank} +
+ +
+接口返回：
+
+|===
+| 字段 | 说明 | 备注
+
+| config_id
+| 配置id
+|
+
+| topic
+| 配置的topic
+|
+
+| key
+| 配置的key
+|
+
+| initial
+| 是否为首次配置，如果该配置为首次设置则会返回true，如果该次请求是进行配置的修改，则会返回false
+|
+
+| history_id
+| 配置变更历史的id，用于在配置变更历史中标记最新一次变更
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2SetConfiguration",
+    "topic": "test_topic",   // [必须]配置的topic
+    "key": "test_key1",  // [必须]配置的key，topic和key在系统中联合唯一
+    "value": {
+        "hello": "world"
+    },  // [必须]配置内容
+    "cache_timeout": 300,   // 配置缓存时间，在进行配置后可将配置进行缓存，此处可指定的值有：null - 永久缓存; 0 - 不缓存；其他整数 - 指定缓存的秒数。如不指定则默认缓存300秒
+    "store_history": true,    // 是否记录配置变更历史，true - 记录；false - 不记录
+    "update": false, // 如该项设置为true，则可仅传入有变更的部分配置，如为false，则会以覆盖的方式进行配置数据更新，默认为false
+    "remarks": "测试创建"    // 如果记录配置变更的历史，则此处可以传入变更的备注信息
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "config_id": 3,
+   "topic": "test_topic",
+   "key": "test_key1",
+   "initial": true,
+   "history_id": 7,
+   "ret_code": 0,
+   "action": "Boss2SetConfigurationResponse"
+}
+----

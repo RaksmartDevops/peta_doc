@@ -1,0 +1,200 @@
+---
+title: 使用 citus_columnar 插件
+description: 数据通过列存储方式进行存储时，数据的压缩比更高，从而存储、读取速度更快。
+keywords: Citus,PostgreSQL,关系型数据库,数据库
+weight: 21
+collapsible: false
+---
+
+citus_columnar 插件为列存储插件，数据通过列存储方式进行存储时，数据的压缩比更高，从而存储、读取速度更快。
+
+更多关于列存储的详细信息，请参见link:https://docs.citusdata.com/en/v11.1/admin_guide/table_management.html#columnar-storage[官方文档]。
+
+== 安装插件
+
+[source,sql]
+----
+create extension citus;
+----
+
+include::../../../../../../_components/note.adoc[]
+列存储插件 citus_columnar 已集成到 Citus 插件中，因此安装 Citus 插件可以拥有更完整的功能。
+include::../../../../../../_components/table_footer.adoc[]
+
+== 用法
+
+创建列存表：使用 ``USING COLUMNAR`` 即可创建列存表。
+
+[source,sql]
+----
+CREATE TABLE contestant (
+    handle TEXT,
+    birthdate DATE,
+    rating INT,
+    percentile FLOAT,
+    country CHAR(3),
+    achievements TEXT[]
+) USING columnar;
+----
+
+== 性能参考
+
+=== 测试规格
+
+* 区域：北京三区
+* 规格：4C16G
+* 存储：2000G
+* 节点：2 节点（一主一备）
+
+=== 测试步骤
+
+. 创建一个行存表 perf_row。
++
+[source,sql]
+----
+  CREATE TABLE perf_row(
+      id INT8,
+      ts TIMESTAMPTZ,
+      customer_id INT8,
+      vendor_id INT8,
+      name TEXT,
+      description TEXT,
+      value NUMERIC,
+      quantity INT4
+  );
+----
+
+. 创建一个列存表 perf_row，与行存表 perf_row 具有相同的列。
++
+[source,sql]
+----
+  CREATE TABLE perf_columnar(LIKE perf_row) USING COLUMNAR;
+----
+
+. 向行存表 perf_row 和列存表 perf_row 插入相同的数据。
+
+.. 创建一个生成数据的随机函数。
++
+[source,sql]
+----
+CREATE OR REPLACE FUNCTION random_words(n INT4) RETURNS TEXT LANGUAGE sql AS $$
+  WITH words(w) AS (
+    SELECT ARRAY['zero','one','two','three','four','five','six','seven','eight','nine','ten']
+  ),
+  random (word) AS (
+    SELECT w[(random()*array_length(w, 1))::int] FROM generate_series(1, $1) AS i, words
+  )
+  SELECT string_agg(word, ' ') FROM random;
+$$;
+----
+
+.. 向行存表 perf_row 和列存表 perf_row 插入数据。
++
+[source,sql]
+----
+INSERT INTO perf_row
+   SELECT
+    g, -- id
+    '2020-01-01'::timestamptz + ('1 minute'::interval * g), -- ts
+    (random() * 1000000)::INT4, -- customer_id
+    (random() * 100)::INT4, -- vendor_id
+    random_words(7), -- name
+    random_words(100), -- description
+    (random() * 100000)::INT4/100.0, -- value
+    (random() * 100)::INT4 -- quantity
+   FROM generate_series(1,75000000) g;
+
+INSERT INTO perf_columnar SELECT * FROM perf_row;
+----
++
+数据示例
++
+[source,sql]
+----
+postgres=# select * from perf_columnar limit 1;
+-[ RECORD 1 ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+id          | 1
+ts          | 2020-01-01 00:01:00+08
+customer_id | 11182
+vendor_id   | 89
+name        | zero nine seven one four eight nine
+description | seven one zero one six four eight ten eight seven five zero three nine seven seven three one three five zero four nine eight five eight four four four five seven five two zero two four ten eight eight seven zero seven ten six nine seven ten eight nine three three three six four eight six four zero zero ten five six ten four seven two eight four two four four one nine three nine one three three six nine two six four six one three six one five seven ten nine one four
+value       | 177.4900000000000000
+quantity    | 87
+----
+
+=== 测试结果
+
+* 压缩性能
++
+基于以下数据可以看出，列存储的压缩率为行存储的 5.4 倍。
++
+[source,sql]
+----
+-- 行存 43G
+postgres=# SELECT pg_size_pretty(pg_total_relation_size('perf_row'));
+ pg_size_pretty 
+----------------
+ 43 GB
+(1 row)
+
+-- 列存约 8G
+postgres=# SELECT pg_size_pretty(pg_total_relation_size('perf_columnar'));
+ pg_size_pretty 
+----------------
+ 8045 MB
+(1 row)
+
+-- 压缩率 5.4 倍
+postgres=# SELECT pg_total_relation_size('perf_row')::numeric/pg_total_relation_size('perf_columnar') AS compression_ratio;
+ compression_ratio  
+--------------------
+ 5.4251885083924470
+(1 row)
+----
+
+* Count(*)
++
+性能提升约 35 倍。
++
+[source,sql]
+----
+  -- 列存用时 4秒
+  postgres=# select count(*) from perf_columnar ;
+    count   
+  ----------
+   75000000
+  (1 row)
+  
+  Time: 4369.697 ms (00:04.370)
+  
+  -- 行存用时 137秒
+  postgres=# select count(*) from perf_row ;
+    count   
+  ----------
+   75000000
+  (1 row)
+  
+  Time: 137164.623 ms (02:17.165)
+----
+
+* 分析性能
++
+性能提升约 11 倍。
++
+[source,sql]
+----
+  -- 行存用时 134秒
+  postgres=# SELECT vendor_id, SUM(quantity) FROM perf_row GROUP BY vendor_id OFFSET 1000;
+   vendor_id | sum 
+  -----------+-----
+  (0 rows)
+  Time: 134067.674 ms (02:14.068)
+  
+  -- 列存用时 14秒
+  postgres=# SELECT vendor_id, SUM(quantity) FROM perf_columnar GROUP BY vendor_id OFFSET 1000;
+   vendor_id | sum 
+  -----------+-----
+  (0 rows)
+  Time: 14184.814 ms (00:14.185)
+----

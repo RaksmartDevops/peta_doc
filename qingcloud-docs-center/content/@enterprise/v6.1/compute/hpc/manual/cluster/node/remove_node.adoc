@@ -1,0 +1,25 @@
+---
+title: "移动计算节点到队列"
+linkTitle: "移动计算节点到队列"
+description: 本章节介绍如何将计算节点移动到队列
+keywords: 云计算, HPC，移动计算节点到队列
+draft: false
+weight: 80
+---
+本章节介绍如何将计算节点移动至队列中，仅适用。
+
+== 前提条件
+
+已创建 EHPC 集群。
+
+== 操作步骤
+
+. 登录管理控制平台。
+. 选择**产品与服务** > *计算* > *高性能计算 HPC*，默认进入**集群管理**页面。
+. 点击已创建完成的 EHPC 集群 ID 进入集群详情页面，选择**节点列表**页签。 在**节点列表**页面，点击待移动的计算节点所在行的image:/images/cloud_service/compute/hpc/more_operation.png[more_operation,50%]，选择**移动节点到队列**。
++
+image::/images/cloud_service/compute/hpc/remove_node_1.png[remove_node_1]
+
+. 在弹出的**移动节点到队列**的窗口中，点击**移动到该队列**的下拉选框，选择相应的队列，点击**确认移动**即可。
++
+image::/images/cloud_service/compute/hpc/remove_node_2.png[remove_node_2,55%]

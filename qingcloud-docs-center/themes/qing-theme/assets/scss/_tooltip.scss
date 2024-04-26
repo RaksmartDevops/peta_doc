@@ -1,0 +1,24 @@
+[data-tooltip]:not(.is-disabled).has-tooltip-arrow:after,
+[data-tooltip]:not(.is-disabled):before,
+[data-tooltip]:not(.is-loading).has-tooltip-arrow:after,
+[data-tooltip]:not(.is-loading):before,
+[data-tooltip]:not([disabled]).has-tooltip-arrow:after,
+[data-tooltip]:not([disabled]):before {
+  font-size: 12px;
+}
+
+[data-tooltip]:not(.is-disabled):before,
+[data-tooltip]:not(.is-loading):before,
+[data-tooltip]:not([disabled]):before {
+  background: $tooltip-background-color;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: -9px;
+}
+
+[data-tooltip]:not(.is-disabled).has-tooltip-arrow.has-tooltip-arrow:after,
+[data-tooltip]:not(.is-loading).has-tooltip-arrow.has-tooltip-arrow:after,
+[data-tooltip]:not([disabled]).has-tooltip-arrow.has-tooltip-arrow:after {
+  margin-top: -9px;
+  border-color: $tooltip-background-color transparent transparent;
+}

@@ -1,0 +1,54 @@
+---
+title: 读取用户自定义配置（Boss2GetCustomConf）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetCustomConf
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取用户自定义的配置。本接口仅可获取当前发起请求用户的配置信息。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetCustomConf",
+  "function": "network_bigscreen",   // 功能名称
+  "key": "a.b.c"                     // key 字符串，由"."分隔的字符串，如果要读取功能的整个配置，不要传 key 参数。
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "conf_data": {
+      "foo": "bar"
+   },
+   "ret_code": 0,
+   "action": "Boss2GetCustomConfResponse"
+}
+----

@@ -1,0 +1,123 @@
+---
+title: 获取交换机出口带宽监控（Boss2GetSwitchBandwidthMonitor）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetSwitchBandwidthMonitor
+
+=== Method
+POST
+
+=== 接口描述
+获取指定交换机端口的出口带宽统计，所有数据为5分钟粒度。
+返回结果为序列数据，包含如下的几个序列：
+
+|===
+| 字段 | 说明 | 备注
+
+| time
+| 时间，为时间戳格式
+|
+
+| inbound
+| 端口入站带宽，单位为bps
+|
+
+| outbound
+| 端口出站带宽，单位为bps
+|
+
+| max_bandwidth
+| 入站与出站带宽取较大的值，单位为bps
+|
+
+| billing_bandwidth
+| 用于95计费的带宽值。接口会按照选择的时间段来生成95计费的计费带宽值。单位为bps
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetSwitchBandwidthMonitor",
+    "switch_id": 1, // [必须]指定交换机id
+    "interface": "Ethernet1/10", // [必须]指定交换机端口id
+    "source": "db",  // 指定数据来源，可选值：db-从数据库缓存获取，realtime-从cronus查询获取(仅用于调试，请勿用于生产)，默认为db
+    "start_time": "2020-04-29T12:12:12Z",   // 开始时间
+    "end_time": "2020-04-29T12:20:12Z"   // 结束时间
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "time",
+            "data": [
+               1588162500,
+               1588162800
+            ],
+            "tag": "Ethernet1/10"
+         },
+         {
+            "name": "inbound",
+            "data": [
+               2585242.37333333,
+               2925068.50666667
+            ],
+            "tag": "Ethernet1/10"
+         },
+         {
+            "name": "outbound",
+            "data": [
+               1293989.84,
+               1218422.10666667
+            ],
+            "tag": "Ethernet1/10"
+         },
+         {
+            "name": "max_bandwidth",
+            "data": [
+               2585242.37333333,
+               2925068.50666667
+            ],
+            "tag": "Ethernet1/10"
+         },
+         {
+            "name": "billing_bandwidth",
+            "data": [
+               2925068.50666667,
+               2925068.50666667
+            ],
+            "tag": "Ethernet1/10"
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetSwitchBandwidthMonitorResponse"
+}
+----

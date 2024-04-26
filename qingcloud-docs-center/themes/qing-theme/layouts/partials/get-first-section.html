@@ -1,0 +1,7 @@
+{{$Section := cond (eq $.RelPermalink `/`) (index .Sections.ByWeight 0) .FirstSection}}
+{{if eq $.RelPermalink `/` }}
+  {{range where .Sections `.RelPermalink` `==` .Site.Params.logoLink }}
+    {{$Section = .}}
+  {{end}}
+{{end}}
+{{return $Section}}

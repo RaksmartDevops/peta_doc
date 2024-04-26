@@ -1,0 +1,34 @@
+---
+title: "备份回滚"
+description: 本小节主要介绍备份回滚相关操作。
+draft: false
+weight: 30
+keywords: 云计算, 备份, 备份操作
+---
+== 操作场景
+
+当用户因为误操作或者应用逻辑的 bug 而导致业务数据的丢失时，可以通过 “回滚” 操作恢复到某个备份点的状态。
+
+== 操作步骤
+
+. 登录{console_name}。
+
+. 在控制台导航栏中，选择 *产品与服务* > *存储服务* > *备份*，进入 *备份* 页面。
++
+image::/images/cloud_service/storage/backup/manual_rollback_snapshot_1.png[]
+
+. 在备份链列表，点击需要操作的备份链 ID，进入备份链详情页面。
++
+image::/images/cloud_service/storage/backup/manual_rollback_snapshot_2.png[]
+
+. 在链路的结构示意图中，点击想要删除的增量备份点右侧的 *···*，选择 *回滚*。
++
+image::/images/cloud_service/storage/backup/manual_rollback_snapshot_3.png[]
+
+. 弹出提示框，点击 *继续*。
++
+image::/images/cloud_service/storage/backup/manual_rollback_snapshot_4.png[]
+
+. 选择要回滚的备份点，点击 *提交*，开始回滚并应用备份，待回滚完成即可。
++
+image::/images/cloud_service/storage/backup/manual_rollback_snapshot_5.png[]

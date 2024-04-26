@@ -1,0 +1,75 @@
+---
+title: V2V获取上传进度（v2v_get_state）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/file/v2v_get_state/
+
+=== Method
+POST
+
+=== 接口描述
+用于V2V映像文件的上传，可通过该接口检查文件的上传进度，以判断是否进行断点续传。
+
+使用方法与V2V上传接口类似：url中需带上传服务器的ip及端口，以此方式将请求转发至不同zone的v2v虚拟机上，上传服务器的ip和端口可通过Boss2DescribeV2VZones获得，如对v2vtest这个zone进行操作，Boss2DescribeV2VZones的结果中该zone对应的upload字段值为：192.168.5.46:45670，则获取上传进度的url为：/file/v2v_get_state/192.168.5.46:45670/，注意结尾的"`/`"必须携带
+
+注意，本接口暂时不支持直接在yapi上进行测试。
+ +
+ +
+结果字段：
+ +
+ +
+
+|===
+| 字段 | 说明 | 备注
+
+| state
+| 上传进度
+| 表示当前的上传进度，如果文件未上传则为null
+
+| session_id
+| 上传使用的session id，如需断点上传文件可使用该id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "filename": "testfile.txt", // 文件名，该字段和文件体积一起作为鉴定文件是否已上传一部分的检查条件
+    "size": 1048576, // 文件体积，单位为Byte
+    "type": "v2v"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "state": [
+      "0-3071/1048576"
+   ],
+   "session_id": "8bb121c91b74768360b849227aba38dd",
+   "ret_code": 0
+}
+----

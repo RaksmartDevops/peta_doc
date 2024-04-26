@@ -1,0 +1,70 @@
+---
+title: "Windows 云服务器安装 IIS Web 服务"
+weight: 50
+---
+
+. 点击 *开始* > *服务器管理器*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_1.png[]
+
+. 选择 *添加角色和功能*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_2.png[]
+
+. 点击 *下一步*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_3.png[]
++
+image::/images/cloud_service/compute/vm/bestp_iis_4.png[]
++
+image::/images/cloud_service/compute/vm/bestp_iis_5.png[]
+
+. 服务器角色勾选 *Web 服务器（IIS）* > *添加功能*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_6.png[]
++
+image::/images/cloud_service/compute/vm/bestp_iis_7.png[]
+
+. 勾选 *.NET Framework 3.5 功能*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_8.png[]
+
+. 选择 *Web 服务器角色（IIS）* > *角色服务*，保持默认即可。
++
+image::/images/cloud_service/compute/vm/bestp_iis_9.png[]
+
+. 点击 *安装*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_10.png[]
++
+image::/images/cloud_service/compute/vm/bestp_iis_11.png[]
++
+image::/images/cloud_service/compute/vm/bestp_iis_12.png[]
+
+. 内网测试 IIS 服务。
++
+image::/images/cloud_service/compute/vm/bestp_iis_13.png[]
+
+. 外网测试 IIS 服务
+
+.. 如果是基础网络云服务器，直接放行云服务器对应安全组的下行 80 端口，并应用修改；
+
+.. 如果是私有网络云服务器
+
+... 针对云服务器的 80 端口做端口转发。
++
+image::/images/cloud_service/compute/vm/bestp_iis_14.png[]
+
+... 放行安全组的 80 端口，并点击 *应用修改*。
++
+image::/images/cloud_service/compute/vm/bestp_iis_15.png[]
+
+.. 外网测试。
++
+image::/images/cloud_service/compute/vm/bestp_iis_16.png[]
++
+
+include::../../../../../../_components/attention.adoc[]
+通过 80/443 端口对外提供服务，需要备案，并且需要通过域名对外提供服务。
+
+include::../../../../../../_components/table_footer.adoc[]

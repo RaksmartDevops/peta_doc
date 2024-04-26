@@ -1,0 +1,19 @@
+---
+title: "退出登录"
+weight: 3
+---
+== 场景描述
+
+该任务指导用户在不使用 *云计算运维管理平台* 时如何退出系统。
+
+== 功能描述
+
+== 前提条件
+
+已使用浏览器登录 BOSS。
+
+== 操作步骤
+
+在左侧导航栏点击 *退出登录* 。
+
+image::/images/boss/manual/login/outlogin_operation.png[]

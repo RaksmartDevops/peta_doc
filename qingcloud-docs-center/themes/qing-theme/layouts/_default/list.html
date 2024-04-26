@@ -1,0 +1,14 @@
+{{- define "main" -}}
+<div class="container">
+  {{ if .Params.isSearchPage}}
+    {{- partial "search-home.html" . -}}
+  {{ else }}
+    {{- partial "side.html" . -}}
+    {{if .Params.study_section}}
+      {{- partial "list.html" . -}}
+    {{- else -}}
+      {{- partial "single.html" . -}}
+    {{- end -}}
+  {{ end }}
+</div>
+{{- end -}}

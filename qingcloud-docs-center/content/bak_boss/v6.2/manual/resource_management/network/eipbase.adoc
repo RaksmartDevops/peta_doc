@@ -1,0 +1,70 @@
+---
+title: "基础网络 IP"
+weight: 100
+---
+
+== 场景描述
+
+该任务指导管理员进入基础网络 IP 页面，查看基础网络 IP 列表或执行变更、暂停或恢复的操作。
+
+== 功能描述
+
+基础网络 IP 为基础网络中划分出的可分配的 IP 地址。
+
+基础网络 IP 列表展示了用户在{platform_name_cn}创建的所有的基础网络 IP 的状态、名称/ID、IP 地址、IP 类型、带宽上限、用户邮箱/ID、资源名称/ID、隔离状态、绑定模式、创建时间信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网络* > *基础网络 IP*，在面板左上角选择区域或可用区，可查看该区域所有的基础网络 IP 列表及相关信息。
++
+image::/images/boss/manual/resource_mgt/eipbase_operation.png[]
+
+. 点击基础网络 IP 的名称，可查看基础网络 IP 详细信息。
+
+=== 变更基础网络 IP
+
+include::../../../../../_components/note.adoc[]
+基础网络 IP 状态为 *可用* 时，可执行变更操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *基础网络 IP* 页面搜索框中搜索待操作基础网络 IP 的 ID 或名称，按 *Enter*，找到待操作基础网络 IP。
+. 在待操作基础网络 IP 所在行点击image:/images/boss/manual/icon.png[]，点击 *变更*。
++
+弹出 *变更 IP* 对话框。
+
+. 输入新 IP 地址和操作原因。
+. 点击 *变更*。
+
+=== 暂停基础网络 IP
+
+include::../../../../../_components/note.adoc[]
+基础网络 IP 状态为 *已绑定*、*可用*、*等待中*、*已释放* 时，可执行暂停操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *基础网络 IP* 页面搜索框中搜索待操作基础网络 IP 的 ID 或名称，按 *Enter*，找到待操作基础网络 IP。
+. 在待操作基础网络 IP 所在行点击image:/images/boss/manual/icon.png[]，点击 *暂停*。
++
+弹出 *暂停 IP* 对话框。
+
+. 输入操作原因，点击 *暂停*。
+
+=== 恢复基础网络 IP
+
+include::../../../../../_components/note.adoc[]
+基础网络 IP 状态为 *已暂停* 时，可执行暂停==恢复操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *基础网络 IP* 页面搜索框中搜索待操作基础网络 IP 的 ID 或名称，按 *Enter*，找到待操作基础网络 IP。
+. 在待操作基础网络 IP 所在行点击image:/images/boss/manual/icon.png[]，点击 *恢复*。
++
+弹出 *恢复 IP* 对话框。
+
+. 输入操作原因，点击 *恢复*。

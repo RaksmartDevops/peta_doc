@@ -1,0 +1,47 @@
+---
+title: 域名控制权验证（Boss2SSLCertShopSelfValidation）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SSLCertShopSelfValidation
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2SSLCertShopSelfValidation",
+   "order_id": "oid-c6eed41a8139"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2SSLCertShopSelfValidationResponse",
+   "ret_code": 5000,
+   "message": "unable to validate order [oid-c6eed41a8139]"
+}
+----

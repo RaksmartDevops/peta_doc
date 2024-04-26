@@ -1,0 +1,10 @@
+---
+title: "申请队列"
+linkTitle: "申请队列"
+description: 申请队列
+keywords: 云计算, HPC, EHPC, 申请队列
+draft: false
+weight: 20
+---
+
+include::../../../../../../../_cloud_service/ehpc/queue/apply_queue.adoc[]

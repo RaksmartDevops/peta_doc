@@ -1,0 +1,76 @@
+---
+title: "客户端使用"
+draft: false
+weight: 4
+keywords: 云计算, 文件存储, QFS
+linkkey: storage_qfs_client_use
+---
+
+本小节主要介绍客户端配置及访问的相关操作。
+
+== NFS 协议
+
+. 登录{platform_name_cn}的{console_name}。
+
+. 点击**产品与服务** > **存储服务** > **文件存储 QFS**，默认进入**文件系统**主页面。
+
+. 在link:../file_system/#_文件系统列表[文件系统列表]页面，点击目标文件系统名称。
+
+
+. 默认进入目标文件系统挂载点列表页面。选择协议类型为 `NFS` 的挂载点，并点击该挂载点的**复制挂载命令**操作。
++
+image::/images/cloud_service/storage/qfs/file_system_mount_list.png[file_system_mount_list,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+复制的挂载命令最后一项 `/mnt` 为客户端上对应的挂载点目录。用户可根据实际情况进行调整。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 打开客户端终端，粘贴已复制的挂载命令行。
++
+image::/images/cloud_service/storage/qfs/file_system_use.png[file_system_use,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 使用 NFS 协议进行挂载时，客户端（以Ubuntu系统为例）需要安装依赖包：`apt install nfs-common`。
+* 多个文件系统共享挂载到相同客户端的同一个目录下时，新挂载的共享会覆盖之前挂载的共享目录。
+* 使用域名挂载文件系统共享时，需要在对应的客户端中配置域名解析。配置文件为：`/etc/hosts`。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== SMB 协议
+
+
+. 登录{platform_name_cn}的{console_name}。
+
+. 点击**产品与服务** > **存储服务** > **文件存储 QFS**，默认进入**文件系统**主页面。
+
+. 在link:../file_system/#_文件系统列表[文件系统列表]页面，点击目标文件系统名称。
+
+
+. 默认进入目标文件系统挂载点列表页面。选择协议类型为 `SMB` 的挂载点，并点击该挂载点的**复制挂载命令**操作。
++
+image::/images/cloud_service/storage/qfs/file_system_mount_list.png[file_system_mount_list,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+复制的挂载命令最后一项 `z:` 为客户端上对应的挂载点目录。用户可根据实际情况进行调整。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 打开客户端终端，粘贴已复制的挂载命令行。
++
+image::/images/cloud_service/storage/qfs/file_system_use_smb.png[file_system_use_smb,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 如上图所示，在 Windows 客户端上挂载共享，可以在终端输入命令行进行挂载。也可在文件目录输入框内通过添加网络地址进行挂载。
+
+* 使用域名挂载文件系统共享时，需要在对应的客户端中配置域名解析，配置文件为 `hosts`。
+
+include::../../../../../_components/table_footer.adoc[]

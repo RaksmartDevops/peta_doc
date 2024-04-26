@@ -1,0 +1,91 @@
+---
+title: 撤销用户角色（Boss2RevokeRolesFromUsers）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RevokeRolesFromUsers
+
+=== Method
+POST
+
+=== 接口描述
+删除用户和角色的关联，成功后ret_code为0，并返回成功的角色和用户id列表。
+
+响应数据：
+
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| roles
+| Array
+| 角色 id 列表
+|
+
+| role_count
+| Integer
+| 涉及的角色数量
+|
+
+| users
+| Array
+| 用户 id 列表
+|
+
+| user_count
+| Integer
+| 涉及的用户数量
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2RevokeRolesFromUsers",
+    "roles": ["f92f9a2a-da6c-462c-ba61-46c1afd8eb7a", "7dcfa680-3914-4b5c-96d7-ddd5c0f3ed0c"], // [必须]角色id
+    "users": [35, 36, 37], // [可选]需要删除的用户id
+    "purge": true, // [可选]删除指定用户的所有角色，或删除指定角色关联的所有用户。当purge为false或不传时，roles和users必须同时存在
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "roles": [
+      "7dcfa680-3914-4b5c-96d7-ddd5c0f3ed0c",
+      "f92f9a2a-da6c-462c-ba61-46c1afd8eb7a"
+   ],
+   "role_count": 2,
+   "users": [
+      33,
+      35,
+      30,
+      31
+   ],
+   "user_count": 4,
+   "ret_code": 0,
+   "action": "Boss2RevokeRolesFromUsersResponse"
+}
+----

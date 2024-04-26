@@ -1,0 +1,132 @@
+---
+title: 获取指定节点的PCI设备（Boss2GetNodePCIDevices）
+weight: 18
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodePCIDevices
+
+=== Method
+POST
+
+=== 接口描述
+获取指定节点的PCI设备列表，用于设备管理功能。本接口暂不支持分页。
+返回数据：
+device_set中为pci设备列表：
+
+|===
+| 字段 | 描述 | 备注
+
+| slot
+| 设备地址
+|
+
+| device_class
+| 设备分类
+|
+
+| vendor
+| 设备厂商
+|
+
+| device_name
+| 设备名称
+|
+
+| bus
+| 从设备地址得出的bus编号
+|
+
+| device
+| 从设备地址得出的device编号
+|
+
+| function
+| 从设备地址得出的function编号
+|
+|===
+
+device_classes： 列出了所有的设备分类，可用于列表下拉筛选。
+vendors: 列出了所有的厂商，可用于列表下拉筛选。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetNodePCIDevices",
+    "zone": "test", // [必须]指定设备所在zone
+    "node_id": "tr02n12", // [必须]指定设备id
+    "vendor": ["Beijing Memblaze Technology Co. Ltd.", "Mellanox Technologies"], // 可使用设备厂商进行过滤
+    "device_class": ["Ethernet controller"], // 可使用设备类型进行过滤
+    "search_word": "vga" // 可使用关键词进行模糊查询
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 67,
+   "device_set": [
+      {
+         "slot": "04:00.0",
+         "device_class": "Ethernet controller",
+         "vendor": "Mellanox Technologies",
+         "device_name": "MT27710 Family [ConnectX-4 Lx]",
+         "bus": "04",
+         "device": "00",
+         "function": "0"
+      },
+      {
+         "slot": "83:00.0",
+         "device_class": "Non-Volatile memory controller",
+         "vendor": "Beijing Memblaze Technology Co. Ltd.",
+         "device_name": "PBlaze4 NVMe SSD",
+         "bus": "83",
+         "device": "00",
+         "function": "0"
+      }
+   ],
+   "device_classes": [
+      "Communication controller",
+      "SMBus",
+      "PCI bridge",
+      "PIC",
+      "Serial Attached SCSI controller",
+      "VGA compatible controller",
+      "Host bridge",
+      "USB controller",
+      "ISA bridge",
+      "Ethernet controller",
+      "Non-Volatile memory controller"
+   ],
+   "vendors": [
+      "ASPEED Technology, Inc.",
+      "Intel Corporation",
+      "Beijing Memblaze Technology Co. Ltd.",
+      "LSI Logic / Symbios Logic",
+      "Mellanox Technologies"
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodePCIDevicesResponse"
+}
+----

@@ -1,0 +1,87 @@
+---
+title: 创建角色（Boss2CreateRole）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateRole
+
+=== Method
+POST
+
+=== 接口描述
+用于创建BOSS2系统中的角色，将会返回角色id和角色名称。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| String
+| 角色id
+|
+
+| name
+| String
+| 角色名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateRole",
+    "name": "测试角色", //[必须]配置角色名称，角色名称不能重复
+    "zones": ["test"], // [可选]配置可以访问的zone，
+    "description": "测试角色描述", // [可选]配置描述信息
+    "consoles": ["example"], // [可选]配置可以访问的console_id
+    "menus":[
+        {
+            "id": "9af4577e-8289-4754-ab68-f74433ffebfc",
+            "pages": ["06e3b8d5-4707-4628-a97b-077c0c558da2", "e62e0d64-e6c6-40c6-8104-8123b517f6b8"],
+            "actions": ["16eb06d0-68e9-4ae3-9a8b-8ac8def04973"],
+            "tabs": ["c5599328-55c7-48ba-b807-9cfaa3acf185", "203fa564-e5ee-4c6e-a222-4eac0988d17d"]
+        }
+    ], //[可选]配置菜单导航
+    "perms": [
+        {
+            "key": "boss_zone",
+            "ids": [
+                "82a9c478ad8a357776e7c7ab632f348b",
+                "8dd13619758b0242c7ec1e3195657ee0"
+            ]
+        }
+    ] // [可选]配置数据权限
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": "c885521d-4805-475b-8abb-cea443ec205a",
+   "name": "测试角色2",
+   "ret_code": 0,
+   "action": "Boss2CreateRoleResponse"
+}
+----

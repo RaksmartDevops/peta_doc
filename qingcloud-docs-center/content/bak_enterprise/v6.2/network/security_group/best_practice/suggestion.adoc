@@ -1,0 +1,6 @@
+---
+title: 安全组实践建议
+weight: 10
+---
+
+include::../../../../../_cloud_service/sg/06_suggest.adoc[]

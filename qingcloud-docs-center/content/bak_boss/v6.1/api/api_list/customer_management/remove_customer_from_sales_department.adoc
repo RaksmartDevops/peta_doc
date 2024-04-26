@@ -1,0 +1,52 @@
+---
+title: 从销售部门中移除客户（Boss2RemoveCustomerDept）
+weight: 14
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RemoveCustomerDept
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于销售部门管理员使用，可去除本销售部门负责的客户的部门信息。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2RemoveCustomerDept",
+  "users": ["usr-o5bnTuS71", "usr-IxatxxRR"],  // [必须]指定需要移除部门的客户
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "success_count": 2,
+   "ret_code": 0,
+   "action": "Boss2RemoveCustomerDept"
+}
+----

@@ -1,0 +1,46 @@
+---
+title: "查看挂载资源"
+description: 介绍如何更改 QKE 集群节点配置
+draft: false
+weight: 20
+keywords: 云计算, QKE, 挂载资源
+---
+本文介绍如何查看集群所挂载的云资源。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *容器服务* > *{k8s_engine_fullname}*，进入 QKE 集群管理页面。
+. 在集群列表，点击待查看集群的名称，进入**集群概览**页面。
+. 在左侧导航栏，选择**资源管理** > *挂载资源*，进入**挂载资源**页面。
++
+image::/images/cloud_service/container/qke/mounting_resource_disk.png[]
+
+. 通过点击选项卡，分别查看已挂载到集群的云硬盘、负载均衡器及安全组资源。
++
+ ** *云硬盘*
++
+image::/images/cloud_service/container/qke/mounting_resource_disk.png[]
++
+可查看集群挂载的云硬盘名称、对应持久卷名称、硬盘状态、硬盘类型、硬盘容量等信息。点击资源 ID 号，将跳转到对应资源的详情页面。
++
+
+include::../../../../../../_components/note.adoc[]
+
+* **名称**指云平台获取的硬盘名称。
+* **持久卷**指 K8s 获取的持久卷名称。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+ ** *负载均衡器*
++
+image::/images/cloud_service/container/qke/mounting_resource_lb.png[]
++
+可查看集群中使用到的负载均衡器的名称、状态、类型、IP 地址等信息。点击资源 ID 号，将跳转到对应资源的详情页面。
+
+ ** *安全组*
++
+image::/images/cloud_service/container/qke/mounting_resource_sg.png[]
++
+可查看集群所绑定的安全组的信息。点击资源 ID 号，将跳转到对应资源的详情页面。

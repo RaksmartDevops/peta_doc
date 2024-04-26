@@ -1,0 +1,71 @@
+---
+title: 获取用户session列表（Boss2DescribeUserSessions）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeUserSessions
+
+=== Method
+POST
+
+=== 接口描述
+支持排序和分页参数（sort_key, reverse, limit, offset）
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeUserSessions",
+   "user_id": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "api_key_set": [
+      {
+         "id": 3,
+         "ua": "HTTPie/2.2.0",
+         "ip": "127.0.0.1",
+         "login_at": "2020-10-15T09:48:57.707Z"
+      },
+      {
+         "id": 2,
+         "ua": "HTTPie/2.2.0",
+         "ip": "127.0.0.1",
+         "login_at": "2020-10-15T09:48:55.572Z"
+      },
+      {
+         "id": 1,
+         "ua": "PostmanRuntime/7.26.5",
+         "ip": "127.0.0.1",
+         "login_at": "2020-10-15T09:48:36.814Z"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeUserSessionsResponse"
+}
+----

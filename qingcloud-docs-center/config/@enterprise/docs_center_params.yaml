@@ -1,0 +1,20 @@
+markup:
+  asciidocExt:
+    attributes:
+      platform_name_cn: 云平台
+      brand_name_low: petaexpress
+      api_url: https://api.petaexpress.com/iaas/
+      console_name: 管理控制台
+      qingstor_cap: QingStor
+      qingstor_low: qingstor
+      k8s_engine_fullname: 容器引擎
+      k8s_engine_shortname: QKE
+params:
+  description: 这里是企业云文档页面
+  favicon: https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico
+  keyword: 云计算,peta,petaexpress,文档
+  logo: https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg
+  logoInfo: 企业云
+  logoLink: /
+  disablePdf: false
+  disableVersions: true

@@ -1,0 +1,66 @@
+---
+title: 获取可用zone列表（Boss2DescribeV2VZones）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeV2VZones
+
+=== Method
+POST
+
+=== 接口描述
+V2V服务目前是每个 zone 部署一个，所以可能存在有的zone没有部署的情况。
+所以该接口用于获取可用的 zone 列表，用户只能选择该列表中指定的 zone。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| zone_set
+| Array
+| 可用区列表
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VZones"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "zone_set": [
+        {
+            "name": "v2vtest",
+            "upload": "192.168.5.46:45670" // 某些部署情况下，v2v服务器请求是通过proxy转发的，该地址用于页面展示，告知用户V2V服务器地址，用户可直接将文件上传至V2V所在的虚拟机。
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2DescribeV2VZonesResponse"
+}
+----

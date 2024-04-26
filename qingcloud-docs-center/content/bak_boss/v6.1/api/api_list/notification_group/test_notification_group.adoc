@@ -1,0 +1,51 @@
+---
+title: 测试通知组（Boss2TestNotifyGroup）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TestNotifyGroup
+
+=== Method
+POST
+
+=== 接口描述
+channels：目前支持"emails", "imrobots", "phones", "webhooks", "syslogs", "private_wechats","snmptrap"这6种通知方式
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2TestNotifyGroup",
+    "channels": ["emails", "imrobots", "phones", "webhooks", "syslogs", "private_wechats","snmptraps"],   // 指定测试通知组中的哪些渠道，不传或传空会通过通知组所有渠道发送测试消息
+    "id": 6  // 通知组ID
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2TestNotifyGroupResponse"
+}
+----

@@ -1,0 +1,10 @@
+---
+title: "如何启用 WebSocket 支持？"
+description: 如何启用 WebSocket 支持
+keywords: 负载均衡器, WebSocket 支持
+weight: 50
+draft: false
+---
+负载均衡器详情界面，在监听器配置界面开启 *Keep-Alive*，可以通过 Connection 字段配置 Keep-Alive ，保持 HTTP 连接不中断。
+
+image::/images/cloud_service/network/lb/keep_alive_set.png[,70%]

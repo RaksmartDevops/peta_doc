@@ -1,0 +1,50 @@
+---
+title: "NAT 网关"
+weight: 90
+---
+== 背景信息
+
+NAT ( Network Address Translaton )是将一个公网 IP 转换为很多个内网 IP 的技术，最常见的 IP 复用技术之一。NAT 技术解决了公网 IPv4 地址数量需求增多的问题 。
+
+NAT 网关（Network Address Translaton Gateway）是一个分布式的网络地址转换服务。用户的多个私有网络可以通过一个统一的 NAT 网关访问外网，同时通过路由规则来配置网络访问的路径。NAT 可以分为以下两类：
+
+* 源地址转换（Source Network Address Translation，简称 *SNAT*）：通过 SNAT，VPC 内部发起连接的计算机的 IP 地址将会被重写，VPC 内的主机数据包能够到达外网主机，可以对公网中的服务发起请求，给 VPC 绑定一个公网 IP，会自动配置源 NAT 功能，VPC 内所有机器可以使用 VPC 的公网地址去访问公网，就不再需要每台机器绑定公网 IP 地址。
+* 目标地址转换（Destination Network Address Translation，简称 *DNAT*）：通过 DNAT，VPC 内被连接的主机 IP 地址将被重写 ，使得外网主机发出的数据包能够到达内网，主机端口转发通过转发公网 IP 的不同端口给不同主机，VPC 内的不同机器可以使用 VPC 的公网地址的不同端口来对外提供服务。
+
+{platform_name_cn}目前支持 SNAT，{platform_name_cn}提供的最常用的外部绑定公网 IP 实际就是一种 1：1 的 NAT，可以解决管理路由器的性能和高可用问题，将私有网络转换成公网后与公网通信，为私有网络的主机提供了复用公网 IP 的能力。SNAT 功能还可以作为防火墙使用，因为私有网络的主机可以主动通过 NAT 网关访问互联网，但是互联网的主机不可以主动访问私有网络内的主机。 NAT 网关具备高达 10 Gbps 的转发能力以及 Region 级别的多活容灾能力。
+
+以{platform_name_cn}上公有云架构为例，VPC a 内的私有网络 c、d 之间可以在打开防火墙和 ACL 的情况下互通，但是默认不能访问外部网络。 当创建边界路由器后，可以按照用户配置的路由规则访问跨区域 VPC 或者企业分支机构。如果私有网络 c、d 内的主机希望访问基础网络或者互联网，则必须通过 NAT 连接。平台支持私有网络内的主机通过管理路由器 3 或者 NAT 网关两种方式访问外部网络。
+
+image::/images/boss/manual/resource_mgt/nfvs_process.png[]
+
+== 场景描述
+
+该任务指导管理员进入 NAT 网关页面，查看 NAT 网关列表及相关信息。
+
+== 功能描述
+
+该页面展示用户在{platform_name_cn}创建并配置的的所有 NAT 网关的状态、名称/ ID、公网 IP、规格、安全组、用户邮箱/ID、创建时间以及状态更新时间信息。同时云计算运维管理平台管理员可查看 NAT 网关的节点监控信息、所连接的具体私有网络和公网信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网络* > *NAT 网关*，在面板左上角选择区域或可选分区，查看 NAT 网关列表及相关信息。
+. 点击 SSH 密钥的名称，可查看 SSH 密钥详细信息以及所连接服务器信息。
++
+image::/images/boss/manual/resource_mgt/nfvs_operation.png[]
+
+* 在 *节点监控* 页签，可查看绑定在 NAT 上的公网 IP 的指定时间段内的 CPU 使用率、内存使用率以及带宽等监控信息。
+
+* 在 *私有网络* 页签，可查看 NAT 网关所连接的私有网络的状态、IP、规则名称、下一跳以及创建时间。
++
+
+include::../../../../../_components/note.adoc[]
+{platform_name_cn}用户创建的 NAT 网关是独立的实体，可以按需与私有网络关联，从而为指定私有网络内的虚拟机提供 SNAT 服务。
+
+include::../../../../../_components/table_footer.adoc[]
++
+* 在 *公网信息* 页签，可查看 NAT 网关所需连接的公网 IP 名称/ID、公网 IP 地址以及云服务器信息。

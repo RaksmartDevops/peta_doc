@@ -1,0 +1,40 @@
+---
+title: "安全组"
+linkTitle: "安全组"
+weight: 70
+draft: false
+description: 云平台安全组(Security Group) 系统为每个用户提供了访问策略统一管理功能，您可以通过安全组管理网络中上行、下行端口访问策略，并且对策略进行备份和回滚。
+
+study_section:
+  - title: 了解
+    icon: /images/icons/note_tree_duotone.svg
+    children:
+      - title: 产品简介
+        children:
+          - title: 安全组简介
+            url: intro/introduction/
+          - title: 默认安全组及规则
+            url: intro/defalut_sg/
+            
+  - title: 使用
+    icon: /images/icons/simulation_duotone.svg
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建安全组
+            url: manual/sg_mgt/sg_create/
+          - title: 添加安全组规则
+            url: manual/rule_mgt/add/
+          - title: 管理规则子集
+            url: manual/sg_subset/
+          - title: 管理 IP/端口集合
+            url: manual/sg_subset/
+
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 实践建议
+            url: best_practice/suggestion/
+---

@@ -1,0 +1,63 @@
+---
+title: Cronus 告警接收（Boss2RecvCronusAlert）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/alert_receiver/cronus/
+
+=== Method
+POST
+
+=== 接口描述
+用于接收cronus服务发过来的告警信息，告警信息将会被存储到队列中进行处理。
+本接口请求后将会返回异步任务ID。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| task
+| String
+| 任务所在位置
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "subject": "test subject", //主题
+  "content": "test content", //内容
+  "notify_time": "2018-12-13T11:39:54" //告警时间
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "task": "33aa24e6-1ba3-4e8d-8679-d87145c88030",
+   "ret_code": 0,
+   "action": "Boss2RecvNfAlertResponse"
+}
+----

@@ -1,0 +1,143 @@
+---
+title: 获取审查项目列表/详情（Boss2DescribeAuditActions）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAuditActions
+
+=== Method
+POST
+
+=== 接口描述
+获取审查项目的列表或详情。
+返回字段：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| api
+| String
+| 审查项目的id，实际为api名称
+|
+
+| api_name
+| String
+| api的中文名称，作为审查项目的名称
+|
+
+| api_description
+| String
+| 对api的描述，作为审查项目的描述
+|
+
+| api_category
+| Integer
+| api的分类，作为审查项目的分类
+|
+
+| api_category_name
+| String
+| api分类中文名称
+|
+
+| remarks
+| String
+| 审查项目备注
+|
+
+| sensitive_fields
+| Array
+| 脱敏字段
+|
+
+| status_time
+| String
+| 修改时间
+|
+
+| status
+| String
+a|
+审查项目状态：
+
+* enabled: 启用
+* disabled: 禁用
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeAuditActions",
+
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "status_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "search_word": "测试", // 用于部分字段的模糊搜索
+  "fields": ["api", "api_category"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+  
+  // 以下参数用于筛选
+  "api": ["DescribeInstances"], // 查询指定的api
+  "api_category": [0, 1], // 查询指定的api分类
+  "status": ["enabled"] // 查询审查项目的状态，enabled:启用 disabled:禁用
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "audit_action_set": [
+      {
+         "api": "Ping",
+         "api_name": "测试API",
+         "api_description": "用于测试的api",
+         "api_category": 0,
+         "api_category_name": "查询",
+         "remarks": "",
+         "sensitive_fields": [
+            "users"
+         ],
+         "status_time": "2019-04-30T01:29:54.819Z",
+         "status": "enabled"
+      },
+      {
+         "api": "DescribeInstances",
+         "api_name": "获取主机列表",
+         "api_description": "获取主机的列表",
+         "api_category": 0,
+         "api_category_name": "查询",
+         "remarks": "获取主机列表",
+         "sensitive_fields": [],
+         "status_time": "2019-04-30T01:29:48.513Z",
+         "status": "disabled"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAuditActionsResponse"
+}
+----

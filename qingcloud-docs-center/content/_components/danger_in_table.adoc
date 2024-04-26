@@ -1,0 +1,14 @@
+ifeval::["{file_output_type}" != "pdf"]
+[.admon.danger,cols="a"]
+!===
+! 危险
+
+!
+endif::[]
+ifeval::["{file_output_type}" == "pdf"]
+
++++<div class="admon danger">+++
++++<div id="_危险">危险</div>+++
++++<div class="paragraph">+++
+
+endif::[]

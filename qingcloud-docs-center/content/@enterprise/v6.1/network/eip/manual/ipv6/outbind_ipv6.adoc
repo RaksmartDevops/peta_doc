@@ -1,0 +1,8 @@
+---
+title: 云服务器 IPv6 接入公网
+weight: 5
+draft: false
+linkkey: network_eip_ipv6
+---
+
+include::../../../../../../_cloud_service/eip/outbind_ipv6_eip.adoc[]

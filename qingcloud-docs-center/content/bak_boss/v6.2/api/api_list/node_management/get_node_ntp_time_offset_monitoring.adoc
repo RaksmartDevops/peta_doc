@@ -1,0 +1,89 @@
+---
+title: 获取节点NTP时间偏移监控（Boss2GetNodeNtpMonitor）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeNtpMonitor
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取指定节点的时间和NTP服务器时间的偏移量。
+接口返回数据：
+
+|===
+| 字段 | 描述 | 备注
+
+| host
+| 节点id
+|
+
+| time
+| 数据获取时间
+|
+
+| jitter
+| 网络延迟
+|
+
+| offset
+| 与NTP服务器的时间偏移，单位为毫秒
+| 如为负值，则表示当前节点时间超前于NTP服务器的时间 +
+如为正指，则表示当前节点时间落后于NTP服务器的时间
+
+| remote
+| 对应NTP服务器
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetNodeNtpMonitor",
+  "zone": "testing",  // [必须]指定区域
+  "nodes": [
+    "test-node1",
+    "test-node2"
+  ] // [必须]指定节点列表
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": {
+      "test-node1": {
+         "host": "test-node1",
+         "time": "2022-03-24T08:20:10Z",
+         "jitter": 0.027,
+         "offset": 0.044,
+         "remote": "172.31.60.19"
+      }
+   },
+   "ret_code": 0,
+   "action": "Boss2GetNodeNtpMonitorResponse"
+}
+----

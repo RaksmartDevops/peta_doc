@@ -1,0 +1,159 @@
+---
+title: "用户指南"
+description: ""
+weight: 1
+pdf_docVersion: '01'
+
+study_section:
+
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: API 手册
+            url: "api"
+
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 搜索与查看
+        children:
+          - title: 搜一搜
+            url: "manual/search_function"
+          - title: 总览
+            url: "manual/view/viewall/resource_screen/"
+          - title: 用量预测
+            url: "manual/view/prediction/eip_usage/"
+          - title: 监控面板
+            url: "manual/view/monitor/monitor_service/"
+
+      - title: 用户管理
+        children:
+          - title: 云用户
+            url: "manual/user_management/cloud_user/"
+          - title: 第三方用户
+            url: "manual/user_management/thirduser/"
+          - title: 控制台登录服务器
+            url: "manual/user_management/console_login_server/"
+          - title: API 密钥
+            url: "manual/user_management/access_keys/"
+          - title: 用户认证
+            url: "manual/user_management/user_authentication/"
+          - title: 默认区域配额
+            url: "manual/user_management/default_regional_quota/"
+          - title: 备案
+            url: "manual/user_management/filing/intro/"
+
+      - title: 资源管理
+        children:
+          - title: 资源简介
+            url: "manual/resource_management/resource_intro/introduction/"
+          - title: 计算
+            url: "manual/resource_management/compute/intro/"
+          - title: 网络
+            url: "manual/resource_management/network/nics/"
+          - title: 存储
+            url: "manual/resource_management/storage/intro/"
+          - title: 安全
+            url: "manual/resource_management/security/security_groups/"
+          - title: IAM
+            url: "manual/resource_management/iam/iam_intro/"
+          - title: 运维与管理
+            url: "manual/resource_management/management/schedulers/"
+          - title: AppCenter
+            url: "manual/resource_management/appcenter/"
+          - title: 项目管理
+            url: "manual/resource_management/project_mgt/project/"
+
+
+      - title: 基础设施
+        children:
+          - title: 计算
+            url: "manual/infrastructure/compute02/hypernodes/"
+          - title: 存储
+            url: "manual/infrastructure/storage02/storage_pools/"
+          - title: 网络
+            url: "manual/infrastructure/network02/switches/"
+
+      - title: 运维工具
+        children:
+          - title: V2V 迁移
+            url: "manual/om_tools/v2v_migration/"
+          - title: 操作日志
+            url: "manual/om_tools/operation_log/"
+          - title: 在线命令
+            url: "manual/om_tools/online_command/"
+          - title: 定时任务
+            url: "manual/om_tools/my_tasks/"
+          - title: 全局任务
+            url: "manual/om_tools/global_jobs/"
+          - title: 消息中心
+            url: "manual/om_tools/notification_center/"
+          - title: 短信记录
+            url: "manual/om_tools/message_record/"
+          - title: 巡检管理
+            url: "manual/om_tools/inspectmgt/inspect_task/"
+
+      - title: 运营管理
+        children:
+          - title: 计费管理
+            url: "manual/operationmgt/financial/price_mgt/"
+          - title: 优惠券
+            url: "manual/operationmgt/coupon/coupon_types/"
+          - title: 客户
+            url: "manual/operationmgt/customer/customers_mgt/"
+
+      - title: 系统管理
+        children:
+          - title: 权限管理
+            url: "manual/system_management/authority_management/account_management/"
+          - title: 系统设置
+            url: "manual/system_management/system_setting/notification_group/"
+          - title: 操作审查
+            url: "manual/system_management/operation_review/review_project/"
+          - title: 云平台设置
+            url: "manual/system_management/cloud_setting/label/"
+          - title: 系统版本
+            url: "manual/system_management/system_version/"
+
+      - title: 快捷菜单
+        children:
+          - title: 快捷菜单
+            url: "manual/shortcut_menu/shortcut/"
+
+      - title: 报表管理中心
+        children:
+          - title: 报表管理中心
+            url: "manual/report_center/report/"
+
+
+      - title: 告警中心
+        children:
+          - title: 告警记录
+            url: "manual/alarm/alarm_record/"
+          - title: 通知策略
+            url: "manual/alarm/alert_strategy/"
+          - title: 告警屏蔽
+            url: "manual/alarm/alarm_mask/"
+          - title: 告警手册
+            url: "manual/alarm/alarm_manual/boss_alarm/"
+
+      - title: 个人中心
+        children:
+          - title: 个人中心
+            url: "manual/login/personcenter/"
+          - title: 退出登录
+            url: "manual/login/outlogin/"
+
+
+  - title: 开发
+    icon: icon-code_box_duotone
+    children:
+      - title: 开发者文档
+        children:
+          - title: API 手册
+            url: "api"
+
+---

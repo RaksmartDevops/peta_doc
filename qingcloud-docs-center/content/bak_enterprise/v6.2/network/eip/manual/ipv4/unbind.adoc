@@ -1,0 +1,8 @@
+---
+title: 解绑 IPv4 EIP
+weight: 49
+draft: false
+---
+:ipv4:
+
+include::../../../../../../_cloud_service/eip/unbind_ipv4_eip.adoc[]

@@ -1,0 +1,11 @@
+---
+title: "接入流程"
+description: 介绍 SaaS 应用的接入流程。
+keywords: 云平台, AppCenter, 云应用开发平台, SaaS
+draft: false
+weight: 1
+---
+
+如您需要发布应用到 AppCenter 云市场，需要您先申请服务商认证，link:../../serviceprovider/contracts/[服务商入驻流程]。
+
+image::/images/cloud_service/appcenter/saas-flow.png[]

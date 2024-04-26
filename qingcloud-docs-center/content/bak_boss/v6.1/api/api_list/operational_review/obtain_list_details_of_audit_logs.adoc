@@ -1,0 +1,285 @@
+---
+title: 获取审查日志列表/详情（Boss2DescribeAuditLogs）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAuditLogs
+
+=== Method
+POST
+
+=== 接口描述
+查询审查日志列表或详情。
+返回字段：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 日志id
+|
+
+| api
+| String
+| api
+|
+
+| api_name
+| String
+| 中文api名称
+|
+
+| api_description
+| String
+| api功能描述
+|
+
+| operator_id
+| Integer
+| 操作者用户id
+|
+
+| operator_name
+| String
+| 操作者姓名
+|
+
+| operator_email
+| String
+| 操作者email
+|
+
+| operator_ip
+| String
+| 操作者ip
+|
+
+| operator_ua
+| String
+| 操作者user-agent
+|
+
+| params
+| String
+| 请求内容，为json格式
+|
+
+| zones
+| Array
+| 操作的zone列表
+|
+
+| consoles
+| Array
+| 操作的consoles列表
+|
+
+| resources
+| Array
+| 操作的资源列表
+|
+
+| owners
+| Array
+| 操作的所有者
+|
+
+| checked
+| String
+a|
+是否审核
+
+* checked: 已审核
+* unchecked: 未审核
+|
+
+| action_time
+| String
+| 操作时间
+|
+
+| audit_log
+| Value
+| 操作原因，在界面中部分请求要求填写操作原因，会记录到这个字段中
+| 在登录相关接口中，该字段记录登录者身份和登录操作结果。
+
+| audit_status
+| Value
+a|
+审核结果：
+
+* passed: 通过
+* unpassed: 未通过
+| 当未进行审查时该值会为null
+
+| audit_status
+| Value
+a|
+审核结果：
+abnormal
+exception
+other
+|
+
+| review_log
+| Value
+| 审核记录
+|
+
+| auditor_id
+| Value
+| 审核者用户id
+|
+
+| auditor_name
+| Value
+| 审核者姓名
+|
+
+| auditor_email
+| Value
+| 审核者email
+|
+
+| audit_time
+| Value
+| 审核时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeAuditLogs",
+
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "status_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "search_word": "测试", // 用于部分字段的模糊搜索，本接口可搜索请求参数中的数据
+  "fields": ["id", "operator"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+  
+  // 以下参数用于筛选
+  "id": [1, 2, 3], // 查询指定日志id
+  "operator": [1, 2, 3], // 查询操作者id
+  "checked": ["checked"], // 日志是否审查，checked：已审查 unchecked: 未审查
+  "api": ["DescribeInstances"], // 查询指定的操作api
+  "api_category": [0, 1], // 查询指定的api分类
+  "operator_ip": ["127.0.0.1"], // 指定查询操作者ip
+  "operator_email": ["admin@test.com"], // 可通过操作者邮箱进行过滤
+  "zone": "test", // 使用操作的zone进行过滤
+  "zones": ["test"], // 使用操作的zone进行过滤，支持传入多个zone
+  "consoles": ["example"], // 使用操作的console进行过滤
+  "resources": ["usr-ijjifec"], // 使用查询的资源id进行过滤
+  "owners": ["usr-jijefe"], // 使用查询的owner进行过滤
+  "audit_passed": ["passed", "unpassed"], // 使用审查结果进行过滤，passed-通过，unpassed-不通过
+  "audit_status": ["abnormal"], // 使用审核状态进行过滤, abnormal, exception, other
+  "action_time_start": "2019-04-23T08:15:18.159Z", // 操作时间开始
+  "action_time_end": "2019-04-23T08:15:18.159Z", // 操作时间结束
+  "audit_time_start": "2019-04-23T08:15:18.159Z", // 审查时间开始
+  "audit_time_end": "2019-04-23T08:15:18.159Z" // 审查时间结
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 49278,
+   "audit_log_set": [
+      {
+         "id": 49278,
+         "api": "Boss2GetDashboardStats",
+         "api_name": "获取总览统计",
+         "api_category": 0,
+         "api_category_name": "查询",
+         "api_description": "获取总览的统计数据",
+         "operator_id": 3,
+         "operator_email": "admin@alphacloud.com",
+         "operator_name": "admin",
+         "operator_ip": "127.0.0.1",
+         "operator_ua": "axios/0.18.0",
+         "params": "{\"shunt\": \"default\", \"action\": \"Boss2GetDashboardStats\", \"topic\": [\"instance_status\", \"volume_status\", \"eip_status\"], \"zone\": \"test\"}",
+         "zones": [
+            "test"
+         ],
+         "consoles": [],
+         "resources": [
+            "instance_status",
+            "volume_status",
+            "eip_status"
+         ],
+         "action_time": "2019-05-12T08:56:11.367Z",
+         "owners": [],
+         "audit_status": "abnormal",
+         "review_log": "",
+         "checked": "unchecked",
+         "audit_passed": "passed",
+         "audit_log": null,
+         "auditor_id": null,
+         "auditor_name": null,
+         "auditor_email": null,
+         "audit_time": null
+      },
+      {
+         "id": 49277,
+         "api": "Boss2GetDashboardStats",
+         "api_name": "获取总览统计",
+         "api_category": 0,
+         "api_category_name": "查询",
+         "api_description": "获取总览的统计数据",
+         "operator_id": 3,
+         "operator_email": "admin@alphacloud.com",
+         "operator_name": "admin",
+         "operator_ip": "127.0.0.1",
+         "operator_ua": "axios/0.18.0",
+         "params": "{\"shunt\": \"default\", \"action\": \"Boss2GetDashboardStats\", \"topic\": [\"hypernode_physical_usage\", \"snapshot_usage\", \"virtual_usage\"], \"zone\": \"test\"}",
+         "zones": [
+            "test"
+         ],
+         "consoles": [],
+         "resources": [
+            "hypernode_physical_usage",
+            "snapshot_usage",
+            "virtual_usage"
+         ],
+         "action_time": "2019-05-12T08:56:11.367Z",
+         "owners": [],
+         "audit_status": null,
+         "review_log": null,
+         "checked": "unchecked",
+         "audit_passed": null,
+         "audit_log": null,
+         "auditor_id": null,
+         "auditor_name": null,
+         "auditor_email": null,
+         "audit_time": null
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAuditLogsResponse"
+}
+----

@@ -1,0 +1,98 @@
+---
+title: 获取NeonSAN版本（Boss2GetNeonSANVersion）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNeonSANVersion
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于返回NeonSAN各模块的版本。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| module
+| 模块
+|
+
+| version
+| 版本号
+|
+
+| build
+| 构建信息
+|
+
+| update_time
+| 更新时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetNeonSANVersion",
+    "zones": []  // 如果不传 zones 参数或者传空列表，返回所有 zones 的版本数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "version_set": [
+      {
+         "zone": "gamma",
+         "module": "center",
+         "version": "3.5.1",
+         "build": "6c19771-20221020.165345",
+         "update_time": "2022-10-26T22:47:25+08:00"
+      },
+      {
+         "zone": "gamma",
+         "module": "monitor",
+         "version": "3.5.1",
+         "build": "9eb6060-20221020.165345",
+         "update_time": "2022-10-26T22:52:43+08:00"
+      },
+      {
+         "zone": "gamma",
+         "module": "store",
+         "version": "3.5.1",
+         "build": "555bf49-20221020.165345",
+         "update_time": "2022-10-26T22:51:05+08:00"
+      },
+      {
+         "zone": "staging",
+         "message": "Send request to NeonSAN server failed."
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNeonSANVersionResponse"
+}
+----

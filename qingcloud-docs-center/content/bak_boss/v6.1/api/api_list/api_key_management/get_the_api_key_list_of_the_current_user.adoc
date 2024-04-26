@@ -1,0 +1,105 @@
+---
+title: 获取当前用户的API Key列表（Boss2DescribeCurrentAPIKey）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCurrentAPIKey
+
+=== Method
+POST
+
+=== 接口描述
+获取当前登录用户的api key
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的资源总数
+|
+
+| api_key_set
+| Array
+| 用户 API 信息
+|
+
+| access_key
+| String
+| API 秘钥 ID
+|
+
+| status
+| Integer
+| 状态标识码
+|
+
+| create_time
+| String
+| 创建时间
+|
+
+| remarks
+| Value
+| 备注（名称）
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeCurrentAPIKey",
+    "limit": 10,
+    "offset": 0,
+    "search_word": "",     // 搜索 remarks 和 Access Key
+    "status": [],
+    "sort_key": "create_time",
+    "reverse": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "total_count": 2,
+    "api_key_set": [
+        {
+            "access_key": "YIMPWNIIGXWPDJDTRNRE",
+            "status": 0,        // 状态：0-正常，1-已禁用，2-已删除，一般情况下不会返回已删除的 API Key
+            "create_time": "2019-03-08T07:03:34.862Z",
+            "remarks": null     // 备注
+        },
+        {
+            "access_key": "AROIVIWUKSYAPYYGUDZV",
+            "status": 0,
+            "create_time": "2019-03-08T07:03:30.259Z",
+            "remarks": null
+        }
+    ],
+    "ret_code": 0,
+    "action": "Boss2DescribeAPIKeyResponse"
+}
+----

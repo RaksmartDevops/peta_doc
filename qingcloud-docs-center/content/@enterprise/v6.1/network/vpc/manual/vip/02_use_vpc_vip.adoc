@@ -1,0 +1,81 @@
+---
+title: "使用 VPC 网络 IP"
+keywords: VPC, VPC 网络, 虚拟 IP,VIP
+description: 介绍如何使用 VPC 网络 IP。
+draft: false
+weight: 10
+linkkey: network_vpc_vip_guide
+---
+VPC 网络 IP 是从私有网络 CIDR 分配的一个内网 IP 地址，是云平台租户私有的 IP 地址，由租户自己管理，租户可分配、查看和释放地址。
+
+本文介绍如何在控制台申请、绑定、释放 VPC 网络 IP。
+
+== 申请 VPC 网络 IP
+
+. 登录{console_name}。
+. 在控制台顶部导航栏中，选择**产品与服务** > *网络* > *VPC 网络*，进入**VPC 网络** 页面。
+. 在左侧导航树中，选择**网络** > **内网 IP**。
+. 点击 *VPC 网络 IP* 页签，进入 VPC 网络 IP 管理页面。
+. 点击**申请 IP**，在弹出的窗口中配置 VPC 网络 IP 参数。
++
+[cols="1,2"]
+|===
+| 参数名称 | 说明
+
+| 名称
+| VPC 网络 IP 的名称。 +
+用户绑定 VPC 网络 IP 时，可通过名称识别该 IP。
+
+| 数量
+| 需要申请的 IP 数量。 +
+可一次性申请多个 IP。
+
+| 网络
+| 选择 IP 所属的私有网络。 +
+私有网络的选择决定了 IP 地址所属网段。
+
+| 虚拟 IP 地址
+| 设置具体的 IP 地址。 +
+IP 数量大于 1 时，需要分别设置每个 IP 的地址。
+|===
+
+. 点击**确认**，返回 *VPC 网络 IP* 页面。
++
+页面显示新申请的 IP，**状态**为``未绑定``。
+
+== 绑定 VPC 网络 IP
+
+*绑定到负载均衡器*
+
+* 您可以在创建负载均衡器时，设置**网络**为``私有网络``，*内网 VIP* 选择``绑定已分配``，然后指定需要绑定的内网 IP 名称即可。
++
+image::/images/cloud_service/network/vpc/vxnet_vip_bind_lb.png[]
+
+* 您也可以负载均衡器的详情页，通过修改**内网 IP** 来选择已分配的内网 IP。
++
+image::/images/cloud_service/network/vpc/vxnet_vip_bind_lb_2.png[]
+
+*绑定到云服务器*
+
+* 内网 IP 申请后，不能在管理控制台中直接绑定到云服务器，可通过网络配置文件或命令行方式手动添加到云服务器。具体操作请参见link:../04_vip_bind_vm/[为云服务器配置内网 VIP]。
+* 内网 IP 还可以配合第三方 HA 软件（如 Keeoalived）使用，在第三方 HA 软件中，将 IP 指定为可漂移的 VIP，然后由第三方 HA 软件通过 ARP 协议指定 VIP 要绑定的网卡。具体操作请参考link:../../../best-practices/vip_keepalived_ha/[使用 VIP 与 Keepalived 配置高可用服务]。
+
+== 释放 VPC 网络 IP
+
+如果不再使用 VPC 网络 IP，可在控制台将其释放。
+
+include::../../../../../../_components/note.adoc[]
+
+仅未绑定的 IP 支持释放。对于已绑定的 IP，需要先解绑，才可在控制台执行释放操作。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 登录{console_name}。
+. 在控制台顶部导航栏中，选择**产品与服务** > *网络* > *VPC 网络*，进入**VPC 网络** 页面。
+. 在左侧导航树中，选择**网络** > **内网 IP**。
+. 点击 *VPC 网络 IP* 页签，进入 VPC 网络 IP 管理页面。
+. 找到需要释放的 IP（可输入名称、ID 或 IP 进行搜索），点击**操作**列的**释放**，弹出提示框。
+. 在提示框中，点击**释放**。
++
+待释放成功后，该 IP 将从列表中移除。

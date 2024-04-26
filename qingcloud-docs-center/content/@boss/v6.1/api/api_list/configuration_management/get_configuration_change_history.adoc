@@ -1,0 +1,131 @@
+---
+title: 获取配置变更历史（Boss2GetConfigHistory）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetConfigHistory
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取配置配置变更历史。
+
+接口返回：
+
+|===
+| 字段 | 说明 | 备注
+
+| config_id
+| 配置id
+|
+
+| history_id
+| 变更历史id
+|
+
+| topic
+| 配置的topic
+|
+
+| key
+| 配置的key
+|
+
+| value
+| 配置的内容
+| value中如果有password、passwd字段，将会使用星号替换
+
+| initial
+| 是否为首次配置
+|
+
+| current
+| 是否为当前使用的配置
+|
+
+| operator_id
+| 操作者id
+|
+
+| operator_username
+| 操作者用户名
+|
+
+| operator_email
+| 操作者邮箱
+|
+
+| create_time
+| 配置变更时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2GetConfigHistory",
+    "topic": "test_topic",   // [必须]配置的topic
+    "key": "test_key1",   // [必须]配置的key
+    "operator_id": 1,  // 可通过变更配置的操作者id进行过滤
+    "start_time": "2022-09-19T07:42:37Z",  // 可通过配置变更时间进行过滤
+    "end_time": "2022-09-19T07:42:37Z",
+    
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "测试", // 用于部分字段的模糊搜索
+    "fields": ["key", "value"] // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "config_history_set": [
+      {
+         "history_id": 6,
+         "config_id": 1,
+         "topic": "test_topic",
+         "key": "test_key1",
+         "value": {
+            "hello": "world"
+         },
+         "initial": false,
+         "current": true,
+         "operator_id": 1,
+         "operator_username": "admin",
+         "operator_email": "admin@test.com",
+         "remarks": "测试回滚",
+         "create_time": "2022-09-21T02:34:08.319Z"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetConfigHistoryResponse"
+}
+----

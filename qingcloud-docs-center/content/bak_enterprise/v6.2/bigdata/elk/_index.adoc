@@ -1,0 +1,56 @@
+---
+title: ELK 服务
+linkTitle: ELK
+weight: 20
+description: ELK 为用户提供实时日志处理、全文搜索和数据分析等基础能力。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 ELK
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 系列和版本
+            url: intro/version/
+          - title: 集群组件说明
+            url: intro/component/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 退款说明
+            url: billing/refund/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建 ELK 集群
+            url: quickstart/create_cluster/
+          - title: 访问 Kibana
+            url: quickstart/access_kibana/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 基本用法
+            url: manual/basic_usage/node_intro/
+          - title: 集群生命周期
+            url: manual/cluster_lifecycle/cluster_info/
+          - title: 节点生命周期
+            url: manual/node_lifecycle/node_info/
+          - title: 配置参数
+            url: manual/config_para/config_para_info/
+          - title: 监控指标与告警
+            url: manual/metrics_alarm/config_display_metrics/
+linkkey: bigdata_elk_guide
+---

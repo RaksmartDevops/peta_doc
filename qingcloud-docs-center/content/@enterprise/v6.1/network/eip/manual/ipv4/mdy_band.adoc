@@ -1,0 +1,8 @@
+---
+title: 调整带宽上限
+weight: 20
+draft: false
+---
+:ipv4:
+
+include::../../../../../../_cloud_service/eip/mdy_band.adoc[]

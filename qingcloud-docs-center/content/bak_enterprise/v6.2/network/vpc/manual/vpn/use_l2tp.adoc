@@ -1,0 +1,282 @@
+---
+title: "使用 L2TP"
+keywords: VPC, VPN, PPTP
+description: 介绍如何启用及配置 PPTP。
+draft: false
+weight: 20
+---
+
+
+本文为您介绍 Linux 客户端如何通过 L2TP 连接到 VPC 私有网络。
+
+== 前提条件
+
+* 客户端的私网网段与 VPC 的私网网段没有重叠。
++
+
+include::../../../../../../_components/note.adoc[]
+
+如果网络地址存在重叠，您可以将私有网络与 VPC 网络断开，再重新连接至该 VPC 网络，并重新给私有网络指定一个网络地址。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+* 客户端能够访问互联网。
+
+== 启用 L2TP 服务
+
+. 登录管理控制台，选择**产品与服务** > *网络* > *VPC 网络*，进入 VPC 列表页面。
+. 找到您的 VPC 网络，点击 VPC 网络名称，进入详情页。
+. 切换至**管理配置**页签，然后在左侧点击 *VPN 服务*。
++
+image::/images/cloud_service/network/vpc/vpn_service.png[,70%]
+
+. 点击 *L2TP* 后面的**打开**，弹出**打开 L2TP 服务**对话框。
++
+image::/images/cloud_service/network/vpc/webconsole_open_l2tp.png[,50%]
+
+. 配置服务参数，点击**提交**。
++
+[cols="1,3"]
+|===
+| 参数 | 说明
+
+| 账户
+| VPN 连接的认证用户名。 +
+用户名中不能包含特殊字符，只能包含大小写字母或者数字，或者 “-_.”。
+
+| 密码
+| VPN 连接的认证密码。 +
+密码至少 8 位，并包括大小写字母及数字。
+
+| PSK
+| 预共享密钥，用于验证 L2TP/IPSec 连接的 Unicode 字符串。 +
+输入任意字符串即可。后续可修改。
+
+| 网络地址
+a| VPN 网络地址。 +
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+VPN 网络地址不能跟您的本地网络存在冲突。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+
+. 可选：如果您需要添加多个用户，则点击**添加账户**继续添加。
+. 配置完成后，点击**应用修改**， 更新 VPC 配置。
+. 开启 L2TP 服务后，需要前往 VPC 网络使用的安全组规则中放行 UDP 下行 500 和 4500 端口以及 ESP 协议，以确保 VPN 端口流量可以通过，否则从外网无法接入您的 VPN 服务。
++
+image::/images/cloud_service/network/vpc/l2tp_sg_rule.png[,70%]
+
+== 配置 L2TP 客户端
+
+=== Linux 客户端
+
+以下操作以 Ubuntu 系统为例进行描述，其他 Linux 分发版操作方法类似。
+
+配置 L2TP 客户端分为 L2TP、IPsec 两个部分。如果您想使用 IPsec 加密，请务必先完成 IPsec 部分的配置。
+
+*IPsec 配置*
+
+. 安装依赖包。
++
+[source,shell]
+----
+sudo apt-get install openswan
+----
+
+. 修改 `/etc/ipsec.conf` 配置。
++
+[source]
+----
+version 2.0
+config setup
+    protostack=netkey
+    nat_traversal=yes
+    keep_alive=60
+    virtual_private=
+    oe=off
+
+conn %default
+    rekey=yes
+    authby=secret
+    auto=start
+    type=tunnel
+    keyexchange=ike
+    phase2=esp
+    pfs=yes
+    dpddelay=15
+    dpdtimeout=60
+    dpdaction=restart
+
+conn <l2tp_name>
+    authby=secret
+    type=transport
+    pfs=no
+    auto=start
+    left=%defaultroute
+    leftprotoport=17/1701
+    right=<l2tp_server_ip>
+    rightprotoport=17/1701
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+请将配置文件中的 ``<xxx>`` 替换成您的配置：
+
+* `<l2tp_server_ip>`：VPC 网络的公网 IP。
+* `<l2tp_name>`：IPsec 连接名（自定义）。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 修改 `/etc/ipsec.secrets` 配置。
++
+[source]
+----
+%any <l2tp_server_ip>: PSK "<psk>"
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+请将配置文件中的 `<xxx>` 替换成您的配置：
+
+* `<l2tp_server_ip>`：VPC 网络的公网 IP。
+* `<psk>`：您配置的预共享密钥。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 重启服务。
++
+[source]
+----
+sudo service ipsec restart
+----
+
+. 检查连接是否正常建立。
++
+[source]
+----
+ipsec auto status
+----
+
+*L2TP 配置*
+
+. 安装依赖包。
++
+[source,shell]
+----
+sudo apt-get install xl2tpd ppp
+----
+
+. 修改 `/etc/xl2tpd/xl2tpd.conf` 配置。
++
+[source]
+----
+[lac <lac_name>]
+lns = <l2tp_server_ip>
+refuse chap = yes
+refuse pap = yes
+require authentication = yes
+length bit = yes
+pppoptfile = /etc/ppp/<l2tp_name>
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+请将配置文件中的 `<xxx>` 换成您的配置：
+
+* `<lac_name>`：lac 命名（自定义）。
+* `<l2tp_server_ip>`：VPC 网络的公网 IP。
+* `<l2tp_name>`：ppp 配置的文件名（自定义）。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 新建 `/etc/ppp/<l2tp_name>` 配置文件，配置如下内容。
++
+[source]
+----
++chap
+lock
+refuse-eap
+require-chap
+require-mschap
+require-mschap-v2
+noauth
+noccp
+nodefaultroute
+proxyarp
+name "<user_name>"
+password "<password>"
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+请将配置文件中的 `<xxx>` 部分替换成您的配置：
+
+* `<user_name>` ：VPN 连接用户名。
+* `<password>` ：VPN 连接密码。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 重启服务。
++
+[source]
+----
+sudo service xl2tpd restart
+----
+
+. 建立连接。
++
+[source]
+----
+sudo echo "c <lac_name>" > /var/run/xl2tpd/l2tp-control
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+* 请将 `<lac_name>` 替换成您的实际命名。
+* 关闭连接使用: `sudo echo “d <lac_name>” > /var/run/xl2tpd/l2tp-control`。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 添加路由。
++
+[source]
+----
+sudo ip route add <ip_network> dev <link_name>
+----
++
+
+include::../../../../../../_components/note.adoc[]
+请将配置中的 `<xxx>` 替换成您的配置：
+
+* `<ip_network>` ：VPC 下的私有网络地址段。
+* `<link_name>` ：ppp 连接的网卡接口名字，通常以 ppp 开头。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+=== iOS 客户端
+
+以下操作以 iOS 15 版本为例介绍如何连接 VPN，其他版本操作方法类似。
+
+. 进入手机**设置**界面，选择**通用** > *VPN与设置管理*。
+. 点击 *VPN* > *添加 VPN 配置*，进入**添加配置**界面。
+. 配置连接参数。
+ ** 类型：选择 L2TP。
+ ** 描述：自定义 VPN 连接名称。
+ ** 服务器：VPN服务器。输入 VPC 网络公网 IP。
+ ** 帐户：VPC L2TP 服务中创建的用户。
+ ** RSA SecurID：保持默认不开启即可。
+ ** 密码：VPC L2TP 服务中设置的用户密码。
+ ** 密钥：VPC L2TP 服务中设置的 PSK。
+. 点击**完成**。此时 VPN 连接状态显示为``未连接``。
+. 点击控制按钮，进行连接。连接成功后，显示``已连接``。
++
+image::/images/cloud_service/network/vpc/ios_l2tp.jpg[,30%]
+

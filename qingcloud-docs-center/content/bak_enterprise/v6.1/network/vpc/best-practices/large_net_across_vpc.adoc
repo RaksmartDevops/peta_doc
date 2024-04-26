@@ -1,0 +1,9 @@
+---
+title: "跨 VPC 大规模组网"
+keywords: VPC, VPC 网络, 跨 VPC 组网
+description: 介绍如何跨越 VPC，大规模安全自由组网。
+draft: false
+weight: 1
+---
+
+include::../../../../../_cloud_service/vpc/bp_net_across_vpc.adoc[tag=!s3_s4]

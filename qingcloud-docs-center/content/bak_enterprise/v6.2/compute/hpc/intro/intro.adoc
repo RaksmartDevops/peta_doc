@@ -1,0 +1,9 @@
+---
+title: "什么是弹性高性能计算"
+draft: false
+weight: 1
+linkkey: compute_hpc_intro
+---
+
+
+include::../../../../../_cloud_service/ehpc/intro/intro.adoc[]

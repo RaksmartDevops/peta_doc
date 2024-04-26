@@ -1,0 +1,24 @@
+---
+title: "Windows 查看本地登录日志"
+weight: 70
+---
+== 问题描述
+Windows 云服务器登录异常，排查登录日志可参考本操作。
+
+== 操作步骤
+
+本示例以操作系统版本为 Windows Server 2019。
+
+. 登录云服务器进入桌面。
+
+. 选择 *开始* > *管理工具* > *事件查看器*。  
++
+image::/images/cloud_service/compute/vm/faq_windowsevent_log_1.png[]
+
+. 打开  *Windows 日志* > *安全* > *筛选当前日志*。 
++
+image::/images/cloud_service/compute/vm/faq_windowsevent_log_2.png[]
+
+. 点击事件查看事件属性，可看到该时间的登录用户、进程、时间等信息。
++
+image::/images/cloud_service/compute/vm/faq_windowsevent_log_3.png[]

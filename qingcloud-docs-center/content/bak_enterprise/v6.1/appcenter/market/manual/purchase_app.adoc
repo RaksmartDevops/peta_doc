@@ -1,0 +1,130 @@
+---
+title: "部署应用"
+weight: 10
+draft: false
+---
+
+本文介绍如何通过应用中心部署或购买各类应用。
+
+== 部署云应用
+
+. 登录管理控制台。
+
+. 选择**产品与服务**> *AppCenter 控制台* > *应用中心*，进入**应用中心**页面。
+
+. 选择待部署的应用，点击**立即部署**，进入**应用部署**页面。
++
+也可在左侧导航的**常用应用**类型中选择需要部署的云应用。
++
+image::/images/cloud_service/appcenter/um_appcenter_zookeeper.png[]
+
+. 选择待部署的区域，并配置相关参数。
+
+. 阅读并勾选用户协议。
+
+. 点击**提交**。
+
+. 提交部署后，进入到**集群管理**的对应应用的详情页面，可查看应用部署状态和集群详情。
++
+image::/images/cloud_service/appcenter/um_cluster_mgmt.png[]
+
+== 购买 SaaS 应用
+
+. 登录管理控制台。
+
+. 选择**产品与服务**> *AppCenter 控制台* > *应用中心*，进入**应用中心**页面。
+
+. 找到需要部署的 SaaS 应用，在应用详情中，点击**立即购买** （或 *立即开通*），进入应用开通或应用购买页面。
++
+image::/images/cloud_service/appcenter/um_open_saasapp.png[]
+
+. 不同应用部署操作略有差别：
++
+有以下两种操作方式：
+
+* 点击**同意并开通应用**，进入应用授权页面。
+//image::/images/cloud_service/appcenter/um_open_saas.png[]
+
+* 配置购买参数并勾选同意相关协议，点击**购买应用**并支付成功即完成购买。
+
+. 购买或开通成功后，即可登录并访问应用。
++
+image::/images/cloud_service/appcenter/um_saas_app_login.png[]
+
+. 您也可以点击**应用管理**，在**已安装的应用**页面，点击**立即访问**，访问开通的 SaaS 应用。
++
+image::/images/cloud_service/appcenter/um_saas_login.png[]
+
+
+== 购买 License 应用
+
+. 登录管理控制台。
+
+. 选择**产品与服务**> *AppCenter 控制台* > *应用中心*，进入**应用中心**页面。
+
+. 找到需要部署的 License 应用，在应用详情中，点击**立即购买**，进入**应用购买**页面。
++
+image::/images/cloud_service/appcenter/um_app_license.png[]
+
+. 配置相关参数，如下图所示。
++
+image::/images/cloud_service/appcenter/um_buy_license_app.png[]
+
+. 阅读并勾选**请阅读《云平台 AppCenter 用户协议》并确认接受该协议，以部署应用**。
+
+. 点击**购买应用**，弹出提示窗口。
+
+. 点击**确认**，进入**应用管理**页面。
+
+. 请根据提示支付费用。支付完成后，订单状态为**待发货**等待 License 应用服务商发货。
+
+. 应用服务发货后，订单状态为**已处理**。
+
+== 购买 API 应用
+
+////
+=== 应用市场部署
+
+. 登录 AppCenter 应用市场。
+
+. 通过以下方式查找到需要部署的 API 应用。
+
+ ** 在顶部搜索框中输入关键词进行搜索。
+ ** 在左侧应用分类中进行筛选查找。
+
+. 找到需要部署的 API 应用后，点击应用，进入应用展示页面。
++
+image::/images/cloud_service/appcenter/api_app_display.png[]
+
+. 点击**立即部署**，进入 AppCenter 控制台。
+
+. 在应用部署页面，选择规格与套餐，并阅读和同意 AppCenter 用户协议。
++
+image::/images/cloud_service/appcenter/bug_api_app.png[]
+
+. 点击**部署应用**，弹出提示框。
+
+. 点击**确认**，部署成功，进入**应用管理**页面。
+
+=== 应用中心部署
+////
+
+. 登录管理控制台。
+
+. 选择**产品与服务**> *AppCenter 控制台* > *应用中心*，进入**应用中心**页面。
+
+. 通过应用分类或搜索关键字找到需要部署的 API 应用。详见link:../find_app/[查找应用]。
+
+. 将鼠标移到应用上方，点击**立即部署**，进入**应用部署**页面。
++
+image::/images/cloud_service/appcenter/console_bug_api_1.png[]
+
+. 选择规格与套餐，并阅读和同意 AppCenter 用户协议。
++
+image::/images/cloud_service/appcenter/bug_api_app.png[]
+
+. 点击**部署应用**，弹出提示框。
+
+. 点击**确认**，部署成功，进入**应用管理**页面。
++
+关于如何查看和使用已部署的 API 应用，请参见link:../mgmt_app/#_管理已安装购买的应用[应用管理]。

@@ -1,0 +1,7 @@
+---
+title: "Windows 云服务器安装 telnet 客户端"
+weight: 100
+---
+可以通过以下路径安装，*服务器管理器* > *本地服务器* > *管理* > *添加角色和功能* > *功能* > *telnet 客户端* > *安装*。
+
+image::/images/cloud_service/compute/vm/bestp_win_install_telnet_1.png[,80%]

@@ -1,0 +1,5 @@
+---
+title: "安装前须知"
+weight: 5
+---
+include::../../../../../../_cloud_service/hss/install_agent.adoc[tag=before_install]

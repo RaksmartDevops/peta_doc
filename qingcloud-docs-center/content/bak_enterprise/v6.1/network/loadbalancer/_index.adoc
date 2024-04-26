@@ -1,0 +1,94 @@
+---
+title: 负载均衡
+weight: 50
+description: 负载均衡是将来自多个公网地址的访问流量分发到多台云服务器上的流量分发控制服务，并支持自动检测并隔离不可用的云服务器，从而提高业务的服务能力和可用性。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是负载均衡
+            url: intro/introduction/
+          - title: 产品特性
+            url: intro/advantage/
+          - title: 应用场景
+            url: intro/senario/
+          - title: 产品规格
+            url: intro/performance/
+          - title: 计费说明
+            url: billing/price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 入门流程
+            url: quickstart/qs_process/
+          - title: 入门操作
+            url: quickstart/lb_http_qs/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 负载均衡器实例
+        children:
+          - title: 创建实例
+            url: manual/lb/create_lb/
+          - title: 变更实例规格
+            url: manual/lb/expan/
+          - title: 删除实例
+            url: manual/lb/delete_lb/
+      - title: 监听器
+        children:
+          - title: 监听器概述
+            url: manual/monitor/overview/
+          - title: 添加监听器
+            url: manual/monitor/create_http_monitor/
+          - title: 会话保持
+            url: manual/monitor/lb_session_hold/
+      - title: 后端服务器
+        children:
+          - title: 后端服务器概述
+            url: manual/backends/intro/
+          - title: 添加后端服务器
+            url: manual/backends/manage/
+          - title: 为后端绑定转发策略
+            url: manual/forward_rule/bind/
+      - title: 健康检查
+        children:
+          - title: 健康检查概述
+            url: manual/healthy/intro/
+          - title: 配置健康检查
+            url: manual/healthy/config/
+      - title: 监控与告警
+        children:
+          - title: 查看监控数据
+            url: manual/monitor_alarm/moni_data/
+          - title: 设置指标告警策略
+            url: manual/monitor_alarm/index_alarm/
+          - title: 设置事件告警策略
+            url: manual/monitor_alarm/event_alarm/           
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 使用负载均衡器实现跨公网的高可用网络服务
+            url: best-practices/lb_across_internet/
+          - title: 使用负载均衡器实现跨地域的高可用网络服务
+            url: best-practices/lb_across_region/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 使用问题
+        children:
+          - title: 七层健康检查异常
+            url: faq/http_check_failed/
+          - title: 四层健康检查出现异常
+            url: faq/tcp_check_fialed/
+          - title: 如何排查后端不可用？
+            url: faq/after_end_miss/
+          - title: 如何分析 rsyslog 日志？
+            url: faq/haproxy_log/
+---

@@ -1,0 +1,125 @@
+---
+title: "登录认证"
+weight: 3
+---
+ 
+
+本系统支持 cookie 和 api key 两种鉴权方式。
+
+== cookie 鉴权方式
+
+该鉴权方式可直接供前端静态页面使用。
+
+使用 `/login_action` 接口登录后后端将会设置 cookie: boss2_sk， 在返回数据中包含有该 sk 及 session 有效期，该 cookie 值可用于后续接口请求时的认证。
+
+后续请求时请在请求的 headers 里面带上以下的 cookie 值：
+
+[source,shell]
+----
+Cookie: boss2_sk=jj1re9b84yix2w14g95xm0frazopkv0g
+----
+
+*仅供测试环境使用*，可在 headers 中加入如下的 header 来代理 cookie：
+
+[source,shell]
+----
+BOSS2-SK: jj1re9b84yix2w14g95xm0frazopkv0g
+----
+
+== API 鉴权方式
+
+API 鉴权方式适用于其他应用开发，可通过 qingcloud sdk 直接进行 API 的操作。请先登录 BOSS2 界面，在 “个人中心” 页面中创建 “API Key” 供后续使用。
+
+API 的鉴权及 SDK 的使用请参考：
+
+* Qingcloud API 文档： https://docsv3.qingcloud.com/development_docs/api/
+* Qingcloud SDK 文档： https://docsv3.qingcloud.com/development_docs/sdk/
+
+
+使用 SDK 请求数据时，请按照以下的方式进行配置：
+
+. url 请设置为/boss2/，同时设置 verb 为 `POST` 以正确发起请求;
+. 请将请求的参数转换为 json 格式放置到一个名为 params 的字段中，以 python SDK 为例，对于获取 zone 的请求，在发送到 IaaS 时，格式可能为：
++
+[source,shell]
+----
+{
+    'action': 'DescribeZones',
+    'zones': ['beta', 'delta'],
+    'limit': 10
+}
+----
++
+而在 BOSS2 中，需要调整为：
++
+[source,shell]
+----
+{
+    'action': 'DescribeZones',
+    'params': '{"zones": ["beta", "delta"], "limit": 10}'
+}
+----
+
+
+=== 使用 qingcloud-sdk-python 请求 BOSS2-Manager 示例
+
+==== 安装
+
+===== 1.使用 pip 安装
+
+[,bash]
+----
+$ pip install qingcloud-sdk
+----
+
+===== 2.通过源码安装
+
+[,python]
+----
+$ git clone https://github.com/yunify/qingcloud-sdk-python.git
+$ cd qingcloud-sdk-python
+$ python setup.py install
+----
+
+==== 示例
+
+下面用获取主机的统计数据来演示使用方法。
+
+[source,shell]
+----
+from qingcloud.iaas.connection import APIConnection
+from json import dumps
+
+
+class BOSS2Client(APIConnection):
+    def request(self, request_data):
+        action = request_data.pop('action', '')
+        json_string = dumps(request_data)
+        response = self.send_request(
+            action=action,
+            body={'params': json_string},
+            url='/boss2/',
+            verb='POST',
+        )
+        return response
+
+
+if __name__ == '__main__':
+    boss2_client = BOSS2Client(
+        qy_access_key_id='XFJYLXKZMNXPUCEVYYGP',
+        qy_secret_access_key='szxhWblc1P64cF8fGzcAkQ764CUUZbjqUICcE36q',
+        zone='test',
+        host='boss.domain.com',
+        port='80',
+        protocol='http'
+    )
+    request_data = {
+        "zone": "test",
+        "action": "Boss2GetAggsStats",
+        "topic": "instance_status",
+    }
+    response = boss2_client.request(request_data)
+    print(response)
+----
+
+返回状态响应码 ret_code 的其他说明请参考官方文档，可登录{platform_name_cn}文档中心，选择 *开发者文档* > *API 文档* > *错误码* 获取。

@@ -1,0 +1,34 @@
+---
+title: "AppCenter 控制台"
+weight: 1
+collapsible: true
+type: "product"
+
+study_section:
+
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 AppCenter 控制台
+            url: intro/introduction/
+
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 查找应用
+            url: manual/find_app/      
+          - title: 部署应用
+            url: manual/purchase_app/ 
+          - title: 管理应用
+            url: manual/mgmt_app/ 
+          - title: 管理集群
+            url: manual/mgmt_cluster/
+          - title: 管理备份
+            url: manual/mg_backup/                                      
+linkkey: appcenter_app_guide
+---

@@ -1,0 +1,159 @@
+---
+title: 获取当前用户的定时器列表（Boss2DescribeCurrentSchedulers）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCurrentSchedulers
+
+=== Method
+POST
+
+=== 接口描述
+获取当前用户的定时器列表。
+字段列表：
+
+|===
+| 字段 | 说明 | 备注
+
+| id
+| 定时器id
+|
+
+| name
+| 定时器名称
+|
+
+| description
+| 定时器描述信息
+|
+
+| owner_id
+| 所有者用户id
+|
+
+| sched_type
+a|
+定时器类型：
+
+* crontab - 重复执行
+* clocked - 仅执行一次
+|
+
+| task_type_id
+| 任务类型id
+|
+
+| task_type
+| 任务类型名称
+|
+
+| task_conf
+| 定时器设定的任务参数
+|
+
+| status
+a|
+定时器状态
+
+* active: 可用
+* disabled: 禁用
+* deleted: 已删除
+| deleted状态不应该出现在页面中
+
+| transition_status
+| 过渡状态，目前仅在定时器任务运行时会变成 running 状态，其余状态均为null
+|
+
+| last_run_at
+| 最后一次运行时间
+|
+
+| period
+| 用于重复执行的任务的周期
+|
+
+| ymd
+| 年月日
+|
+
+| hhmm
+| 时分
+|
+
+| create_time
+| 创建时间
+|
+
+| status_time
+| 修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeCurrentSchedulers",
+  
+  // 以下参数用于筛选
+  "id": [1], // 通过定时器id进行过滤
+  "status": ["active", "disabled", "deleted"], // 通过定时器状态进行过滤
+  "limit": 1,
+  "offset": 0,
+  "search_word": "测试" // 支持通过定时器名称和描述进行搜索
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "scheduler_set": [
+      {
+         "id": 6,
+         "name": "test",
+         "description": "测试定时器",
+         "owner_id": 1,
+         "owner_username": "admin",
+         "owner_email": "admin@alphacloud.com",
+         "sched_type": "crontab",
+         "task_type_id": "4683fa4a-fad0-4340-8155-ff6a51fa0c8b",
+         "task_type": "测试定时任务",
+         "task_conf": {
+            "notify_group": 11
+         },
+         "status": "active",
+         "transition_status": null,
+         "last_run_at": "2019-09-08T07:54:05.835Z",
+         "period": "every_n_hours:1",
+         "ymd": "2019-09-04",
+         "hhmm": "53",
+         "create_time": "2019-09-07T14:18:06.717Z",
+         "status_time": "2019-09-08T07:54:05.875Z"
+      }
+   ],
+   "total_count": 6,
+   "ret_code": 0,
+   "action": "Boss2DescribeCurrentSchedulersResponse"
+}
+----

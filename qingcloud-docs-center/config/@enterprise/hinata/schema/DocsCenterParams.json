@@ -1,0 +1,131 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "params": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "description",
+          "default": "这里是企业云文档页面"
+        },
+        "favicon": {
+          "type":"string",
+          "description": "【尺寸: 32*32】【颜色: 非白色】【格式: ico】",
+          "default": "/images/favicon.ico"
+        },
+        "keyword": {
+          "type":"string",
+          "description": "keyword",
+          "default": "云计算,青云,QingCloud,文档"
+        },
+        "logo": {
+          "type":"string",
+          "description": "Logo 图片【尺寸: 164*44】【颜色: 非白色】【格式: sva/png/jpg】",
+          "default": "/images/qingcloud-logo.svg"
+        },
+        "logoInfo": {
+          "type":"string",
+          "description": "导航条 项目名称",
+          "default": "企业云"
+        },
+        "logoLink": {
+          "type":"string",
+          "description": "Logo 链接地址",
+          "default": "/"
+        },
+        "disablePdf": {
+          "type":"boolean",
+          "description": "禁止 PDF",
+          "default": true
+        },
+        "disableVersions": {
+          "type":"boolean",
+          "description": "不显示 version 信息（默认不开启）",
+          "default": false
+        },
+        "navLink": {
+          "type": "array",
+          "description": "导航条右侧链接",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "标题"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL"
+              }
+            }
+          }
+        }
+      }
+    },
+    "markup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "asciidocExt": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "platform_name_cn": {
+                  "type":"string",
+                  "description": "品牌名",
+                  "default": "云平台"
+                },
+                "brand_name_cap": {
+                  "type":"string",
+                  "description": "品牌名（驼峰）"
+                },
+                "brand_name_low": {
+                  "type": "string",
+                  "description": "品牌名（小写）",
+                  "default": "qingcloud"
+                },
+                "api_url": {
+                  "type": "string",
+                  "description": "API URL",
+                  "default": "https://api.qingcloud.com/iaas/"
+                },
+                "console_name": {
+                  "type": "string",
+                  "description": "控制台名称",
+                  "default": "管理控制台"
+                },
+                "qingstor_cap": {
+                  "type": "string",
+                  "description": "QingStor名称（驼峰）",
+                  "default": "QingStor"
+                },
+                "qingstor_low": {
+                  "type": "string",
+                  "description": "QingStor名称（小写）",
+                  "default": "qingstor"
+                },
+                "k8s_engine_fullname": {
+                  "type": "string",
+                  "description": "k8s 引擎全称",
+                  "default": "容器引擎"
+                },
+                "k8s_engine_shortname": {
+                  "type": "string",
+                  "description": "k8s 引擎缩写",
+                  "default": "QKE"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

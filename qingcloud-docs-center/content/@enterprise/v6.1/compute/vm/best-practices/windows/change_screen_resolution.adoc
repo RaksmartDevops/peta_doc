@@ -1,0 +1,39 @@
+---
+title: 调整屏幕分辨率
+weight: 20
+---
+== 1.通过 vnc (Web 终端)或者远程桌面连接 Windows 云服务器
+
+== 2.进入调整屏幕分辨率界面
+
+=== 方法一
+
+右键桌面空白处，选择 *显示设置*：
+
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_1.png[]
+
+=== 方法二：
+
+. 选择 *开始* > *控制面板*:
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_5.png[]
+
+. 选择 *外观和个性化* > *更改主题*:
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_6.png[]
+
+. 点击 *显示*:
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_7.png[]
+
+. 点击 *高级显示设置*:
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_2.png[]
+
+. 调整分辨率，点击 *应用*:
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_3.png[]
+
+. 点击 *保留修改*：
++
+image::/images/cloud_service/compute/vm/bestp_change_screen_resoulution_4.png[]

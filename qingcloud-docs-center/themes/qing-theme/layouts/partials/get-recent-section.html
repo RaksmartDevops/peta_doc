@@ -1,0 +1,17 @@
+{{$FirstSection := partial "get-first-section.html" .}}
+{{$silce := slice}}
+{{- $.Scratch.Set "url" "" -}}
+{{- range $index, $element := (split .RelPermalink "/") -}}
+{{- if (gt (len .) 0) -}}
+{{- $.Scratch.Add "url" (print "/" . ) -}}
+{{- with $.Site.GetPage ($.Scratch.Get `url`) -}}
+{{if or .Params.study_section .Params.isSearchPage}}
+  {{ $silce = $silce | append . }}
+{{end}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{ $sectionIndex := sub (len $silce) 1  }}
+{{$recentSection := index $silce $sectionIndex}}
+{{$Section := cond (eq $.RelPermalink "/") $FirstSection $recentSection}}
+{{return $Section}}

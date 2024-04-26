@@ -1,0 +1,36 @@
+// 查看监控数据
+
+负载均衡通过上报指标数据到云监控 CloudSat 服务实现指标监控与告警。您可以在负载均衡控制台或云监控服务控制台查看负载均衡的监控数据。
+
+== 前提条件
+
+负载均衡器为``活跃``状态且正常运行。
+
+== 在负载均衡控制台查看
+
+include::./common.adoc[tag=lb_entrance]
+. 在**负载均衡器**页面，点击负载均衡器 ID，进入详情页。
+. 点击**监控**页签，进入监控页面进行查看。
++
+image::/images/cloud_service/network/lb/lb_monitor_1_q.png[]
++
+* 支持查看**节点**、**监听器**和**监听器后端**维度的监控数据。
+* 支持查看**实时数据**以及**近1小时**、*近6小时*、*近1天*、**近2周**和**自定义**时间段内的监控数据。
++
+
+include::../../_components/note.adoc[]
+若负载均衡器未绑定公网 IP，则不支持查看网络监控指标，如节点出入方向的带宽、流量、PPS 等指标。
+include::../../_components/table_footer.adoc[]
+
+== 在 CloudSat 控制台查看
+
+详细操作，请参见link:../../../../../monitor_service/cloudsat/manual/cloud_service/load_balancer/[云监控 CloudSat > 云服务监控 > 负载均衡]。
+
+ifdef::pub[]
+== 参考视频
+
+您也可以参考以下视频学习如何使用负载均衡器的监控功能。
+
+video::https://yunify-qingcloud-docs.pek3b.qingstor.com/video/%E5%85%AC%E6%9C%89%E4%BA%912023%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B_100P034C202304_%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8%E7%9A%84%E7%9B%91%E6%8E%A7.mp4[负载均衡器监控]
+
+endif::[]

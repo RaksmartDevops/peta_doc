@@ -1,0 +1,127 @@
+---
+title: 获取管理资源的Cronus监控数据（Boss2GetMgmtResourceMonitorData）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetMgmtResourceMonitorData
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于从Cronus获取监控数据。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2GetMgmtResourceMonitorData",
+    "node": "ks",
+    "resources": [
+        "cpu_usage",
+        "usage_iowait",
+        "usage_softirq",
+        "memory",
+        "disk"
+    ],  // 必须，目前只支持这5种
+    "zone": "gamma", // 必须
+    "start": "2022-11-15T07:20:00Z",
+    "end": "2022-11-15T07:21:00Z",
+    "sort_key": "disk",
+    "reverse": 1,
+    "offset": 0,
+    "limit": 10
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "host": "deltar02n08",
+         "monitor_data": {
+            "cpu_usage": 38.79,
+            "usage_iowait": 38.79,
+            "usage_softirq": 38.79,
+            "memory": 84.76,
+            "disk": 90.05
+         }
+      },
+      {
+         "host": "deltar02n09",
+         "monitor_data": {
+            "cpu_usage": 36.8,
+            "usage_iowait": 36.8,
+            "usage_softirq": 36.8,
+            "memory": 91.83,
+            "disk": 82.73
+         }
+      },
+      {
+         "host": "deltar02n04",
+         "monitor_data": {
+            "cpu_usage": 45.61,
+            "usage_iowait": 45.61,
+            "usage_softirq": 45.61,
+            "memory": 90.94,
+            "disk": 79.56
+         }
+      },
+      {
+         "host": "deltar02n05",
+         "monitor_data": {
+            "cpu_usage": 48.93,
+            "usage_iowait": 48.93,
+            "usage_softirq": 48.93,
+            "memory": 96.17,
+            "disk": 75.68
+         }
+      },
+      {
+         "host": "deltar02n07",
+         "monitor_data": {
+            "cpu_usage": 43.91,
+            "usage_iowait": 43.91,
+            "usage_softirq": 43.91,
+            "memory": 98.14,
+            "disk": 24.06
+         }
+      },
+      {
+         "host": "deltar02n06",
+         "monitor_data": {
+            "cpu_usage": 67.04,
+            "usage_iowait": 67.04,
+            "usage_softirq": 67.04,
+            "memory": 102.01,
+            "disk": 21.5
+         }
+      }
+   ],
+   "ret_code": 0,
+   "total_count": 6,
+   "action": "Boss2GetMgmtResourceMonitorDataResponse"
+}
+----

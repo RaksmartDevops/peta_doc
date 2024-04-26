@@ -1,0 +1,6 @@
+---
+title: 开启云服务器 IPv6 自动化配置
+weight: 10
+---
+
+include::../../../../../../_cloud_service/vpc/ipv6_auto_config.adoc[]

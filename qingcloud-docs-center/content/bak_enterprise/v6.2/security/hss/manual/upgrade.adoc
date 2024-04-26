@@ -1,0 +1,6 @@
+---
+title: "升级配额"
+weight: 5
+---
+
+include::../../../../../_cloud_service/hss/upgrade.adoc[]

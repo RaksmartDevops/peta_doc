@@ -1,0 +1,33 @@
+---
+title: 操作日志
+weight: 5
+draft: false
+keywords: 操作日志, 本区操作日志, 全局操作日志, 云计算
+linkkey: management_activities_jobs_guide,management_activities_global_jobs_guide,management_activities_export_guide
+---
+
+
+== 本区操作日志
+
+在控制台，打开**运维与管理** > **操作日志**页面，即可看到您近期的操作。
+
+image::/images/cloud_service/operation/tools/activity_local.png[]
+
+== 全局操作日志
+
+若没有做过跨区的操作，全局操作日志为空。本节以镜像的跨区复制为例。
+
+只有跨区的操作，这里才会显示，我们先来做一次镜像的跨区复制，在控制台，选择**计算** > **镜像**，打开自有镜像，选择**跨区复制**操作。
+
+image::/images/cloud_service/operation/tools/copy_image_to_other_zone.png[,80%]
+
+在控制台，选择**管理** > **操作日志**页面，可查看到全局操作日志。
+
+image::/images/cloud_service/operation/tools/global_activity_log.png[,80%]
+
+== 导出
+
+另外，操作日志也支持导出到用户邮箱。如下图所示，选择导出操作的区域、月份，填写要导到的邮箱地址即可。
+
+image::/images/cloud_service/operation/tools/export_activity_log.png[,80%]
+

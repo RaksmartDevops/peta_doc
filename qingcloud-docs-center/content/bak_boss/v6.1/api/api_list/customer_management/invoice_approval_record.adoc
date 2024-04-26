@@ -1,0 +1,125 @@
+---
+title: 发票审核记录（Boss2GetInvoiceAuditLog）
+weight: 15
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetInvoiceAuditLog
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取指定发票的操作记录。
+返回数据：
+
+|===
+| 字段 | 含义 | 备注
+
+| id
+| 日志id
+|
+
+| api
+| 发票相关操作的api action
+|
+
+| api_name
+| 发票相关操作的中文名称
+|
+
+| api_description
+| 发票相关操作的中文解释
+|
+
+| operator_id
+| 操作人员id
+| 指boss系统用户
+
+| operator_email
+| 操作人员email
+| 指boss系统用户
+
+| operator_name
+| 操作人员用户名
+| 指boss系统用户
+
+| params
+| 操作参数(json字符串)
+|
+
+| params_parsed
+| 操作参数(json对象)
+|
+
+| action_time
+| 操作时间
+|
+
+| audit_log
+| 操作审计原因
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetInvoiceAuditLog",
+  "invoices": ["invc-iqobdmog"], // [必须]指定发票id
+    
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "action_time", // 指定用于排序的字段，默认为操作时间
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "fields": ["id", "api"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "audit_log_set": [
+      {
+         "id": 158,
+         "api": "RollbackInvoice",
+         "api_name": "退回发票",
+         "api_description": "退回发票申请",
+         "operator_id": 1,
+         "operator_email": "admin@alphacloud.com",
+         "operator_name": "admin",
+         "params": "{\"action\": \"RollbackInvoice\", \"invoice\": \"invc-iqobdmog\"}",
+         "action_time": "2020-03-28T14:34:16.093Z",
+         "audit_log": null,
+         "params_parsed": {
+            "action": "RollbackInvoice",
+            "invoice": "invc-iqobdmog"
+         }
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetInvoiceAuditLogResponse"
+}
+----

@@ -1,0 +1,318 @@
+---
+title: "BOSS 输出到 Webhook 的数据格式"
+weight: 3
+---
+
+BOSS 支持用户使用 Webhook 来接收告警通知。本文将详细介绍 BOSS 输出到 Webhook 的数据格式。
+
+
+
+== 概述
+
+BOSS 输出到 Webhook 的数据格式由三部分组成。
+
+* **topic**
++
+表示该消息的类型。其取值为 `alert`、`alert_merge` 与 `alert_resolved`，各含义说明如下。
+
+.. BOSS 首次发出的告警时，topic 设置为 `alert`。
+.. 在首次发出告警后，且在告警恢复前，重复多次发出的告警将会按照时间段进行合并，此时发出的告警 topic 设置为 `alert_merge`。
+.. 告警恢复后发出的消息，topic 设置为 `alert_resolved`。
+
+
+* **params**
++
+包含了告警的详细信息。
+
+* **timestamp**
++
+告警消息进入通知队列后会排队进行发送。该字段用于记录消息的实际发送时间。
+
+== 数据示例
+
+=== 示例一：alert
+
+以下为告警首次发生后发出的告警格式示例。
+
+[source,]
+----
+{
+  "topic": "alert",
+  "params": {
+    "zone": "gamma",
+    "level": "CRITICAL",
+    "message": "[gamma] [deltar02n06] has alerts |@@|<h3>=== compute_monitor.log.wf ===</h3>|@@|2023-01-06 13:41:56,183 CRITICAL -139686026671872- instance [i-ak2y3yzk] bandwidth alert: outbound [33]MB/s of [if_tx-52:54:22:88:96:09], please check (/pitrix/lib/pitrix-bots/bot/compute/monitor/monitors/i_monitor.py:632)",
+    "node_id": "deltar02n06",
+    "node_ip": "172.31.14.6",
+    "duration": null,
+    "synopsis": "主机[i-ak2y3yzk]出站流量超限",
+    "node_type": 0,
+    "send_time": "2023-01-06 13:42:04",
+    "alert_code": "ALM-SDN-00016",
+    "alert_type": "网络服务异常",
+    "alert_category_name": "网络服务异常",
+    "alert_category_i18n": {
+            "en": "Network Service Exception",
+            "zh-cn": "网络服务异常"
+        },
+    "notify_type": "alert",
+    "suggestion": "<p>需登录虚拟机，结合CPU占用等，检查流量突然增加的原因。</p>",
+    "event_count": 1,
+    "status_time": "2023-01-06 13:42:04",
+    "alert_source": "SDN",
+    "duration_raw": null,
+    "aggs_event_id": 198,
+    "send_duration": null,
+    "send_time_utc": "2023-01-06T05:42:04Z",
+    "synopsis_i18n": {
+      "en": "Instance bandwidth alert: outbound, please check",
+      "zh-cn": "主机[i-ak2y3yzk]出站流量超限"
+    },
+    "alert_category": "00a3570d-ea73-4e69-813b-b89c7037e7e1",
+    "status_time_utc": "2023-01-06T05:42:04Z",
+    "suggestion_i18n": {
+      "en": "",
+      "zh-cn": ""
+    },
+    "alert_source_name": "网络服务",
+    "first_notify_time": "2023-01-06 13:41:34",
+    "send_duration_raw": null,
+    "latest_notify_time": "2023-01-06 13:41:34",
+    "notify_policy_name": "网络服务异常",
+    "first_notify_time_utc": "2023-01-06T05:41:34Z",
+    "latest_notify_time_utc": "2023-01-06T05:41:34Z",
+    "notify_policy_name_i18n": {
+      "en": "Network Service Exception",
+      "zh-cn": "网络服务异常"
+    },
+    "self_healing": "true",
+    "description": "告警模块每1分钟检测compute_monitor服务状态，当发现主机外出流量带宽过高时会产生此告警。",
+    "influence": "可能影响云平台网络吞吐",
+    "reason": "1. 业务量突然增加；\r\n2. 主机中毒。"
+  },
+  "timestamp": 1672983724
+}
+----
+
+=== 示例二：alert_merge
+
+在告警首次发出后，后续如果告警持续发生，将按照告警通知策略中配置的进行合并。数据格式示例如下。
+
+[source,]
+----
+{
+  "topic": "alert_merge",
+  "params": {
+    "zone": "gamma",
+    "level": "CRITICAL",
+    "message": "[gamma] [deltar02n09] has alerts |@@|<h3>=== compute_monitor.log.wf ===</h3>|@@|2023-01-06 12:41:56,183 CRITICAL -139686026671872- instance [i-ak2y3yzk] bandwidth alert: outbound [33]MB/s of [if_tx-52:54:22:88:96:09], please check (/pitrix/lib/pitrix-bots/bot/compute/monitor/monitors/i_monitor.py:632)",
+    "node_id": "deltar02n09",
+    "node_ip": "172.31.14.6",
+    "duration": "8天45分",
+    "synopsis": "主机[i-ak2y3yzk]出站流量超限",
+    "node_type": 1,
+    "send_time": "2023-01-06 12:42:27",
+    "alert_code": "ALM-SDN-00016",
+    "alert_type": "网络服务异常",
+    "alert_category_name": "网络服务异常",
+    "alert_category_i18n": {
+            "en": "Network Service Exception",
+            "zh-cn": "网络服务异常"
+        },
+    "notify_type": "alert_merge",    
+    "suggestion": "<p>需登录虚拟机，结合CPU占用等，检查流量突然增加的原因。</p>",
+    "event_count": 1,
+    "status_time": "2023-01-06 12:42:27",
+    "alert_source": "SDN",
+    "duration_raw": 693900.0,
+    "aggs_event_id": 193,
+    "send_duration": "1小时",
+    "send_time_utc": "2023-01-06T04:42:27Z",
+    "synopsis_i18n": {
+      "en": "Instance bandwidth alert: outbound, please check",
+      "zh-cn": "主机[i-ak2y3yzk]出站流量超限"
+    },
+    "alert_category": "00a3570d-ea73-4e69-813b-b89c7037e7e1",
+    "status_time_utc": "2023-01-06T04:42:27Z",
+    "suggestion_i18n": {
+      "en": "",
+      "zh-cn": ""
+    },
+    "alert_source_name": "网络服务",
+    "first_notify_time": "2023-01-06 12:41:34",
+    "send_duration_raw": 3600.0,
+    "latest_notify_time": "2023-01-06 12:41:34",
+    "notify_policy_name": "网络服务异常",
+    "first_notify_time_utc": "2023-01-06T04:41:34Z",
+    "latest_notify_time_utc": "2023-01-06T04:41:34Z",
+    "notify_policy_name_i18n": {
+      "en": "Network Service Exception",
+      "zh-cn": "网络服务异常"
+    },
+    "self_healing": "true",
+    "description": "告警模块每1分钟检测compute_monitor服务状态，当发现主机外出流量带宽过高时会产生此告警。",
+    "influence": "可能影响云平台网络吞吐",
+    "reason": "1. 业务量突然增加；\r\n2. 主机中毒。"
+  },
+  "timestamp": 1672980147
+}
+----
+
+=== 示例三：alert_resolved
+
+以下为告警恢复时发出的信息，其内容与 `alert_merge` 时发出的内容一致，只是**topic**修改为 `alert_resolved`。
+
+[source,]
+----
+{
+  "topic": "alert_resolved",
+  "params": {
+    "zone": "gamma",
+    "level": "CRITICAL",
+    "message": "[gamma] [deltar02n09] has alerts |@@|<h3>=== compute_monitor.log.wf ===</h3>|@@|2023-01-06 12:41:56,183 CRITICAL -139686026671872- instance [i-ak2y3yzk] bandwidth alert: outbound [33]MB/s of [if_tx-52:54:22:88:96:09], please check (/pitrix/lib/pitrix-bots/bot/compute/monitor/monitors/i_monitor.py:632)",
+    "node_id": "deltar02n09",
+    "node_ip": "172.31.14.6",
+    "duration": "8天45分",
+    "synopsis": "主机[i-ak2y3yzk]出站流量超限",
+    "node_type": 1,
+    "send_time": "2023-01-06 12:42:27",
+    "alert_code": "ALM-SDN-00016",
+    "alert_type": "网络服务异常",
+    "alert_category_name": "网络服务异常",
+    "alert_category_i18n": {
+            "en": "Network Service Exception",
+            "zh-cn": "网络服务异常"
+        },
+    "notify_type": "alert_resolved",    
+    "suggestion": "<p>需登录虚拟机，结合CPU占用等，检查流量突然增加的原因。</p>",
+    "event_count": 1,
+    "status_time": "2023-01-06 12:42:27",
+    "alert_source": "SDN",
+    "duration_raw": 693900.0,
+    "aggs_event_id": 193,
+    "send_duration": "1小时",
+    "send_time_utc": "2023-01-06T04:42:27Z",
+    "synopsis_i18n": {
+      "en": "Instance bandwidth alert: outbound, please check",
+      "zh-cn": "主机[i-ak2y3yzk]出站流量超限"
+    },
+    "alert_category": "00a3570d-ea73-4e69-813b-b89c7037e7e1",
+    "status_time_utc": "2023-01-06T04:42:27Z",
+    "suggestion_i18n": {
+      "en": "",
+      "zh-cn": ""
+    },
+    "alert_source_name": "网络服务",
+    "first_notify_time": "2023-01-06 12:41:34",
+    "send_duration_raw": 3600.0,
+    "latest_notify_time": "2023-01-06 12:41:34",
+    "notify_policy_name": "网络服务异常",
+    "first_notify_time_utc": "2023-01-06T04:41:34Z",
+    "latest_notify_time_utc": "2023-01-06T04:41:34Z",
+    "notify_policy_name_i18n": {
+      "en": "Network Service Exception",
+      "zh-cn": "网络服务异常"
+    },
+    "self_healing": "true",
+    "description": "告警模块每1分钟检测compute_monitor服务状态，当发现主机外出流量带宽过高时会产生此告警。",
+    "influence": "可能影响云平台网络吞吐",
+    "reason": "1. 业务量突然增加；\r\n2. 主机中毒。"
+  },
+  "timestamp": 1672980147
+}
+----
+
+== 告警字段说明
+
+以下为 **params** 部分告警字段说明。
+
+
+[cols='1,1,2,2a']
+|===
+| 字段	 | 数据类型  | 示例  | 说明 
+
+| aggs_event_id	 | integer  | 193  | 告警 ID，用于唯一标记告警。若相同的告警多次发出，其告警 ID 一致。或告警已经恢复时发送的通知，告警 ID 也一致。
+| zone	 | string  | gamma  | 告警来源可用区ID。
+| level	 | string  | CRITICAL  | 告警级别，从高到底的取值有 `CRITICAL`、`ERROR`、`WARNING` 与 `INFO`。
+| message	 | string  | [gamma] [deltar02n09] has alerts \|@@\|<h3>=== compute_monitor.log.wf ===</h3>\|@@\|2023-01-06 12:41:56,183 CRITICAL -139686026671872- instance [i-ak2y3yzk] bandwidth alert: outbound [33]MB/s of [if_tx-52:54:22:88:96:09], please check (/pitrix/lib/pitrix-bots/bot/compute/monitor/monitors/i_monitor.py:632) | 原始告警日志。
+| node_id	 | string  | deltar02n09  | 告警来源节点 ID。
+| node_ip	 | string  | 172.31.14.6  | 告警来源节点 IP。
+| node_type	 | integer  | 1  | 告警来源节点的类型，取值如下。
+
+* `0` 表示计算节点。
+* `1` 表示管理节点。
+| duration	 | string  | 8天45分  | * 告警持续时间。
+
+* 若 **topic** 为 `alert`，则为首次发出的告警，该字段值为 `null`。
+| duration_raw	 | float  | 693900.0  | * 告警持续时间，单位为 `秒`。
+
+* 若 **topic** 为 `alert`，则为首次发出的告警，该字段值为 `null`。
+| send_duration	 | string  | 1小时  | * 两次告警发送间隔时间。
+
+* 若 **topic** 为 `alert`，则为首次发出的告警，该字段值为 `null`。
+| send_duration_raw	 | float  | 3600.0  | * 两次告警发送间隔时间，单位为 `秒`。
+
+* 若 **topic** 为 `alert`，则为首次发出的告警，该字段值为 `null`。
+| synopsis	 | string  | 主机[i-ak2y3yzk]出站流量超限  | 告警概要信息。
+| synopsis_i18n	 | object  | {
+    "en": "Instance bandwidth alert: outbound, please check",
+    "zh-cn": "主机[i-ak2y3yzk]出站流量超限"
+}  | 告警概要信息 i18n 版本，目前包含了英文和中文版本。
+| send_time	 | string  | 2023-01-06 12:42:27  | * 本条告警发送到 Webhook 的时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| send_time_utc	 | string  | 2023-01-06T04:42:27Z  | * 本条告警发送到 Webhook 的时间。
+
+* 格式为 `YYYY-mm-ddTHH:MM:SSZ`。
+* 该字段为 UTC 时间。
+| alert_code	 | string  | ALM-SDN-00016  | 告警编号，可通过告警编号查询告警文档获取更多同类告警的信息。
+| alert_type	 | string  | 网络服务异常  | 用于兼容。
+| alert_category	 | string  | 00a3570d-ea73-4e69-813b-b89c7037e7e1  | 告警分类 ID。
+| alert_category_name	 | string  | 网络服务异常  | 告警分类名称。
+| alert_category_i18n	 | object  | {
+
+"en": "Network Service Exception",
+
+"zh-cn": "网络服务异常"
+
+}  | 告警分类 i18n 版本。
+| alert_source	 | string  | SDN  | 告警来源服务 ID。
+| alert_source_name	 | string  | 网络服务  | 告警来源服务名称。
+| suggestion	 | string  | 需登录虚拟机，结合CPU占用等，检查流量突然增加的原因。  | 处理建议，该数据为 HTML 格式。
+| suggestion_i18n	 | object  | -  | 用于兼容。
+| event_count	 | integer  | 1  | 相同告警发生的次数。
+| status_time	 | string  | 2023-01-06 12:42:27  | * 告警数据更新时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| status_time_utc	 | string  | 2023-01-06T04:42:27Z  | * 告警数据更新时间。
+
+* 格式为 `YYYY-mm-ddTHH:MM:SSZ`。
+* 该字段为 UTC 时间。
+| first_notify_time	 | string  | 2023-01-06 12:41:34  | * 告警首次发生时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| first_notify_time_utc	 | string  | 2023-01-06T04:41:34Z  | * 告警首次发生时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| latest_notify_time	 | string  | 2023-01-06 12:41:34  | * 告警末次发生时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| latest_notify_time_utc	 | string  | 2023-01-06T04:41:34Z  | * 告警末次发生时间。
+
+* 格式为 `YYYY-mm-dd HH:MM:SS`。
+* 已按照系统配置的时区进行了转换。
+| notify_policy_name	 | string  | -  | 用于兼容。
+| notify_policy_name_i18n	 | object  | -  | 用于兼容。
+| notify_type	 | string  | alert_merge  | 通知类型，与 **topic** 字段相同。
+| self_healing	 | bool  | true  | 能否自愈。
+| description	 | string  | 告警模块每 1分钟会对计算节点进行检测，当发现准备本地镜像失败时，会产生此告警。  | 告警描述。
+| influence	 | string  | 当前实例  | 当前告警所影响的范围。
+| reason	 | string  | 确认下 seed 节点文件不正常。  | 告警发生的可能原因。
+
+
+|===

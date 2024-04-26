@@ -1,0 +1,33 @@
+---
+title: "SSL 证书"
+weight: 80
+---
+== 背景信息
+
+SSL 证书服务是{platform_name_cn}在云上提供的一站式证书解决方案，包括证书的申请、部署和统一管理。SSL 证书可实现网站 HTTPS 化，使网站可信，防劫持、防篡改、防监听。
+
+== 场景描述
+
+该任务指导管理员进入 *安全：SSL 证书* 页面，查看{platform_name_cn}用户使用的 SSL 证书列表信息。
+
+== 功能描述
+
+*安全：SSL 证书* 页面集中展示云环境中所有 SSL 证书的 ID、名称、证书状态、有效期起始时间、有效期截止时间、域名、证书订单号、用户邮箱以及创建时间信息。
+
+include::../../../../../_components/note.adoc[]
+该页面展示的证书列表包括用户本地上传的 SSL 证书和用户在{platform_name_cn}购买的 SSL 证书。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *资源管理* > *安全* > *SSL 证书*，进入 *安全：SSL 证书* 页面，可查看 SSL 证书列表和详情。
++
+image::/images/boss/manual/resource_mgt/sslsert_operation.png[]
+
+. 点击 SSL 证书的 ID，进入 SSL 证书详情页面，可查看 SSL 证书详细信息以及共享用户信息。

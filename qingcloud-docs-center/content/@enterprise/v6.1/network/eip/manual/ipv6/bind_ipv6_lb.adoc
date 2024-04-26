@@ -1,0 +1,6 @@
+---
+title: IPv6 EIP 绑定负载均衡器
+weight: 21
+draft: false
+---
+include::../../../../../../_cloud_service/eip/ipv6_bind_lb.adoc[]

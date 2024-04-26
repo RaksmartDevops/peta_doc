@@ -1,0 +1,120 @@
+---
+title: "NeonSAN 存储告警"
+weight: 8
+---
+
+== 1. ALM-NEONSAN-00001  NeonSAN 紧急告警
+
+[cols="5*", options="header"]
+|===
+| 告警类型 | 告警等级 | 告警来源 | 告警分类 | 能否自愈
+
+| 事件告警
+| 紧急
+| NeonSAN 存储（NEONSAN）
+| NeonSAN 告警告警
+| 能
+|===
+
+*告警描述:* 
+
+NeonSAN 相关的紧急告警。
+
+*影响范围:* 
+
+NeonSAN 及使用到 NeonSAN 的服务。
+
+*可能原因:* 
+
+NeonSAN 严重告警。
+
+*处理方法:*
+
+请参考 NeonSAN 相关文档以获取解决方案。
+
+== 2. ALM-NEONSAN-00002  NeonSAN 重要告警
+
+[cols="5*", options="header"]
+|===
+| 告警类型 | 告警等级 | 告警来源 | 告警分类 | 能否自愈
+
+| 事件告警
+| 重要
+| NeonSAN 存储（NEONSAN）
+| NeonSAN 告警告警
+| 能
+|===
+
+*告警描述:* 
+
+NeonSAN 相关的重要告警。
+
+*影响范围:* 
+
+NeonSAN 及使用到 NeonSAN 的服务。
+
+*可能原因:* 
+
+NeonSAN 重要告警。
+
+*处理方法:*
+
+请参考 NeonSAN 相关文档以获取解决方案。
+
+== 3. ALM-NEONSAN-00003  NeonSAN 次要告警
+
+[cols="5*", options="header"]
+|===
+| 告警类型 | 告警等级 | 告警来源 | 告警分类 | 能否自愈
+
+| 事件告警
+| 次要
+| NeonSAN 存储（NEONSAN）
+| NeonSAN 告警告警
+| 能
+|===
+
+*告警描述:* 
+
+NeonSAN 相关的次要告警。
+
+*影响范围:* 
+
+NeonSAN 及使用到 NeonSAN 的服务。
+
+*可能原因:* 
+
+NeonSAN 次要告警。
+
+*处理方法:*
+
+请参考 NeonSAN 相关文档以获取解决方案。
+
+== 4. ALM-NEONSAN-00004  NeonSAN 提示告警
+
+[cols="5*", options="header"]
+|===
+| 告警类型 | 告警等级 | 告警来源 | 告警分类 | 能否自愈
+
+| 事件告警
+| 提示
+| NeonSAN 存储（NEONSAN）
+| NeonSAN 告警告警
+| 能
+|===
+
+*告警描述:* 
+
+NeonSAN 相关的提示告警。
+
+*影响范围:* 
+
+NeonSAN 及使用到 NeonSAN 的服务。
+
+*可能原因:* 
+
+NeonSAN 提示告警。
+
+*处理方法:*
+
+请参考 NeonSAN 相关文档以获取解决方案。

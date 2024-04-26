@@ -1,0 +1,68 @@
+---
+title: "Windows 云服务器硬盘初始化"
+weight: 20
+linkkey: compute_instances_windows_disk_faq
+---
+== 硬盘容量小于 2TB 的操作方法
+
+. 右键点击开始菜单，选择 *运行* > *diskmgmt.msc*
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_1.jpg[]
+
+. 选择磁盘分区类型，默认为 MBR。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_2.jpg[]
+
+. 如果硬盘是脱机状态，通过以下办法联机，联机以后才能对磁盘进行操作。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_3.png[]
+
+. 右键单击磁盘上未分配的区域，选择 *新建简单卷*，后续按提示操作。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_4.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_5.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_6.jpg[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_7.jpg[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_8.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_9.jpg[]
+
+. 初始化完成，`卷` 如下图状态即初始化成功。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_10.png[]
+
+== 硬盘容量大于 2TB 的操作方法
+
+. 右键开始菜单，选择 *运行* > *diskmgmt.msc*。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_1.jpg[]
+
+. 选择磁盘分区类型，选择 GPT 分区。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_11.png[]
+
+. 如果硬盘是脱机状态，通过以下办法联机，联机以后才能对磁盘进行操作。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_12.png[]
+
+. 右键单击磁盘上未分配的区域，选择 *新建简单卷*，后续按提示操作。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_13.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_14.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_15.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_16.png[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_17.jpg[]
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_18.png[]
+
+. 初始化完成，`卷` 如下图状态即初始化成功。
++
+image::/images/cloud_service/compute/vm/faq_init_harddisk_19.jpg[]

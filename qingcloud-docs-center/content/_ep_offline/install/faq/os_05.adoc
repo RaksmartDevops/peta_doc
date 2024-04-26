@@ -1,0 +1,20 @@
+//华为联想等服务器可能无法使用u盘自动安装的问题
+//QingCloud-16.04.5.3-AutoInstall.iso
+
+== 问题现象
+
+制作 U 盘的镜像为 FTP 服务器上的 QingCloud-16.04.5.3-AutoInstall.iso。
+
+无法自动安装有 3 个现象：
+
+. RAID 卡驱动问题，无法在 legacy 下识别磁盘分区。
+. U 盘被认成 sda。
+. 自动安装16.4.5.3时，安装到一半报 no root file system is defined。
+
+== 问题原因
+
+RAID 卡驱动问题、U 盘识别问题。
+
+== 解决方法
+
+使用 FTP 上这个镜像：``isos/QingCloud-16.04.5.3-AutoInstall-huawei.iso``。

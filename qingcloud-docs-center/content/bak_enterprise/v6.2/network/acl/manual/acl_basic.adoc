@@ -1,0 +1,23 @@
+---
+title: 设置基础网络安全策略
+description: 基础网络安全策略介绍
+draft: false
+weight: 50
+keywords: 云计算, 安全策略, 基础网络安全策略
+linkkey: security_acl_basic_guide
+---
+
+网络访问控制下还支持用户修改基础网络安全策略，用户可以通过基础网络安全策略定义云平台环境内的基础网络是否开放给其他用户。
+
+include::../../../../../_components/note.adoc[]
+
+基础网络安全策略只作用于基础网络，不会影响 VPC 的隔离，VPC 仍然保证 100% 的二层隔离。
+
+include::../../../../../_components/table_footer.adoc[]
+
+您可以点击**启用**/**禁用**设置基础网络的隔离。
+
+image::/images/cloud_service/security/acl/create_acl_17.png[]
+
+
+

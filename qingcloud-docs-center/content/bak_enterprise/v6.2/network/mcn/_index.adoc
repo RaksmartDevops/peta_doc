@@ -1,0 +1,28 @@
+---
+title: "流量牵引服务"
+weight: 100
+description: 流量牵引服务通过创建网络服务实例并接入到流量牵引系统，实现将 EIP 流量牵引到指定的网络服务实例。
+
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是流量牵引服务
+            url: intro/intro/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 管理网络服务实例
+            url: manual/create_mcn/
+          - title: 开启引流
+            url: manual/enable_eip/
+          - title: 配置路由到回源 IP
+            url: manual/config_ip/
+
+---

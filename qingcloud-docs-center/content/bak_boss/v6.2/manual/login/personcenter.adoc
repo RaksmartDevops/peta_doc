@@ -1,0 +1,68 @@
+---
+title: "个人中心"
+weight: 1
+---
+ 
+
+== 场景描述
+
+该任务指导 *云计算运维管理平台* 用户进入 *个人中心* 页面，并在该页面查看个人信息，修改个人信息或密码等操作。
+
+== 功能描述
+
+个人中心帮助 *云计算运维管理平台* 用户查看个人信息主页，修改个人资料、密码、API Key 等信息，并为系统用户提供了帮助文档的接口。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *个人中心*，进入 *个人中心* 页面，查看个人信息。
++
+image::/images/boss/manual/login/personcenter_operation.png[]
+
+=== 修改个人信息
+
+在 *个人信息* 页签点击 *修改*，仅修改个人的姓名和手机号，修改完成后点击 *确定*。
+
+image::/images/boss/manual/login/personcenter_modify.png[]
+
+=== 修改账号密码
+
+在 *账号密码* 页签点击 *修改*，输入原密码，新密码，确认新密码，点击 *确定*。
+
+image::/images/boss/manual/login/personcenter_sec.png[]
+
+=== 开启二次认证
+
+在 *账号密码* 页签点击 *开启*，根据提示信息执行操作，输入二次认证口令之后点击 *验证并开启*，完成开启二次验证操作。
+
+=== 修改默认访问菜单
+
+在 *个人中心* 页面点击默认访问菜单名称，弹出 *设置默认访问菜单* 对话框，在 *选择菜单项* 输入关键字，选择待展示的菜单，点击 *设置*。
+
+include::../../../../_components/note.adoc[]
+默认访问菜单为用户登录到 *云计算运维管理平台* 时展示的页面。
+
+include::../../../../_components/table_footer.adoc[]
+
+image::/images/boss/manual/login/personcenter_default.png[]
+
+=== 查看接口使用文档
+
+在 *帮助文档* 页签点击 *接口使用文档*。
+
+=== 管理 API Key
+
+在 *API Key* 页签点击创建，输入 API Key 的名称。
+
+image::/images/boss/manual/login/personcenter_sec.png[]
+
+include::../../../../_components/note.adoc[]
+Access key 和 Secret Key 是您访问 BOSS API 的秘钥，拥有该账户完全的权限，请您妥善保管，切勿外传。
+
+若该 key 不小心误删除，会导致使用该 Key 的应用无法正常访问平台 API，必须重新申请新的 Key，并在对应的应用中修改。
+
+include::../../../../_components/table_footer.adoc[]

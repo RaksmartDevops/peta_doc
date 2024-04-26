@@ -1,0 +1,47 @@
+//升级实例版本
+
+负载均衡实例版本即底层节点的镜像版本，升级版本后，您的负载均衡实例可支持最新版本中更丰富的功能，以提升使用体验。
+
+== 版本说明
+[cols="1,3"]
+|===
+|版本|更新说明
+
+|Load Balancer X18
+a|主要功能更新如下： +
+
+* HTTPS 加密支持 TLS1.3 算法。
+* 支持 HTTP2 + Gzip 方式使用，支持对 HTTP2 报文的压缩。
+* 多进程改为多线程，提升计算资源使用效率。
+* 采用新版 HTTP 协议标准，HTTP 报文包头按小写处理。
+|===
+
+== 升级影响
+
+* 负载均衡器版本不同，转发策略可能会发生变化。请根据<<_版本说明>>，评估是否需要升级。
+* 升级需要在关机状态下进行，将导致业务中断，请在业务低峰时进行。
+* 升级后，不可自行回退。若升级异常需要回退，请提交工单申请。
+
+== 前提条件
+
+负载均衡实例已关机。
+
+== 操作步骤
+
+include::./common.adoc[tag=lb_entrance]
+
+. 在负载均衡器列表，找到目标实例，点击实例 ID 号，进入实例详情页。
+. 在**基本属性**区域，点击image:/images/cloud_service/network/lb/menu_icon.png[20px,20px]图标，选择**版本检查**，弹出**版本升级**窗口。
++
+image::/images/cloud_service/network/lb/version_check.png[]
+
+. 查看您的负载均衡器当前的镜像版本与系统最新的镜像版本，确认是否需要升级：
++
+image::/images/cloud_service/network/lb/version_upgrade.png[]
++
+* 若已是最新版本或不需要升级，则点击**取消**，结束操作。
+* 若需要升级，则点击**升级到最新版本**，开始升级。
+
+. 升级完成后，可再次点击image:/images/cloud_service/network/lb/menu_icon.png[20px,20px]图标，选择**版本检查**，确认是否已升级到最新版本。
+
+. 在**基本属性**区域，点击image:/images/cloud_service/network/lb/menu_icon.png[20px,20px]图标，选择**启动**，启动负载均衡实例。

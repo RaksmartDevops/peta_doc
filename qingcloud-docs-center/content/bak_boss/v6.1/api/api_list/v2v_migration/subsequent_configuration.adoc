@@ -1,0 +1,74 @@
+---
+title: 后续配置（Boss2ModifyV2VInstanceAttrs）
+weight: 16
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyV2VInstanceAttrs
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+v2v_set 的元素中传要修改的参数，目前支持 nic_type、block_bus 和 boot_loader。
+该处返回的 job_id 用于查询任务日志。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyV2VInstanceAttrs",
+    "zone": "v2vstaging",   // [必须]指定zone
+    "v2v_set": [
+        {
+            "v2v_id": "v2v-eomp10py",
+            "owner": "usr-kjDQQJeD",
+            "nic_type": "virtio"
+        }
+    ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2ModifyV2VInstanceAttrsResponse",
+   "job_id": "job-khglvlzn",
+   "owner": "boss",
+   "ret_code": 0,
+   "total_count": 14,
+   "v2v_set": [
+      {
+         "_action": "ModifyVMAttrsV2V",
+         "_id": "v2v-eomp10py",
+         "_job_id": "job-khglvlzn",
+         "_owner": "boss",
+         "nic_type": "virtio",
+         "owner": "usr-kjDQQJeD",
+         "v2v_id": "v2v-eomp10py"
+      }
+   ],
+   "zone": "v2vstaging"
+}
+----

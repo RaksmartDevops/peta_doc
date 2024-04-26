@@ -1,0 +1,7 @@
+---
+title: 默认安全组及规则
+weight: 20
+keyword: 云服务器, 实例, 安全组
+---
+
+include::../../../../../_cloud_service/sg/01_default_sg.adoc[]

@@ -1,0 +1,74 @@
+---
+title: "双栈 IPv6 池"
+weight: 120
+---
+
+
+== 场景描述
+
+该任务指导管理员进入双栈 IPv6 池页面，查看双栈 IPv6 池列表及相关信息，执行创建 IP、禁用/启用、注销操作。
+
+== 功能描述
+
+该页面罗列了{platform_name_cn}所有的双栈 IPv6 的状态、地址、用户邮箱/ID、注册者、创建时间以及状态更新时间。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网络* > *双栈 IPv6 池*，在面板左上角选择区域或可用区，可查看该区域所有的 IPv6 列表及相关信息。
++
+image::/images/boss/manual/resource_mgt/dual_stack_pool_operation.png[]
+
+=== 创建 IP
+
+. 在 *网络: 双栈 IPv6 池* 页面右上角点击 *创建 IP*。
++
+弹出 *创建 IP* 对话框
+
+. 输入 IPv6 地址信息，点击 *创建*。
+
+=== 禁用 IPv6 地址
+
+include::../../../../../_components/note.adoc[]
+IPv6 地址状态为 *已绑定* 或 *可用* 时，可执行禁用 IPv6 地址的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络: 双栈 IPv6 池* 页面搜索框中搜索待操作 IPv6 地址，按 *Enter*，找到待操作的 IPv6 地址。
+. 在待操作的 IPv6 地址所在行点击image:/images/boss/manual/icon.png[]，点击 *禁用*。
++
+弹出 *禁用 IPv6 地址* 对话框。
+
+. 输入操作原因，点击 *禁用*。
+
+=== 启用 IPv6 地址
+
+include::../../../../../_components/note.adoc[]
+IPv6 地址状态为 *已禁用* 时，可执行启用 IPv6 地址的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络: 双栈 IPv6 池* 页面搜索框中搜索待操作 IPv6 地址，按 *Enter*，找到待操作的 IPv6 地址。
+. 在待操作的 IPv6 地址所在行点击image:/images/boss/manual/icon.png[]，点击 *启用*。
++
+弹出 *启用 IPv6 地址* 对话框。
+
+. 输入操作原因，点击 *启用*。
+
+=== 注销 IPv6 地址
+
+include::../../../../../_components/note.adoc[]
+IPv6 地址状态为 *已禁用* 时，可执行注销 IPv6 地址的操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络: 双栈 IPv6 池* 页面搜索框中搜索待操作 IPv6 地址，按 *Enter*，找到待操作的 IPv6 地址。
+. 在待操作的 IPv6 地址所在行点击image:/images/boss/manual/icon.png[]，点击 *注销*。
++
+弹出 *注销 IPv6 地址* 对话框。
+
+. 输入操作原因，点击 *注销*。

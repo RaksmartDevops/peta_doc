@@ -1,0 +1,34 @@
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/autocomplete/jquery.autocomplete.js"></script>
+<script src="/js/copy-to-clipboard.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/js/jquery.tmpl.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/search/jquery.mark.min.js"></script>
+{{ $commonJs := resources.Get "js/common.js" | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $commonJs.RelPermalink }}" integrity="{{ $commonJs.Data.Integrity }}"></script>
+{{ $searchJs := resources.Get "js/search.js" | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $searchJs.RelPermalink }}"></script>
+<script>
+  $(function() {
+    // 代码高亮
+    hljs.highlightAll();
+    // 文章内容图片 lightbox 特效
+    $.each($('.post-content .imageblock img'), function () {
+      $(this).attr('data-mfp-src', $(this).attr('src'));
+    });
+    $('.post-content').magnificPopup({
+      disableOn: function () {
+        if ($(window).width() < 600) {
+          return false;
+        }
+        return true;
+      },
+      delegate: '.imageblock img',
+      type: 'image',
+      gallery: {
+        enabled: true,
+      },
+    });
+  });
+</script>

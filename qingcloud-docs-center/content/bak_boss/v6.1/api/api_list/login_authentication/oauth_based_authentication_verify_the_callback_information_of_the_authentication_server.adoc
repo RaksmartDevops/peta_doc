@@ -1,0 +1,57 @@
+---
+title: 基于OAuth认证-验证认证服务器回调信息
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/oauth_callback/
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于服务器重定向回系统后接收参数并验证用户身份。开发时应自行实现一个接收回调的地址，并把得到的参数通过post请求的方式由本接口传给后端。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "code": "RMPECLEZBXHOVPXQAAJA",       // 认证服务器返回的 code
+  "state": "M8SHaoZkZhINvl1EYs3WIk0ib5cqtb",    // 认证服务器返回的state
+  "stateCookie": "Ik04U0hhb1prWmhJTnZsMUVZczNXSWswaWI1Y3F0YiI:1k5L1W:dpw1s72_VZey40OPmKqhPTNN9Ik"   // 在“重定向到认证服务器”接口中返回的cookie内容。
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 3,
+   "username": "admin",
+   "email": "admin@alphacloud.com",
+   "boss2_sk": "jx69ciqwjo2gtkarwj6dk9czaattdwbg",
+   "expiry_age": 0,
+   "2fa_enabled": false,
+   "ret_code": 0,
+   "action": "LoginResponse"
+}
+----

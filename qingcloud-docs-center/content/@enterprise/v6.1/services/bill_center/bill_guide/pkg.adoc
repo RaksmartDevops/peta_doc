@@ -1,0 +1,7 @@
+---
+title: 资源包
+weight: 9
+draft: false
+---
+
+include::../../../../../_cloud_service/bill/bill_mode_3.adoc[]

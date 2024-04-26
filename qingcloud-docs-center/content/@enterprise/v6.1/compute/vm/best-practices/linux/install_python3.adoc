@@ -1,0 +1,74 @@
+---
+title: "CentOS7 系统安装 Python3"
+weight: 20
+---
+. 查看一下 python2 在哪个目录。
++
+[source,shell]
+----
+whereis python
+cd /usr/bin
+ll python*
+----
+
+. 安装 python3 所需要的依赖包。
++
+[source,shell]
+----
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make libffi-devel
+----
+
+. 安装 pip。
++
+[source,shell]
+----
+yum -y install epel-release
+yum install python-pip
+----
+
+. 下载 python3 源码包。
++
+[source,shell]
+----
+wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
+----
+
+. 解压缩
++
+[source,shell]
+----
+tar -zxvf Python-3.7.0.tgz
+----
+
+. 切换至解压后的目录，编译安装源码包。
++
+[source,shell]
+----
+./configure prefix=/usr/local/python3
+make && make install
+----
+
+. 添加 python3 的软链接及 pip3 的软链接。
++
+[source,shell]
+----
+ln -s /usr/local/python3/bin/python3.7 /usr/bin/python3.7
+ln -s /usr/local/python3/bin/pip3.7 /usr/bin/pip3.7
+----
+
+. 测试是否安装成功。
++
+[source,shell]
+----
+python -V
+----
+
+. 更改 yum 配置，因为其要用到 python2 才能执行，否则会导致 yum 不能正常使用。
++
+[source,shell]
+----
+vi /usr/bin/yum
+把 #! /usr/bin/python 修改为 #! /usr/bin/python2
+vi /usr/libexec/urlgrabber-ext-down
+把 #! /usr/bin/python 修改为 #! /usr/bin/python2
+----

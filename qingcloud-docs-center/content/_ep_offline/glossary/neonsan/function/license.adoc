@@ -1,0 +1,23 @@
+// License 相关'
+
+
+[cols="1,3a",options="header"]
+|===
+|术语|说明
+
+|license 
+|许可证书，{qingstor_neon} 的 license 证书分为试用版和商业版，证书用于记录 license 的ID、授权容量、license 申请人信息、集群配置相关描述、license 密钥等信息。license 授权证书会以邮件的形式发送给指定用户。
+
+|license ID
+|许可证 ID，license 申请成功后，申请人可通过相应的邮件查看 license ID，全局唯一。
+
+|集群 ID
+|cluster ID，每一个 {qingstor_neon} 集群的专属 ID 标识，全局唯一，进行 license 申请时需使用该 ID。
+
+|授权容量
+|license 授权证书中针对当前 {qingstor_neon} 集群给予的最高可使用的存储空间，当存储空间使用量超过该值后，集群将无法创建新卷。
+
+|license 状态
+|license 许可证书的状态包括：active 激活或 inactive 未激活。
+|===
+

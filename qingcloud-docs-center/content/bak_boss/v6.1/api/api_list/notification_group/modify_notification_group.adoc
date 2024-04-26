@@ -1,0 +1,232 @@
+---
+title: 修改通知组（Boss2ModifyNotifyGroup）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyNotifyGroup
+
+=== Method
+POST
+
+=== 接口描述
+修改通知组时，只需传递有修改的部分。例如，emails、phones、webhooks、syslogs 和 imrobots，用户只修改了 phones 部分，则只需要传 phones 参数，其他不要传。后端接到参数后，会将 phones 更新为前端传递的内容。
+
+参数的格式要求，请参见下表
+
+[.allow_break_inside]
+|===
+| 参数 | 类型 | 是否必传 | 描述 | 备注
+
+| phones.contact
+| string
+| 是
+| 手机号
+| 最长长度为11
+
+| phones.remark
+| string
+| 是
+| 手机号备注
+| 最长长度为100
+
+| emails.contact
+| string
+| 是
+| 邮件地址
+| 最长长度32，必须是有效的 email 地址
+
+| emails.remark
+| string
+| 是
+| 邮件备注
+| 最长长度为100
+
+| webhooks.contact
+| string
+| 是
+| 网络钩子地址
+| 最长长度256，必须是http或https地址
+
+| webhooks.remark
+| string
+| 是
+| 网络钩子备注
+| 最长长度为100
+
+| syslogs.host
+| string
+| 是
+| syslog 服务器 host
+| 最长长度 256
+
+| syslogs.port
+| integer
+| 是
+| syslog 服务器 port
+| 取值范围 0~65535
+
+| syslogs.protocol
+| string
+| 是
+| syslog 协议
+| 可选值 ["TCP", "UDP"]
+
+| syslogs.remark
+| string
+| 是
+| syslog 服务器备注
+| 最长长度为100
+
+| imrobots.im_type
+| string
+| 是
+| 企业通讯工具类型
+| 可选值 ["dingtalk", "work_wechat", "feishu"]
+
+| imrobots.url
+| string
+| 是
+| 企业通讯工具机器人 Webhook 地址
+| 最长长度 256
+
+| imrobots.secret_key
+| string
+| 否
+| 企业通讯工具机器人密钥
+| 最长长度 256
+
+| imrobots.mentioned_list
+| Array[string]
+| 否
+| 企业通讯工具机器人，@群成员列表
+| 最多20个元素
+
+| imrobots.mentioned_all
+| boolean
+| 否
+| 企业通讯工具机器人，@群里所有人
+|
+
+| private_wechats.send_type
+| string
+| 是
+| 私有企业微信发送方式
+| 可选直["send_to_group"\, "send_to_user"]
+
+| private_wechats.corpsecret
+| string
+| 是
+| 私有企业微信应用凭证密钥
+| 最长256
+
+| private_wechats.agentid
+| integer
+| 否
+| 私有企业微信应用ID
+|
+
+| private_wechats.chatid
+| string
+| 否
+| 私有企业微信群聊ID
+| 最长256
+
+| private_wechats.mentioned_user_list
+| Array[string]
+| 否
+| 发送人ID列表
+| 最长1000
+
+| private_wechats.mentioned_party_list
+| Array[integer]
+| 否
+| 发送部门ID列表
+| 最长100
+
+| private_wechats.mentioned_tag_list
+| Array[integer]
+| 否
+| 发送标签ID列表
+| 最长100
+
+| private_wechat.remark
+| string
+| 否
+| 备注
+|
+
+| snmptraps.host
+| string
+| 是
+| snmp trap receiver 服务器 host
+| 最长长度 256
+
+| snmptraps.port
+| integer
+| 是
+| snmp trap receiver 服务器 port
+| 取值范围 0~65535
+
+| snmptraps.version
+| string
+| 是
+| snmp协议类型
+| 可选值 ["v1", "v2c"]
+
+| snmptraps.community
+| string
+| 是
+| 社区名称
+| 最长长度为100
+
+| snmptraps.remark
+| string
+| 是
+| snmp trap receiver 服务器备注
+| 最长长度为100
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2ModifyNotifyGroup",
+   "id": 1,
+   "emails": [
+      {
+         "contact": "test2@example.com",
+         "remark": "test2"
+      }
+   ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 1,
+   "ret_code": 0,
+   "action": "Boss2ModifyNotifyGroupResponse"
+}
+----

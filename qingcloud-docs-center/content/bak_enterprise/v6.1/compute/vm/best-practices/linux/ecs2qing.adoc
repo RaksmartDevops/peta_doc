@@ -1,0 +1,143 @@
+---
+title: 将 ECS 迁移到云平台
+weight: 230
+---
+
+== 从阿里云 ECS 导出镜像
+
+=== 第1步：开通 OSS
+
+. 登录阿里云控制台，点击左上角选择对象存储 OSS，初次使用同意 OSS 服务条款，进入管理控制台。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_1.png[]
+
+. 左侧点击创建 Bucket，选择与保存镜像同一地域的 Bucket。切记要选择标准存储，读写权限设置为公共读，并记住 Bucket 的名字。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_2.png[]
+
+=== 第2步：创建镜像
+
+. 控制台页面，点击左上角选择云服务器 ECS，进入云服务器 ECS 界面，选择相应的实例，进入实例详情页面。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_3.png[]
+
+. 选择 *创建自定义镜像* 选项，为镜像命名后点击创建按钮，创建自定义镜像。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_4.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_5.png[]
+
+. 镜像创建完成后，可以在镜像列表上看到我们创建的镜像。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_6.png[]
+
+=== 第3步： 导出镜像
+
+. 选择导出镜像选项（如没有该选项，可通过工单申请开通）。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_7.png[]
+
+. 选择我们之前创建的 bucket，并输入 object 前缀，点击确定。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_8.png[]
+
+. 控制台页面，点击左上角选择对象存储，进入对象存储界面，在我们之前创建的 bucket 里面可以看到导出的镜像，并选择复制文件 url，获得镜像下载链接。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_9.png[]
+
+== 镜像导入到云平台
+
+=== 第1步：下载镜像
+
+. 我们在云平台的虚机里下载该镜像。没有 wget 需要先下载安装 wget 工具，并且注意下面命令里面的两个单引号。
++
+[source,shell]
+----
+wget ‘下载链接’
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_10.jpg[]
+
+. 下载完成后，文件重命名成 raw.tar.gz 后缀。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_11.jpg[]
+
+. 镜像压缩包进行解压。
++
+[source,shell]
+----
+tar -zxvf test_m-uf66lzx8rzvh3ht5tbz1_system.raw.tar.gz
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_12.jpg[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_13.jpg[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_14.jpg[]
+
+=== 第2步：制作云平台自定义镜像
+
+. 在管理控制台上创建一个硬盘并挂载到下载镜像的云服务器上，注意硬盘的大小需要和原云服务器的系统盘大小一致。
++
+[source,shell]
+----
+fdisk -l
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_15.jpg[]
+
+. 将 raw 格式的镜像文件拷贝到硬盘中。
++
+[source,shell]
+----
+dd if=test_m-uf66lzx8rzvh3ht5tbz1_system.raw of=/dev/vdc
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_16.jpg[]
+
+. 可以新开一个 shell 界面，输入下面命令，查看 dd 命令的执行进度；
++
+[source,shell]
+----
+watch -n 5 pkill -USR1 ^dd$
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_17.jpg[]
+
+. 完成之后，更新下硬盘的分区信息；
++
+[source,shell]
+----
+partprobe /dev/vdc
+----
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_18.jpg[]
+
+. 按照下图步骤，将云硬盘制作备份；
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_19.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_20.png[]
+
+. 备份界面，鼠标右键点击我们刚才得到的备份，选择制作新镜像，如下图所示：
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_21.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_22.png[]
++
+
+include::../../../../../../_components/attention.adoc[]
+
+需要选择一个系统镜像，我需要导入的镜像是centos7.5版本，所以选择云平台对应的centos7.5即可，然后提交。
+
+include::../../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_23.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_24.png[]
+
+. 镜像创建完成，我们便可以在镜像 > 自有界面看到我们刚才创建的镜像，然后基于该镜像在云平台上创建虚机即可。
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_25.png[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_ecs2qing_26.png[]

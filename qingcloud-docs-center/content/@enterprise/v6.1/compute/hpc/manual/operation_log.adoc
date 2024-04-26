@@ -1,0 +1,29 @@
+---
+title: "操作日志"
+linkTitle: "操作日志"
+description: hpc的软件管理
+keyword: 云计算, HPC，操作日志
+draft: false
+weight: 50
+---
+本章用于介绍如何查看最近一段时间所有高性能计算服务相关的操作历史。
+
+== 前提条件
+
+* 已获取管理控制台账号和密码。
+* 已开通弹性高性能计算 EHPC 产品服务。
+
+== 操作步骤
+
+. 登录管理控制平台。
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，默认进入**集群管理**页面，点击左侧菜单栏，选择**操作日志**进行页面切换。操作日志页面主要显示某一集群下的操作行为、操作名称、资源ID、操作开始时间以及操作更新时间。
++
+image::/images/cloud_service/compute/hpc/operation_log_1.png[operation_log_1]
+
+. 在**操作日志**页面，点击**所属集群**右侧的下拉框，可针对不同集群对操作日志进行筛选。
++
+image::/images/cloud_service/compute/hpc/operation_log_2.png[operation_log_2]
+
+. 在**操作日志**页面的搜索框中，输入关键词，可针对具体操作进行日志筛选。
++
+image::/images/cloud_service/compute/hpc/operation_log_3.png[operation_log_3]

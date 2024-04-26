@@ -1,0 +1,36 @@
+---
+title: "网络连通性总览"
+weight: 40
+draft: true
+
+---
+
+{platform_name_cn}支持跨区域部署，各可用区之间的网络状态关乎平台整体的可用性。为了保障业务正常运行，BOSS 需要监控各 Zone 与 Global 之间的网络连通性与带宽情况。
+
+BOSS 通过持续的 `ping` 命令检测，并分析 `ping` 命令返回的结果，如响应时间，是否丢包等来评估链路之间的健康状态，进而评估网络连通状态。此外 BOSS 还可获取交换机的监控数据，从而获取一定时间内的带宽监控数据，辅助用户评估网络状态。
+
+== 功能描述
+
+该页面展示 Region 与 Global 之间的网络状况、Region 内的网络状况以及各 Zone 的 Internet 网络状况。给用户提供可视化的结果查询，方便用户快速掌握重点业务的网络运行状况。
+
+
+
+== 操作步骤
+
+. 成功登录 BOSS。
+. 点击**看板** > **总览** > **网络连通性总览**，进入**网络连通性总览**页面。
++
+image::/images/boss/manual/view/network_screen_2.png[]
+
+. 在**网络连通性总览**页面，查看整个{platform_name_cn}的网络状态。
++
+image::/images/boss/manual/view/network_screen_3.png[]
++
+
+include::../../../../../_components/note.adoc[]
+
+* **网络连通性总览**卡片，用可视化的方式，展示 Region 与 Global 之间的网络状况、Region 与 Internet 的网络状况。点击 Region，可查看所选 Region 下的各 Zone 与 Global，与 Internet 之间的网络连接状态。
+* **各可用区网络连通概览**卡片，用户可根据需求，选择查看相应 Zone 之间的网络连接状态。
+
+include::../../../../../_components/table_footer.adoc[]
+

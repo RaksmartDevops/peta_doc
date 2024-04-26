@@ -1,0 +1,9 @@
+{{$Page := .}}
+{{with (index .Pages.ByWeight 0)}}
+  {{ if .IsSection}}
+    {{$Page = (partial "get-first-child-page.html" .)}}
+  {{else}}
+    {{$Page = .}}
+  {{end}}
+{{end}}
+{{return $Page}}

@@ -1,0 +1,67 @@
+---
+title: 访问 Kafka Manager
+description: 访问 Kafka Manager，通过 Kafka Manager 控制台对 Cluster 和 Topic 进行管理。
+keywords: 云计算,大数据,消息队列,中间件,Kafka,Kafka Manager
+weight: 10
+draft: false
+---
+
+Kafka Manager（Kafka 3.1.0 及以后版本，Kafka Manager 叫做 CMAK）是开源的 Kafka 集群管理工具，用户可以通过浏览器访问 Kafka Manager 的地址，然后通过 Kafka Manager 控制台对 Cluster 和 Topic 进行管理。
+
+include::../../../../../../_components/note.adoc[]
+
+Kafka Manager 显示的版本可能与实际 Kafka 版本不符，请以创建的 Kafka 实际版本为主，这并不会影响到您使用 Kafka 和 Kafka Manager。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+[discrete]
+=== Kafka Manager 地址说明
+
+Kafka Manager 地址格式为：``\http://client_ip:port``。
+
+* **client_ip** 为 客户端节点的 IP 地址。Kafka 0.10.2.1 - v1.1.6 版本没有客户端节点，可使用集群内任意节点的 IP。
+
+** 内网连接：IP 地址为客户端节点内网 IP。
+** 公网连接：IP 地址为客户端节点绑定的公网 IP。
+
+* **port** 为 Kafka Manager 的访问端口。通过集群配置参数 **kafka-manager.port** 进行设置，默认为 `9000`。
+
+== 前提条件
+
+* 已创建 Kafka 集群，且 Kafka 集群状态为``活跃``。
+* Kafka 集群中已安装客户端节点。
+* 如果客户端节点没有绑定公网 IP，需要配置 link:../../../../../network/vpc/manual/vpn/vpn_intro[VPN]，确保本地可以访问集群网络。
+
+== 操作步骤
+
+. 查看客户端节点 IP。
++
+.. 登录管理控制台。
+.. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+.. 点击目标集群 ID，进入集群详情页面。
+.. 在**节点**页签，查看客户端节点 IP。
++
+image::/images/cloud_service/middware/kafka/kafka_node_list_client.png[查看客户端节点 IP]
++
+上图中，客户端节点已绑定公网 IP，表示同时支持通过公网和内网访问 Kafka Manager。
++
+** Kafka Manager 内网连接地址为：192.168.100.5:9000
+** Kafka Manager 公网连接地址为：103.xx.xx.xx:9000
+. 在本地浏览器里输入 Kafka Manager 地址。
++
+--
+** 如果客户端节点已绑定公网 IP，在本地浏览器输入 Kafka Manager 的公网连接地址进行访问。
++
+公网访问示例（以 Kafka 3.1.0 版本为例）：
++
+image::/images/cloud_service/middware/kafka/clusters_3.1.0.png[Kafka clusters,60%]
+
+** 如果客户端节点未绑定公网 IP，需要配置 link:../../../../../network/vpc/manual/vpn/vpn_intro[VPN]，确保本地可以访问集群网络后，再在本地浏览器输入 Kafka Manager 的内网连接地址进行访问。
++
+内网访问示例（以 Kafka 2.2.0 版本为例）：
++
+image::/images/cloud_service/middware/kafka/clusters.png[Kafka clusters,60%]
+--
+. 如果在集群配置参数中指定需要登录，请使用配置的帐号登录。默认为不需要登录。
++
+是否需要登录验证，通过集群配置参数 **kafka-manager.basicAuthentication.enabled** 进行设置，默认为 `false`，不需要登录验证。

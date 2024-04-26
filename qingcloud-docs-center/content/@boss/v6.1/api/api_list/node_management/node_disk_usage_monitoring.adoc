@@ -1,0 +1,152 @@
+---
+title: 节点磁盘使用率监控（Boss2GetNodeDiskMonitor）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeDiskMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的磁盘使用率监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostname
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+
+| columns
+| 否
+| 无
+| 指定要获取的监控数据，如不指定将返回所有的监控数据
+|
+
+| step
+| 否
+| 60s
+| 指定步长，单位为s
+|
+
+| start_time
+| 否
+| 当前时间前60分钟
+| 开始时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+
+| end_time
+| 否
+| 当前时间
+| 结束时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+|===
+
+注意：
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| data
+| Array
+| 所查询的监控数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetNodeDiskMonitor",
+   "zone": "test",
+   "hostname": "tr02n20",
+   "columns": [
+      "used_percent"
+   ],
+   "step": "60s",
+   "start_time": "2018-12-18T06:42:00Z",
+   "end_time": "2018-12-18T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "used_percent",
+            "data": [
+               8.259226796088766,
+               8.259226796088766,
+               8.259226796088766
+            ],
+            "tag": "/"
+         },
+         {
+            "name": "time",
+            "data": [
+               "2018-11-29 09:29:00",
+               "2018-11-29 09:30:00",
+               "2018-11-29 09:31:00"
+            ],
+            "tag": "/"
+         }
+      ],
+      [
+         {
+            "name": "used_percent",
+            "data": [
+               30.281778706910522,
+               30.281905373503875,
+               30.28204906286326
+            ],
+            "tag": "/pitrix"
+         },
+         {
+            "name": "time",
+            "data": [
+               1545115320,
+               1545115380,
+               1545115440
+            ],
+            "tag": "/pitrix"
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeDiskMonitorResponse"
+}
+----

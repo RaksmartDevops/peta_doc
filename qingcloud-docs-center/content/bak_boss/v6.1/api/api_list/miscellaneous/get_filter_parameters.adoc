@@ -1,0 +1,194 @@
+---
+title: 获取过滤参数（Boss2GetFilterFields）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetFilterFields
+
+=== Method
+POST
+
+=== 接口描述
+该接口从后端为前端提供列表中的过滤项目。
+当前支持的过滤项目为：
+
+|===
+| 字段 | 用途 | 备注
+
+| service_roles
+| 在"`服务进程`"列表中提供服务角色的过滤字段
+|
+
+| alert_level
+| 对应告警记录列表中的"`级别`"
+|
+
+| alert_type
+| 对应告警记录列表中的"`告警类型`"
+|
+
+| node_type
+| 对应告警记录列表中的"节点角色"
+|
+
+| notify_policy
+| 对应告警记录列表中的"`监控项`"
+|
+
+| notify_recipient
+| 对应告警策略列表中的"`通知对象`"
+|
+
+| alert_event_status
+| 对应告警记录列表中的"`状态`"
+|
+
+| mgmt_node_status
+| 对应管理节点列表中的`"状态"`
+|
+
+| mgmt_node_type
+| 对应管理节点类别中的"`节点类型`"
+|
+
+| image_status
+| 映像的所有状态
+|
+
+| image_platform
+| 映像平台及操作系统，按照平台对操作系统进行了分类
+|
+
+| api_category
+| api的分类，用于审查记录中的审查项目分类
+|
+
+| hypernode_realtime_status
+| 用于根据cronus返回的节点状态来过滤计算节点，用于计算节点列表
+|
+
+| mgmt_node_roles
+| 对应管理节点列表中的"`节点角色`"
+|
+
+| alert_category
+| 对应告警记录界面的告警分类
+|
+
+| alert_source
+| 对应告警记录界面的告警来源
+|
+|===
+
+{blank} +
+ +
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetFilterFields",
+    "filters": ["service_roles"] //可指定多个字段
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "filters": {
+      "service_roles": [
+         {
+            "id": "账号服务",
+            "name": "账号服务"
+         },
+         {
+            "id": "BOSS服务",
+            "name": "BOSS服务"
+         },
+         {
+            "id": "定时器服务",
+            "name": "定时器服务"
+         },
+         {
+            "id": "域名服务",
+            "name": "域名服务"
+         },
+         {
+            "id": "身份认证服务",
+            "name": "身份认证服务"
+         },
+         {
+            "id": "资源编排服务",
+            "name": "资源编排服务"
+         },
+         {
+            "id": "自动伸缩服务",
+            "name": "自动伸缩服务"
+         },
+         {
+            "id": "告警服务",
+            "name": "告警服务"
+         },
+         {
+            "id": "通知服务",
+            "name": "通知服务"
+         },
+         {
+            "id": "网关服务",
+            "name": "网关服务"
+         },
+         {
+            "id": "核心管理服务",
+            "name": "核心管理服务"
+         },
+         {
+            "id": "消息推送服务",
+            "name": "消息推送服务"
+         },
+         {
+            "id": "监控服务",
+            "name": "监控服务"
+         },
+         {
+            "id": "网络服务",
+            "name": "网络服务"
+         },
+         {
+            "id": "计算服务",
+            "name": "计算服务"
+         },
+         {
+            "id": "计费服务",
+            "name": "计费服务"
+         },
+         {
+            "id": "存储服务",
+            "name": "存储服务"
+         }
+      ]
+   },
+   "ret_code": 0,
+   "action": "Boss2GetFilterFieldsResponse"
+}
+----

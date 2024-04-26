@@ -1,0 +1,179 @@
+---
+title: "API 概览"
+description: 本小节主要介绍 VPC 网络所提供的 API。
+keywords: VPC, API 概览
+draft: false
+weight: 06
+---
+VPC 网络提供以下 API 接口供您使用。
+
+== VPC 网络接口
+
+|===
+| API | 说明
+
+| link:../vpc_api/create_routers/[CreateRouters]
+| 创建 VPC 网络。
+
+| link:../vpc_api/describe_routers/[DescribeRouters]
+| 获取 VPC 网络列表。
+
+| link:../vpc_api/modify_router_attributes/[ModifyRouterAttributes]
+| 修改 VPC 网络的配置。
+
+| link:../vpc_api/update_routers/[UpdateRouters]
+| 更新 VPC 网络配置后，使配置生效。
+
+| link:../vpc_api/join_router/[JoinRouter]
+| 将私有网络加入 VPC 网络。
+
+| link:../vpc_api/leave_router/[LeaveRouter]
+| 私有网络离开 VPC 网络。
+
+| link:../vpc_api/describe_router_vxnets/[DescribeRouterVxnets]
+| 获取 VPC 网络下的私有网络。
+
+| link:../vpc_api/delete_routers/[DeleteRouters]
+| 删除 VPC 网络。
+
+| link:../vpc_api/add_router_statics/[AddRouterStatics]
+| 增加一项或多项 VPC 网络规则。
+
+| link:../vpc_api/add_router_static_entries/[AddRouterStaticEntries]
+| 增加一条 VPC  网络规则条目。
+
+| link:../vpc_api/copy_router_statics/[CopyRouterStatics]
+| 把源 VPC  网络规则复制给目的 VPC 网络。
+
+| link:../vpc_api/describe_router_statics/[DescribeRouterStatics]
+| 获取 VPC 网络的规则。
+
+| link:../vpc_api/describe_router_static_entries/[DescribeRouterStaticEntries]
+| 获取 VPC 网络规则条目。
+
+| link:../vpc_api/modify_router_static_attributes/[ModifyRouterStaticAttributes]
+| 修改 VPC 网络规则。
+
+| link:../vpc_api/modify_router_static_entry_attributes/[ModifyRouterStaticEntryAttributes]
+| 修改 VPC 网络路由规则条目属性。
+
+| link:../vpc_api/delete_router_statics/[DeleteRouterStatics]
+| 删除一项或多项 VPC 网络规则。
+
+| link:../vpc_api/delete_router_static_entries/[DeleteRouterStaticEntries]
+| 删除一条或多条 VPC 网络规则条目。
+|===
+
+== 私有网络接口
+
+|===
+| API | 说明
+
+| link:../vxnet_api/create_vxnets/[CreateVxnets]
+| 创建私有网络。
+
+| link:../vxnet_api/describe_vxnets/[DescribeVxnets]
+| 获取私有网络列表。
+
+| link:../vxnet_api/join_vxnet/[JoinVxnet]
+| 将云服务器绑定到私有网络。
+
+| link:../vxnet_api/leave_vxnet/[LeaveVxnet]
+| 将云服务器从私有网络中解绑。
+
+| link:../vxnet_api/describe_vxnet_instances/[DescribeVxnetInstances]
+| 获取私有网络中的云服务器。
+
+| link:../vxnet_api/modify_vxnet_attributes/[ModifyVxnetAttributes]
+| 修改私有网络的名称和描述。
+
+| link:../vxnet_api/delete_vxnets/[DeleteVxnets]
+| 删除私有网络。
+|===
+
+== 路由表接口
+
+|===
+| API | 说明
+
+| link:../routing_table/create_route_table/[CreateRouteTable]
+| 创建路由表。
+
+| link:../routing_table/describe_route_tables/[DescribeRouteTables]
+| 获取路由表的配置信息。
+
+| link:../routing_table/modify_route_table_attributes/[ModifyRouteTableAttributes]
+| 修改一个路由表的配置。
+
+| link:../routing_table/associate_route_table/[AssociateRouteTable]
+| 将路由表绑定到某个资源。
+
+| link:../routing_table/dissociate_route_table/[DissociateRouteTable]
+| 将路由表与资源解绑。
+
+| link:../routing_table/describe_routing_table_resources/[DescribeRoutingTableResources]
+| 获取路由表以及资源的对应关系。
+
+| link:../routing_table/update_route_table/[UpdateRouteTable]
+| 使路由表的配置修改生效。
+
+| link:../routing_table/delete_route_tables/[DeleteRouteTables]
+| 删除路由表。
+
+| link:../routing_table/add_routes/[AddRoutes]
+| 创建一条路由表规则。
+
+| link:../routing_table/describe_routes/[DescribeRoutes]
+| 获取一个或者多个路由表的配置信息。
+
+| link:../routing_table/modify_route_attributes/[ModifyRouteAttributes]
+| 修改一条路由表规则。
+
+| link:../routing_table/remove_routes/[RemoveRoutes]
+| 删除一条或者多条路由表规则。
+|===
+
+== 网络流量镜像接口
+
+|===
+| API | 说明
+
+| link:../span/create_span/[CreateSpan]
+| 创建一个 SPAN。
+
+| link:../span/describe_spans/[DescribeSpans]
+| 获取一个或多个 SPAN 的配置。
+
+| link:../span/modify-span-attributes/[ModifySpanAttributes]
+| 修改 SPAN 属性。
+
+| link:../span/add-span-members/[AddSpanMembers]
+| 添加 SPAN 成员，成员可以是 instance id 或 vxnet id。
+
+| link:../span/remove-span-members/[RemoveSpanMembers]
+| 移除 SPAN 成员。
+
+| link:../span/update-span/[UpdateSpan]
+| 修改 SPAN 属性后，应用变更到所有云服务器。
+
+| link:../span/delete_spans/[DeleteSpans]
+| 删除一个或多个 SPAN。
+|===
+
+== 内网域名别名
+
+|===
+| API | 说明
+
+| link:../dns_alias/get_dns_label/[GetDNSLabel]
+| 获取内网域名标记及域名名称。
+
+| link:../dns_alias/describe_dns_aliases/[DescribeDNSAliases]
+| 获取内网域名别名列表。
+
+| link:../dns_alias/associate_dns_alias/[AssociateDNSAlias]
+| 绑定内网域名别名到资源。
+
+| link:../dns_alias/dissociate_dns_aliases/[DissociateDNSAliases]
+| 从资源上解绑内网域名。
+|===

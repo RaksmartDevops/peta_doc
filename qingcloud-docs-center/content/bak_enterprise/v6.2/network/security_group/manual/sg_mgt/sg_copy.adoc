@@ -1,0 +1,7 @@
+---
+title: 复制安全组
+draft: false
+weight: 20
+---
+
+include::../../../../../../_cloud_service/sg/04_sg_copy.adoc[]

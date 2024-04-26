@@ -1,0 +1,29 @@
+---
+title: "其他备份相关操作"
+description: 本小节主要介绍备份的相关操作。
+draft: false
+weight: 60
+keywords: 云计算, 备份, 备份操作
+---
+== 进入备份页面
+
+. 登录{console_name}。
+. 在控制台导航栏中，选择 *产品与服务* > *存储服务* > *备份*，进入 *备份* 页面。
+
+== 修改备份名称或描述
+
+. 在备份链列表所在行右键单击，选择 *修改*。
+. 输入修改后的名称及描述，点击 *提交*。
++
+image::/images/cloud_service/storage/backup/manual_backup_1.png[]
+
+== 共享备份
+
+云硬盘备份可共享给子账号或共享给其他账号。
+
+. 在备份链列表所在行右键单击，选择 *共享备份*。
++
+image::/images/cloud_service/storage/backup/manual_backup_2.png[]
+
+. 选择要共享给的子账号或填写要给共享的其他用户 ID/注册邮箱地址，点击 *提交*。
+. 点击备份链 ID 号，可以看到共享列表，显示已添加成功的共享账号列表。

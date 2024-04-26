@@ -1,0 +1,60 @@
+
+// title: "CopySecurityGroupIPSets"
+
+
+复制 IP/端口集合到其他 zone（可以复制到当前zone）。
+
+== 请求参数
+
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| ipsets.n
+| String
+| 一个或多个IP/端口集合ID
+| Yes
+
+| dest_zones.n
+| String
+| 一个或多个区域 ID，注意要小写
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+*请求示例*：
+
+[,json]
+----
+https://api.qingcloud.com/iaas/?action=CopySecurityGroupIPSets
+&ipsets.1=sgi-12345678
+&dest_zones.1=pek3a
+&COMMON_PARAMS
+----
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"CopySecurityGroupIPSetsResponse",
+  "ret_code":0
+}
+----
+

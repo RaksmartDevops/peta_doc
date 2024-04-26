@@ -1,0 +1,37 @@
+---
+title: "账户中心"
+linkTitle: "账户中心"
+weight: 4
+collapsible: true
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 基本概念
+            url: "intro/introduction/"
+
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 注册云平台账号
+            url: manual/user_signup/
+          - title: 登录管理控制台
+            url: manual/user_login/
+          - title: 实名认证
+            url: manual/account_aut/account_intro/
+          - title: 账号设置
+            url: manual/user_setup/account_view/
+          - title: 账号安全
+            url: manual/user_security/
+          - title: 子账号
+            url: manual/sub_user/subuser_mgt/
+
+
+---

@@ -1,0 +1,84 @@
+---
+title: "初始化数据盘（Windows）"
+description: 本小节主要介绍如何对Windows系统下的数据盘进行初始化操作。
+draft: false
+weight: 30
+keywords: 云计算, 云硬盘,初始化,Windows,数据盘
+---
+== 硬盘容量小于 2TB
+
+. 在桌面点击 *开始* > *运行*，然后输入 `diskmgmt.msc`，打开磁盘管理器。
++
+image::/images/cloud_service/storage/disk/qs_init_win_1.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_2.png[]
+
+. 选择磁盘分区类型，默认为 MBR。
++
+image::/images/cloud_service/storage/disk/qs_init_win_3.png[]
+
+. 如果磁盘是脱机状态，通过以下办法联机，联机以后才能对磁盘进行操作。
++
+image::/images/cloud_service/storage/disk/qs_init_win_4.png[]
+
+. 右键单击磁盘上未分配的区域，选择 *新建简单卷*，然后按照提示操作即可。
++
+image::/images/cloud_service/storage/disk/qs_init_win_5.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_6.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_7.png[]
+
+. 分配驱动器编号。
++
+image::/images/cloud_service/storage/disk/qs_init_win_8.png[]
+
+. 勾选快速格式化硬盘。
++
+image::/images/cloud_service/storage/disk/qs_init_win_9.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_10.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_11.png[]
+
+== 硬盘容量大于 2TB
+
+. 在桌面点击 *开始* > *运行*，然后输入 `diskmgmt.msc`，打开磁盘管理器。
++
+image::/images/cloud_service/storage/disk/qs_init_win_12.png[]
+
+. 选择 GPT 分区。
++
+image::/images/cloud_service/storage/disk/qs_init_win_13.png[]
+
+. 右键单击磁盘上未分配的区域，选择 *新建简单卷*，然后按照提示操作即可。
++
+image::/images/cloud_service/storage/disk/qs_init_win_14.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_15.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_16.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_17.png[]
+
+. 选择磁盘分区编号。
++
+image::/images/cloud_service/storage/disk/qs_init_win_18.png[]
+
+. 勾选快速格式化硬盘。
++
+
+include::../../../../../../_components/attention.adoc[]
+
+该操作会清空磁盘所有数据。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/qs_init_win_19.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_20.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_21.png[]
++
+image::/images/cloud_service/storage/disk/qs_init_win_22.png[]

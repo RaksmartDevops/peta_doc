@@ -1,0 +1,69 @@
+---
+title: NAT 网关
+linkTitle: NAT 网关
+weight: 5
+description: NAT 网关是一个分布式的网络地址转换服务，可以为私有网络的云服务器提供复用公网 IP 的能力，用户的多个私有网络可以通过一个统一的
+  NAT 网关访问公网或提供互联网服务。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 NAT 网关
+            url: intro/nat_gateway/
+          - title: 产品优势
+            url: intro/gw_advantage/
+          - title: 产品规格
+            url: intro/specification/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/nat_price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 通过 SNAT 功能实现访问公网服务
+            url: quickstart/snat_qs/
+          - title: 通过 DNAT 功能实现提供公网服务
+            url: quickstart/dnat_qs/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 管理 NAT 网关
+        children:
+          - title: 创建 NAT 网关
+            url: manual/mge_nat/create_nat/
+          - title: 修改 NAT 网关配置
+            url: manual/mge_nat/mdfy_nat/
+          - title: 修改健康检测配置
+            url: manual/mge_nat/health_check/
+      - title: 管理 SNAT 与 DNAT
+        children:
+          - title: 添加 SNAT 规则
+            url: manual/mgt_snat/
+          - title: 添加 DNAT 规则
+            url: manual/mgt_dnat/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 多 NAT 网关实现外网访问分流
+            url: best-practices/multi_nat_access_internet/
+          - title: 仅对白名单 IP 开放公网访问
+            url: best-practices/sg_config_trust_ip/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: null
+        children:
+          - title: NAT 网关与 VPC 网络所提供的公网访问功能有何区别？
+            url: faq/nat_faq/
+          - title: 配置 SNAT、DNAT 规则后，无法通过公网 IP 连通？
+            url: faq/nat_faq/
+linkkey: network_nat_gateway_guide
+---

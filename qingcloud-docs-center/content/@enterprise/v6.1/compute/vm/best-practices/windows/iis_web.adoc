@@ -1,0 +1,76 @@
+---
+title: "使用 IIS 搭建网站服务"
+weight: 60
+---
+
+== 背景
+
+一般情况下，大多数用户习惯基于 Linux 平台来搭建 Web 服务，一方面 Linux 平台较为简洁稳定，用于搭建 Web 服务的应用程序较多，能够满足绝大多数的应用平台，如使用较多的 Nginx、Tomcat、Apache 等 ，但仍有部分用户会使用 Windows 平台来搭建 Web 服务，本文将详细介绍如何在 Windows 平台使用 IIS 来搭建 Web 服务。
+
+== 步骤
+
+=== 准备工作
+
+参照文档：link:../iis/[Windows 云服务器安装 IIS Web 服务] 来安装 IIS 服务。
+
+=== 部署站点
+
+. 将 Web 站点文件放在磁盘目录下。本实例为 `D:\web\down`； 
+
+. 添加 IIS 站点，如下图：
++
+image::/images/cloud_service/compute/vm/bestp_IIS_WEB1.png[] 
+
+. 按照以上步骤完成启动后，即可通过绑定的域名来进行访问。
+
+=== 配置 https 访问
+
+. 导入证书。
++
+image::/images/cloud_service/compute/vm/bestp_IIS_WEB2.png[] 
++
+image::/images/cloud_service/compute/vm/bestp_IIS_WEB3.png[] 
+
+. 添加 https 类型网站绑定。
++
+image::/images/cloud_service/compute/vm/bestp_IIS_WEB4.png[]
+
+=== FAQ
+
+. IIS 如何配置跨域？
+
++
+添加 HTTP 响应标头，名称和值分别为：
++
+[cols="2*", options="header"]
+|===
+|名称
+|值
+
+|Access-Control-Allow-Origin
+|*
+
+|Access-Control-Allow-Methods
+|GET, POST, PUT, DELETE, OPTIONS
+
+|Access-Control-Allow-Headers
+|Content-Type
+|===
+
+. IIS 如何配置文件下载？
++
+添加对应文件的 MIME 类型，例如：
++
+[source,javascript]
+----
+.apk     值： application/vnd.android.package-archive
+.ipa     值： application/iphone-package-archive
+.mp4     值：application/mp4
+... ...
+----
+
+. 设置 IIS 目录权限
++
+如访问时出现 “权限不足”、“无权限” 等提示，需要配置网站目录权限，添加 IUSR 的用户访问权限。
++
+image::/images/cloud_service/compute/vm/bestp_IIS_WEB5.png[]

@@ -1,0 +1,71 @@
+---
+title: 获取warehouse维度信息（Boss2DescribeDimData）
+weight: 22
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeDimData
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取warehouse相关的维度信息。
+目前支持的维度：
+
+|===
+| table | 含义 | 备注
+
+| dim_industry_sale_type
+| 行业维度
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeDimData",
+  "table": "dim_industry_sale_type" // [必须]指定数据表
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeDimDataResponse",
+   "data": [
+      {
+         "industry_type_s_id": 911,
+         "industry_type_sale_name": "电商零售"
+      },
+      {
+         "industry_type_s_id": 912,
+         "industry_type_sale_name": "互联网金融"
+      }
+   ],
+   "elapsed_time": 0.001399993896484375,
+   "ret_code": 0,
+   "total_count": 22
+}
+----

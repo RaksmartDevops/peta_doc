@@ -1,0 +1,64 @@
+---
+title: 修改当前BOSS用户信息（Boss2ModifyCurrentUserAttributes）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyCurrentUserAttributes
+
+=== Method
+POST
+
+=== 接口描述
+修改当前登录用户信息，无需传入用户id
+该接口仍在完善中，会加入更多的配置项目。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyCurrentUserAttributes",
+    "username": "测试用户", // 修改用户名称，该名称为用户的真实名称，用于界面显示使用
+    "phone": "1111111", // 用户手机号
+    "lang": "en", // 修改用户语言，目前支持：zh-cn: 中文简体  en: 英文
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 8,
+   "ret_code": 0,
+   "action": "Boss2ModifyBossUserAttributesResponse"
+}
+----

@@ -1,0 +1,8 @@
+---
+title: 删除 IPv4 EIP
+weight: 50
+draft: false
+---
+:ipv4:
+
+include::../../../../../../_cloud_service/eip/delete.adoc[]

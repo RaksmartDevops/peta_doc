@@ -1,0 +1,388 @@
+---
+title: 计算节点基本信息（Boss2GetBotsBasicInfo）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetBotsBasicInfo
+
+=== Method
+POST
+
+=== 接口描述
+便捷接口，用于直接输出结项详情页中的数据。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| bots
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+|===
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| region_id
+| String
+| 地域 id
+|
+
+| bot_set
+| Array
+| 计算节点详情
+|
+
+| host_machine
+| String
+| 计算节点 id
+|
+
+| memory_used
+| Integer
+| 已占用的内存
+|
+
+| hyper_node_type
+| Integer
+| 节点类型
+| 0 - 计算 +
+1 - 网络
+
+| memory_max
+| Integer
+| 最大内存
+| 单位为MB
+
+| conntrack
+| Integer
+| 连接数
+|
+
+| mirror_node
+| String
+| 镜像节点
+|
+
+| total_memory
+| Integer
+| 内存总量
+|
+
+| vcpu_used
+| Integer
+| 已使用的虚拟 CPU
+|
+
+| virtual_disk
+| Integer
+| 虚拟磁盘
+|
+
+| place_groups
+| Array
+| 安置组详情数据
+|
+
+| cpu_si
+| Integer
+| CPU 软件中断
+|
+
+| rack
+| String
+| 机架
+|
+
+| bot_id
+| String
+| 计算节点 id
+|
+
+| ip
+| String
+| IP 地址
+|
+
+| vcpu_usage
+| Value
+| 虚拟 CPU 使用率
+|
+
+| cpu_cores
+| integer
+| cpu核心数
+|
+
+| cpu_total
+| Integer
+| CPU使用率总量，保持为100
+| cpu_used+cpu_idle应为100
+
+| cpu_used
+| Integer
+| CPU使用率
+|
+
+| cpu_idle
+| Integer
+| CPU空闲率
+|
+
+| cpu_usage
+| Integer
+| CPU使用率
+| cpu_used/cpu_total
+
+| real_memory_usage
+| Value
+| 物理内存：占用率
+| 已转化为百分比
+
+| used_memory
+| Integer
+| 虚拟内存：已分配
+| 单位MB
+
+| free_memory
+| Integer
+| 虚拟内存：空闲
+| 单位MB
+
+| memory_usage
+| Value
+| 虚拟内存：占用率
+| 已转化为百分比
+
+| used_disk
+| Value
+| 实际硬盘：已分配
+| 单位为GB
+
+| free_disk
+| Value
+| 实际硬盘：空闲
+| 单位为GB
+
+| disk_usage
+| Value
+| 实际硬盘：占用率
+| 已转化为百分比
+
+| total_virtual_disk
+| Integer
+| 虚拟磁盘：总量
+| 单位为GB +
+由物理磁盘总量与磁盘超卖比结合计算
+
+| used_virtual_disk
+| Integer
+| 虚拟硬盘：已分配
+| 单位为GB
+
+| free_virtual_disk
+| Integer
+| 虚拟硬盘：空闲
+| 单位为GB +
+由物理磁盘总量减去虚拟磁盘使用量得到
+
+| free_virtual_disk_2
+| Integer
+| 虚拟磁盘：空闲
+| 单位为GB +
+由虚拟磁盘总量减去虚拟磁盘使用量得到
+
+| virtual_disk_usage
+| Value
+| 虚拟硬盘：占用率
+| 已转化为百分比
+
+| instance_running
+| Integer
+| 运行中的主机数量
+|
+
+| instance_stopped
+| Integer
+| 已停止的主机数量
+|
+
+| instance_rate
+| Value
+| 主机使用率
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetBotsBasicInfo",
+    "zone": "test",
+    "bots": ["tr02n20"], // 指定一个或多个bot的id
+    "verbose": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2GetBotsBasicInfoResponse",
+   "total_count": 1,
+   "bot_set": [
+      {
+         "host_machine": "sr01n20",
+         "kernel": "4.15.0-44",
+         "total_memory": 115668,
+         "vcpu_used": 0,
+         "conntrack": 371,
+         "virtual_disk": 28701.600000000002,
+         "place_groups": [
+            {
+               "place_group_id": "plg-w0000000",
+               "place_group_name": "win sas group"
+            },
+            {
+               "place_group_id": "plg-w0000101",
+               "place_group_name": "win 101 instance"
+            },
+            {
+               "place_group_id": "plg-00000000",
+               "place_group_name": ""
+            },
+            {
+               "place_group_id": "plg-00000001",
+               "place_group_name": "ssd group"
+            },
+            {
+               "place_group_id": "plg-00000002",
+               "place_group_name": "sata group"
+            }
+         ],
+         "hyper_node_type": 0,
+         "local_images": [
+            "img-bxcqp56m",
+            "img-cqvntypp",
+            "img-oqcyzy89",
+            "img-owxq5shd"
+         ],
+         "free_disk": 881.31,
+         "memory_max": 126976,
+         "used_vcpu": 33,
+         "container_mode": "repl",
+         "has_brks": 0,
+         "used_memory": 26112,
+         "free_gpu": {
+            "0": 0
+         },
+         "hyper_node_id": "sr01n20",
+         "mirror_node": "sr01n21",
+         "architecture": "x86_64",
+         "cpu_cores": 16,
+         "free_memory": 89556,
+         "free_vcpu": 1567,
+         "cpu_idle": 87,
+         "cpu_models": 3,
+         "hyper_node_name": "",
+         "provider": "yunify",
+         "service_type": "compute",
+         "status_time": "2020-02-25T00:51:04Z",
+         "master_network": "10.12.11.0/24",
+         "vip_network": "172.31.11.0/24",
+         "memory_used": 0,
+         "real_used_memory": 23573,
+         "total_vcpu": 1600,
+         "free_sriov_nic": 0,
+         "vcpu_max": 128,
+         "used_disk": 40.94,
+         "running": 29,
+         "ssd_life_used": -1,
+         "remarks": "",
+         "sriov_nic_type": 0,
+         "box": "",
+         "total_sriov_nic": 0,
+         "qemu_system_x86_64_version": "4.0.0.2",
+         "total_gpu": {
+            "0": 0
+         },
+         "zone_id": "gamma",
+         "used_sriov_nic": 0,
+         "real_free_memory": 40687,
+         "used_gpu": {
+            "0": 0
+         },
+         "real_total_memory": 64260,
+         "cpu_wa": 0,
+         "ctn_util": 0,
+         "status": "active",
+         "second_monitor_node": "",
+         "cpu_si": 0,
+         "intel_iommu_on": false,
+         "place_group_ids": [
+            "plg-w0000000",
+            "plg-w0000101",
+            "plg-00000000",
+            "plg-00000001",
+            "plg-00000002"
+         ],
+         "flash_node": 1,
+         "rack": "",
+         "storage_max": 3000,
+         "bot_id": "sr01n20",
+         "ip": "172.31.11.52",
+         "vcpu_usage": 2.0625,
+         "cpu_total": 100,
+         "cpu_used": 13,
+         "cpu_usage": 13,
+         "memory_usage": 22.57495590828924,
+         "real_memory_usage": 36.6837846249611,
+         "disk_usage": 4.439143399295202,
+         "total_virtual_disk": 9222.5,
+         "used_virtual_disk": 28.028906250000002,
+         "free_virtual_disk": 894.22109375,
+         "free_virtual_disk_2": 9194.47109375,
+         "virtual_disk_usage": 3.039187449173218,
+         "instance_running": 29,
+         "instance_stopped": 1,
+         "instance_rate": 96.66666666666667,
+         "region_id": "staging"
+      }
+   ],
+   "ret_code": 0
+}
+----

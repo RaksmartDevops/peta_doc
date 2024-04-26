@@ -1,0 +1,49 @@
+---
+title: 删除镜像文件（Boss2RemoveV2VImage）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RemoveV2VImage
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2RemoveV2VImage",
+    "image_path": "/home/ubuntu/dirname/image",     // 镜像文件绝对路径
+    "zone": "v2vtest"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2RemoveV2VImageRepoResponse",
+   "owner": "boss",
+   "ret_code": 0,
+   "zone": "v2vtest"
+}
+----

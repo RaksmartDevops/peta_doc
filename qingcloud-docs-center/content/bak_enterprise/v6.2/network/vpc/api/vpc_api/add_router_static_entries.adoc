@@ -1,0 +1,87 @@
+---
+title: "AddRouterStaticEntries"
+description: 增加一条 VPC 网络规则条目。
+keywords: VPC,  VPC 网络, 路由规则
+weight: 22
+draft: false
+---
+增加一条 VPC 网络规则条目，比如 OpenVPN / PPTP 的账户信息或是隧道规则的网络地址。
+
+注意：在增加 VPC 网络规则条目后，你需要执行 link:../update_routers/[_UpdateRouters_] 才能使之生效。
+
+== 请求参数
+[cols="1,1,3,1"]
+|===
+| 参数 | 参数类型 | 描述 | 是否必选
+
+| router_static
+| String
+| 需要增加条目的 VPC 网络规则ID
+| Yes
+
+| entries.n.val1
+| String
+a|第n条规则的 val1 值，会根据规则类型的不同，代表不同含义：
+
+* OpenVPN / PPTP 账户信息：val1 表示账户名 
+* 三层 GRE 隧道：val1 表示目标网络 
+* 三层 IPsec 隧道：val1 表示本地网络 (val2 可为空)
+| Yes
+
+| entries.n.val2
+| String
+a|第n条规则的 val2 值，会根据规则类型的不同，代表不同含义： 
+
+* OpenVPN / PPTP 账户信息：val2 表示密码 
+* 三层 IPsec 隧道：val2 表示目标网络 (val1 可为空)
+| Yes
+
+| zone
+| String
+| 区域 ID，注意要小写
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 描述
+
+| action
+| String
+| 响应动作
+
+| router_static_entries
+| Array
+| 新增加的 VPC 网络规则条目ID列表
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+*请求示例：*
+[source]
+----
+https://api.qingcloud.com/iaas/?action=AddRouterStaticEntries
+&router_static=rtrs-hcnwdfwc
+&entries.1.val1=admin
+&entries.1.val2=passwOrd
+&COMMON_PARAMS
+----
+
+*返回示例：*
+[source]
+----
+{
+  "action":"AddRouterStaticEntriesResponse",
+  "ret_code":0,
+  "router_static_entries":[
+    "rse-hkzqquga"
+  ]
+}
+----

@@ -1,0 +1,32 @@
+//解绑 EIP
+
+当云资源不再需要 EIP 或需要更换 EIP 时，您可以将 EIP 与资源解除绑定。
+
+include::../../_components/note.adoc[]
+EIP 与云资源解绑后，并不会停止 EIP 收费，若您不再需要 EIP，可link:../delete/[删除 EIP]，删除后，将不再收取 EIP 的任何费用。
+include::../../_components/table_footer.adoc[]
+
+== 操作步骤
+
+ifdef::ipv4[]
+include::./common_operation.adoc/[tag=ipv4]
+endif::[]
+
+ifdef::ipv6[]
+include::./common_operation.adoc/[tag=ipv6]
+endif::[]
+
+. 在 EIP 列表，找到需要解绑 EIP，右键点击 EIP，在弹出的快捷菜单中，选择**解绑**。
+ifdef::ipv4[]
++
+image::/images/cloud_service/network/eip/unbind_ipv4.png[]
+endif::[]
+
+ifdef::ipv6[]
++
+image::/images/cloud_service/network/eip/unbind_ipv6.png[]
+endif::[]
+
+. 在弹出的提示框中，点击**确认**，等待解绑完成即可。
++
+解绑成功后，EIP 状态从``已分配``变为``可用``。

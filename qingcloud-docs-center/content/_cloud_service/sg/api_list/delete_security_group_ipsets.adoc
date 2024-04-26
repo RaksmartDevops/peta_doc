@@ -1,0 +1,71 @@
+
+// title: "DeleteSecurityGroupIPSets"
+
+删除一个或多个安全组IP/端口集合。
+
+IP/端口集合须在没有资源（安全组）使用的情况下才能被删除。 已加载到资源的IP/端口集合，需先将相关资源从安全组移出后才能被删除。
+
+== 请求参数
+
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| security_group_ipsets.n
+| String
+| ID
+| Yes
+
+| zone
+| String
+| 区域 ID，注意要小写
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作
+
+| security_group_ipsets
+| Array
+| 成功删除的ID列表
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+*请求示例*：
+
+[json]
+----
+https://api.qingcloud.com/iaas/?action=DeleteSecurityGroupIPSets
+&security_group_ipsets.1=sgi-inijevna
+&security_group_ipsets.2=sgi-o3msxqpp
+&zone=pek3a
+&COMMON_PARAMS
+----
+
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"DeleteSecurityGroupIPSetsResponse",
+  "security_group_ipsets":[
+    "sgi-inijevna",
+    "sgi-o3msxqpp"
+  ],
+  "ret_code":0
+}
+----
+

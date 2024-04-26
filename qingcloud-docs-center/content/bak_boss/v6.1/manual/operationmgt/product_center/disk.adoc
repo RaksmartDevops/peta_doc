@@ -1,0 +1,65 @@
+---
+title: "配置云硬盘"
+weight: 3
+---
+
+产品中心支持对云硬盘的配置操作。用户可在云硬盘配置页面，新增、删除或修改云硬盘类型，也可对云硬盘的相关参数进行修改、配置或删除。详细操作参考下文。
+
+
+== 新增云硬盘类型
+
+
+. 成功登录 BOSS。
+
+. 点击**运营管理** > **产品中心**，进入**产品目录管理**页面。
+
+. 在**产品目录管理**页面，点击**云平台** > **存储** > **云硬盘**，进入云硬盘配置页面。
++
+image::/images/boss/manual/operationmgt/product_disk_main.png[product_disk_main,100%]
+
+. 在云硬盘配置页面，点击**属性配置** > **硬盘类型** > **操作** > **编辑**。
++
+image::/images/boss/manual/operationmgt/product_disk_1.png[product_disk_1,90%]
+
+. 弹出**编辑属性**对话框，用户点击**新增属性值**，根据页面信息，填写相关字段后，点击**保存**。
++
+image::/images/boss/manual/operationmgt/product_disk_2.png[product_disk_2,80%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 上图中属性条目，可以拖拽调整顺序，从而调整在 Console 中的显示顺序。
+* 用户也可根据需求，删除或修改某属性值，点击**保存**。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在云硬盘配置页面，点击**取值关系** > **编辑**，将新增的云硬盘类型添加至目标 Zone。
++
+image::/images/boss/manual/operationmgt/product_disk_3.png[product_disk_3,90%]
+
+. 在云硬盘配置页面，点击**更新至 console**，完成云硬盘类型的新增。
+
+== 调整云硬盘 IOPS
+
+. 成功登录 BOSS。
+
+. 点击**运营管理 > 产品中心**，进入**产品目录管理**页面。
+
+. 在**产品目录管理**页面，点击**云平台** > **存储** > **云硬盘**，进入云硬盘配置页面。
++
+image::/images/boss/manual/operationmgt/product_disk_main.png[product_disk_main,100%]
+
+. 在云硬盘配置页面，点击**云硬盘类型参数管理**后，选择目标云硬盘类型，点击**操作** > **修改**。
++
+image::/images/boss/manual/operationmgt/product_disk_4.png[product_disk_4,90%]
+
+. 进入**修改云硬盘类型参数**页面，用户根据需求，调整 IOPS 与吞吐参数，点击**保存**。
++
+image::/images/boss/manual/operationmgt/product_disk_5.png[product_disk_5,90%]
+
+. 如上图所示，点击**对应 console 界面**，可显示当前 IOPS 的调整，对 Console 上的显示的影响。
++
+image::/images/boss/manual/operationmgt/product_disk_6.png[product_disk_6,90%]
+
+
+. 在云硬盘配置页面，点击**更新至 console**，完成云硬盘参数的调整。

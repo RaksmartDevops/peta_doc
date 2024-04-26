@@ -1,0 +1,345 @@
+---
+title: 获取服务器配置（Boss2DescribeV2VConfig）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeV2VConfig
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+返回的数据中，目前明确有用的是 v2v_dirs，是镜像路径列表。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| owner
+| String
+| 资源所有者
+|
+
+| v2v_set
+| Array
+| 服务器配置信息
+|
+
+| block_bus
+| Array
+| 块总线
+|
+
+| cpu_type
+| Array
+| cpu 类型
+|
+
+| features
+| Array
+| 特性标识码
+|
+
+| instance_class
+| Array
+| 主机类型列表
+|
+
+| memory_type
+| Array
+| 内存类型列表
+|
+
+| net_drive
+| Array
+| 网络驱动
+|
+
+| os_family
+| Array
+| 操作系统类型
+|
+
+| v2v_dirs
+| Array
+| v2v 目录
+|
+
+| vxnets
+| Array
+| 私有网络详情数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VConfig",
+   "zone": "test"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeV2VConfigResponse",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "block_bus": [
+            "hd",
+            "vd",
+            "sd"
+         ],
+         "cpu_type": [
+            1,
+            2,
+            4,
+            8,
+            12,
+            16,
+            24,
+            32
+         ],
+         "features": [
+            4,
+            7,
+            0
+         ],
+         "instance_class": [
+            0,
+            1
+         ],
+         "memory_type": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32
+         ],
+         "net_drive": [
+            "e1000",
+            "virtio"
+         ],
+         "os_family": [
+            "windows",
+            "centos",
+            "debian",
+            "ubuntu",
+            "suse",
+            "redhat"
+         ],
+         "v2v_dirs": [
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-ivnzws2c"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-cmscz1yf"
+            },
+            {
+               "dir_desc": "abcd",
+               "dir_name": "/home/ubuntu/rep-ze8yt09v"
+            },
+            {
+               "dir_desc": "abcd",
+               "dir_name": "/home/ubuntu/rep-0zsvuwra"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-taljh9ab"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-ns3ihs1m"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-gi9vo8se"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-n1y55c05"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-y7381nfx"
+            },
+            {
+               "dir_desc": "adasdsadsadasdsd\n",
+               "dir_name": "/home/ubuntu/app01"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-tq1aep8h"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-1s9edx17"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-hkmlf1mk"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-mxpbgmmz"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-3cj01pa1"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-xh6ovrd1"
+            },
+            {
+               "dir_desc": "abcd",
+               "dir_name": "/home/ubuntu/rep-3qpcnzl8"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-m9hr6qu2"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/-td2076os"
+            },
+            {
+               "dir_desc": "invoker_test1",
+               "dir_name": "/home/ubuntu/rep-j2ubfapq"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/app02"
+            },
+            {
+               "dir_desc": "abcd",
+               "dir_name": "/home/ubuntu/rep-uxjdygwn"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-kzbk9kt3"
+            },
+            {
+               "dir_desc": "abc",
+               "dir_name": "/home/ubuntu/rep-cz2fx1uj"
+            },
+            {
+               "dir_desc": "",
+               "dir_name": "/home/ubuntu/rep-dlykr65h"
+            }
+         ],
+         "vxnets": [
+            {
+               "ip_network": "10.73.32.0/22",
+               "vxnet_id": "vxnet-5say623"
+            },
+            {
+               "ip_network": "10.73.23.0/24",
+               "vxnet_id": "vxnet-dyb7mvy"
+            },
+            {
+               "ip_network": "10.73.20.0/24",
+               "vxnet_id": "vxnet-r0ipqho"
+            },
+            {
+               "ip_network": "192.168.12.0/24",
+               "vxnet_id": "vxnet-bok16me"
+            },
+            {
+               "ip_network": "10.73.18.0/24",
+               "vxnet_id": "vxnet-z6s3xfr"
+            },
+            {
+               "ip_network": "10.73.25.0/24",
+               "vxnet_id": "vxnet-u0yt0gh"
+            },
+            {
+               "ip_network": "10.73.13.0/24",
+               "vxnet_id": "vxnet-pyb2w83"
+            },
+            {
+               "ip_network": "123.123.201.99/24",
+               "vxnet_id": "vxnet-n0hck5x"
+            },
+            {
+               "ip_network": "192.168.11.0/24",
+               "vxnet_id": "vxnet-qqavyyk"
+            },
+            {
+               "ip_network": "10.73.15.0/24",
+               "vxnet_id": "vxnet-j8cm5t8"
+            },
+            {
+               "ip_network": "10.73.24.0/24",
+               "vxnet_id": "vxnet-ytrqexk"
+            },
+            {
+               "ip_network": "10.73.16.0/24",
+               "vxnet_id": "vxnet-7xw2nmt"
+            },
+            {
+               "ip_network": "10.73.17.0/24",
+               "vxnet_id": "vxnet-8oqt3al"
+            },
+            {
+               "ip_network": "10.73.19.0/24",
+               "vxnet_id": "vxnet-f0ibzjx"
+            },
+            {
+               "ip_network": "192.168.10.0/24",
+               "vxnet_id": "vxnet-zv5hwka"
+            },
+            {
+               "ip_network": "10.73.11.0/24",
+               "vxnet_id": "vxnet-bl3engt"
+            },
+            {
+               "ip_network": "10.73.12.0/24",
+               "vxnet_id": "vxnet-52qr3zq"
+            },
+            {
+               "ip_network": "192.168.12.0/24",
+               "vxnet_id": "vxnet-wmger63"
+            },
+            {
+               "ip_network": "10.73.29.0/24",
+               "vxnet_id": "vxnet-rc1gbbr"
+            },
+            {
+               "ip_network": "10.73.20.0/24",
+               "vxnet_id": "vxnet-nt7ovnp"
+            }
+         ]
+      }
+   ],
+   "zone": "v2vtest"
+}
+----

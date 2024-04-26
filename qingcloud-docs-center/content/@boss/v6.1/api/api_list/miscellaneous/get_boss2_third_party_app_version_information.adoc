@@ -1,0 +1,158 @@
+---
+title: 获取BOSS2第三方app版本信息（Boss2GetThirdPartyAppVersion）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetThirdPartyAppVersion
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于返回BOSS2第三方app的版本信息。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| app
+| 应用名称id
+|
+
+| build_time
+| 构建时间
+|
+
+| build_info
+| 构建信息
+|
+
+| commit
+| 代码提交信息
+|
+
+| branch
+| 版本
+|
+
+| tag
+| 补丁版本
+|
+
+| verbose
+| 应用名称
+| 提供可读性更好的格式
+
+| help
+| 功能描述
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetThirdPartyAppVersion"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "version_set": [
+      {
+         "app": "crm_leads",
+         "build_time": null,
+         "build_info": null,
+         "commit": null,
+         "branch": null,
+         "tag": null,
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "holmes",
+         "build_time": null,
+         "build_info": null,
+         "commit": null,
+         "branch": null,
+         "tag": null,
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "productcenter",
+         "build_time": "20221108",
+         "build_info": "buildinfo",
+         "commit": "buildcommit",
+         "branch": "release_20220630",
+         "tag": "20220630_20221112",
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "appcenter",
+         "build_time": null,
+         "build_info": null,
+         "commit": null,
+         "branch": null,
+         "tag": null,
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "icp",
+         "build_time": "20221108",
+         "build_info": "buildinfo",
+         "commit": "buildcommit",
+         "branch": "release_20220630",
+         "tag": "20220630_20221112",
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "grafanaboard",
+         "build_time": "20221108",
+         "build_info": "buildinfo",
+         "commit": "buildcommit",
+         "branch": "release_20220630",
+         "tag": "20220630_20221112",
+         "verbose": null,
+         "help": null
+      },
+      {
+         "app": "cloudmarket",
+         "build_time": "20221110_090251",
+         "build_info": "jenkins-pitrix-boss2-console-subProject-testing-pipeline-149",
+         "commit": "3f58550865b101d66995f441f4a0a58f694c17f7",
+         "branch": "origin/testing",
+         "tag": null,
+         "verbose": null,
+         "help": null
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetThirdPartyAppVersionResponse"
+}
+----

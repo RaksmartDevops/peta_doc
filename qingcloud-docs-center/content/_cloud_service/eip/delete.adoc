@@ -1,0 +1,43 @@
+//删除 EIP
+
+若您不再使用 EIP 时，可在控制台将其删除，删除后将不再收取 EIP 的任何费用。
+
+include::../../_components/attention.adoc[]
+EIP 一旦删除将无法恢复，对于正在备案或已经备案成功的 EIP，请不要轻易删除。
+include::../../_components/table_footer.adoc[]
+
+== 前提条件
+
+* EIP 未被绑定，若为``已分配``状态，需要先link:../unbind/[解绑 EIP]。
+* 待删除的 EIP 为手动申请的 EIP。
++
+include::../../_components/note.adoc[]
+云服务器在私网内分配得到的 IPv6 地址接入公网后，不支持直接删除，将 IPv6 断开公网，便可从**公网 IPv6** 页面移除，并停止公网 IPv6 计费。
+include::../../_components/table_footer.adoc[]
+
+
+== 操作步骤
+
+ifdef::ipv4[]
+include::./common_operation.adoc/[tag=ipv4]
+endif::[]
+
+ifdef::ipv6[]
+include::./common_operation.adoc/[tag=ipv6]
+endif::[]
+
+. 在 EIP 列表，右键点击需要删除的 EIP，在弹出的快捷菜单中，选择**删除**。
++
+如果您需要批量删除多个 EIP，请在列表勾选 EIP，然后点击**更多操作** > **删除**。
+ifdef::ipv4[]
++
+image::/images/cloud_service/network/eip/delete_ipv4.png[]
+endif::[]
+
+ifdef::ipv6[]
++
+image::/images/cloud_service/network/eip/delete_ipv6.png[]
+endif::[]
+
+. 在弹出的提示框中，点击**确认**，完成删除。
+

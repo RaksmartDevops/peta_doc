@@ -1,0 +1,85 @@
+---
+title: "Zabbix 监控服务 "
+description: 本小节主要介绍如何管理 Redis Standalone 的 zabbix 监控服务。
+keywords: zabbix 客户端,Zabbix 监控服务,监控服务
+weight: 50
+collapsible: false
+draft: false
+---
+为了实现多维监控数据库，Redis Standalone 集成 zabbix_agent2 客户端，支持启用 Zabbix 5.4 提供监控服务。
+
+本小节主要介绍如何启动和关闭 Zabbix 监控服务。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* 已创建 Redis Standalone 集群，且集群状态为``活跃``。
+* 已安装 Zabbix 5.4 客户端，且获取 Zabbix 系统用户和密码。
+
+include::../../../../../../_components/attention.adoc[]
+
+安装 Zabbix 的服务器与 Redis 之间的网络通畅。
+
+若安装 Zabbix 的服务器与 Redis 网络不通，可通过link:../../../../../network/border_router/[边界路由器]或 link:../../../../../network/vpc/manual/vpn/vpn_intro[VPN] 等方式打通网络。不建议通过**端口转发**的方式将服务暴露到公网，以免造成 Redis 关键信息暴露等风险。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+== 启动 Zabbix 监控服务
+
+启动 Zabbix 监控服务，需先在集群**配置参数**中启用服务，再在 Zabbix 客户端配置数据库相应参数，才能正常使用 Zabbix 监控。
+
+=== 开启 Zabbix 服务
+
+. 登录管理控制台。
+. 选择**产品与服务** > *数据库与缓存* > *键值数据库 Redis Standalone*，进入集群管理页面。
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
+. 在**配置参数**页签，选择**公共参数**，点击**修改属性**。
+. 设置**Enable zabbix**参数值为``true``。
++
+可设置 Zabbix 服务 *zabbix server* 和 *named-sessions*。
+
+. 点击**保存**，确认启用服务。
++
+image::/images/cloud_service/database/redis_standalone/enable_zabbix_agent.png[启动 Zabbix 客户端服务]
+
+=== 配置 Zabbix 监控
+
+. 使用浏览器，登录 Zabbix Server 的 Web 界面。
+. 选择 *配置* > *主机*，进入主机管理页面。
+. 点击 *创建主机*，进入主机配置页面。
+. 在**主机**页签，配置 Redis 的 zabbix_agent 为监控主机。
++
+* *主机名称* 自定义主机名称
+* *群组* 选择 `Zabbix servers` 模版类型
+* *Interfaces* 的 *IP address* 配置为集群 **zabbix server**参数值
+* *Interfaces* 的 *端口* 选配置为集群 Zabbix 服务端口，默认为 `10050`
++
+image::/images/cloud_service/database/redis_standalone/zabbix_create_host.png[创建 Host]
+
+. 在**模版**页签，选择 `Redis by Zabbix agent 2` 模版。
++
+image::/images/cloud_service/database/redis_standalone/zabbix_temp.png[选择模版]
+
+. 在**宏**页签，配置**主机宏**参数。
++
+*{$REDIS.CONN.URI}* 配置为集群 *named-sessions* 参数值
++
+image::/images/cloud_service/database/redis_standalone/zabbix_session.png[配置主机宏]
+
+. 点击**添加**，创建主机。
++
+待主机采集状态正常后（*状态* 为 `已启用`），即可查看采集的最新数据和监控图。
++
+更多 Zabbix 的使用方法，请参见 https://www.zabbix.com/documentation/5.4/zh[Zabbix]。
+
+== 关闭 Zabbix 服务
+
+若无需 Zabbix 监控服务时，可在集群配置参数中确认关闭服务。
+
+. 登录管理控制台。
+. 选择**产品与服务** > *数据库与缓存* > *键值数据库 Redis Standalone*，进入集群管理页面。
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
+. 在**配置参数**页签，选择**公共参数**，点击**修改属性**。
+. 设置**Enable zabbix**参数值为``false``，确认关闭服务。
+. 点击**保存**，关闭服务。

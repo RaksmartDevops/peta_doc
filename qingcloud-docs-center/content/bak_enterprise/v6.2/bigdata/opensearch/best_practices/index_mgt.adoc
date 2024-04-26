@@ -1,0 +1,150 @@
+---
+title: "运用 Index Management 自动清理旧索引"
+description: 本小节主要介绍运用 Index Management 自动清理旧索引。
+keywords: 搜索分析,索引分层,索引分层存储
+weight: 15
+collapsible: false
+draft: false
+---
+
+== 背景介绍
+
+在使用 OpenSearch 接收并保存日志型数据时，超过半年或1年以上的日志可能已经过时，不再使用。可运用 OpenSearch 提供的 *Index Management* 功能，自动清理旧索引。
+
+*Index Management* 功能是管理集群的索引、数据流和索引模板的简便方法。运用合理的索引策略，可实现索引的自动清理、数据热-温-冷自动迁移、自动备份、force merge、rollover、rollup、close、open、delete 等功能，以确保您的数据以尽可能最具成本效益的方式正确存储。
+
+本文将以实验形式，通过配置合理的 *Index Management* 策略，实现索引的自动清理。
+
+== 前提条件
+
+已获取管理控制台登录账号和密码，且已获取集群操作权限。
+
+== 步骤 1：准备实验环境
+
+在 AppCenter 按照以下规格创建一个 OpenSearch 集群，快速配置中选择**预生产环境**，详细操作请参见link:../../quickstart/create_cluster/[创建 OpenSearch 集群]。
+
+|===
+| 节点角色 | 节点规格 | 节点数量
+
+| 专有主节点
+| 2c4g，10G
+| 1
+
+| 热节点
+| 2c4g，60G
+| 2
+
+| dashboard节点
+| 2c4g
+| 1
+
+| logstash节点
+| 2c4g，10G
+| 1
+|===
+
+image::/images/cloud_service/bigdata/opensearch/index_mgt_01.png[创建集群]
+
+== 步骤 2：创建索引策略
+
+. 浏览器登录 Dashboard，详细操作请参见link:../../os_manual/dashboard/dashboard_login/[访问 Dashboard]。
+. 选择  *OpenSearch Plugins* > *Index Management*，进入 *Index Management* 界面。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_02.png[Index管理界面]
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_03.png[Index管理界面]
+
+. 点击 *Create policy*，勾选 *Visual editor*，表示使用可视化编辑器。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_04.png[可视化界面]
+
+. 点击 *Continue*，设置策略 ID，参数配置完成后点击 *Create*。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_05.png[设置策略 ID]
+
+. 点击策略 ID，进入详情页面，点击 *Edit*，编辑页面。
+. 在 *ISM templates* 区域创建索引模板（为特定索引自动应用策略）。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_06.png[创建索引模板]
+
+. 为形如 mytest-* 的索引应用策略
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_07.png[应用策略]
+
+. 在 *States* 区域点击删除图标删除已有的示例 state。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_08.png[删除示例]
+
+. 点击 *Add state*。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_09.png[设置]
+
+ ** 设置 normal_state。
+  *** *Action*：设置为空。
+  *** *Transitions* 的 *Condition*（条件）设置为 Minimum index age is 10m（索引创建时间不小于 10 分钟），Destination State（目标状态）设置为 无。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_10.png[normal_state]
+ ** 设置 delete_state，*Action* 设置为 Delete。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_11.png[delete_state]
+
+. 点击state 所在行编辑图标，修改 normal_state。
+ ** Action：无
+ ** *Transitions* 的 *Condition*（条件）设置为 Minimum index age is 10m（索引创建时间不小于 10 分钟），Destination State（目标状态）设置为 delete_state。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_12.png[修改]
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_13.png[删除示例]
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_14.png[删除示例]
+. 修改完成后，点击 *Update*。
+. 参照以上步骤创建索引策略。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_15.png[创建索引]
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_16.png[创建索引策略]
+
+== 步骤 3：创建测试索引
+
+. 选择 *Management* > *Dev Tools*。
+. 输入以下命令，创建索引 mytest-01。
++
+[source]
+----
+PUT /mytest-01
+----
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_17.png[删除示例]
+
+. 输入以下命令确认索引已创建。
++
+[source]
+----
+GET _cat/indices
+----
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_18.png[删除示例]
+
+== 步骤 4：验证索引策略生效
+
+. 选择 **OpenSearch Plugins** > **Index Management**，进入 *Index Management* 界面。
+. 点击 *Managed Indices*，在纳管的索引列表中查看索引。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_19.png[删除示例]
+
+. 等待10分钟观察索引被自动清理，索引策略初始化成功后，索引所处状态：normal_state
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_20.png[删除示例]
+
+. 十分钟后，策略开始执行动作。
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_21.png[删除示例]
+. 选择 *Management* > *Dev Tools*。
+. 执行以下命令，再次查看索引，确认索引 mytest-01 被删除
++
+[source]
+----
+GET _cat/indices
+----
++
+image::/images/cloud_service/bigdata/opensearch/index_mgt_22.png[删除示例]

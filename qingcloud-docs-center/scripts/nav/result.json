@@ -1,0 +1,646 @@
+[
+  {
+    "name": "computing",
+    "zh": "计算",
+    "children": [
+      {
+        "name": "instances",
+        "dir_name": "compute/vm",
+        "zh": "云服务器"
+      },
+      {
+        "name": "images",
+        "dir_name": "compute/image",
+        "zh": "镜像"
+      },
+      {
+        "name": "keypairs",
+        "dir_name": "compute/ssh",
+        "zh": "SSH 密钥"
+      }
+    ]
+  },
+  {
+    "name": "networks",
+    "zh": "网络",
+    "children": [
+      {
+        "name": "routers",
+        "dir_name": "network/vpc",
+        "zh": "VPC 网络"
+      },
+      {
+        "name": "loadbalancers",
+        "dir_name": "network/loadbalancer",
+        "zh": "负载均衡器"
+      },
+      {
+        "name": "eips",
+        "dir_name": "eip",
+        "zh": "公网 IP"
+      },
+      {
+        "name": "nat",
+        "dir_name": "nat_gateway",
+        "zh": "NAT 网关"
+      },
+      {
+        "name": "intranet_routers",
+        "dir_name": "border_router",
+        "zh": "边界路由器"
+      },
+      {
+        "name": "cdn_service",
+        "zh": "内容分发网络（CDN）",
+        "dir_name": "network/cdn"
+      }
+    ]
+  },
+  {
+    "name": "storage",
+    "zh": "存储",
+    "children": [
+      {
+        "name": "volumes",
+        "dir_name": "disk",
+        "zh": "硬盘"
+      },
+      {
+        "name": "shared_storage",
+        "dir_name": "share",
+        "zh": "共享存储"
+      },
+      {
+        "name": "snapshots",
+        "dir_name": "backup",
+        "zh": "备份"
+      },
+      {
+        "name": "vnas",
+        "zh": "文件存储 vNAS",
+        "dir_name": "storage/vnas"
+      },
+      {
+        "name": "qingstor",
+        "zh": "对象存储",
+        "dir_name": "storage/object-storage"
+      }
+    ]
+  },
+  {
+    "name": "security",
+    "zh": "安全",
+    "children": [
+      {
+        "name": "security_groups",
+        "dir_name": "security_group",
+        "zh": "安全组"
+      },
+      {
+        "name": "waf",
+        "dir_name": "waf",
+        "zh": "Web 应用防火墙"
+      },
+      {
+        "name": "network_access_control",
+        "dir_name": "acl",
+        "zh": "网络访问控制"
+      },
+      {
+        "name": "kms",
+        "dir_name": "key_management_service",
+        "zh": "密钥管理服务"
+      },
+      {
+        "name": "cfw",
+        "dir_name": "firewall",
+        "zh": "云防火墙"
+      },
+      {
+        "name": "ssl_certificate",
+        "zh": "SSL 证书服务",
+        "dir_name": "site/ssl"
+      },
+      {
+        "name": "ddosip",
+        "zh": "高防 IP",
+        "dir_name": "security/antiddos_ip"
+      }
+    ]
+  },
+  {
+    "name": "sdwan",
+    "zh": "SD WAN",
+    "children": [
+      {
+        "name": "wan_nets",
+        "dir_name": "sdwan",
+        "zh": "SD-WAN（旧版）"
+      },
+      {
+        "name": "wan_cpes",
+        "dir_name": "light-box",
+        "zh": "光盒"
+      },
+      {
+        "name": "sdwan",
+        "zh": "SD-WAN（新版）",
+        "dir_name": "sd-wan/sdwan_new"
+      }
+    ]
+  },
+  {
+    "name": "resource_management",
+    "zh": "资源",
+    "children": [
+      {
+        "name": "quota",
+        "dir_name": "operation/resource/manual/quota/view_quota",
+        "zh": "我的配额"
+      }
+    ]
+  },
+  {
+    "name": "shares",
+    "zh": "共享",
+    "icon": "backup-shared",
+    "children": [
+      {
+        "name": "shares",
+        "zh": "共享",
+        "dir_name": "operation/resource/manual/resource_share"
+      },
+      {
+        "name": "myShare",
+        "dir_name": "operation/resource/manual/resource_share",
+        "zh": "我的共享"
+      },
+      {
+        "name": "shareToMe",
+        "dir_name": "operation/resource/manual/resource_share",
+        "zh": "共享给我"
+      }
+    ]
+  },
+  {
+    "name": "docker_images",
+    "zh": "Docker 镜像仓库",
+    "children": [
+      {
+        "name": "docker_images/docker_repos",
+        "dir_name": "container/dockerhub/manual/images_repo",
+        "zh": "镜像仓库"
+      },
+      {
+        "name": "docker_images/docker_namespaces",
+        "dir_name": "container/dockerhub/manual/mge_namespace",
+        "zh": "命名空间"
+      },
+      {
+        "name": "docker_images/docker_users",
+        "dir_name": "container/dockerhub/manual/user_manage",
+        "zh": "用户管理"
+      }
+    ]
+  },
+  {
+    "name": "cloud_stat",
+    "zh": "云监控 CloudSat",
+    "children": [
+      {
+        "name": "cloud_stat",
+        "zh": "云监控 CloudSat",
+        "dir_name": "monitor_service/cloudsat"
+      },
+      {
+        "name": "monitoring_overview",
+        "dir_name": "monitor_service/cloudsat/manual/monitoring_overview",
+        "zh": "监控概览"
+      },
+      {
+        "name": "monitors",
+        "dir_name": "monitor_service/cloudsat/manual/dashboard",
+        "zh": "Dashboard"
+      },
+      {
+        "name": "resource_groups",
+        "dir_name": "monitor_service/cloudsat/manual/group_management",
+        "zh": "分组管理"
+      },
+      {
+        "name": "events",
+        "dir_name": "monitor_service/cloudsat/manual/event_monitor",
+        "zh": "事件监控"
+      },
+      {
+        "name": "alarms",
+        "dir_name": "monitor_service/cloudsat/manual/alarm_service",
+        "zh": "告警服务"
+      },
+      {
+        "name": "custom_monitoring",
+        "dir_name": "monitor_service/cloudsat/manual/custom_monitor",
+        "zh": "自定义监控"
+      }
+    ]
+  },
+  {
+    "name": "management",
+    "zh": "运维与管理",
+    "children": [
+      {
+        "name": "tags",
+        "dir_name": "operation/tools/manual/label",
+        "zh": "标签"
+      },
+      {
+        "name": "schedulers",
+        "dir_name": "operation/tools/manual/scheduler",
+        "zh": "定时器"
+      },
+      {
+        "name": "activities",
+        "dir_name": "operation/tools/manual/activity",
+        "zh": "操作日志"
+      },
+      {
+        "name": "recyclebin",
+        "dir_name": "operation/tools/manual/recycle_bin",
+        "zh": "回收站"
+      },
+      {
+        "name": "autoscaling",
+        "zh": "自动伸缩",
+        "dir_name": "operation/autoscaling"
+      },
+      {
+        "name": "topology",
+        "zh": "资源编排",
+        "dir_name": "operation/topology"
+      }
+    ]
+  },
+  {
+    "name": "appcenter",
+    "zh": "APPcenter",
+    "children": [
+      {
+        "name": "apps",
+        "dir_name": "appcenter/app_center",
+        "zh": "应用中心"
+      },
+      {
+        "name": "app_mgmt",
+        "dir_name": "appcenter/app_center/manual/30_mgmt_app",
+        "zh": "应用管理"
+      },
+      {
+        "name": "clusters",
+        "dir_name": "appcenter/app_center/manual/40_mgmt_cluster",
+        "zh": "集群管理"
+      }
+    ]
+  },
+  {
+    "name": "database",
+    "zh": "数据库与缓存",
+    "children": [
+      {
+        "name": "app-00r26u27",
+        "dir_name": "database/mysql",
+        "zh": "关系型数据库 MySQL Plus"
+      },
+      {
+        "name": "app-gtusp816",
+        "dir_name": "database/postgresql",
+        "zh": "关系型数据库 PostgreSQL"
+      },
+      {
+        "name": "app-x87yr57g",
+        "dir_name": "database/radondb",
+        "zh": "分布式数据库 RadonDB"
+      },
+      {
+        "name": "app-72yzfivw",
+        "dir_name": "database/polondb",
+        "zh": "分布式数据库 PolonDB"
+      },
+      {
+        "name": "app-0jcy7q9u",
+        "dir_name": "database/chronusdb",
+        "zh": "时序数据库 ChronusDB"
+      },
+      {
+        "name": "app-o1rl71en",
+        "dir_name": "database/mongodb",
+        "zh": "文档数据库 MongoDB"
+      },
+      {
+        "name": "app-2a5k5lx6",
+        "dir_name": "database/mongodb",
+        "zh": "文档数据库 MongoDB Cluster"
+      },
+      {
+        "name": "app-zydumbxo",
+        "dir_name": "database/redis_standalone",
+        "zh": "键值数据库 Redis Standalone"
+      },
+      {
+        "name": "app-y6i338bf",
+        "dir_name": "database/redis_cluster",
+        "zh": "键值数据库 Redis Cluster"
+      },
+      {
+        "name": "app-xsrhlw0l",
+        "dir_name": "database/memcached",
+        "zh": "键值数据库 Memcached"
+      }
+    ]
+  },
+  {
+    "name": "middleware",
+    "zh": "消息队列与中间件",
+    "children": [
+      {
+        "name": "app-n9ro0xcp",
+        "dir_name": "middware/kafka",
+        "zh": "Kafka 服务"
+      },
+      {
+        "name": "app-n28v5lhg",
+        "dir_name": "middware/rabbitmq",
+        "zh": "RabbitMQ 服务"
+      },
+      {
+        "name": "app-j8lnxify",
+        "dir_name": "middware/rocketmq",
+        "zh": "RocketMQ 服务"
+      },
+      {
+        "name": "app-fdyvu2wk",
+        "dir_name": "middware/etcd",
+        "zh": "Etcd 服务"
+      }
+    ]
+  },
+  {
+    "name": "analytics",
+    "zh": "大数据服务",
+    "children": [
+      {
+        "name": "analytics",
+        "zh": "大数据服务",
+        "dir_name": "bigdata"
+      },
+      {
+        "name": "app-6iuoe9qs",
+        "dir_name": "bigdata/qingmr",
+        "zh": "QingMR 服务"
+      },
+      {
+        "name": "app-p6au3oyq",
+        "dir_name": "bigdata/elk",
+        "zh": "ELK 服务"
+      },
+      {
+        "name": "app-vfq8tq2k",
+        "dir_name": "bigdata/opensearch",
+        "zh": "OpenSearch 服务"
+      },
+      {
+        "name": "app-3k61fkmg",
+        "dir_name": "bigdata/hbase",
+        "zh": "HBase 服务"
+      },
+      {
+        "name": "app-tg3lbp0a",
+        "dir_name": "bigdata/zookeeper",
+        "zh": "ZooKeeper 服务"
+      },
+      {
+        "name": "app-66xhycwj",
+        "dir_name": "bigdata/kyligence",
+        "zh": "Kyligence 服务"
+      },
+      {
+        "name": "dataomnis",
+        "zh": "大数据工作台",
+        "dir_name": "bigdata/dataomnis/"
+      }
+    ]
+  },
+  {
+    "name": "datahouse",
+    "zh": "数据仓库与 BI",
+    "children": [
+      {
+        "name": "datahouse",
+        "zh": "数据仓库与 BI",
+        "dir_name": "dwh_bi"
+      },
+      {
+        "name": "app-jsyrsk15",
+        "dir_name": "dwh_bi/clickhouse",
+        "zh": "ClickHouse "
+      },
+      {
+        "name": "app-iwacxg9z",
+        "dir_name": "dwh_bi/hashdata",
+        "zh": "HashData"
+      }
+    ]
+  },
+  {
+    "name": "iam",
+    "zh": "访问鉴权管理",
+    "children": [
+      {
+        "name": "iam",
+        "zh": "访问鉴权管理",
+        "dir_name": "authorization/iam"
+      },
+      {
+        "name": "iam/roles",
+        "dir_name": "authorization/iam/manual/role",
+        "zh": "身份管理"
+      },
+      {
+        "name": "iam/policies",
+        "dir_name": "authorization/iam/manual/policy",
+        "zh": "策略管理"
+      },
+      {
+        "name": "iam/portal/users",
+        "dir_name": "authorization/iam/manual/user",
+        "zh": "用户管理"
+      },
+      {
+        "name": "iam/activity",
+        "dir_name": "authorization/iam/manual/log",
+        "zh": "操作日志"
+      }
+    ]
+  },
+  {
+    "name": "cfw",
+    "zh": "云防火墙",
+    "icon": "firewall",
+    "children": [
+      {
+        "name": "cfw",
+        "zh": "云防火墙",
+        "dir_name": "security/firewall"
+      },
+      {
+        "name": "overview",
+        "dir_name": "security/firewall/manual/checkdata",
+        "zh": "业务系统资产"
+      },
+      {
+        "name": "defense_policy",
+        "dir_name": "security/firewall/manual/attck_protect",
+        "zh": "入侵防御策略"
+      },
+      {
+        "name": "traffic_policy",
+        "dir_name": "security/firewall/manual/flow",
+        "zh": "流量控制策略"
+      },
+      {
+        "name": "black_white_list",
+        "dir_name": "security/firewall/manual/black_white_list",
+        "zh": "黑白名单"
+      }
+    ]
+  },
+  {
+    "name": "demand",
+    "zh": "云点播",
+    "icon": "demand",
+    "children": [
+      {
+        "name": "demand",
+        "zh": "云点播",
+        "dir_name": "audio_and_video/vod"
+      },
+      {
+        "name": "management",
+        "dir_name": "audio_and_video/vod/um/mgmt_video",
+        "zh": "音视频管理"
+      }
+    ]
+  },
+  {
+    "name": "apig",
+    "zh": "API 网关",
+    "icon": "gateway",
+    "children": [
+      {
+        "name": "apig",
+        "zh": "API 网关",
+        "dir_name": "middware/api_gateway"
+      },
+      {
+        "name": "plugin_manage",
+        "dir_name": "middware/api_gateway/manual/plugin_manage",
+        "zh": "插件管理"
+      },
+      {
+        "name": "secretkey",
+        "dir_name": "middware/api_gateway/manual/secretkey",
+        "zh": "密钥管理"
+      },
+      {
+        "name": "httpscert",
+        "dir_name": "middware/api_gateway/manual/ssl",
+        "zh": "SSL 证书"
+      }
+    ]
+  },
+  {
+    "name": "srp",
+    "zh": "安全资源池",
+    "children": [
+      {
+        "name": "srp",
+        "zh": "安全资源池",
+        "dir_name": "security/srp"
+      },
+      {
+        "name": "ahvlog",
+        "dir_name": "security/srp/ahvlog",
+        "zh": "日志审计"
+      },
+      {
+        "name": "ahvwaf",
+        "dir_name": "security/srp/ahvwaf"
+      },
+      {
+        "name": "ahvusm",
+        "dir_name": "security/srp/ahvusm"
+      },
+      {
+        "name": "ahvras",
+        "dir_name": "security/srp/ahvras"
+      },
+      {
+        "name": "ahvdb",
+        "dir_name": "security/srp/ahvdb"
+      }
+    ]
+  },
+  {
+    "name": "hpc",
+    "zh": "高性能计算 HPC123",
+    "icon": "fuse",
+    "children": [
+      {
+        "name": "hpc",
+        "zh": "高性能计算 HPC123",
+        "dir_name": "compute/hpc"
+      },
+      {
+        "name": "nas",
+        "dir_name": "storage/epfs",
+        "zh": "文件存储 EPFS"
+      }
+    ]
+  },
+  {
+    "name": "audio_and_video",
+    "zh": "音视频服务",
+    "children": [
+      {
+        "name": "live_cdn",
+        "zh": "视频直播",
+        "dir_name": "audio_and_video/live_cdn"
+      },
+      {
+        "name": "rtc",
+        "zh": "实时音视频 RTC",
+        "dir_name": "audio_and_video/rtc"
+      }
+    ]
+  },
+  {
+    "name": "container",
+    "zh": "容器服务",
+    "children": [
+      {
+        "name": "container_group",
+        "zh": "弹性容器实例 QCI",
+        "dir_name": "container/qci"
+      },
+      {
+        "name": "qke",
+        "zh": "容器引擎 QKE",
+        "dir_name": "container/qke_plus"
+      },
+      {
+        "name": "app/app-2mhyb1ui/",
+        "zh": "Harbor 镜像仓库",
+        "dir_name": "container/harbor"
+      }
+    ]
+  }
+]

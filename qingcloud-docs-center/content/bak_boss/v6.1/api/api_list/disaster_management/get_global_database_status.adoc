@@ -1,0 +1,233 @@
+---
+title: 获取全局数据库状态（Boss2GetGlobalPGStatus）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalPGStatus
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取全局数据库的状态。
+由于获取数据库的检查需要耗费一定的时间，因此该接口的数据为每5分钟定时检查的最新数据。
+如果需要立即发起检查，请使用"`Boss2StartGlobalPGStatusCheck`"接口。
+
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| status
+a|
+检测状态:
+
+* finished: 最近检测已结束，结果数据为最新数据
+* running: 最近发起的检测仍在进行中，结果数据可能不是最新的
+|
+
+| status_time
+| 数据更新时间
+|
+
+| is_pg_ok[待废除]
+| pg数据库是否正常，如果正常则为true
+| 综合pg_cluster和pgpool的状态来确定 +
+该字段会在未来版本中去除，请勿使用。
+
+| pg_status
+a|
+pg数据库状态
+
+* normal: 正常
+* abnormal: 异常
+* insufficient: 获取监控失败
+| insufficient状态时，pg_pool、pg_cluster、failover_status、failback_status为空， +
+请注意进行判断
+
+| pg_cluster
+| 包含了pg集群的详细信息
+|
+
+| pg_cluster.nodes
+| pg集群中的各节点的信息
+|
+
+| pg_cluster.primary
+| pg集群当前的主节点
+|
+
+| pg_cluster.is_pgcluster_ok
+| pg集群当前的状态，如果正常则为true
+|
+
+| pgpool
+| 包含了pgpool的详细信息
+|
+
+| pgpool.nodes
+| pgpool中各节点的信息
+|
+
+| pgool.nodes.status
+| 节点的状态，如正常为"ok"，其他状态为异常
+|
+
+| pgpool.nodes.node_name
+| 节点的主机名
+|
+
+| pgpool.is_pgpool_ok
+| pgpool的状态
+|
+
+| pgpool.working_nodes
+| pgpool中当前工作的节点
+|
+
+| failover_status
+a|
+切换状态:
+
+* done: 已完成
+* failed: 失败
+* active: 进行中
+|
+
+| failback_status
+a|
+回切状态:
+
+* done: 已完成
+* failed: 失败
+* active: 进行中
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetGlobalPGStatus",
+    "databases": ["global", "recovery"] // [可选]可按照数据库类型来进行过滤，支持global(全局ks数据库)和recovery(全局灾备数据库)
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "status": "finished",
+   "status_time": "2020-07-29T10:25:16.157Z",
+   "data": {
+      "global": {
+         "is_pg_ok": true,
+         "pg_status": "normal",
+         "pg_pool": {
+            "nodes": [
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks0"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks1"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry1b-ks0"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry1b-ks1"
+               }
+            ],
+            "is_pgpool_ok": true,
+            "working_nodes": [
+               "dsry1b-pgpool"
+            ]
+         },
+         "pg_cluster": {
+            "nodes": [
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks0"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks1"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry1b-ks0"
+               }
+            ],
+            "primary": "dsry1a-ks0",
+            "is_pgcluster_ok": true
+         },
+         "failover_status": "done",
+         "failback_status": "done"
+      },
+      "recovery": {
+         "is_pg_ok": true,
+         "pg_status": "normal",
+         "pg_pool": {
+            "nodes": [
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks2"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry2a-ks2"
+               }
+            ],
+            "is_pgpool_ok": true,
+            "working_nodes": [
+               "dsry1a-ks2",
+               "dsry2a-ks2"
+            ]
+         },
+         "pg_cluster": {
+            "nodes": [
+               {
+                  "status": "ok",
+                  "node_name": "dsry1a-ks2"
+               },
+               {
+                  "status": "ok",
+                  "node_name": "dsry2a-ks2"
+               }
+            ],
+            "primary": "dsry2a-ks2",
+            "is_pgcluster_ok": true
+         },
+         "failover_status": "done",
+         "failback_status": "done"
+      }
+   },
+   "total_count": 2,
+   "ret_code": 0,
+   "action": "Boss2GetGlobalPGStatusResponse"
+}
+----

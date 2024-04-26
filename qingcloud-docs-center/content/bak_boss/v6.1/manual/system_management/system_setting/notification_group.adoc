@@ -1,0 +1,233 @@
+---
+title: "通知组"
+weight: 1
+---
+
+通知组是一系列通知方式的集合，用以设置用户端以何种方式接收本系统发送的通知。当企业期望能将告警通知到多个人或者多个系统时，需要通过通知组来聚合这些信息。
+
+通知组目前支持邮件、企业通讯工具、短信、Webhook、Syslog、SNMP 以及私有化企业微信等多种方式。您可以在通知组创建后，按需添加相应的通知方式。
+
+通知组目前应用于告警中心与巡检任务，以后将应用于更多通知类场景。
+
+== 通知组列表
+
+. 使用超级管理员账号登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在左侧导航栏选择**系统管理** > **系统设置** > **通知组**，进入**通知组**主页面。该页面列表显示当前系统中已创建的通知组，以及各通知组支持的各种通知方式。
++
+如下图所示，当前已创建通知组 `sun`，该通知组已添加一个通知邮箱。
++
+image::/images/boss/manual/system_mgt/notification_group_main.png[notification_group_main,100%]
+
+== 创建通知组
+
+. 使用超级管理员账号登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_通知组列表[通知组]主页面后，点击左侧列表上方的** + 创建**，弹出**创建通知组**对话框，用户根据提示信息，输入通知组名称后，点击**创建**。
+
+. 在link:#_通知组列表[通知组]主页面，查看成功创建的通知组。
+
+== 添加通知方式
+
+在通知组成功创建后，您可按需添加相应的通知方式。通知组目前支持邮件、企业通讯工具、短信、Webhook 和 Syslog 等多种方式。
+
+
+=== 手机短信通知方式
+
+
+. 进入link:#_通知组列表[通知组]主页面，选中目标通知组后，点击右侧**手机**标签，进入已添加的手机号码列表页面。
+
+. 点击** + 添加**，弹出**添加手机**对话框。
++
+image::/images/boss/manual/system_mgt/notification_group_phone.png[notification_group_phone,80%]
+
+. 根据页面提示信息，正确输入待添加的手机号码。用户根据需求添加一条或多条记录。
++
+BOSS 支持一次性添加多个手机号码作为通知接收方。
+
+. 准确填写完成手机号码后，点击**添加**，即完成通知组手机短信通知方式的设置。
+
+
+=== 邮箱通知方式
+
+. 进入link:#_通知组列表[通知组]主页面，选中目标通知组后，点击右侧**邮箱**标签，进入已添加的邮箱列表页面。
+
+. 点击** + 添加**，弹出**添加邮箱**对话框。
++
+image::/images/boss/manual/system_mgt/notification_group_mail.png[notification_group_mail,80%]
+
+. 根据页面提示信息，正确输入待添加的邮箱。用户根据需求添加一条或多条记录。
++
+BOSS 支持一次性添加多个邮箱作为通知接收方。
+
+. 准确填写完成邮箱后，点击**添加**，即完成通知组邮箱通知方式的设置。
+
+
+=== 企业微信/钉钉/飞书
+
+这里是指添加企业微信、钉钉、飞书等企业通讯机器人方式。
+
+. 进入link:#_通知组列表[通知组]主页面，选中目标通知组后，点击右侧**企业微信/钉钉/飞书**标签，进入已添加的企业微信、钉钉、飞书列表页面。
+
+
+. 点击** + 添加**，弹出**添加企业通讯**对话框。
++
+image::/images/boss/manual/system_mgt/notification_group_other.png[notification_group_other,60%]
++
+**页面参数说明**
++
+[cols="1,3", options="header"]
+|===
+| 参数 |说明
+
+|企业通讯 a|  选择待添加的企业通讯方式。
+
+|URL 地址 a| 添加机器人的 URL 地址。各企业通讯方式，获取机器人 URL 地址的方式，可参考link:../../../../faq/robot_url/[附录]相关内容。
+|密钥 | 对应机器人的密钥。
+|备注 | 可选。自主填写相关信息。
+| @群成员 | 选择是否通知相关联系人。
+
+|===
+
+. 根据页面提示信息，填写相关参数后，点击**添加**。
+. 可在列表页面查看成功添加的企业通讯地址。
+
+=== Webhook
+
+BOSS 支持用户使用 Webhook 来接收告警通知。BOSS 输出到 Webhook 的数据格式可参考link:../../../../faq/webhook_data/[附录]相关内容。
+
+. 进入link:#_通知组列表[通知组]主页面，选中目标通知组后，点击右侧**Webhook**标签，进入已添加的 Webhook 地址列表页面。
+
+. 点击** + 添加**，弹出**添加 Webhook 地址**对话框。
++
+image::/images/boss/manual/system_mgt/notification_group_webhook.png[notification_group_webhook,80%]
++
+**页面参数说明**
++
+[cols="1,3a", options="header"]
+|===
+| 参数 |说明
+
+|Webhook 地址 |  * 填写接收通知的第三方服务器地址。
+
+* 若用户需同时增加多条 Webhook 地址，可点击**增加一项**。
+|===
+
+. 根据页面提示信息，填写相关参数后，点击**添加**。
+. 可在列表页面查看成功添加的 Webhook 地址。
+
+=== 企业微信应用
+
+这里是指添加企业微信的应用程序作为通知方式。
+
+. 进入link:#_通知组列表[通知组]主页面，选中目标通知组后，点击右侧**企业微信应用**标签，进入已添加的私有化企业微信通知方式的列表页面。
+
+
+. 点击** + 添加**，弹出**添加通知人**对话框。
+// +
+// image::/images/boss/manual/system_mgt/notification_group_other_2.png[notification_group_other_2,60%]
+
+. 根据页面提示信息，填写相关参数后，点击**添加**。获取以下信息的方式，可参考link:../../../../faq/wecom_agent/[附录]相关内容。
++
+* 发送方式选择 `用户发送`。
++
+image::/images/boss/manual/system_mgt/notification_group_other_3.png[notification_group_other_3,80%]
++
+[cols="1,3a", options="header"]
+|===
+| 参数 |说明
+
+|企业 ID|根据企业微信信息填写。对应企业微信中的 `企业ID` 字段。
+|应用凭证密钥| 根据企业微信信息填写。对应企业微信中的 `Secret` 字段。
+|应用 ID|  用于设置接收通知的企业微信应用。根据企业微信信息填写。对应企业微信中的 `AgentId` 字段。
+|用户设置|  用于设置接收通知的用户。
+
+* 用户 ID，对应企业微信中的成员 `账号` 字段。
+* 部门 ID，对应企业微信中的 `部门ID` 字段。
+* 标签 ID，对应企业微信中的成员 `标签ID` 字段。
+|===
+
+* 发送方式选择 `群聊发送`。
++
+image::/images/boss/manual/system_mgt/notification_group_other_4.png[notification_group_other_4,80%]
++
+[cols="1,3a", options="header"]
+|===
+| 参数 |说明
+ 
+|企业 ID|根据企业微信信息填写。对应企业微信中的 `企业ID` 字段。
+|应用凭证密钥| 根据企业微信信息填写。对应企业微信中的 `Secret` 字段。
+|群聊 ID| 可参考link:../../../../faq/wecom_agent/#_api_接口查询[附录]相关内容。
+|===
+
+. 可在列表查看成功添加的通知方式。
++
+image::/images/boss/manual/system_mgt/notification_group_other_5.png[notification_group_other_5,100%]
+
+== 使用通知组
+
+通知组目前应用于告警中心与巡检任务，以后将应用于更多通知类场景。
+
+* 在告警中心，创建告警策略时，在弹出的**通知策略**对话框中，填写通知组相关信息。详细操作参考link:../../../alarm/alert_strategy/#_创建通知策略[通知策略]。
+
+* 在运维工具的巡检任务创建时，可填写通知组相关信息，用于接收巡检任务执行完成的通知。详细操作参考link:../../../om_tools/inspectmgt/inspect_task/#_新增巡检任务[巡检任务]。
+
+
+== 测试通知组
+
+当通知组以及相应的通知方式均创建完成后，可执行如下操作来验证，相应的通知方式均创建成功，能正常接收 BOSS 侧的通知。
+
+. 使用超级管理员账号登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_通知组列表[通知组]主页面后，点击待测试的通知组**更多操作** > **测试**。
++
+image::/images/boss/manual/system_mgt/notification_group_opt.png[notification_group_opt,80%]
+
+. 弹出**测试通知组**对话框，勾选待测试的通知方式，点击**发送**。
+
+. 用户即可至相应的客户端查看测试通知。
+
+
+== 删除通知组
+
+删除通知组前需确认是否关联了业务，如果通知组关联了业务，如创建的告警策略或者巡检任务中，添加了该通知组，则该通知组被删除后，相应的用户将无法收到业务通知。
+
+
+. 使用超级管理员账号登录 BOSS。
++
+
+include::../../../../../_components/note.adoc[]
+
+超级管理员账号密码，可从{platform_name_cn}安装部署人员处获取。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 进入link:#_通知组列表[通知组]主页面后，点击待删除的通知组**更多操作** > **删除**。
++
+image::/images/boss/manual/system_mgt/notification_group_opt.png[notification_group_opt,80%]
+
+
+. 弹出**删除通知组**对话框，确认操作无误，填写操作原因后，点击**删除**。
+
+. 用户可在通知组列表中查看，成功删除的通知组，不在列表中显示。

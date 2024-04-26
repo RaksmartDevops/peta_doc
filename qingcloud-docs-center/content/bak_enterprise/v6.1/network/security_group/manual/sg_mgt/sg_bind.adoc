@@ -1,0 +1,9 @@
+---
+title: 绑定/解绑安全组
+draft: false
+weight: 10
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/sg/04_sg_bind.adoc[]

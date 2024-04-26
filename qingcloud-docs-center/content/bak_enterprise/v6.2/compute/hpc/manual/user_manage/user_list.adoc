@@ -1,0 +1,9 @@
+---
+title: "用户管理主页面"
+weight: 1
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/ehpc/user/user_list.adoc[]
+

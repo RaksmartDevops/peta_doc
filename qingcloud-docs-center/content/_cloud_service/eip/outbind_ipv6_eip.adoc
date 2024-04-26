@@ -1,0 +1,46 @@
+//云服务器 IPv6 地址接入公网
+
+云服务器可通过 VPC 的 DHCPv6 获取 IPv6 地址，将 IPv6 地址接入公网后，云服务器便可具备 IPv6 公网和 VPC 内网的访问能力。
+
+== 前提条件
+
+* 云服务器创建在开启 IPv6 的 VPC 私有网络中。关于如何在 VPC 私有网络中启用 IPv6，请参见link:../../../../vpc/manual/ipv4_ipv6/enable_ipv6/[启用 IPv4/IPv6 双栈网]。
+* 云服务器支持 IPv6 自动化配置。
++
+有两种方式实现：
++
+** 创建云服务器时，在镜像选择的下拉列表中，选择标注``支持 IPv6`` 的镜像。
+** 手动开启云服务器的 IPv6 自动化配置。详细操作，请参见link:../../../../vpc/manual/ipv4_ipv6/ipv6_auto_cfg/[开启云服务器 IPv6 自动化配置]。
+
+== 约束与限制
+
+若云服务器未绑定安全组，云服务器 IPv6 接入公网时，将自动绑定默认安全组。安全组里的策略规则会同时应用到 IPv6 地址。因此接入公网之后，您需要根据需求，在云服务器的安全组中放行 IPv6 的相关访问协议，例如 IPv6 ICMP（ping6）。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 在顶部菜单栏中选择**产品与服务** > *计算* > *云服务器*，进入**云服务器**页面。
+. 右键点击待操作的云服务器，在弹出菜单中依次选择**公网 IPv6** > **IPv6 接入公网**。
++
+include::../../_components/note.adoc[]
+若 **IPv6 接入公网**无法点击，请尝试登录云服务器执行 `dhclient -6` 获取内网 IPv6 地址，再返回云服务器页面执行该操作。
+include::../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/network/eip/vm_ipv6_internet.png[]
+. 在弹出的对话框中，为 IPv6 公网 IP 选择计费模式及带宽，点击**提交**。
+// image::/images/cloud_service/network/eip/vm_ipv6_internet.png[]
++
+接入公网后，便可在进入**弹性公网 EIP** > **公网 IPv6** 页面，在列表中查看到接入公网的 IPv6 地址详情。
++
+image::/images/cloud_service/network/eip/vm_ipv6_internet_2.png[]
+
+== 相关操作
+
+当您不再需要 IPv6 接入公网，可随时断开 IPv6 公网。
+
+. 在云服务器列表，右键点击云服务器，在弹出菜单中依次选择**公网 IPv6** > **IPv6 断开公网**。
++
+image::/images/cloud_service/network/eip/vm_ipv6_internet_3.png[]
+. 在弹出的提示框中，点击**确认**。
++
+IPv6 断开公网后，在**弹性公网 EIP** > **公网 IPv6** 页面中，将删除对应的 IPv6 地址详情。

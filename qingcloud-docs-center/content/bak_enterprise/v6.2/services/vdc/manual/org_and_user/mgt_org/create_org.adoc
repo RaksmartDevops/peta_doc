@@ -1,0 +1,39 @@
+---
+title: 新增组织
+description: 
+keywords: 
+weight: 1
+collapsible: false
+draft: false
+linkkey: vdc_organization_management
+---
+
+主账户可以创建组织，并关联 IAM 用户和资源。
+
+== 约束限制
+
+组织的层级最多不超过 5 级。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 点击组织管理右侧的**+**，弹出新增组织对话框。
++
+image::/images/cloud_service/services/vdc/create_org.png[新增组织]
+. 设置组织的名称、上级组织、组织负责人和描述信息。
++
+
+include::../../../../../../../_components/note.adoc[]
+
+新增组织时，组织负责人为可选项，可以后续再为组织指定负责人。
+
+include::../../../../../../../_components/table_footer.adoc[]
+. 点击**确定**，新增组织。
++
+新增组织成功后，返回组织管理页面。
+
+== 相关操作
+
+* link:../edit_org[修改组织]，可修改组织的名称、上级组织、组织负责人和描述信息。
+* link:../delete_org[删除组织]，可根据需要删除组织。

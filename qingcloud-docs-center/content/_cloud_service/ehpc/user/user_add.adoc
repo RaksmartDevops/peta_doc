@@ -1,0 +1,37 @@
+// 新增用户
+
+== 前提条件
+
+已开通弹性高性能计算 EHPC 平台服务。
+
+== 操作步骤
+
+ifdef::pub[]
+. 登录 {console_name}。
+endif::pub[]
+
+ifdef::ep[]
+. 登录{console_name}。
+endif::ep[]
+
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，默认进入**快速入门**页面。
+
+. 点击左侧导航栏中的**用户管理**，进入用户管理页面。
+
+. 在用户管理主页面，点击**新增用户**。
++
+image::/images/cloud_service/compute/hpc/user_add_2.png[]
+. 在弹出的**新增用户**窗口中，设置**用户名**和**密码**，点击**确定**新增即可。
++
+include::../../../_components/note.adoc[]
+设置密码时支持用户自定义或自动生成。
+include::../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/compute/hpc/user_add_1.png[,60%]
+
+
+
+
+
+
+

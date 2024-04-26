@@ -1,0 +1,38 @@
+markup:
+  asciidocExt:
+    attributes:
+      toc: null
+      toclevels: 2
+      file_output_type: html
+      platform_name_cn: 云平台
+      brand_name_low: petaexpress
+      api_url: https://api.petaexpress.com/iaas/
+      console_name: 管理控制台
+      qingstor_cap: QingStor
+      qingstor_low: qingstor
+      k8s_engine_fullname: 容器引擎
+      k8s_engine_shortname: QKE
+params:
+  description: 这里是企业云文档页面
+  favicon: https://console.petaexpress.com/assets/cdn/hinata/0a234310-78f9-4323-8d59-2b36ac15120a-favicon.ico
+  logo: https://console.petaexpress.com/assets/cdn/hinata/ba65c1e6-b7a4-4085-b0e2-23104d8e71e1-logo_en.svg
+  logoInfo: 企业云
+  logoLink: /
+  disableVersions: true
+  disablePdf: false
+  navLink:
+    - title: 控制台
+      url: https://console.petaexpress.com
+  pdf:
+    pdf_projectName: 企业云
+    pdf_docVersion: 1
+    pdf_copyright: 版权所有 © 北京青云科技股份有限公司
+    pdf_legalInfo: 版权所有 © 北京青云科技股份有限公司 2023。保留所有权利。
+    pdf_projectVersion: v1.2.2
+    pdf_companyFullName: 北京青云科技股份有限公司
+    pdf_companyName: 青云
+    pdf_companyUrl: https://www.qingcloud.com
+    pdf_companyIcon: /images/pdf/qingcloud-logo-icon.png
+    pdf_coverDocName: QingCloud 企业云
+    pdf_coverDocLogo: /images/pdf/qingcloud-logo-color.png
+    pdf_coverDocImage: /images/pdf/cover_doc_image.svg

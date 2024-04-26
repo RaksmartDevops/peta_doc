@@ -1,0 +1,27 @@
+---
+title: "节点监控"
+linkTitle: "节点监控"
+description: 本章节介绍如何查看节点监控信息
+keywords: 云计算,HPC，节点监控
+draft: false
+weight: 30
+---
+本章节介绍如何查看节点监控信息。
+
+== 前提条件
+
+已创建 EHPC 集群。
+
+== 操作步骤
+
+. 登录管理控制平台。
+. 选择**产品与服务** > *计算* > *弹性高性能计算 EHPC*，进入**集群管理**页面。
+. 点击已创建完成的集群 ID，进入集群详情页面，选择**节点列表**页签。
+
+. 在目标节点所在行，点击**监控**，弹出**查看监控**窗口。
++
+image::/images/cloud_service/compute/hpc/um_node_monitor_view.png[um_node_monitor_view]
+
+. 用户可以查看节点的基本信息和监控资源。
++
+监控资源包含：CPU、内存、硬盘使用率、硬盘 IOPS、硬盘吞吐量等。

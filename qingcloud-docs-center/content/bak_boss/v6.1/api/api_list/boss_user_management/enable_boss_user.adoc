@@ -1,0 +1,76 @@
+---
+title: 启用BOSS用户（Boss2EnableBossUsers）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2EnableBossUsers
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于批量启用BOSS用户。
+该操作对当前发送请求的用户无效。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| total_count
+| 操作的用户数
+|
+
+| success_count
+| 成功用户数
+|
+
+| failed_users
+| 操作失败的用户id
+|
+|===
+
+{blank} +
+ +
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2EnableBossUsers",
+    "ids": [1, 2, 3] // [必须]传入需要启用的用户id列表
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "success_count": 2,
+   "failed_users": [
+      3
+   ],
+   "ret_code": 0,
+   "action": "Boss2EnableBossUsersResponse"
+}
+----

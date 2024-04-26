@@ -1,0 +1,46 @@
+---
+title: 切换主节点
+description: 本小节主要介绍如何切换主节点。 
+keywords: PostgreSQL,关系型数据库,数据库
+weight: 26
+collapsible: false
+draft: false
+---
+
+PostgreSQL 支持手动将从节点切换为主节点。
+
+本小节主要介绍如何切换 PostgreSQL 数据库主节点。
+
+== 约束限制
+
+仅 ``V2.2.0-高可用版``及以上版本支持切换主节点。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* 已创建 PostgreSQL 集群，且集群状态为``活跃``。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 选择**产品与服务** > *数据库与缓存* > *关系型数据库 PostgreSQL*，进入集群管理页面。
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
+. 点击**节点角色**页签，查看节点角色。
++
+image::/images/cloud_service/database/postgresql/switch_node_01.png[查看节点角色]
+. 获取节点 ID。
++
+点击**节点**页签，获取相应从节点 ID。
++
+image::/images/cloud_service/database/postgresql/switch_node_02.png[获取节点 ID]
+
+. 设置主节点。
+
+.. 点击**基本属性**模块，点击集群操作下拉菜单。
+.. 展开下拉菜单，点击**指定 Master 节点**。
+.. 在弹出的窗口中，输入需要切换为主节点的节点 ID。
++
+image::/images/cloud_service/database/postgresql/switch_node.png[切换主节点]
+.. 确认配置信息无误后，点击**提交**，返回节点列表页面。
++
+待集群状态切换为``活跃``，即主节点切换完毕。

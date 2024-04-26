@@ -1,0 +1,61 @@
+---
+title: "公网 DNS 转发如何使用"
+keywords: VPC, VPC 网络, DNS 转发
+description: 介绍如何配置公网 DNS 转发。
+draft: false
+weight: 1
+---
+
+
+== 前提条件
+
+已创建 VPC，并绑定公网 IP。
+
+== 使用场景
+
+VPC 多个主机需要指定相同的 DNS 服务器地址。
+
+== 操作步骤
+
+. 打开 VPC 下的 DNS 服务
++
+image::/images/cloud_service/network/vpc/image-20210517184604163.png[image-20210517184604163]
++
+这里不需要使用 PTR 记录，可以选择不开启。
+
+. 添加公网 DNS 服务器
++
+image::/images/cloud_service/network/vpc/image-20210517184803261.png[image-20210517184803261]
++
+常用的 DNS 服务器有：114.114.114.114、8.8.8.8等。
++
+image::/images/cloud_service/network/vpc/image-20210517184908779.png[image-20210517184908779]
+
+. 主机内部指定 DNS 服务器地址。
+
+.. 重启网络。以 CentOS 7.9为例：
++
+[source]
+----
+systemctl restart NetworkManager
+----
+
+.. 直接指定 DNS 服务器地址
++
+[source]
+----
+vim /etc/resolv.conf
+nameserver 192.168.255.254		#指定VPC网段最后一个IP地址
+----
++
+image::/images/cloud_service/network/vpc/image-20210517185802390.png[image-20210517185802390]
+
+. 移除公网 DNS 转发。
+.. 可以删除指定的公网 DNS 服务器地址，使用默认配置。
++
+image::/images/cloud_service/network/vpc/image-20210517190209536.png[image-20210517190209536]
+
+.. 关闭 DNS 服务。
++
+关闭 DNS 服务需要在云服务器内部重启网络、或者重新指定公网 DNS 服务器地址(参照第3步)，否则 DNS 无法正常使用。
+

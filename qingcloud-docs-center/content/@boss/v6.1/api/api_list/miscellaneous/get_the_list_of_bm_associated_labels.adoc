@@ -1,0 +1,103 @@
+---
+title: 获取BM关联标签列表（Boss2DescribeBMTags）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeBmTags
+
+=== Method
+POST
+
+=== 接口描述
+用于BM总览界面，获取绑定了BM的tag列表。
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| color
+| 标签颜色
+|
+
+| owner
+| 标签所属用户id
+|
+
+| tag_id
+| 标签id
+|
+
+| tag_key
+| 标签key
+|
+
+| tag_name
+| 标签名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeBMTags",
+  
+  // 以下为过滤项
+  "zone": "test", // [必须]指定zone,
+  
+  // 分页及排序
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "latest_notify_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+  "search_word": "测试", // 用于部分字段的模糊搜索
+  "fields": ["tag_id", "tag_name"] // 用于返回数据的过滤，仅返回列表中指定的字段数据
+  
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeBMTagsResponse",
+   "total_count": 2,
+   "tag_set": [
+      {
+         "color": "default",
+         "owner": "system",
+         "tag_id": "tag-8wp5z2c1",
+         "tag_key": "default",
+         "tag_name": "bm-monitor"
+      },
+      {
+         "color": "default",
+         "owner": "system",
+         "tag_id": "tag-o9frwp12",
+         "tag_key": "default",
+         "tag_name": "bm"
+      }
+   ],
+   "ret_code": 0
+}
+----

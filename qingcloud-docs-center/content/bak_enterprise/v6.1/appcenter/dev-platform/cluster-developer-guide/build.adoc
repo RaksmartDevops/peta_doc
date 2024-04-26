@@ -1,0 +1,154 @@
+---
+title: "镜像制作"
+description: 介绍如何制作应用镜像。
+draft: false
+collapsible: false
+weight: 3
+---
+== 介绍
+
+在整个云化应用过程中，制作镜像是最花时间也是最容易出错的一部分。因为每个应用的部署架构不同，需要调试的时间也存在差异，通常情况下，少则几个小时，多则一周左右。
+
+本文将详细介绍制作镜像的流程。云平台 AppCenter 支持三种镜像类型: KVM, Docker。
+
+== 制作 KVM 镜像
+
+=== 注意事项
+
+在制作镜像前期，用户需明确以下内容：
+
+. 除了允许用户登录的节点之外，其它类型节点如果有持久化数据必须用挂盘。
+. 云服务器里不要操作资源。如 halt 云服务器等，云平台会负责资源调度，用户只需要关注应用即可。
+
+允许用户登录的节点，即配置文件里定义 `user_access` 为 `true` 的节点。持久化数据是指与具体用户有关的数据，如 session、用户自己的数据等。
+
+如，对于数据库应用，数据库应用程序本身不是持久化数据，因为它可以无差别的重复部署而不影响服务，但用户的数据库信息、用户设置的参数、日志等是持久化数据。
+
+=== 操作步骤
+
+制作镜像有以下几个步骤：
+
+. 创建云服务器。以下系统镜像已经过测试:
++
+* Ubuntu: 12.10 64-bit (quantalx64b)，13.10 64-bit (saucysrvx64b)，14.04.1 LTS 64-bit (trustysrvx64c)，16.04 LTS 64-bit (xenialx64)
+* CentOS: 6.4 64-bit (centos64x64b)，7 64-bit (centos7x64b)
+* Debian: Wheezy 7.5 64-bit (wheezyx64g)
+* OpenSUSE: 12.3 64-bit (opensuse12x64c)
+* Fedora: 18 64-bit (fedora18x64b)，20 64-bit (fedora20x64b)
+* Windows: Windows Server 2008 (win2k8r2eechsi, win2k8r2eechdc, win2k8r2seen), Windows Server 2012 (winsrv2012r2chsh)
+
+. 根据实际情况安装自己的应用。
+
+. 下载云平台提供的 APP Agent 的 link:https://s4.qingcloud.com/files/2022/12/app-agent-linux-amd64.tar.gz[Linux 版本,window=_blank] 或 link:https://s4.qingcloud.com/files/2022/12/app-agent-windows-386.zip[Windows 版本,window=_blank]。
+
+. 解压后运行脚本程序。
++
+* linux 操作系统下运行脚本：`./install.sh`
+* Windows 下双击 `install.bat`。
+
+=== 创建模板文件
+
+开发一些必须的模板文件，用于监听 metadata service 的变化从而更新自己应用的配置文件。
+
+==== toml 文件
+
+**文件示例**
+[source,shell]
+----
+# vi /etc/confd/conf.d/zoo.cfg.toml
+  [template]
+  src = "zoo.cfg.tmpl"
+  dest = "/opt/zookeeper/conf/zoo.cfg"
+  keys = [
+    "/",
+  ]
+  reload_cmd = "/opt/zookeeper/bin/restart-server.sh"
+----
+
+**参数说明**
+
+* `src` 代表模板文件名
+* `dest` 即应用的配置文件，这个配置文件会根据 `src` 模板刷新 `dest` 内容
+* `keys` 即进程 `confd` 监控 metadata service 关于该节点所在集群信息的更新，有变化则更新，如果模板中需要用到某个 `key `的信息，则需要监听这个 `key`，也可以直接监听根目录`/`。* `reload_cmd` 则是配置文件被刷新后的操作，脚本开发者自行提供脚本，如果不需要触发动作可以去掉 `reload_cmd` 参数。
+* 该配置文件中可添加权限控制，详情请见 https://github.com/yunify/confd/blob/master/docs/quick-start-guide.md[confd]。
+
+==== tmpl 文件
+
+**文件示例**
+[source,shell]
+----
+# vi /etc/confd/templates/zoo.cfg.tmpl
+  tickTime=2000
+  initLimit=1ini0
+  syncLimit=5
+  dataDir=/zk_data/zookeeper
+  clientPort=2181
+  maxClientCnxns=1000
+  {% raw %}{{range $dir := lsdir "/hosts"}}{{$sid := printf "/hosts/%s/sid" $dir}}
+  {{$ip := printf "/hosts/%s/ip" $dir}}server.{{getv $sid}}={{getv $ip}}:2888:3888{{end}}{% endraw %}
+----
+
+**参数说明**
+
+* tmpl 模板文件决定应用配置文件内容。`confd` 读取 metadata service 刷新这些变量的值。
+* 如此例 `range` 这一行是读取该节点所在集群节点的 IP 和 server ID 信息，刷新为如下信息：
++
+[source,shell]
+----
+  server.1=192.168.100.2:2888:3888
+  server.2=192.168.100.3:2888:3888
+  server.3=192.168.100.4:2888:3888
+----
+* 更多模板语法参见 https://github.com/kelseyhightower/confd/blob/master/docs/templates.md[confd templates]。
+
+== 制作 Docker 镜像
+
+AppCenter 的镜像同时支持 kvm 和 docker，但由于需要实现配置变更，不能直接使用已有的 docker 镜像，需要进行一些改造，docker 镜像默认启动的进程不能是应用本身的进程，而应该是 confd，由 confd 启动服务，并实现配置变更。
+
+=== 注意事项
+
+* 为了方便开发者存储自己的 docker 镜像，平台提供了 docker 镜像仓库。当前镜像仓库的控制台管理功能尚未完成，所以如果需要使用 docker 镜像仓库，请先提工单申请。为了保证用户安装程序时的体验，应用如果使用 docker 镜像，镜像需要放置到云平台的镜像仓库，以保证拉取速度。
+* 平台提供了一些基础镜像，包含 confd，以及相关系统配置，方便用户制作镜像。为了降低镜像的大小，建议通过平台的基础镜像基于 https://alpinelinux.org/[alpine] 来制作。
+
+=== 操作步骤
+
+. 将平台提供的confd，exec.sh，以及 confd 相关的配置添加到镜像。
+
+. 安装应用依赖的基础包。
+
+. 将应用的二进制添加到镜像。
+
+. 将应用的 confd 相关配置以及模板，还有脚本添加到镜像。
+
+. 将 confd 设置为 ENTRYPOINT，容器启动时先启动 confd，然后应用通过 confd 来启动。
+
+
+=== 基础镜像
+
+平台提供的基础镜像获取链接如下：
+
+* https://github.com/yunify/docker-images/tree/master/confd[confd]  dockerhub.qingcloud.com/qingcloud/confd:v0.13.7
+* https://github.com/yunify/docker-images/tree/master/jdk[jdk8] dockerhub.qingcloud.com/qingcloud/jdk8:confd-v0.13.7
+
+=== 配置文件
+
+[source,shell]
+----
+{
+  "container": {
+    "type": "docker",
+    "image": "zookeeper",
+  }
+}
+----
+
+配置文件和 VM 类型的应用基本没有区别，只是配置文件中的 container 的 type 需要设置为 docker，image 为 docker 镜像的地址。
+
+=== 示例
+
+* 镜像参看 https://github.com/yunify/docker-images/tree/master/zookeeper[zookeeper]
+
+=== 本地开发环境
+
+为了方便本地调试镜像，用户可以通过 Docker 在本地模拟一个集群环境，来测试 confd 的配置以及相关脚本。
+具请参考link:../debug[调试指南]。

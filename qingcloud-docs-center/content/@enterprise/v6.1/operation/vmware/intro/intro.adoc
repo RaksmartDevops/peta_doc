@@ -1,0 +1,50 @@
+---
+title: "产品简介"
+weight: 1
+draft: false
+keywords: VMware 纳管, VMware vSphere 纳管, 云计算
+---
+
+
+VMware 纳管，即 VMware vSphere 纳管。通过 VMWare 提供的公开 API 接口完成 VMware vSphere 纳管，无缝集成 VMware vSphere 虚拟化管理平台部分功能，实现{platform_name_cn}统一管理虚拟化平台。
+
+
+
+== 功能列表
+
+支持云平台纳管 VMware 的多样化需求，详细功能参考下表。
+
+include::../../../../../_components/note.adoc[]
+
+以下功能仅支持 VMware vSphere 6.0 以上版本。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+[cols="1,3"]
+|===
+|功能点 | 功能说明
+
+| 添加 VMware vSphere 平台 | 通过{console_name}添加 VMware vSphere 平台至{platform_name_cn}，对 VMware 进行纳管。
+| 查看 VMware vSphere 平台 | 通过{console_name}，查看已添加至{platform_name_cn}的 VMware vSphere 平台。
+| 修改 VMware vSphere 平台 | 通过{console_name}，编辑修改已添加的 VMware vSphere 平台信息。
+| 删除 VMware vSphere 平台 | 通过{console_name}，删除已添加 VMware vSphere 平台。
+| 查看虚拟机列表 | 通过{console_name}，查看虚拟机列表。
+| 查看虚拟机参数 a| 通过{console_name}，查看虚拟机相关信息。如：
+
+* 客户机操作系统的电源状态、操作系统、VMware Tools 安装状态、DNS 名称、IP 地址等信息。
+
+* 虚拟机硬件：CPU、内存、硬盘等。
+
+* 相关对象：集群、主机等说明。
+
+| 打开电源 | 通过{console_name}，远程打开虚拟机电源。
+| 关闭电源 | 通过{console_name}，远程关闭 VMware 虚拟机电源。
+| 重启客户机操作系统 | 通过 Tools 工具，远程重新启动 VMware 虚拟机。
+| 挂起 | 通过 Tools 工具，远程挂起 VMware 虚拟机。
+| 关闭客户机操作系统 | 通过 Tools 工具，远程关闭 VMware 虚拟机。
+| 分组 | 在{console_name}上，展示 VMware 虚拟机的分组信息。
+| 虚拟机监控 | 实现 VMware 虚拟机的 CPU 使用率、内存使用率、磁盘 IO 等的监控，并在{console_name}上展示。
+| 修改虚拟机名、备注 | 通过{console_name}，修改 VMware 虚拟机名与备注信息。
+
+|===

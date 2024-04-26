@@ -1,0 +1,29 @@
+---
+title: "安置策略组"
+linkTitle: "安置策略组"
+weight: 5
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 安置策略组
+            url: intro/instance_group/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 安置策略组操作指南
+            url: manual/instance_group/
+linkkey: compute_instances_instance_groups_guide
+
+    
+
+
+
+
+---

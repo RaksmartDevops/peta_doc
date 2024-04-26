@@ -1,0 +1,378 @@
+---
+title: 总览统计数据（Boss2GetDashboardStats）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetDashboardStats
+
+=== Method
+POST
+
+=== 接口描述
+用于获取总览界面的统计数据。
+现有统计项目：
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+| node_status
+| 获取管理节点和计算节点的状态统计
+a|
+
+* ksnode_status_normal: 管理节点正常节点数
+* ksnode_status_exception: 管理节点异常节点数
+* hypernode_status_normal: 计算节点正常节点数
+* hypernode_status_exception: 计算节点异常节点数
+| 数据来自cronus
+
+| ksnode_status
+| 管理节点的状态统计
+| ksnode_status_normal: 管理节点正常节点数 +
+ksnode_status_exception: 管理节点异常节点数
+| 从node_status拆分而来
+
+| hypernode_status
+| 计算节点的状态统计
+| hypernode_status_normal: 计算节点正常节点数 +
+hypernode_status_exception: 计算节点异常节点数
+| 从node_status拆分而来
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+endif::[]
+
+| service_status
+| 基础服务状态统计
+a|
+
+* STOPPED:已停止的服务总数
+* STARTING: 正在启动的服务总数
+* RUNNING: 正常运行中的服务总数
+BACKOFF：启动失败的服务总数
+
+* STOPPING: 正在关闭的服务总数
+EXITED：退出或未启动的服务总数
+FATAL：致命错误服务总数
+UNKNOWN：未知状态服务总数
+| 数据来自cronus，需要根据规则来计算正常和异常的服务数量
+
+| hypernode_physical_usage
+| 物理资源使用率
+a|
+
+* cpu_total: 总cpu核心数
+* cpu_usage: cpu平均使用率，百分比
+* mem_total: 总内存体积，单位为MB
+* mem_usage: 内存平均使用率，百分比
+* system_disk_total: 系统盘总体积，单位为MB
+* system_disk_usage: 系统盘使用率，百分比
+* data_disk_total: 数据盘总体积，单位为MB
+* data_disk_usage: 数据盘使用率，百分比
+| 数据来自cronus
+
+| hypernode_cpu_usage
+| 物理CPU使用率
+| cpu_total: 总cpu核心数 +
+cpu_usage: cpu平均使用率，百分比
+| 从hypernode_physical_usage拆分而来
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+endif::[]
+
+| hypernode_memory_usage
+| 物理内存使用率
+| mem_total: 总内存体积，单位为MB +
+mem_usage: 内存平均使用率，百分比
+| 从hypernode_physical_usage拆分而来
+
+| hypernode_data_disk_usage
+| 数据盘使用率
+| data_disk_total: 数据盘总体积，单位为MB +
+data_disk_usage: 数据盘使用率，百分比
+| 从hypernode_physical_usage拆分而来
+
+| snapshot_usage
+| 物理资源使用率-备份盘
+| total: 备份盘总体积，单位为MB +
+total_used: 使用率，百分比
+| 数据来自cronus
+
+| instance_status
+| 主机汇总统计
+| 请参考汇总统计数据接口
+| 数据来自iaas
+
+| volume_status
+| 云硬盘汇总统计
+| 请参考汇总统计数据接口
+| 数据来自iaas
+
+| eip_status
+| 公网IP汇总统计
+| 请参考汇总统计数据接口
+| 数据来自iaas
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+endif::[]
+
+| virtual_usage
+| 虚拟资源占用率
+a|
+
+* real_total_cpu: 总cpu个数
+* total_vcpu: vcpu逻辑总量
+* used_vcpu: vcpu已分配个数(仅运行中的云服务器)
+* used_vcpu_all: vcpu已分配个数(所有状态的云服务器)
+* cpu_recommend_rate: cpu的推荐超卖比
+---
+
+* real_total_memory: 总内存容量，单位MB
+* total_memory: 虚拟内存逻辑总量，单位MB
+* used_memory: 虚拟内存已分配量，单位MB(仅运行中的云服务器)
+* used_memory_all: 虚拟内存已分配量，单位MB(所有状态的云服务器)
+* memory_recommend_rate: 内存的推荐超卖比
+---
+
+* real_total_disk: 总磁盘容量，单位MB
+* total_disk: 虚拟磁盘逻辑总量，单位MB
+* used_disk: 虚拟磁盘已分配量，单位MB
+* disk_recommend_rate: 磁盘的推荐超卖比
+* virtual_disk: 从DescribeBots接口获取的虚拟磁盘占用量，包含了云硬盘,虚拟机系统盘，备份等磁盘的容量
+* storage_max: 从DescribeBots接口获取的计算节点磁盘总量，可用于展示计算节点物理存储的总量(包含备份)
+|
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+endif::[]
+
+| virtual_cpu_usage
+| 虚拟CPU占用率
+a|
+
+* real_total_cpu: 总cpu个数
+* total_vcpu: vcpu逻辑总量
+* used_vcpu: vcpu已分配个数(仅运行中的云服务器)
+* used_vcpu_all: vcpu已分配个数(所有状态的云服务器)
+* cpu_recommend_rate: cpu的推荐超卖比
+| 从virtual_usage拆分而来
+
+| virtual_memory_usage
+| 虚拟内存占用率
+a|
+
+* real_total_memory: 总内存容量，单位MB
+* total_memory: 虚拟内存逻辑总量，单位MB
+* used_memory: 虚拟内存已分配量，单位MB(仅运行中的云服务器)
+* used_memory_all: 虚拟内存已分配量，单位MB(所有状态的云服务器)
+* memory_recommend_rate: 内存的推荐超卖比
+| 从virtual_usage拆分而来
+
+| virtual_disk_usage
+| 虚拟磁盘占用率
+a|
+
+* real_total_disk: 总磁盘容量，单位MB
+* total_disk: 虚拟磁盘逻辑总量，单位MB
+* used_disk: 虚拟磁盘已分配量，单位MB
+* disk_recommend_rate: 磁盘的推荐超卖比
+* virtual_disk: 从DescribeBots接口获取的虚拟磁盘占用量，包含了云硬盘,虚拟机系统盘，备份等磁盘的容量
+* storage_max: 从DescribeBots接口获取的计算节点磁盘总量，可用于展示计算节点物理存储的总量(包含备份)
+| 从virtual_usage拆分而来
+
+ifeval::["{file_output_type}" == "pdf"]
+
+|===
+
+[cols="2,2,4,2", options="header"]
+|===
+| 参数名称 | 描述 | 备注 | 数据源
+
+endif::[]
+
+| eip_count
+| [网络大屏]公网IP数量统计(针对VPC或基础网络)
+| eip_count: 公网IP总量
+a|
+需要传入filters，以获取指定vpc或基础网络下的统计数据：
+vpcs: 传入多个vpc的ID(VPC id使用rtr-开头的id)
+
+* vxnets: 传入多个基础网络ID
+(如果同时传入vpc和vxnet，则仅显示vpc的数据)
+
+| bm_instance_usage
+| [物理主机总览]实例资源使用率
+a|
+
+* cpu_total: 总cpu核心数
+* cpu_usage: cpu平均使用率，百分比
+* mem_total: 总内存体积，单位为MB
+* mem_usage: 内存平均使用率，百分比
+* system_disk_total: 系统盘总体积，单位为MB
+* system_disk_usage: 系统盘使用率，百分比
+* data_disk_total: 数据盘总体积，单位为MB
+* data_disk_usage: 数据盘使用率，百分比
+| 需要传入filters，以获取指定用户的统计数据： +
+users: 传入多个用户id，如不传入users则返回所有用户的统计
+
+| bm_virtual_usage
+| [物理主机总览]资源池容量
+a|
+
+* cpu_total: cpu总数
+* cpu_used: cpu已分配个数
+---
+
+* mem_total: 总内存容量，单位MB
+* mem_used: 内存已分配量，单位MB
+| 需要传入filters，以获取指定tag的统计数据： +
+tags: 传入多个tag id，如不传入tags则返回所有tags的统计数据
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetDashboardStats",
+  // 当 zone 和zones 同时存在时，取zones
+  "zone": "test", // 指定zone
+  "zones": ["test"], //指定多个zone，使用数组传入多个zone。
+  "topic": [
+    "node_status",
+    "service_status"
+  ], // 指定统计项目, 可以合并一些统计项目以减少前端的请求次数
+  "filters": {
+      "node_status": {
+          "vpc": "rtr-lgutadot"
+      }
+  } // 指定过滤项
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "node_status": {
+      "ksnode_status_normal": 192,
+      "ksnode_status_exception": 27,
+      "hypernode_status_normal": 492,
+      "hypernode_status_exception": 57
+   },
+   "service_status": {
+      "STOPPED": 1890,
+      "STARTING": 150,
+      "RUNNING": 1,
+      "BACKOFF": 1,
+      "STOPPING": 1,
+      "EXITED": 2,
+      "FATAL": 1,
+      "UNKNOWN": 1
+   },
+   "hypernode_physical_usage": {
+      "cpu_total": 48,
+      "cpu_usage": 4.89854494426865,
+      "mem_total": 156948,
+      "mem_usage": 74.288808801635,
+      "system_disk_total": 301599,
+      "system_disk_usage": 5.75582325808494,
+      "data_disk_total": 1197726,
+      "data_disk_usage": 14.8638590960612
+   },
+   "snapshot_usage": {
+      "total": 1024,
+      "total_used": 10
+   },
+   "instance_status": {
+      "pending": 0,
+      "running": 4,
+      "stopped": 0,
+      "suspended": 0,
+      "terminated": 0,
+      "ceased": 0,
+      "rescuing": 0
+   },
+   "volume_status": {
+      "pending": 0,
+      "available": 2,
+      "in_use": 3,
+      "suspended": 0,
+      "deleted": 0,
+      "ceased": 0
+   },
+   "eip_status": {
+      "pending": 0,
+      "available": 2,
+      "associated": 10,
+      "suspended": 0,
+      "released": 0,
+      "ceased": 0
+   },
+   "vcpu_stat": {
+      "total": 1000,
+      "oversale_total": 10000,
+      "used": 100,
+      "oversale_rate": 10
+   },
+   "memory_stat": {
+      "total": 1024,
+      "oversale_total": 2048,
+      "used": 10,
+      "oversale_rate": 2
+   },
+   "disk_stat": {
+      "in_use": 10,
+      "total": 1024,
+      "oversale_total": 100,
+      "oversale_rate": 0.1
+   },
+   "ret_code": 0,
+   "action": "Boss2GetDashboardStatsResponse"
+}
+----

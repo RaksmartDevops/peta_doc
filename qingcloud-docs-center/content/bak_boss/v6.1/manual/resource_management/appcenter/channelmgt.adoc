@@ -1,0 +1,122 @@
+---
+title: "渠道管理"
+weight: 3
+---
+
+
+== 场景描述
+
+该任务指导管理员进入渠道管理页面，查看渠道信息，并指导管理员进行创建渠道等相关操作。
+
+== 功能描述
+
+支持用户创建不同渠道，导出应用，并设置不同应用的相关权限。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+=== 创建渠道
+
+. 使用浏览器登录 BOSS。
+
+. 在左侧导航栏选择 *资源管理* > *AppCenter* > *渠道管理*，进入 *渠道管理* 页面。
++
+image::/images/boss/manual/resource_mgt/channelmgt_1.png[]
+
+. 点击 *创建渠道*，弹出 *创建渠道* 提示框。
++
+image::/images/boss/manual/resource_mgt/channelmgt_2.png[]
++
+参数说明如下：
++
+[cols="2,8", options="header"]
+|===
+|参数名称
+|参数解释
+
+|渠道名称
+|私有云渠道名称，根据实际情况进行配置。
+
+|渠道状态
+|包括正常和已注销两种状态。已注销表示不再交付的私有云。
+
+|私有云版本
+|青云交付给私有{platform_name_cn}的 IaaS 版本信息。
+
+|虚拟化类型
+|包括 KVM 和 LXC。可多选。
+|===
++
+配置完成后，点击 *下一步*。
+
+. 进入 *应用配置* 页面。
++
+image::/images/boss/manual/resource_mgt/channelmgt_3.png[,60%]
++
+配置完成后，点击 *创建*。
+
+=== 修改渠道信息
+
+. 进入 *渠道管理* 页面，点击待操作渠道后image:/images/boss/manual/icon.png[]，选择 *修改*。
++
+image::/images/boss/manual/resource_mgt/channelmgt_5.png[,60%]
++
+参数说明如下：
++
+[cols="2,8", options="header"]
+|===
+|参数名称
+|参数解释
+
+|渠道名称
+|私有云渠道名称，根据实际情况进行配置。
+
+|渠道状态
+|包括正常和已注销两种状态。已注销表示不再交付的私有云。
+
+|私有云版本
+|青云交付给私有{platform_name_cn}的 IaaS 版本信息。
+
+|虚拟化类型
+|包括 KVM 和 LXC。可多选。
+
+|修改原因
+|根据实际情况填写修改原因。
+|===
+
+
+. 修改完成后，点击 *修改*。
+
+=== 导出应用
+
+. 进入 *渠道管理* 页面，点击待操作渠道后名称，进入渠道详情页面。
++
+image::/images/boss/manual/resource_mgt/channelmgt_10.png[]
+
+. 点击 *修改渠道*，可修改渠道相关信息。
++
+image::/images/boss/manual/resource_mgt/channelmgt_6.png[]
+
+. 点击 *修改权限*，可修改该渠道下应用的权限。
++
+image::/images/boss/manual/resource_mgt/channelmgt_8.png[]
+
+. 选择待导出应用，点击 *导出到 FTP*，即可导出应用。
++
+image::/images/boss/manual/resource_mgt/channelmgt_9.png[]
+. 点击 *导出日志*，可查看导出信息。
++
+image::/images/boss/manual/resource_mgt/channelmgt_7.png[]
++
+
+include::../../../../../_components/note.adoc[]
+* 在导出的 FTP 地址可下载导出的应用。
+* 导入应用操作请参考 link:../cluster_apps/#_导入云应用[导入云应用]。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+   

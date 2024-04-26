@@ -1,0 +1,91 @@
+---
+title: 编辑运维日志（Boss2ModifyOperationalLog）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyOperationalLog
+
+=== Method
+POST
+
+=== 接口描述
+此接口主要用于编辑运维日志
+请求参数说明
+
+|===
+| 字段 | 类型 | 是否必须 | 说明 | 备注
+
+| action
+| string
+| 是
+| Boss2CreateOperationalLog
+|
+
+| operational_log_id
+| integer
+| 是
+| 日志id
+|
+
+| operational_log
+| string
+| 是
+| 日志内容
+|
+
+| log_type_id
+| integer
+| 是
+| 日志类型id
+|
+
+| limit_users
+| array
+| 否
+| 公开的user_id，不传代表为全部人公开
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2ModifyOperationalLog",
+   "operational_log_id": 1,
+   "operational_log": "我是第五条记录",
+   "log_type_id": 1,
+   "limit_users": [
+      1
+   ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "operational_log_id": 6,
+   "ret_code": 0,
+   "action": "Boss2ModifyOperationalLogResponse"
+}
+----

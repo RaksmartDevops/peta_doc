@@ -1,0 +1,343 @@
+---
+title: 获取全部客户列表/详情（Boss2DescribeCustomers）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCustomers
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取全部客户列表及详情信息。
+响应数据：
+(参考warehouse dim_user表)
+
+[.allow_break_inside]
+|===
+| 字段名 | 含义 | 备注
+
+| user_id
+| 用户ID
+|
+
+| user_name
+| 用户名称
+|
+
+| status
+| 用户状态
+|
+
+| email
+| 用户邮箱
+|
+
+| phone
+| 用户手机
+|
+
+| user_role
+| 用户角色
+|
+
+| user_type
+| 用户类型
+|
+
+| verify_type
+| 认证类型
+|
+
+| verify_time
+| 认证时间
+|
+
+| verify_status
+| 认证状态
+|
+
+| create_time
+| 创建时间
+|
+
+| currency
+| 币种
+|
+
+| root_user_id
+| 主账户ID
+|
+
+| company_name
+| 公司名称
+|
+
+| user_star_type
+| 用户星级
+|
+
+| user_crm
+| CRM所有人
+|
+
+| console_id
+| 平台ID
+|
+
+| referrer
+| 引荐人
+|
+
+| sales
+| 对应销售
+|
+
+| industry_id
+| 行业类型
+|
+
+| area_id
+| 地区
+|
+
+| sales
+| 对应销售人
+|
+
+| sales_dept_id
+| 销售部门id
+|
+
+| active_status_id
+| 用户活动状态
+|
+
+| user_ka_type
+| KA用户状态
+|
+
+| city
+| 城市
+|
+
+| city_id
+| 城市id
+|
+
+| sales_update_time
+| 销售更新时间
+|
+
+| expand_outlets
+|
+|
+
+| real_name
+| 真实姓名
+|
+
+| real_company_name
+| 真实公司名字
+|
+
+| first_charge_time
+| 首次消费时间
+|
+
+| first_recharge_time
+| 首次充值时间
+|
+
+| personal_code
+|
+|
+
+| sex
+| 性别
+|
+
+| birthday
+| 生日
+|
+
+| _test_account
+| 是否为测试账户
+|
+
+| remarks
+| 备注
+|
+
+| first_recharge_fee
+| 首次充值金额
+|
+
+| search_keyword
+| 搜索关键字
+|
+
+| balance
+| 余额
+|
+
+| charge_sum
+| 消费总额
+|
+
+| recharge_sum
+| 充值总额
+|
+
+| inherit_root_sales
+| 子账户是否继承主账户的销售
+|
+
+| root_sales
+| 如果inherit_root_sales为true，则此处会展示主账户的销售部门和销售id
+|
+|===
+
+备注：
+建议用户名称的获取优先级：real_company_name -\-> real_name -\-> user_name
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeCustomers",
+  
+  // 以下参数用于筛选
+  "users": ["usr-Vp7NsYRl"], // 通过用户id进行过滤
+  "status": ["active", "disabled"], // 通过用户状态进行过滤
+  "sales": [1, 2], // 通过销售id进行过滤
+  "sales_dept_id": [1, 2], // 通过销售部门id进行过滤
+  "phone": ["13252023476", "86-18910297964"], // 通过电话号码进行过滤
+  "email": ["demo@test.com"], // 通过邮箱进行过滤
+  "user_name": ["tomwang"], // 通过用户名进行过滤
+  "real_name": ["tomwang"], // 通过真实姓名进行过滤
+  "real_company_name": ["company"], // 通过公司名进行过滤
+  "verify_status": ["new", "passed", "pending", "rejected"], // 通过认证状态来进行过滤: 
+  "verify_type": [0, 1, 2], // 通过认证类型进行过滤：0-未认证 1-个人  2-企业
+  "user_type": [0], // 用户类型，0 - 主账户  1 - 子账户
+  "industry_id": [999], // 行业类型过滤
+  "console_id": ["admin", "beta"], // 可使用console 通过销售部门id进行过滤
+  "_test_account": [true, false], // 可通过是否测试账号进行过滤
+  "create_time_range": ["2019-01-23T00:25:04", "2019-01-24T10:25:04"], // 通过注册时间来筛选
+  "has_charged": true, // 按是否消费进行过滤，true - 有消费， false - 无消费
+  "has_recharged": true, // 按是否有充值进行过滤，true - 有充值， false - 无充值
+  "recharge_sum_range": [0, 1000], // 使用充值金额范围过滤 
+  "recharge_sum_gte": 1000, // 充值金额大于等于指定金额过滤
+  "recharge_sum_lte": 1000, // 充值金额小于等于指定金额过滤
+  "charge_sum_range": [0, 1000], // 使用消费金额范围过滤
+  "charge_sum_gte": 1000, // 消费金额大于等于指定金额过滤
+  "charge_sum_lte": 1000, // 消费金额小于等于指定金额过滤
+  "balance_range": [0, 1000], // 使用余额范围过滤
+  "balance_gte": 1000, // 余额大于等于指定金额过滤
+  "balance_lte": 1000, // 余额小于等于指定金额过滤
+  "currency": ["usd", "hkd", "cny"], // 使用币种进行过滤
+
+  
+  // 分页及排序
+  "fields": ["user_id", "user_name"], // 可指定结果中返回的字段
+  "limit": 1, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "create_time", // 指定用于排序的字段
+  "reverse": 1, // 是否进行逆序,1-逆序，0 - 正序，
+  "search_word": "test", // 用于部分字段的模糊搜索
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "customer_set": [
+      {
+         "_test_account": true,
+         "active_status_id": 2,
+         "area_id": 123,
+         "balance": -20815.6429,
+         "birthday": null,
+         "channel": "线上/线下活动",
+         "charge_sum": 52827.5835,
+         "city": "武汉",
+         "city_id": "990000",
+         "company_name": "",
+         "console_id": "admin",
+         "coupon_sum": 12,
+         "create_time": "2019-01-16T10:25:04",
+         "currency": "cny",
+         "email": "tomwang@test.com",
+         "expand_outlets": 2,
+         "first_charge_time": "2019-01-16T10:47:48",
+         "first_coupon_charge_time": "2019-01-16T10:47:48",
+         "first_recharge_fee": 1000,
+         "first_recharge_time": "2019-01-16T10:58:15",
+         "industry_id": 999,
+         "invoice_address": null,
+         "invoice_company_name": null,
+         "last_charge_time": "2020-03-16T00:59:47",
+         "last_recharge_time": "2020-03-11T10:01:43",
+         "paid_mode": "postpaid",
+         "personal_code": "",
+         "phone": "",
+         "preference": 1,
+         "province_id": "990000",
+         "real_company_name": "tomwang",
+         "real_name": "tomwang",
+         "recharge_sum": 32002,
+         "referrer": "usr-8ESilX9L",
+         "remarks": "这是备注",
+         "root_user_id": "usr-i3K70DIf",
+         "sales": "other",
+         "sales_dept_id": 99,
+         "sales_update_time": null,
+         "search_keyword": "test",
+         "sex": null,
+         "status": "active",
+         "user_crm": "",
+         "user_dep_type": "root_user",
+         "user_id": "usr-i3K70DIf",
+         "user_ka_type": 0,
+         "user_name": "tomwang",
+         "user_role": 1,
+         "user_star_type": null,
+         "user_type": 0,
+         "verify_address": "",
+         "verify_company_name": "",
+         "verify_status": "passed",
+         "verify_time": "2019-01-16T10:37:10",
+         "verify_type": 1,
+         "inherit_root_sales": true,
+         "root_sales": {
+            "sales": 99999999,
+            "sales_dept_id": 99
+         }
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeCustomersResponse"
+}
+----

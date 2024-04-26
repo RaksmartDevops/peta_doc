@@ -1,0 +1,144 @@
+//搭建 IPv6 网络并开通公网访问
+
+本文将指导您搭建一个具有 IPv6 地址块的 VPC 网络，在 VPC 网络中创建带有 IPv6 地址的云服务器，使云服务器可以进行 IPv6 私网通信以及访问 Internet 上的 IPv6 服务。
+
+////
+== 背景信息
+
+IPv4 过渡到 IPv6 的方案，大体分为三类：双栈、隧道和转换。
+
+* https://tools.ietf.org/html/rfc4241[双栈]指 IPv4 和 IPv6 同时在设备和网络中存在的方案。
+* https://tools.ietf.org/html/rfc3053[隧道]指将 IPv6 的数据包封装在现有协议（IPv4）里面，通过隧道封装实现互通。
+* https://tools.ietf.org/html/rfc2529[转换]指在 IPv6 的网络和 IPv4 的网络之间建立转换机制，以实现两张网络的设备之间的互通。
+
+青云QingCloud 主要提供 IPv4 / IPv6 双栈的产品和服务。无论是普通用户还是应用程序，双栈是最简单最便捷的，客户端和服务端可以选择自己倾向的网络。
+////
+
+ifdef::pub[]
+== 前提条件
+
+目前仅北京3区、广东2区和上海1区支持 IPv6，您需要在以上区域进行本文操作。
+endif::[]
+
+[#step1]
+== 步骤一：创建 VPC 网络及私有网络
+
+按照以下操作，创建一个具有 IPv6 地址块的 VPC 网络及私有网络。
+
+. 登录管理控制台。
+. 在控制台导航栏中，选择**产品与服务** > *网络服务* > *VPC 网络*，进入 **VPC 网络**页面。
+. 点击**创建 VPC 网络**，打开**创建 VPC 网络**页面。
+. 配置 VPC 网络基本信息及初始私有网络信息。
++
+include::../../_components/note.adoc[]
+以下配置为本操作中使用的示例，若您有其他特别需求，可参见link:../../manual/vpcnet/10_create_vpc/[创建 VPC 网络]查看详细配置说明。
+include::../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/network/vpc/4020_create_ipv6_vpc_info.png[基本信息]
++
+*基本信息*：
+
+* 区域：选择需要创建 VPC 的区域。
+* 名称：输入 VPC 网络的名称。
+* IPv4 地址范围：选择 VPC 网络的 IPv4 网段。
+* IPv6 网络地址：选择**系统自动分配**。
+* 类型：使用**小型**。**免费型**不支持接入公网。
+* 公网 IP：选择**暂不绑定**。
+* 安全组：使用默认安全组。
+
++
+image::/images/cloud_service/network/vpc/4020_create_ipv6_vpc_vxnet.png[初始私有网络]
+*初始私有网络*：
+
+* 名称：输入私有网络名称。
+* 工作模式：选择**虚拟机**。
+* 部署方式：选择**多可用区部署**。
+* IPv4 地址范围：私有网络的地址范围，需要在 VPC 网络的地址范围内。
+* IPv6 地址范围：选择**系统自动分配**。
+* 网络 ACL：选择**无**。
+* 其他选项：使用默认设置。
+
+. 点击**立即创建**，返回 **VPC 网络**页面，等待创建完成。
++
+创建完成后，VPC 便可支持 IPv4/IPv6 双栈网络。您可以在 VPC 列表中查看到 VPC 的 IPv6 地址范围。
++
+image::/images/cloud_service/network/vpc/vpc_ipv6_address.png[]
+
+[#step2]
+== 步骤二：创建云服务器
+
+按照以下操作，在<<step1,步骤一>>中创建的私有网络中创建一台云服务器 vm01。
+
+. 点击<<step1,步骤一>>中已创建好的 VPC 网络名称，进入 VPC 详情页面。
+. 在**私有网络**页签的**资源列表**区域，点击**创建资源** > *云服务器*，打开云服务器创建页面。
++
+image::/images/cloud_service/network/vpc/502020_add_resource.png[add_resource]
+
+. 配置云服务器信息。
++
+* 镜像选择：请选择镜像名称中带有``支持 IPv6`` 标注的镜像，表示支持 IPv6 DHCP 自动化配置。从其他镜像启动的云服务器，因未针对 DHCPv6 进行配置，云服务器的网络接口将无法自动获取和识别 IPv6 相关网络配置，需通过手动配置进行支持，详细操作，请参见link:../../manual/ipv4_ipv6/ipv6_auto_cfg/[开启云服务器 IPv6 自动化配置]。
++
+image::/images/cloud_service/network/vpc/ipv6_image.png[]
+* 网络配置：保持默认设置，使用当前所选私有网络且不可更改。
+* 其他配置：根据您实际需求设置即可，更多关于云服务器创建的详细说明，请参见link:../../../../compute/vm/quickstart/create_vm/[创建云服务器]。
+
+. 配置完成后，点击**创建主机**进行创建。
++
+创建完成后，资源列表中将显示云服务器信息，您可以看到系统为云服务器自动分配的 IPv6 地址。
++
+image::/images/cloud_service/network/vpc/vpc_vm_ipv6_address.png[]
+
+== 步骤三：开通 IPv6 公网访问
+
+按照以下操作，为 IPv6 地址分配公网带宽实现云服务器 IPv6 公网访问。IPv6 接入公网后，仍然具备 VPC 内网的访问能力。
+
+. 在控制台导航栏中，选择**产品与服务** > *计算* > *云服务器*，进入**云服务器**页面。
+
+. 在云服务器列表，右键点击云服务器 vm01，在弹出的菜单中选择**公网 IPv6** > *IPv6 接入公网*。
+
+. 设置公网 IP 的计费模式及带宽上限，点击**确定**。
++
+image::/images/cloud_service/network/vpc/vpc_vm_ipv6_eip.png[]
+
+[#step4]
+== 步骤四：配置安全组规则
+
+为保证云服务器能够被正常访问，您需要在云服务器的安全组中放行 IPv6 的相关访问协议。
+
+例如，您需要通过 `ping6` 命令测试云服务器的 IPv6 网络连通性，则需要在云服务器的安全组规则下放行 IPv6-ICMP（ping6）协议。具体操作如下：
+
+. 在控制台导航栏中，选择**产品与服务** > *网络服务* > *安全组*，进入**安全组**页面。
+. 点击云服务器绑定的安全组，进入安全组的**规则**配置页面。
+. 点击**添加规则**，在弹出的窗口中，点击快捷方式列表中的 **ping6** 进行快速配置。
++
+image::/images/cloud_service/network/vpc/add_ping6_sg_rule.png[]
+. 点击**提交**，返回规则列表，然后点击**应用修改**使配置生效。
+
+== 步骤五：测试 IPv6 网络连通性
+
+[discrete]
+=== 测试公网连通性
+
+登录到云服务器 vm01，ping 一个公网上的 IPv6 服务，验证公网连通性。例如：`ping6 www.taobao.com`。
+
+如下图所示，若能正常接收到回复报文，则表示公网通信正常。
+
+image::/images/cloud_service/network/vpc/vpc_vm_ping6_eip_test.png[]
+
+[discrete]
+=== 测试私网连通性
+
+. 按照<<step2,步骤二>>同样方法，新创建一台具有 IPv6 地址的云服务器 vm02。
+
+. 登录云服务器 vm01 及 vm02，分别执行 `ping6 <vm IPv6 地址>` 命令，互相测试通信是否正常。
++
+include::../../_components/note.adoc[]
+若云服务器绑定了安全组，请确保安全组规则中放行了 IPv6-ICMP（ping6）协议。否则，无法通过 `ping6` 命令访问云服务器。具体操作，请参见<<step4,配置安全组规则>>。
+include::../../_components/table_footer.adoc[]
++
+如果均能接收到回复报文，表示云服务器 IPv6 私网通信正常。
++
+image::/images/cloud_service/network/vpc/vpc_vm_ping6_test_1.png[]
++
+image::/images/cloud_service/network/vpc/vpc_vm_ping6_test_2.png[]

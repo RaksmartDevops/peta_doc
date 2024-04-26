@@ -1,0 +1,10 @@
+---
+title: "如何关闭 IE 增强的安全配置"
+weight: 60
+
+---
+选择 *服务器管理器* > *本地服务器* > *IE 增强的安全配置* > *管理员* > *关闭* > *确定*。
+
+image::/images/cloud_service/compute/vm/faq_disable_ie_enhance_1.png[图片]
+
+image::/images/cloud_service/compute/vm/faq_disable_ie_enhance_2.png[图片]

@@ -1,0 +1,93 @@
+---
+title: 获取全局zone watcher状态（Boss2GetGlobalZoneWatcherStatus）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalZoneWatcherStatus
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于全局(global) zone watcher的状态。
+
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| zone_watcher_status.zone
+| zone watcher所在的区域
+|
+
+| zone_watcher_status\,status
+a|
+zone watcher状态，包括：
+
+* normal: 正常
+* abnormal: 异常
+|
+
+| status_time
+| 数据更新时间
+|
+
+| source
+a|
+数据来源：
+
+* direct - 来自直接请求
+* cache - 来自缓存
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetGlobalZoneWatcherStatus",
+    "zones": ["dsry1a", "dsry2a"], // [可选]可使用zone watcher所在的zone进行过滤
+    "direct": false, // [可选]选择直接发送请求获取状态数据(true)，或通过定时缓存来获取数据(false)，默认为false
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "zone_watcher_status": [
+      {
+         "zone": "dsry1a",
+         "status": "normal"
+      },
+      {
+         "zone": "dsry1b",
+         "status": "normal"
+      }
+   ],
+   "status_time": "2020-09-19T06:32:26.988Z",
+   "source": "direct",
+   "ret_code": 0,
+   "action": "Boss2GetGlobalZoneWatcherStatusResponse"
+}
+----

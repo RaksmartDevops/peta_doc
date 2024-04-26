@@ -1,0 +1,84 @@
+---
+title: "Windows 云服务器搭建 FTP 服务"
+weight: 110
+---
+== 前提条件
+
+* 点击 link:https://yunify.anybox.qingcloud.com/s/g3yXfHGZ9V9ZtZgGIFfLHeXlSSSE2Klf[此处]下载 ftp server。
+* 点击 link:https://yunify.anybox.qingcloud.com/s/ORyko6fbfylJE5xu8PPjRtw1NN36wneG[此处]下载 ftp_client。
+
+== 操作步骤
+
+. 安装 ftp server，按照提示操作即可。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_1.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_2.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_3.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_4.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_5.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_6.png[]
+
+. 配置 ftp server，首先设置管理员端口和密码，端口配置默认的即可。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_7.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_8.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_9.png[]
+
+. 安装以上的报错，依次是需要配置被动模式、TLS 认证，首先配置被动模式。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_10.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_11.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_12.png[]
+
+. 配置 TLS 安全认证登录。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_13.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_14.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_15.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_16.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_17.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_18.png[]
+
+. 配置 ftp 用户。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_19.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_20.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_21.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_22.png[]
+
+. 配置 ftp 共享目录。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_23.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_24.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_25.png[]
+
+. 放行云服务器绑定防火墙的下行 21 号端口，20000-21000 被动端口范围，协议为 tcp 协议，并应用修改。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_26.png[]
+
+. 安装 ftp 客户端，按照提示下一步直到完成即可（略）。
+
+. 打开 ftp 客户端，测试 ftp 功能是否正常。
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_27.png[]
++
+image::/images/cloud_service/compute/vm/bestp_win_deploy_ftp_28.png[]

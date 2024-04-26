@@ -1,0 +1,67 @@
+---
+title: 获取GPU列表（Boss2DescribeGPUs）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeGPUs
+
+=== Method
+POST
+
+=== 接口描述
+用于获取GPU列表，该接口在IAAS原有DescribeGPUs接口的返回结果中加入了zone_id字段。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeGPUs",
+   "zone": "staging"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeGPUsResponse",
+   "total_count": 28,
+   "elapsed_time": 0.26897382736206055,
+   "gpu_set": [
+      {
+         "status": "available",
+         "audio_pci_num": "",
+         "hyper_node_id": "pek3dr13n03",
+         "gpu_device_name": "p100",
+         "instance_id": "",
+         "audio_vendor_device": "",
+         "create_time": "2019-08-05T12:43:30Z",
+         "pci_num": "82:00.0",
+         "vendor_device": "10de:15f7",
+         "status_time": "2020-11-09T01:25:02Z",
+         "gpu_class": 0,
+         "zone_id": "test"
+      }
+   ]
+}
+----

@@ -1,0 +1,303 @@
+---
+title: 获取 VXnet 列表（Boss2DescribeVxnets）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeVxnets
+
+=== Method
+POST
+
+=== 接口描述
+获取vxnet列表，
+该接口封装了iaas的Boss2DescribeVxnets接口，加入了以下字段：
+
+|===
+| 字段 | 作用 | 备注
+
+| ip_count
+| ip总数
+| 部分情况下为空，会返回null
+
+| ipv6_count
+| ipv6的总数
+| 部分情况下为空，会返回null +
+目前暂时应该还用不到
+
+|
+|
+|
+|===
+
+注意：
+当verbose为1时可以获取available_ip_count
+当verbose为2时可以获取dvr的信息
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的资源条目总数
+|
+
+| vxnet_set
+| Array
+| 私有网络信息列表
+|
+
+| vxnet_type
+| Integer
+| 私有网络类型
+|
+
+| vxnet_id
+| String
+| 私有网络 id
+|
+
+| console_id
+| String
+| 控制台 id
+|
+
+| dev_name
+| String
+| 开发环境名
+|
+
+| create_time
+| String
+| 创建时间
+|
+
+| alaram_status
+| String
+| 告警状态
+|
+
+| owner
+| String
+| 资源所有者 id
+|
+
+| offloaded
+| Integer
+| 卸载状态标识
+|
+
+| vxnet_name
+| String
+| 私有网络名称
+|
+
+| available_ip_count
+| Integer
+| 可用 ip 数量
+|
+
+| description
+| Value
+| 描述
+|
+
+| tunnel_type
+| String
+| 隧道类型
+|
+
+| tags
+| Array
+| 标签列表
+|
+
+| visibility
+| String
+| 可见性
+|
+
+| controller
+| String
+| 控制者
+|
+
+| instance_ids
+| Array
+| 主机 id 列表
+|
+
+| network_acl_id
+| String
+| 网络访问控制 id
+|
+
+| vpc_router_id
+| String
+| 个人私有云路由器 id
+|
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| control_plane
+| Integer
+| 控制面板类型标识
+|
+
+| root_user_id
+| String
+| 用户 id
+|
+
+| mode
+| Integer
+| 模式标识
+|
+
+| router
+| Object
+| 路由器详情数据
+|
+
+| resource_project_info
+| Array
+| 资源所属项目信息
+|
+
+| ip_count
+| Integer
+| ip 数量
+|
+
+| ipv6_count
+| Value
+| IPv6 数量
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeVxnets",
+   "limit": 20,
+   "offset": 0,
+   "verbose": 1,
+   "reverse": 1,
+   "vxnet_type": [
+      0,
+      1
+   ],
+   "status": [
+      "active"
+   ],
+   "zone": "test"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeVxnetsResponse",
+   "total_count": 1157,
+   "ret_code": 0,
+   "vxnet_set": [
+      {
+         "vxnet_type": 1,
+         "vxnet_id": "vxnet-mtw8nvh",
+         "console_id": "alphacloud",
+         "dev_name": "",
+         "create_time": "2019-04-02T10:30:40Z",
+         "alarm_status": "",
+         "owner": "usr-y0qZc7dZ",
+         "offloaded": 0,
+         "vxnet_name": "test_sd_wan",
+         "available_ip_count": 7,
+         "description": null,
+         "tunnel_type": "vxlan",
+         "tags": [],
+         "visibility": "",
+         "controller": "self",
+         "instance_ids": [
+            "i-qpgahyhf"
+         ],
+         "network_acl_id": null,
+         "vpc_router_id": "rtr-ho9bp1yr",
+         "zone_id": "test",
+         "control_plane": 0,
+         "root_user_id": "usr-y0qZc7dZ",
+         "mode": 1,
+         "router": {
+            "router_id": "rtr-1219zvhg",
+            "manager_ip": "192.168.165.1",
+            "ip_network": "192.168.165.0/24",
+            "dyn_ip_end": "192.168.165.9",
+            "dyn_ip_start": "192.168.165.2",
+            "ipv6_network": "",
+            "router_name": "vxnet-mtw8nvh",
+            "dyn_ipv6_end": "",
+            "border_id": "irt-sj6k3cy7",
+            "mode": 1,
+            "manager_ipv6": "",
+            "dyn_ipv6_start": "",
+            "border_private_ip": "192.168.165.254"
+         },
+         "resource_project_info": [],
+         "ip_count": 8,
+         "ipv6_count": null
+      },
+      {
+         "vxnet_type": 0,
+         "vxnet_id": "vxnet-rdl9mxn",
+         "console_id": "alphacloud",
+         "dev_name": "",
+         "create_time": "2019-04-02T10:29:28Z",
+         "alarm_status": "",
+         "owner": "usr-y0qZc7dZ",
+         "offloaded": 0,
+         "vxnet_name": "vpc-vtcmgqqn",
+         "available_ip_count": 0,
+         "description": null,
+         "tunnel_type": "vxlan",
+         "tags": [],
+         "visibility": "",
+         "controller": "pitrix",
+         "instance_ids": [],
+         "network_acl_id": null,
+         "vpc_router_id": "",
+         "zone_id": "test",
+         "control_plane": 0,
+         "root_user_id": "usr-y0qZc7dZ",
+         "mode": 1,
+         "resource_project_info": [],
+         "ip_count": null,
+         "ipv6_count": null
+      }
+   ]
+}
+----

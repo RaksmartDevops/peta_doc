@@ -1,0 +1,161 @@
+---
+title: Region连通性检测（Boss2GetZonePingMonitor）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetZonePingMonitor
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取指定region的连通性检查结果
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| src_zone
+| 发起ping检测的zone id
+|
+
+| src_host
+| 发起ping检测的主机名
+|
+
+| src_ip
+| 发起ping检测的主机ip
+|
+
+| dest_zone
+| ping检测目标zone
+| 如果目标是外网，则dest_zone为null
+
+| dest_host
+| ping检测目标主机名
+| 如果目标是global或外网，则dest_host为null
+
+| dest_ip
+| ping检测目标主机ip
+|
+
+| average_response_ms
+| ping平均延迟，单位为ms
+|
+
+| packets_received
+| 接收到的ping包数量
+|
+
+| packets_transmitted
+| 发送的ping包数量
+|
+
+| percent_packet_loss
+| 丢包率，已计算为百分比
+|
+
+| result_code
+a|
+ping检测结果：
+
+* 0 - 检测正常
+* 1 - 无此主机
+* 2 - ping异常
+|
+
+| dest_type
+a|
+ping目标类型，可能为：
+
+* global: ping global主机
+* internet: ping 外网主机
+* zone id: ping其他zone的主机
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetZonePingMonitor",
+    "zone": "test", // [必须]指定要检测的zone，通常应该指定一个region id
+    "src_zones": ["test"], // [可选]可通过发起ping检测的zone来进行结果过滤
+    "dest_types": ["internet", "global"] // [可选]可通过ping检测的对象来进行过滤，
+    // 可选项目为：global: 通过ping global节点进行检测 internet: 通过ping外网进行检测  zone_id: 可指定需要检测的目标zone来进行过滤
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "src_zone": "dsry1a",
+         "src_host": "neonsan01n00",
+         "dest_ip": "172.31.12.21",
+         "average_response_ms": 0.101,
+         "packets_received": 6,
+         "packets_transmitted": 6,
+         "percent_packet_loss": 0,
+         "result_code": 1,
+         "dest_type": "dsry1b",
+         "src_ip": "172.31.47.40",
+         "dest_zone": "dsry1b",
+         "dest_host": "neonsan02n01"
+      },
+      {
+         "src_zone": "dsry1b",
+         "src_host": "dsry1b-ks1",
+         "dest_ip": "172.31.47.56",
+         "average_response_ms": 0.21,
+         "packets_received": 6,
+         "packets_transmitted": 6,
+         "percent_packet_loss": 0,
+         "result_code": 1,
+         "dest_type": "global",
+         "src_ip": "172.31.12.29",
+         "dest_zone": "global",
+         "dest_host": null
+      },
+      {
+         "src_zone": "dsry1b",
+         "src_host": "dsry1b-ks0",
+         "dest_ip": "192.168.7.29",
+         "average_response_ms": 2.368,
+         "packets_received": 6,
+         "packets_transmitted": 6,
+         "percent_packet_loss": 0,
+         "result_code": 1,
+         "dest_type": "internet",
+         "src_ip": "172.31.12.28",
+         "dest_zone": null,
+         "dest_host": null
+      }
+   ],
+   "total_count": 12,
+   "ret_code": 0,
+   "action": "Boss2GetZonePingMonitorResponse"
+}
+----

@@ -1,0 +1,141 @@
+---
+title: 获取告警屏蔽规则（Boss2DescribeAlertSuppressRules）
+weight: 13
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertSuppressRules
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警屏蔽规则列表。
+返回数据：
+
+|===
+| 字段 | 解释 | 备注
+
+| id
+| 告警屏蔽规则id
+|
+
+| start_time
+| 屏蔽开始时间
+|
+
+| end_time
+| 屏蔽结束时间
+|
+
+| create_time
+| 规则的创建时间
+|
+
+| status_time
+| 规则的修改时间
+|
+
+| remarks
+| 屏蔽规则的描述
+|
+
+| status
+a|
+告警屏蔽规则的状态：
+
+* active： 活跃中
+* expired：规则已过期，无法起到作用
+* disabled:  规则已禁用
+|
+
+| owner_id
+| 规则创建者id
+|
+
+| owner_email
+| 规则创建者邮箱
+|
+
+| owner_name
+| 规则创建者用户名
+|
+
+| rule
+| 规则内容，可参考Boss2CreateAlertSuppressRule接口的描述
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAlertSuppressRules",
+    "id": 1, // 可通过告警屏蔽规则id进行过滤
+    "status": ["active", "expired", "disabled"], // 可通过规则的状态进行过滤
+    
+    // 分页及排序
+    "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+    "offset": 0, // 数据offset，与limit结合进行分页
+    "sort_key": "create_time", // 指定用于排序的字段
+    "reverse": 1, // 是否进行逆序,1-逆序，其他值为顺序，
+    "search_word": "测试", // 用于部分字段的模糊搜索
+    "fields": ["id", "remarks", "rule"], // 用于返回数据的过滤，仅返回列表中指定的字段数据
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 8,
+   "suppress_rule_set": [
+      {
+         "id": 30,
+         "start_time": "2022-05-27T01:43:00Z",
+         "end_time": "2022-05-27T07:10:59Z",
+         "create_time": "2022-05-30T05:45:36.713Z",
+         "status_time": "2022-05-30T06:06:00.060Z",
+         "remarks": "测试告警屏蔽",
+         "status": "active",
+         "suppress_action": "ignore",
+         "owner_id": 1,
+         "owner_email": "admin@alphacloud.com",
+         "owner_name": "admin",
+         "rule": {
+            "nodes": [
+               "node1",
+               "node2"
+            ],
+            "zones": [
+               "zone_a"
+            ],
+            "node_regex": [
+               "node\\d+"
+            ]
+         }
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertSuppressRulesResponse"
+}
+----

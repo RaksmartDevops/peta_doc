@@ -1,0 +1,23 @@
+---
+title: "云应用入门指南"
+description: 云应用入门
+draft: false
+collapsible: false
+weight: 1
+---
+
+== 基本步骤
+
+云平台 AppCenter 旨在帮助软件开发者以极低的学习成本快速部署自己的应用到云平台之上。应用可以是单节点部署架构，但 AppCenter 主要是针对于复杂的、多节点甚至多角色节点部署的企业应用而提供的服务。
+
+创建一个应用的主要流程如下：
+
+. link:../../cluster-developer-guide/management/#_创建应用[创建应用]
+. link:../../cluster-developer-guide/version_management/#_创建应用版本[创建应用版本]
++
+* link:../../cluster-developer-guide/version_management/#_创建配置文件[创建应用版本配置文件]
+* link:../../cluster-developer-guide/build/[创建应用使用的镜像]
+
+. link:../../cluster-developer-guide/management/#_完善应用信息[完善应用的详细信息]
+. link:../../cluster-developer-guide/version_management/#_提交应用版本[提交应用版本审核]。若为内部使用的应用可直接发布到个人应用中心。
+. 常见的问题请参考 link:../../cluster-faqs[常见问题]

@@ -1,0 +1,39 @@
+---
+title: "运维工具"
+linkTitle: "运维工具"
+weight: 20
+description: "运维工具可以有效的帮助客户管理云平台资源，提高运维人员的工作效率。"
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 标签
+            url: "intro/label"
+          - title: 操作日志
+            url: "intro/operation_log"
+          - title: 定时器
+            url: "intro/scheduler"
+          - title: 回收站
+            url: "intro/recycle_bin"
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 标签
+            url: "manual/label"
+          - title: 操作日志
+            url: "manual/activity"
+          - title: 定时器
+            url: "manual/scheduler"
+          - title: 回收站
+            url: "manual/recycle_bin"
+
+
+
+---

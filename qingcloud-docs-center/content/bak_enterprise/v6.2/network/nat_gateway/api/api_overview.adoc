@@ -1,0 +1,95 @@
+---
+title: "API 概览"
+description: 本小节主要介绍 NAT 网关所提供的 API。 
+keywords: 云计算, NAT, API 概览
+draft: false
+weight: 06
+---
+NAT 网关提供以下 API 接口供您使用。
+
+== NAT 网关接口
+
+|===
+| API | 说明
+
+| link:../nat/create_nfv/[CreateNFV]
+| 创建 NAT 网关。
+
+| link:../nat/describe_nfvs/[DescribeNFVs]
+| 获取 NAT 网关的信息。
+
+| link:../nat/dissociate_eips_from_nfv/[DissociateEipsFromNFV]
+| 解绑 NAT 网关的公网 IP。
+
+| link:../nat/associate_eips_to_nfv/[AssociateEipsToNFV]
+| 绑定公网 IP 到 NAT 网关。
+
+| link:../nat/update_nfvs/[UpdateNFVs]
+| 更新 NAT 网关。
+
+| link:../nat/resize_nfv/[ResizeNFV]
+| NAT 网关扩缩容。
+
+| link:../nat/start_nfvs/[StartNFVs]
+| 启动 NAT 网关。
+
+| link:../nat/stop_nfvs/[StopNFVs]
+| 关闭 NAT 网关。
+
+| link:../nat/upgrade_nfv/[UpgradeNFV]
+| 升级 NAT 网关版本。
+
+| link:../nat/nfv_join_vxnets/[NFVJoinVxnets]
+| NAT 网关绑定到私有网络。
+
+| link:../nat/nfv_leave_vxnets/[NFVLeaveVxnets]
+| NAT 网关解绑私有网络。
+
+| link:../nat/modify_nfv_attributes/[ModifyNFVAttributes]
+| 修改 NAT 网关属性。
+
+| link:../nat/modify_nfv_security_groups/[ModifyNFVSecurityGroups]
+| 修改 NAT 网关的安全组。
+
+| link:../nat/delete_nfvs/[DeleteNFVs]
+| 删除 NAT 网关。
+
+| link:../nat/get_nfv_monitor/[GetNFVMonitor]
+| 获取 NAT 网关的监控数据。
+|===
+
+== SNAT 接口
+
+|===
+| API | 说明
+
+| link:../snat/add_snat_rules/[AddSnatRules]
+| 新增 SNAT 规则。
+
+| link:../snat/describe_snat_rules/[DescribeSnatRules]
+| 查询 SNAT 规则。
+
+| link:../snat/update_snat_rule/[UpdateSnatRule]
+| 更新 SNAT 规则。
+
+| link:../snat/delete_snat_rules/[DeleteSnatRules]
+| 删除 SNAT 规则。
+|===
+
+== DNAT 接口
+
+|===
+| API | 说明
+
+| link:../dnat/add_dnat_rules/[AddDnatRules]
+| 新增 DNAT 规则。
+
+| link:../dnat/describe_dnat_rules/[DescribeDnatRules]
+| 查询 DNAT 规则。
+
+| link:../dnat/update_dnat_rule/[UpdateDnatRule]
+| 更新 DNAT 规则。
+
+| link:../dnat/delete_dnat_rules/[DeleteDnatRules]
+| 删除 DNAT 规则。
+|===

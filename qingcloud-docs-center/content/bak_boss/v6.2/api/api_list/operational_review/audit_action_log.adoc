@@ -1,0 +1,74 @@
+---
+title: 审核操作日志（Boss2ModifyAuditLogAttributes）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAuditLogAttributes
+
+=== Method
+POST
+
+=== 接口描述
+审核操作日志。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| success
+| Integer
+| 成功操作的数量
+|
+
+| audit_logs
+| Array
+| 已审核条目 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyAuditLogAttributes",
+    "id": [1,2,3,4,5,6], // [必须]审查日志id列表
+    "audit_status": "normal", // [可选]审查状态，可选abnormal, exception, other
+    "audit_passed": "passed", // [必须]审查结果, 可选passed, unpassed
+    "review_log": "测试审核" // [可选]审查备注信息
+}
+
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "success": 2,
+   "audit_logs": [
+      1,
+      2
+   ],
+   "ret_code": 0,
+   "action": "Boss2ModifyAuditLogAttributesResponse"
+}
+----

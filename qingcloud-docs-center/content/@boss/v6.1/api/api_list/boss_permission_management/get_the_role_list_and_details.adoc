@@ -1,0 +1,192 @@
+---
+title: 获取角色列表和详情（Boss2DescribeRoles）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeRoles
+
+=== Method
+POST
+
+=== 接口描述
+获取角色列表或角色详情。
+注意，
+返回字段：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| String
+| 角色id
+|
+
+| name
+| String
+| 角色名称
+|
+
+| description
+| String
+| 角色描述
+|
+
+| status
+| String
+| 角色状态
+|
+
+| status_time
+| String
+| 修改时间
+|
+
+| create_time
+| String
+| 创建时间
+|
+
+| zones
+| Array
+| 可访问的zone列表
+|
+
+| consoles
+| Array
+| 可访问的console列表
+|
+
+| menus
+| Array
+| 可访问的导航菜单
+|
+
+| perms
+| Array
+| 角色的数据权限
+|
+
+| users
+| Array
+| 使用该角色的用户列表
+|
+
+| user_count
+| Integer
+| 使用该角色的用户数量
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeRoles",
+    "id": ["f92f9a2a-da6c-462c-ba61-46c1afd8eb7a"], // 使用id进行过滤
+    "name": ["测试角色"], // 使用角色名称进行过滤
+    "status": ["disabled"], // 使用角色状态进行过滤，可使用的状态为: active, disabled, deleted
+    "search_word": "测试", // 搜索，目前可搜索字段为name和description 
+    "fields": ["id", "name", "user_count"], // 可选择返回的字段
+    "limit": 20,
+    "offset": 0,
+    "reverse": 1
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "role_set": [
+      {
+         "id": "7dcfa680-3914-4b5c-96d7-ddd5c0f3ed0c",
+         "name": "测试角色",
+         "description": "测试角色",
+         "status": "active",
+         "status_time": "2019-04-23T08:15:18.159Z",
+         "create_time": "2019-04-22T11:32:15.681Z",
+         "zones": [
+            "test"
+         ],
+         "consoles": [
+            "example"
+         ],
+         "menus": [],
+         "users": [
+            {
+               "id": 30,
+               "email": "test2@example.com",
+               "username": "test"
+            }
+         ],
+         "user_count": 10
+      },
+      {
+         "id": "f92f9a2a-da6c-462c-ba61-46c1afd8eb7a",
+         "name": "测试角色3",
+         "description": "测试角色",
+         "status": "disabled",
+         "status_time": "2019-04-23T08:14:58.393Z",
+         "create_time": "2019-04-22T10:23:45.951Z",
+         "zones": [],
+         "consoles": [
+            "example"
+         ],
+         "menus": null,
+         "users": [
+            {
+               "id": 8,
+               "email": "admin@example.com",
+               "username": ""
+            },
+            {
+               "id": 17,
+               "email": "me@example.com",
+               "username": ""
+            }
+         ]
+      },
+      {
+         "id": "c885521d-4805-475b-8abb-cea443ec205a",
+         "name": "测试角色2",
+         "description": "测试角色",
+         "status": "active",
+         "status_time": "2019-04-22T11:32:24.902Z",
+         "create_time": "2019-04-22T11:32:24.902Z",
+         "zones": [
+            "test"
+         ],
+         "consoles": [
+            "example"
+         ],
+         "menus": [],
+         "perms": [],
+         "users": [],
+         "user_count": 0
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeRolesResponse"
+}
+----

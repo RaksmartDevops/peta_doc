@@ -1,0 +1,33 @@
+---
+title: API 网关
+weight: 15
+description: API 网关（API Gateway）基于开源框架 Apache APISIX，提供 API 托管服务，包括 API
+  的创建、维护、发布、运行、下线等完整生命周期管理，帮助您快速构建以 API 为核心的系统架构，将自身的数据、业务逻辑或功能安全可靠地开放出来。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 API 网关
+            url: intro/introduction/
+          - title: 产品规格
+            url: spec/exclusive_instance/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建专享实例
+            url: manual/instance/create_instance/
+          - title: 创建 API 服务
+            url: manual/create_apiservice/
+          - title: 创建 API
+            url: manual/api/create_api/
+linkkey: middleware_apig_apiservice_guide
+---

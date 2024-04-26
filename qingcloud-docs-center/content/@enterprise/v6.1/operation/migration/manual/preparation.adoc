@@ -1,0 +1,60 @@
+---
+title: 迁移前准备
+description: 本小节主要介绍迁移前的准备工作。
+weight: 1
+linkkey: management_smc_v2v_migration_guide
+---
+
+
+迁移前，您需要了解以下注意事项。
+
+== Windows 系统迁移前准备
+
+=== Windows server 2003 虚拟机
+
+. 点击 https://yunify.anybox.qingcloud.com/s/pDsfJEX5rurntqy8NW9wEFTQfHqGi2MW[下载 virtio-win-0.1.171.zip 驱动]，下载后将安装包拷贝至源虚拟机的任一目录下，并记录放置的路径。
+
+. 点击 https://yunify.anybox.qingcloud.com/s/Q1GwzAwsKA3Xf9sOSGhpRNqu2UrwtJZ7[下载 MergeIDE.zip 安装包]，获取 MergeIDE.zip 安装包。
+
+. 拷贝 MergeIDE.zip 到 Windows server 2003 虚拟机中，进行解压。
+
+. 以管理员身份运行 CMD 窗口，将解压后的 MergelDE 拖到 CMD 窗口，点击回车键执行。
+
+=== 其他 Windows 系统虚拟机
+
+点击 https://yunify.anybox.qingcloud.com/s/pDsfJEX5rurntqy8NW9wEFTQfHqGi2MW[下载 virtio-win-0.1.171.zip 驱动]，下载后将安装包拷贝至源虚拟机的任一目录下，并记录放置的路径。
+
+
+== Linux 系统迁移前准备
+
+如果使用盘符等标识符挂载目录，需修改为 UUID 的方式挂载目录，否则迁移后若盘符发生变化，会导致 linux 无法启动。
+
+=== 操作步骤
+
+. 登录待迁移的虚拟机。
+
+. 查看索引盘 UUID：
++
+[source,shell]
+----
+# blkid
+……
+/dev/sda1: UUID="57d2d9f5-0200-4294-bc5d-4931bafd89cf" TYPE="ext4"
+/dev/sda2: UUID="22ad2eda-960c-474f-829b-11e8718425c0" TYPE="swap"
+……
+----
+
+. 将索引盘盘符修改为对应的 UUID，格式如下所示：
++
+[source,shell]
+----
+# vim /etc/fstab
+……
+UUID=57d2d9f5-0200-4294-bc5d-4931bafd89cf  /  ext4    defaults  0       1
+UUID=22ad2eda-960c-474f-829b-11e8718425c0 none  swap    sw   0       0
+……
+----
+
+
+
+

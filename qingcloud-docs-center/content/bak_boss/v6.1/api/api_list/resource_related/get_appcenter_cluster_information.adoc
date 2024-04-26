@@ -1,0 +1,1415 @@
+---
+title: 获取 AppCenter 集群信息（DescribeClusters）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=DescribeClusters
+
+=== Method
+POST
+
+=== 接口描述
+iaas接口，用于获取APPcenter中的集群列表。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的条目总数
+|
+
+| cluster_set
+| List
+| 集群信息列表
+|
+
+| health_status
+| String
+| 集群状态
+a|
+
+* unhealthy - 不健康
+* healthy - 健康
+partial-unhealthy - 部分健康
+
+| global_uuid
+| String
+| 全局唯一标识
+|
+
+| auto_backup_time
+| Integer
+| 自动备份时间
+|
+
+| health_check_enablement
+| Object
+| 健康状态检查
+|
+
+| cfgmgmt_id
+| String
+| 配置管理 id
+|
+
+| custom_service
+| Object
+| 自定义服务
+|
+
+| app_id
+| String
+| 应用 id
+|
+
+| advanced_actions
+| Object
+| 高级指令
+|
+
+| console_id
+| String
+| 控制台 id
+|
+
+| create_time
+| String
+| 创建时间
+|
+
+| cluster_id
+| String
+| 集群创建时间
+|
+
+| owner
+| String
+| 资源所有者
+|
+
+| resource_project_info
+| Array
+| 资源项目信息
+|
+
+| upgrade_time
+| String
+| 升级时间
+|
+
+| children
+| Value
+| 子群
+|
+
+| incremental_backup_supported
+| Boolean
+| 是否支持增量备份
+|
+
+| display_tabs
+| Object
+| 展示面板
+|
+
+| cluster_type
+| Integer
+| 集群种类
+|
+
+| sub_code
+| Integer
+| 发布码
+|
+
+| metadata_root_access
+| Boolean
+| 元数据是否可访问
+|
+
+| health_status
+| String
+| 健康状态
+|
+
+| add_links
+| Value
+| 附加链接
+|
+
+| security_group_id
+| String
+| 安全策略组 id
+|
+
+| auto_scale_step
+| Object
+| 自动伸缩步长
+|
+
+| upgrade_status
+| String
+| 升级状态
+|
+
+| status_time
+| String
+| 信息的上次修改时间
+|
+
+| nodes
+| Array
+| 节点详情数据
+|
+
+| app_version
+| String
+| 应用版本 id
+|
+
+| role_count
+| Object
+| 角色数量
+|
+
+| status
+| String
+| 集群状态
+|
+
+| description
+| String
+| 描述信息
+|
+
+| parent
+| Value
+| 父群
+|
+
+| tags
+| Array
+| 所含标签列表
+|
+
+| app_info
+| Object
+| 应用信息
+|
+
+| transition_status
+| String
+| 事务状态
+|
+
+| reuse_hyper
+| Boolean
+| 计算节点是否重用
+|
+
+| controller
+| String
+| 控制者
+|
+
+| shared_app
+| Boolean
+| 是否共享应用
+|
+
+| upgrade_policy
+| Array
+| 升级策略
+|
+
+| node_count
+| Integer
+| 节点数量
+|
+
+| zone_id
+| String
+| 可用区 id
+|
+
+| partner_access
+| Boolean
+| 是否允许合作伙伴访问
+|
+
+| name
+| String
+| 集群名称
+|
+
+| roles
+| Array
+| 角色
+|
+
+| lastest_snapshot_time
+| String
+| 最近做快照备份的时间点
+|
+
+| backup_service
+| Object
+| 备份服务
+|
+
+| root_user_id
+| String
+| 根用户 id
+|
+
+| vxnet
+| Object
+| 私有网络信息
+|
+
+| debug
+| Boolean
+| 是否为调试模式
+|
+
+| alarm_status
+| String
+| 告警状态
+|
+
+| backup_policy
+| String
+| 备份策略
+|
+
+| end_points
+| Object
+| 端点信息
+|
+
+| backup
+| Object
+| 是否备份
+|
+
+| app_version_info
+| Object
+| 应用版本详情数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "verbose": 1,
+   "zone": "test",
+   "action": "DescribeClusters",
+   "offset": 0,
+   "limit": 50,
+   "scope": "app",
+   "status": [
+      "active"
+   ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "DescribeClustersResponse",
+   "total_count": 40,
+   "cluster_set": [
+      {
+         "global_uuid": "52420249552612036",
+         "auto_backup_time": 0,
+         "health_check_enablement": {
+            "": true
+         },
+         "cfgmgmt_id": "cl-xxaq7gls",
+         "custom_service": {},
+         "app_id": "app-zydumbxo",
+         "advanced_actions": {
+            "": "change_vxnet,scale_horizontal"
+         },
+         "console_id": "alphacloud",
+         "create_time": "2019-02-18T11:55:46Z",
+         "cluster_id": "cl-6qb8rhsz",
+         "owner": "usr-qsMLseSK",
+         "resource_project_info": [],
+         "upgrade_time": "2019-02-18T11:55:46Z",
+         "children": null,
+         "incremental_backup_supported": true,
+         "display_tabs": {},
+         "cluster_type": 0,
+         "sub_code": 0,
+         "metadata_root_access": false,
+         "health_status": "healthy",
+         "add_links": null,
+         "security_group_id": "sg-vf1b3z6x",
+         "auto_scale_step": {
+            "": null
+         },
+         "upgrade_status": "",
+         "status_time": "2019-02-18T16:02:39Z",
+         "nodes": [
+            {
+               "passphraseless": "ssh-rsa",
+               "vertical_scaling_policy": "parallel",
+               "vxnet_id": "vxnet-u0yt0gh",
+               "destroy_service": {
+                  "cmd": "/opt/redis/app.py destroy"
+               },
+               "custom_service": null,
+               "app_id": "app-zydumbxo",
+               "advanced_actions": "change_vxnet,scale_horizontal",
+               "console_id": "alphacloud",
+               "stop_service": {
+                  "cmd": "/opt/redis/app.py stop",
+                  "order": 0
+               },
+               "user_access": 0,
+               "create_time": "2019-02-18T11:55:46Z",
+               "cluster_id": "cl-6qb8rhsz",
+               "private_ip": "10.73.25.64",
+               "upgrade_service": null,
+               "owner": "usr-qsMLseSK",
+               "place_group_id": "plg-00000000",
+               "single_node_repl": "",
+               "incremental_backup_supported": true,
+               "restore_service": null,
+               "server_id": 3,
+               "monitor": {
+                  "enable": true,
+                  "items": {
+                     "total_connections_received": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "list_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "hit_rate_max": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_misses": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "used_memory": {
+                        "scale_factor_when_display": 0.000001,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "MB"
+                     },
+                     "hit_rate_min": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hash_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "get_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hit_rate_avg": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "memory_usage_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "expired_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "sorted_set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "evicted_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "connected_clients_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "string_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_hits": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     }
+                  },
+                  "alarm": [
+                     "memory_usage_max",
+                     "evicted_keys",
+                     "keyspace_misses",
+                     "hit_rate_max",
+                     "connected_clients_max"
+                  ],
+                  "cmd": "/opt/redis/App.py monitor",
+                  "groups": {
+                     "Operations": [
+                        "get_count",
+                        "set_count",
+                        "key_based_count",
+                        "string_based_count"
+                     ],
+                     "Connected_clients": [
+                        "connected_clients_min",
+                        "connected_clients_max",
+                        "connected_clients_avg"
+                     ],
+                     "Operations2": [
+                        "set_based_count",
+                        "sorted_set_based_count",
+                        "list_based_count",
+                        "hash_based_count"
+                     ],
+                     "Keys": [
+                        "evicted_keys",
+                        "expired_keys",
+                        "key_count"
+                     ],
+                     "Key_hits": [
+                        "keyspace_hits",
+                        "keyspace_misses"
+                     ],
+                     "Connections": [
+                        "total_connections_received"
+                     ],
+                     "Hit_rate": [
+                        "hit_rate_min",
+                        "hit_rate_avg",
+                        "hit_rate_max"
+                     ],
+                     "Memory_usage": [
+                        "memory_usage_min",
+                        "memory_usage_avg",
+                        "memory_usage_max"
+                     ]
+                  },
+                  "display": [
+                     "Memory_usage",
+                     "Operations",
+                     "Operations2",
+                     "Connected_clients",
+                     "Connections",
+                     "Keys",
+                     "Key_hits",
+                     "Hit_rate"
+                  ]
+               },
+               "health_status": "healthy",
+               "is_backup": 1,
+               "root_user_id": "usr-qsMLseSK",
+               "role": "",
+               "gpu_class": 0,
+               "eip_class": null,
+               "memory": 2048,
+               "status_time": "2019-02-18T11:57:00Z",
+               "restart_service": null,
+               "app_version": "appv-2koqx590",
+               "status": "active",
+               "global_server_id": 706775515,
+               "interval_custom_service": null,
+               "env": "{\"appendonly\":\"yes\",\"requirepass\":\"\",\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"activerehashing\":\"yes\",\"port\":6379,\"appendfsync\":\"everysec\",\"lua-time-limit\":5000,\"list-max-ziplist-entries\":512,\"maxmemory_portion\":80,\"enable-commands\":\"DISABLE_ALL\",\"min-slaves-to-write\":0,\"slowlog-max-len\":128,\"maxclients\":65000,\"repl-backlog-ttl\":3600,\"latency-monitor-threshold\":0,\"hash-max-ziplist-entries\":512,\"list-max-ziplist-value\":64,\"maxmemory-policy\":\"volatile-lru\",\"port.appcenter2_parameter_suffix\":6379,\"maxmemory-samples\":3,\"hash-max-ziplist-value\":64,\"tcp-keepalive\":0,\"no-appendfsync-on-rewrite\":\"yes\",\"set-max-intset-entries\":512,\"min-slaves-max-lag\":10,\"notify-keyspace-events\":\"\",\"repl-timeout\":60,\"timeout\":0,\"repl-backlog-size\":1048576,\"slowlog-log-slower-than\":-1}",
+               "scale_in_service": {
+                  "cmd": "/opt/redis/app.py scale_in",
+                  "order": 0
+               },
+               "auto_backup": 0,
+               "transition_status": "",
+               "custom_metadata": null,
+               "storage_size": 10,
+               "server_id_upper_bound": null,
+               "cpu_model": "",
+               "image_id": "img-nh6nwhzu",
+               "controller": "self",
+               "node_id": "cln-aebevyey",
+               "gpu": 0,
+               "agent_installed": true,
+               "reserved_ips": null,
+               "backup_policy": "device",
+               "start_service": {
+                  "cmd": "mkdir -p /data/redis/logs; mkdir -p /data/redis/gen; ulimit -n 65536; /opt/redis/app.py start",
+                  "order": 0
+               },
+               "eip": "",
+               "volume_ids": "",
+               "name": "",
+               "resource_class": 0,
+               "hypervisor": "lxc",
+               "delete_snapshot_service": null,
+               "init_service": null,
+               "volume_type": 0,
+               "instance_id": "i-nviutpdf",
+               "instance_type": "",
+               "scale_out_service": {
+                  "cmd": "/opt/redis/app.py scale_out",
+                  "order": 0
+               },
+               "repl": "rpp-00000000",
+               "custom_metadata_script": null,
+               "health_check": {
+                  "enable": true,
+                  "timeout_sec": 10,
+                  "healthy_threshold": 2,
+                  "interval_sec": 60,
+                  "unhealthy_threshold": 2,
+                  "check_cmd": "/opt/redis/app.py check",
+                  "action_cmd": "/opt/redis/app.py action",
+                  "action_timeout_sec": 30
+               },
+               "security_group": {
+                  "vbc_isol_master": "",
+                  "is_applied": 1,
+                  "description": "adams",
+                  "root_user_id": "usr-qsMLseSK",
+                  "group_name": "fwtest01",
+                  "is_default": 0,
+                  "controller": "self",
+                  "create_time": "2019-02-18T18:47:34",
+                  "ipv6_enabled": 0,
+                  "owner": "usr-qsMLseSK",
+                  "vbc_isol_enabled": 0,
+                  "console_id": "alphacloud",
+                  "group_id": "sg-vf1b3z6x",
+                  "group_type": ""
+               },
+               "alarm_status": "ok",
+               "pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDD+CMbqIP3QvTruxHzikYHnw3iCBqyCmAvMWb+HYWdA2wGVZEL3Bakny1a7rk8JiANVtLmT/Z7FqToJUd8glR/FQZL3xPIilF4u3zc5FyrHPjZdWHLXMHqzsET1V8oufzFvj5CC8yGSvkbd88I4lHFr3ajchWBmgpkSSucSdJg6G6zMFKoJocpvNO4Ot1Qzj1HLPbtCCzlhFqpyGKgwMZXJDlO23fegBVrWrcS0mW/ITBaRrYGyLAYYlAyjWtdwrnHuowKdRUD+jvEjk0GqbTOUUv+80P+eAFHCo0eXjnStq/EmJB+Lm30ftsObjCUkJ8+pvduhIbj2+K4ofIQdyCD root@i-nviutpdf",
+               "group_id": 3,
+               "backup_service": {
+                  "cmd": "",
+                  "nodes_to_execute_on": 1,
+                  "order": 0,
+                  "timeout": 3600,
+                  "selector": "/opt/redis/app.py select_node"
+               },
+               "cpu": 2,
+               "display_tabs": null
+            },
+            {
+               "passphraseless": "ssh-rsa",
+               "vertical_scaling_policy": "parallel",
+               "vxnet_id": "vxnet-u0yt0gh",
+               "destroy_service": {
+                  "cmd": "/opt/redis/app.py destroy"
+               },
+               "custom_service": null,
+               "app_id": "app-zydumbxo",
+               "advanced_actions": "change_vxnet,scale_horizontal",
+               "console_id": "alphacloud",
+               "stop_service": {
+                  "cmd": "/opt/redis/app.py stop",
+                  "order": 0
+               },
+               "user_access": 0,
+               "create_time": "2019-02-18T11:55:46Z",
+               "cluster_id": "cl-6qb8rhsz",
+               "private_ip": "10.73.25.63",
+               "upgrade_service": null,
+               "owner": "usr-qsMLseSK",
+               "place_group_id": "plg-00000000",
+               "single_node_repl": "",
+               "incremental_backup_supported": true,
+               "restore_service": null,
+               "server_id": 1,
+               "monitor": {
+                  "enable": true,
+                  "items": {
+                     "total_connections_received": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "list_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "hit_rate_max": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_misses": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "used_memory": {
+                        "scale_factor_when_display": 0.000001,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "MB"
+                     },
+                     "hit_rate_min": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hash_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "get_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hit_rate_avg": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "memory_usage_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "expired_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "sorted_set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "evicted_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "connected_clients_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "string_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_hits": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     }
+                  },
+                  "alarm": [
+                     "memory_usage_max",
+                     "evicted_keys",
+                     "keyspace_misses",
+                     "hit_rate_max",
+                     "connected_clients_max"
+                  ],
+                  "cmd": "/opt/redis/App.py monitor",
+                  "groups": {
+                     "Operations": [
+                        "get_count",
+                        "set_count",
+                        "key_based_count",
+                        "string_based_count"
+                     ],
+                     "Connected_clients": [
+                        "connected_clients_min",
+                        "connected_clients_max",
+                        "connected_clients_avg"
+                     ],
+                     "Operations2": [
+                        "set_based_count",
+                        "sorted_set_based_count",
+                        "list_based_count",
+                        "hash_based_count"
+                     ],
+                     "Keys": [
+                        "evicted_keys",
+                        "expired_keys",
+                        "key_count"
+                     ],
+                     "Key_hits": [
+                        "keyspace_hits",
+                        "keyspace_misses"
+                     ],
+                     "Connections": [
+                        "total_connections_received"
+                     ],
+                     "Hit_rate": [
+                        "hit_rate_min",
+                        "hit_rate_avg",
+                        "hit_rate_max"
+                     ],
+                     "Memory_usage": [
+                        "memory_usage_min",
+                        "memory_usage_avg",
+                        "memory_usage_max"
+                     ]
+                  },
+                  "display": [
+                     "Memory_usage",
+                     "Operations",
+                     "Operations2",
+                     "Connected_clients",
+                     "Connections",
+                     "Keys",
+                     "Key_hits",
+                     "Hit_rate"
+                  ]
+               },
+               "health_status": "healthy",
+               "is_backup": 0,
+               "root_user_id": "usr-qsMLseSK",
+               "role": "",
+               "gpu_class": 0,
+               "eip_class": null,
+               "memory": 2048,
+               "status_time": "2019-02-18T11:57:00Z",
+               "restart_service": null,
+               "app_version": "appv-2koqx590",
+               "status": "active",
+               "global_server_id": 553327887,
+               "interval_custom_service": null,
+               "env": "{\"appendonly\":\"yes\",\"requirepass\":\"\",\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"activerehashing\":\"yes\",\"port\":6379,\"appendfsync\":\"everysec\",\"lua-time-limit\":5000,\"list-max-ziplist-entries\":512,\"maxmemory_portion\":80,\"enable-commands\":\"DISABLE_ALL\",\"min-slaves-to-write\":0,\"slowlog-max-len\":128,\"maxclients\":65000,\"repl-backlog-ttl\":3600,\"latency-monitor-threshold\":0,\"hash-max-ziplist-entries\":512,\"list-max-ziplist-value\":64,\"maxmemory-policy\":\"volatile-lru\",\"port.appcenter2_parameter_suffix\":6379,\"maxmemory-samples\":3,\"hash-max-ziplist-value\":64,\"tcp-keepalive\":0,\"no-appendfsync-on-rewrite\":\"yes\",\"set-max-intset-entries\":512,\"min-slaves-max-lag\":10,\"notify-keyspace-events\":\"\",\"repl-timeout\":60,\"timeout\":0,\"repl-backlog-size\":1048576,\"slowlog-log-slower-than\":-1}",
+               "scale_in_service": {
+                  "cmd": "/opt/redis/app.py scale_in",
+                  "order": 0
+               },
+               "auto_backup": 1,
+               "transition_status": "",
+               "custom_metadata": null,
+               "storage_size": 10,
+               "server_id_upper_bound": null,
+               "cpu_model": "",
+               "image_id": "img-nh6nwhzu",
+               "controller": "self",
+               "node_id": "cln-amnzffo6",
+               "gpu": 0,
+               "agent_installed": true,
+               "reserved_ips": null,
+               "backup_policy": "device",
+               "start_service": {
+                  "cmd": "mkdir -p /data/redis/logs; mkdir -p /data/redis/gen; ulimit -n 65536; /opt/redis/app.py start",
+                  "order": 0
+               },
+               "eip": "",
+               "volume_ids": "",
+               "name": "",
+               "resource_class": 0,
+               "hypervisor": "lxc",
+               "delete_snapshot_service": null,
+               "init_service": null,
+               "volume_type": 0,
+               "instance_id": "i-9svhhbbj",
+               "instance_type": "",
+               "scale_out_service": {
+                  "cmd": "/opt/redis/app.py scale_out",
+                  "order": 0
+               },
+               "repl": "rpp-00000000",
+               "custom_metadata_script": null,
+               "health_check": {
+                  "enable": true,
+                  "timeout_sec": 10,
+                  "healthy_threshold": 2,
+                  "interval_sec": 60,
+                  "unhealthy_threshold": 2,
+                  "check_cmd": "/opt/redis/app.py check",
+                  "action_cmd": "/opt/redis/app.py action",
+                  "action_timeout_sec": 30
+               },
+               "security_group": {
+                  "vbc_isol_master": "",
+                  "is_applied": 1,
+                  "description": "adams",
+                  "root_user_id": "usr-qsMLseSK",
+                  "group_name": "fwtest01",
+                  "is_default": 0,
+                  "controller": "self",
+                  "create_time": "2019-02-18T18:47:34",
+                  "ipv6_enabled": 0,
+                  "owner": "usr-qsMLseSK",
+                  "vbc_isol_enabled": 0,
+                  "console_id": "alphacloud",
+                  "group_id": "sg-vf1b3z6x",
+                  "group_type": ""
+               },
+               "alarm_status": "",
+               "pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3AwYbfIaj6NeoC5Mmv3aqbFPaufyVq1Y+/4FF6KiYklwiDhrpSbKVAAhsWNh3Ot6HEDRi68H3hmgFTSBEATporwiAJqRDo/v4ZVNQt81W+UmNfYk+bUSl2pAiu/khyA1S4r6gkLxgkliy9U5oGQSbZErtvDsJ4YqKFPt+K0Svw3vu2OoF1tcCj7ie/cuLI7N/2UXxAgrZDZYLrwKSgg/3oj/S9qZAt+0TPXLfN3afoOIXakiBQunDoJP0GpvUPFnFIfAUud0z7Xp3uRB1GpTfh1eGVyvWu/fUWakc9jLZKqXu55iV4jV2eFLliozW5o82952nvc0ZWwfOGoc3BPtn root@i-9svhhbbj",
+               "group_id": 1,
+               "backup_service": {
+                  "cmd": "",
+                  "nodes_to_execute_on": 1,
+                  "order": 0,
+                  "timeout": 3600,
+                  "selector": "/opt/redis/app.py select_node"
+               },
+               "cpu": 2,
+               "display_tabs": null
+            },
+            {
+               "passphraseless": "ssh-rsa",
+               "vertical_scaling_policy": "parallel",
+               "vxnet_id": "vxnet-u0yt0gh",
+               "destroy_service": {
+                  "cmd": "/opt/redis/app.py destroy"
+               },
+               "custom_service": null,
+               "app_id": "app-zydumbxo",
+               "advanced_actions": "change_vxnet,scale_horizontal",
+               "console_id": "alphacloud",
+               "stop_service": {
+                  "cmd": "/opt/redis/app.py stop",
+                  "order": 0
+               },
+               "user_access": 0,
+               "create_time": "2019-02-18T11:55:46Z",
+               "cluster_id": "cl-6qb8rhsz",
+               "private_ip": "10.73.25.68",
+               "upgrade_service": null,
+               "owner": "usr-qsMLseSK",
+               "place_group_id": "plg-00000000",
+               "single_node_repl": "",
+               "incremental_backup_supported": true,
+               "restore_service": null,
+               "server_id": 2,
+               "monitor": {
+                  "enable": true,
+                  "items": {
+                     "total_connections_received": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "list_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "hit_rate_max": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_misses": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "used_memory": {
+                        "scale_factor_when_display": 0.000001,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "MB"
+                     },
+                     "hit_rate_min": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hash_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "get_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "hit_rate_avg": {
+                        "scale_factor_when_display": 0.1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "memory_usage_avg": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "avg",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "connected_clients_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "memory_usage_max": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "max",
+                        "value_type": "int",
+                        "unit": "%"
+                     },
+                     "expired_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "sorted_set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "evicted_keys": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "set_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "connected_clients_min": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "min",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "key_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "string_based_count": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "delta",
+                        "value_type": "int",
+                        "unit": "Times"
+                     },
+                     "keyspace_hits": {
+                        "scale_factor_when_display": 1,
+                        "statistics_type": "latest",
+                        "value_type": "int",
+                        "unit": "Times"
+                     }
+                  },
+                  "alarm": [
+                     "memory_usage_max",
+                     "evicted_keys",
+                     "keyspace_misses",
+                     "hit_rate_max",
+                     "connected_clients_max"
+                  ],
+                  "cmd": "/opt/redis/App.py monitor",
+                  "groups": {
+                     "Operations": [
+                        "get_count",
+                        "set_count",
+                        "key_based_count",
+                        "string_based_count"
+                     ],
+                     "Connected_clients": [
+                        "connected_clients_min",
+                        "connected_clients_max",
+                        "connected_clients_avg"
+                     ],
+                     "Operations2": [
+                        "set_based_count",
+                        "sorted_set_based_count",
+                        "list_based_count",
+                        "hash_based_count"
+                     ],
+                     "Keys": [
+                        "evicted_keys",
+                        "expired_keys",
+                        "key_count"
+                     ],
+                     "Key_hits": [
+                        "keyspace_hits",
+                        "keyspace_misses"
+                     ],
+                     "Connections": [
+                        "total_connections_received"
+                     ],
+                     "Hit_rate": [
+                        "hit_rate_min",
+                        "hit_rate_avg",
+                        "hit_rate_max"
+                     ],
+                     "Memory_usage": [
+                        "memory_usage_min",
+                        "memory_usage_avg",
+                        "memory_usage_max"
+                     ]
+                  },
+                  "display": [
+                     "Memory_usage",
+                     "Operations",
+                     "Operations2",
+                     "Connected_clients",
+                     "Connections",
+                     "Keys",
+                     "Key_hits",
+                     "Hit_rate"
+                  ]
+               },
+               "health_status": "healthy",
+               "is_backup": 0,
+               "root_user_id": "usr-qsMLseSK",
+               "role": "",
+               "gpu_class": 0,
+               "eip_class": null,
+               "memory": 2048,
+               "status_time": "2019-02-18T11:56:57Z",
+               "restart_service": null,
+               "app_version": "appv-2koqx590",
+               "status": "active",
+               "global_server_id": 327560935,
+               "interval_custom_service": null,
+               "env": "{\"appendonly\":\"yes\",\"requirepass\":\"\",\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"activerehashing\":\"yes\",\"port\":6379,\"appendfsync\":\"everysec\",\"lua-time-limit\":5000,\"list-max-ziplist-entries\":512,\"maxmemory_portion\":80,\"enable-commands\":\"DISABLE_ALL\",\"min-slaves-to-write\":0,\"slowlog-max-len\":128,\"maxclients\":65000,\"repl-backlog-ttl\":3600,\"latency-monitor-threshold\":0,\"hash-max-ziplist-entries\":512,\"list-max-ziplist-value\":64,\"maxmemory-policy\":\"volatile-lru\",\"port.appcenter2_parameter_suffix\":6379,\"maxmemory-samples\":3,\"hash-max-ziplist-value\":64,\"tcp-keepalive\":0,\"no-appendfsync-on-rewrite\":\"yes\",\"set-max-intset-entries\":512,\"min-slaves-max-lag\":10,\"notify-keyspace-events\":\"\",\"repl-timeout\":60,\"timeout\":0,\"repl-backlog-size\":1048576,\"slowlog-log-slower-than\":-1}",
+               "scale_in_service": {
+                  "cmd": "/opt/redis/app.py scale_in",
+                  "order": 0
+               },
+               "auto_backup": 0,
+               "transition_status": "",
+               "custom_metadata": null,
+               "storage_size": 10,
+               "server_id_upper_bound": null,
+               "cpu_model": "",
+               "image_id": "img-nh6nwhzu",
+               "controller": "self",
+               "node_id": "cln-rj6bllh2",
+               "gpu": 0,
+               "agent_installed": true,
+               "reserved_ips": null,
+               "backup_policy": "device",
+               "start_service": {
+                  "cmd": "mkdir -p /data/redis/logs; mkdir -p /data/redis/gen; ulimit -n 65536; /opt/redis/app.py start",
+                  "order": 0
+               },
+               "eip": "",
+               "volume_ids": "",
+               "name": "",
+               "resource_class": 0,
+               "hypervisor": "lxc",
+               "delete_snapshot_service": null,
+               "init_service": null,
+               "volume_type": 0,
+               "instance_id": "i-5lar3x79",
+               "instance_type": "",
+               "scale_out_service": {
+                  "cmd": "/opt/redis/app.py scale_out",
+                  "order": 0
+               },
+               "repl": "rpp-00000000",
+               "custom_metadata_script": null,
+               "health_check": {
+                  "enable": true,
+                  "timeout_sec": 10,
+                  "healthy_threshold": 2,
+                  "interval_sec": 60,
+                  "unhealthy_threshold": 2,
+                  "check_cmd": "/opt/redis/app.py check",
+                  "action_cmd": "/opt/redis/app.py action",
+                  "action_timeout_sec": 30
+               },
+               "security_group": {
+                  "vbc_isol_master": "",
+                  "is_applied": 1,
+                  "description": "adams",
+                  "root_user_id": "usr-qsMLseSK",
+                  "group_name": "fwtest01",
+                  "is_default": 0,
+                  "controller": "self",
+                  "create_time": "2019-02-18T18:47:34",
+                  "ipv6_enabled": 0,
+                  "owner": "usr-qsMLseSK",
+                  "vbc_isol_enabled": 0,
+                  "console_id": "alphacloud",
+                  "group_id": "sg-vf1b3z6x",
+                  "group_type": ""
+               },
+               "alarm_status": "",
+               "pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTGH5pIBpW7p+MoPSZG8MZVS8tjXaXEmvKfYhhyu+E00+6BDMf8jbu7AJQulD8cJRblrMyetDuyjdOqHTYNUD1oPGroeOI66q0uTTZvVtlSl5gdGiSCBNDXYSKIH3TRYmNkF6yFlkHThxayLvyxAgYbMJr2Q7/q/FnPc+3K3729UwIXVaSdj0knyQCkuSWZ5OOFxhe8kCVpTLN6/Yr06bPjE25T9RAz+/2mm+QudJP0dXbvvgo+7/gWKni0qFdWGRhrTqdPY3Xuvzti2YRyrfXpkhLUFkofWV+xo1IO5bCbP9+kzM8qD17lsQDSsYvT/3aee5qyDwoeNqTMkIYgyCD root@i-5lar3x79",
+               "group_id": 2,
+               "backup_service": {
+                  "cmd": "",
+                  "nodes_to_execute_on": 1,
+                  "order": 0,
+                  "timeout": 3600,
+                  "selector": "/opt/redis/app.py select_node"
+               },
+               "cpu": 2,
+               "display_tabs": null
+            }
+         ],
+         "app_version": "appv-2koqx590",
+         "role_count": {
+            "": 3
+         },
+         "status": "active",
+         "description": "test001",
+         "parent": null,
+         "tags": [],
+         "app_info": {
+            "icon": "ca-e1fzkzsh",
+            "app_name": "Redis Standalone",
+            "app_id": "app-zydumbxo"
+         },
+         "transition_status": "",
+         "reuse_hyper": true,
+         "controller": "self",
+         "shared_app": false,
+         "upgrade_policy": [],
+         "node_count": 3,
+         "zone_id": "test",
+         "partner_access": false,
+         "name": "Redis Standalone001",
+         "roles": [
+            ""
+         ],
+         "lastest_snapshot_time": "2019-02-18T16:02:11Z",
+         "backup_service": {},
+         "root_user_id": "usr-qsMLseSK",
+         "vxnet": {
+            "vxnet_id": "vxnet-u0yt0gh",
+            "vxnet_name": "vxnet-0",
+            "vxnet_type": 2,
+            "mode": 1,
+            "vpc_router_id": ""
+         },
+         "debug": false,
+         "alarm_status": "ok",
+         "backup_policy": "device",
+         "endpoints": {
+            "client": {
+               "protocol": "tcp",
+               "port": 6379
+            },
+            "reserved_ips": {
+               "vip": {
+                  "value": "10.73.25.245"
+               }
+            }
+         },
+         "backup": {
+            "": true
+         },
+         "app_version_info": {
+            "status_time": "2018-12-17T06:38:20Z",
+            "resource_kit": "ca-1s6e9059",
+            "name": "Redis 4.0.9 - 1.1.0",
+            "version_id": "appv-2koqx590",
+            "upgrade_policy": []
+         }
+      }
+   ],
+   "ret_code": 0
+}
+----

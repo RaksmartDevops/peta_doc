@@ -1,0 +1,12 @@
+//进入消费中心，功能入口
+
+您可以按照以下步骤进入费用中心，查看和使用费用中心的相关功能。
+
+. 登录管理控制台。
+. 将鼠标移到页面顶部右上方的**费用**选项，即可显示费用中心相关功能入口，点击功能菜单，直达该功能页面。
++
+image::/images/cloud_service/services/bill_center/entrance_q.png[]
+
+. 进入费用中心后，在左侧导航栏中，点击功能菜单，便可进入对应页面进行操作。
++
+image::/images/cloud_service/services/bill_center/bill_center_page_q.png[费用中心]

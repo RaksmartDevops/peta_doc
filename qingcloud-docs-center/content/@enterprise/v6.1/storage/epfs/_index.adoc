@@ -1,0 +1,30 @@
+---
+title: "文件存储 EPFS"
+linkTitle: "文件存储 EPFS"
+weight: 4
+collapsible: true
+type: "product"
+description: 文件存储 EPFS（Elastic Parallel File System）是云平台提供的并行文件系统服务，用于面向超级计算服务等高性能场景。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 文件存储 EPFS
+            url: "intro/epfs"
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建 EPFS 
+            url: manual/epfs/
+          - title: 添加 EPFS 规则
+            url: manual/epfs_rules/
+          - title: EPFS 文件管理
+            url: manual/epfs_manage/
+  
+
+---

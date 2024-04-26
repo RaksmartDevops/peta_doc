@@ -1,0 +1,115 @@
+---
+title: 请求NeonSAN接口（Boss2ProxyNeonSAN）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ProxyNeonSAN
+
+=== Method
+POST
+
+=== 接口描述
+发往 NeonSAN 的请求都由这一个action 转发，NeonSAN 是每个 zone 部署一个，所以请求里必传 zone 参数。其他的参数和返回值见 NeonSAN 的接口文档。
+
+发往 NeonSAN 的请求有两种：
+
+* 请求 NeonSAN API，必须包含 op 参数；
+* 请求监控告警 API，必须包含 query 参数；
+
+NeonSAN API 的分页参数：
+
+|===
+| 参数 | 类型 | 说明
+
+| pn
+| integer
+| 页码，从1开始，传0等同于1
+
+| count
+| integer
+| 分页大小，不小于1
+|===
+
+监控告警 API 支持查询实时数据和历史数据，NeonSAN 文档中描述的是查询实时数据。
+查询历史数据时，需要额外增加 start、end 和 step 参数。如下：
+
+|===
+| 参数 | 类型 | 说明
+
+| start
+| string
+| 开始时间，RFC3339 格式，例如1990-12-31T23:59:59Z
+
+| end
+| string
+| 结束时间，RFC3339 格式，例如1990-12-31T23:59:59Z
+
+| step
+| string
+| 步进， 格式为 [0-9]+[smhdwy]，例如 5s 表示5秒
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2ProxyNeonSAN",
+   "op": "list_volume",
+   "count": 1,
+   "pn": 1,
+   "zone": "neonsantest"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "op": "list_volume_reply",
+   "ret_code": 0,
+   "reason": "",
+   "count": 1,
+   "volumes": [
+      {
+         "id": 16777216,
+         "name": "v1",
+         "pool_name": "pool",
+         "size": 107374182400,
+         "replication_count": 3,
+         "status": "OK",
+         "min_replication_count": 1,
+         "role": "alone",
+         "policy": "default",
+         "create_time": "2019-11-16T18:20:40+08:00",
+         "status_time": "2019-11-16T18:20:40+08:00",
+         "metro_replica": null,
+         "provision_type": "thin",
+         "max_bs": 65536,
+         "volume_allocated": 67108864,
+         "rg_name": "default",
+         "encrypted": "no"
+      }
+   ],
+   "action": "Boss2ProxyNeonSANResponse"
+}
+----

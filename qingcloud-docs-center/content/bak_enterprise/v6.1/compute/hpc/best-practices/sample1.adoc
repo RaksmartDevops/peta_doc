@@ -1,0 +1,9 @@
+---
+title: "使用界面提交并运行作业"
+draft: false
+weight: 1
+linkkey: compute_hpc_lammps
+---
+
+include::../../../../../_cloud_service/ehpc/bp/sample1.adoc[]
+

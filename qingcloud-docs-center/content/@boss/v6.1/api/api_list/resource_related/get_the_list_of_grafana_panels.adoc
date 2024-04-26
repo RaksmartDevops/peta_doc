@@ -1,0 +1,72 @@
+---
+title: 获取Grafana面板列表（Boss2GetGrafanaZoneDashboards）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGrafanaZoneDashboards
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于返回指定区域的grafana面板列表。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetGrafanaZoneDashboards",
+   "zone": "zone_a"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "dashboard_set": [
+      {
+         "id": 55,
+         "uid": "3",
+         "title": "计算节点资源监控详情",
+         "uri": "db/ji-suan-jie-dian-zi-yuan-jian-kong-xiang-qing",
+         "url": "/d/3/ji-suan-jie-dian-zi-yuan-jian-kong-xiang-qing",
+         "slug": "",
+         "type": "dash-db",
+         "tags": [
+            "hyper",
+            "计算节点单节点监控大盘，可以切换hyper节点，查看某节点的详细监控指标"
+         ],
+         "isStarred": false,
+         "folderId": 2,
+         "folderUid": "LQoamo_7z",
+         "folderTitle": "grafana for boss",
+         "folderUrl": "/dashboards/f/LQoamo_7z/grafana-for-boss",
+         "sortMeta": 0
+      }
+   ],
+   "total_count": 11,
+   "ret_code": 0,
+   "action": "Boss2GetGrafanaZoneDashboardsResponse"
+}
+----

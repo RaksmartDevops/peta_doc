@@ -1,0 +1,32 @@
+.menu-switch-icon {
+  &.icon-caret_down_fill::before {
+    color: $font-light-color;
+  }
+  &.icon-caret_up_fill::before {
+    color: $menu-switch-active-color;
+  }
+}
+
+.highlight-copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  .icon-copy_fill:before {
+    font-size: 18px;
+  }
+  &:hover .icon-copy_fill:before {
+    color: $icon-dark-color;
+  }
+}
+
+.content-item-title-icon {
+  position: relative;
+  font-size: 26px;
+  display: flex;
+  [class^="path"]:before {
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+  }
+}

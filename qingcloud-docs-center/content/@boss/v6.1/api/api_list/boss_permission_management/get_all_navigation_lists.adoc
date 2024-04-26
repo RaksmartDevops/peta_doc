@@ -1,0 +1,112 @@
+---
+title: 获取全部导航列表（Boss2DescribeNavis）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNavis
+
+=== Method
+POST
+
+=== 接口描述
+获取全部导航的数据和信息，用于角色功能权限的配置。
+注意：
+结果中的id用于后端使用，前端无需进行展示。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的条目总数
+|
+
+| navi_set
+| Array
+| 导航列表数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeNavis"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "navi_set": [
+      {
+         "id": "9af4577e-8289-4754-ab68-f74433ffebfc",
+         "navi_key": "instance",
+         "navi_name": "主机",
+         "navi_description": "显示主机列表及详情",
+         "need_zone": true,
+         "pages": [
+            {
+               "id": "06e3b8d5-4707-4628-a97b-077c0c558da2",
+               "key": "instance_list",
+               "name": "主机列表",
+               "description": "显示主机列表"
+            },
+            {
+               "id": "e62e0d64-e6c6-40c6-8104-8123b517f6b8",
+               "key": "instance_detail",
+               "name": "主机详情页",
+               "description": "显示主机详情页"
+            }
+         ],
+         "actions": [
+            {
+               "id": "16eb06d0-68e9-4ae3-9a8b-8ac8def04973",
+               "key": "instance_migrate",
+               "name": "迁移主机",
+               "description": "迁移主机按钮"
+            }
+         ],
+         "tabs": [
+            {
+               "id": "c5599328-55c7-48ba-b807-9cfaa3acf185",
+               "key": "instance_related_resources",
+               "name": "关联资源",
+               "description": "显示主机关联的资源"
+            },
+            {
+               "id": "203fa564-e5ee-4c6e-a222-4eac0988d17d",
+               "key": "instance_monitor",
+               "name": "资源监控",
+               "description": "显示资源的监控"
+            }
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeNavisResponse"
+}
+----

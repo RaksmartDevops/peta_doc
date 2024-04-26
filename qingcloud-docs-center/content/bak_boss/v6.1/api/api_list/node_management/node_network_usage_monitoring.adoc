@@ -1,0 +1,193 @@
+---
+title: 节点网络使用率监控（Boss2GetNodeNetMonitor）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeNetMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的网络使用情况监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostname
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+
+| columns
+| 否
+| 无
+| 指定要获取的监控数据，如不指定将返回所有的监控数据
+|
+
+| step
+| 否
+| 60s
+| 指定步长，单位为s
+|
+
+| start_time
+| 否
+| 当前时间前60分钟
+| 开始时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+
+| end_time
+| 否
+| 当前时间
+| 结束时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+|===
+
+注意：
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| data
+| Array
+| 所查询的结果数据
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetNodeNetMonitor",
+  "zone": "test",
+  "hostname": "tr02n20",
+  "columns": [
+    "bytes_sent", // 流量监控发送，单位为MB/s，使用该colume结果中会同时返回bits_sent字段，单位为Mb/s
+    "bytes_recv", // 流量监控接收，单位为MB/s, 使用该colume结果中会同时返回bits_recv字段，单位为Mb/s
+    "bits_sent",  // 流量监控发送，单位为Mb/s，使用该colume结果中会同时返回bytes_sent字段，单位为MB/s
+    "bits_recv",  // 流量监控接收，单位为Mb/s, 使用该colume结果中会同时返回bytes_recv字段，单位为MB/s
+    "packets_sent", // pps发送
+    "packets_recv", // pps接收
+    "err_in", // 入流量包错误率，单位为pps
+    "err_out",  // 出流量包错误率，单位为pps
+    "drop_in",  // 入流量丢包率，单位为pps
+    "drop_out" // 出流量丢包率，单位为pps
+  ],
+  "step": "60s",
+  "start_time": "2018-12-18T06:42:00Z",
+  "end_time": "2018-12-18T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "bytes_sent",
+            "data": [
+               0.07811204592386882,
+               0.07902256647745769,
+               0.0745873769124349,
+               0.08746263186136881
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "bytes_recv",
+            "data": [
+               0.41484266916910806,
+               0.1366564114888509,
+               0.11895602544148763,
+               0.14062054951985678
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "packets_sent",
+            "data": [
+               183.48333333333332,
+               175.13333333333333,
+               172.31666666666666,
+               192.06666666666666
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "packets_recv",
+            "data": [
+               404.75,
+               216.1,
+               204.81666666666666,
+               229.25
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "time",
+            "data": [
+               1587643320,
+               1587643380,
+               1587643440,
+               1587643500
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "bits_sent",
+            "data": [
+               0.6248963673909506,
+               0.6321805318196615,
+               0.5966990152994792,
+               0.6997010548909505
+            ],
+            "tag": "eth3"
+         },
+         {
+            "name": "bits_recv",
+            "data": [
+               3.3187413533528645,
+               1.0932512919108073,
+               0.951648203531901,
+               1.1249643961588542
+            ],
+            "tag": "eth3"
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeNetMonitorResponse"
+}
+----

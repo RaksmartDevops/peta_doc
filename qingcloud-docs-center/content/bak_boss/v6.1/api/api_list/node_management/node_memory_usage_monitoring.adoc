@@ -1,0 +1,149 @@
+---
+title: 节点内存使用率监控（Boss2GetNodeMemMonitor）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeMemMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的内存使用率监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostname
+| 是
+| 无
+| 指定要查询的节点hostname，如tr02n01
+|
+
+| columns
+| 否
+| 无
+| 指定要获取的监控数据，如不指定将返回所有的监控数据
+|
+
+| step
+| 否
+| 60s
+| 指定步长，单位为s
+|
+
+| start_time
+| 否
+| 当前时间前60分钟
+| 开始时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+
+| end_time
+| 否
+| 当前时间
+| 结束时间，时区为UTC时间，格式为2018-12-18T06:42:00Z
+|
+|===
+
+注意：
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| data
+| Array
+| 所查询的监控数据信息
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetNodeMemMonitor",
+   "zone": "test",
+   "hostname": "tr02n20",
+   "columns": [
+      "userd",
+      "available",
+      "used_percent",
+      "free"
+   ],
+   "step": "60s",
+   "start_time": "2018-12-18T06:42:00Z",
+   "end_time": "2018-12-18T07:42:00Z"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      [
+         {
+            "name": "available",
+            "data": [
+               0.6738929748535156,
+               0.6660016377766927,
+               0.6574859619140625
+            ]
+         },
+         {
+            "name": "used_percent",
+            "data": [
+               98.91542877574841,
+               98.92812918580425,
+               98.94183441399375
+            ]
+         },
+         {
+            "name": "free",
+            "data": [
+               3.008525848388672,
+               2.9950249989827475,
+               2.980027198791504
+            ]
+         },
+         {
+            "name": "time",
+            "data": [
+               1545115320,
+               1545115380,
+               1545115440
+            ]
+         }
+      ]
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetNodeMemMonitorResponse"
+}
+----

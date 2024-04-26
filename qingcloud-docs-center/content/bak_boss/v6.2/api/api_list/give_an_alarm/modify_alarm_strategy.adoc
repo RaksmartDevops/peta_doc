@@ -1,0 +1,68 @@
+---
+title: 【已废弃】修改告警策略（Boss2ModifyAlertNotifyPolicyAttributes）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAlertNotifyPolicyAttributes
+
+=== Method
+POST
+
+=== 接口描述
+修改告警策略信息。
+修改成功后ret_code为0，将会返回告警策略id供后续查询。
+
+|===
+| 参数名 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 修改的告警策略id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyAlertNotifyPolicyAttributes",
+    "id": 1, // 需要传入修改的告警策略id
+    "enable": false, // 设置启用或禁用告警策略，true：启用 false:禁用
+    "suggestion": "新的处理建议", // 修改建议处理方案
+    "recipient": [1, 2], // 修改告警通知组，传入通知组id列表
+    "send_notify": false, // 设置是否发送通知
+    "notify_merge_count": 2, // 修改告警几次后合并
+    "notify_merge_time": 3600, // 修改告警合并时间段，单位为秒
+    "level": "CRITICAL" // 修改告警级别
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 1,
+   "ret_code": 0,
+   "action": "Boss2ModifyAlertNotifyPolicyAttributesResponse"
+}
+----

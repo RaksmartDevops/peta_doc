@@ -1,0 +1,11 @@
+---
+title: "软件中心"
+linkTitle: "软件中心"
+description: hpc的软件管理
+keywords: 云计算, HPC，软件中心
+draft: false
+weight: 40
+linkkey: compute_hpc_software
+---
+
+include::../../../../../_cloud_service/ehpc/software.adoc[]

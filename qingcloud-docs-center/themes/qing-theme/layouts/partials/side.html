@@ -1,0 +1,57 @@
+{{- $Section := partial "get-recent-section.html" .  -}}
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$isShow := true }}
+{{with .Params}}
+  {{if .not_show}}
+    {{$isShow = false}}
+  {{end}}
+{{end}}
+{{with .Parent}}
+  {{with .Params}}
+    {{if .not_show}}
+      {{$isShow = false}}
+    {{end}}
+  {{end}}
+{{end}}
+{{if $isShow}}
+<aside class="sidebar-wrapper">
+  <div class="sidebar-drag"></div>
+  <div class="sidebar">
+    {{if not $Section.Params.isSearchPage}}
+      <div class="sidebar-title" >
+        <a href="{{$Section.RelPermalink}}">
+          {{with $Section}}
+            {{$title := partial "get-title.html" .}}
+            {{- $title -}}
+          {{end}}
+        </a>
+        {{if $FirstSection.Params.isSearchPage}}
+          <span class="icon-menu_fill"></span>
+        {{end}}
+      </div>
+      {{if $FirstSection.Params.isSearchPage}}
+        <div class="search-sidebar-wrapper">
+          {{ partial "search-sidebar.html" . }}
+        </div>
+      {{end}}
+    {{end}}
+    <nav class="sidebar-menu">
+      {{ if $Section.Params.isSearchPage }}
+        <ul>
+          {{range $Section.Sections.ByWeight}}
+            {{if not .Params.not_show}}
+              <li class="sidebar-item">
+                <a href="#_{{.Title}}">{{.Title}}</a>
+              </li>
+            {{end}}
+          {{end}}
+        </ul>
+      {{else}}
+        {{ $Section.Scratch.Set `currentRelPermalink` .RelPermalink}}
+        {{ partial "loop-section.html" $Section}}
+      {{end}}
+    </nav>
+
+  </div>
+</aside>
+{{end}}

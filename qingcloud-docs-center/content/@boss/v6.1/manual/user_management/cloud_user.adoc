@@ -1,0 +1,300 @@
+---
+title: "云用户"
+weight: 20
+---
+
+云用户是用于登录{platform_name_cn} Console 的唯一凭证。BOSS 平台支持管理员创建、修改以及删除云用户的操作。
+
+云用户列表页面展示{platform_name_cn}中所有云用户的状态、名称/ID、账户类型、邮箱、手机、角色、权限、创建时间的信息。在此页面您可以通过搜索云用户 ID、云用户名称、邮箱或手机号码快速找到你需要查看的云用户信息。
+
+用户还可在该页面查看用户消费信息、修改用户信息、修改全局角色权限、修改区域角色权限、授权区域权限、将云用户改为测试用户/改为正式用户、修改付费类型、修改登录邮箱、重置密码、禁用/启用云用户操作，还支持对云用户的配额进行修改。
+
+include::../../../../_components/note.adoc[]
+
+BOSS 的管理员只能创建主账户，{platform_name_cn}只能注册主账户，且子账户只能有主账户创建。
+
+include::../../../../_components/table_footer.adoc[]
+
+
+== 查看云用户列表
+
+. 成功登录 BOSS。
+
+. 点击**用户管理** > **云用户**，进入**云用户**列表页面。
++
+image::/images/boss/manual/user_management/cloud_user_list.png[cloud_user_list,100%]
+
+. 如上图所示，该页面对云用户的数量进行了统计，用户可点击统计栏中的各状态，分别查看各状态下的云用户列表。
+
+. 点击列表右上方的**导出**，用户可将列表页面的内容进行导出下载。导出内容查看，可参考link:../../report_center/report/[报表管理]相关操作。
+
+. 云服务器资源列表拥有监控模式和普通列表模式两种，用户可点击列表右上方的**监控**与**列表**，在两种模式间进行切换。
+
+
+== 创建云用户
+
+
+
+. 进入link:#_查看云用户列表[云用户列表]页面。点击** + 创建**。
+
+. 弹出**创建云用户**对话框，用户根据页面提示信息，填写相关参数后，点击**创建**。
++
+image::/images/boss/manual/user_management/cloud_user_create.png[cloud_user_create,50%]
++
+
+include::../../../../_components/note.adoc[]
+
+点击**显示更多选项**，选择是否需要确认邮件、首次登录是否需要修改密码、付费类型、币种、手机号等信息。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 成功创建的云用户显示在云用户列表页面。
+
+== 查看云用户信息
+
+BOSS 支持管理员查看云用户的资源以及配额信息。
+
+. 进入link:#_查看云用户列表[云用户列表]页面。在搜索框内输入云用户的名称、ID、邮箱或手机号搜索目标云用户。
+
+. 点击目标云用户的 `名称/ID` 信息，进入详情页面。
++
+image::/images/boss/manual/user_management/cloud_user_info.png[cloud_user_info,100%]
+
+. 用户根据需求，可分别查看资源、配额、子账户。
+
+== 删除云用户
+
+删除目标云用户，会删除该账户及其名下的所有资源。若删除的是 `主账户`，且该主账户中包含 `子账户`，则删除操作会删除该 `主账户` 及其所有 `子账户` 名下的所有资源。
+
+. 进入link:#_查看云用户列表[云用户列表]页面。在搜索框内输入云用户的名称、ID、邮箱或手机号搜索目标云用户。
+
+. 点击目标云用户的更多操作中的**删除用户**。
++
+image::/images/boss/manual/user_management/cloud_user_opt_more.png[cloud_user_opt_more,100%]
+
+. 弹出**删除用户**确认框，并提示 `删除云用户时，其账户下的资源会一并清空。`，用户确认操作无误后，填写 `操作原因`，并点击**删除**。
+
+
+. BOSS 支持批量删除云用户。用户在云用户列表页面，勾选多个目标云用户后，点击**批量删除用户**。
++
+image::/images/boss/manual/user_management/cloud_user_delete_more.png[cloud_user_delete_more,100%]
+
+. 弹出**批量删除用户**对话框，根据页面提示信息，确认需要删除的云用户，点击**删除**。
+
+== 删除云用户资源
+
+在云用户列表页面，管理员可根据区域、资源类型来筛选删除单个或多个用户下的资源。
+
+. 进入link:#_查看云用户列表[云用户列表]页面。在搜索框内输入云用户的名称、ID、邮箱或手机号搜索目标云用户。
+
+. 点击目标云用户的更多操作中的**回收资源**。
++
+image::/images/boss/manual/user_management/cloud_user_opt_more.png[cloud_user_opt_more,100%]
+
+. 弹出**回收资源**对话框，用户根据页面提示信息，选择待回收的资源，并填写 `操作原因` 后，点击**回收**。
++
+
+include::../../../../_components/warning.adoc[]
+
+回收资源将会彻底删除用户名下指定类型的资源，该操作无法撤销，请谨慎操作！
+
+include::../../../../_components/table_footer.adoc[]
+
+
+. BOSS 支持批量回收云用户资源。用户在云用户列表页面，勾选多个目标云用户后，点击**批量回收资源**。
++
+image::/images/boss/manual/user_management/cloud_user_delete_more.png[cloud_user_delete_more,100%]
+
+. 弹出**批量回收资源**对话框，根据页面提示信息，确认需要批量回收的资源，点击**回收**。
+
+
+== 修改云用户信息
+
+. 在 *云用户* 页面的搜索框中输入待修改云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待查看云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *修改信息*。
+. 根据实际需要修改以下参数。
++
+该界面不支持修改登录邮箱，登录邮箱修改请参见<<_修改登录邮箱>>。
++
+image::/images/boss/manual/user_management/modify_clouduser_1.png[]
+
+. 点击 *修改*。
+
+== 批量修改配额
+
+	
+
+include::../../../../_components/note.adoc[]
+区域配额、全局配额以及账户配额三种配额类型不能同时修改，修改时请逐个类型修改完成后再重复执行以下步骤。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面，点击 *批量修改配额*。
++
+弹出 *批量修改配额* 对话框。
+
+. 在对话框左上角点击 *选择云用户*。
++
+弹出 *选择云用户* 对话框。
+
+. 勾选需要修改配额的云用户，点击 *确认*。
+. 选择配额类型，选择产品类型（仅区域配额），并逐个修改产品配额信息。
++
+image::/images/boss/manual/user_management/modify_clouduser_2.png[]
+
+. 点击 *确认修改配额*。
++
+弹出提示框。
+
+. 输入操作原因，点击确认。
+
+== 修改全局角色权限
+
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行修改全局角色权限操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *修改全局角色权限*。
+. 选择角色和权限，输入操作原因。
++
+角色与权限对应关系如下:
++
+[cols="2*", options="header"]
+|===
+|角色
+|权限
+
+|普通用户
+|普通用户
+
+|合作伙伴-可以在 AppCenter 创建 App，以及部分开放给合作伙伴的 API 接口
+a|* 开发者-开发者角色，比普通用户多一些 API 权限
+* 应用审核着-可以 Review App 的开发者
+
+|控制台管理员-只能管理 console id 跟自己匹配的资源
+a|* 控制台超级管理员-控制台超级管理员，可读些本 console id 对应的数据
+* 控制台只读管理员-只读权限控制台管理员
+
+|全球管理员-可管理管与 global ks 项链的所有资源
+a|* 全局超级管理员-全球超级管理员，可读写所有资源数据，尽量避免人工使用，以免有误操作
+* 全局只读管理员-常用的全球管理员，资源只读权限
+|===
+
+. 点击 *修改*。
+
+== 修改区域角色权限
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行修改区域角色权限操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *修改区域角色权限*。
+. 在待修改分区或区域所在页签点击 *修改区域角色权限*。
+. 选择角色与权限，输入操作原因。
++
+区域的角色与权限关系与全局的角色权限关系一致，详细信息请参见上述表格 *角色与权限关系*。
++
+image::/images/boss/manual/user_management/modify_clouduser_3.png[]
+
+. 点击 *修改*。
+
+== 授权区域权限
+
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行授权区域权限操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *授权区域权限*。
+. 选择区域权限，输入操作原因。
++
+image::/images/boss/manual/user_management/modify_clouduser_4.png[]
+
+. 点击 *授权*。
+
+== 改为测试用户
+
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行改为测试用户操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *改为测试用户*。
+. 输入操作原因，点击 *修改*。
+
+== 修改付费类型
+
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行修改付费类型操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *修改付费类型*。
+. 选择付费类型，输入操作原因。
+. 点击 *修改*。
+
+== 修改登录邮箱
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待操作云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *修改登录邮箱*。
+. 选择是否需要验证新邮箱，输入新登录邮箱和操作原因。
++
+image::/images/boss/manual/user_management/modify_clouduser_5.png[]
+
+. 点击 *修改*。
+
+== 重置云用户密码
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行重置用户密码操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待操作云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待修改云用户。
+. 在待修改云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *重置密码*。
+. 输入新密码和操作原因。
+. 点击 *重置*。
+
+== 禁用云用户
+
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *活跃中* 时，可执行禁用云用户操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入待禁用云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待禁用云用户。
+. 在待禁用云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *禁用*。
+. 输入操作原因，点击 *禁用*。
++
+image::/images/boss/manual/user_management/modify_clouduser_6.png[]
+
+== 启用云用户
+	
+
+include::../../../../_components/note.adoc[]
+云用户状态为 *已禁用* 时，可执行启用云用户操作。
+
+include::../../../../_components/table_footer.adoc[]
+
+. 在 *云用户* 页面的搜索框中输入禁用云用户的用户 ID、手机号或者邮箱，点击 *Enter*，找到待启用云用户。
+. 在待启用云用户的所在行点击 image:/images/boss/manual/user_management/user_management_icon.png[,50%]，点击 *启用*。
+. 输入操作原因，点击 *启用*。

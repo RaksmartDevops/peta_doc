@@ -1,0 +1,151 @@
+---
+title: 基础组件列表（Boss2DescribeOsServices）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeOsServices
+
+=== Method
+POST
+
+=== 接口描述
+返回基础组件列表
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| service_set
+| Array
+| 基础组件列表
+|
+
+| service_id
+| String
+| 服务的id，作为后续查询详情的依据
+|
+
+| service_type
+| String
+| 服务的类型，后续查询详情及监控图表时需要带上这个参数
+|
+
+| verbose_type
+| String
+| 用于界面上展示服务的类型
+|
+
+| node_status
+| Object
+| 服务中节点的状态
+| RUNNING: 运行中 +
+ERROR: 错误
+
+| node_info
+| Array
+a|
+服务中包含的节点的信息，用于后续进行按节点的查询
+包含以下信息：
+
+* id: 服务子节点的id，可用于监控数据的查询和节点信息的获取
+* server: 目前已无作用，内容和id一致，未来可能废弃
+status: 节点服务状态， 1- 正常 0 -异常
+| node_info中的id字段可通过查询管理节点列表(Boss2DescribeMgmtNodes)接口来获取节点信息
+
+
+| status
+| Integer
+a|
+基础组件的整体状态，状态分为：
+
+* 0 - 正常
+* 1 - 警告(部分节点挂掉)
+* 2 - 异常(所有节点均挂掉)
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeOsServices",
+  "zone": "test", // [必须]指定zone
+  
+  // 以下参数用于筛选
+  "service_id": ["postgresql", "memcached", "cassandra"], // 如不指定服务id，则显示所有的服务
+  "status": 0 // 指定状态，0为正常，1为异常，2为服务异常
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "service_set": [
+      {
+         "service_id": "postgresql",
+         "service_type": "postgresql",
+         "verbose_type": "数据库",
+         "name": "PostgreSQL",
+         "nodes": 2,
+         "node_status": {
+            "RUNNING": 2,
+            "ERROR": 0
+         },
+         "status": 0,
+         "nodes_info": [
+            {
+               "server": "pgmaster0",
+               "id": "pgmaster0",
+               "status": 1
+            },
+            {
+               "server": "pgslave0",
+               "id": "pgslave0",
+               "status": 1
+            }
+         ]
+      },
+      {
+         "service_id": "memcached",
+         "service_type": "memcached",
+         "verbose_type": "缓存组件",
+         "name": "Memcached",
+         "nodes": 5,
+         "node_status": {
+            "RUNNING": 5,
+            "ERROR": 0
+         },
+         "status": 0,
+         "nodes_info": [
+            {
+               "server": "zoocassa0",
+               "id": "zoocassa0",
+               "status": 1
+            }
+         ]
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeOsServicesResponse"
+}
+----

@@ -1,0 +1,84 @@
+---
+title: 二次认证动态验证码登录（totp_action）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/totp_action/
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户 id
+|
+
+| username
+| String
+| 用户名
+|
+
+| email
+| String
+| 用户邮箱
+|
+
+| boos2_sk
+| String
+| 用户 API 秘钥
+|
+
+| expiry_age
+| Integer
+| 期限时间戳
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "token": "b9fd3040407849d1822d2c87786e3c99",  // 登录接口返回的token
+    "code": "843134" // 二次认证验证码
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 1,
+   "username": "tom",
+   "email": "tom@example.com",
+   "boss2_sk": "cnq5rf9xgqupuuquoqb2lyqquw0wc2fw",
+   "expiry_age": 1209600,
+   "ret_code": 0,
+   "action": "TOTPResponse"
+}
+----

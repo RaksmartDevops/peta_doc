@@ -1,0 +1,70 @@
+---
+title: "Linux 云服务器重启后无法获取 IP"
+weight: 20
+
+---
+== 问题描述
+
+云服务器启动后 dhclient 未运行导致 IP 无法获取。
+
+== 问题分析
+
+重启后 dhclient 进程未运行的原因通常为：
+
+* NetworkManager 未开启自启动导致 dhclient 进程未运行。
+* 网卡设备未纳入 NetworkManager 管理导致。
+
+== 前提条件
+
+本节操作适用于 CentOS 7 系列、EulerOS 2 系列、Ubuntu18.04 操作系统的云服务器，并使用 DHCP 获取 IP 。
+
+== 处理方法
+
+. 执行以下命令，确认 dhclient 是否运行。
++
+[source,shell]
+----
+ps -ef |grep dhclient |grep -v grep
+----
+. 如果未找到 dhclient 进程，则确认 dhclient 进程未运行，执行以下命令，继续排查 NetworkManager 是否运行。
++
+[source,shell]
+----
+systemctl status NetworkManager
+----
+* 如果 NetworkManager 的状态为 Active: inactive (dead) ，则 NetworkManager 未启动，执行以下命令，检查该服务是否开机自启。
++
+[source,shell]
+----
+systemctl is-enabled NetworkManager
+----
+* 结果为 disabled 则确认为 NetworkManager 未设置开机自启导致，执行以下命令进行恢复。
++
+[source,shell]
+----
+systemctl enable NetworkManager && systemctl start NetworkManager
+----
+* 如果 NetworkManager 的状态为 Active: active (running) ，执行以下命令查看网卡设备是否被 NetworkManager 管理。
++
+[source,shell]
+----
+nmcli device status
+----
+* 如果显示该网卡为的 STATE 为 unmanaged ，则该网卡设备未被 NetworkManager 管理，执行以下命令进行恢复。
++
+[source,shell]
+----
+nmcli device set eth0 managed yes
+----
+. 执行以下命令重启 NetworkManager。
++
+[source,shell]
+----
+systemctl restart NetworkManager
+----
+. 执行以下命令查看 IP 是否已经获取。
++
+[source,shell]
+----
+ip addr
+----

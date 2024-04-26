@@ -1,0 +1,78 @@
+---
+title: 日志文件打包（Boss2PackagingLog）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action= Boss2PackagingLog
+
+=== Method
+POST
+
+=== 接口描述
+请求报错
+{
+
+"action"
+:
+"Boss2PackagingLogResponse"
+,
+
+"ret_code"
+:
+5000
+,
+
+"message"
+:
+"Send request to installer API failed."
+
+}
+
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2PackagingLog",
+    "zone": "testing1a",                
+    "node_id": "sr01n31",              //节点id 必传
+    "job_id": "sr01n31_20221024_155244",  //任务id 非必传
+    "file_list": [                        // 日志文件数组 必传
+        "ws_server.log",
+        "fg_server.log",
+        "cb_server.log"
+    ],
+    "file_path": "/pitrix/log"            //日志文件路径 必传
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "job_id": "sr01n31_20221024_155244",          // 任务id
+    "save_path": "/pitrix/tmp/packaging_log",     //日志文件打包之后的路径
+    "ret_code": 0,
+    "action": "Boss2PackagingLogResponse"
+}
+----

@@ -1,0 +1,51 @@
+---
+title: 删除自动分配销售规则（Boss2DeleteSalesTransferAutoRule）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DeleteSalesTransferAutoRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于删除指定的自动分配销售规则。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DeleteSalesTransferAutoRule",
+    "rule_ids": [1,2,3]  // [必须]指定需要删除的规则id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DeleteSalesTransferAutoRuleResponse",
+   "elapsed_time": 0.003618001937866211,
+   "ret_code": 0
+}
+----

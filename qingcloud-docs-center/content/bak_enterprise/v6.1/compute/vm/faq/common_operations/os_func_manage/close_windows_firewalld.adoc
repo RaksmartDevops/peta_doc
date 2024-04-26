@@ -1,0 +1,25 @@
+---
+title: "关闭 Windows 云服务器内部防火墙"
+weight: 60
+---
+____
+本文以 Windows Server 2019 为例进行操作，其他版本的 Windows 云服务器内部防火墙关闭位置相同。
+____
+
+== 操作步骤
+
+. 打开 Windows 云服务器控制面板，查看方式切换为：大图标，进入 Windows Defender 防火墙。
++
+image::/images/cloud_service/compute/vm/faq_close_windows_firewall_1.png[]
+. 查看云服务器内部防火墙状态（启用状态）。
++
+image::/images/cloud_service/compute/vm/faq_close_windows_firewall_2.png[]
+. 关闭 Windows 防火墙。
++
+image::/images/cloud_service/compute/vm/faq_close_windows_firewall_3.png[]
++
+image::/images/cloud_service/compute/vm/faq_close_windows_firewall_4.png[]
+
+. 查看云服务器内部防火墙状态（关闭状态）。
++
+image::/images/cloud_service/compute/vm/faq_close_windows_firewall_5.png[]

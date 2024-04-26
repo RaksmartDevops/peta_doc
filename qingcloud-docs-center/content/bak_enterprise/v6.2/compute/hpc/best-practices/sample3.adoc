@@ -1,0 +1,10 @@
+---
+title: "使用容器环境提交并运行作业"
+draft: false
+weight: 3
+linkkey: compute_hpc_singularity
+---
+
+include::../../../../../_cloud_service/ehpc/bp/hpc_container.adoc[]
+
+

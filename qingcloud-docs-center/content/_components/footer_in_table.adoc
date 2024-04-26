@@ -1,0 +1,11 @@
+ifeval::["{file_output_type}" != "pdf"]
+
+!===
+
+endif::[]
+ifeval::["{file_output_type}" == "pdf"]
+
++++</div>+++
++++</div>+++
+
+endif::[]

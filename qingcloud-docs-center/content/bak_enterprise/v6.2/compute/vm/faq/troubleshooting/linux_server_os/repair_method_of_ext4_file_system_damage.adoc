@@ -1,0 +1,36 @@
+---
+title: "Linux 云服务器 ext4 文件系统损坏"
+weight: 40
+
+---
+== 问题背景
+
+ext4 文件系统没有 umount 下来，之后做了 fsck 操作检查一致性，结果导致 ext4 文件 mount 不上（有时也会表现为导致目录变成了文件），报错提示信息：
+[source,javascript]
+----
+mount: wrong fs type, bad option, bad superblock。
+----
+== 解决方法
+
+. 执行以下命令，检查文件系统。
++
+[source,shell]
+----
+e2fsck -f /dev/vdx
+----
++
+
+include::../../../../../../../_components/note.adoc[]
+
+做此步之前确保分区处于umount状态 ，另外确保磁盘已经做好数据备份。
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+. 执行以下命令，修复文件系统。
++
+[source,shell]
+----
+fsck -t ext4 /dev/vdx
+----
+
+. 修复完成以后重新挂载测试。

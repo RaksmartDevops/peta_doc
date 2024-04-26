@@ -1,0 +1,51 @@
+---
+title: 立即获取全局zone watcher状态（Boss2StartGlobalZoneWatcherStatusCheck）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2StartGlobalZoneWatcherStatusCheck
+
+=== Method
+POST
+
+=== 接口描述
+该接口将会立即启动一个异步任务检查zone watcher的状态。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2StartGlobalZoneWatcherStatusCheck",
+    "zones": ["dsry1a", "dsry2a"] // [可选]可使用zone watcher所在的zone进行过滤
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "task_id": "648bf8b5-d1b8-456f-b3cb-c16b44fa29d5",
+   "ret_code": 0,
+   "action": "Boss2StartGlobalZoneWatcherStatusCheckResponse"
+}
+----

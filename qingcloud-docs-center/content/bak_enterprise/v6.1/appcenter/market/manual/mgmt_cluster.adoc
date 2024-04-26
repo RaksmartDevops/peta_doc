@@ -1,0 +1,11 @@
+---
+title: "管理集群"
+description: 介绍如何进行集群管理操作。
+weight: 40
+draft: false
+---
+
+include::../../../../../_cloud_service/app/app_center/mgmt_cluster.adoc[]
+
+
+

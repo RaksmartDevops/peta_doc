@@ -1,0 +1,12 @@
+---
+title: "退款说明"
+description: 本小节主要介绍 Etcd 退款说明。 
+keywords: 云计算,消息队列,中间件,Etcd,退款,退订
+weight: 40
+collapsible: false
+draft: false
+---
+
+本小节主要介绍 Etcd 退款说明及相关操作。
+
+include::../../../../../_cloud_service/app/bill/refund.adoc[]

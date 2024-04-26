@@ -1,0 +1,57 @@
+---
+title: 回滚配置（Boss2RevertConfiguration）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RevertConfiguration
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于将指定配置项回滚到指定的历史。
+本接口需要传入配置的topic、key及配置变更历史id，如果三者不符则无法进行回滚操作。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2RevertConfiguration",
+    "topic": "test_topic",  // [必须]配置的topic
+    "key": "test_key1",   // [必须]配置的key
+    "history_id": 1,    // [必须]配置历史id，操作后配置内容将会使用指定历史id的数据进行覆盖
+    "remarks": "测试回滚"   // 可传入回滚操作的说明
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "topic": "test_topic",
+   "key": "test_key1",
+   "history_id": 6,
+   "ret_code": 0,
+   "action": "Boss2RevertConfigurationResponse"
+}
+----

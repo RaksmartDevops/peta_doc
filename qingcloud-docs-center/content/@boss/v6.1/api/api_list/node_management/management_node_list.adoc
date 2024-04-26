@@ -1,0 +1,212 @@
+---
+title: 管理节点列表（Boss2DescribeMgmtNodes）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeMgmtNodes
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点的cpu使用率监控，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostnames
+| 否
+| 无
+| 指定要查询的节点hostname，如webservice0，dnsmaster0，如不指定则返回所有节点
+|
+
+| status
+| 否
+| 无
+| 指定查询节点的状态，如不指定则返回所有状态
+|
+
+| type
+| 否
+| 无
+| 指定查询节点的类型，如不指定则返回所有类型
+|
+
+| limit
+| 否
+| 20
+| 分页数
+|
+
+| offset
+| 否
+| 0
+| 分页偏移量
+|
+|===
+
+默认按照 hypernode 名称升序排列，暂时不支持自定义排序。
+
+{blank} +
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| hypernode
+| 节点所在的物理机
+|
+
+| hostname
+| 节点主机名
+|
+
+| zone
+| 可用区
+|
+
+| ip
+| 节点 ip
+|
+
+| cpu
+| 节点 cpu 数量
+|
+
+| memory
+| 节点内存
+|
+
+| disk
+| 节点磁盘容量, 单位为MB, 数据包含了多个磁盘的容量信息
+|
+
+| hypernode_ip
+| 节点所在物理机的 ip
+|
+
+| total_service_count
+| 节点服务总数
+|
+
+| running_service_count
+| 总运行的服务数量
+|
+
+| status
+| 节点状态：0 - 异常，1 - 正常
+|
+
+| roles
+| 节点角色
+|
+
+| type
+| 节点类型：virtual - 虚拟机，physical - 物理机
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeMgmtNodes",
+  "zone": "test",
+  "hostnames": [
+    "webservice0",
+    "dnsmaster0"
+  ], // 仅显示指定的hostname，如果为空则显示所有节点
+  "status": [0,1], // 指定过滤节点状态
+  "type": ["virtual"], // 指定过滤节点类型，可选virtual(虚拟机)和physical(物理机)
+  "roles": ["ks", "snaphost"], // 支持通过节点角色进行过滤
+  "limit": 10,
+  "offset": 1,
+  "search_word": "xxx"  // 支持搜索主机名称hostname
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+  "node_set": [
+    {
+      "hypernode": "tr02n01",
+      "hostname": "dnsmaster0",
+      "zone": "test",
+      "zone_id": "test",
+      "region_id": "test",
+      "ip": "172.31.20.79",
+      "cpu": 4,
+      "memory": 7983,
+      "disk": {
+        "vda1": { // 磁盘id，可在监控中获取对应的监控数据
+          "path": "/",
+          "total": 499826.671875 // 磁盘容量，单位为M
+        }
+      },
+      "hypernode_ip": "172.31.20.11",
+      "type": "virtual",
+      "status": 1,
+      "roles": [
+                "vgateway"
+            ],
+      "total_service_count": 6,
+      "running_service_count": 5
+    },
+    {
+      "hypernode": "tr02n02",
+      "hostname": "webservice0",
+      "zone": "test",
+      "zone_id": "test",
+      "region_id": "test",
+      "ip": "172.31.20.82",
+      "cpu": 4,
+      "memory": 7983,
+      "disk": {
+        "vda1": {
+          "path": "/",
+          "total": 503836.4296875
+        }
+      },
+      "hypernode_ip": "172.31.20.12",
+      "type": "virtual",
+      "status": 1,
+      "roles": [
+          "ks",
+          "snapshot"
+            ],
+      "total_service_count": 46,
+      "running_service_count": 46
+    }
+  ],
+  "ret_code": 0,
+  "action": "Boss2DescribeMgmtNodesResponse"
+}
+----

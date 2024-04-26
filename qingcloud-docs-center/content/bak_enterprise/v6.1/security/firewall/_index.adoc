@@ -1,0 +1,39 @@
+---
+title: 云防火墙 CFW
+linkTitle: 云防火墙 CFW
+weight: 10
+description: CFW 是一款网络安全产品，用于防护进出 EIP 的网络攻击。用户开通云防火墙后 EIP 的流量将被自动引流至云防火墙。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是云防火墙 CFW
+            url: intro/intro/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 教程概览
+            url: quick-start/base/
+          - title: 业务系统资产
+            url: quick-start/data/
+          - title: 安全策略
+            url: quick-start/safety/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 访问控制策略
+            url: manual/cfw/
+          - title: 入侵防御策略
+            url: manual/attck_protect/
+          - title: 流量控制策略
+            url: manual/flow/
+          - title: 日志审计
+            url: manual/logs/logs_security/
+linkkey: security_cfw_guide
+---

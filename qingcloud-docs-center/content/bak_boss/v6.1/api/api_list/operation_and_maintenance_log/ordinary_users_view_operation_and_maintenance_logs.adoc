@@ -1,0 +1,225 @@
+---
+title: 普通用户查看运维日志（Boss2DescribeOperationalLogs）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeOperationalLogs
+
+=== Method
+POST
+
+=== 接口描述
+此接口主要用于普通用户查看运维日志
+请求参数说明
+
+|===
+| 字段 | 类型 | 是否必须 | 说明 | 备注
+
+| action
+| string
+| 是
+| Boss2SupervisorDescribeOperationalLogs
+|
+
+| sort_key
+| string
+| 否
+| 排序字段
+| 目前没用上
+
+| limit
+| integer
+| 否
+| 分页字段
+|
+
+| offset
+| integer
+| 否
+| 分页字段
+|
+
+| reverse
+| integer
+| 否
+| 排序顺序
+| 目前没用上
+
+| only_myself
+| boolean
+| 否
+| 是否只查看自己
+|
+
+| status
+| string
+| 否
+| 日志状态
+| active
+
+| log_types
+| array
+| 否
+| 日志类型数组
+| 根据接口拿到的类型id传参数,不传默认全部
+
+| zone_id
+| string
+| 否
+| zone id
+| 有就传，没有不传
+
+| resources_id
+| string
+| 是
+| 资源id
+|
+
+| search_word
+| string
+| 否
+| 模糊匹配
+|
+|===
+
+返回参数说明
+
+|===
+| 字段 | 类型 | 说明 | 备注
+
+| total_count
+| integer
+| 总数量
+|
+
+| operational_logs_set
+| array
+| 数据集
+|
+
+| operational_log_id
+| integer
+| 日志id
+|
+
+| operational_log
+| string
+| 日志内容
+|
+
+| log_type_id
+| integer
+| 日志类型id
+|
+
+| log_type
+| string
+| 日志类型
+|
+
+| top_weights
+| integer
+| 置顶状态
+| -1代表置底，0代表非置顶，大于0为置顶状态，允许[-1, 1000]，为以后功能拓展
+
+| creator_id
+| integer
+| 创建人id
+|
+
+| creator_email
+| string
+| 创建人邮箱
+|
+
+| creator_name
+| string
+| 创建人姓名
+|
+
+| status_time
+| string
+| 更新时间
+|
+
+| zone_id
+| string
+| zone id
+|
+
+| resources_id
+| string
+| 资源id
+|
+
+| limit_users
+| array
+| 限制人ID数组
+| 为null时为所有人公开，为[]或有值时为部分人公开
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeOperationalLogs",
+   "sort_key": "",
+   "limit": 20,
+   "offset": 0,
+   "reverse": 1,
+   "only_myself": true,
+   "status": "active",
+   "log_types": [
+      1
+   ],
+   "zone_id": "test",
+   "resources_id": "i-0d5uol13",
+   "search_word": "123@q"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "operational_logs_set": [
+      {
+         "operational_log_id": 1,
+         "operational_log": "我是修改后的第一条记录",
+         "log_type_id": 1,
+         "log_type": "游戏类",
+         "top_weights": 2,
+         "creator_id": 1,
+         "creator_email": "123@1.com",
+         "creator_name": "123",
+         "status_time": "2021-04-27T08:20:27.219Z",
+         "zone_id": "test",
+         "resources_id": "i-0d5uol13",
+         "limit_users": []
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2SupervisorDescribeOperationalLogsResponse"
+}
+----

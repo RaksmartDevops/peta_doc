@@ -1,0 +1,53 @@
+---
+title: 为客户分配销售部门（Boss2ModifyCustomerDept）
+weight: 13
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyCustomerDept
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于销售管理员使用，可批量修改客户的部门。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2ModifyCustomerDept",
+  "users": ["usr-o5bnTuS71", "usr-IxatxxRR"],  // [必须]指定需要修改部门的客户
+  "sales_dept_id": 1 // 目标销售部门id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 2,
+   "success_count": 2,
+   "ret_code": 0,
+   "action": "Boss2ModifyCustomerDeptResponse"
+}
+----

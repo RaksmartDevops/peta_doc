@@ -1,0 +1,117 @@
+---
+title: 【已废弃】告警历史列表（Boss2DescribeAlertNotifyHistory）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertNotifyHistory
+
+=== Method
+POST
+
+=== 接口描述
+从20220630版本起该接口废弃，请使用**Boss2DescribeAlertNotifySendingHistory**接口。
+展示告警通知的历史
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| notify_history_set
+| Array
+| 告警历史信息列表
+|
+
+| id
+| Integer
+| 告警 id，用于后续查询告警的详情
+|
+
+| alert_aggs_event_id
+| Integer
+| 告警事件 id
+|
+
+| recipient
+| Array
+a|
+通知列表
+
+* id: 通知列表id
+* name: 通知列表名称
+|
+
+| notify_time
+| String
+| 通知时间
+|
+
+| total_count
+| Integer
+| 查询到的资源条目总数
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeAlertNotifyHistory",
+  "alert_id": [1], // 告警记录的id
+  "limit": 1,
+  "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "notify_history_set": [
+      {
+         "id": 22771,
+         "notify_time": "2019-05-21T04:41:34Z",
+         "alert_aggs_event_id": 46364,
+         "recipient": [
+            {
+               "id": 28,
+               "name": "测试通知组"
+            }
+         ]
+      },
+      {
+         "id": 22770,
+         "notify_time": "2019-05-21T04:41:33Z",
+         "alert_aggs_event_id": 46364,
+         "recipient": [
+            {
+               "id": 28,
+               "name": "测试通知组"
+            }
+         ]
+      }
+   ],
+   "total_count": 22771,
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertNotifyHistoryResponse"
+}
+----

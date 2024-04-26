@@ -1,0 +1,39 @@
+---
+title: "计算节点监控面板"
+weight: 10
+---
+
+计算节点监控面板可用于查看计算节点的使用情况。该页面展示了计算节点监控数据图、计算节点资源水位监控和计算节点资源监控详情。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *看板* > *监控面板* > *计算节点监控面板*。
++
+image::/images/boss/manual/view/monitor_compute_1.png[]
+
+. 进入计算节点监控面板。
++
+image::/images/boss/manual/view/monitor_compute_2.png[]
+
+. 点击 *计算节点监控数据表* 下的 *查看详细*，可查看当前区域下，计算节点的全局资源监控数据。
++
+包括计算节点主要监控指标、计算节点 CPU 监控指标、计算节点内存监控指标、计算节点磁盘监控指标和计算节点 NET 监控指标。
++
+image::/images/boss/manual/view/monitor_compute_3.png[]
+
+. 点击 *计算节点资源水位监控* 下的 *查看详细*，可查看当前区域下，计算节点的全局资源水位监控。
++
+包括 CPU 使用率、最近 5min 节点负载、硬盘剩余空间、硬盘使用率、网卡出流量和网卡入流量。
++
+image::/images/boss/manual/view/monitor_compute_4.png[]
+
+. 点击 *计算节点监控数据表* 下的 *查看详细*，可通过主机名进行筛选，查看单个计算节点的详细资源监控数据。
++
+包括计算节点监控概览、硬盘剩余空间、节点负载、 CPU 使用率、DiskIO 使用情况、内存使用、硬盘读写、SWAP 使用率、网卡包转发率、网卡网络流量、网卡错包率和网卡丢包率。
++
+image::/images/boss/manual/view/monitor_compute_5.png[]

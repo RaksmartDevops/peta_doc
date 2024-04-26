@@ -1,0 +1,31 @@
+---
+title: 标签
+draft: false
+weight: 1
+keywords: 标签, 创建和管理标签, 云计算
+linkkey: management_tags_guide
+---
+
+
+== 快速上手
+
+下面为一组云服务器贴标签为例，来描述标签的使用方式。
+
+== 创建和管理标签
+
+在控制台，选择**运维与管理** > **标签**页面，点击**创建**，进入创建标签页面。
+
+image::/images/cloud_service/operation/tools/create_tag_1.png[,70%]
+
+== 给资源贴标签
+
+以云服务器为例，选择**计算** > **云服务器**页面，选中要打标签的云服务器，点击**绑定标签**，进入选择标签页面。
+
+image::/images/cloud_service/operation/tools/bonding_tag.png[,70%]
+
+== 利用标签来过滤资源
+
+以云服务器为例，选择**计算** > **云服务器**页面，使用搜索框旁边的**标签**按钮，过滤想要的资源。
+
+image::/images/cloud_service/operation/tools/fliter_tag_based.png[]
+

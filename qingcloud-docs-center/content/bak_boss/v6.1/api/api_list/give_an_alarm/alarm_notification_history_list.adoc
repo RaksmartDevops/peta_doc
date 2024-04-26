@@ -1,0 +1,108 @@
+---
+title: 告警通知历史列表（  Boss2DescribeAlertNotifySendingHistory）
+weight: 22
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAlertNotifySendingHistory
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取告警通知的历史。
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| notify_sending_history_set
+| 告警通知历史列表
+|
+
+| id
+| 通知历史 id
+|
+
+| alert_aggs_event_id
+| 告警id
+|
+
+| notify_rule_id
+| 告警通知策略id
+|
+
+| notify_rule_name
+| 告警通知策略名称
+|
+
+| notify_rule_recipients
+| 告警通知的对象(通知组)
+|
+
+| notify_rule_recipients.id
+| 通知组id
+|
+
+| notify_rule_recipients.name
+| 通知组名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeAlertNotifySendingHistory",
+  "alert_ids": [1, 2], // 可通过告警记录的id进行过滤
+  "notify_rule_ids": [3, 4], // 可通过告警通知策略的id进行过滤
+  "start_time": "2022-06-20T10:41:00.152Z",  // 可通过发送时间进行过滤
+  "end_time": "2022-06-21T10:41:00.152Z",
+  "limit": 1,
+  "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "notify_sending_history_set": [
+      {
+         "id": 50,
+         "send_time": "2022-06-21T10:41:00.152Z",
+         "alert_aggs_event_id": 42,
+         "notify_rule_id": 9,
+         "notify_rule_name": "测试修改",
+         "notify_rule_recipients": [
+            {
+               "id": 1,
+               "name": "测试通知组"
+            }
+         ]
+      }
+   ],
+   "total_count": 6,
+   "ret_code": 0,
+   "action": "Boss2DescribeAlertNotifySendingHistoryResponse"
+}
+----

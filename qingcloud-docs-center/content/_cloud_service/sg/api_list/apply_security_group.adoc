@@ -1,0 +1,76 @@
+// title: "ApplySecurityGroup"
+
+== 接口描述
+
+应用安全组规则。
+
+当安全组的规则发生改变后，新规则不会即刻生效（可通过 is_applied 属性分辨），需要调用 ApplySecurityGroup 之后才生效。
+
+安全组规则可通过 link:../add_security_group_rules/[_AddSecurityGroupRules_]，link:../delete_security_group_rules/[_DeleteSecurityGroupRules_]， link:../modify_security_group_rule_attributes/[_ModifySecurityGroupRuleAttributes_] 修改。
+
+== 请求参数
+
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| security_group
+| String
+| 安全组 ID。
+| Yes
+
+| instances.n
+| String
+| 应用安全组的云服务器 ID。 +
+如果不传任何值，则会将最新规则更新到所有之前已应用此安全组的云服务器。
+| No
+
+| zone
+| String
+| 区域 ID，注意要小写。
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作。
+
+| job_id
+| String
+| 执行任务的 Job ID。
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码。
+|===
+
+== 示例
+
+*请求示例*：
+
+[,json]
+----
+https://api.qingcloud.com/iaas/?action=ApplySecurityGroup
+&security_group=sg-12djpg8q
+&instances.1=i-12345678,
+&zone=pek3a
+&COMMON_PARAMS
+----
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"ApplySecurityGroupResponse",
+  "job_id":"j-bm6ym3r8",
+  "ret_code":0
+}
+----
+

@@ -1,0 +1,29 @@
+---
+title: "查看灾备状态"
+weight: 3
+---
+
+本小节主要介绍如何在**源集群**和**灾备集群**详情页面查看灾备状态。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* 已启动集群灾备功能，且集群状态为``活跃``。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 选择**产品与服务** > **数据库与缓存** > **关系型数据库 PostgreSQL**，进⼊集群管理⻚⾯。
+. 点击集群 ID，进⼊集群详情⻚⾯，选择**灾备信息**⻚签即可查看。
++
+在初始化数据后，集群通常都是处于 ``secondary`` 状态，其他状态描述可参考 link:https://pg-auto-failover.readthedocs.io/en/latest/failover-state-machine.html#state-reference[PostgreSQL 官方说明]。
++
+* 在**源集群**详情页查看。
++
+image::/images/cloud_service/database/postgresql/disaster_view_1.png[]
+
+* 在**灾备集群**详情页查看。
++
+image::/images/cloud_service/database/postgresql/disaster_view_2.png[]
+
+

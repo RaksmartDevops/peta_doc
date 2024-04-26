@@ -1,0 +1,51 @@
+---
+title: 立即获取全局数据库状态（Boss2StartGlobalPGStatusCheck）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2StartGlobalPGStatusCheck
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于立即启动一次全局数据库的检测，将会生成一个异步任务。随后可使用Boss2GetGlobalPGStatus查看结果。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2StartGlobalPGStatusCheck",
+  "databases": ["global", "recovery"] // [可选]指定数据库类型，可以是global或是recovery
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "task_id": "ee50be3b-24cb-45ca-b565-faef55878ec8",
+   "ret_code": 0,
+   "action": "Boss2StartGlobalPGStatusCheckResponse"
+}
+----

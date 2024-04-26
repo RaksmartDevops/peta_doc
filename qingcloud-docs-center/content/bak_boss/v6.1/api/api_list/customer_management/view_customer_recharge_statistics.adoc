@@ -1,0 +1,83 @@
+---
+title: 查看客户充值统计（Boss2GetRechargeStat）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetRechargeStat
+
+=== Method
+POST
+
+=== 接口描述
+查询充值记录统计。
+
+|===
+| 类型 | 说明 | 备注
+
+| recharge
+| 充值
+|
+
+| discharge
+| 退款
+|
+
+| advance
+| 垫付
+|
+
+| payback
+| 扣除垫付
+|
+
+| transfer_in
+| 转移资金
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetRechargeStat",
+    "currency": "cny",  // 支持通过货币种类进行过滤: cny - 人民币 usd - 美元  hkd - 港元
+    "user": "usr-i3K70DIf",   // 获取指定用户的统计数据，如不指定将会返回所有用户的充值统计
+    "charge_types": ["recharge", "advance"]  // 支持通过充值类型进行过滤，如不指定可以获取所有类型的统计
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": {
+      "recharge": 32038,
+      "discharge": 3,
+      "advance": 30,
+      "payback": 10,
+      "transfer_in": 10
+   },
+   "ret_code": 0,
+   "action": "Boss2GetRechargeStatResponse"
+}
+----

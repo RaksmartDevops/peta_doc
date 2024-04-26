@@ -1,0 +1,58 @@
+---
+title: 修改个人通知组（Boss2ModifyMyNotifyGroup）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyMyNotifyGroup
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于修改个人通知组信息，无需传入id。
+对通知组参数修改方法请参考接口Boss2ModifyNotifyGroup的描述。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2ModifyMyNotifyGroup",
+  "enabled": true,  // 设置为true可启用个人通知组，设置为false可以禁用个人通知组
+  "emails": [
+    {
+      "contact": "test2@example.com",
+      "remark": "test2"
+    }
+  ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 3,
+   "ret_code": 0,
+   "action": "Boss2ModifyMyNotifyGroupResponse"
+}
+----

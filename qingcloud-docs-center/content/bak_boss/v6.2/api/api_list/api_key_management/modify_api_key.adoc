@@ -1,0 +1,80 @@
+---
+title: 修改 API Key（Boss2ModifyAPIKey）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyAPIKey
+
+=== Method
+POST
+
+=== 接口描述
+状态 id 说明：
+
+|===
+| 状态 ID | 状态名称 | 允许操作
+
+| 0
+| 正常
+| disable, delete
+
+| 1
+| 禁用
+| activate, delete
+
+| 2
+| 删除
+| 无
+|===
+
+响应数据:
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| access_key
+| String
+| 用户秘钥id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyAPIKey",
+    "user_id": 1,                           // 用户 ID
+    "access_key": "YIMPWNIIGXWPDJDTRNRE",
+    "operation": "disable"                  // 操作：disable-禁用，delete-删除，activate-启用，状态表见备注
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "access_key": "YIMPWNIIGXWPDJDTRNRE",
+   "ret_code": 0,
+   "action": "Boss2ModifyAPIKeyResponse"
+}
+----

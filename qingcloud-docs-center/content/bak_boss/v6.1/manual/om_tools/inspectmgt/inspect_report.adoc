@@ -1,0 +1,52 @@
+---
+title: "巡检报告"
+weight: 80
+---
+ 
+巡检报告页面列表展示所有的巡检报告。展示内容包括巡检的执行结果、巡检报告编号、报告结果、所属的巡检任务名称、巡检时间、结果信息等，并支持用户下载完整的巡检报告。
+
+
+== 在线查看
+
+. 成功登录 BOSS。
+
+. 点击**运维工具** > **巡检管理** > **巡检报告**，进入**巡检报告**列表页面。
++
+image::/images/boss/manual/om_tools/inspect_report_1.png[inspect_report_1,100%]
+
+. 用户可在搜索框内，输入巡检报告编号来搜索目标巡检报告，或者通过巡检时间来筛选目标巡检报告。
+
+. 点击目标报告的**结果信息**，可以查看巡检的统计信息。
++
+image::/images/boss/manual/om_tools/inspect_report_2.png[inspect_report_2,60%]
+
+. 点击目标报告的**详情**操作，可以查看报告的详细信息。
++
+image::/images/boss/manual/om_tools/inspect_report_3.png[inspect_report_3,100%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 如上图所示，正常与异常巡检内容，通过不同颜色进行区别，方便用户进行查看。并对重要巡检项目标注了 `重要` 字样。
+* 本页面也支持巡检报告对下载操作。用户根据需求，点击页面右上角的**下载报告**即可。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+== 下载报告
+
+. 成功登录 BOSS。
+
+. 点击**运维工具** > **巡检管理** > **巡检报告**，进入**巡检报告**列表页面。
++
+image::/images/boss/manual/om_tools/inspect_report_1.png[inspect_report_1,100%]
+
+. 用户可在搜索框内，输入巡检报告编号来搜索目标巡检报告，或者通过巡检时间来筛选目标巡检报告。
+
+. 点击目标报告的**下载**操作，即可下载整份的巡检报告。
+
+== 通知邮件
+
+若用户在link:../#_新增巡检任务[创建巡检任务]时，填写了 `通知组` 参数，则当巡检任务的报告生成后，系统会发送相应的巡检邮件。巡检邮件中，会包含有巡检结果概要，以及部分异常项的罗列。通知邮件如下图所示：
+
+image::/images/boss/manual/om_tools/inspect_report_4.png[inspect_report_4,100%]

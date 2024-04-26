@@ -1,0 +1,106 @@
+---
+title: "License 应用（增值模块）"
+weight: 6
+draft: true
+---
+
+
+== 背景信息
+
+License 应用是{platform_name_cn}将服务商提供的对应的授权许可作为商品。包括商业操作系统、数据库中间件应用软件等 License。
+
+== 场景描述
+
+该任务指导管理员进入 License 应用页面，查看 License 应用列表详情和预览应用。
+
+== 功能描述
+
+SaaS 应用列表页面罗列了{platform_name_cn}上用户上传的所有 License 应用的状态、应用名称/ID、可见范围、开发者/ID 以及创建时间等信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *AppCenter* > *License 应用*，可查看所有状态的 License 应用列表。
++
+image::/images/boss/manual/resource_mgt/license_apps_operations.png[]
+
+. 点击 License 应用的名称，进入 License 应用的详情页面。
++
+在 *价格* 页签，可查看当前 License 应用按规格分类的价格套餐目录。
++
+在 *条款及文档* 页签，可查看当前 License 应用的服务条款和使用说明。
++
+在 *应用截图* 页签，可查看当前 License 应用的大致截图信息。
++
+在 *软件资质* 页签，可查看 License 应用的软件资质信息和附件 PDF 文件。
++
+在 *审核记录* 页签，可查看当前 License 应用所有审核记录的审核结果、审核人/邮箱、角色、审核时间以及发送审核通知时间等信息。
+
+=== 预览应用
+
+include::../../../../../_components/note.adoc[]
+仅拥有 global 权限的管理员可预览应用。
+
+include::../../../../../_components/table_footer.adoc[]
+
+在待预览 License 应用所在行末尾点击image:/images/boss/manual/icon.png[]，点击 *预览应用*。
+
+=== 审核应用
+
+include::../../../../../_components/note.adoc[]
+
+License 应用状态为 *审核中* 时，可执行应用审核操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在待审核 License 应用所在行末尾点击image:/images/boss/manual/icon.png[]，点击 *应用审核*。
++
+弹出 *应用审核* 对话框。
+
+. 勾选 *技术审核* 或者 *渠道审核*。并输入审核反馈。
++
+
+include::../../../../../_components/note.adoc[]
+
+渠道审核：主要审核应用信息、价格信息以及资质信息等。
+
+技术审核：主要审核应用是否能正常运行，技术审核通过前需做镜像迁移，否则不能技术进行技术审核，且技术审核按钮不能点击。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 点击 *审核通过* 或者 *审核拒绝*，完成审核操作。
+
+=== 编辑应用
+
+include::../../../../../_components/note.adoc[]
+License 应用状态为 *已上架* 时，可执行编辑应用操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在待预览 License 应用所在行末尾点击image:/images/boss/manual/icon.png[]，点击 *在应用市场查看*。
++
+弹出 *修改应用信息* 对话框。
+
+. 输入修改后的参数信息，并输入修改原因。
++
+
+include::../../../../../_components/note.adoc[]
+*交互 SLA：* SLA （Service－Level Agreement） 即为 “服务水平承诺”，或 “服务水平协议”。这里指的是开发者承诺多少天之内可以交付 License 应用给用户。此处填写天数即可。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 点击 *修改*。
+
+=== 在应用市场查看应用
+
+
+License 应用状态为 *已上架* 时，可在应用市场查看该应用。
+
+

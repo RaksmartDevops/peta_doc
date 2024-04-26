@@ -1,0 +1,29 @@
+---
+title: "Kafka Manager 升级说明"
+description: Kafka 集群由老版本升级时，Kafka Manager 的管理界面数据可能没有及时更新。这是由于 Kafka 实际版本已经更新，而 Zookeeper 中的注册数据未刷新，这不影响正常使用。
+keywords: 云计算,大数据,消息队列,中间件,Kafka,升级,Kafka Manager
+weight: 40
+draft: false
+---
+
+Kafka 集群由老版本升级时，Kafka Manager 的管理界面数据可能没有及时更新。这是由于 Kafka 实际版本已经更新，而 Zookeeper 中的注册数据未刷新，这不影响正常使用。
+
+您可以通过本小节的步骤，刷新 Kafka Manager 的管理界面数据。
+
+== 操作步骤
+
+. *Disable 集群*
++
+image::/images/cloud_service/middware/kafka/disable_cluster.png[Disable 集群]
+
+. *Enable 集群*
++
+image::/images/cloud_service/middware/kafka/enable_cluster.png[Enable 集群]
+
+. *恢复正常数据*
++
+image::/images/cloud_service/middware/kafka/recover_data.png[恢复正常数据]
++
+*Cluster 详情*
++
+image::/images/cloud_service/middware/kafka/cluster_info.png[Cluster 详情]

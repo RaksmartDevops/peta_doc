@@ -1,0 +1,116 @@
+---
+title: 重建系统缓存（Boss2RebuildCache）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2RebuildCache
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于重建系统定时缓存。可在系统扩容后重建缓存，以便于界面数据可正常显示。
+接口访问后将会返回清理完成的key和建立缓存的key。
+注意： 建立缓存的过程为异步任务，可能无法立即完成重建。
+
+当前支持重建的缓存有：
+
+|===
+| 缓存key | 用途 | 备注
+
+| region_zone_map
+| region和zone的映射关系
+|
+
+| zone_region_map
+| zone和region的映射关系
+|
+
+| nodespecs
+| 节点配置信息
+|
+
+| nodegroup
+| 节点角色分组
+|
+
+| hypernodes
+| 计算节点列表
+|
+
+| hypernodes_info
+| 计算节点信息
+|
+
+| ksnodes
+| 管理节点列表
+|
+
+| snapshots_nodes
+| 备份节点列表
+|
+
+| hypernode_total_size
+| 计算节点配置统计数据
+|
+
+| snapshot_total_size
+| 备份节点配置统计数据
+|
+
+| resource_rate
+| 超卖比
+|
+|===
+
+{blank} +
+ +
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2RebuildCache",
+    "keys": ["region_zone_map", "nodespecs"] // [可选]可清理/重建指定的缓存
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "purged_keys": [
+        "region_zone_map",
+        "beta_nodespecs",
+        "delta_nodespecs",
+        "gamma_nodespecs",
+        "staging_nodespecs",
+    ],
+    "generated_keys": [
+        "region_zone_map",
+        "nodespecs"
+    ],
+    "ret_code": 0,
+    "action": "Boss2RebuildCacheResponse"
+}
+----

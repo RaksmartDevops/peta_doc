@@ -1,0 +1,74 @@
+---
+title: 修改用户安全选项（ModifyUserSecuritySetting）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=ModifyUserSecuritySetting
+
+=== Method
+POST
+
+=== 接口描述
+此为iaas接口，用于修改用户的安全选项，如：关闭用户的二次认证等。
+以下为一些常用操作的参数：
+
+|===
+| 操作 | 参数 | 备注
+
+| 禁用二次认证
+| deactive_key: 1 +
+enable_2fa: 0
+| 关闭二次认证的时候同时把老的key禁用
+|===
+
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| user_id
+| String
+| 用户 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "ModifyUserSecuritySetting",
+    "user": "usr-0vrOT3Oo",  // [必须]指定用户id
+    "deactivate_key": 1, // 需要修改的参数
+    "enable_2fa": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "ModifyUserSecuritySettingResponse",
+   "user_id": "usr-0vrOT3Oo",
+   "ret_code": 0
+}
+----

@@ -1,0 +1,64 @@
+---
+title: "Linux 云服务器查看 CPU 和内存信息"
+weight: 90
+
+---
+== *概述*
+
+本文主要介绍在 Linux 系统的云服务器中，如何查看 CPU 和内存信息。
+
+include::../../../../../../../_components/note.adoc[]
+* 总核心数 = 物理CPU颗数 * 每颗CPU上核心数
+
+* 总线程数（逻辑CPU数） = 物理CPU颗数 * 每颗CPU上核心数 * 每颗核心数上的线程  或者 总线程数（逻辑CPU数） = 总核心数 * 每颗核心数上的线程
+
+include::../../../../../../../_components/table_footer.adoc[]
+
+== 操作步骤
+
+通过如下命令，可以查看 Linux 系统的云服务器 CPU 和内存相关信息。
+
+* 查看云服务器上物理 cpu 的颗数。
++
+[source,shell]
+----
+cat /proc/cpuinfo |grep "physical id" | sort -u |wc -l
+----
+
+* 查看云服务器上每颗 cpu 上的核心数。
++
+[source,shell]
+----
+cat /proc/cpuinfo |grep "cpu cores"|sort -u
+----
+
+* 查看云服务器上总逻辑 CPU 数量（可通过如下三种方式查看）。
++
+[source,shell]
+----
+cat /proc/cpuinfo |grep "core id"|wc -l
+----
++
+[source,shell]
+----
+nproc --all
+----
++
+[source,shell]
+----
+getconf _NPROCESSORS_ONLN
+----
+
+* 查看 CPU 型号。
++
+[source,shell]
+----
+cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+----
+
+* 查看内存信息。
++
+[source,shell]
+----
+cat /proc/meminfo
+----

@@ -1,0 +1,52 @@
+---
+title: 启动全局KS服务巡检（Boss2StartGlobalKSInspection）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2StartGlobalKSInspection
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于立即启动一次全局KS的巡检，将会生成一个异步任务。随后可使用Boss2GetGlobalKSInspection查看结果。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2StartGlobalKSInspection",
+    "zone":"dsry1a", // [可选]可填入当前的主服务所在可用区
+    "services": ["webservice", "account", "billing", "nf"] // [可选]可填入需要进行巡检的服务，默认不填可进行所有服务的巡检
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "task_id": "5a589a8c-c490-4729-9471-17670ea82951",
+   "ret_code": 0,
+   "action": "Boss2StartGlobalKSInspectionResponse"
+}
+----

@@ -1,0 +1,53 @@
+//EIP 快速入门
+
+本文指引您如何申请弹性公网 EIP 并绑定到云服务器实现公网访问。
+
+本文以 IPv4 公网为例，如果您需要支持 IPv6 公网，请参见 link:../manual/ipv6/overview/[IPv6 公网 IP 操作指导]。
+
+== 前提条件
+
+* 已link:../../../authorization/account/manual/user_signup/[注册云平台账号]，且已完成link:../../../authorization/account/manual/account_aut/account_intro/[实名认证]。
+* 账号余额足够。 
+* 已link:../../../compute/vm/quickstart/create_vm/[创建云服务器]，云服务器需要与 EIP 在同一区域。
+
+
+[#step1]
+== 步骤一：申请 EIP
+
+include::./apply_ipv4_eip.adoc[tag=step]
+
+== 步骤二：分配 EIP 给云服务器
+
+将<<step1,步骤一>>中申请到的 EIP 分配给已创建的云服务器。
+
+. 右键点击需要分配的 EIP，选择**分配到云服务器**，在弹出的对话框中选择需要绑定的云服务器。
++
+image::/images/cloud_service/network/eip/already_eip_for_host2.png[]
+
+. 点击**提交**，弹出提示框。
++
+include::../../_components/note.adoc[]
+私有网络内云服务器绑定了 EIP 后，外网访问将使用 EIP 作为进出网关。如果该云服务器同时配置了 VPC 的端口转发规则，端口转发规则将不再有效。
+include::../../_components/table_footer.adoc[]
+
+. 点击**确认**，即可将申请到的 EIP 分配给所选云服务器。
++
+绑定完成后，该 EIP 的状态将显示为``已分配``，并显示绑定到的资源。
+//image::/images/cloud_service/network/eip/already_eip_for_user.png[公网IP绑定状态]
+
+== 步骤三：测试公网访问
+
+按照以下操作，测试云服务器的公网连通性。
+
+. 登录已绑定 EIP 的云服务器。
+
+. 执行以下命令，验证是否可公网通信。 
++
+[source]
+----
+ping <公网域名>
+----
++
+验证结果类似如下，则表示云服务器可与公网通信。
++
+image::/images/cloud_service/network/eip/ping_test.png[]

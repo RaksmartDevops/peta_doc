@@ -1,0 +1,96 @@
+---
+title: 开启公网访问
+description: 本小节主要介绍如何开启公网访问 Kafka 集群。 
+keyword: 云计算,大数据,Kafka,外部访问,公网访问
+weight: 10
+collapsible: false
+draft: false
+---
+
+从 Kafka 3.1.0 - v3.0.0 版本开始，Kafka 支持多节点公网访问功能，即 Kafka 集群中有多个 Kafka 节点时，为集群中所有 Kafka 节点绑定公网 IP，然后通过公网 IP 连接 Kafka。
+
+公网访问默认为``关闭``状态，Kafka 集群创建成功后，用户可以根据实际业务需求选择是否开启公网访问。开启公网访问后，可以通过公网 IP 连接 Kafka，同时也可以继续通过内网 IP 连接 Kafka。
+
+本小节主要介绍为 Kafka 集群开启公网访问的详细步骤。
+
+== 前提条件
+
+* 已获取管理控制台登录账号和密码，且已获取集群操作权限。
+* Kafka 集群状态为``活跃``。
+* 使用公网访问 Kafka，需要先准备好所需的弹性公网 IP （EIP）资源，要求如下：
+
+** EIP 与 Kafka 集群在相同的区域。
+** EIP 的数量必须大于等于 Kafka 集群中 ``Kafka 节点``个数。
+
+== 绑定 EIP 到节点
+
+include::../../../../../../_components/attention.adoc[]
+* 所有 ``Kafka 节点``都需要绑定 EIP，否则将不能通过公网 IP 直接连接 Kafka。
+* ``客户端节点``可以根据实际情况选择是否绑定 EIP，若不绑定，则不能通过公网 IP 直接连接客户端节点，此时可以通过 VNC 登录客户端或配置 link:../../../../../network/vpc/manual/vpn/vpn_intro[VPN] 后通过内网 IP 进行连接。
+include::../../../../../../_components/table_footer.adoc[]
+
+. 登录管理控制台。
+. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+. 点击目标集群 ID，进入集群详情页面。
+. 在右侧选择**节点**页签，进入节点列表页面。
+. 在 Kafka 节点点击鼠标右键，在弹出的快捷菜单中选择**外部 IP** > **绑定**。
++
+image::/images/cloud_service/middware/kafka/eip_bond_01.png[绑定公网 IP]
+. 在弹出的提示框中确认注意事项后，点击**确认**。
+. 在弹出的选择公网 IP 对话框，选择已创建好的 EIP。
+. 点击**提交**，返回节点列表页面。
++
+集群状态处于``更新中``，更新完成后，集群将恢复为``活跃``状态，此时可在节点列表中查看节点对应的 EIP 以及安全组。
++
+include::../../../../../../_components/note.adoc[]
+
+给一个节点绑定 EIP 后，系统会自动给所有节点绑定集群默认安全组，安全组内的所有节点可以互相通信。
+
+当所有节点均解绑 EIP 后，安全组将自动解绑。
+
+include::../../../../../../_components/table_footer.adoc[]
+// +
+// image::/images/cloud_service/middware/kafka/eip_bond_02.png[绑定公网 IP]
+
+. 重复执行步骤 5～步骤 8，依次为集群中其他节点绑定 EIP。
++
+操作完成后，如下图所示：
++
+image::/images/cloud_service/middware/kafka/eip_bond_03.png[绑定公网 IP]
+
+== 配置安全组规则
+
+Kafka 节点绑定公网 IP 后，系统会自动给所有节点绑定集群默认安全组，用户需要在该安全组中放行 `9092` 和 `9999` 端口。
+
+include::../../../../../../_components/attention.adoc[]
+* 若不放行 `9092`，无法在外部通过 `<EIP>:9092` 访问 Kafka。
+* 若不放行 `9999`，无法正常使用 Kafka Manager。
+include::../../../../../../_components/table_footer.adoc[]
+
+详细操作步骤如下：
+
+. 登录管理控制台。
+. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+. 点击目标集群 ID，进入集群详情页面。
+. 在右侧选择**节点**页签，进入节点列表页面，点击安全组名称。
++
+image::/images/cloud_service/middware/kafka/eip_bond_05.png[绑定公网 IP]
+. 在安全组规则页面，添加如下两条下行规则。
++
+image::/images/cloud_service/middware/kafka/eip_bond_04.png[添加安全组规则]
+. 规则添加完成后，点击**应用修改**，使规则生效。
+. 点击安全组**基本属性**旁边的菜单按钮，选择**修改**。
+. 在弹出的修改安全组属性对话框中，**打开**组内互信。
++
+image::/images/cloud_service/middware/kafka/eip_bond_06.png[安全组开启组内互信]
+. 点击修改，**完成**操作。
+
+== 相关操作
+
+* 开启 SASL
++
+公网访问可能存在一定的安全风险，开启公网访问的同时，建议link:../sasl[开启 SASL]。
+
+* 关闭公网访问
++
+若无需公网访问，解绑所有 Kafka 节点的公网 IP 即可。

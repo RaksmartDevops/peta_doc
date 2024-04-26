@@ -1,0 +1,44 @@
+---
+title: " EPFS 文件管理"
+date: 2020-01-30T00:39:25+09:00
+description: 本小节主要介绍如何对文件存储 EPFS 进行文件管理
+draft: false
+enableToc: false
+weight: 15
+keywords: 云计算, 文件存储, EPFS
+---
+
+对 EPFS 挂载点的文件进行操作。
+
+. 点击创建的挂载点名称处链接，进入文件系统详情界面，点击**文件管理**。
++
+image::/images/cloud_service/storage/epfs/epfs10.png[]
+
+. 点击**创建文件夹**，弹出**创建文件夹**对话框，填写**文件夹名称**后点击**确定**。
+
+. 点击**上传文件**，弹出**上传文件**对话框，可以上传属于该挂载点的文件。
++
+image::/images/cloud_service/storage/epfs/epfs14.png[]
+
+. 点击**上传本地文件**，可以将本地文件上传到该挂载点：
++
+image::/images/cloud_service/storage/epfs/epfs15.png[]
+
+. 选择文件，点击**更多操作** > **下载**，可下载该文件。
++
+
+include::../../../../../_components/note.adoc[]
+如需下载文件，只可对单个文件进行下载，无法批量下载文件，也无法对文件夹进行下载。
+
+include::../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/storage/epfs/epfs16.png[]
+
+. 选择文件，点击**更多操作** > **删除**，可删除该文件：
++
+image::/images/cloud_service/storage/epfs/epfs17.png[]
+
+
+. 选择文件夹，点击**更多操作** > **删除**，可删除该文件夹：
++
+image::/images/cloud_service/storage/epfs/epfs19.png[]

@@ -1,0 +1,126 @@
+---
+title: 获取负载均衡器列表（Boss2DescribeLoadBalancers）
+weight: 13
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeLoadBalancers
+
+=== Method
+POST
+
+=== 接口描述
+获取负载均衡器列表。
+该接口封装了iaas的DescribeLoadBalancers接口，加入了以下字段：
+
+* loadbalancer_listeners： 支持通过负载均衡器监听器进行搜索。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeLoadBalancers",
+  "zone": "staging",
+  "loadbalancer_listeners": [
+    "lbl-p1ayj3fk", "lbl-g8g78tvx1"
+    ], // 可通过负载均衡器监听器进行过滤
+  "loadbalancer_backends": [
+      "lbb-pdea3fg", "lbb-ab31ng"
+   ], // 可通过负载均衡器后端进行过滤
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeLoadBalancersResponse",
+   "total_count": 1,
+   "loadbalancer_set": [
+      {
+         "is_applied": 1,
+         "vxnet_id": "vxnet-qwf31xj",
+         "console_id": "admin",
+         "cluster": [
+            {
+               "instances": [
+                  {
+                     "instance_id": "i-vde33zgf",
+                     "vgw_mgmt_ip": "",
+                     "node_idx": 0
+                  }
+               ],
+               "eip_id": ""
+            }
+         ],
+         "create_time": "2020-02-22T06:41:31Z",
+         "rsyslog": "",
+         "owner": "usr-B93mhnra",
+         "place_group_id": "plg-00000000",
+         "features": 0,
+         "sub_code": 0,
+         "security_group_id": "sg-an6tre76",
+         "loadbalancer_type": 0,
+         "loadbalancer_name": "",
+         "memory": 512,
+         "status_time": "2020-02-22T06:51:08Z",
+         "node_count": 1,
+         "vxnet": {
+            "vxnet_type": 2,
+            "vxnet_id": "vxnet-qwf31xj",
+            "instance_id": "",
+            "vxnet_name": "项目青云",
+            "private_ip": "10.12.12.253",
+            "nic_id": ""
+         },
+         "status": "active",
+         "transition_status": "",
+         "description": null,
+         "tags": [],
+         "ecmp_disabled": 0,
+         "private_ips": [
+            "10.12.12.253",
+            "198.19.212.157",
+            "10.12.12.13"
+         ],
+         "eips": [],
+         "controller": "self",
+         "repl": "rpp-00000001",
+         "waf_pg": "",
+         "cluster_mode": 0,
+         "sriov_nic_type": 0,
+         "zone_id": "staging",
+         "hypervisor": "lxc",
+         "cpu": 1,
+         "root_user_id": "usr-B93mhnra",
+         "http_header_size": null,
+         "mode": 1,
+         "vxnet_cluster": {
+            "cluster_status": "up"
+         },
+         "resource_project_info": [],
+         "loadbalancer_id": "lb-6fee0ev8"
+      }
+   ],
+   "ret_code": 0
+}
+----

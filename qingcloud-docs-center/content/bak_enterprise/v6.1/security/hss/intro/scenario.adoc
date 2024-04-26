@@ -1,0 +1,8 @@
+---
+title: "应用场景"
+weight: 10
+---
+
+include::../../../../../_cloud_service/hss/apply_scenario.adoc[]
+
+

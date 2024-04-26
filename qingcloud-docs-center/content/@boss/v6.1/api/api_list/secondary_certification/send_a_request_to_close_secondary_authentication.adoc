@@ -1,0 +1,52 @@
+---
+title: 发送关闭二次认证请求（reset_totp_action）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/reset_totp/reset_totp_action/
+
+=== Method
+POST
+
+=== 接口描述
+返回的几种常见异常情况
+
+- token 无效，ret_code 为 1650
+- 用户状态异常，ret_code 为 1630
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "token": "088daebb38674bef9e9ef572cd9e8834"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Response"
+}
+----

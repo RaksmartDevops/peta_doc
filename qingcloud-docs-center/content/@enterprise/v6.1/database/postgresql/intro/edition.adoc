@@ -1,0 +1,151 @@
+---
+title: "产品版本"
+description: 本小节主要介绍 PostgreSQL 版本规格。
+keywords: 版本规格,PostgreSQL,关系型数据库,数据库
+weight: 30
+collapsible: false
+draft: false
+---
+PostgreSQL 定制``基础版``、``高可用版``两个功能系列。
+
+== 版本介绍
+
+[cols="1,3,3"]
+|===
+| 版本 | PostgreSQL 11 及以下版本 | PostgreSQL V2.0.0 及以上版本
+
+| 高可用版
+| 采用一主一从的经典高可用架构，提供数据库高可用保障服务。主从节点可以通过修改配置参数设置同步流复制或者异步流复制模式。 +
+适用于企业生产环境，电商、游戏、金融、政企等核心数据库场景。
+ a| 采用一主多从的主实例架构。
+
+* 当使用 2 个主实例时，采用半同步模式，即当备机出现问题时，不会影响主机的业务，同时健康检查会报告集群出现错误。
+* 当采用 3 个主实例时，只允许 1 个备机出现错误，当两个备机都出现故障时，将影响主节点的写入，因此拥有更高的安全性。
+
+| 基础版
+| 提供单节点数据库服务。 +
+适用于个人学习、小型网站、开发测试等场景。
+| 提供单节点数据库服务。 +
+适用于个人学习、小型网站、开发测试等场景。
+|===
+
+== 应用版本
+
+基于 PostgreSQL 12.12 、13.8、14.5、15.3 内核版本分别构建了 PostgreSQL V2.2.0 高可用版和基础版。
+
+[cols="1,2,2"]
+|===
+| 版本 | 内核版本 | 应用版本
+
+| 高可用版
+a| * PostgreSQL 12.12
+* PostgreSQL 13.8
+* PostgreSQL 14.5
+* PostgreSQL 15.3
+a| PostgreSQL 高可用版 -V2.2.0  
+
+| 基础版
+a| * PostgreSQL 12.12
+* PostgreSQL 13.8
+* PostgreSQL 14.5
+* PostgreSQL 15.3
+a| PostgreSQL 基础版 -V2.2.0  
+
+|===
+
+基于 PostgreSQL 11.1 、10.1、9.6.3 内核版本分别构建了 PG11 高可用版，PG10 高可用版和基础版、PG9.6 高可用版和基础版。
+
+[cols="1,2,2"]
+|===
+| 版本 | 内核版本 | 应用版本
+
+| 高可用版
+a| * PostgreSQL 9.6.3 ，PostGIS 2.3
+* PostgreSQL 10.1 ，PostGIS 2.4
+* PostgreSQL 11.1 ，PostGIS 2.5
+a| * PG11-高可用版-V1.0.8
+* PG10-高可用版-V1.1.6
+* PG9.6-高可用版-V1.1.6
+* PG11-高可用版-V1.0.7
+* PG10-高可用版-V1.1.5
+* PG9.6-高可用版-V1.1.5
+* PG11-高可用版-V1.0.6
+* PG10-高可用版-V1.1.4
+* PG9.6-高可用版-V1.1.4
+* PG10-高可用版-V1.1.1
+* PG9.6-高可用版-V1.1.1
+
+| 基础版
+a| * PostgreSQL 9.6.3 ，PostGIS 2.3
+* PostgreSQL 10.1 ，PostGIS 2.4
+a| * PG10-基础版-V1.1.0
+* PG9.6-基础版-V1.1.0
+|===
+
+== 应用版本历程
+
+=== PostgreSQL 高可用版/基础版-V2.2.0
+
+基于 PostgreSQL 12.12 、13.8、14.5、15.3 内核版本分别构建的高可用版和基础版。
+
+* 升级 PostgreSQL 15 内核至 15.3。
+* link:../../manual_new/plugin/s3[支持 aws_s3 插件]，即支持从对象存储导入/导出数据。
+* link:../../manual_new/plugin/pgaudit[支持 pgaudit 插件]。
+* 修复网段冲突导致 VIP 不可用的问题。
+* V2.2.0-高可用版新增指定 Master 节点功能，link:../../manual_new/node_lifecycle/switch_node[支持手动切换主节点]。
+
+=== PostgreSQL 高可用版/基础版-V2.1.0
+
+基于 PostgreSQL 12.12、13.8、14.5、15.0 内核版本分别构建的高可用版和基础版。
+
+- 支持 PostgreSQL 15。
+- 增加 Citus 插件，轻松创建分布式数据库集群。
+- 增加 PostGIS 插件，增强空间数据处理能力。
+
+=== PostgreSQL 高可用版/基础版-V2.0.0
+
+基于 PostgreSQL 12.12 、13.8、14.5 内核版本分别构建的高可用版和基础版。
+
+- 全新升级操作界面。
+- 优化配置参数项。
+
+=== PG11-高可用版-V1.0.9
+
+基于 PostgreSQL 11.1 内核版本分别构建的高可用版。
+
+- link:../../manual/plugin_mgt/plugin_upgrade/[更新 timescaleDB 插件]版本到 1.7.3。
+- link:../../manual/metrics_alarm/config_display_metrics[监控项字段]，提升用户体验。
+
+=== PG11-高可用版-V1.0.8
+
+基于 PostgreSQL 11.1 内核版本分别构建的高可用版。
+
+* 新增link:../../manual/disaster_recovery/dr_info[灾备管理]功能，支持集群异地灾备。
+* 新增link:../../manual/mgt_account/user_account[账号管理]功能，支持在线创建、修改、查看和删除数据库用户账号。
+* 优化link:../../manual/metrics_alarm/config_display_metrics[监控项字段]，提升用户体验。
+
+=== PG9.6/PG10-高可用版-V1.1.6
+
+基于 PostgreSQL 10.1、9.6.3内核版本分别构建的高可用版。
+
+* 新增link:../../manual/disaster_recovery/dr_info[灾备管理]功能，支持集群异地灾备。
+* 新增link:../../manual/mgt_account/user_account[账号管理]功能，支持在线创建、修改、查看和删除数据库用户账号。
+* 优化link:../../manual/metrics_alarm/config_display_metrics[监控项字段]，提升用户体验。
+
+=== PG11-高可用版-V1.0.7
+
+基于 PostgreSQL 11.1 内核版本分别构建的高可用版。
+
+* 新增**是否开启半同步模式**link:../../manual/config_para/config_para_info[配置参数]，支持自动切换主从节点数据同步流模式。
+* 优化从库重建方式，从根据**节点IP**修改为根据**节点ID**方式。
+* 修复不合理的 CPU 内存组合问题。
+* 修复**节点详情**页面，角色描述异常问题。
+
+=== PG9.6/PG10-高可用版-V1.1.5
+
+基于 PostgreSQL 10.1、9.6.3内核版本分别构建的高可用版。
+
+* 新增**是否开启半同步模式**link:../../manual/config_para/config_para_info[配置参数]，支持自动切换主从节点数据同步流模式。
+* 优化从库重建方式，从根据**节点IP**修改为根据**节点ID**方式。
+* 修复不合理的 CPU 内存组合问题。
+* 修复**节点详情**页面，角色描述异常问题。

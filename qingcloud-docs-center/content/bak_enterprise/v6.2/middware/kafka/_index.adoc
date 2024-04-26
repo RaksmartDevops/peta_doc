@@ -1,0 +1,57 @@
+---
+title: Kafka 服务
+weight: 1
+description: Kafka 服务是基于原生 Apache Kafka
+  构建的一个分布式、可分区、多副本的消息队列集群服务，具有高吞吐量、低延迟等优点，同时提供灵活的网络配置、在线伸缩、监控和告警等功能助您更好地管理集群。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 Kafka
+            url: intro/intro/
+          - title: 注意事项
+            url: intro/notice/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建 Kafka 集群
+            url: quickstart/create_cluster/
+          - title: 创建 Topic
+            url: quickstart/create_resource/
+          - title: 生产消费消息
+            url: quickstart/connect_kafka/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 集群管理
+            url: manual/cluster_lifecycle/cluster_info/
+          - title: 节点管理
+            url: manual/mgt_node/add_node/
+          - title: 使用 Kafka Manager
+            url: manual/kafka_manager/access_kafka_manager/
+          - title: 使用 Kafka 客户端
+            url: manual/kafka_client/login_kafka_client/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 跨集群迁移方案 MirrorMaker 使用
+            url: best-practices/kafka_mirrormaker/
+          - title: Kafka 分区再平衡
+            url: best-practices/partitons_assignments/
+linkkey: middleware_kafka_guide
+---

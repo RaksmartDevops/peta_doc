@@ -1,0 +1,67 @@
+// 使用容器环境提交并运行作业
+
+{platform_name_cn} 的弹性高性能计算 EHPC 集群内置 singularity 容器环境，用户可以在 EHPC 集群中通过容器化的应用解决各软件的运行环境以及版本兼容性问题，从而降低业务部署与实现的复杂性。高性能计算的容器化应用在支持 EHPC 集群全部原有能力的基础上，可为用户提供更加高效和便捷的计算解决方案。 +
+
+该章节以 Lammps 软件作业为例，基于 singularity 混合模型，展示高性能计算集群的容器化应用。
+
+== 前提条件
+
+* 已创建好弹性高性能计算 EHPC 集群。
+* Lammps 软件应用过程中，需要用到的作业文件``*in``、``.lj``，``.restart``，``*airebo``，以及 ``*lcbop`` 等已经上传至集群的共享目录中，可参考link:../../manual/epfs/epfs_details#_上传删除本地文件[上传本地文件]相关内容。
+* EHPC 集群中的登录节点已link:../../manual/cluster/node/bind_ip[绑定公网 IP]。
+
+== 操作步骤
+
+. 登录集群的登录节点，详细步骤可参考 link:../../manual/cluster/node/ssh[WebSSH 登录]。
+
+. 执行如下命令，拉取 lammps 镜像。
++
+[,shell]
+----
+singularity build -s lammps.simg docker://alahiff/lammps-intel-avx512-2018:latest
+----
++
+
+include::../../../_components/note.adoc[]
+* ``-s`` 表示是 sandbox 格式的镜像，可以对镜像做修改，如果用户自己编译镜像，则需要使用当前格式。如果用户不需要自己进行编译，则可不加，默认镜像是只读的。
+* ``lammps.simg`` 表示生成的镜像名称。
+
+include::../../../_components/table_footer.adoc[]
+
+. 提交作业之前，执行如下命令，加载本地的 mpi 环境。
++
+[,shell]
+----  
+module load  intel/18.0.1
+----
+. 用以下三种方式运行作业，并进行对比。
+
+.. 不使用 singularity 运行作业的指令，直接使用主机上的 mpi，即传统方式，主要用于和下面两种方式做对比。
++
+[,shell]
+----
+mpirun  -n 4  lmp_mpi  -in in.lj
+----
+.. 不结合调度器，在单机中使用 singularity 运行作业，完全使用容器内部的 mpi 和软件。该方式可以不需要在主机上安装 mpi，但无法多节点运行。
++
+[,shell]
+----
+singularity exec -B /es01  lammps.simg   mpirun -n 4  lmp_mpi -in in.lj  
+----
+
+.. 结合外部调度器和 mpi 在 singularity 中运行作业，结合主机上和容器内部的 mpi，可以实现跨节点的容器作业调度。此种方式可以适用调度器进行调度，也可跨节点运行。
++
+
+include::../../../_components/note.adoc[]
+如果使用调度器进行作业提交，直接将此如下命令放在脚本中，并使用 sbatch 提交。
+include::../../../_components/table_footer.adoc[]
++
+[,shell]
+----
+mpirun  -n 4  singularity exec -B /es01 lammps.simg  lmp_mpi  -in in.lj
+----
+
+
+
+
+

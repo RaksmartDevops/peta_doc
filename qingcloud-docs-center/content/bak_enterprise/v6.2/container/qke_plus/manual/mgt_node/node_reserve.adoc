@@ -1,0 +1,91 @@
+---
+title: "节点资源预留"
+description: 介绍节点相关概念及功能。
+draft: false
+keywords: 云计算, QKE, 节点
+weight: 2
+---
+{k8s_engine_shortname} 需要占用一定的节点资源来运行相关组件（例如 kubelet、kube-proxy、Container Runtime 等），这会造成节点的资源总数与集群中可分配的资源数之间存在差异。本文介绍 {k8s_engine_shortname} 集群中节点资源预留策略及相关注意事项，以便在部署应用时合理设置 Pod 的请求资源量和限制资源量。
+
+== 节点可分配资源计算策略
+----
+可分配资源的计算公式：可分配资源（Allocatable） = 总资源（Capacity）- 总预留资源（Reserved）
+----
+
+* 可分配资源：对应<<_查询节点可分配资源>>命令输出中的 `Allocatable` 字段。
+* 总资源：对应<<_查询节点可分配资源>>命令输出中的 `Capacity` 字段。
+* 总预留资源：
++
+----
+总预留资源 = 系统预留 + Kubernetes 组件预留 + 驱逐阈值预留
+----
+
+** 系统预留：预留给 K8s 管理进程的资源，如 Kubelet，Docker Daemon 等。预留策略请参见<<_节点资源预留策略>>。
+** Kubernetes 组件预留：预留给系统的资源，如 kernel，sshd，udev 等。预留策略请参见<<_节点资源预留策略>>
+** 驱逐阈值预留：Pod 驱逐阈值。更多关于驱逐阈值的相关信息，请参见link:https://kubernetes.io/zh-cn/docs/concepts/scheduling-eviction/node-pressure-eviction/?spm=a2c4g.11186623.0.0.5cb0343aj8qQEu[节点压力驱逐]。
+
+== 节点资源预留策略
+
+=== {k8s_engine_shortname} v2.3.1 及之后版本
+
+* *系统预留（systemReserved）*
++
+v2.3.1 及之后的版本，新建集群默认开启节点资源预留功能，可通过修改配置文件关闭（*不推荐此操作*）。 +
+{k8s_engine_shortname} 根据 CPU 和内存所在的不同区间来计算预留的资源量，节点的总预留资源量等于各区间的预留资源量之和。
+
+** CPU 预留规则
++
+image::/images/cloud_service/container/qke/node_cpu_reserv.png[,70%]
++
+以 32 核的节点为例，总的 CPU 预留量计算如下： +
+0.1 + (32-4)*2.5% = 0.8 core = 800 milliCore
+
+** 内存预留规则
++
+image::/images/cloud_service/container/qke/node_mem_reserv.png[,70%]
++
+以 32GiB 内存为例，总的内存预留量计算如下： +
+4*25% + (8-4)*20% + (16-8)*10% + (32-16)*6% = 3.56 GiB = 3645 MiB
+
+* *Kubernetes 组件预留（kubeReserved）*
+** CPU：固定 200 milliCore
+** 内存：固定 250 MiB
+
+=== *{k8s_engine_shortname} v2.3.1 之前版本*
+
+节点预留策略如下：
+
+** 内存总预留量 = 驱逐阈值 (*memory.available* * 5%) + 系统预留 (250 MiB) + Kubernets组件预留 (250 MiB)
+** CPU 总预留量  = 系统预留 (200 milliCore) + Kubernets组件预留 (200 milliCore)
+
+include::../../../../../../_components/note.adoc[]
+旧版本升级至 v2.3.1 后仍使用原有的版本预留策略，如需使用新策略，需手动修改 kubelet 配置文件。修改后，集群新增节点可使用新的策略。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+
+
+== 查询节点可分配资源
+
+[source]
+----
+kubectl describe node [NODE_NAME] | grep Allocatable -B 7 -A 6
+----
+预期输出：
+
+[source,shell]
+----
+Capacity:
+  cpu:                4              #节点的CPU总核数。
+  ephemeral-storage:  81119688Ki     #节点的临时存储总量，单位KiB。
+  hugepages-2Mi:      0
+  memory:             8148172Ki      #节点的内存总量，单位KiB。
+  pods:               120
+Allocatable:
+  cpu:                1800m          #节点可分配的CPU核数。
+  ephemeral-storage:  76925384Ki     #节点可分配的临时存储，单位KiB。
+  hugepages-2Mi:      0
+  memory:             6590655892     #节点可分配的内存，单位KiB。
+  pods:               120
+----

@@ -1,0 +1,34 @@
+---
+title: "消息中心"
+weight: 3
+description: 消息中心可以为用户提供系统消息的接收和管理。
+bannerImage: /images/pic-banner.png
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是消息中心
+            url: intro/introduction/
+          - title: 功能介绍
+            url: intro/function/
+          - title: 如何访问消息中心
+            url: intro/enter/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 站内消息
+            url: manual/notify/
+          - title: 消息接收
+            url: manual/notify_config/
+          - title: 管理消息接收人
+            url: manual/receiver/
+
+linkkey: services_notification_center_manual
+
+---

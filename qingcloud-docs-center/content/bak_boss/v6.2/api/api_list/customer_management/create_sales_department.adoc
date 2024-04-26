@@ -1,0 +1,55 @@
+---
+title: 创建销售部门（Boss2CreateSalesDept）
+weight: 27
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateSalesDept
+
+=== Method
+POST
+
+=== 接口描述
+创建销售部门。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateSalesDept",
+    "sales_dept_name": "测试部门1", // [必须]部门名称
+    "ka_type": 99, // 部门类型id，默认为99
+    "ka_type_name": "未分类", // 部门类型名称，默认为未分类
+    "leaders": [1, 2, 3], // 部门负责人id，为销售的id
+    "level": 1, // 可指定部门层级，目前支持层级为 1:一级部门 2:二级部门，如不指定将会使用1
+    "parent_id": 23 // 可指定父级部门id，如level为2，则必须指定父级部门id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2CreateSalesDeptResponse"
+}
+----

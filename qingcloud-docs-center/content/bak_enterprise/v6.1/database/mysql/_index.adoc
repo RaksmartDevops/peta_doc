@@ -1,0 +1,97 @@
+---
+title: 关系型数据库 MySQL Plus
+linkTitle: MySQL Plus
+weight: 1
+description: MySQL Plus 是一款基于 MySQL 提供的数据库服务，支持一主多从高可用架构，集成 InnoDB + RocksDB 双存储引擎，支持自动备份、监控告警、自动扩容等管理功能。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 MySQL Plus
+            url: intro/introduction/
+          - title: 产品系列
+            url: intro/list/
+          - title: 产品优势
+            url: intro/superiority/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 修改计费模式
+            url: manual/cluster_lifecycle/switch_billing_mode/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 步骤一：创建集群
+            url: quickstart/create_cluster/
+          - title: 步骤二：创建数据库账号
+            url: quickstart/create_account/
+          - title: 步骤三：连接数据库
+            url: quickstart/access_mysqlplus/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 集群管理
+        children:
+          - title: 集群概述
+            url: manual/cluster_lifecycle/cluster_info/
+          - title: 连接集群
+            url: manual/mgt_connect/access_mysqlplus/
+          - title: 升级集群
+            url: manual/cluster_lifecycle/upgrade/
+          - title: 迁移集群
+            url: manual/migration/migration_online_mysqldump/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+      - title: 集群安全
+        children:
+          - title: 异地灾备
+            url: manual/disaste_recovery/disaster_recovery/
+          - title: 备份与恢复
+            url: manual/backup_restoration/backup_info/
+          - title: SSL 传输加密
+            url: manual/ssl_trans_encryption/
+      - title: 集群监控
+        children:
+          - title: 设置监控告警
+            url: manual/metrics_alarm/set_alarm_rules/
+          - title: 启用 Zabbix Agent 服务
+            url: manual/metrics_alarm/zabbix_client_service/
+          - title: 启动日志服务
+            url: manual/mgt_log/enable_log_service/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 下载 MySQL 日志
+            url: best-practices/download_mysql_log/
+          - title: 清理 MySQL binlog 日志
+            url: best-practices/clean_binlog/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: null
+        children:
+          - title: 数据库连接
+            url: faq/access/
+          - title: 用户帐号
+            url: faq/account/
+          - title: 扩容与升级
+            url: faq/expansion/
+          - title: 数据管理
+            url: faq/migration/
+          - title: 配置参数
+            url: faq/configpara/
+          - title: 数据库监控
+            url: faq/monitor/
+linkkey: database_mysql_plus_guide
+---

@@ -1,0 +1,22 @@
+---
+title: 查看组织资源
+description:
+keywords:
+weight: 30
+collapsible: false
+draft: false
+---
+
+企业空间开通后，系统将自动创建一个根组织，并将主账户作为成员加入根组织、将主账户的资源加入根组织。
+
+申请者创建的资源，默认加入申请者所在组织。
+
+== 查看组织中的资源
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 在组织树中，选择目标组织，在**资源**页签，可以看到该组织下的资源信息。
++
+image::/images/cloud_service/services/vdc/org_resources.png[查看组织资源]
++
+. 点击资源卡片，选择资源所在区域，进入资源管理页面，可以按区域、服务、部门等筛选条件link:../../../resource_and_project/mgt_resource/view/[查看资源]，以及link:../../../resource_and_project/mgt_resource/transfer/[转移资源]。

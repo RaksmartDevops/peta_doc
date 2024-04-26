@@ -1,0 +1,69 @@
+---
+title: "rabbitmqcli 使用示例"
+description: 本小节主要介绍如何使用 rabbitmqcli。
+keywords: 云计算,大数据,消息队列,中间件,RabbitMQ,rabbitmq,消息队列服务,消息中间件,rabbitmqcli
+weight: 16
+draft: false
+---
+
+本文仅介绍常用命令，更多信息请查看link:http://www.rabbitmq.com/management-cli.html[官方文档]。
+
+include::../../../../../_components/attention.adoc[]
+使用 root/rabbitmq 登录 client 节点，请勿随便使用集群管理命令去管理集群。
+
+client 使用 `-n nodename` 连接集群中的节点。*nodename* 格式为 rabbit@hostname，可以在 client 节点 /etc/hosts 下看到有哪些 host，也可以在 rabbitmq 的 Web 界面直接看到 nodename。
+
+include::../../../../../_components/table_footer.adoc[]
+== 添加用户
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 add_user username password
+----
+
+== 删除用户
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 delete_user username
+----
+
+== 创建vhost
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 add_vhost vhostpath
+----
+
+== 清空队列
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 reset
+----
+
+== 停止应用
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 stop_app
+----
+
+== 开启应用
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 start_app
+----
+
+== 更改节点类型
+
+[source]
+----
+rabbitmqctl -n rabbit@i-1zo2scr7 change_cluster_node_type ram
+----
+
+include::../../../../../_components/attention.adoc[]
+更改节点类型需要先关闭 App 后执行，然后再启动 App，正常运行时不建议做集群和节点管理的操作。
+
+include::../../../../../_components/table_footer.adoc[]

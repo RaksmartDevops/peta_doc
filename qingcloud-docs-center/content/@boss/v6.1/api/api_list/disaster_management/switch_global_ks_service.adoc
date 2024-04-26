@@ -1,0 +1,53 @@
+---
+title: 切换全局KS服务（Boss2FailoverGlobalKS）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2FailoverGlobalKS
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于在灾难发生时发起全局KS区域的切换，将会返回link_id用于后续的查询，可通过接口Boss2GetFailoverProgress来查询切换的进度。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2FailoverGlobalKS",
+    "pg": "global", // [必须]需要切换的数据库名称，可固定为global
+    "disaster_zone": "dsry1b", // [必须]当前发生灾难的区域
+    "ks_master_zone": "dsry1a" // [必须]需要将主区域切换到的区域
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "link_id": "drl-iqoberrslnr",
+   "ret_code": 0,
+   "action": "Boss2FailoverGlobalKSResponse"
+}
+----

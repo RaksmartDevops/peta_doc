@@ -1,0 +1,100 @@
+---
+title: "配置VPC中主机日志审计"
+description: 购买日志审计
+draft: false
+weight: 10
+keywords: 主机安全, 安全, 日志审计
+
+---
+
+
+
+:experimental:
+
+该场景下日志审计主机（VM）创建时加入到基础网络，日志审计实例部署后需绑定到 VPC，实现日志审计主机和 VPC 内的主机通信且对 VPC 内的主机进行日志审计。
+
+image::/images/cloud_service/security/srp/alog2.png[图,50%]
+
+== 前提条件
+
+* 已完成日志审计实例部署并能点击**控制台**进入日志审计实例控制台。
+* 已获取基础网络IP地址、VPC 网络地址和 VPC 网络中被日志审计的主机 IP地址。
+
+== 操作步骤
+
+. 进入**安全资源池**页面。
+. 在左侧导航栏选择**日志审计**。
++
+进入**日志审计**页面。
+
+. 在目标日志审计实例**操作**一栏点击**加入网络**，选择待日志审计主机所在的 VPC 和私有网络，点击**提交**。
++
+VPC 网络添加成功后，可在实例**网络**一栏查看 VPC 网络地址。
++
+image::/images/cloud_service/security/srp/alog3.png[提交]
++
+image::/images/cloud_service/security/srp/alog4.png[查看]
+
+. 在操作一栏点击**关闭云服务器**，点击**关闭**。
++
+image::/images/cloud_service/security/srp/alog5.png[关闭]
+
+. 在操作一栏点击**开启云服务器**，点击**开启**。
+. 在目标日志审计实例**操作**一栏点击**控制台**，进入日志审计实例控制台首页。
+. 选择**资产管理** > **全部资产**，点击**新增**。
++
+image::/images/cloud_service/security/srp/alog6.png[新增]
+
+. 根据实际情况选择资产类型。
++
+此处以在**安全类**一栏点击**安全管理系统**为例。
++
+image::/images/cloud_service/security/srp/alog7.png[安全管理系统]
+
+. 填写**资产名称**，其他选项根据其他需要选择是否填写，点击**保存**。
++
+image::/images/cloud_service/security/srp/alog8.png[保存]
+
+. 在资产信息识别信息页签填写 VPC 网络中主机 IP 地址，并点击**保存**。
++
+这里以上图所示主机 ID 为例，填写为**172.12.0.4**
++
+image::/images/cloud_service/security/srp/alog9.png[保存]
+
+. 进入**发送日志配置页签**，参数保持默认，点击**保存**。
++
+image::/images/cloud_service/security/srp/alog10.png[保存]
+
+. 若资产的状态信息未显示**已启用**，点击**启用**。
++
+image::/images/cloud_service/security/srp/alog11.png[启用]
+
+=== 配置VM中rsyslog日志
+
+. 登录**172.17.0.4**主机的进入``vi /etc/rsyslog.conf``文件并在该文件增加以下内容：`*.* @日志审计主机IP`
++
+例如：
++
+[,url]
+----
+*.* @172.17.0.3
+----
++
+
+include::../../../../../../_components/attention.adoc[]
+
+* *与@之间空格为 tab键输入。
+* IP是日志审计主机的IP，例如本例中日志审计的IP为：172.17.0.3
+* *.*表示发送所有级别的日志。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/security/srp/alog12.png[启用]
+
+. 按**ESC**后输入**wq**保存修改。
+. 执行 ``service rsyslog restart`` 命令重启 ``rsyslog`` 服务。
+. 可在**首页** > **数据概要**或者**审计概要**获取审计日志。
++
+image::/images/cloud_service/security/srp/alog13.png[获取日志审计]
+

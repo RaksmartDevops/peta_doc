@@ -1,0 +1,766 @@
+---
+title: "参数介绍"
+description: 本小节主要介绍 Redis Standalone 配置参数。
+keywords: 配置参数,键值数据库,Redis,Redis Standalone,数据库
+weight: 10
+collapsible: false
+draft: false
+---
+在 AppCenter 集群管理控制台，支持对 Redis Standalone 常用配置参数的管理。
+
+Redis Cluster 支持部分参数的配置与修改，不同版本支持的参数有所区别。为便于阅读和内容表达，本文的表格约定使用下述注释：
+
+* *✓* 表示在该版本，支持该参数。
+* *✕* 表示在该版本，不支持该参数。
+
+本小节主要介绍 AppCenter 中各 Redis Standalone 具体参数说明。
+
+== 访问参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x | Redis 7.x
+
+| 禁用 FLUSH 命令
+| -
+a| 表示是否禁用 FLUSHALL 及 FLUSHDB 命令。 +
+
+默认为 `否`，表示不禁用。
+
+include::../../../../../../_components/attention_in_table.adoc[]
+
+* 此参数在集群创建后不可修改。
+* 由于该命令的误操作会导致对数据造成不可恢复的丢失，因此强烈建议在生产环境下禁用该命令。
+* Redis 5.0.10 版本开始支持该参数。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| *✓*
+| *✓*
+| *✓*
+
+| 端口
+| 1~65536
+a| 表示 Redis 服务端口。
+
+* 默认为 6379。 +
+* 若修改了端口，则需要打开集群网络防火墙中的对应的端口号。如修改端口为 6378，需要打开防火墙的 6378 端口。
+| *✓*
+| *✓*
+| *✓*
+
+| 控管台管理 ACL
+a| * 是
+* 否
+a| 表示是否由控制台管理 ACL 服务。
+
+* 默认为 `是`，表示开启控制台管理 ACL 服务，禁止通过命令创建 ACL 帐号。 +
+* ``否``表示关闭控制台管理 ACL 服务，支持通过命令创建 ACL 帐号。
+
+include::../../../../../../_components/attention_in_table.adoc[]
+
+再次开启此服务，将删除已存在的 ACL 帐号。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| *✕*
+| *✓*
+| *✓*
+
+| requirepass
+| -
+a| 表示登录客户端使用密码才能执行命令。
+
+* 密码可由数字、字母或特殊字符 ``!@#$%{caret}&*()./;`` 组成，且最少 6 位。
+* 不设置则密码为空。
+
+6.x 及以后版本，该参数值为 **default** 用户密码。
+| *✓*
+| *✓*
+| *✓*
+|===
+
+== TLS 参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x | Redis 7.x
+
+| TLS-Port
+| 0~65535
+| 表示 TLS 监听端口。
+
+默认值 0，表示关闭。
+| *✕*
+| *✓*
+| *✓*
+
+| Sentinel.TLS-Port
+| 0~65535
+| 表示 Redis 哨兵 TLS 服务端口。
+
+默认值 0，表示关闭。
+| *✕*
+| *✓*
+| *✓*
+
+| Tls-Replication
+a| * 是
+* 否
+| 表示是否启用 TLS 复制功能。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Auth-Clients
+a| * 是
+* 否
+* optinal
+a| 表示是否需要 TLS 客户端证书进行身份认证。
+
+* 取值``是``表示必须使用客户端证书。
+* 取值``否``表示不需要且不接受客户端证书。
+* 取值 ``optional`` 表示可选，如果提供则有效，但不是必需的。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Protocols
+| -
+| 表示指定要支持的 TLS 版本。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Ciphers
+| -
+| 表示配置允许的 TLS 加密算法，该配置仅适用于 \<= TLSv1.2。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Ciphersuites
+| -
+| 表示配置允许的 TLSv1.3 加密算法。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Prefer-Server -Ciphers
+a| * 是
+* 否
+a| 表示密码规则以服务器为准。
+
+* 取值``是``表示以服务器为准。
+* 取值``否``表示以服务端为准。
+| *✕*
+| *✓*
+| *✓*
+
+| tls-session-caching
+a| * 是
+* 否
+a| 表示是否开启 TLS 会话缓存。
+
+* 取值``是``表示启用。
+* 取值``否``表示不启用。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Session-Cache-Size
+| -
+| 表示 TLS 会话缓存大小。默认大小为 20480。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Session-Cache-Timeout
+| -
+| 表示 TLS 会话的默认超时时间。
+
+默认值为 300 ，单位为秒（s）。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Cert
+| -
+| 表示用于进行身份验证的客户端证书。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-Key
+| -
+| 表示用于进行身份验证的私钥文件。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-CA-Cert
+| -
+| 表示用于验证的 CA 证书文件。
+| *✕*
+| *✓*
+| *✓*
+
+| TLS-DH-Params
+| -
+| 表示密匙交换参数。配置 DH 参数文件以启用 Diffie-Hellman（DH）密钥交换。
+| *✕*
+| *✓*
+| *✓*
+|===
+
+== 性能优化
+
+[cols="2,2,4a,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x | Redis 7.x
+
+| 最大内存比例
+| 10~95
+| 表示 Redis 最大可用内存占主机内存的比例（%）。
+
+默认值 80。
+| *✓*
+| *✓*
+| *✓*
+
+| databases
+| 1~2000
+| 表示 redis-server 数据库的数量。
+
+默认值 16。
+| *✓*
+| *✓*
+| *✓*
+
+| Sentinel.Port
+| 1~65536
+| 表示 Redis 哨兵服务端口。
+
+默认值 26379。
+| *✓*
+| *✓*
+| *✓*
+
+| sentinel.down-after-milliseconds
+| 2000~30000
+| 表示 master 被 sentinel 标记为主观下线（sdown）的超时时间。
+
+默认值 4000，单位为毫秒。
+| *✓*
+| *✓*
+| *✓*
+
+| sentinel.failover-timeout
+| 30000~180000
+| 表示两次 failover 间的间隔时间。
+
+默认值 60000，单位为毫秒。
+| *✓*
+| *✓*
+| *✓*
+
+| sentinel.requirepass
+| -
+a| 表示 Redis 哨兵服务的密码。
+
+* 密码可由数字、字母、下划线或特殊字符 ``!@#$%{caret}&*()./;`` 组成，最低 6 位。
+* 如果不希望有验证则此项留空。
+| *✓*
+| *✓*
+| *✓*
+
+ifeval::["{file_output_type}" == "pdf"]
+|===
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x | Redis 7.x
+endif::[]
+
+| 启用 Redis 命令
+| -
+a| 表示是否打开 Redis 相关命令。
+
+* 可选择 `DISABLE_ALL`、`CONFIG`、`DEBUG`、``SAVE`` 命令。
+* `DISABLE_ALL` 选项将禁用以下命令：CONFIG、BGREWRITEAOF、BGSAVE、DEBUG、SAVE、 SHUTDOWN、SLAVEOF、KEYS、 REPLICAOF。
+
+include::../../../../../../_components/attention_in_table.adoc[]
+
+请谨慎配置该参数，错误地使用可能会导致服务不可用。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| *✓*
+| *✓*
+| *✓*
+
+| activerehashing
+a| * 是
+* 否
+a| 表示是否开启 rehashing 以节省内存空间。
+
+* 取值``是``表示开启。
+* 取值``否``表示不开启。
+| *✓*
+| *✓*
+| *✓*
+
+| appendonly
+a| * 是
+* 否
+a| 表示是否使用 AOF 持久化功能。
+
+* 取值``是``表示使用。
+* 取值``否``表示不使用。
+| *✓*
+| *✓*
+| *✓*
+
+| appendfsync
+a| * everysec
+* 否
+* 一直有效
+a| 表示 AOF 的同步策略。
+
+* 取值 ``everysec`` 表示最多每秒调用一次 fsync。
+* 取值``否``表示 write 后不会有 fsync 调用。
+* 取值``一直有效``表示每次 write 后都会调用 fsync。
+| *✓*
+| *✓*
+| *✓*
+
+| maxclients
+| 1~65000
+| 表示同一时间允许最大的客户端连接数。默认为 0，表示无限制，此时最大的客户端连接数为 Redis 进程可以打开的最大文件描述符的数量。
+| *✓*
+| *✓*
+| *✓*
+
+ifeval::["{file_output_type}" == "pdf"]
+|===
+
+[cols="2,2,4a,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+endif::[]
+
+| maxmemory-policy
+a| * volatile-lru
+* volatile-random
+* volatile-ttl
+* allkeys-lru
+* allkeys-random
+* noeviction
+a| 表示当 Redis 内存占用达到最大的时候，使用何种策略来应对（删除）Keys。LRU 表示最近最少使用的。LFU 表示最不常用的。TTL 表示设置过期时间。LRU，LFU 和 TTL 都是使用近似随机算法实现的。
+
+* volatile-lru：只从设置失效（expire set）的 Key 中选择最近最少使用的 Key 进行删除。
+* volatile-random：只从设置失效（expire set）的 Key 中，随机选择一些 Key进行删除。
+* volatile-ttl：只从设置失效（expire set）的 Key 中，选出存活时间（TTL）最短的 Key 进行删除。
+* allkeys-lru：优先删除掉最近最少使用的 Key。
+* allkeys-random：随机选择一些 Key 进行删除。
+* noeviction：不删除任何 Key，只是在写操作时返回错误。
+| *✓*
+| *✓*
+| *✓*
+
+| maxmemory-samples
+| 0～
+a| 表示 LRU 和 minimal TTL 算法不是特别精确，此项用来针对速度和精确性进行调优。
+
+* 默认值为 5。
+* 设置为 10 可以非常近似真正的LRU但是会多消耗 CPU，设置为 3 速度很快但不是非常精确。
+| *✓*
+| *✓*
+| *✓*
+
+| min-slaves-max-lag
+| 0～
+| 表示当一个主节点有小于 N 个从节点并且每个从节点的延迟最大不超过 M 秒的时候，停止接受写操作。
+
+默认值为 10，单位为秒（s）。
+| *✓*
+| *✓*
+| *✕*
+
+| min-slaves-to-write
+| 0～
+| 表示当一个主节点有小于 N 个从节点并且每个从节点的延迟最大不超过 M 秒的时候，停止接受写操作。
+
+默认值为 0，单位为秒（s）。
+| *✓*
+| *✓*
+| *✕*
+
+| min-replicas-max-lag
+| 0～
+| 表示当一个主节点有小于 N 个从节点并且每个从节点的延迟最大不超过 M 秒的时候，停止接受写操作。
+
+默认值为 10，单位为秒（s）。
+| *✕*
+| *✕*
+| *✓*
+
+| min-replicas-to-write
+| 0～
+| 表示当一个主节点有小于 N 个从节点并且每个从节点的延迟最大不超过 M 秒的时候，停止接受写操作。
+
+默认值为 0，单位为秒（s）。
+| *✕*
+| *✕*
+| *✓*
+
+ifeval::["{file_output_type}" == "pdf"]
+|===
+
+[cols="2,2,4a,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+endif::[]
+
+| no-appendfsync-on-rewrite
+a| * 是
+* 否
+a| 表示当有 BGSAVE 或 BGREWRITEAOF 正在执行的时候，阻止 fsync() 的调用。
+
+* 是：阻止
+* 否：不阻止
+| *✓*
+| *✓*
+| *✓*
+
+| notify-keyspace-events
+| -
+a| 表示指定 Redis 会发送哪些类型的通知。
+
+* `K`：键空间通知，所有通知以__keyspace@__为前缀。
+* `E`：键事件通知，所有通知以__keyevent@__为前缀。
+* `g`：DEL、EXPIRE、RENAME 等类型无关的通用命令的通知。
+* `$`：字符串命令的通知。
+* `l`：列表命令的通知。
+* `s`：集合命令的通知。
+* `h`：哈希命令的通知。
+* `z`：有序集合命令的通知。
+* `x`：过期事件，每当有过期键被删除时发送。
+* `e`：驱逐（evict）事件，每当有键因为 maxmemory 策略而被删除时发送。
+* `A`：参数 g$lshzxe 的别名。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+* 开启键空间通知将消耗 CPU 计算资源，故该通知默认关闭。
+* 如果定义服务器发送某些通知，输入参数需必选 `K` 或 `E`；如订阅键事件中驱逐事件相关的通知，参数填写为 ``Ee``；如订阅发送所有类型的通知，参数填写为 ``AKE``。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+| *✓*
+| *✓*
+| *✓*
+
+| repl-backlog-size
+| 16384~
+| 表示主节点保存 repl_backlog 的大小。
+
+默认值 `1048576`，单位为字节（Byte）。
+| *✓*
+| *✓*
+| *✓*
+
+ifeval::["{file_output_type}" == "pdf"]
+|===
+
+[cols="2,2,4a,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+endif::[]
+
+| repl-backlog-ttl
+| 0～
+| 表示所有 slaves 不可用时，主节点保留 repl_backlog 多长时间。
+
+默认值 `3600`，单位为秒（s）。
+| *✓*
+| *✓*
+| *✓*
+
+| repl-timeout
+| 0～
+| 表示主从复制超时时间。
+
+默认值 `60`，单位为秒（s）。
+| *✓*
+| *✓*
+| *✓*
+
+| set-max-intset-entries
+| 0～
+a| 表示当 Set 集合内的数据符合以下条件时，在多少个节点之前使用 intset 来编码。
+
+* 当集合内所有数据都是字符对象。
+* 都是基数为 10 的整数，范围为 64 位有符号整数。
+| *✓*
+| *✓*
+| *✓*
+
+| slowlog-log-slower-than
+| -1~60000
+| 表示当某项操作的执行时间超过设定的值后会被记录到慢日志。单位为微秒（μs）。 +
+
+负数会禁用慢日志，而零值会强制记录每个命令。
+| *✓*
+| *✓*
+| *✓*
+
+| slowlog-max-len
+| 0~1000
+| 表示服务器最多保存多少条慢查询日志。
+| *✓*
+| *✓*
+| *✓*
+
+| tcp-keepalive
+| 0~2147483647
+| 表示定时向客户端发送 tcp_ack 包来探测客户端是否存活。单位为秒（s）。默认为 0，表示不探测。
+| *✓*
+| *✓*
+| *✓*
+
+| 超时
+| 0～
+| 表示当客户端连接闲置时间达到该指定值时，将关闭连接。单位为秒（s）。
+| *✓*
+| *✓*
+| *✓*
+
+ifeval::["{file_output_type}" == "pdf"]
+|===
+
+[cols="2,2,4a,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+endif::[]
+
+| zset-max-ziplist-entries
+| 0～
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 ziplist 编码，以节省内存空间：
+
+* 排序集合对象的每个元素的字符串长度的字节数，均小于 zset-max-ziplist-value 指定值。
+* 排序集合对象的元素数量，均小于 zset-max-ziplist-entries 指定值。
+| *✓*
+| *✓*
+| *✕*
+
+| zset-max-ziplist-value
+| 0～
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 ziplist 编码，以节省内存空间：
+
+* 排序集合对象的每个元素的字符串长度的字节数，均小于 zset-max-ziplist-value 指定值。
+* 排序集合对象的元素数量，均小于 zset-max-ziplist-entries 指定值。
+| *✓*
+| *✓*
+| *✕*
+
+| zset-max-listpack-entries
+| 0～
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 listpack 编码，以节省内存空间：
+
+* 排序集合对象的每个元素的字符串长度的字节数，均小于 zset-max-listpack-value 指定值。
+* 排序集合对象的元素数量，均小于 zset-max-listpack-entries 指定值。
+| *✕*
+| *✕*
+| *✓*
+
+| zset-max-listpack-value
+| 0～
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 listpack 编码，以节省内存空间：
+
+* 排序集合对象的每个元素的字符串长度的字节数，均小于 zset-max-listpack-value 指定值。
+* 排序集合对象的元素数量，均小于 zset-max-listpack-entries 指定值。
+| *✕*
+| *✕*
+| *✓*
+
+| lua-time-limit
+| 0～
+| 表示 Lua 脚本的执行超时时间（单位 ms）。 +
+0 或负值表示没有限制。
+| *✓*
+| *✓*
+| *✓*
+|===
+
+== ziplist 编码参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+
+| hash-max-ziplist-entries
+| 0~512
+a| 表示当哈希对象可以同时满足以下两个条件时，哈希对象使用 ziplist 编码：
+
+* 哈希对象保存的所有键值对的键和值的字符串长度字节数，都小于 hash-max-ziplist-value 的值。
+* 哈希对象保存的键值对数量，小于 hash-max-ziplist-entries 的值。
+| *✓*
+| *✓*
+| *✕*
+
+| hash-max-ziplist-value
+| 0~64
+a| 表示当哈希对象可以同时满足以下两个条件时，哈希对象使用 ziplist 编码：
+
+* 哈希对象保存的所有键值对的键和值的字符串长度字节数，都小于 hash-max-ziplist-value 的值。
+* 哈希对象保存的键值对数量，小于 hash-max-ziplist-entries 的值。
+| *✓*
+| *✓*
+| *✕*
+
+| latency-monitor-threshold
+| 0~600000
+| 表示当有操作耗时超过设定的时间后会被记录下来。单位为毫秒（ms）。0 表示禁用这个功能。
+| *✓*
+| *✓*
+| *✓*
+
+| list-max-ziplist-entries
+| 0~512
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 ziplist 编码：
+
+* 链表对象保存的每个元素的字符串长度的字节数，均小于 list-max-ziplist-value 指定值。list中元素的数量和单个元素的大小在不超过设定的值时使用ziplist编码。
+* 链表集合对象保存的元素数量，均小于 list-max-ziplist-entries 指定值。
+| *✓*
+| *✓*
+| *✕*
+
+| list-max-ziplist-value
+| 0~64
+a| 表示当链表对象同时满足以下两个条件时，链表对象将使用 ziplist 编码：
+
+* 链表对象保存的每个元素的字符串长度的字节数，均小于 list-max-ziplist-value 指定值。list中元素的数量和单个元素的大小在不超过设定的值时使用ziplist编码。
+* 链表集合对象保存的元素数量，均小于 list-max-ziplist-entries 指定值。
+| *✓*
+| *✓*
+| *✕*
+|===
+
+== listpack 编码参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+
+| hash-max-listpack-entries
+| 0~512
+| 表示当哈希对象中保存的键值对数量少于多少时，使用 listpack 来编码，以节省内存空间。
+| *✕*
+| *✕*
+| *✓*
+
+| hash-max-listpack-value
+| 0~64
+| 表示当哈希对象中保存的最大键值对长度小于多少字节时，使用 listpack 来编码，以节省内存空间。
+| *✕*
+| *✕*
+| *✓*
+
+| list-max-listpack-size
+| -
+| quicklist 中的每个节点的 ziplist 的大小。
+| *✕*
+| *✕*
+| *✓*
+|===
+
+== 监控服务参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x  | Redis 7.x
+
+| Enable Node-Exporter
+a| * true
+* false
+| 表示是否开启 Node-Exporter 服务端口。
+
+开启后默认端口为 9100。
+| *✓*
+| *✓*
+| *✓*
+
+| Enable redis-Exporter
+a| * true
+* false
+| 表示是否开启 Redis-Exporter 服务端口。
+
+开启后默认端口为 9121。
+| *✓*
+| *✓*
+| *✓*
+
+| Enable zabbix
+a| * true
+* false
+| 表示是否开启 Zabbix 日志服务端口。
+
+开启后默认端口为 10050。
+| *✓*
+| *✓*
+| *✕*
+
+| zabbix server
+| -
+| 表示 Zabbix 服务器地址。默认为 127.0.0.1。
+| *✓*
+| *✓*
+| *✕*
+
+| named-sessions
+| -
+| 表示 Zabbix 服务命名。默认为 `redis`。
+| *✓*
+| *✓*
+| *✕*
+|===
+
+== 日志服务参数
+
+[cols="2,2,4,1,1,1"]
+|===
+| 参数 | 取值范围 | 参数说明 | Redis 5.x | Redis 6.x | Redis 7.x
+
+| 开启文件查看控制台
+a| * true
+* false
+a| 表示是否开启 Caddy 日志文件查看控制台。
+
+* 取值``true`` 表示开启。
+* 取值``false`` 表示关闭。
+* 修改后不会重启 Redis。
+| *✓*
+| *✓*
+| *✓*
+
+| 文件查看用户名
+| -
+a| 表示用来访问 Caddy 日志文件查看控制台的用户名。
+
+* 默认值为 `admin`。
+* 可以包含小写字母、数字、半角句点（.）和短横线（-）。
+* 修改后不会重启 Redis。
+| *✓*
+| *✓*
+| *✓*
+
+| 文件查看密码
+| -
+a| 表示用来访问 Caddy 日志文件查看控制台的密码。
+
+* 可由数字、字母、下划线组成，默认为空表示不需要密码，可以直接访问。
+* 修改后不会重启 Redis。
+| *✓*
+| *✓*
+| *✓*
+|===

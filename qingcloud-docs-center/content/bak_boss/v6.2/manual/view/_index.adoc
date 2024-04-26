@@ -1,0 +1,13 @@
+---
+title: "看板"
+weight: 20
+
+---
+
+提供整个{platform_name_cn}的资源监控视图。包括当前{platform_name_cn}的健康状态，资源监控，用户统计，以及安置组、IP 组、存储池的用量预测等数据。
+
+具体分为如下三个模块：
+
+* link:../view/viewall/[总览]
+* link:../view/prediction/placement_group_prediction/[用量预测]
+* link:../view/monitor/monitor_compute/[监控面板]

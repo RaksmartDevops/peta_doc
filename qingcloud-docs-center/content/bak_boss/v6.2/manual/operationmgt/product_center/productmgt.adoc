@@ -1,0 +1,286 @@
+---
+title: "产品管理"
+weight: 1
+---
+
+
+
+用户可在产品中心，对相关产品进行配置。如上架下架某产品，或更新某产品的相关信息，更新产品等 SKU 等操作。
+
+
+== 查看产品目录
+
+产品目录管理页面，为用户提供全量的产品目录。查看产品目录的详细操作如下。
+
+
+. 成功登录 BOSS。
+
+. 点击**运营管理** > **产品中心** > **产品管理**，默认进入**产品目录管理**页面。
++
+image::/images/boss/manual/operationmgt/product_list.png[]
+
+. 点击**产品目录**下各目录名称，查看当前目录下的产品列表。
++
+image::/images/boss/manual/operationmgt/product_list_2.png[]
++
+
+include::../../../../../_components/note.adoc[]
+
+产品目录层级分为一级目录与子目录，子目录下列举显示产品名。
+
+例如：**计算**子目录下，有云服务器、镜像、高性能 HPC 三款产品。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+
+
+== 查看产品信息
+
+
+. 成功登录 BOSS。
+
+. 点击**运营管理** > **产品中心** > **产品管理**，默认进入**产品目录管理**页面。
++
+image::/images/boss/manual/operationmgt/product_list.png[]
+
+. 点击**产品目录**下产品名称，进入产品页面，查看产品信息。
++
+image::/images/boss/manual/operationmgt/product_info.png[]
++
+
+include::../../../../../_components/note.adoc[]
+
+如上图所示，产品信息页面，分基本信息、属性配置与规格项。用户根据需求，分别点击进入相应标签页面即可。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+== 更新产品信息
+
+. 成功登录 BOSS。
+
+. 进入link:#_查看产品信息[产品详情]页面，点击**修改信息**，弹出**编辑产品**对话框。用户可根据需求，修改相关参数后，点击**保存**。
++
+image::/images/boss/manual/operationmgt/product_info_update.png[product_info_update,60%]
++
+
+include::../../../../../_components/note.adoc[]
+
+* 该页面参数的修改，会同步反应至 Console 页面。
+* `产品描述` 用于填写产品相关的描述信息，非必填项。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 修改产品信息后，需在link:#_查看产品信息[产品详情]页面，点击**更新**，修改才能生效。
+
+== 产品属性配置
+
+. 成功登录 BOSS。
+
+. 进入link:#_查看产品信息[产品详情]页面，点击**属性配置**标签，查看属性列表。
++
+image::/images/boss/manual/operationmgt/product_attri_list.png[product_attri_list,100%]
+
+. 点击待修改属性条目后的**更多操作 > 编辑**，弹出**编辑属性**对话框。用户根据页面信息，修改相关参数后，点击**保存**。
++
+image::/images/boss/manual/operationmgt/product_attri_update.png[product_attri_update,60%]
++
+
+include::../../../../../_components/note.adoc[]
+
+支持新增和删减属性值，以及属性名称的修改。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 修改产品属性后，需在link:#_查看产品信息[产品详情]页面，点击**更新**，修改才能生效。
+
+
+// == 使用示例
+
+// === 修改主机风格
+
+// 主机风格的修改，体现到 Console 页面的变动如下图所示，显示的主机风格列表，可以调整顺序。详细操作参考下文。
+
+// image::/images/boss/manual/operationmgt/product_mach_attri_5.png[product_mach_attri_5,80%]
+
+
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看产品目录[产品管理]页面，点击**云平台 > 计算 > 云服务器**，进入云服务器详情页面。
+
+// . 在云服务器详情页面，点击**属性配置 > 主机风格 > 更多操作 > 编辑**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_attri_3.png[product_mach_attri_3,100%]
+
+// . 弹出**编辑属性**对话框，用户根据需求，新增、删除或修改某属性值，点击**保存**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_attri_4.png[product_mach_attri_4,60%]
+// +
+
+// include::../../../../../_components/note.adoc[]
+
+// 上图中属性条目，可以拖拽调整在 Console 中的显示顺序。
+
+// include::../../../../../_components/table_footer.adoc[]
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+// === 修改主机类型名
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看产品目录[产品管理]页面，点击**云平台 > 计算 > 云服务器**，进入云服务器详情页面。
+
+// . 在云服务器详情页面，点击**属性配置 > 主机类型 > 更多操作 > 编辑**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_attri_1.png[product_mach_attri_1,100%]
+
+// . 弹出**编辑属性**对话框，用户根据需求，新增、删除或将某属性值名称修改为目标名称后，点击**保存**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_attri_2.png[product_mach_attri_2,60%]
+// +
+
+// include::../../../../../_components/note.adoc[]
+
+// * 如将 `超高性能型` 修改为 `信创超高性能型`。
+// * 如需删除 `超高性能型`，则点击相应的删除按钮。
+// * 如需新增某一类型的主机，可点击 **新增属性值**。
+
+// include::../../../../../_components/table_footer.adoc[]
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+// === 查看主机规格
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看产品目录[产品管理]页面，点击**云平台 > 计算 > 云服务器**，进入云服务器详情页面。
+
+// . 在云服务器详情页面，点击**规格项 > 主机规格 > Sku 详情**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_2.png[product_mach_sku_2,100%]
+
+// . 进入主机规格的 Sku 列表页面。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_1.png[product_mach_sku_1,100%]
+
+// === 修改主机价格
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+
+// . 点击待修改的主机规格的**更多操作 > 修改价格**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_3.png[product_mach_sku_3,100%]
+
+// . 弹出**修改价格**对话框，用户根据实际情况，修改相应参数值后，点击**确定**。
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+
+// === 修改主机 Sku
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+
+// . 点击待修改的主机规格的**更多操作 > 修改 Sku**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_3.png[product_mach_sku_3,100%]
+
+// . 弹出**修改 Sku** 对话框，用户根据实际情况，修改相应参数值后，点击**保存**。
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+
+// === 新增云服务器规格
+
+// 该操作指导用户如何增加云计算服务平台（Console）上云服务器规格。
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_1.png[product_mach_sku_1,100%]
+
+
+// . 点击**新增 Sku**，进入**创建 Sku** 页面，用户根据页面信息，填写相关参数后，点击**创建**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_8.png[product_mach_sku_8,100%]
+// +
+
+// include::../../../../../_components/note.adoc[]
+
+// 新增云服务器规格的时候，如果没有 GPU，则需要点击上图中，**修改下方规格配置中列设置**。在弹出的对话框中，去掉 GPU 相关的属性名后，点击**确定**。
+
+// include::../../../../../_components/table_footer.adoc[]
+
+
+
+// === 新增 BM 裸金属云服务器规格
+
+// 该操作指导用户如何增加云计算服务平台（Console）上 BM 裸金属云服务器规格。
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_1.png[product_mach_sku_1,100%]
+
+// . 点击**新增 Sku**，进入**创建 Sku** 页面，用户根据页面信息，`是否裸金属主机` 下拉框内，选择 `是`，并根据实际情况填写其他参数后，点击**创建**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_4.png[product_mach_sku_4,100%]
+
+// === 修改可用区和云服务器风格对应关系
+
+// 该操作指导用户如何修改云计算服务平台（Console）上不同可用区支持选择的主机风格。
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+
+// . 点击待修改的主机规格的**更多操作 > 修改 Sku**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_3.png[product_mach_sku_3,100%]
+
+// . 弹出**修改 Sku** 对话框，用户根据需求，`主机风格` 下拉框内，选择目标风格，`可用区` 下拉框内，选择目标可用区，点击**保存**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_5.png[product_mach_sku_5,100%]
+
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+
+
+// === 下架指定规格云服务器
+
+
+// 该操作指导用户如何下架云计算服务平台（Console）上指定规格的云服务器。
+
+// . 成功登录 BOSS。
+
+// . 进入link:#_查看产品目录[产品目录管理]页面，点击**云平台 > 计算 > 云服务器**，进入云服务器详情页面。
+
+// . 点击**产品类型上下架管理: `已设置` **。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_6.png[product_mach_sku_6,100%]
+
+// . 弹出**产品类型上下架管理: 已设置**对话框，点击**编辑**，用户可在该页面修改 Zone 与主机风格的对应关系。修改完成后，点击**保存**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_7.png[product_mach_sku_7,100%]
+
+
+// . 进入link:#_查看主机规格[主机规格 Sku 列表]页面。
+
+// . 点击待修改的主机规格的**更多操作 > 下架**，或者选择列表中多条 Sku 条目，点击**批量下架**。
+// +
+// image::/images/boss/manual/operationmgt/product_mach_sku_3.png[product_mach_sku_3,100%]
+
+// . 弹出确认操作对话框，确认操作无误后，点击 *保存*。
+
+// . 在云服务器详情页面，点击**更新**，使得修改生效。
+
+

@@ -1,0 +1,11 @@
+---
+title: "退款说明"
+description: 本小节主要介绍 MongoDB 退款说明。
+keywords: 退款,退订,数据库,文档数据库,MongoDB
+weight: 40
+collapsible: false
+draft: false
+---
+本小节主要介绍 MongoDB 退款说明及相关操作。
+
+include::../../../../../_cloud_service/app/bill/refund.adoc[]

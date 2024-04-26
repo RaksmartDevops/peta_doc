@@ -1,0 +1,370 @@
+---
+title: 获取资源池用量曲线（Boss2GetResourcePoolMonitor）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetResourcePoolMonitor
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取指定资源池的用量监控曲线。
+公共数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| predictions
+| 返回预测用量数据
+|
+
+| available_time
+| 返回资源池耗尽预测时间
+|
+
+| available_by
+| 基于何种监控数据来预测耗尽时间
+|
+
+| scaling_recommendation
+| 扩容建议
+|
+|===
+
+本接口支持的监控类型如下：
+
+'''
+
+=== 安置组资源统计曲线
+
+topic: hypernode_by_plg
+sub_topic: 安置组id
+支持的columns:
+
+[cols="2,2,4,2", options="header"]
+|===
+| column | 说明 | 曲线 | 备注
+
+| total_vcpu
+| VCPU使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* free_vcpu: 空闲vcpu核心数
+* used_vcpu: 已使用vcpu核心数
+* total_vcpu: vcpu总核心数
+| 单位：核
+
+| total_memory
+| 虚拟内存使用曲线
+a|
+
+* time：时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* free_memory: 空闲虚拟内存
+* used_memory: 已使用虚拟内存
+* total_memory: 总虚拟内存
+| 单位：MB
+
+| real_total_memory
+| 物理内存使用曲线
+a|
+
+* time：时间
+* prediction: 预测曲线
+* threshold：阈值曲线
+* real_free_memory: 空闲物理内存
+* real_used_memory: 已使用物理内存
+* real_total_memory: 总物理内存
+| 单位：MB
+
+| total_disk
+| 物理硬盘使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* used_disk: 已使用物理硬盘
+* free_disk: 空闲物理硬盘
+* total_disk: 总物理硬盘
+| 单位：MB
+
+| virtual_disk
+| 虚拟硬盘使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* virtual_disk: 已使用虚拟硬盘
+* total_disk:  总虚拟硬盘
+| 单位：MB
+|===
+
+'''
+
+== eip池资源统计曲线
+
+topic: eippool_by_group
+sub_topic: eip组id
+
+[cols="2,2,4,2", options="header"]
+|===
+| column | 说明 | 曲线 | 备注
+
+| total_eip_count
+| eip总量统计曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* occupied: 已占用eip数量
+* total: 总eip数量
+| 单位：个
+|===
+
+'''
+
+=== ZONE资源统计曲线
+
+topic: hypernode_by_zone
+sub_topic: 无
+支持的columns:
+
+[cols="2,2,4,2", options="header"]
+|===
+| column | 说明 | 曲线 | 备注
+
+| total_vcpu
+| VCPU使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* free_vcpu: 空闲vcpu核心数
+* used_vcpu: 已使用vcpu核心数
+* total_vcpu: vcpu总核心数
+| 单位：核
+
+| total_memory
+| 虚拟内存使用曲线
+a|
+
+* time：时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* free_memory: 空闲虚拟内存
+* used_memory: 已使用虚拟内存
+* total_memory: 总虚拟内存
+| 单位：MB
+
+| real_total_memory
+| 物理内存使用曲线
+a|
+
+* time：时间
+* prediction: 预测曲线
+* threshold：阈值曲线
+* real_free_memory: 空闲物理内存
+* real_used_memory: 已使用物理内存
+* real_total_memory: 总物理内存
+| 单位：MB
+
+| total_disk
+| 物理硬盘使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* used_disk: 已使用物理硬盘
+* free_disk: 空闲物理硬盘
+* total_disk: 总物理硬盘
+| 单位：MB
+
+| virtual_disk
+| 虚拟硬盘使用曲线
+a|
+
+* time: 时间
+* prediction: 预测曲线
+* threshold: 阈值曲线
+* virtual_disk: 已使用虚拟硬盘
+* total_disk:  总虚拟硬盘
+| 单位：MB
+|===
+
+操作日志统计曲线
+topic: job_status_by_region
+
+[cols="2,2,4,2", options="header"]
+|===
+| column | 说明 | 曲线 | 备注
+
+| total_job_status_count
+| 操作日志统计曲线
+a|
+
+* time: 时间
+* successful: 成功数量
+* failed: 失败数量
+* done with failure: 部分失败数量
+| 单位：个
+|===
+
+####
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetResourcePoolMonitor",
+    
+    "zone": "test",   // [必须]指定zone id
+    "topic": "eippool_by_group",  // [必须]指定监控的topic
+    "sub_topic": "eipg-00000000",   // 指定子topic
+    "columns": ["total_eip_count"],  // 可指定对应topic下的监控曲线
+    
+    "start_time": "2020-11-25T00:00:00Z",  // 指定监控开始时间
+    "end_time": "2020-11-30T00:00:00Z",  // 指定监控结束时间
+    "predict_days": 5  // 可指定预测未来多少天的监控走势，如不指定，将不会进行预测
+}
+
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_eip_count": [
+      {
+         "name": "time",
+         "data": [
+            1606320000,
+            1606406400,
+            1606492800,
+            1606579200,
+            1606665600,
+            1606665600,
+            1606665600,
+            1606752000,
+            1606838400,
+            1606924800,
+            1607011200,
+            1607097600
+         ]
+      },
+      {
+         "name": "occupied",
+         "data": [
+            224,
+            226,
+            229,
+            207,
+            232,
+            235,
+            232
+         ]
+      },
+      {
+         "name": "total",
+         "data": [
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243,
+            243
+         ]
+      },
+      {
+         "name": "prediction",
+         "data": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            232,
+            234,
+            236,
+            238,
+            240,
+            242
+         ]
+      },
+      {
+         "name": "threshold",
+         "data": [
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218,
+            218
+         ]
+      }
+   ],
+   "predictions": {
+      "total_eip_count": {
+         "max_value": 241,
+         "threshold_value": 216,
+         "first_value": 124,
+         "last_value": 124,
+         "avg_incremental": 0,
+         "available_days": 999999
+      }
+   },
+   "available_time": 15,
+   "available_by": "total_eip_count",
+   "scaling_recommendation": {
+      "type": "eip",
+      "specification": null,
+      "predict_days": 90,
+      "scaling_count": 78
+   },
+   "ret_code": 0,
+   "action": "Boss2GetResourcePoolMonitorResponse"
+}
+----

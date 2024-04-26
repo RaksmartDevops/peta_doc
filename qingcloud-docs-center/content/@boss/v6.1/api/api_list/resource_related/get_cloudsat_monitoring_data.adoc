@@ -1,0 +1,97 @@
+---
+title: 获取CloudSat监控数据（Boss2GetMonitorDataByPeriod）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetMonitorDataByPeriod
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于从CloudSat获取监控数据。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetMonitorDataByPeriod",
+    "zone": "staging",   // [必须]传入资源所在zone
+    "region": "staging",  // [可选]如果region存在，则忽略zone字段的传值
+    "user_id": "usr-rrPKHDpJ",
+    "offset": 0,
+    "limit": 100,
+    "namespace": "namespace-cloudsat-instance",
+    "start_time": "2022-05-30T08:36:50.906Z",
+    "end_time": "2022-05-30T09:36:50.906Z",
+    "resource_id": "i-7ytdmnjg",
+    "metrics": [
+        "disk_us",
+        "disk_inode",
+        "disk_wr",
+        "disk_rd",
+        "disk_wi",
+        "disk_ri",
+        "memory",
+        "cpu",
+        "if_rx",
+        "if_tx",
+        "if_rp",
+        "if_tp"
+    ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "monitor_data": [
+            {
+               "start_time": "2022-05-30 16:36:40",
+               "end_time": "2022-05-30 16:36:50",
+               "min_value": 10,
+               "max_value": 11,
+               "avg_value": 10.5,
+               "sum_value": 42
+            }
+         ],
+         "resource_id": "i-7ytdmnjg",
+         "resource_name": "",
+         "metric_name": "disk_us",
+         "metric_cn_name": "磁盘使用量",
+         "metric_unit": "%",
+         "create_time": "2022-04-13T06:32:54.778805Z",
+         "user_id": "usr-rrPKHDpJ",
+         "description": "磁盘使用量",
+         "step": 10,
+         "tags": ""
+      }
+   ],
+   "ret_code": 0,
+   "total_count": 1,
+   "action": "Boss2GetMonitorDataByPeriodResponse"
+}
+----

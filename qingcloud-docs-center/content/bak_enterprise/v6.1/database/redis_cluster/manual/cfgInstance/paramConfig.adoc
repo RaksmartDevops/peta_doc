@@ -1,0 +1,38 @@
+---
+title: "配置集群参数"
+description: 本小节介绍如何配置集群参数。
+weight: 8
+collapsible: false
+draft: false
+keywords: Redis Cluster，参数配置
+---
+Redis Cluster 支持自定义部分参数的值，您可以根据自己的业务情况对集群运行参数进行调整，使缓存服务发挥出最优性能。
+
+== 背景信息
+
+不同 Redis 版本支持的参数有所区别，详细说明请参见link:../../../intro/para_list/[参数支持]。本文为您介绍各参数的设置方法。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *数据库与缓存* > *键值数据库 Redis*，进入 Redis Cluster 管理页面。
+. 点击目标集群 *ID* 号，进入集群详情页面。
+. 在页面右侧区域，点击**配置参数**页签。
++
+页面显示当前版本所支持的所有参数配置项、参数描述及参数当前值。
++
+image::/images/cloud_service/database/redis_cluster/mdy_paras.png[参数配置]
+
+. 点击**修改属性**，参数值变为可编辑状态。
++
+
+include::../../../../../../_components/note.adoc[]
+
+部分参数仅支持在创建集群时配置，此处不可修改，仅作为展示。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 根据实际情况进行参数值修改。
+. 修改完成后，点击**保存**，弹出提示框。
+. 确认无误后，点击**确认**。

@@ -1,0 +1,222 @@
+---
+title: 步骤一：创建 Kafka 集群
+description: 通过管理控制台快速创建 Kafka 集群。
+keywords: 云计算,大数据,消息队列,中间件,Kafka,创建集群,快速入门
+weight: 10
+draft: false
+---
+
+本小节主要介绍如何通过管理控制台快速创建 Kafka 集群。
+
+== 前提条件
+
+* 已获取 Kafka 集群操作权限。
+* 在创建 Kafka 集群前，建议先创建好网络资源和依赖的服务资源：
+ ** 先创建一个 VPC 网络，再创建一个受管私有网络并加入 VPC 中，并开启 DHCP 服务（默认开启）。
++
+
+include::../../../../../_components/note.adoc[]
+
+为了保障数据安全，Kafka 集群需要运行在受管私有网络中。
+
+include::../../../../../_components/table_footer.adoc[]
+
+ ** 创建一个 Zookeeper 集群，且 Kafka 与 ZooKeeper 需要在同一个 VPC 中。
++
+
+include::../../../../../_components/note.adoc[]
+
+Kafka 3.1.0 - v3.0.0 版本仅支持 ZooKeeper 3.6.3 - v2.1.0 及以上版本。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 创建 Kafka 集群
+
+. 登录管理控制台。
+. 选择**产品与服务** > *消息队列与中间件* > *Kafka服务*，进入 Kafka 集群管理页面。
+. 点击**立即部署**或**创建**，进入应用部署页面。
+. 选择**区域**。 +
+根据就近原则，选择实例所在区域。
+. 配置实例基本信息、应用版本、网络信息、环境参数等信息。
++
+a. <<_第一步基本设置,基本设置>>
++
+b. <<_第二步kafka_节点设置,Kafka 节点设置>>
++
+c. <<_第三步客户端节点设置,客户端节点设置>>
++
+d. <<_第四步网络设置,网络设置>>
++
+e. <<_第五步依赖服务设置,依赖服务设置>>
++
+f. <<_第六步服务环境参数设置,服务环境参数设置>>
++
+g. <<_第七步用户协议,用户协议>>
+
+. 确认配置和费用信息无误后，点击**提交**，创建集群。
++
+集群创建成功后，可在**集群管理**页面，查看和管理 Kafka 集群。
++
+image::/images/cloud_service/middware/kafka/kafka_cluster_list.png[集群列表]
+
+=== 第一步：基本设置
+
+集群名称、版本、计费方式、部署方式等基本信息配置。
+
+[cols="1,4"]
+|===
+| 参数 | 参数说明
+
+| UUID
+| 系统默认分配的全局唯一标识码，不可修改。
+
+| 名称
+| 输入当前集群的名称。默认为 ``Kafka``。
+
+| 描述
+| （可选）对集群的简要描述。
+
+| 版本
+| 选择集群版本，建议选择最新版本。
+
+| 计费方式 a| 选择集群计费方式，可选择**小时**或**包年包月**。
+
+* 购买有效期：选择**包年包月**计费方式后，需选择可用时长。
+* （可选）自动续约：选择**包年包月**计费方式后，可开启自动续约。开启**自动续约**后，需选择续约时长，当您的账户余额充足时，集群到期后将按照选择的续约时长自动续费，保障业务连续性。
+
+| 部署方式 a| 仅**北京3区**区域支持选择部署方式。
+
+* *多可用区部署*：集群所有节点分散部署在当前 region 中的所有 zone，可用性高。
+* *单可用部署*：集群所有节点部署在当前region中的某一个zone 中，网络延迟最低。
+|===
+
+image::/images/cloud_service/middware/kafka/base_setup.png[,60%]
+
+=== 第二步：Kafka 节点设置
+
+CPU、内存、节点数量、节点类型和存储容量根据自己实际需求进行选择即可。
+
+[cols="1,4"]
+|===
+| 参数 | 参数说明
+
+| CPU
+| 选择 Kafka 节点云服务器 CPU 规格。
+
+| 内存
+| 选择 Kafka 节点云服务器内存大小。
+
+| 节点数量
+| 选择 Kafka 节点云服务器数量。至少 3 个节点。
+
+| 节点类型
+| 选择 Kafka 节点类型。支持``基础型``和``企业型 e2`` 和``企业型 e3``。
+
+| 存储容量
+| 配置 Kafka 节点的磁盘大小。请根据业务量进行设置，可滑动设置或输入数字配置集群磁盘大小。
+|===
+
+image::/images/cloud_service/middware/kafka/kafka_node.png[,60%]
+
+=== 第三步：客户端节点设置
+
+建议配置客户端节点，否则某些功能无法使用（除非手动下载相关软件包并配置好）。
+
+include::../../../../../_components/note.adoc[]
+* Kafka 2.3.1 - v2.0.1（包含）之前版本：客户端节点用户名为 `ubuntu`，初始密码为 `kafka`。
+* Kafka 2.3.1 - v2.0.1 之后版本：客户端节点用户名为 `client`，初始密码为 `client`。
+
+include::../../../../../_components/table_footer.adoc[]
+
+[cols="1,4"]
+|===
+| 参数 | 参数说明
+
+| CPU
+| 选择客户端节点云服务器 CPU 规格。
+
+| 内存
+a| 选择客户端节点云服务器内存大小。
+
+include::../../../../../_components/attention_in_table.adoc[]
+若 Kafka 集群需要开启 SASL，建议内存至少为 2G，否则可能导致连接 Kafka 失败。
+include::../../../../../_components/footer_in_table.adoc[]
+
+| 节点数量
+| 选择客户端节点云服务器数量，默认为 `1`。客户端节点会自动安装 Kafka 命令行工具，可以直接与 Kafka 集群通过内网进行连接。
+
+| 节点类型
+| 选择客户端节点类型。支持``基础型``、`企业型 e2` 和``企业型 e3``。
+
+| 存储容量
+| 配置客户端节点的磁盘大小。请根据业务量进行设置，可滑动设置或输入数字配置集群磁盘大小。
+|===
+
+image::/images/cloud_service/middware/kafka/client_node.png[,60%]
+
+=== 第四步：网络设置
+
+为了保障数据安全，所有的集群都需要部署在受管私有网络中，请选择您创建的网络。
+
+[cols="1,4"]
+|===
+| 参数 | 参数说明
+
+| VPC网络 a| 选择 VPC 网络。
+
+* 默认适配同区域已有的 VPC 网络。可在下拉框选择已有 VPC 网络。
+* 若无可选 VPC 网络，可点击**新建VPC网络**，创建依赖网络资源。
+
+| 私有网络 a| 选择私有网络。
+
+* 默认适配同区域已有的私有网络。可在下拉框选择已有私有网络。
+* 若无可选私有网络，可点击**新建私有网络**，创建依赖网络资源。
+
+| 节点 IP a| 配置节点 IP 地址。
+
+* 默认为``自动分配``。
+* 选择``手动配置``需为各节点配置 IP。
+|===
+
+image::/images/cloud_service/middware/kafka/network_setup.png[,60%]
+
+=== 第五步：依赖服务设置
+
+选择您所依赖的 ZooKeeper 集群。
+
+include::../../../../../_components/note.adoc[]
+
+若无可选资源，可点击**快捷创建**创建一个 ZooKeeper 集群。
+
+Kafka 3.1.0 - v3.0.0 版本仅支持 ZooKeeper 3.6.3 - v2.1.0 及以上版本。
+
+include::../../../../../_components/table_footer.adoc[]
+
+image::/images/cloud_service/middware/kafka/dependence_service.png[,60%]
+
+=== 第六步：服务环境参数设置
+
+按照实际需求配置 Kafka 参数，同时也可以配置 Kafka Manager 是否需要登录，登录帐号与密码和端口参数。
+
+include::../../../../../_components/attention.adoc[]
+
+offsets.topic.replication.factor 参数必须小于或者等于 Kafka broker 节点数，否则不能消费消息。
+
+include::../../../../../_components/table_footer.adoc[]
+
+集群创建成功后，可在集群详情页面**配置参数**页签对参数进行修改。
+
+image::/images/cloud_service/middware/kafka/sevice_parameter.png[,60%]
+
+=== 第七步：用户协议
+
+阅读**云平台 AppCenter 用户协议**，并勾选用户协议。
+
+image::/images/cloud_service/middware/kafka/user_agreement.png[用户协议,60%]
+
+== 配置告警通知
+
+集群创建完成后，请配置告警通知，以便及时了解集群资源的使用情况和集群服务的各项监控指标，当集群、节点、服务有异常时，可以及时获取异常信息。
+
+详细操作请参见link:../../manual/metrics_alarm/set_alarm_rules/[设置监控告警]。
+

@@ -1,0 +1,346 @@
+---
+title: 获取汇总统计数据（Boss2GetAggsStats）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetAggsStats
+
+=== Method
+POST
+
+=== 接口描述
+展示汇总统计数据，用于总览界面及各资源列表中的汇总统计。
+返回数据包含以下的部分：
+
+|===
+| 字段 | 用途 | 备注
+
+| data
+| 统计数据
+|
+
+| collect_time
+| 由于数据是定时缓存的，这里显示统计数据的收集时间，目前界面无需进行展示
+|
+|===
+
+目前支持的统计项目和返回数据如下(更多统计数据在持续添加中)：
+
+[.allow_break_inside]
+|===
+| 统计项目 | 用途 | 备注
+
+| instance_status
+| 主机按状态统计
+| 可传入filters，例如{"owner": "usr-0vrOT3Oo"} 来过滤所有者
+
+| image_status
+| 镜像按状态统计
+|
+
+| image_visibility_status
+| 镜像按系统、自有、共享进行统计
+| 可传入filters指定统计的镜像的状态，但是此时请传入作为镜像状态字段，例如： +
+"image_status"
+:[
+"available"
+,
+"suspended"
+,
+"pending"
+,
+"deprecated"
+,
+"deleted"
+],
+结果中的shared表示共享给指定用户的镜像数
+
+| volume_status
+| 云硬盘按状态统计
+|
+
+| eip_status
+| 公网IP按状态统计
+|
+
+| vbc_eip_status
+| 基础网络IP按状态统计
+|
+
+| cluster_status
+| appcenter集群按状态统计
+|
+
+| mgmt_cluster_status
+| appcenter管理集群按状态统计
+|
+
+| hypernode_status
+| 按计算节点状态统计
+|
+
+| loadbalancer_status
+| 负载均衡器按状态统计
+|
+
+| vnas_status
+| vnas按状态统计
+|
+
+| vsan_status
+| vsan按状态统计
+|
+
+| eip_pool_status
+| 公网IP池按状态统计
+|
+
+| nic_status
+| 网卡按状态统计
+|
+
+| user_status
+| 用户按状态统计
+| 可增加filters，例如{"console": "alphacloud"}
+
+| snapshot_status
+| 备份按状态统计
+|
+
+| router_status
+| 路由器/VPC按状态统计
+| 可增加filters，例如:{"mode": 0}
+
+| eip_group_status
+| ip分组按状态统计
+| 可增加filters, 例如{"ip_version": 0}
+
+| device_status
+| 设备按状态统计
+|
+
+| mgmt_service_status
+| 基础服务按状态统计
+|
+
+| ks_node_status
+| 管理节点按状态统计
+|
+
+| job_status
+| 操作日志按状态统计
+|
+
+| alert_level_status
+| 告警记录按级别统计
+| 可在filter中传入时间段start_time和end_time +
+可在filter中传入status，指定告警状态
+
+| alert_status
+| 告警记录按状态统计
+a|
+recovered：已恢复
+
+* unprocessed: 未处理
+* processed: 已处理
+
+可增加filters，可在filters中传入时间段start_time和end_time
+
+| report_status
+| 导出报表按状态统计
+a|
+pending：0
+generating：1
+finished：2
+outdated：3
+exception：4
+deleted：5
+
+| bossuser_status
+| boss用户按状态统计
+| enabled: 启用 +
+disabled: 禁用
+
+| login_account_status
+| 第三方登录用户按状态统计
+| active:启用 +
+disabled:禁用
+
+| audit_status
+| 审核状态统计
+| checked: 已审核 +
+unchecked: 未审核
+
+| span_status
+| 网络流量镜像按状态统计
+|
+
+| bm_status
+| 物理主机按状态统计(baremetal, bm)
+|
+
+| user_verifies_status
+| 用户认证按状态统计
+|
+
+| neonsan_store_status
+| [NeonSAN]存储节点按状态统计
+a|
+
+* OK: 正常
+* MAINTAIN: 维护
+* OFFLINE: 离线
+
+| neonsan_volume_status
+| [NeonSAN]按存储卷状态统计
+a|
+
+* OK:正常
+* DEGRADED: 降级的
+* ERROR: 异常
+
+| wan_accesss_status
+| [SDWAN]接入设备按状态统计
+|
+
+| wan_physical_connects_status
+| [SDWAN]物理专线按状态统计
+|
+
+| wan_cpe_orders_status
+| [SDWAN]光盒订单按状态统计
+|
+
+| nfv_status
+| NAT网关按状态统计
+|
+
+| ipv6_network_status
+| 双栈ipv6池按状态统计
+|
+
+| invoice_status
+| 发票按状态统计
+|
+
+| recharge_records_status
+| 按充值类型获取充值/退款/垫付/扣除垫付/资金转移等操作的总金额
+a|
+可通过指定fields，仅统计指定的类型：
+
+* recharge: 充值
+* advance: 垫付
+* discharge: 退款
+* payback: 扣除垫付
+* transfer_in: 资金转移
+
+| app_dev_versions_status
+| 按审核集群应用版本统计
+|
+
+| dev_apps_status
+| 按集群应用/SaaS应用状态统计
+| 在查询集群应用的统计时需要加入以下的filter: +
+"app_type":["cluster","image"]
+
+| submitted_apps_status
+| 按应用审核状态进行统计
+|
+
+| global_job_status
+| 全局任务按状态统计
+|
+
+| reserved_contracts_status
+| 按预留合约状态进行统计
+|
+
+| iot_devices_status
+| IOT按设备状态进行统计
+|
+
+| iot_pm2_status
+| IOT PM2按状态进行统计
+|
+
+| ssl_cert_order_status
+| 按SSL证书订单状态进行统计
+|
+
+| gpu_status
+| 按GPU状态进行统计
+|
+
+| orders_status
+| 按订单状态进行统计
+|
+
+| contract_list_status
+| 按合同状态进行统计
+|
+
+| eip_icp_status
+| 按公网IP备案信息验证状态统计
+
+a|
+可通过指定fields，仅统计指定的类型：
+
+2: 审核中
+* 3:审核失败
+* 4:审核成功
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetAggsStats",
+    // zone 与 zones 同时传入时，取 zones。如不指定zone和zones，则会返回所有zone的汇总统计数据
+    "zone": "testenva", // 指定zone，只能指定一个zone或region，
+    "zones": ["testenva"], //可指定多个zone或region
+    "topic": "instance_status", // 指定统计项目
+    "fields": ["running", "suspend"], // [可选]指定需要返回的统计字段，如不指定将返回资源所有的字段统计
+    "source": "db", // [可选]一般可不使用该配置。可使用db或realtime，db指缓存数据从db缓存中获取，realtime指数据通过请求iaas api实时获取。如不指定，则后端会自动进行选择。
+    "filters": {
+        "console": "alphacloud"
+    } // [可选]用于source为realtime时，传入额外的参数来限制统计。
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "collect_time": "2019-02-16T09:10:00Z",
+   "data": {
+      "pending": 0,
+      "available": 135,
+      "deprecated": 100,
+      "deleted": 0,
+      "suspended": 0,
+      "ceased": 0
+   },
+   "ret_code": 0,
+   "action": "Boss2GetAggsStatsResponse"
+}
+----

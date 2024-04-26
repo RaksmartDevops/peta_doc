@@ -1,0 +1,77 @@
+---
+title: "API 概览"
+description: 本小节主要介绍项目主要 api。
+keywords: 项目 概览；api 概览
+draft: false
+weight: 20
+
+---
+
+
+== 项目接口
+
+|===
+| 参数 | 描述
+
+| link:/v6.1/operation/resource/api/project/create_project/[CreateProject]
+| 创建项目
+
+| link:/v6.1/operation/resource/api/project/delete_project/[DeleteProjects]
+| 删除项目
+
+| link:/v6.1/operation/resource/api/project/modify_project/[ModifyProjectAttributes]
+| 更新项目
+
+| link:/v6.1/operation/resource/api/project/check_project/[DescribeProjects]
+| 查询项目
+
+| link:/v6.1/operation/resource/api/project/create_group_roles/[CreateGroupRoles]
+| 创建角色组
+
+| link:/v6.1/operation/resource/api/project/deleter_group_roles/[DeleteGroupRoles]
+| 删除角色组
+
+| link:/v6.1/operation/resource/api/project/modify_group_roleattr/[ModifyGroupRoleAttributes]
+| 更新角色组
+
+| link:/v6.1/operation/resource/api/project/desc_groups_roles/[DescribeGroupRoles]
+| 查询角色组
+
+| link:/v6.1/operation/resource/api/project/add_group_tolerules/[AddGroupRoleRules]
+| 添加角色组规则
+
+| link:/v6.1/operation/resource/api/project/delete_group_rolerules/[DeleteGroupRoleRules]
+| 删除角色组规则
+
+| link:/v6.1/operation/resource/api/project/modify_group_roleruleattr/[ModifyGroupRoleRuleAttributes]
+| 更新角色组规则
+
+| link:/v6.1/operation/resource/api/project/desc_group_rolerules/[DescribeGroupRoleRules]
+| 查询角色组规则
+
+| link:/v6.1/operation/resource/api/project/add_project_mem/[AddProjectMember]
+| 添加项目成员
+
+| link:/v6.1/operation/resource/api/project/deleter_project_mem/[DeleteProjectMembers]
+| 删除项目成员
+
+| link:/v6.1/operation/resource/api/project/modify_project_memberattr/[ModifyProjectMemberAtrributes]
+| 更新项目成员
+
+| link:/v6.1/operation/resource/api/project/desc_project_members/[DescribeProjectMembers]
+| 查询项目成员
+
+| link:/v6.1/operation/resource/api/project/desc_project_alarms/[DescribeProjectAlarms]
+| 获取项目告警
+
+| link:/v6.1/operation/resource/api/project/get_project_resstat/[GetProjectResourceStat]
+| 获取项目资源统计
+
+| link:/v6.1/operation/resource/api/project/get_total_estmateed/[GetTotalEstimatedConsumption]
+| 获取项目总消耗量
+
+| link:/v6.1/operation/resource/api/project/desc_project_reszones/[DescribeProjectResourceZones]
+| 获取项目区域资源
+|===
+
+

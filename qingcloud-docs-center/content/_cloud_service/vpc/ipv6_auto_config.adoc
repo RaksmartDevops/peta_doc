@@ -1,0 +1,458 @@
+//开启云服务器 IPv6 自动化配置
+
+
+对于使用**不支持 IPv6** 的镜像所启动的云服务器，因未针对 DHCPv6 进行配置，云服务器的网络接口将无法自动获取和识别 IPv6 相关网络配置，因此，需要通过对云服务器进行手动配置来使云服务器支持 DHCPv6。
+
+== 操作要点
+
+云服务器内要配置支持 DHCPv6，主要包括四个要点：
+
+. 需要配置 https://en.wikipedia.org/wiki/DHCPv6#DHCP_Unique_Identifier[DUID] 的类型为 https://tools.ietf.org/html/rfc3315#section-9.2[DUID-LLT]。
+. 需要在关闭网络时，及时清理 lease 文件，确保切换网络时 DUID 不会缓存在 lease 文件里。
+. 需要关闭 DAD。link:https://tools.ietf.org/html/rfc4429[DAD] 功能会避免 IPv6 地址重复分配。因系统会通过 DHCP 机制避免地址重复分配，且底层有对 IPv6 实现地址代答功能，可能会导致云服务器内 IPv6 地址变为 `duplicated`，所以需要关闭 DAD。
+. 配置完成后，需要重启云服务器，以确保您的配置生效。
+
+== 操作步骤
+
+不同操作系统、不同发行版的配置方法是不同的，需要根据您的操作系统版本和网络管理工具，并查阅相关文档，进行合理正确配置。下文为几种操作系统配置示例。
+
+=== Centos 7.5 配置示例
+
+以下操作基于镜像：`CentOS 7.5 64bit`。
+
+. 以 root 用户登录云服务器。
+. 执行以下命令，检查 NetworkManager 版本，确保版本在 1.12 版本以上，才可支持 `dhcp-duid` 配置。
++
+[source,shell]
+----
+NetworkManager --version
+----
+. 若版本低于 1.12，执行以下命令，升级版本。
++
+include::../../_components/note.adoc[]
+该操作需确保云服务器能够连接公网。
+include::../../_components/table_footer.adoc[]
++
+[source,shell]
+----
+yum update NetworkManager
+----
+
+. 配置 DUID 的类型为 DUID-LLT。
+.. 进入配置文件 `/etc/NetworkManager/NetworkManager.conf`。
++
+[source,shell]
+----
+vi /etc/NetworkManager/NetworkManager.conf
+----
+.. 按 *i* 切换至编辑模式，在配置文件中添加如下配置。
++
+[source,shell]
+----
+[connection]
+ipv6.dhcp-duid=llt
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 修改网卡配置。
+.. 进入网卡 `ifcfg-eth0` 的配置文件。
++
+[source,shell]
+----
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+----
+.. 按 *i* 切换至编辑模式，配置为如下内容。
++
+[source,shell]
+----
+TYPE=Ethernet
+NAME=eth0
+DEVICE=eth0
+BOOTPROTO=dhcp
+ONBOOT=yes
+IPV6INIT=yes
+IPV6_AUTOCONF=no
+IPV6_FAILURE_FATAL=no
+DHCPV6C=yes
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 配置 down hook，清理 DCHPv6 的 lease，避免切换网络时，DUID 还包含老的 MAC 信息。
+.. 新建并进入 down hook 配置文件。
++
+[source,shell]
+----
+vi /etc/NetworkManager/dispatcher.d/dhclient-down-hooks.sh
+----
+
+.. 按 *i* 切换至编辑模式，添加如下脚本配置。
++
+[source,shell]
+----
+#!/bin/sh
+RUN="yes"
+if [ "${RUN}" != "yes" ]; then
+exit 0
+fi
+
+if [ "${NM_DISPATCHER_ACTION}" != "down" ]; then
+        exit 0
+fi
+
+interface=${DEVICE_IFACE}
+
+f_leases="/var/lib/NetworkManager/dhclient*-${interface}.lease"
+
+rm -f ${f_leases};
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+.. 为脚本赋予执行权限。
++
+[source,shell]
+----
+chmod u+x /etc/NetworkManager/dispatcher.d/dhclient-down-hooks.sh
+----
+
+. 关闭 DAD。
+.. 进入系统配置文件。
++
+[source,shell]
+---- 
+vi /etc/sysctl.conf
+----
+
+.. 按 *i* 切换至编辑模式，添加如下配置。
++
+[source,shell]
+----
+net.ipv6.conf.eth0.accept_dad = 0
+net.ipv6.conf.eth0.accept_ra = 1
+net.ipv6.conf.eth0.accept_ra_defrtr = 1
+net.ipv6.conf.eth0.accept_ra_rtr_pref = 1
+net.ipv6.conf.eth0.accept_ra_rt_info_max_plen = 1
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 在云服务器列表，右键点击云服务器，选择**重启**，重启云服务器，使配置生效。
++
+include::../../_components/note.adoc[]
+若重启后，云服务器仍未获取到 IPv6 地址，请登录云服务器，执行 `dhclient -6` 手动获取。
+include::../../_components/table_footer.adoc[]
+
+=== Ubuntu 18.04 配置示例
+
+以下操作基于镜像：`Ubuntu Server 18.04.3 LTS 64bit`。
+
+. 以 ubuntu 用户登录云服务器。
+. 执行以下命令，输入 ubuntu 用户密码，切换到 root 用户。
++
+[source,shell]
+----
+sudo -i
+----
+
+. 执行以下命令，安装 ifupdown，使用 networking 来管理网络。
++
+include::../../_components/note.adoc[]
+该操作需确保云服务器能够连接公网。
+include::../../_components/table_footer.adoc[]
++
+[source,shell]
+----
+apt-get update
+apt-get install ifupdown -y
+----
+
+. 执行以下命令，禁用 netplan、systemd-networkd、networkd-dispatcher。
++
+[source,shell]
+----
+echo > /etc/netplan/50-cloud-init.yaml
+systemctl disable systemd-networkd
+systemctl disable networkd-dispatcher
+----
+
+. 修改网卡配置，配置 `allow-hotplug`。
+.. 执行如下命令，进入配置文件 `interfaces`。
++
+[source]
+----
+vi /etc/network/interfaces
+----
+.. 按 *i* 切换至编辑模式，添加如下配置。
++
+[source,shell]
+----
+source /etc/network/interfaces.d/*.cfg
+
+auto lo
+iface lo inet loopback
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+.. 执行如下命令，添加需要在 `interfaces` 配置中引用的第一个源文件。
++
+[source,shell]
+----
+vi /etc/network/interfaces.d/50-cloud-init.cfg
+----
++
+文件配置如下：
++
+[source,shell]
+----
+allow-hotplug eth0
+iface eth0 inet dhcp
+----
+.. 执行如下命令，添加需要在 `interfaces` 配置中引用的第二个源文件。
++
+[source,shell]
+----
+vi /etc/network/interfaces.d/60-default-with-ipv6.cfg
+----
++
+文件配置如下：
++
+[source,shell]
+----
+iface eth0 inet6 dhcp
+   autoconf 0
+----
+
+. 配置 down hook，清理 DHCPv6 的 lease，避免切换网络时，DUID 还包含老的 MAC 信息。
++
+dhclient 会把 DHCPv4 和 DHCPv6 的配置互做备份来确保使用相同的 DUID，所以 DHCPv4 和 DHCPv6 的 lease 都需要删除。
+
+.. 新建并进入 down hook 配置文件。
++
+[source,shell]
+----
+vi /etc/network/if-post-down.d/lease_clean
+----
+.. 按 *i* 切换至编辑模式，添加如下脚本配置。
++
+[source,shell]
+----
+#!/bin/sh
+
+f6_leases="/var/lib/dhcp/dhclient6.${IFACE}.leases"
+f4_leases="/var/lib/dhcp/dhclient.${IFACE}.leases"
+
+if [ -e ${f6_leases} ]; then
+		rm -f ${f6_leases};
+fi
+
+if [ -e ${f4_leases} ]; then
+		rm -f ${f4_leases};
+fi
+----
+
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+.. 为脚本赋予执行权限。
++
+[source,shell]
+----
+chmod u+x chmod u+x /etc/network/if-post-down.d/lease_clean
+----
+
+. 关闭 DAD。
+.. 进入系统配置文件。
++
+[source,shell]
+----
+vi /etc/sysctl.conf
+----
+.. 按 *i* 切换至编辑模式，添加如下配置。
++
+[source,shell]
+----
+net.ipv6.conf.eth0.accept_dad = 0
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 在云服务器列表，右键点击云服务器，选择**重启**，重启云服务器，使配置生效。
+
+=== Ubuntu 16.04 配置示例
+
+以下操作基于镜像：`Ubuntu Server 16.04.5 LTS 64bit`。
+
+. 以 ubuntu 用户登录云服务器。
+. 执行以下命令，输入 ubuntu 用户密码，切换到 root 用户。
++
+[source,shell]
+----
+sudo -i
+----
+
+. 修改网卡配置，配置 `allow-hotplug`。
+.. 执行如下命令，进入配置文件 `interfaces`。
++
+[source,shell]
+----
+vi /etc/network/interfaces
+----
+.. 按 *i* 切换至编辑模式，配置为如下内容。
++
+[source,shell]
+----
+source /etc/network/interfaces.d/*.cfg
+
+auto lo
+iface lo inet loopback
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+.. 执行如下命令，添加需要在 `interfaces` 配置中引用的第一个源文件。
++
+[source,shell]
+----
+vi /etc/network/interfaces.d/50-cloud-init.cfg
+----
++
+文件配置如下：
++
+[source,shell]
+----
+allow-hotplug eth0
+iface eth0 inet dhcp
+----
+.. 执行如下命令，添加需要在 `interfaces` 配置中引用的第二个源文件。
++
+[source,shell]
+----
+vi /etc/network/interfaces.d/60-default-with-ipv6.cfg
+----
++
+文件配置如下：
++
+[source,shell]
+----
+iface eth0 inet6 dhcp
+   autoconf 0
+----
+
+. 配置 down hook，清理 DHCPv6 的 lease，避免切换网络时，DUID 还包含老的 MAC 信息。
++
+dhclient 会把 DHCPv4 和 DHCPv6 的配置互做备份来确保使用相同的 DUID，所以 DHCPv4 和 DHCPv6 的 lease 都需要删除。
+
+.. 新建并进入 down hook 配置文件。
++
+[source,shell]
+----
+vi /etc/network/if-post-down.d/lease_clean
+----
+.. 按 *i* 切换至编辑模式，添加如下脚本配置。
++
+[source,shell]
+----
+#!/bin/sh
+
+f6_leases="/var/lib/dhcp/dhclient6.${IFACE}.leases"
+f4_leases="/var/lib/dhcp/dhclient.${IFACE}.leases"
+
+if [ -e ${f6_leases} ]; then
+		rm -f ${f6_leases};
+fi
+
+if [ -e ${f4_leases} ]; then
+		rm -f ${f4_leases};
+fi
+----
+
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+.. 为脚本赋予执行权限。
++
+[source,shell]
+----
+chmod u+x /etc/network/if-post-down.d/lease_clean
+----
+
+. 关闭 DAD。
+.. 进入系统配置文件。
++
+[source,shell]
+----
+vi /etc/sysctl.conf
+----
+.. 按 *i* 切换至编辑模式，添加如下配置。
++
+[source,shell]
+----
+net.ipv6.conf.eth0.accept_dad = 0
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 在云服务器列表，右键点击云服务器，选择**重启**，重启云服务器，使配置生效。
++
+include::../../_components/note.adoc[]
+若重启后，云服务器仍未获取到 IPv6 地址，请登录云服务器，执行 `dhclient -6` 手动获取。
+include::../../_components/table_footer.adoc[]
+
+=== Windows Server 2008/2012/2016 配置示例
+
+Windows Server 默认开启 IPv6 协议与 DHCPv6，但 DHCPv6 的相关配置需要与<<_操作要点,操作要点>>所述保持一致。
+
+以下操作基于镜像：`Windows Server 2016 简体中文 企业版 64位`，其他系统配置方法类似。
+
+. 登录云服务器。
+. 以管理员身份启动 cmd 命令提示符窗口，执行以下命令，禁用 IPv6 随机标识。
++
+云服务器网卡默认都会有一个链路本地（Link Local）IPv6 地址，Windows Server 默认的 Link Local IPv6 地址生成方式是随机生成的，这与基于 MAC-48 的 https://tools.ietf.org/html/rfc4291#appendix-A[EUI-64] 的方式不同，所以需要禁用 Link Local IPv6 地址随机生成。
++
+[source,shell]
+----
+netsh interface ipv6 set global randomizeidentifiers=disabled
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_11.png[]
+
+. 将双栈接口 *dadtransmits* 修改成 `0`。
+.. 执行如下命令，查看接口列表和双栈接口的 ID。
++
+[source,shell]
+----
+netsh interface ipv6 show interfaces
+----
++
+显示如下信息：
++
+----
+Idx     Met         MTU          状态                名称
+---  ----------  ----------  ------------  ---------------------------
+  1          75  4294967295  connected     Loopback Pseudo-Interface 1
+  9          75        1280  disconnected  isatap.{2B8B139B-418D-4593-A2DC-4F43D31A1833}
+  6          75        1280  connected     Teredo Tunneling Pseudo-Interface
+  5           5        1500  disconnected  以太网 2
+
+netsh interface ipv6>set interface 5 dadtransmits=0
+确定。
+----
++
+如上所示，本示例中的双栈接口的 ID 为 `5`。
+.. 执行以下命令，将双栈接口的 *dadtransmits* 修改成 `0`。
++
+[source,shell]
+----
+netsh interface ipv6 set interface <Interfase_ID> dadtransmits=0
+----
++
+include::../../_components/note.adoc[]
+命令中 `<Interfase_ID>` 表示双栈接口 ID，本示例为 5，请根据您的实际情况进行替换。
+include::../../_components/table_footer.adoc[]
+
+. 修改注册表 *TCPip6* > *Parameters* 下的 *Dhcpv6DUID*。
++
+部分 Windows Server 中的 *Dhcpv6DUID* 为固定值，会导致 Windows Server DHCP 冲突，所以需要修改 *Dhcpv6DUID* 为独特值，最方便的方式就是把最后 48 位修改为云服务器的 MAC 地址。
+
+.. 在 cmd 命令行窗口中，执行 `regedit` 命令打开注册表编辑器，并打开注册表目录 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\TCPIP6\Parameters`。
++
+image::/images/cloud_service/network/eip/IPv6_dualstack_ip_windows_1.png[]
+
+.. 右键点击 *Dhcpv6DUID*，修改 *Dhcpv6DUID* 最后的 12 个字符修改为接口的 MAC 地址。
++
+image::/images/cloud_service/network/eip/IPv6_dualstack_ip_windows_2.png[]
+
+. 重启网络适配器获取 IPv6 地址。
++
+进入网络连接配置页面，点击网络接口，然后点击**禁用此网络设备**，禁用成功后再点击**启用此网络设备**。启用成功后，网络接口便可成功获取到 IPv6 地址。
++
+image::/images/cloud_service/network/eip/IPv6_dualstack_ip_windows_3.png[]
+

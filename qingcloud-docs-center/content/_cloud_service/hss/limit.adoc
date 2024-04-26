@@ -1,0 +1,14 @@
+//使用限制
+
+== 支持的主机类型
+
+支持{platform_name_cn}上创建的所有云服务器（不含第三方云主机）。
+
+
+include::install_agent.adoc[tag=os]
+
+
+
+== 支持的区域（Region）
+
+支持所有区域内的云服务器。

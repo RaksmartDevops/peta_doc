@@ -1,0 +1,60 @@
+---
+title: "应用服务"
+weight: 2
+draft: false
+linkkey: management_cloudsat_cloud_service_service
+---
+
+云服务监控支持应用服务的监控，用户可以在云监控中查看账户下的集群和部分应用的监控数据，并支持多维度设置告警策略。
+
+== 查看监控信息
+
+
+. 用户登录云平台的{console_name}后，点击**产品与服务** > **运维与监控** > **云监控 CloudSat** > **云服务监控**，默认进入**负载均衡**监控列表页面。
+
+. 在左侧导航栏点击**云服务监控** > **应用服务**，进入**应用服务**监控列表页面。该页面列举当前账户下已创建的所有应用服务。
++
+image::/images/cloud_service/monitor_service/cloudsat/cloud_service_app_list.png[cloud_service_app_list,100%]
+
+. 选择需要查看的应用服务，点击服务名，进入应用服务资源列表页面。
++
+image::/images/cloud_service/monitor_service/cloudsat/cloud_service_app_monitor1.png[cloud_service_app_monitor1,100%]
+
+. 选择需要查看的资源，点击其 ID 或**查看监控**操作，进入监控页面。
++
+image::/images/cloud_service/monitor_service/cloudsat/cloud_service_app_monitor2.png[cloud_service_app_monitor2,100%]
+
++
+
+include::../../../../../../_components/note.adoc[]
+
+* 不同的服务，其监控指标存在差异，具体可参考页面。
+* 鼠标移动至监控数据展示图表上，能显示相应时间点的监控数值。
+
+
+include::../../../../../../_components/table_footer.adoc[]
+
+. 如以上图片所示，监控数据的展示，支持实时数据、近一小时或自定义时间段内的数据查看。用户可根据需求选择查看合适时间段内的数据。
+
+
+== 创建告警策略
+
+应用服务监控列表页面，支持对相应资源创建相应的告警策略，或绑定已创建的告警策略。
+
+. 用户登录云平台的{console_name}后，点击**产品与服务** > **运维与监控** > **云监控 CloudSat** > **云服务监控**，默认进入**负载均衡**监控列表页面。
+
+. 在左侧导航栏点击**云服务监控** > **应用服务**，进入**应用服务**列表页面。
+
+. 选择需要查看的应用服务，点击服务名，进入应用服务资源列表页面。
++
+image::/images/cloud_service/monitor_service/cloudsat/cloud_service_app_monitor1.png[cloud_service_app_monitor1,100%]
+
+. 点击 **+ 创建策略**，或点击相应资源条目的**创建策略**操作，即可进入告警策略创建页面。详情可参考link:../../alarm_service_new/alarm_policy/#_创建告警策略[创建告警策略]。
++
+
+include::../../../../../../_components/note.adoc[]
+
+对资源进行绑定告警策略，与先创建告警策略，再绑定至资源，效果一样。用户可自行选择。
+
+
+include::../../../../../../_components/table_footer.adoc[]

@@ -1,0 +1,85 @@
+---
+title: "接收人管理"
+description: test
+weight: 20
+draft: false
+keywords: 接收人管理, 修改接收人, 删除接收人, 用户服务
+---
+
+== 新增接收人
+
+支持用户添加新的接收人。
+
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/notification-center/notification-bell.png[]图标，进入消息中心。
+. 在左侧导航栏，选择**消息接收管理** > *接收人管理*。
+. 点击**添加消息接收人**。
++
+image::/images/cloud_service/services/notification-center/add_receiver.png[add_receiver]
+
+. 输入接收人的姓名、邮箱、手机号等信息。
++
+
+include::../../../../../_components/note.adoc[]
+请至少填写一个联系方式，如手机号、邮箱 或 Webhook 地址。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 点击**确定**，完成接收人新增操作。
++
+
+include::../../../../../_components/note.adoc[]
+添加接收人后，系统将自动发送验证信息到接收人手机号和邮箱中，通过验证后方可接收消息。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 修改接收人
+
+支持修改已有接收人的姓名、邮箱、手机号码。
+
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/notification-center/notification-bell.png[]图标，进入消息中心。
+. 在左侧导航栏，选择**消息接收管理** > *接收人管理*。
+. 点击待修改的接收人右侧的**修改**。
++
+image::/images/cloud_service/services/notification-center/change_receiver.png[change_receiver]
+
+. 在弹出框中，修改接收人信息。
++
+
+include::../../../../../_components/note.adoc[]
+修改邮箱、手机后，系统将自动发送验证信息到新的手机号、邮箱中，通过验证后方可接收消息。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 点击**确定**，完成接收人修改操作。
+
+== 删除接收人
+
+支持用户删除已添加的接收人。
+
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/notification-center/notification-bell.png[]图标，进入消息中心。
+. 在左侧导航栏，选择**消息接收管理** > *接收人管理*。
+. 点击待删除的接收人右侧的**删除**。
++
+image::/images/cloud_service/services/notification-center/delete_receiver.png[delate_receiver ]
+
+. 点击**确定**，完成接收人删除操作。
++
+
+include::../../../../../_components/note.adoc[]
+删除操作执行成功后，该接收人在**消息接收配置界面**中会被同步删除。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 重新发送验证
+
+未验证的手机号码和邮箱，不能接收消息。若接收人未及时验证邮箱、手机号码，用户可以重新发送验证。
+
+. 登录管理控制台。
+. 点击右上角的image:/images/cloud_service/services/notification-center/notification-bell.png[]图标，进入消息中心。
+. 在左侧导航栏，选择**消息接收管理** > *接收人管理*。
+. 点击未验证的邮箱或手机号码右侧的三角图标重新发送验证。
++
+image::/images/cloud_service/services/notification-center/prove_information.png[prove_information]

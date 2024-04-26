@@ -1,0 +1,341 @@
+//内部绑定 IPV6 EIP 到云服务器
+本文介绍如何将 IPv6 EIP 与以内部绑定方式绑定到云服务器，以实现云服务器公网 IPv6 访问。
+
+== 背景信息
+
+手动申请的 IPv6 只能通过内部绑定方式绑定到云服务器。内部绑定是指通过在云服务器内部添加一块可连接到公网网关的网卡的方式来绑定公网 IP。需要先申请公网 IP 并分配给云服务器，然后手动配置网卡 IP 地址，以实现云服务器的公网访问。
+
+== 约束与限制
+
+* 内部绑定的 EIP 是绑定到云服务器主网卡，因此对主网卡应用的安全组规则都会被应用到公网网卡。当删除主网卡的安全组时，公网网卡的安全组也会被同时删除。
+* 绑定 EIP 会给云服务器增加默认安全组，云服务器接入公网后，您需要在云服务器的安全组中放行 IPv6 的相关访问协议。
+* 私有网络内的云服务器绑定了 EIP 后，外网访问将使用 EIP 作为进出网关。如果同时配置了 VPC 的端口转发规则，端口转发规则将不再有效。
+* 内部绑定 IPv6 EIP 可使云服务器具备公网访问能力，但无法与 VPC 内部的 IPv6 网络互通，类似于内网的 IPv4 无法访问公网 IPv4。
+
+== 前提条件
+
+* 已link:../apply/[申请 IPv6 EIP]，EIP 为``可用``状态。
+* 已创建需要绑定的云服务器，且云服务器与 EIP 在同一个区域。
+* 云服务器当前未加入支持 IPv6 的私有网络或所属网络未开启 IPv6。
++
+include::../../_components/note.adoc[]
+若云服务器已支持 IPv6 网络，可直接将 link:../outbind_ipv6/[IPv6 接入公网]，无需绑定 EIP。
+include::../../_components/table_footer.adoc[]
+
+[#step1]
+== 步骤一：分配 EIP 给云服务器
+
+include::./common_operation.adoc/[tag=ipv6]
+. 在 EIP 列表，找到需要分配的 EIP，右键点击 EIP，在弹出的快捷菜单中，选择**分配到云服务器**。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_1.png[]
+
+. 在弹出的对话框中选择需要绑定的云服务器，点击**提交**。
+. 在弹出的提示框中，点击**确认**，即可将申请到的 EIP 绑定给所选云服务器。
+
+== 步骤二：配置云服务器网络
+
+分配 EIP 后，云服务器内会多出一块还未分配 IP 地址的公网网卡，您需要手动未这块公网网卡进行网络配置，才能实现云服务器公网 IPv6 通信。
+
+下面以镜像 CentOS 7.5/CentOS 6.8/Ubuntu 18.04 及 Windows Server 为例，介绍如何配置 IPv6 EIP。
+
+////
+=== 
+
+完成申请 IPv6 公网 IP 并分配给云服务器后，登录云服务器使用 ``ip a`` 命令可查看到云服务器内多出一块还未分配 IP 地址的网卡，您需要为这块网卡配置 IP 地址。
+
+image::/images/cloud_service/network/eip/IPv6_inbind_nic.png[]
+
+下面以镜像 CentOS 7.5 / CentOS 6.8 / Ubuntu 18.04 及 Windows Server 2008/2012/2016 为例，介绍如何配置 IPv6 弹性 IP。在 `[Your IPv6 Address]` 处请填入您在平台申请并绑定到云服务器的 IPv6 地址
+////
+
+=== Centos 7.5
+
+. 登录已分配 EIP 的云服务器，执行以下命令，可以看到云服务器内多出一块还未分配 IP 地址的公网网卡。
++
+[source,shell]
+----
+ip a
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_3.png[]
++
+如上图所示，云服务器中一共有两块网卡，其中 eth0 为主网卡，eth1 则为<<step1,步骤一>>中分配的公网网卡。
+
+. 配置 eth1 网卡的网络地址。
+.. 执行以下命令，打开 eth1 的网络配置文件。
++
+[source,shell]
+----
+vi /etc/sysconfig/network-scripts/ifcfg-eth1
+----
+.. 按 *i* 切换至编辑模式，在文件中添加如下内容。
++
+[source,bash]
+----
+TYPE=Ethernet
+NAME=eth1
+DEVICE=eth1
+ONBOOT=yes
+BOOTPROTO=static
+NM_CONTROLLED=yes
+IPV6INIT=yes
+IPV6_AUTOCONF=no
+IPV6_FAILURE_FATAL=no
+IPV6ADDR=<IPv6_EIP>/128
+----
++
+以上配置示例中，`<IPv6_EIP>` 为云服务器分配的 IPv6 EIP 地址，请根据实际情况填写。
+
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 增加网络控制脚本。
+.. 执行以下命令，在目录 `/etc/NetworkManager/dispatcher.d` 下新增脚本文件。
++
+[source,shell]
+----
+cd /etc/NetworkManager/dispatcher.d/
+vi interface-up-hook.sh
+----
+
+.. 按 *i* 切换至编辑模式，在脚本文件中增加如下内容。
++
+[source,shell]
+----
+#!/bin/sh
+
+RUN="yes"
+if [ "${RUN}" != "yes" ]; then
+exit 0
+fi
+
+if [ "${NM_DISPATCHER_ACTION}" != "up" ]; then
+exit 0
+fi
+
+interface=${DEVICE_IFACE}
+
+sysctl -w net.ipv6.conf.${interface}.accept_ra=1
+sysctl -w net.ipv6.conf.${interface}.accept_ra_defrtr=1
+----
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 执行以下命令，运行脚本。
++
+[source,shell]
+----
+chmod +x interface-up-hook.sh
+./interface-up-hook.sh
+----
+. 重启网卡 eth1。
++
+[source,shell]
+----
+ifdown eth1
+ifup eth1
+----
+
+. 执行以下命令，查看 eth1 的 IP 是否配置成功。
++
+[source,shell]
+----
+ip a
+----
++
+若 IP 地址显示正确，则完成配置。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_4.png[]
+
+=== Centos 6.8
+
+. 登录已分配 EIP 的云服务器，执行以下命令，可以看到云服务器内多出一块还未分配 IP 地址的公网网卡。
++
+[source,shell]
+----
+ip a
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_5.png[]
++
+如上图所示，云服务器中一共有两块网卡，其中 eth0 为主网卡，eth1 则为<<step1,步骤一>>中分配的公网网卡。
+. 配置 eth1 网卡的网络地址。
+.. 执行以下命令，打开 eth1 的网络配置文件。
++
+[source,shell]
+----
+vi /etc/sysconfig/network-scripts/ifcfg-eth1
+----
+.. 按 *i* 切换至编辑模式，在文件中添加如下内容。
++
+[source,bash]
+----
+TYPE=Ethernet
+NAME=eth1
+DEVICE=eth1
+BOOTPROTO=static
+ONBOOT=yes
+NM_CONTROLLED=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_FAILURE_FATAL=no
+IPV6ADDR=<IPv6_EIP>/128
+----
++
+以上配置示例中，`<IPv6_EIP>` 为云服务器分配的 IPv6 EIP 地址，请根据实际情况填写。
+
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 执行以下命令，启动网卡。
++
+[source,shell]
+----
+ifup eth1
+----
+
+. 执行以下命令，查看 eth1 的 IP 是否配置成功。
++
+[source,shell]
+----
+ip a
+----
++
+若 IP 地址显示正确，则完成配置。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_6.png[]
+
+=== Ubuntu 18.04
+
+. 登录已分配 EIP 的云服务器，执行以下命令，可以看到云服务器内多出一块还未分配 IP 地址的公网网卡。
++
+[source,shell]
+----
+ip a
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_5.png[]
++
+如上图所示，云服务器中一共有两块网卡，其中 eth0 为主网卡，eth1 则为<<step1,步骤一>>中分配的公网网卡。
+. 配置 eth1 网卡的网络地址。
+.. 执行以下命令，打开网络配置文件。
++
+[source,shell]
+----
+sudo vi /etc/network/interfaces
+----
+.. 按 *i* 切换至编辑模式，在文件中添加如下内容，配置 eth1 的静态 IPv6 地址。
++
+[source,shell]
+----
+auto eth1
+iface eth1 inet6 static
+  address <IPv6_EIP>
+  netmask 128
+----
++
+以上配置示例中，`<IPv6_EIP>` 为云服务器分配的 IPv6 EIP 地址，请根据实际情况填写。
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 执行以下命令，启动网卡 eth1。
++
+[source,shell]
+----
+sudo ifup eth1
+----
++
+include::../../_components/note.adoc[]
+若执行 `sudo ifup eth1` 提示 “sudo: ifup: command not found”，请执行 `sudo apt install ifupdown` 安装该命令。
+include::../../_components/table_footer.adoc[]
+
+. 执行以下命令，查看 eth1 的 IP 是否配置成功。
++
+[source,shell]
+----
+ip a
+----
++
+若 IP 地址显示正确，则完成配置。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_8.png[]
+
+=== Debian Buster 10.6
+
+. 登录已分配 EIP 的云服务器，执行以下命令，可以看到云服务器内多出一块还未分配 IP 地址的公网网卡。
++
+[source,shell]
+----
+ip a
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_9.png[]
++
+如上图所示，云服务器中一共有两块网卡，其中 eth0 为主网卡，eth1 则为<<step1,步骤一>>中分配的公网网卡。
+. 配置 eth1 网卡的网络地址。
+.. 执行以下命令，打开网络配置文件。
++
+[source,shell]
+----
+vi /etc/network/interfaces
+----
+.. 按 *i* 切换至编辑模式，在文件中添加如下内容，配置 eth1 的静态 IPv6 地址。
++
+[source,shell]
+----
+auto eth1
+iface eth1 inet6 static
+  address <IPv6_EIP>
+  netmask 128
+----
++
+以上配置示例中，`<IPv6_EIP>` 为云服务器分配的 IPv6 EIP 地址，请根据实际情况填写。
+.. 按 *ESC* 退出编辑模式，执行 `:wq` 保存并退出文件。
+
+. 执行以下命令，启动网卡 eth1。
++
+[source,shell]
+----
+ifup eth1
+----
+. 执行以下命令，查看 eth1 的 IP 是否配置成功。
++
+[source,shell]
+----
+ip a
+----
++
+若 IP 地址显示正确，则完成配置。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_10.png[]
+
+=== Windows Server 2016
+
+. 登录已分配 EIP 的云服务器，打开 Windows 命令行终端，执行以下命令，禁用 IPv6 随机接口标识。
++
+[source,shell]
+----
+netsh interface ipv6 set global randomizeidentifiers=disabled
+----
++
+image::/images/cloud_service/network/eip/inbind_ipv6_11.png[]
+
+. 在桌面右下角点击网络图标，然后点击**网络设置**，打开**以太网**设置页面，可以看到有两张网卡，其中一张未连接的网络则是<<step1,步骤一>>中绑定的公网网卡。
++
+image::/images/cloud_service/network/eip/inbind_eip_nic_windows.png[]
+
+. 配置公网网卡的静态 IPv6 地址。
+.. 在**以太网**页面，点击**更改适配器选项**，进入**网络连接**页面。
+.. 点击选中未识别的公网网络，然后点击**更改此连接的设置**，弹出该连接的属性设置窗口。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_14.png[]
+.. 在**网络**页签，双击 **Internet 协议版本 6（TCP/IPv6）**，弹出 **Internet 协议版本 6（TCP/IPv6）属性**窗口。
+.. 配置 IPv6 地址及子网前缀长度。
++
+以下为配置示例，**IPv6 地址**应设置分配给云服务器的 EIP 地址，请根据实际情况填写。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_12.png[]
+
+.. 配置完成后，点击**确定**进行保存。
+
+. 在桌面右下角点击网络图标，然后点击**网络设置**，打开**以太网**设置页面，查看到网卡状态为``已连接``，代表已配置成功。
++
+image::/images/cloud_service/network/eip/inbind_ipv6_13.png[]
+

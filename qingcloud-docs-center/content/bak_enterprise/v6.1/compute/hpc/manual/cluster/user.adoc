@@ -1,0 +1,10 @@
+---
+title: "用户与权限组"
+keywords: 云计算, EHPC, 用户管理
+draft: false
+weight: 4
+---
+:ep:
+
+include::../../../../../../_cloud_service/ehpc/user/user_authority.adoc[]
+

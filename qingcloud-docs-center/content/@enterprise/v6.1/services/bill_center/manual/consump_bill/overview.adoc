@@ -1,0 +1,7 @@
+---
+title: "账单总览"
+weight: 5
+keyword: 费用中心,消费账单,账单总览,消费明细, 消费预估
+---
+
+include::../../../../../../_cloud_service/bill/consump_bill.adoc[tag=overview]

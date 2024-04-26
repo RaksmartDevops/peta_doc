@@ -1,0 +1,21 @@
+---
+title: "日志概述"
+description: 本小节主要介绍 ClickHouse 日志基本信息。 
+keywords: 日志信息,数据仓库,ClickHouse
+weight: 05
+collapsible: false
+draft: false
+---
+ClickHouse 支持通过 HTTP 服务预览和下载日志，HTTP 服务端口为 `18801` 。
+
+|===
+| 日志标记 | 日志类型 | 说明
+
+| clickhouse-servererr
+| 服务错误日志
+| 记录 ClickHouse 服务执行错误信息。默认仅保留六个日志文件。
+
+| clickhouse-server
+| 服务日志
+| 记录 ClickHouse 服务执行信息。默认仅保留六个日志文件。
+|===

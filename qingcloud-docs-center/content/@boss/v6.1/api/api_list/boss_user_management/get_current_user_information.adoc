@@ -1,0 +1,197 @@
+---
+title: 获取当前用户信息（Boss2DescribeCurrentUser）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCurrentUser
+
+=== Method
+POST
+
+=== 接口描述
+获取当前登录用户的信息。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户id
+|
+
+| username
+| String
+| 用户名，真实姓名
+|
+
+| email
+| String
+| 邮箱
+|
+
+| status
+| String
+a|
+账号是否启用
+
+* enabled: 启用
+* disabled: 禁用
+|
+
+| gravatar_email
+| Value
+| 头像用的gravatar邮箱
+|
+
+| is_superuser
+| Boolean
+| 是否为超级管理员
+|
+
+| phone
+| String
+| 手机号
+|
+
+| lang
+| String
+| 用户语言
+|
+
+| auth_backend
+| String
+| 认证服务器
+|
+
+| last_login
+| String
+| 最近登录时间
+|
+
+| password_update_time
+| String
+| 密码修改时间
+|
+
+| create_time
+| String
+| 用户创建时间
+|
+
+| remarks
+| String
+| 备注
+|
+
+| 2fa_enabled
+| Boolean
+| 是否启用二次认证
+|
+
+| roles
+| Array
+| 角色列表，包含： +
+id、name、description
+|
+
+| menus
+| Object
+| 用户可用菜单项
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeCurrentUser"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "user_set": [
+      {
+         "id": 8,
+         "username": "管理员",
+         "email": "admin@example.com",
+         "status": "enabled",
+         "is_superuser": true,
+         "last_login": "2019-04-22T11:26:19.492Z",
+         "password_update_time": "2019-06-03T08:25:41.812Z",
+         "create_time": "2018-11-16T09:37:15.390Z",
+         "gravatar_email": null,
+         "auth_backend": "boss2",
+         "2fa_enabled": true,
+         "lang": "zh-cn",
+         "phone": "1111111",
+         "remarks": null,
+         "roles": [
+            {
+               "id": "7dcfa680-3914-4b5c-96d7-ddd5c0f3ed0c",
+               "name": "测试角色",
+               "description": "测试角色"
+            }
+         ],
+         "menus": {
+            "navi_1": {
+               "need_zone": true,
+               "pages": [
+                  "page_1",
+                  "page_2"
+               ],
+               "actions": [
+                  "action_1",
+                  "action_2"
+               ],
+               "tabs": [
+                  "tab_1",
+                  "tab_2"
+               ]
+            },
+            "navi_2": {
+               "need_zone": true,
+               "pages": [
+                  "page_1",
+                  "page_2"
+               ],
+               "actions": [
+                  "action_1",
+                  "action_2"
+               ],
+               "tabs": [
+                  "tab_1",
+                  "tab_2"
+               ]
+            }
+         }
+      }
+   ],
+   "total_count": 1,
+   "ret_code": 0,
+   "action": "Boss2DescribeCurrentUserResponse"
+}
+----

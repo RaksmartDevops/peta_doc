@@ -1,0 +1,77 @@
+---
+title: 获取定时器列表（Boss2DescribeSchedulers）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeSchedulers
+
+=== Method
+POST
+
+=== 接口描述
+获取定时器列表，该接口用户管理员角色使用，普通用户仅获取当前用户的定时器列表，可使用Boss2DescribeCurrentSchedulers。
+接口返回数据字段请参考Boss2DescribeCurrentSchedulers接口文档。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeSchedulers",
+  
+   // 以下参数用于筛选
+  "id": [1], // 通过定时器id进行过滤
+  "status": ["active", "disabled", "deleted"], // 通过定时器状态进行过滤
+  "limit": 1,
+  "offset": 0,
+  "search_word": "测试" // 支持通过定时器名称和描述进行搜索
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "scheduler_set": [
+      {
+         "id": 6,
+         "name": "test",
+         "description": null,
+         "sched_type": "crontab",
+         "status": "active",
+         "owner_id": 1,
+         "owner_username": "admin",
+         "owner_email": "admin@alphacloud.com",
+         "transition_status": null,
+         "last_run_at": "2019-09-08T07:54:05.835Z",
+         "period": "every_n_hours:1",
+         "ymd": "2019-09-04",
+         "hhmm": "53",
+         "create_time": "2019-09-07T14:18:06.717Z",
+         "status_time": "2019-09-08T07:54:05.875Z"
+      }
+   ],
+   "total_count": 6,
+   "ret_code": 0,
+   "action": "Boss2DescribeCurrentSchedulersResponse"
+}
+----

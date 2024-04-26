@@ -1,0 +1,38 @@
+[
+  {
+    "name": "rtc",
+    "dir_name": "audio_and_video/rtc",
+    "zh-cn": "实时音视频 RTC",
+    "parent": "audio_and_video"
+  },
+  {
+    "name": "ddosip",
+    "dir_name": "security/antiddos_ip",
+    "zh-cn": "高防 IP",
+    "parent": "security"
+  },
+  {
+    "name": "dataomnis",
+    "dir_name": "bigdata/dataomnis/",
+    "zh-cn": "大数据工作台",
+    "parent": "analytics"
+  },
+  {
+    "name": "qke",
+    "dir_name": "container/qke_plus",
+    "zh-cn": "容器引擎 QKE",
+    "parent": "container"
+  },
+  {
+    "name": "app/app-2mhyb1ui/",
+    "dir_name": "container/harbor",
+    "zh-cn": "Harbor 镜像仓库",
+    "parent": "container"
+  },
+  {
+    "name": "sdwan",
+    "dir_name": "sd-wan/sdwan_new",
+    "zh-cn": "SD-WAN（新版）",
+    "parent": "sdwan"
+  }
+]

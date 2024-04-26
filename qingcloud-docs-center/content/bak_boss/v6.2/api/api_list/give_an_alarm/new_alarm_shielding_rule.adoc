@@ -1,0 +1,65 @@
+---
+title: 新建告警屏蔽规则（Boss2CreateAlertSuppressRule）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateAlertSuppressRule
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于创建告警屏蔽规则。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateAlertSuppressRule",
+    "start_time":"2022-05-27T01:43:00Z", // [必须]告警屏蔽开始时间，为UTC时间
+    "end_time":"2022-05-27T07:10:59Z", // [必须]告警屏蔽结束时间，为UTC时间
+    "remarks": "测试告警屏蔽", // 告警屏蔽的描述信息
+    "rule": { 
+        "zones": ["zone_a", "zone_b"], // 可通过告警发出的区域进行屏蔽
+        "nodes": ["node1", "node2", "node*"], // 可通过发出告警的节点id进行屏蔽，支持使用通配符，如?(代表单个字符)，*(代表多个字符), [1-9](代表数字范围)
+        "node_regex": ["node\\d+"], // 通过发出告警的节点id进行屏蔽，该字段支持使用正则表达式
+        "levels": ["CRITICAL"], // 通过告警的级别进行屏蔽，支持的级别从高到底有：CRITICAL, ERROR, WARNING, INFO
+        "synopsis": ["测试告警"], // 通过告警概要信息进行匹配，该字段支持使用正则表达式
+        "message": ["test alert"], // 通过告警的原始日志信息进行屏蔽，该字段支持使用正则表达式
+        "alert_codes": ["ALM-IAAS-00125", "ALM-IAAS-00131"], // 通过告警项ID进行屏蔽
+        "alert_categories": ["eae779e0-0aa8-4334-9812-845ea5a7e727"], // 通过告警分类进行过滤
+        "sources": ["IAAS", "NEONSAN"] // 通过告警来源进行过滤
+    }, // [必须]告警屏蔽规则，内含多种屏蔽规则条目
+    "match_mode": "AND" // 可指定规则的匹配方式：AND - 所有的规则都匹配才算命中， OR - 有任一条规则匹配即为命中
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 30,
+   "ret_code": 0,
+   "action": "Boss2CreateAlertSuppressRuleResponse"
+}
+----

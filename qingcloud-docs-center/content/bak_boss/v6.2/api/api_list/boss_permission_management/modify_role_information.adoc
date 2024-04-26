@@ -1,0 +1,84 @@
+---
+title: 修改角色信息（Boss2ModifyRoleAttributes）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ModifyRoleAttributes
+
+=== Method
+POST
+
+=== 接口描述
+修改角色的信息，修改成功后ret_code为0
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| String
+| 角色id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2ModifyRoleAttributes",
+    "zones": ["test"], // 修改可访问的zone
+    
+    "id": "f92f9a2a-da6c-462c-ba61-46c1afd8eb7a", //[必须]必须指定要修改的角色id
+    "name": "测试角色3", // 可修改角色命名，但不可与现有角色命名重复
+    "description": "测试修改角色的描述", // 修改角色的描述
+    "consoles": ["example"], // 修改可访问的console
+    "menus": [
+    {
+        "id": "9af4577e-8289-4754-ab68-f74433ffebfc",
+        "pages": ["06e3b8d5-4707-4628-a97b-077c0c558da2", "e62e0d64-e6c6-40c6-8104-8123b517f6b8"],
+        "actions": ["16eb06d0-68e9-4ae3-9a8b-8ac8def04973"],
+        "tabs": ["c5599328-55c7-48ba-b807-9cfaa3acf185", "203fa564-e5ee-4c6e-a222-4eac0988d17d"]
+    }
+], // 修改导航配置
+    "perms":  [
+        {
+            "key": "boss_zone",
+            "ids": [
+                "82a9c478ad8a357776e7c7ab632f348b",
+                "8dd13619758b0242c7ec1e3195657ee0"
+            ]
+        }
+    ], // 修改数据权限配置，如需清空权限，则设置为"[]"
+    "status": "disabled"  // 修改角色状态，支持的状态为：active，disabled， deleted
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": "f92f9a2a-da6c-462c-ba61-46c1afd8eb7a",
+   "ret_code": 0,
+   "action": "Boss2ModifyRoleAttributesResponse"
+}
+----

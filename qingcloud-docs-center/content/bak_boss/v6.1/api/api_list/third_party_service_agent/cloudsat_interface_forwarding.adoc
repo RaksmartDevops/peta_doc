@@ -1,0 +1,174 @@
+---
+title: CloudSAT接口转发（Boss2ProxyCloudsat）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2ProxyCloudsat
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于转发CloudSat相关的接口。
+由于cloudsat相关的接口为restful风格的接口，因此使用了BOSS统一的转发模式。
+使用本接口进行转发时请求中将rest风格的请求要素进行了拆解：
+注意，CloudSat原始的URL为：/api/staging/v1/custom/GetCustomNamespaces，BOSS请求这里只需要保留最后的部分就可以了。
+
+|===
+| restful | boss | 示例
+
+| 请求方式
+| method
+| POST
+
+| 请求路径
+| url
+| custom/GetCustomNamespaces
+
+| 区域
+| zone
+| testing
+
+| 请求body，用于POST请求方式
+| data
+| {"user_id": "admin", "limit":1}
+
+| url参数，用于GET请求方式
+| query
+| {"key":"value"}
+|===
+
+最终发送的请求为：
+
+----
+{"action": "Boss2ProxyCloudsat",
+"zone":"testing",
+"method": "POST",
+"url": "custom/GetCustomNamespaces",
+"data": {
+"user_id": "admin", "limit":1
+}
+}
+----
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2ProxyCloudsat",
+   "zone": "testing",
+   "method": "POST",
+   "url": "custom/GetCustomNamespaces",
+   "data": {
+      "user_id": "admin"
+   }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "user_id": "admin",
+         "namespace": "namespace-cloudsat-vxnet",
+         "region": "testing",
+         "description": "私有网络",
+         "create_time": "2022-01-12T13:16:33.278262Z",
+         "metrics": [
+            {
+               "metric_id": "cm-jh7aa5t2",
+               "namespace": "namespace-cloudsat-vxnet",
+               "metric_name": "if_tp",
+               "metric_cn_name": "出pps",
+               "metric_unit": "pps",
+               "create_time": "2022-01-12T13:16:33.278904Z",
+               "user_id": "admin",
+               "description": "出pps",
+               "analysis_methods": [
+                  "average",
+                  "sum",
+                  "max",
+                  "min"
+               ]
+            },
+            {
+               "metric_id": "cm-4n044zs5",
+               "namespace": "namespace-cloudsat-vxnet",
+               "metric_name": "if_rp",
+               "metric_cn_name": "入pps",
+               "metric_unit": "pps",
+               "create_time": "2022-01-12T13:16:33.278933Z",
+               "user_id": "admin",
+               "description": "入pps",
+               "analysis_methods": [
+                  "average",
+                  "sum",
+                  "max",
+                  "min"
+               ]
+            },
+            {
+               "metric_id": "cm-6mhwtsg3",
+               "namespace": "namespace-cloudsat-vxnet",
+               "metric_name": "if_tx",
+               "metric_cn_name": "出带宽",
+               "metric_unit": "bps",
+               "create_time": "2022-01-12T13:16:33.278958Z",
+               "user_id": "admin",
+               "description": "出带宽",
+               "analysis_methods": [
+                  "average",
+                  "sum",
+                  "max",
+                  "min"
+               ]
+            },
+            {
+               "metric_id": "cm-mk14szrw",
+               "namespace": "namespace-cloudsat-vxnet",
+               "metric_name": "if_rx",
+               "metric_cn_name": "入带宽",
+               "metric_unit": "bps",
+               "create_time": "2022-01-12T13:16:33.278984Z",
+               "user_id": "admin",
+               "description": "入带宽",
+               "analysis_methods": [
+                  "average",
+                  "sum",
+                  "max",
+                  "min"
+               ]
+            }
+         ],
+         "dimension": "source,group_id,resource_id,resource_name",
+         "metric_count": 4,
+         "sys_ns": true
+      }
+   ],
+   "ret_code": 0,
+   "total_count": 40,
+   "action": "Boss2ProxyCloudsatResponse"
+}
+----

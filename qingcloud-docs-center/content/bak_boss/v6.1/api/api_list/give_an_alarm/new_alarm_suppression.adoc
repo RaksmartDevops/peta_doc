@@ -1,0 +1,60 @@
+---
+title: 【已废弃】新建告警压制（Boss2CreateAlertSuppress）
+weight: 9
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateAlertSuppress
+
+=== Method
+POST
+
+=== 接口描述
+_*该接口从20220630版本起已废弃~~~~，请使用告警屏蔽规则相关的接口。_*
+
+新建告警压制时，用户传入要压制的时长，提交后系统自动以当前时间为开始时间，计算压制结束时间并进行压制。不支持定时开始压制。
+
+压制时长，建议可以给出几个常用的选择，比如 30分钟、一小时、两小时等等，再加一个自定义时长。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateAlertSuppress",
+    "zone": "test",     // zone ID，必传
+    "node_id": "tr02n20",   // 指定单个节点 ID
+    "nodes": ["tr02n21", "tr02n22"], // 可指定多个节点ID，最多可传入100个节点，node_id和nodes至少需要指定一个
+    "lasting": 1    // 持续时间，单位为分钟，不小于1，不大于43200（30天）
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "nodes": [
+        "tr02n22"
+    ],  // 传入的节点id
+    "ret_code": 0,
+    "action": "Boss2CreateAlertSuppressResponse"
+}
+----

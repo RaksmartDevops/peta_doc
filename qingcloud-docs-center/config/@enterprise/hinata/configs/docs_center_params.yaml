@@ -1,0 +1,19 @@
+markup:
+  asciidocExt:
+    attributes:
+      platform_name_cn: 云平台
+      brand_name_low: qingcloud
+      api_url: https://api.qingcloud.com/iaas/
+      console_name: 管理控制台
+      qingstor_cap: QingStor
+      qingstor_low: qingstor
+      k8s_engine_fullname: 容器引擎
+      k8s_engine_shortname: QKE
+params:
+  description: 这里是企业云文档页面
+  favicon: /images/favicon.ico
+  keyword: 云计算,青云,QingCloud,文档
+  logo: /images/qingcloud-logo.svg
+  logoInfo: 企业云
+  logoLink: /
+  disablePdf: true

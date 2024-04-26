@@ -1,0 +1,94 @@
+---
+title: 分布式数据库 PolonDB
+linkTitle: PolonDB
+weight: 4
+description: PolonDB 是基于 PostgreSQL 和 Citus 构建的一款 HTAP 分布式关系型数据库。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 PolonDB
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 应用场景
+            url: intro/scenarios/
+          - title: 产品系列
+            url: intro/specification/
+          - title: 产品版本
+            url: intro/version/
+          - title: 规格限制
+            url: intro/elastic_data/
+          - title: 性能指标
+            url: intro/kpi/
+          - title: 基本概念
+            url: intro/basic_conception/ha/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建 实例
+            url: quickstart/create_cluster/
+          - title: 连接数据库
+            url: quickstart/access_polondb/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 数据迁移
+        children:
+          - title: 小型 PostgreSQL 数据库迁移
+            url: manual/migration/min_data_transfer/
+          - title: 大型 PostgreSQL 数据库迁移
+            url: manual/migration/max_data_transfer/
+          - title: PostgreSQL 大对象迁移
+            url: manual/migration/huge_object_transfer/
+      - title: 数据库连接
+        children:
+          - title: 连接数据库
+            url: manual/mgt_connect/access_polondb/
+          - title: 切换私有网络
+            url: manual/mgt_connect/mgt_vxnet/
+      - title: 集群生命周期
+        children:
+          - title: 查看集群信息
+            url: manual/cluster_lifecycle/check_cluster/
+          - title: 启停集群
+            url: manual/cluster_lifecycle/off_and_on/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+          - title: 回收站
+            url: manual/cluster_lifecycle/recycle_bin/
+      - title: 节点生命周期
+        children:
+          - title: 扩容节点
+            url: manual/node_lifecycle/capacity_expansion/
+          - title: 新增节点
+            url: manual/node_lifecycle/create_node/
+          - title: 删除节点
+            url: manual/node_lifecycle/delete_node/
+          - title: 创建数据库
+            url: manual/node_lifecycle/create_database/
+          - title: 删除数据库
+            url: manual/node_lifecycle/delete_database/
+          - title: 重启节点
+            url: manual/node_lifecycle/restart_node/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 高阶使用
+            url: best-practices/advanced_operation/
+          - title: 找回误操作丢失的数据
+            url: best-practices/data_recover/
+          - title: 表特殊操作
+            url: best-practices/table_operator/
+linkkey: database_polondb_guide
+---

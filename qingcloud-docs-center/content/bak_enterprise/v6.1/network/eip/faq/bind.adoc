@@ -1,0 +1,7 @@
+---
+title: "绑定与解绑 FAQ"
+weight: 5
+draft: false
+---
+
+include::../../../../../_cloud_service/eip/faq_bind.adoc[]

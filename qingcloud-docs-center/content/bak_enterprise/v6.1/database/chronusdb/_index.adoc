@@ -1,0 +1,83 @@
+---
+title: 时序数据库 ChronusDB
+linkTitle: ChronusDB
+weight: 5
+description: ChronusDB 是一款基于 ClickHouse 定制的时序数据库产品。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 ChronusDB
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 产品规格
+            url: intro/specification/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 退款说明
+            url: billing/refund/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建集群
+            url: quickstart/create_cluster/
+          - title: 连接数据库
+            url: quickstart/access_database/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 集群管理
+        children:
+          - title: 查看集群
+            url: manual/cluster_lifecycle/check_cluster/
+          - title: 连接集群
+            url: manual/mgt_connect/access_database/
+          - title: 升级集群
+            url: manual/cluster_lifecycle/upgrade/
+          - title: 启停集群
+            url: manual/cluster_lifecycle/off_and_on/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+      - title: 集群安全
+        children:
+          - title: 账号管理
+            url: manual/mgt_account/creat_account/
+          - title: 备份与恢复
+            url: manual/backup_restoration/backup_info/
+      - title: 集群监控
+        children:
+          - title: 设置监控告警
+            url: manual/metrics_alarm/set_alarm_rules/
+          - title: Prometheus 监控服务
+            url: manual/metrics_alarm/monitor_prometheus/
+          - title: 日志管理
+            url: manual/mgt_log/log_info/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 基础设施 CPU 数据收集分析
+            url: best-practices/cpu_data/
+          - title: 货车数据采集分析
+            url: best-practices/truck_data/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: 常见报错
+            url: faq/error_list/
+linkkey: database_chronusdb_guide
+---

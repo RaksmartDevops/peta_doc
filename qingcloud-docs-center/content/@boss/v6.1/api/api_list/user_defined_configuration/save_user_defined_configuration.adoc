@@ -1,0 +1,58 @@
+---
+title: 保存用户自定义配置（Boss2SetCustomConf）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SetCustomConf
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于实现用户自定义配置数据的存储。配置信息将会存入发起请求的用户的名下。
+
+目前支持的 function 有：
+
+* network_bigscreen 网络大屏配置数据
+* user_settings 用户自定义配置数据，例如默认导航配置
+* dashboard 用户自定义大屏的配置数据
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2SetCustomConf",
+  "function": "network_bigscreen",     // 功能名称
+  "conf_data": {"foo": "bar"},         // 配置数据
+  "key": "a.b.c"                       // 更新到哪个key，如果更新这个功能配置的根层级，不要传 key 参数
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2SetCustomConfResponse"
+}
+----

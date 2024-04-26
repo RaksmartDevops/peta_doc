@@ -1,0 +1,128 @@
+// title: AddSecurityGroupRules
+
+== 接口描述
+
+添加安全组规则。
+
+每条规则包括的属性为：
+
+* protocol：协议。
+* priority：优先级，由高到低为 0 - 100。
+* security_group_rule_name：规则名称。
+* action：操作，分为 accept（接受）和 drop（拒绝）。
+* direction：方向，0 表示下行，1 表示上行。
+* val1：如果协议为 tcp 或 udp，此值表示起始端口。如果协议为 icmp，此值表示 ICMP 类型。 
+* val2：如果协议为 tcp 或 udp，此值表示结束端口。如果协议为 icmp，此值表示 ICMP 代码。 
+* val3：源 IP。
+
+include::../../../_components/attention.adoc[]
+添加规则后，需要调用 link:../apply_security_group/[_ApplySecurityGroup_] 使其生效。
+include::../../../_components/table_footer.adoc[]
+
+== 请求参数
+[cols="1,1,2,1"]
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| security_group
+| String
+| 安全组 ID。
+| Yes
+
+| rules.n.protocol
+| String
+| 协议。
+| Yes
+
+| rules.n.priority
+| Integer
+| 优先级，由高到低为 0 - 100。
+| Yes
+
+| rules.n.security_group_rule_name
+| String
+| 规则名称。
+| No
+
+| rules.n.action
+| String
+| 操作，支持 accept (接受) 或 drop (拒绝)。
+| No
+
+| rules.n.direction
+| Integer
+| 方向，0 表示下行，1 表示上行。默认为 0。
+| No
+
+| rules.n.val1
+| String
+| 如果协议为 tcp 或 udp，此值表示起始端口。 如果协议为 icmp，此值表示 ICMP 类型。 其他协议无需此值。
+| No
+
+| rules.n.val2
+| String
+| 如果协议为 tcp 或 udp，此值表示结束端口。 如果协议为 icmp，此值表示 ICMP 代码。 其他协议无需此值。
+| No
+
+| rules.n.val3
+| String
+| 目标 IP，如果填写，则这条安全组规则只对此 IP（或 IP 段）有效。
+| No
+
+| zone
+| String
+| 区域 ID，注意要小写。
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作。
+
+| security_group_rules
+| Array
+| 添加成功的安全组规则 ID 列表。
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码。
+|===
+
+== 示例
+
+*请求示例*：
+
+[,json]
+----
+https://api.qingcloud.com/iaas/?action=AddSecurityGroupRules
+&rules.1.action=accept
+&rules.1.direction=0
+&rules.1.priority=7
+&rules.1.protocol=tcp
+&rules.1.val1=22
+&rules.1.val2=
+&rules.1.val3=
+&security_group=sg-6ft05wt6
+&COMMON_PARAMS
+----
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"AddSecurityGroupRulesResponse",
+  "security_group_rules":[
+    "sgr-vgiw8cv8"
+  ],
+  "ret_code":0
+}
+----
+

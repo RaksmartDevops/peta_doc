@@ -1,0 +1,90 @@
+---
+title: 获取用于添加为销售的用户列表（Boss2DescribeUsersForSales）
+weight: 32
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeUsersForSales
+
+=== Method
+POST
+
+=== 接口描述
+获取用户列表，用于添加为销售人员。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| id
+| 用户id
+|
+
+| username
+| 用户名称
+|
+
+| email
+| 用户邮箱
+|
+
+| is_sales
+a|
+是否已添加为销售:
+
+* true: 已为销售，无需再添加该用户
+* false: 该用户尚未被添加为销售
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeUsersForSales",
+    
+    // 分页及排序
+    "search_word": "test", // 用于对名称和邮箱的模糊搜索
+  "limit": 20, // 限制返回数据条数，设置为0仅返回数据总条数
+  "offset": 0, // 数据offset，与limit结合进行分页
+  "sort_key": "create_time", // 指定用于排序的字段
+  "reverse": 1 // 是否进行逆序,1-逆序，0 - 正序，
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "user_set": [
+      {
+         "id": 1,
+         "username": "admin",
+         "email": "admin@alphacloud.com",
+         "is_sales": true
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeUsersForSalesResponse"
+}
+----

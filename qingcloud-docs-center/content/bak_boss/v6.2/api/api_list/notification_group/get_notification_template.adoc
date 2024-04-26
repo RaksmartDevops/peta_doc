@@ -1,0 +1,401 @@
+---
+title: 获取通知模板（Boss2DescribeNotifyTemplate）
+weight: 13
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNotifyTemplate
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的条目总数
+|
+
+| notify_template_set
+| Array
+| 通知模板详情信息
+|
+
+| name
+| String
+| 模板名称
+|
+
+| content
+| Object
+| 模板内容
+|
+
+| status
+| String
+| 模板状态 
+|
+
+| template_type
+| String
+| 模板类型
+|
+
+| owner_id
+| Integer
+| 创建者id
+|
+
+| status_time
+| String
+| 上次更新时间
+|
+
+| create_time
+| String
+| 创建时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeNotifyTemplate",
+    "topic": "alert",       //属于哪个app模块 非必传
+    "id": 1,                //模板id 非必传
+    "status": "active",      //模板状态 active 或 disabled 非必传
+    "template_type": "sms",   //模板通知类型 非必传 ['sms', 'imrobot', 'email', 'private_wechat', 'syslog']其一
+    "name": ["test1"],        // name 传列表，精确匹配 非必传
+    "search_word": "test",     // 关键字搜索，可以模糊匹配name 非必传
+    "offset": 0,
+    "limit": 10,
+    "fields": ["id", "name"]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "notify_template_set": [
+      {
+         "id": 9,
+         "name": "test10",
+         "content": {
+            "dingtalk": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            },
+            "work_wechat": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            }
+         },
+         "status": "active",
+         "template_type": "imrobot",
+         "status_time": "2022-08-17T02:44:38.522Z",
+         "create_time": "2022-08-17T02:44:38.522Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 8,
+         "name": "test9",
+         "content": {
+            "alert": {
+               "body": "hello {{bb}} world",
+               "subject": "hello {aa} country"
+            },
+            "alert_merge": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            }
+         },
+         "status": "active",
+         "template_type": "email",
+         "status_time": "2022-08-17T02:43:17.356Z",
+         "create_time": "2022-08-17T02:43:17.356Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 7,
+         "name": "test8",
+         "content": {
+            "alert": {
+               "body": "hello {{bb}} world",
+               "subject": "hello {aa} country"
+            },
+            "alert_merge": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            }
+         },
+         "status": "active",
+         "template_type": "email",
+         "status_time": "2022-08-16T09:22:59.836Z",
+         "create_time": "2022-08-16T09:22:59.836Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 6,
+         "name": "test6",
+         "content": {
+            "feishu": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            },
+            "dingtalk": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            },
+            "work_wechat": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            }
+         },
+         "status": "active",
+         "template_type": "imrobot",
+         "status_time": "2022-08-11T06:41:08.716Z",
+         "create_time": "2022-08-11T06:41:08.716Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 5,
+         "name": "test5",
+         "content": {
+            "feishu": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            },
+            "dingtalk": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            },
+            "work_wechat": {
+               "alert": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               },
+               "alert_merge": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               },
+               "alert_resolved": {
+                  "body": "hello {{}} world",
+                  "subject": "hello {{}} country"
+               }
+            }
+         },
+         "status": "active",
+         "template_type": "imrobot",
+         "status_time": "2022-08-11T06:40:26.788Z",
+         "create_time": "2022-08-11T06:40:26.789Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 4,
+         "name": "test4",
+         "content": {
+            "alert": {
+               "dingtalk": {
+                  "body": "hello {{bb}} world",
+                  "subject": "hello {aa} country"
+               }
+            },
+            "alert_merge": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            }
+         },
+         "status": "active",
+         "template_type": "imrobot",
+         "status_time": "2022-08-11T03:35:28.670Z",
+         "create_time": "2022-08-11T03:35:28.670Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 3,
+         "name": "test3",
+         "content": {
+            "alert": {
+               "body": "hello {{bb}} world"
+            },
+            "alert_merge": {
+               "body": "hello {{}} world"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world"
+            }
+         },
+         "status": "active",
+         "template_type": "sms",
+         "status_time": "2022-08-11T03:17:11.352Z",
+         "create_time": "2022-08-10T09:36:50.795Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 2,
+         "name": "test2",
+         "content": {
+            "alert": {
+               "body": "hello {{bb}} world",
+               "subject": "hello {{aa}} country"
+            },
+            "alert_merge": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            }
+         },
+         "status": "active",
+         "template_type": "sms",
+         "status_time": "2022-08-10T09:24:30.164Z",
+         "create_time": "2022-08-10T09:24:30.164Z",
+         "owner_id": 3,
+         "topic": "alert"
+      },
+      {
+         "id": 1,
+         "name": "test111",
+         "content": {
+            "alert": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_merge": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            },
+            "alert_resolved": {
+               "body": "hello {{}} world",
+               "subject": "hello {{}} country"
+            }
+         },
+         "status": "active",
+         "template_type": "sms",
+         "status_time": "2022-08-10T06:04:50.440Z",
+         "create_time": "2022-08-10T03:26:26.965Z",
+         "owner_id": 3,
+         "topic": "alert"
+      }
+   ],
+   "total_count": 9,
+   "ret_code": 0,
+   "action": "Boss2DescribeNotifyTemplateResponse"
+}
+----

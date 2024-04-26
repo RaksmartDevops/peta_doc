@@ -1,0 +1,88 @@
+---
+title: "迁移后 FAQ"
+description: 本小节主要介绍迁移后可能出现的问题及解决方法。
+weight: 2
+---
+
+
+== 系统启动问题
+
+=== 迁移后虚拟机无法启动
+
+*处理方法*：
+
+联系售前售后人员处理。
+
+== 业务连续性问题
+
+=== Windows 虚拟机迁移后安装/更新 virtio 驱动
+
+*处理方法*：
+
+若硬盘控制器类型设置为 vd：virtio 和 sd：scsi，需额外驱动支持，详细操作请参考link:/v6.1/operation/migration/manual/check_server/#_更新_virtio_驱动[更新 virtio 驱动]。
+
+若硬盘控制器类型设置为 hd:ide，则无需额外安装驱动。
+
+=== 开机后提示 ：Booting from Hard Disk
+
+*原因*：
+
+平台不兼容部分参数。
+
+*处理方法*：
+
+. 登录宿主节点（hyper 节点）服务器。
+. 执行如下命令，查看 webservice 节点：
++
+[source,shell]
+----
+cat /pitrix/conf/nodes/webservice
+----
+
+. 执行如下命令，登录任一 webservice 节点：
++
+[source,shell]
+----
+ssh xxx
+----
++
+
+include::../../../../../_components/note.adoc[]
+
+命令行中，xxx 为步骤2中查看的 webservice 节点名称。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 执行如下命令，检查配置，更新目标镜像对应控制器类型：
+
+[source,shell]
+----
+python /pitrix/lib/pitrix-scripts/exec_sql.py -d zone -f /pitrix/conf/global/postgresql.yaml -c "update image set block_bus='hd' where image_id = 'img-xxxxxx'"
+----
+
+include::../../../../../_components/note.adoc[]
+
+命令行中 image_id 可通过如下方式获取：
+
+. 登录云平台，查看云服务器列表。
+. 点击需要操作的云服务器 ID，查看云服务器详情。
+. 点击如图所示位置：
++
+image::/images/cloud_service/operation/migration/after_migration_faq_1.png[]
++
+. 进入镜像详情，即可获取  image_id：
++
+image::/images/cloud_service/operation/migration/after_migration_faq_2.png[]
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 开机后的 Windows 虚拟机网卡获取不到 IP
+
+*原因*：
+
+系统中相关服务没有开启。
+
+*处理方法*：
+
+选择 *我的电脑* > *管理* > *服务* > *dhcp client*，点击 *启动服务*。
+

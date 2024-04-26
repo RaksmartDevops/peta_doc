@@ -1,0 +1,131 @@
+---
+title: "使用 VIP 与 Keepalived 配置高可用服务"
+keywords: VPC, VPC 网络, 虚拟 IP
+description: 介绍如何使用虚拟 IP 搭建高可用主备集群。
+draft: false
+weight: 30
+
+---
+本文介绍如何通过 VIP + Keepalived 实现高可用服务搭建。
+
+== 背景知识
+
+高可用服务通常包含 2 台服务器，一台作为主服务器，另一台作为备服务器，它们共享同一个 VIP。同一时刻，VIP 只在一台主设备上生效，当主服务器出现问题时，备用服务器接管 VIP 继续提供服务。
+
+Keepalived 是基于 VRRP 协议的一款高可用软件，通过 keepalived.conf 配置文件可指定内网 VIP 为主备服务器的漂移 VIP，并指定 VIP 要绑定的网卡，从而实现高可用服务。
+
+== 环境信息
+
+本文的环境配置信息如下：
+
+* 操作系统：CentOS 7.6
+* 私有网络：192.168.1.0/24
+* 主服务器：192.168.1.10
+* 备服务器：192.168.1.20
+* 内网 VIP：192.168.1.100
+
+== 步骤一：申请内网 VIP
+
+. 登录管理控制台。
+. 在控制台导航栏中，选择**产品与服务** > *网络* > *内网 VIP*，进入**内网 VIP** 页面。
+. 点击 *VPC 网络 IP* 页签，进入 VPC 网络 IP 管理页面。
+. 点击**申请 IP**，在弹出的窗口中配置 VIP 名称及 IP 地址信息。
+. 点击**确认**，返回 *VPC 网络 IP* 页面。可以查看到新申请的 IP，**状态**为``未绑定``。
+
+== 步骤二：安装 Keepalived
+
+需要分别在主服务器和备服务器上执行如下操作。
+
+CentOS 下直接使用 yum 安装。
+[source,shell]
+----
+yum install keepalived
+----
+
+== 步骤三：配置 VIP
+
+需要分别在主服务器和备服务器上执行如下操作。
+
+. 执行 *vi /etc/keepalived/keepalived.conf*，修改配置文件。
++
+主服务器配置文件示例如下：
++
+[source]
+----
+! Configuration File for keepalived
+
+global_defs {
+    router_id lb01     #指定keepalived机器的标识
+}
+
+vrrp_instance VI_1 {
+    state MASTER                      #主为MASTER，备为BACKUP
+    priority 150                      #优先级，MASTER比BACKUP的值大
+    interface eth0                    #实例绑定的网卡
+    virtual_router_id 50              #VRID标记(0...255)，MASTER和BACKUP要一致
+    advert_int 1                      #心跳的间隔时间
+    authentication {
+        auth_type PASS                #明文密码验证
+        auth_pass 1111                #认证的密码
+}
+    virtual_ipaddress {
+        192.168.1.100                 #VIP地址
+    }
+}
+----
++
+备服务器配置示例如下：
++
+[source]
+----
+! Configuration File for keepalived
+
+global_defs {
+   router_id lb01     #指定keepalived机器的标识
+}
+
+
+vrrp_instance VI_1 {
+    state BACKUP                     #主为MASTER，备为BACKUP
+    interface eth0                   #实例绑定的网卡
+    virtual_router_id 192            #VRID标记(0...255)，MASTER和BACKUP要一致
+    priority 99                      #优先级，数字越高优先级越高
+    advert_int 1                     #心跳的间隔时间
+    authentication {                 #验证类型和密码
+        auth_type PASS               #明文密码验证
+        auth_pass 123456             #认证的密码
+    }
+
+    virtual_ipaddress {              #VIP地址
+        192.168.1.100
+    }
+}
+----
+
+. 按 *esc* 退出编辑状态，输入 `:wq!` 保存并退出。
+. 启动 keepalived。
++
+[source,shell]
+----
+service keepalived start
+----
+
+== 步骤四：验证结果
+
+. 通过  `ip a`  命令查看到主云服务器的 eth0 网卡多了一个 IP 地址，说明此云服务器已经占用该 VIP 地址。
++
+image::/images/cloud_service/network/vpc/505002_vip_cfg.png[]
+
+. 停止该云服务器上的 keepalived 服务。
++
+[source,shell]
+----
+service keepalived stop
+----
+
+. 在备服务器上，查看 VIP 是否正常迁移到备服务器。
++
+[source,shell]
+----
+ip a
+----

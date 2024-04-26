@@ -1,0 +1,9 @@
+---
+title: 添加安全组规则
+description: 如何添加安全组规则
+draft: false
+weight: 10
+keyword: 云服务器, 安全，安全组规则
+---
+
+include::../../../../../../_cloud_service/sg/04_rule_add.adoc[]

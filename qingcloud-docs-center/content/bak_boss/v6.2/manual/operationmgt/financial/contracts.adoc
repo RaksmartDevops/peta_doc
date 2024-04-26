@@ -1,0 +1,106 @@
+---
+title: "合同管理"
+weight: 60
+---
+ 
+
+== 场景描述
+
+该任务指导管理员进入合同管理页面，查看{platform_name_cn}所有合同列表、并执行下载合同、寄出合同、修改收件信息、修改物流单号、查看物流以及废弃合同等操作。
+
+== 功能描述
+
+合同管理页面集中展示了{platform_name_cn}上生成的所有合同列表信息，包括合同状态、合同 ID/编号、签约甲方名称、合同类型、合同状态、接收方式、客户名称/ID 以及更新时间信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 选择 *运用管理* > *财务* > *合同管理*，进入合同管理页面。
++
+image::/images/boss/manual/operationmgt/contracts_operation.png[]
+
+. 点击合同 ID，进图合同详细信息页面。
++
+在 *合同详情* 页签，可查看合同签订的详细信息附件。
++
+在 *操作日志* 页签，可查看合同操作记录。
+
+=== 下载合同
+
+在待下载合同所在行点击image:/images/boss/manual/icon.png[]，点击 *下载*，合同文件保存到本地。
+
+=== 寄出合同
+
+include::../../../../../_components/note.adoc[]
+合同状态为 *待寄出* 时可执行以下操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在待寄出合同所在行点击image:/images/boss/manual/icon.png[]，点击 *寄出*，。
++
+弹出 *寄出* 对话框。
+
+. 选择物流公司并输入物流单号。
+. 点击 *寄出*。
+
+=== 修改收件信息
+
+include::../../../../../_components/note.adoc[]
+
+合同状态为 *待寄出* 时可执行以下操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在待修改合同所在行点击image:/images/boss/manual/icon.png[]，点击 *修改收件信息*。
++
+弹出 *修改收件信息* 对话框。
+
+. 根据提示信息输入参数，点击 *修改*。
+
+=== 修改物流单号
+
+include::../../../../../_components/note.adoc[]
+
+合同状态为 *已寄出* 时可执行以下操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在待修改合同所在行点击image:/images/boss/manual/icon.png[]，点击 *修改物流单号*。
++
+弹出 *修改物流单号* 对话框。
+
+. 选择物流公司，输入物流单号。
+. 点击 *修改*。
+
+=== 查看物流
+
+include::../../../../../_components/note.adoc[]
+
+合同状态为 *已寄出* 时可执行以下操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+在待查看合同所在行点击image:/images/boss/manual/icon.png[]，点击 *查看物流*，进入物流详情页面。
+
+=== 废弃合同
+
+include::../../../../../_components/note.adoc[]
+
+合同状态为 *已寄出* 时可执行以下操作。
+
+已废弃的合同不可撤回，请谨慎操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+. 在待废弃合同所在行点击image:/images/boss/manual/icon.png[]，点击 *废弃*。
++
+弹出 *请填写废弃该合同的原因* 对话框。
+
+. 填写废弃原因，点击 *废弃*。

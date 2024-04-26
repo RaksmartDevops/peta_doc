@@ -1,0 +1,66 @@
+---
+title: "为负载均衡器添加路由规则"
+keywords: VPC, VPC 网络, 路由表
+description: 私有网络路由表及负载均衡器路由表应用示例。
+draft: false
+weight: 4
+---
+
+== 应用场景
+
+云服务器通过隧道访问其他 VPC 的负载均衡器。假设，用户数据中心的网络（ 192.168.10.0/24 ） 和云上 VPC 通过隧道打通（ 172.16.10.0/24 ），用户数据中心的客户端（ 192.168.10.2）希望访问位于云上 VPC 下的“公私网混合 LB”（ 172.16.10.253 ）。
+
+
+== 步骤1：测试隧道连通情况
+
+. 登录客户端 192.168.10.2，ping 云服务器（假设 172.16.10.5 ），可以正常通信，符合预期。
++
+[source,shell]
+----
+ping 172.16.10.5
+----
++
+image::/images/cloud_service/network/vpc/504003_ping_vpn_instance.jpg[]
+
+. 添加 LB 监听器和后端。
++
+需要确保 LB 有后端服务器，才可以被访问。
+
+. 客户端 ping 公私网混合 LB，无法通信，符合预期。
++
+[source,shell]
+----
+ping 172.16.10.253
+----
++
+image::/images/cloud_service/network/vpc/504003_ping_vpn_lb1.jpg[]
+
+== 步骤2：创建路由表并绑定到负载均衡器
+
+. 创建一个**关联资源类型**为**负载均衡器**的路由表。
++
+image::/images/cloud_service/network/vpc/504003_routetable_lb.png[,50%]
+
+. 创建完成后，将路由表绑定到负载均衡器（ 172.16.10.253 ）。
+
+== 步骤3：添加路由表规则
+
+. 在路由表规则页面，点击**添加路由**，添加路由规则。如下图所示。
++
+image::/images/cloud_service/network/vpc/504003_lb_routerules.png[,50%]
+
+* *目标网络*：希望资源能够访问的 IP 网络，即 LB 要访问的目标网络，在本示例中为 `192.168.10.0/24` 。
+* *下一跳类型*： 路由器，默认为 LB 所在的 VPC 网络路由器。
+
+. 添加完成后，点击**应用修改**。
+
+== 步骤4：验证客户端是否能连通公私网混合 LB
+
+在客户端 ping 公私网混合 LB，此时可以正常通信。
+[source,shell]
+----
+ ping 172.16.10.253
+----
+
+image::/images/cloud_service/network/vpc/504003_ping_vpn_lb2.jpg[]
+

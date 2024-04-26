@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{ if .Params.keywords }}
+<meta name="keywords" content="{{.Params.keywords}}">
+{{ else }}
+<meta name="keywords" content="{{.Site.Params.keywords}}">
+{{end}}
+{{ if .Params.description }}
+{{$description := partial "get-description.html" .}}
+<meta name="description" content="{{$description}}">
+{{else}}
+<meta name="description" content="{{.Site.Params.description}}">
+{{ end }}
+{{ partialCached "favicon.html" . }}
+<title>{{.Title}}{{if ne .Title .Site.Title}} - {{.Site.Title}}{{end}}</title>
+{{ partialCached "head-css.html" . }}
+{{ partialCached "head-js.html" . }}

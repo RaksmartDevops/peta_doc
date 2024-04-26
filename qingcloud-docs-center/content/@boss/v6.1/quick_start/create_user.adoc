@@ -1,0 +1,13 @@
+---
+title: "创建用户"
+weight: 1
+draft: true
+---
+
+BOSS 作为{platform_name_cn}的运维门户，其用户，我们称之为管理员用户。根据运维操作目的的不同，我们可以分别创建多个管理员账号，并赋予不同的角色，行使不同的权限。详细操作流程如下。
+
+
+. link:../system_management/authority_management/account_management/#_创建账户[创建账户]，并按需求，指定相应的角色权限。
+. 创建用户角色。
+. 创建管理员账号。
+. 给管理员账号分配角色。

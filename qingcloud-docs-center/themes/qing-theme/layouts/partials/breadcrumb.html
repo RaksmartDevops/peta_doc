@@ -1,0 +1,22 @@
+<ul class="content-breadcrumb">
+  {{- $.Scratch.Set "url" "" -}}
+  {{- range $index, $element := (split .RelPermalink "/") -}}
+    {{- if (gt (len .) 0) -}}
+    {{- $.Scratch.Add "url" (print "/" . ) -}}
+    {{- with $.Site.GetPage ($.Scratch.Get `url`) -}}
+      {{$title := partial "get-title.html" .}}
+      {{- if eq $index 1}}
+      <li class="icon-slash_fill"><a href="{{$.Scratch.Get `url`}}" data-url="{{$.Scratch.Get `url`}}">{{.Site.Title}}</a></li>
+      {{- else if or .Content (.Params.isSearchPage) (.Params.study_section)}}
+      <li class="icon-slash_fill"><a href="{{$.Scratch.Get `url`}}" data-url="{{$.Scratch.Get `url`}}">{{$title}}</a></li>
+      {{- else if .Parent.Params.isSearchPage}}
+      {{- else if not .Content}}
+        {{$FirstChildPage := (partial "get-first-child-page.html" .)}}
+        <li class="icon-slash_fill"><a href="{{$FirstChildPage.RelPermalink}}" data-url="{{$.Scratch.Get `url`}}">{{$title}}</a></li>
+      {{- else}}
+        <li class="icon-slash_fill"><a class="no-link" data-url="{{$.Scratch.Get `url`}}">{{$title}}</a></li>
+      {{end}}
+    {{- end -}}
+    {{- end -}}
+  {{- end -}}
+</ul>

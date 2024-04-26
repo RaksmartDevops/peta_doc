@@ -1,0 +1,41 @@
+---
+
+title: "HTTPS 访问报错 400"
+weight: 30
+
+---
+== 背景介绍
+
+当服务器无法理解对它的请求时，会发生 400 Bad Request 错误。 之所以称为 400 错误，是因为这是 Web 服务器用来描述这种错误的 HTTP 状态代码。
+
+== 解决方法
+
+=== HTTP 和 HTTPS 交互的问题
+
+如果负载均衡器配置的是 HTTP 的监听器，但是后端采用的是 HTTPS，Client 端访问就会出现 400 错误，如下提供两种解决方式供参考。
+
+* 如果仍然想在后端配置了 SSL ，负载均衡器的监听器则需要改成 TCP 的方式
++
+操作步骤：*负载均衡器* > *lb-xxxxxxx*，进入负载均衡器后修改监听器。
++
+image::/images/cloud_service/compute/vm/faq_trouble_httpserror_1.jpg[]
++
+image::/images/cloud_service/compute/vm/faq_trouble_httpserror_2.jpg[]
+
+* 如果后端采用 HTTP，负载均衡器创建 HTTPS 监听器，HTTPS 监听器加载 SSL 证书，由 LB 来做 SSL 证书的加载和卸载
++
+操作步骤：*负载均衡器* > *lb-xxxxxxx* > *创建监听器* ，HTTPS模板如下图。
++
+image::/images/cloud_service/compute/vm/faq_trouble_httpserror_3.png[]
+
+=== 仔细检查地址
+
+出现 400 错误的最常见原因是网址输入错误。 如果您自己在地址栏中输入了 URL，则可能输入错误。如果单击另一个网页上的链接并显示404错误，则也有可能在链接页面上键入了错误的链接。检查地址，看看是否发现任何明显的错误。 另外，请检查URL中的特殊符号，尤其是您在 URL 中通常看不到的特殊符号。
+
+=== 清除浏览器的Cookie和缓存
+
+许多网站报告 400 错误，因为它们正在读取的 Cookie 损坏或过旧。 某些浏览器扩展程序也可能会更改 Cookie，并导致 400 错误。您的浏览器也可能缓存了您试图打开的页面的损坏版本,操作步骤浏览器右上角处 > 更多工具 > 清除浏览数据 > 清除数据
+
+=== 刷新您的 DNS
+
+您的计算机可能存储了过时 DNS 记录导致错误。 简单刷新 DNS 记录可能有助于解决问题。请参考已获得的有关如何在 link:https://www.howtogeek.com/343349/update-troubleshoot-browsing-issues-by-reloading-the-dns-client-cache-on-windows/[Windows] 和 link:https://www.howtogeek.com/180356/how-to-reset-the-dns-cache-on-mac-os-x/[macOS] 上重置 DNS 缓存的完整指南。

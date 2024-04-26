@@ -1,0 +1,22 @@
+---
+title: "第三方数据集成"
+description: 本小节主要介绍第三方数据集成相关内容。
+keywords: 云计算,  对象存储
+draft: false
+weight: 3
+collapsible: true
+---
+
+为了进一步提高 QingStor 对象存储的易用性，降低使用 QingStor 对象存储服务的学习成本，QingStor 对象存储为用户提供了相应的插件与工具，用于支持第三方软件与 QingStor 对象存储服务的直接对接。
+
+- link:logstash_input/[Logstash Input QingStor]
+    ** link:logstash_input/#_安装[安装]
+    ** link:logstash_input/#_配置[配置]
+    ** link:logstash_input/#_使用[使用]
+- link:logstash_output/[Logstash Output QingStor]
+    ** link:logstash_output/#_安装[安装]
+    ** link:logstash_output/#_配置[配置]
+    ** link:logstash_output/#_使用[使用]
+- link:wordpress_plugin_for_qingstor/[WordPress QingStor]
+    ** link:wordpress_plugin_for_qingstor/#_安装[安装]
+    ** link:wordpress_plugin_for_qingstor/#_配置[配置]

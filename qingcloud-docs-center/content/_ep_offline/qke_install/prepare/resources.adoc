@@ -1,0 +1,75 @@
+
+// QKE 安装下载资源
+
+== QKE 应用安装包
+
+如下为{product_name} v6.1 版本推荐的 QKE 版本，具体请根据实际情况进行下载。
+
+// 下载路径：`\ftp://ins.qingcloud.com/migrate_appcenter2_recommend/6_1/app-o6lvbkhm_QKE`。
+
+// 若只需要安装其中一个版本，请按如下路径下载：
+
+[cols='1,3']
+|===
+| QKE 版本	 | 下载路径	
+
+| v3.0.0	| `\ftp://ins.qingcloud.com/migrate_appcenter2_recommend/6_1/app-o6lvbkhm_QKE/appv-7290ketz`	
+| v2.3.1	| `\ftp://ins.qingcloud.com/migrate_appcenter2_recommend/6_1/app-o6lvbkhm_QKE/appv-opj5rz6z`	
+|===
+
+== Harbor 应用安装包
+
+Harbor 用于创建私有镜像仓库，然后需要将 qke_harbor.tar.gz 上传到创建的私有镜像仓库中。
+
+include::../../../_components/note.adoc[]
+如果客户有自己的镜像仓库，也可以不用安装 Harbor 应用，请确保云平台环境与客户的私有镜像仓库网络互通即可。
+include::../../../_components/table_footer.adoc[]
+
+Harbor 要求如下：
+
+* Harbor 版本：Harbor 2.2.1 - Qingcloud 1.6.0
+* app_version：appv-cl8323yd
+
+如下为{product_name} v6.1 版本推荐的 Harbor 版本，具体请根据实际情况进行下载。
+
+下载路径：`\ftp://ins.qingcloud.com/migrate_appcenter2_recommend/6_1/app-2mhyb1ui_Harbor`。
+
+// == ELK 应用安装包
+
+// ELK 集群用于存储 QKE 集群日志数据。如果没有 ELK 应用，QKE 只能使用集群内自带 ES 服务。为了便于扩容，推荐安装 ELK 应用。
+
+// 下载路径：`\ftp://ins.qingcloud.com/migrate_appcenter2_apps/migrate_appcenter2_elk/`。
+
+// == Etcd 应用安装包
+
+// Etcd 集群用于存储 QKE 集群数据，否则将使用集群内自带 etcd 服务。为了更强性能，推荐安装 Etcd 应用。
+
+// 推荐 Etcd 版本：3.4 及以上。
+
+// 下载路径：`\ftp://ins.qingcloud.com/migrate_appcenter2_apps/migrate_appcenter2_etcd/`。
+
+== QKE 资源包
+
+仅 QKE v3.0.0 版本需要下载如下 QKE 依赖资源。
+
+创建 QKE v3.0.0 集群时需要依赖 Docker 镜像和 QKE 集群安装包，所以在安装 QKE 应用时需要在环境中配置好依赖的资源。
+
+下载路径：`\ftp://ins.qingcloud.com/k8s/QKE/v3.0.0/amd64/`。
+
+[cols='1,2'] 
+|===
+| 资源 | 说明 
+
+| qke_harbor.tar.gz
+| 主要包含 Docker 镜像和推送 Docker 镜像到 Harbor 镜像仓库的脚本。
+
+| qke-cli-v3.0.0.tar.gz
+| 用于安装 QKE CLI 工具。
+
+| qke-installer-v3.0.0.tar.gz
+| 用于创建 K8s 集群。
+
+| qke_nginx.tar.gz
+| 用于搭建 QKE 专属的文件服务器。
+|===
+

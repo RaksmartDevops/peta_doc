@@ -1,0 +1,103 @@
+---
+title: 获取 API Key 列表（Boss2DescribeAPIKey）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeAPIKey
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| total_count
+| Integer
+| 查询到的资源总数
+|
+
+| api_key_set
+| Array
+| API 信息列表
+|
+
+| access_key
+| String
+| API 秘钥 ID
+|
+
+| status
+| Integer
+| 状态
+a|
+
+0: 正常
+1: 禁用
+2: 已删除
+
+| create_time
+| String
+| 创建时间
+|
+
+| remarks
+| Value
+| 备注（名称）~~~~
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeAPIKey",
+    "user_id": 3,        // 用户 ID
+    "limit": 10,
+    "offset": 0,
+    "search_word": "",   // 搜索 remarks 和 Access Key
+    "status": [],
+    "sort_key": "create_time",
+    "reverse": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "api_key_set": [
+      {
+         "access_key": "AHLEJRUCKVKELGTYMOOH",
+         "status": 0,
+         "create_time": "2019-07-02T08:09:47.190Z",
+         "remarks": "yoyo"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeAPIKeyResponse"
+}
+----

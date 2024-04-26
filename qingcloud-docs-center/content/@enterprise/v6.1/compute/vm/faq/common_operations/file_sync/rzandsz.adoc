@@ -1,0 +1,43 @@
+---
+title: "安装及使用 rz/sz 工具"
+weight: 10
+
+---
+== 概述
+
+rz，sz 是 Linux 同 Windows 进行文件传输的命令行工具，优点就是不用再开一个 SFTP 工具登录上去上传下载文件，该工具需要借助 XSHELL 才能使用，不能直接在 VNC 上使用。
+
+sz：将选定的文件发送（send）到本地机器。
+rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到 Linux 服务器。
+
+== 安装与使用
+
+=== 安装 lrzsz
+
+[source,shell]
+----
+yum install lrzsz  # 在 centos 上面安装
+
+sudo apt-get install lrzsz    # 在 ubuntu 上面安装
+----
+
+=== 下载文件到本地
+
+[source,shell]
+----
+sz filename   # 下载一个文件
+
+sz filename1 filename2     # 下载多个文件
+
+sz dir/*     # 下载 dir 目录下的所有文件，不包含 dir 下的文件夹
+----
+
+image::/images/cloud_service/compute/vm/faq_rzandsz01.jpg[rzandsz01]
+
+=== 上传文件到 Linux 云服务器
+[source,shell]
+----
+rz
+----
+
+image::/images/cloud_service/compute/vm/faq_rzandsz02.jpg[rzandsz02]

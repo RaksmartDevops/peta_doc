@@ -1,0 +1,51 @@
+---
+title: "Linux 系统下查看系统用户登录记录"
+weight: 30
+---
+== 背景信息
+
+如需查看 Linux 系统用户登录记录，可参考下面方法。
+
+== 相关命功能如下所示
+
+* who命令显示当前登录用户的信息
++
+[source,shell]
+----
+who
+----
+
+* w 命令显示当前登录的用户名并显示该用户当前执行的任务
++
+[source,shell]
+----
+w
+----
+
+* users 命令显示当前登录的用户名
++
+[source,shell]
+----
+users
+----
+
+* last 命令显示当前与过去登录系统的用户信息
++
+[source,shell]
+----
+lastb
+----
+
+* lastlog 命令显示用户最后一次登录的信息
++
+[source,shell]
+----
+lastlog
+----
+
+* secure 文件查看登录记录
++
+[source,shell]
+----
+cat /var/log/secure
+----

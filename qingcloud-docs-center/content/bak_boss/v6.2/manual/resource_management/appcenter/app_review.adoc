@@ -1,0 +1,68 @@
+---
+title: "应用审核"
+weight: 5
+draft: true
+---
+
+
+== 场景描述
+
+该任务指导管理员进入 AppCenter: 应用审核页面，查看 AppCenter: 应用审核列表详情和预览应用。
+
+== 功能描述
+
+AppCenter: 应用审核列表页面罗列了{platform_name_cn}上用户上传的所有云应用、SaaS 应用以及 License 应用的审核状态、版本名称/ID、应用名称/ ID、应用类型、开发者/ ID 、提交时间以及审核时间等信息。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *AppCenter* > *应用审核*，可查看所有云应用、SaaS 应用以及 License 应用列表。
++
+image::/images/boss/manual/resource_mgt/app_review_operation.png[]
+
+. 查看应用版本和应用信息。
++
+点击应用的版本名称，进入应用版本的详情页面，可查看应用版本详情、版本配置文件、价格以及审核记录信息。
++
+点击应用名称，进入应用版本的详情页面，可查看应用的详情、配置（SaaS 应用/License 应用）、价格（SaaS 应用/License 应用）、应用版本（云应用）、条款及文档、应用截图、审核记录（SaaS 应用/License 应用）信息。
+
+=== 预览应用
+
+在待预览应用所在行末尾点击image:/images/boss/manual/icon.png[]，点击 *预览应用*。
+
+=== 迁移资源
+
+include::../../../../../_components/note.adoc[]
+仅云应用支持迁移资源，且仅在云应用状态为 *审核通过* 或 *待审核* 时，可执行资源迁移操作。
+
+资源迁移一般会将资源从某个单可用区往各个其他区迁移，以让用户可根据自己需求选择区。
+
+进入该 AppCenter 集群的详情页面的 *配置文件* 页签查看迁移结果判断资源是否迁移成功。
+
+include::../../../../../_components/table_footer.adoc[]
+
+在待操作云应用所在行末尾点击image:/images/boss/manual/icon.png[]，点击 *迁移资源*。
+
+=== 应用审核
+
+include::../../../../../_components/note.adoc[]
+
+仅云应用支持版本审核，SaaS 应用/License 应用支持应用审核，且在应用状态为 *待审核* 时，可执行审核操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在待操作云应用所在行末尾点击image:/images/boss/manual/icon.png[]。
++
+审核云应用，点击 *版本审核*。
++
+审核 SaaS 应用/License 应用，点击 *应用审核*。
+
+. 在 *版本审核* 或者 *应用审核* 对话框选择审核类型并输入审核反馈。
++
+image::/images/boss/manual/resource_mgt/app_review_step.png[,60%]
+
+. 根据实际情况选择点击 *审核通过* 或 *审核拒绝*，完成应用审核操作。

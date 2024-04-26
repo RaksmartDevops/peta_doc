@@ -1,0 +1,77 @@
+---
+title: "控制台登录服务器"
+weight:  30
+---
+
+
+== 名词解释
+
+*LDAP*：（Lightweight Directory Access Protocol），轻量目录访问协议，是一种用来查询与更新 Active Directory 的目录服务通信协议。AD 域服务利用 LDAP 命名路径（LDAP naming path）来表示对象在 AD 内的位置，以便用它来访问 AD 内的对象。
+
+*AD*：（Active Directory），是面向 Windows Standard Server、Windows Enterprise Server 以及 Windows Datacenter Server 的 link:https://baike.baidu.com/item/目录服务/10413830[目录服务]。目录代表存储网络上对象信息的一种层次结构。像书的目录一样，可以提供 windows 系统内的快速查询网络上的对象，包括共享资源（例如服务器、打印机、网络用户以及计算机帐号等）、域、应用程序、服务、安全方针等网络中的一切事物。
+
+== 场景描述
+
+该任务指导用户进入 *控制台登录服务器* 页面，通过创建控制台登录服务器，可以支持与用户已有的 AD、LDAP 服务器进行对接，对接之后用户可以通过已有账号登录管理控制台。
+
+== 功能描述
+
+通过创建控制台登录服务器，可以支持与用户已有的 AD、LDAP 服务器进行对接，对接之后用户可以通过已有账号登录 *管理控制台*。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *用户管理* > *第三方用户*，进入 *第三方用户* 页面，可查看所有第三方用户的状态、用户 ID 等相关信息。
++
+image::/images/boss/manual/user_management/console_login_server_1.png[]
+
+=== 创建控制台权限用户
+
+. 点击 *创建*，弹出 *创建登录服务器* 对话框。
++
+image::/images/boss/manual/user_management/console_login_server_2.png[]
+
+. 根据提示信息填写参数，参数信息填写说明如下：
++
+[cols="2,8a", options="header"]
+|===
+|参数
+|说明
+
+|类型
+a|* LDAP 服务器：LDAP（Lightweight Directory Access Protocol），轻量目录访问协议，是一种用来查询与更新 Active Directory 的目录服务通信协议。
+* AD 服务器：AD (Active Directory )AD 域服务利用 LDAP 命名路径（LDAP naming path）来表示对象在 AD 内的位置，以便用它来访问 AD 内的对象。
+
+|使用
+a|* 开启：使用 SSL，可提高系统间连接安性合数据传输的安全性，保护用户个人信息，防止他人阅读与修改。
+* 关闭：默认关闭，不使用 SSL。
+
+|服务器地址
+|示例: 192.168.0.1
+
+|服务器端口
+|示例: 8080
+
+|基准 DN
+a|DN （Disinguished Name）有三个属性： +
+*DC （Domain Component）*：表示 DNS 域名中的组件 +
+*CN （Common Name）*：通用名称，一般为用户名或计算机名 +
+*OU （Organizational Unit）*：组织单位 +
+示例：dc=example,dc=com
+
+|管理员账号
+|示例：cn=admin,dc=example,dc=com
+
+|密码
+|-
+
+|区域
+|可选择一个或者多个区域，默认选择全部区域。
+|===
+
+
+. 参数填写完成后，点击 *创建*。

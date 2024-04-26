@@ -1,0 +1,107 @@
+---
+title: 获取IAAS版本信息（Boss2GetIaasVersion）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetIaasVersion
+
+=== Method
+POST
+
+=== 接口描述
+注意：zones 参数不传或者传空列表时，会返回所有区域的版本信息。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| zone
+| 区域id
+| 此处为region id或单zone id
+
+| platform_id
+| 平台唯一标识
+|
+
+| console_id
+| 控制台标识
+|
+
+| installer_version
+| 安装包版本
+|
+
+| qingcloud_version
+| {platform_name_cn}版本
+|
+
+| patch_version
+| 补丁版本
+|
+
+| hosts
+| {platform_name_cn}访问hosts信息
+|
+
+| domain
+| {platform_name_cn}域名
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetIaasVersion",
+    "zones": ["testing"]     // 传入 region id 列表（包括独立的zone），不传或传空参数时，返回所有 region 的结果
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "version_set": [
+      {
+         "zone": "testing",
+         "platform_id": "14d448a1733a88f5b509eaae76126151",
+         "console_id": "testingcloud",
+         "installer_version": "4.6.1",
+         "qingcloud_version": "20200807",
+         "patch_version": "20200907-20200917",
+         "hosts": [
+            "172.31.61.141 console.testing.com appcenter.testing.com api.testing.com docs.testing.com",
+            "172.31.60.141 console.testing.com appcenter.testing.com api.testing.com docs.testing.com",
+            "172.31.60.110 cb0testing1a.testing.com",
+            "172.31.60.111 cb1testing1a.testing.com",
+            "172.31.60.141 boss.testing.com",
+            "172.31.61.106 cb0testing1b.testing.com",
+            "172.31.61.107 cb1testing1b.testing.com"
+         ],
+         "domain": "testing.com"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetIaasVersionResponse"
+}
+----

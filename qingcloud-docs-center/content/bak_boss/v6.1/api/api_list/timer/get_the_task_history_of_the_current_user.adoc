@@ -1,0 +1,109 @@
+---
+title: 获取当前用户的任务历史（Boss2DescribeCurrentTaskHistory）
+weight: 5
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeCurrentTaskHistory
+
+=== Method
+POST
+
+=== 接口描述
+获取当前用户的任务历史，如指定sched_id不属于当前用户，将会返回id不存在的错误。
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| id
+| 任务历史id
+|
+
+| sched_id
+| 计划任务id
+|
+
+| date_done
+| 任务完成时间
+|
+
+| status
+a|
+任务执行结果状态
+
+* success - 成功
+* failure - 失败
+|
+
+| traceback
+| 任务执行失败后将会返回python异常信息
+|
+
+| result
+| 任务执行结果
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2DescribeCurrentTaskHistory",
+  "sched_id": 41,  // [必须]指定计划任务id
+  
+  // 以下参数用于筛选
+  "id": [1,2,3], // 使用任务历史id进行过滤
+  "status": ["success", "failure"],  //使用任务状态进行过滤，success - 成功 failure - 失败
+  "start_time": "2019-01-21T01:36:01.938Z", // 指定起始时间
+  "end_time": "2019-01-21T02:36:01.938Z" // 指定结束时间
+  
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "history_set": [
+      {
+         "id": 12,
+         "sched_id": 48,
+         "date_done": "2019-09-02T11:53:00.106Z",
+         "status": "success",
+         "traceback": null,
+         "result": "null"
+      },
+      {
+         "id": 5,
+         "sched_id": 48,
+         "date_done": "2019-09-02T10:53:00.248Z",
+         "status": "failure",
+         "traceback": "Traceback (most recent call last):\n  File \"/venvs/boss2/lib/python3.6/site-packages/celery/app/trace.py\", line 385, in trace_task\n    R = retval = fun(*args, **kwargs)\n  File \"/Users/venvs/boss2/lib/python3.6/site-packages/celery/app/trace.py\", line 648, in __protected_call__\n    return self.run(*args, **kwargs)\n  File \"/var/boss2-manager/src/apps/scheduler/tasks.py\", line 34, in test_sched\n    raise\nRuntimeError: No active exception to reraise\n",
+         "result": "{\"exc_type\": \"RuntimeError\", \"exc_message\": [\"No active exception to reraise\"], \"exc_module\": \"builtins\"}"
+      }
+   ],
+   "total_count": 2,
+   "ret_code": 0,
+   "action": "Boss2DescribeCurrentTaskHistoryResponse"
+}
+----

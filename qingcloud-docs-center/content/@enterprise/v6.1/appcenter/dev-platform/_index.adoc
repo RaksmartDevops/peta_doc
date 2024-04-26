@@ -1,0 +1,40 @@
+---
+title: "应用开发平台"
+weight: 2
+collapsible: true
+type: "product"
+
+study_section:
+
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 产品概述
+            url: introduction/introduction/
+          - title: 云应用架构
+            url: introduction/architechure/
+
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 云应用入门指南
+            url: quick-start/cluster/
+          - title: SaaS 应用入门指南
+            url: quick-start/quick_start_saas/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 云应用开发指南
+            url: cluster-developer-guide/management/
+          - title: License 应用开发指南
+            url: release_license/
+          - title: SaaS 应用开发指南
+            url: saas-developer-guide/saas-flow/
+---

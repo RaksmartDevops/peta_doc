@@ -1,0 +1,8 @@
+---
+title: 删除 IPv6 EIP
+weight: 50
+draft: false
+---
+:ipv6:
+
+include::../../../../../../_cloud_service/eip/delete.adoc[]

@@ -1,0 +1,30 @@
+---
+title: "镜像"
+linkTitle: "镜像"
+weight: 3
+
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是镜像
+            url: intro/image/
+        
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 捕获镜像
+            url: manual/image/
+          - title: 自有镜像跨区复制
+            url: manual/copy_resource/
+          - title: 镜像管理
+            url: manual/image_manage/
+
+
+---

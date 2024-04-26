@@ -1,0 +1,101 @@
+---
+title: 一键迁移（Boss2StartV2VTask）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2StartV2VTask
+
+=== Method
+POST
+
+=== 接口描述
+zone 是必传参数，后端根据 zone 参数转发到对应的 V2V 服务器。
+该处返回的 job_id 用于查询迁移任务日志
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| job_id
+| String
+| 任务 id
+|
+
+| owner
+| String
+| 资源所有者
+|
+
+| v2v_set
+| Array
+| 任务详情
+|
+
+| _job_id
+| String
+| 任务 id
+|
+
+| thread
+| Boolean
+| 是否是线程模式
+|
+
+| v2v_id
+| String
+| v2v 资源 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2StartV2VTask",
+  "zone": "test", // [必须]指定zone
+  
+  "v2v_set": [
+    {
+      "v2v_id": "v2v-dv131nlm"
+    }
+  ]
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2StartV2VTaskResponse",
+   "job_id": "job-7hhmxobu",
+   "owner": "boss",
+   "ret_code": 0,
+   "v2v_set": [
+      {
+         "_job_id": "job-7hhmxobu",
+         "thread": false,
+         "v2v_id": "v2v-dv131nlm"
+      }
+   ]
+}
+----

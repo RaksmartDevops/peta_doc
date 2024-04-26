@@ -1,0 +1,59 @@
+---
+title: 弹性公网 EIP
+weight: 10
+description: 弹性公网 EIP 是在互联网上合法的静态 IP 地址。用户可以将申请到的公网 EIP 地址与任意云服务器、NAT 网关、负载均衡器等资源绑定。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是弹性公网 EIP
+            url: intro/introduction/
+          - title: 应用场景
+            url: intro/scenario/
+          - title: 计费说明
+            url: billing/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: EIP 快速入门
+            url: quickstart/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 公网 IPv4
+        children:
+          - title: 申请 IPv4 EIP
+            url: manual/ipv4/apply/
+          - title: 绑定 IPv4 EIP
+            url: manual/ipv4/outband_ipv4/
+          - title: 查看监控数据
+            url: manual/ipv4/moni_data/
+          - title: 配置指标告警
+            url: manual/ipv4/index_alarm/
+      - title: 公网 IPv6
+        children:
+          - title: 公网 IPv6 概述
+            url: manual/ipv6/overview/
+          - title: 云服务器 IPv6 接入公网
+            url: manual/ipv6/outbind_ipv6/
+          - title: 申请 IPv6 EIP
+            url: manual/ipv6/apply/
+          - title: IPv6 EIP 绑定到云服务器
+            url: manual/ipv6/inbind_ipv6/
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: null
+        children:
+          - title: 公网连通 FAQ
+            url: faq/connect/
+          - title: 计费 FAQ
+            url: faq/bill/
+          - title: 绑定与解绑 FAQ
+            url: faq/bind/
+---

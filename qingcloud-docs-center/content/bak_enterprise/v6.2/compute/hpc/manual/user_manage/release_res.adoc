@@ -1,0 +1,8 @@
+---
+title: "解除分配"
+weight: 5
+---
+
+:ep:
+
+include::../../../../../../_cloud_service/ehpc/user/release_res.adoc[]

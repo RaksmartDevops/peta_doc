@@ -1,0 +1,16 @@
+---
+title: "角色管理"
+weight: 3
+linkkey: vdc_role_management
+---
+
+在角色管理中，初始化全局角色有部门管理员，运维成员和只读成员。您还可以自定义其他角色，以及查看和管理角色下的用户和策略等信息。针对角色管理，企业空间支持以下操作：
+
+* link:role_create/[创建角色]
+* link:role_bind_strategy/[关联策略]
+* link:role_unbind_strategy/[解绑策略]
+* link:role_edit/[修改角色]
+* link:role_delete/[删除角色]
+
+
+

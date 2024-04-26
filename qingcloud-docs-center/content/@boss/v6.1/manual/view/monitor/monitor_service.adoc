@@ -1,0 +1,57 @@
+---
+title: "云服务节点监控面板"
+weight: 20
+---
+
+== 场景描述
+
+该任务指导管理员进入云服务节点监控面板，查看云服务节点使用情况。
+
+== 功能描述
+
+计算节点面板展示了云服务监控数据表、云服务节点资源水位大盘、云服务节点资源监控详情、EIP 监控大盘和 NAT 网关大盘。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 登录 *云计算运维管理平台* 。
+. 选择 *看板* > *监控面板* > *云服务节点监控面板*。
++
+image::/images/boss/manual/view/monitor_service_1.png[]
+
+. 进入云服务节点监控面板。
++
+image::/images/boss/manual/view/monitor_service_2.png[]
+
+. 点击 *云服务监控数据表* 下的 *查看详细* ，可查看当前区域下，云服务节点的全局资源监控数据。
++
+包括云主机监控数据、EIP 监控数据、NAT 网卡监控数据、VPC 监控数据和 LB 监控数据。
++
+image::/images/boss/manual/view/monitor_service_3.png[]
+
+. 点击 *云服务节点资源水位大盘* 下的 *查看详细* ，可查看当前区域下，云服务节点的全局资源水位监控。
++
+包括 CPU 使用率、内存使用率、磁盘使用率、磁盘 Inode、磁盘读 IOPS、磁盘写 IOPS、内网进带宽和内网出带宽。
++
+image::/images/boss/manual/view/monitor_service_4.png[]
+
+. 点击 *云服务节点资源监控详情* 下的 *查看详细*，可通过资源 ID 和管理员账号进行筛选，查看单个云服务器的详细资源监控数据。
++
+包括 CPU 使用率、内存使用率、磁盘使用率、磁盘读写、磁盘 IOPS、出入带宽和 PPS。
++
+image::/images/boss/manual/view/monitor_service_5.png[]
+
+. 点击 *EIP 监控大盘* 下的 *查看详细*，可通过资源 ID 和管理员账号进行筛选，查看单个 EIP 节点的详细资源监控数据。
++
+包括入带宽、出带宽、网络入流量、网络出流量和 PPS。
++
+image::/images/boss/manual/view/monitor_service_6.png[]
+
+. 点击 *NAT 监控大盘* 下的 *查看详细* ，可通过资源 ID 进行筛选，查看单个 NAT 网关节点的详细资源监控数据。
++
+包括入网方向 PPS、出网方向 PPS、入网方向带宽、出网方向带宽、snat 连接数和 snat 连接数使用率。
++
+image::/images/boss/manual/view/monitor_service_7.png[]

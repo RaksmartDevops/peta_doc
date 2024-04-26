@@ -1,0 +1,63 @@
+---
+title: 恢复暂停镜像（ResumeImages）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=ResumeImages
+
+=== Method
+POST
+
+=== 接口描述
+用于恢复已暂停的镜像，该接口为iaas接口。
+该接口发送请求后将会触发一个异步任务，仅检查ret_code是否为0即可。
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| job_id
+| String
+| 任务 id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "ResumeImages",
+    "zone": "test", // 指定zone
+    "images": ["img-3tmilbdu"] // 指定镜像id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "ResumeImagesResponse",
+   "job_id": "j-01y6xuee62j",
+   "ret_code": 0
+}
+----

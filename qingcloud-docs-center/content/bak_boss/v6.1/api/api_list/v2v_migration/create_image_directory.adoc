@@ -1,0 +1,50 @@
+---
+title: 创建镜像目录（Boss2CreateV2VImageRepo）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateV2VImageRepo
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateV2VImageRepo",
+    "desc": "invoker_test1",     // 对目录的描述，路径由v2v自动生成
+    "zone": "v2vtest"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateV2VImageRepoResponse",
+    "image_repo_path": "/home/ubuntu/rep-fh2upgkr",     // 镜像目录路径
+    "owner": "boss",
+    "ret_code": 0,
+    "zone": "v2vtest"
+}
+----

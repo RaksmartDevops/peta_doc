@@ -1,0 +1,109 @@
+---
+title: 获取配置内容（Boss2GetConfigurations）
+weight: 2
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetConfigurations
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取配置内容。
+
+接口返回：
+
+|===
+| 字段 | 说明 | 备注
+
+| config_id
+| 配置id
+|
+
+| topic
+| 配置的topic
+|
+
+| key
+| 配置的key
+|
+
+| value
+| 配置的内容
+| value中如果有password，passwd字段，将会使用星号进行替换
+
+| preset
+| 是否为预置配置
+|
+
+| history_id
+| 配置变更历史的id，用于在配置变更历史中标记最新一次变更
+|
+
+| create_time
+| 配置创建时间
+|
+
+| status_time
+| 配置修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2GetConfigurations",
+    "topics": ["test_topic"],  // [必须]可通过配置的topic进行过滤
+    "keys": ["test_key1"],  // 可通过配置的key进行过滤
+    
+    // 分页及排序
+    "limit": 20,
+    "offset": 0,
+    "fields": ["key", "value"],  // 仅返回指定的字段
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "configuration_set": [
+      {
+         "config_id": 3,
+         "topic": "test_topic",
+         "key": "test_key1",
+         "value": {
+            "hello": "world"
+         },
+         "preset": false,
+         "history_id": 9,
+         "create_time": "2022-09-21T06:22:34.729Z",
+         "status_time": "2022-09-21T06:30:49.093Z"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetConfigurationsResponse"
+}
+----

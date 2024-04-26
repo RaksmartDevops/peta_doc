@@ -1,0 +1,53 @@
+---
+title: 修改定时器状态（Boss2ModifySchedulersStatus）
+weight: 10
+---
+
+== 基本信息
+
+=== Path
+/api/action=Boss2ModifySchedulersStatus
+
+=== Method
+POST
+
+=== 接口描述
+修改用户的定时器状态，可对定时器进行启用、禁用、删除操作，用于管理员视图使用。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action":"Boss2ModifySchedulersStatus",
+    "ids": [1, 2, 3], // [必须]指定定时器的ID
+    "status": "active", // [必须]修改定时器的状态，支持修改的状态为： active: 启用 disabled: 禁用  deleted: 删除
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "success_count": 2,
+   "ret_code": 0,
+   "action": "Boss2ModifySchedulersStatusResponse"
+}
+----

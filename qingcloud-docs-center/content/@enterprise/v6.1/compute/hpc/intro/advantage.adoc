@@ -1,0 +1,8 @@
+---
+title: "产品优势"
+draft: false
+weight: 3
+---
+
+include::../../../../../_cloud_service/ehpc/intro/advantage.adoc[]
+

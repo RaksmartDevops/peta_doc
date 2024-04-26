@@ -1,0 +1,133 @@
+---
+title: 获取销售部门列表（Boss2DescribeSalesDept）
+weight: 29
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeSalesDept
+
+=== Method
+POST
+
+=== 接口描述
+获取部门列表。
+返回数据：
+
+|===
+| 字段 | 说明 | 备注
+
+| ka_type
+| 部门类型id
+|
+
+| ka_type_name
+| 部门类型名称
+|
+
+| leaders
+| 部门负责人id列表
+|
+
+| leader_email
+| 部门负责人邮箱
+|
+
+| leader_name
+| 部门负责人姓名
+|
+
+| sales_dept_id
+| 部门id
+|
+
+| sales_dept_name
+| 部门名称
+|
+
+| sales_count
+| 部门销售数量
+|
+
+| level
+a|
+部门层级
+
+1: 一级部门
+2: 二级部门
+|
+
+| parent_id
+| 父级部门id
+|
+
+| parent_name
+| 父级部门名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeSalesDept",
+    "leader": [1, 2], // 使用部门leader id进行过滤
+    "sales_dept_id": [7, 8],  // 使用部门id进行过滤
+    "sales_dept_name": ["测试部门1"],  // 使用部门名称进行过滤
+    "ka_type": [99],   // 使用部门类型id进行过滤
+    "level": [1, 2], // 使用部门层级进行过滤： 1：一级部门 2：二级部门
+    "parent_id": [23, 24] // 使用父级部门id进行过滤
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "sales_dept_set": [
+      {
+         "ka_type": 99,
+         "ka_type_name": "未分类",
+         "leaders": [
+            {
+               "leader_id": 1,
+               "leader_email": "admin@alphacloud.com",
+               "leader_name": "admin"
+            },
+            {
+               "leader_id": 2,
+               "leader_email": "beta@betacloud.com",
+               "leader_name": "beta"
+            }
+         ],
+         "sales_dept_id": 7,
+         "sales_dept_name": "test1",
+         "sales_count": 0,
+         "level": 2,
+         "parent_id": 23,
+         "parent_name": "测试父级部门"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeSalesDeptResponse"
+}
+----

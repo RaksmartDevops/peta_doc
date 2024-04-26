@@ -1,0 +1,19 @@
+---
+title: "支持的 SQL 集"
+description: 本小节主要介绍 RadonDB 支持的 SQL操作。
+keywords: radondb SQL 集,
+weight: 05
+collapsible: false
+draft: false
+---
+在 SQL 语法上， RadonDB 与 MySQL 完全兼容。
+
+在满足大部分需求场景下， RadonDB 的 SQL 语法实现是 MySQL 一个子集，能满足 SQL 语法使用和规范。
+
+* link:../data_definition[Data Definition Statements]
+* link:../data_manipulation[Data Manipulation Statements]
+* link:../database_admin[Database Administration Statements]
+* link:../transaction_and_locking[Transactional and Locking Statements]
+* link:../radon[RADON Statements]
+* link:../hint[Hint]
+* link:../others[Others]

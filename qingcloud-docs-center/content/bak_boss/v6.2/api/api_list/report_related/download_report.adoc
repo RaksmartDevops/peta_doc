@@ -1,0 +1,49 @@
+---
+title: 下载报表（Boss2DownloadReport）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DownloadReport
+
+=== Method
+POST
+
+=== 接口描述
+返回数据即为报表 csv 文件，设置了 header 为：
+
+----
+Content-Type →application/octet-stream
+Content-Disposition →attachment; filename*=utf-8''%E4%B8%BB%E6%9C%BA_201903081441.csv
+----
+
+正常情况下浏览器会作为附件下载。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DownloadReport",
+    "token": "e99a345c-f035-4eb9-baf6-7d9fe2d27ce5",  // 任务 token
+    "encoding": "gbk"   // 指定报表编码格式，可以为 gbk 或 utf8，不传该参数时默认为 gbk
+}
+----
+

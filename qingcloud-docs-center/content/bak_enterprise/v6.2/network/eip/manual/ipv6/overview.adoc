@@ -1,0 +1,8 @@
+---
+title: 公网 IPv6 概述
+weight: 1
+draft: false
+linkkey: network_eip_ipv6_guide
+---
+
+include::../../../../../../_cloud_service/eip/ipv6_overview.adoc[]

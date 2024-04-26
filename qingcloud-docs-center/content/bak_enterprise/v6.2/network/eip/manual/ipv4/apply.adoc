@@ -1,0 +1,10 @@
+---
+title: 申请 IPv4 EIP
+weight: 10
+draft: false
+linkkey: network_eip_ipv4_guide
+---
+:ep:
+
+include::../../../../../../_cloud_service/eip/apply_ipv4_eip.adoc[]
+

@@ -1,0 +1,409 @@
+---
+title: "扩容数据盘（Linux ）"
+description: 本小节主要介绍对Linux系统下的数据盘进行扩容。
+draft: false
+weight: 10
+keywords:  云计算, 云硬盘, linux, 扩容,数据盘
+---
+== 前提条件
+
+在对数据盘进行扩容之前，请先确认硬盘内容已进行备份，以防止数据丢失。备份操作详见 link:../../../manual/create_snapshot[备份硬盘]。
+
+== 扩容步骤
+
+Linux 系统下的数据盘扩容主要包括两部分：
+
+. 云硬盘存储容量的扩展，该步骤需登录{console_name}进行操作.
+. 硬盘文件系统的扩展，该步骤需登录至云硬盘所挂载的服务器，并根据硬盘的分区情况及文件系统类型进行操作。
+
+== 扩展云硬盘的存储容量
+
+. 登录到云服务器，执行 `umount` 命令将挂载的相应目录下的硬盘进行卸载。然后登录到 {console_name}，将主机与硬盘解除绑定，直至硬盘状态为 `可用`。详细可参考 link:../../../manual/unload[卸载硬盘]。
+. 在云硬盘列表右键点击需要扩容的硬盘，选择 *扩容*，弹出 *扩容硬盘* 界面。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_1.png[]
+. 点击 *+* 或直接输入容量值进行扩容，点击 *提交* 即可。
+. 将硬盘重新加载到云服务器。
+
+== 扩展 EXT 文件系统
+
+=== 扩展无分区磁盘 (ext)
+
+. 执行 `df -h` 命令，查看扩容前的磁盘容量。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_2.png[]
+
+. 执行 `lsblk -f` 命令，查看磁盘文件系统类型。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_3.png[]
+
+. 使用 `umount` 命令将待扩容的磁盘从系统目录上卸载。
++
+[source,shell]
+----
+# umount -v /mnt/data
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/mnt/data：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行如下命令，检查磁盘的文件系统状态是否正常：
++
+[source,shell]
+----
+# e2fsck -f /dev/vdc
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+返回结果如下图所示，则证明磁盘文件系统正常；否则，需解决磁盘问题后再进行后续扩容操作。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_4.png[]
+
+. 执行如下命令，扩容文件系统:
++
+[source,shell]
+----
+# resize2fs /dev/vdc
+----
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_5.png[]
+
+. 使用 `mount` 命令将扩容后的磁盘挂载到至相应的系统目录：
++
+[source,shell]
+----
+# mount /dev/vdc /mnt/data
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/mnt/data：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行 `df -h` 命令，检查扩容后磁盘容量变化。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_6.png[]
+
+=== 扩容磁盘原有分区 (ext)
+
+. 执行 `df -h` 命令，查看扩容前磁盘的容量。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_7.png[]
+
+. 执行如下命令，将待扩容的磁盘从系统目录卸载。
++
+[source,shell]
+----
+# umount -v /mnt/data1
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/mnt/data1：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行如下命令后，键入 `p`，按 `Enter` 键，查看磁盘分区的信息。
++
+[source,shell]
+----
+# parted /dev/vdd
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/dev/vdd：为待扩容磁盘的盘符，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_8.png[]
+
+. 输入 `unit s` ，按 `Enter` 键，设置磁盘的计量单位为磁柱。
+. 输入 `p`，按 `Enter` 键，查看并记录分区的 Start 值。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_9.png[]
+. 执行如下命令，删除原有分区。
++
+[source,shell]
+----
+# rm 1
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+命令中指定的 1 ，其为步骤 5 返回结果中 Number 参数所对应的值。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_10.png[]
+
+. 执行如下命令，新建一个主分区，其中起始磁柱值（ Start 值）与原来保持一致，截止磁柱值为 100%。
++
+[source,shell]
+----
+# mkpart primary 2048s 100%
+----
++
+
+include::../../../../../../_components/attention.adoc[]
+
+* primary：为磁盘分区名称，需根据实际情况进行修改。
+
+* 2048s：为起始磁柱值（ Start 值），此处必须与步骤 5 返回结果保持不变，否则将会引起数据丢失。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+如果出现如下图所示的状态，请输入 `Ignore`。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_11.png[]
+
+. 输入 `p` 查看现有分区信息。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_12.png[]
+
+. 输入 `q` 退出 parted 分区工具。
+. 执行如下命令将分区表同步至文件系统。
++
+[source,shell]
+----
+# partprobe
+----
+
+. 执行以下命令，检查文件系统状态。
++
+[source,shell]
+----
+# e2fsck -f /dev/vdd1
+----
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_13.png[]
+
+. 执行如下命令，扩容文件系统。
++
+[source,shell]
+----
+# resize2fs /dev/vdd1
+----
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_14.png[]
+
+. 使用 `mount` 命令将扩容后的磁盘挂载到系统目录.
++
+[source,shell]
+----
+# mount /dev/vdd1 /mnt/data1
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+* /dev/vdd1：为待挂载的磁盘盘符，需根据实际情况进行修改；
+
+* /mnt/data1：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行 `df -h` 命令，检查扩容后的容量变化。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_15.png[]
+
+== 扩展XFS 文件系统
+
+=== 扩展无分区磁盘 (xfs)
+
+. 执行 `df -h` 查看扩容前的磁盘容量。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_16.png[]
+
+. 使用 `umount` 命令将扩容的磁盘从系统的目录卸载。
++
+[source,shell]
+----
+# umount -v /mnt/data2
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/mnt/data2：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行以下命令，检查磁盘的文件系统，若输出结果为 0 ，则表示正常。
++
+[source,shell]
+----
+# xfs_ncheck /dev/vde; echo $?
+----
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_17.png[]
+
+. 使用 `mount` 命令将扩容后的磁盘挂载到系统目录。
++
+[source,shell]
+----
+# mount /dev/vde /mnt/data2
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+* /dev/vde：为待挂载磁盘的盘符，需根据实际情况进行修改。
+
+* /mnt/data2：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 使用 `xfs_growfs` 命令对指定磁盘的文件系统进行扩展。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_18.png[]
+
+. 执行 `df -h` 命令，检查扩容后磁盘的容量。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_19.png[]
+
+=== 扩展磁盘原有分区 (xfs)
+
+. 执行 `df -h` 命令，查看扩容前的磁盘容量。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_20.png[]
+
+. 使用 `umount` 命令将扩容的磁盘从系统的目录卸载。
++
+[source,shell]
+----
+# umount -v /mnt/data2
+----
++
+
+include::../../../../../../_components/note.adoc[]
+
+/mnt/data2：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行如下命令后，键入 `p`，按 `Enter` 键，查看磁盘分区的信息。
++
+[source,shell]
+----
+# parted /dev/vde
+----
++
+
+include::../../../../../../_components/note.adoc[]
+/dev/vde：为待扩容磁盘的盘符，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_21.png[]
+
+. 输入 `unit s`，按 `Enter`，设置磁盘的计量单位为磁柱。
+. 输入 `p`，按 `Enter` 键，查看并记录分区的 Start 值。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_22.png[]
+
+. 执行如下命令，删除原有分区。
++
+[source,shell]
+----
+# rm 1
+----
++
+
+include::../../../../../../_components/note.adoc[]
+命令中指定的 1 ，其为步骤 5 返回结果中 Number 参数所对应的值。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_23.png[]
+
+. 执行如下命令，新建一个主分区，其中起始磁柱值（ Start 值）与原来保持一致，截止磁柱值为 100%。
++
+[source,shell]
+----
+# mkpart primary 2048s 100%
+----
++
+
+include::../../../../../../_components/attention.adoc[]
+* primary：为磁盘分区名称，需根据实际情况进行修改。
+
+* 2048s：为起始磁柱值（ Start 值），此处必须与步骤5返回结果保持不变，否则将会引起数据丢失。
+
+include::../../../../../../_components/table_footer.adoc[]
+
++
+如果出现如下图所示的状态，请输入 `Ignore`。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_24.png[]
+
+. 输入 `p` 查看现有分区信息。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_25.png[]
+
+. 输入 `q` 退出 parted 分区工具。
+. 执行如下命令将分区表同步至文件系统。
++
+[source,shell]
+----
+# partprobe
+----
+
+. 执行以下命令，检查磁盘的文件系统，若输出结果为 0 ，则表示正常。
++
+[source,shell]
+----
+# xfs_ncheck /dev/vde; echo $?
+----
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_26.png[]
+
+. 执行 `mount` 命令将分区挂载到系统目录。
++
+[source,shell]
+----
+mount /dev/vde1 /mnt/data2
+----
++
+
+include::../../../../../../_components/note.adoc[]
+* /dev/vde1：为待挂载磁盘的盘符，需根据实际情况进行修改。
+
+* /mnt/data2：为磁盘挂载的系统目录，需根据实际情况进行修改。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+
+. 执行 `xfs_growfs` 命令，对指定磁盘的文件系统进行扩展。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_27.png[]
+
+. 执行 `df -h` 命令，检查扩容后磁盘容量变化。
++
+image::/images/cloud_service/storage/disk/manual_expan_linux_28.png[]

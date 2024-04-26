@@ -1,0 +1,77 @@
+---
+title: 获取版本分类（Boss2GetVersionCategory）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetVersionCategory
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于获取当前系统支持展示哪些组件的版本信息。
+
+|===
+| 分类 | 模块 | 备注
+
+| boss
+| BOSS
+|
+
+| iaas
+| 云平台
+|
+
+| neonsan
+| NeonSAN
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2GetVersionCategory"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 3,
+   "category_set": [
+      {
+         "category": "boss"
+      },
+      {
+         "category": "iaas"
+      },
+      {
+         "category": "neonsan"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2GetVersionCategoryResponse"
+}
+----

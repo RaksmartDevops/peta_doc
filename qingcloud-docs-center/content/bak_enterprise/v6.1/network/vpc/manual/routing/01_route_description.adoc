@@ -1,0 +1,12 @@
+---
+title: "路由表概述"
+keywords: VPC, VPC 网络, 路由表
+description:
+draft: false
+weight: 1
+aliases:
+      - /v6.1/network/vpc/manual/route_table/
+linkkey: network_vpc_routing_tables_guide
+---
+
+include::../../../../../../_cloud_service/vpc/routing_desc.adoc[]

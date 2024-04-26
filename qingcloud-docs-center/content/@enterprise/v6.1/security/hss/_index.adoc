@@ -1,0 +1,93 @@
+---
+title: 主机安全
+weight: 55
+pdf_coverDocName: 青云企业云 主机安全
+pdf_docVersion: '01'
+pdf_releaseDate: 2023-05-30
+description: 主机安全是一款针对云主机的安全防护产品，支持主机系统和网络的防护与加固，具备业界领先的勒索病毒专防专杀、东西向流量微隔离、补丁修复、外设管控、文件审计、违规外联检测与阻断等主机安全能力，可全面提升终端安全防护水平，解决主机面临的主要网络安全风险，帮助企业构建主机的安全防护体系。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是主机安全服务
+            url: intro/intro/
+          - title: 产品功能
+            url: intro/function/
+          - title: 应用场景
+            url: intro/scenario/
+          - title: 计费说明
+            url: bill/
+
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 步骤一：购买主机安全服务
+            url: qs/enable_serv/
+          - title: 步骤二：安装 Agent
+            url: qs/install_agent/
+          - title: 步骤三：开启防护
+            url: qs/enable_protection/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 查看服务信息
+            url: manual/view/
+          - title: 升级防护配额
+            url: manual/upgrade/
+          - title: 登录管理中心
+            url: manual/login_edr/
+          - title: 管理中心操作
+            url: manual/edr_guide/
+
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 开通与购买
+        children:
+          - title: 产品咨询
+            url: faq/product/
+          - title: 产品购买与授权
+            url: faq/license/
+          - title: Agent 问题
+            url: faq/agent/
+
+---
+
+主机安全是一款针对云主机的安全防护产品。本文档对主机安全产品进行了简要介绍，并详细介绍了如何开通、购买和使用本产品。
+
+[discrete]
+== 使用须知
+
+本文档所提供的内容仅具备一般性的指导意义，并不确保涵盖产品的所有使用场景。因环境、配置不同等原因，手册中所提供的内容与用户使用的实际界面可能不一致，请以用户以界面的实际信息为准，文档中不再针对前述情况造成的差异一一说明。
+
+出于功能介绍及配置示例的需要，手册中可能会使用 IP 地址、网址、域名等。如无特殊说明上述内容均为示例，不指代任何实际意义。
+
+[discrete]
+== 读者对象
+
+本文档主要适用于欲了解主机安全产品以及需要使用主机安全产品的读者，包含但不限于以下读者：
+
+* 企业云平台最终用户
+* 售前工程师
+* 技术支持工程师
+* 运维工程师
+
+
+[discrete]
+=== 修订记录
+
+[cols="1a,1a,3a"]
+|===
+|文档版本 |发布日期 |修改说明
+
+|01
+|2023-05-30
+|第一次正式发布。
+|===

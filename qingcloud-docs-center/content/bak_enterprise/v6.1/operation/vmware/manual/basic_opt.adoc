@@ -1,0 +1,81 @@
+---
+title: Vmware vSphere 平台操作
+weight: 1
+keywords: VMware 纳管, 云计算
+---
+
+支持添加、查看、修改、删除 Vmware vSphere 平台。详细操作步骤参考下文。
+
+== 查看列表
+
+{platform_name_cn}支持用户在{console_name}上查看，当前已纳管的 Vmware vSphere 平台列表。操作如下：
+
+. 用户登录云平台的{console_name}后，点击**产品与服务** > **运维与管理** > **VMware 纳管**，进入**VMware 纳管** 主页面。该页面列表显示已添加至{platform_name_cn}的 Vmware vSphere 平台。
++
+image::/images/cloud_service/operation/vmware/vmware_vsphere_list.png[vmware_vsphere_list,100%]
+
+. 如上图所示，列表页面提供了 Vmware vSphere 平台的 IP 地址、创建时间、名称等信息。
+
+== 添加节点
+
+用户可在{console_name}上添加 Vmware vSphere 节点信息，用于纳管。
+
+. 用户登录{platform_name_cn}的{console_name}。
+. 进入 link:#_查看列表[VMware 纳管]主页面。
+. 点击** + 新增节点**，弹出**新增节点**对话框。
++
+image::/images/cloud_service/operation/vmware/vmware_vsphere_create.png[vmware_vsphere_create,60%]
++
+页面参数说明：
++
+
+[cols="1,3"]
+|===
+|参数 | 说明
+
+| 名称| 待纳管的 VMware vSphere 平台，用户自行定义。
+| 描述 | 待纳管的 VMware vSphere 平台的相关描述信息，用户自行填写。
+| 节点服务地址 | 待纳管的 VMware vSphere 平台 IP 地址，需根据实际情况进行填写。
+| 用户名 | 待纳管的 VMware vSphere 平台登录用用户名，需根据实际情况进行填写。
+| 密码 | 待纳管的 VMware vSphere 平台登录用密码，需根据实际情况进行填写。
+| 端口 | 待纳管的 VMware vSphere 平台登录用端口号，需根据实际情况进行填写。
+
+|===
+
+. 根据页面提示信息，正确输入相关参数后，点击**确定**。成功纳管的 VMware vSphere 平台，在 link:#_查看列表[VMware 纳管]主页面列表显示。
+
+== 删除
+
+用户可将已添加至{platform_name_cn}的 Vmware vSphere 平台移除。
+
+
+. 用户登录{platform_name_cn}的{console_name}。
+. 进入 link:#_查看列表[VMware 纳管]主页面。
+. 点击目标的 Vmware vSphere 平台的**移除**操作，弹出的确认对话框，确认操作无误后，点击**确认**，即可将目标 Vmware vSphere 平台移除。
++
+
+include::../../../../../_components/note.adoc[]
+
+节点移除后不再纳管，用户也可重新添加该节点纳管。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 修改
+
+用户可修改已添加至{platform_name_cn}的 Vmware vSphere 平台信息。
+
+
+. 用户登录{platform_name_cn}的{console_name}。
+. 进入 link:#_查看列表[VMware 纳管]主页面。
+. 点击目标的 Vmware vSphere 平台的**修改**操作，弹出**修改节点**对话框。
++
+image::/images/cloud_service/operation/vmware/vmware_vsphere_modify.png[vmware_vsphere_modify,60%]
++
+
+include::../../../../../_components/note.adoc[]
+
+页面信息与link:#_添加节点[新增节点]页面信息一致，用户可参考该内容进行修改。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 用户根据实际需求，修改相关参数后，点击**确定**，即可完成修改。

@@ -1,0 +1,59 @@
+---
+title: 登录 Kafka 客户端
+description: 登录 Kafka 客户端。
+keywords: 云计算,大数据,消息队列,中间件,Kafka,client,客户端
+weight: 10
+draft: false
+---
+
+本小节主要介绍如何登录 Kafka 客户端。
+
+Kafka 客户端登录账号信息为：
+
+* Kafka 2.3.1 - v2.0.1（包含）之前版本：客户端节点用户名为 ``ubuntu``，初始密码为 ``kafka``。
+* Kafka 2.3.1 - v2.0.1 之后版本：客户端节点用户名为 ``client``，初始密码为 ``client``。
+
+== 前提条件
+
+* 已创建 Kafka 集群，且 Kafka 集群状态为``活跃``。
+* Kafka 集群中已安装客户端节点。
+
+== VNC 登录
+
+. 登录管理控制台。
+. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+. 选择目标集群，点击目标集群 ID，进入集群详情页面。
+. 选择**节点**页签，点击节点名称右侧的 Web 终端。
++
+image::/images/cloud_service/middware/kafka/login_client.png[登录 Client 节点]
+. 根据提示输入用户名和密码，登录客户端。
+
+== 远程登录
+
+. 查看客户端节点 IP。
++
+.. 登录管理控制台。
+.. 选择**产品与服务** > *消息队列与中间件* > *Kafka 服务*，进入 Kafka 集群列表页面。
+.. 点击目标集群 ID，进入集群详情页面。
+.. 在**节点**页签，查看客户端节点 IP。
++
+image::/images/cloud_service/middware/kafka/kafka_node_list_client.png[查看客户端节点 IP]
++
+上图中，客户端节点已绑定公网 IP，表示同时支持通过公网和内网连接客户端。
+. 执行以下命令，远程登录客户端。
++
+[source,shell]
+----
+ssh <用户名>@<客户端节点 IP>
+----
++
+参数说明：
++
+** 如果客户端节点未绑定公网 IP，需要配置 link:../../../../../network/vpc/manual/vpn/vpn_intro[VPN]，确保本地可以访问集群网络后，再通过客户端节点的内网 IP 地址进行连接。
+** 如果客户端节点已绑定公网 IP，可以在通过客户端节点的公网 IP 地址进行连接。
+
+. 根据提示输入用户名对应的密码，登录客户端。
++
+示例：
++
+image::/images/cloud_service/middware/kafka/login_client_example.png[远程登录客户端,60%]

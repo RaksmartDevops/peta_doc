@@ -1,0 +1,40 @@
+---
+title: 开启引流
+description: 介绍流量牵引服务开启引流。
+keywords: EIP, 流量牵引服务
+draft: false
+weight: 20
+linkkey: network_mms_eip_guide,network_mms_enable_eip_guide
+---
+本小节介绍如何开启引流。
+
+== 前提条件
+
+已创建创建网络服务实例。
+
+== 操作步骤
+
+. 登录管理控制台，在控制台导航栏中，选择**产品与服务** > *网络* > *流量牵引服务*。
++
+进入**流量牵引服务**页面。
+
+. 点击 *EIP列表*，在 EIP 列表所在行点击**开启引流**。
+. 勾选网络服务实例，点击**确定**。
++
+image::/images/cloud_service/network/mcn/mcn_eip_01.png[开启引流]
+
+// === 服务验证
+
+// 选择 **产品与服务** > **计算** > **云服务器**，进入云服务器页面。
+
+// 点击云服务器名称下的图标登录其中一台绑定了 EIP 的云服务器。
+
+// 输入账户和密码，进入云服务器。
+
+// 执行以下命令尝试是否能 ping 通另一台绑定了 EIP 的云服务器。
+
+// ping <服务器 IP 地址>
+
+// 此处以 192.168.8.173 为例，若出现以下信息说明能 ping 通，表示开启引流成功。
+
+// ![ping](/images/cloud_service/network/mcn/mcn_ping.png)

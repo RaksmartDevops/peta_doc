@@ -1,0 +1,15 @@
+---
+title: "产品介绍"
+weight: 1
+---
+
+
+BOSS（Business & Operation Support System）是{platform_name_cn}的图形化管理界面，为 IaaS 提供了统一运维门户和基础运维功能。作为一款云计算运维管理系统，BOSS 能够帮助用户对{platform_name_cn}中的物理资源、虚拟资源以及各类服务进行统一的管理。
+
+BOSS 功能全面，包括但不限于硬件资源监控、服务状态监控、资源状态监控、日志查看、告警等。此外，BOSS 还支持软件机器人自动运维技术，帮助用户提高运维效率和管理水平。
+
+BOSS 提供的开放性接口，使得用户可基于 BOSS 系统来扩展自身的业务。
+
+BOSS 整合了运维运营，从而让云计算真正成为运营的服务。 BOSS 从多维度出发，涵盖了运维和运营，整体业务架构如下。
+
+image::/images/boss/function_list.png[function_list, pdfwidth=100%]

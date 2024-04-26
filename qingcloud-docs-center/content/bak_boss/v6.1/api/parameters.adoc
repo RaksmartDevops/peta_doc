@@ -1,0 +1,69 @@
+---
+title: "公共参数"
+weight: 2
+---
+
+本文介绍请求类公共参数。
+
+== 通用字段
+
+[cols="2,2,3,3", options="header"]
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| action
+| String
+| 指令名称。
+| 例如 Boss2GetDashboardStats。
+
+| zone
+| String
+| 请求目的可用区 id。
+| 例如 test，pek3a 等。
+
+| zones
+| Array
+| 请求目的可用区 id 列表。
+| 非必须。
+
+| api_lang
+| String
+| api 返回语言，使用该参数设定接口报错等情况下返回的提示语言，支持 - en（英文） - zh-cn（中文）。
+| 如不指定，则会使用用户自己的语言设置来进行显示，默认为中文。
+|===
+
+== 获取类公共字段
+
+该列表列举获取信息类 API 使用的请求字段。
+
+[cols="2,2,3,3", options="header"]
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| limit
+| Integer
+| 限定返回查询条目最大值。
+| 默认为 20。
+
+| offset
+| Integer
+| 查询条目偏移，作为数据游标，配合 limit 参数来实现查询条目的分页。
+|-
+
+| verbose
+| Integer
+| 是否为冗余查询模式。
+| 1: 返回所有详细信息。+
+0: 只返回关键信息。
+
+| reverse
+| Integer
+| 查询条目排序方式。
+| 1: 逆序排列。 +
+0: 顺序排列。
+
+| status
+| Array
+| 声明查询资源状态。
+| activate, pending, available 等，针对不同的资源有不同的状态，详细说明见各个接口说明。
+|===

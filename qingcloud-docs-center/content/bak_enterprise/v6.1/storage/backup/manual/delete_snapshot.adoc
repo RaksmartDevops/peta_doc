@@ -1,0 +1,42 @@
+---
+title: "删除备份"
+description: 本小节主要介绍删除备份相关操作。
+draft: false
+weight: 20
+keywords: 云计算, 备份, 备份操作
+---
+== 删除前须知
+
+您可以删除整个备份链，也可以删除某一个备份点。
+
+include::../../../../../_components/attention.adoc[]
+
+需要注意的是，同一条备份链上的备份点之间的数据有依赖关系。当删除备份链上的全量备份点时，会删除整条备份链； 当删除增量备份点，所有直接或者间接依赖于这个备份点的后序节点都会被删除。请谨慎操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+
+== 操作步骤
+
+. 登录管理控制台。
+
+. 在控制台导航栏中，选择 *产品与服务* > *存储服务* > *备份*，进入 *备份* 页面。
++
+image::/images/cloud_service/storage/backup/manual_delete_snapshot_1.png[]
+
+. 若是删除全量备份点：
+.. 在备份链列表，右键单击备份链ID号，选择 *删除*，弹出提示框。
++
+image::/images/cloud_service/storage/backup/manual_delete_snapshot_2.png[]
+
+.. 点击 *确认*，删除整条备份链。
+
+. 若是删除增量备份点：
+
+.. 在备份链列表，点击需要操作的备份链ID，进入备份链详情页面。
+
+.. 在链路的结构示意图中，点击想要删除的增量备份点右侧的 *···*，选择 *删除*，弹出提示框。
++
+image::/images/cloud_service/storage/backup/manual_delete_snapshot_3.png[]
+
+.. 单击 *确认*，删除该增量备份点及其所有子节点（若有）。

@@ -1,0 +1,9 @@
+---
+title: 创建安全组
+draft: false
+weight: 1
+keyword: 云服务器, 安全，安全组
+linkkey: security_security_group_guide,security_security_group_sg_setting_manual,security_security_group_ipsets_guide
+---
+
+include::../../../../../../_cloud_service/sg/04_sg_create.adoc[]

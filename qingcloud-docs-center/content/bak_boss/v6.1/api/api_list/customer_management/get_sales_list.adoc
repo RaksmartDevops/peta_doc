@@ -1,0 +1,109 @@
+---
+title: 获取销售列表（Boss2DescribeSales）
+weight: 34
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeSales
+
+=== Method
+POST
+
+=== 接口描述
+获取销售人员列表。
+
+响应数据
+
+|===
+| 字段 | 说明 | 备注
+
+| console_id
+| console_Id
+|
+
+| email
+| 销售email
+|
+
+| sales_id
+| 销售id
+|
+
+| sales_name
+| 销售名称
+|
+
+| sales_dept
+| 销售部门id
+|
+
+| phone
+| 销售电话
+|
+
+| create_time
+| 创建时间
+|
+
+| status_time
+| 修改时间
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeSales",
+    "sales_id": [1, 2, 3],  // 支持通过销售id来进行过滤
+    "sales_dept": [99],  // 支持通过销售部门id来进行过滤
+    "with_unassigned": false, // 是否屏蔽未分配销售(id为99999999的特殊销售)
+    
+    // 分页及排序
+    "limit": 10,
+    "offset": 0,
+    "reverse": 1,
+    "sort_key": "sales_id"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "sales_sets": [
+      {
+         "console_id": "test_console",
+         "email": "testrole@test.com",
+         "sales_id": 2,
+         "sales_name": "testrole",
+         "sales_dept": 2,
+         "phone": "13112345678",
+         "create_time": "2013-01-01T00:00:00",
+         "status_time": "2020-05-19T12:40:04"
+      }
+   ],
+   "total_count": 4,
+   "ret_code": 0,
+   "action": "Boss2DescribeSalesResponse"
+}
+----

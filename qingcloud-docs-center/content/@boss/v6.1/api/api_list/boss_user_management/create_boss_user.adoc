@@ -1,0 +1,68 @@
+---
+title: 创建boss用户（Boss2CreateBossUser）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateBossUser
+
+=== Method
+POST
+
+=== 接口描述
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateBossUser",
+    "username": "sccc",     // 用户姓名，必传
+    "email": "sccc@alphacloud.com",  // 邮箱，必传
+    "password": "Zhu88jie@",    // 密码，需要符合密码规则，必传，
+    "phone": "13112345678",     // 手机号，可选
+    "remarks": "这是备注",      // 备注，可选
+    "cloud_user_id": "usr-xxxxxx",   // 云用户 ID，可选
+    "roles": ["uuid", "uuid"],       // 用户角色id列表，注意角色id格式为uuid字符串，可选
+    "send_mail": true,           // 是否发送欢迎邮件，默认不发送，可选
+    "superuser": false   // 是否为超级管理员，不传默认为false 
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 19,
+   "ret_code": 0,
+   "action": "Boss2CreateBossUserResponse"
+}
+----

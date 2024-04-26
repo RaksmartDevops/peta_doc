@@ -1,0 +1,67 @@
+---
+title: 资金转移（Boss2TransferFund）
+weight: 24
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2TransferFund
+
+=== Method
+POST
+
+=== 接口描述
+该接口包装了 IaaS 的转移资金接口(TransferFund)，加入了更多的字段用于操作的描述。
+
+转移资金
+{
+    "action": "Boss2TransferFund",
+    "account_type": "balance",
+    "from_user": "usr-i3K70DIf",
+    "to_user": "usr-lppXwZ7j",
+    "fee": "10",
+    "ticket": "tk-xxxxxx",
+    "remarks": "测试转移资金"
+}
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2TransferFund",
+   "account_type": "balance",
+   "from_user": "usr-i3K70DIf",
+   "to_user": "usr-lppXwZ7j",
+   "fee": "10",
+   "ticket": "tk-xxxxxx",
+   "remarks": "测试转移资金"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2RechargeResponse",
+   "user_id": "usr-i3K70DIf",
+   "ret_code": 0
+}
+----

@@ -1,0 +1,253 @@
+---
+title: 保存监控配置（Boss2SetMonitorConf）
+weight: 3
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SetMonitorConf
+
+=== Method
+POST
+
+=== 接口描述
+本接口用于设置一些监控的设置，根据监控项目不同，设置的数据格式不同。在conf部分传入需要设置的topic及对应的设置即可。
+
+{blank} +
+
+'''
+
+== 设置用户关注的安置组
+
+topic:  watched_plgs
+配置示例：
+
+[,json]
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "watched_plgs": [
+            {
+                "zone": "test1",
+                "id": "plg-00000000"
+            },
+            {
+                "zone": "test2",
+                "id": "plg-00000001"
+            }
+        ]
+    }
+}
+----
+
+'''
+
+== 设置用户关注的EIP组
+
+topic:  watched_eip_groups
+配置示例：
+
+[,json]
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "watched_eip_groups": [
+            {
+                "zone": "test",
+                "id": "eipg-00000010"
+            }
+        ]
+}
+----
+
+'''
+
+== 设置安置组用量告警策略
+
+topic:  plg_usage_notify
+配置示例：
+
+[,json]
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "plg_usage_notify": {
+            "enable": true,   // 是否启用
+            "notify_groups": [123],    // 通知组id
+            "alert_available_days": 30     // 在资源耗尽前多少天开始告警
+        }
+    }
+}
+----
+
+'''
+
+== 设置eip池用量告警策略
+
+topic:  eippool_usage_notify
+配置示例:
+
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "eippool_usage_notify": {
+            "enable": true,   // 是否启用
+            "notify_groups": [123],    // 通知组id
+            "alert_available_days": 30     // 在资源耗尽前多少天开始告警
+        }
+    }
+}
+----
+
+'''
+
+== 设置安置组用量阈值
+
+topic: plg_usage_threshold
+配置示例：
+
+[,json]
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "plg_usage_threshold": [
+            {
+                "id": "plg-00000000",   // 安置组id
+                "zone": "test",   // 安置组所在zone
+                "threshold": {
+                    "total_vcpu": {    // 监控项
+                        "threshold": 90,   // 阈值
+                        "type": "percentage"   // 阈值类型，可使用value(准确值)和percentage(百分比)
+                    },
+                    "total_memory": {
+                        "threshold": 864234,
+                        "type": "value"
+                    }
+                }
+            }
+        ]
+    }
+}
+----
+
+可配置的监控项：
+
+|===
+| 监控项 | 说明 | 备注
+
+| total_cpu
+| 物理cpu用量
+| 单位：百分比
+
+| total_vcpu
+| VCPU用量
+| 单位：核
+
+| total_memory
+| 虚拟内存用量
+| 单位：MB
+
+| real_total_memory
+| 物理内存用量
+| 单位：MB
+
+| total_disk
+| 物理磁盘用量
+| 单位：MB
+
+| virtual_disk
+| 虚拟磁盘用量
+| 单位：MB
+|===
+
+'''
+
+== 设置EIP组用量阈值
+
+topic: eippool_usage_threshold
+配置示例：
+
+----
+{
+    "action": "Boss2SetMonitorConf",
+    "update": true,
+    "conf": {
+        "eippool_usage_threshold": [
+            {
+                "id": "eipg-00000010",
+                "zone": "staging",
+                "threshold": {
+                    "total_eip_count": {
+                        "threshold": 90,
+                        "type": "percentage"
+                    }
+                }
+            }
+        ]
+    }
+}
+----
+
+可配置的监控项：
+
+|===
+| 监控项 | 说明 | 备注
+
+| total_eip_count
+| eip总量
+| 单位：个
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2SetMonitorConf",
+  "update": true,   // 更新或覆盖配置，如设置为true则会更新配置，如果为false则使用当前的配置覆盖对应的配置
+  "conf": {
+    "watched_plgs": [     // 配置的topic及对应的配置内容，支持传入多个topic同时进行配置
+      {
+        "zone": "test",
+        "id": "plg-00000000"
+      }
+    ]
+  }
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "ret_code": 0,
+   "action": "Boss2SetMonitorConfResponse"
+}
+----

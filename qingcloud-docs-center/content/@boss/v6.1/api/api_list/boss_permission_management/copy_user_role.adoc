@@ -1,0 +1,68 @@
+---
+title: 复制用户角色（Boss2DuplicateRole）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DuplicateRole
+
+=== Method
+POST
+
+=== 接口描述
+复制指定id的role，复制成功后将会返回新角色的id。
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| String
+| 角色 id
+|
+
+| name
+| String
+| 角色名称
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DuplicateRole",
+    "id": "f92f9a2a-da6c-462c-ba61-46c1afd8eb7a", // [必须]设置要复制的角色id
+    "name": "测试复制角色", // [必须]设置新的角色id
+    "description": "测试复制的角色" // [可选]设置新的角色的描述
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": "d4d9ef3a-248b-4987-8b47-08fc2db25d42",
+   "name": "测试复制角色2",
+   "ret_code": 0,
+   "action": "Boss2DuplicateRoleResponse"
+}
+----

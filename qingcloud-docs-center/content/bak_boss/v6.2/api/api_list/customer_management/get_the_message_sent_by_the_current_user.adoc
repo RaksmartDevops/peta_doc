@@ -1,0 +1,158 @@
+---
+title: 获取当前用户发送的消息（Boss2DescribeMyNotificationCenterPosts）
+weight: 20
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeMyNotificationCenterPosts
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取当前boss用户发送的消息列表。
+返回数据：
+
+|===
+| 字段 | 含义 | 备注
+
+| sender_id
+| 手动发送消息的操作人id， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户id
+
+| sender_email
+| 手动发送消息的操作人邮箱， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户邮箱
+
+| sender_username
+| 手动发送消息的操作人用户名， +
+如为自动发送的消息，或不是boss平台发送的消息，则为null
+| 指boss用户用户名
+
+| status
+| 消息状态
+|
+
+| content
+| 消息内容
+|
+
+| short_content
+| 短版消息
+|
+
+| title
+| 消息标题
+|
+
+| expired_days
+| 过期天数
+|
+
+| specified_users
+| 消息接收者id
+| 指云用户id
+
+| user_filter_type
+| 指消息接受者的生成方式，是通过id指定还是根据条件过滤
+|
+
+| create_time
+| 消息创建时间
+|
+
+| post_type
+| 消息类型
+|
+
+| user_condition
+| 根据条件过滤获取接收者用户id时通过该字段显示过滤条件
+|
+
+| notification_center_post_id
+| 消息id
+|
+
+| status_time
+| 记录修改时间
+|
+
+| notify_type
+| 通知方式，包含短信、邮箱等方式
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2DescribeMyNotificationCenterPosts",
+    "post_type": ["other"], // 使用消息类型进行过滤
+    "search_word": "测试", // 支持对消息title进行过滤
+    "user_filter_type": ["condition"], // 使用用户筛选方式进行过滤，支持condition和specified
+    "notify_type": ["email"], // 通过通知方式进行过滤，支持email, web, mobile, sms, webhook, ci_webhook, wechat
+    "start_time":"2020-03-31T16:00:00.000Z", // 通过消息创建时间进行过滤
+    "end_time":"2020-04-06T15:59:59.999Z", // 通过消息创建时间进行过滤
+
+    // 分页及排序
+    "limit": 10,
+    "offset": 0,
+    "reverse": 1,
+    "verbose": 1  // verbose为1时将会返回消息接收的用户数量(receive_users_count)
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "notification_center_post_set": [
+      {
+         "status": "finished",
+         "content": "<p>testtest</p>",
+         "title": "测试发送",
+         "expired_days": 0,
+         "short_content": "test",
+         "specified_users": [
+            "usr-ErSHAf5K"
+         ],
+         "user_filter_type": "specified",
+         "create_time": "2020-04-06T01:23:09Z",
+         "post_type": "other1",
+         "user_condition": "",
+         "notification_center_post_id": "nfp-1d2q7jcp",
+         "status_time": "2020-04-06T01:23:18Z",
+         "notify_type": [
+            "email"
+         ],
+         "sender_id": 3,
+         "sender_email": "superuser@test.com",
+         "sender_username": "superuser"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeMyNotificationCenterPostsResponse"
+}
+----

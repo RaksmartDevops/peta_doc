@@ -1,0 +1,100 @@
+---
+title: "容器引擎 QKE"
+weight: 1
+description: 容器引擎 QKE 是在云平台上构建的企业级分布式多租户的 Kubernetes 容器服务管理平台，集成了云平台的云服务器、存储、网络等资源，可一键部署高可用、高性能的 Kubernetes 集群，支持 CI/CD、多集群管理、微服务治理、应用管理、服务与网络管理等业务场景，让您轻松高效地在云端运行 Kubernetes 容器化应用。
+
+bannerImage: /images/pic-banner.png
+
+
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 QKE
+            url: intro/introduction/
+          - title: 产品优势
+            url: intro/advantage/
+          - title: 应用场景
+            url: intro/aply_scenarios/
+          - title: 产品功能
+            url: intro/function/
+
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/bill_des/
+          - title: 费用变更
+            url: billing/bill_change/
+          - title: 到期与欠费
+            url: billing/due_owe/
+
+
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速使用
+        children:
+          - title: 创建 QKE 集群
+            url: quickstart/create_selfmgt_cluster/
+          - title: 创建工作负载
+            url: quickstart/create_app/
+
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 管理集群
+        children:
+          - title: 连接集群
+            url: manual/connect/kubectl_cnect/
+          - title: 扩容集群
+            url: manual/mgt_cluster/change_cluster_scale/
+          - title: 配置集群参数
+            url: manual/mgt_cluster/paras_cfg/
+
+      - title: 管理资源
+        children:
+          - title: 节点弹性伸缩
+            url: manual/mgt_node/auto_node/
+          - title: 变更节点配置
+            url: manual/mgt_node/node_cfg/
+          - title: 管理工作负载
+            url: manual/work_load/mgt_workload/
+          - title: 配置负载均衡器
+            url: manual/service/ccm_config/
+
+      - title: 集群运维
+        children:
+          - title: 查看集群日志
+            url: manual/om_mgt/log/
+          - title: 查看监控数据
+            url: manual/om_mgt/monitor/view_data/
+          - title: 配置告警策略
+            url: manual/om_mgt/alarm/cfg_alarm/
+          - title: 升级集群
+            url: manual/om_mgt/upgrade_cluster/
+
+
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 在 QKE 中使用 KubeSphere
+            url: best-practice/how_use_ks/
+          - title: 在 QKE 中使用文件存储 vNAS
+            url: best-practice/qke_vnas/
+
+  - title: 常见问题
+    icon: icon-document_question_duotone
+    children:
+      - title: 常见问题
+        children:
+          - title: 集群管理 FAQ
+            url: faq/cluster_faq/
+          - title: 节点管理 FAQ
+            url: faq/node_faq/
+          - title: 容器应用 FAQ
+            url: faq/container_faq/
+---

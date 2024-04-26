@@ -1,0 +1,187 @@
+---
+title: "参数介绍"
+description: 本小节主要介绍 MongoDB 常用配置项。
+keywords: 常用配置项,公共参数,Replica 参数,监控参数,日志参数,MongoDB,文档数据库,数据库
+weight: 10
+collapsible: false
+draft: false
+---
+在 AppCenter 集群管理控制台，支持对 MongoDB 常用配置参数的管理。
+
+本小节主要介绍 AppCenter 中各 MongoDB 配置参数的含义。
+
+== 公共参数
+
+[cols="2,1,3"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| mongod 的监听端口
+| 1025～65535
+| 表示 mongod 服务监听端口。默认为 `27017`。
+
+| root 用户密码
+| -
+| 表示数据库 root 用户帐号密码。默认为 `Change1Pwd`。
+
+| qc_monitor 用户密码
+| -
+| 表示监控服务 qc_monitor 用户帐号密码，用于 Zabbix 和 Mongodb Exporter 监控。默认为 `Change1Pwd`。
+
+| 存储引擎
+| -
+a| 表示 MongoDB 的存储引擎。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+集群创建后，不支持修改。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+
+== Replica Node 参数
+
+[cols="2,1,3"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+
+| setParameter.cursorTimeoutMillis 
+|-  
+|表示当 MongoDB 删除闲置游标的时间阈值。 +
+单位为毫秒。默认为 600000ms。
+
+
+|operationProfiling.mode
+|off，slowOp，all 
+a|表示是否开启慢查询检测。
+
+* 默认为 `关闭`，表示关闭慢查询检测。
+* `slowOp` 表示根据 *slowOpThresholdMs* 参数进行慢查询检测。 
+* `all` 表示开启全局慢查询检测。
+
+|operationProfiling.slowOpThresholdMs
+|- 
+|表示慢日志查询任务最大延迟时间。 +
+单位是毫秒。默认为 100ms。
+
+|replication.oplogSizeMB    
+|990~51200 
+|表示 oplog 最大存储容量。 +
+单位是 MB。默认为 20480MB。
+
+|replication.enableMajorityReadConcern
+|true，false 
+a|表示是否开启读控制。 +
+默认为 `true`，表示只能读取到成功写入到大多数节点的数据。
+
+include::../../../../../../_components/note_in_table.adoc[]
+
+修改后，将重启集群。
+
+include::../../../../../../_components/footer_in_table.adoc[]
+
+|===
+// 3.6.8-v1.0.0 版本开始支持该参数
+
+== 数据同步参数
+
+[cols="2,1,3"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| Mongoshake: 是否开启
+| 是、否
+| 是否开启 MongoShake 数据同步服务。 +
+默认为 `否`，表示未开启 MongoShake 数据同步服务。
+
+| Mongoshake: 同步方式
+| 全部、full、incr
+a| 表示数据同步的防暑。
+
+* 默认为``全部``，表示**全量+增量**的数据同步。
+* 取值 `full` 表示**全量**的数据同步。
+* 取值 `incr`，表示**增量**的数据同步。
+
+| Mongoshake: 源 MongoDB 地址
+| -
+| 表示待同步 MongoDB 地址。需配置为 `IP:Port`。
+
+| Mongoshake: 源 MongoDB 用户
+| -
+| 表示源 MongoDB 用户名。
+
+| Mongoshake: 源 MongoDB 用户密码
+| -
+| 表示源 MongoDB 用户密码。
+
+| Mongoshake: 目标 MongoDB 地址
+| -
+| 表示目标 MongoDB 地址。需配置为 `IP:Port`。
+
+| Mongoshake: 目标 MongoDB 用户
+| -
+| 表示目标 MongoDB 用户名。
+
+| Mongoshake: 目标 MongoDB 用户密码
+| -
+| 表示目标 MongoDB 用户密码。
+|===
+
+== 监控参数
+
+[cols="2,1,3"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| Zabbix: 服务端地址
+| -
+| 表示 Zabbix Server 服务地址。默认为 `127.0.0.1`。
+
+| Zabbix: Agent2 监听端口
+| 1025~65535
+| 表示 Zabbix Agent 监听端口。默认为 `10050`。
+
+| Zabbix: 是否开启 Agent2
+| 是、否
+| 是否开启 Zabbix Agent 监控服务。默认为 `否`，表示未开启 Zabbix 监控服务。
+
+| Node Exporter: 是否开启
+| 是、否
+| 是否开启 Node Exporter 监控服务。默认为 `否`，表示未开启 Node Exporter 监控服务。
+
+| Node Exporter: 监听端口
+| 1025~65535
+| 表示 Node Exporter 监听端口。默认为 `9500`。
+
+| Mongodb Exporter: 是否开启
+| 是、否
+| 是否开启 Mongodb Exporter 监控服务。默认为 `否`，表示未开启 Mongodb Exporter 监控服务。
+
+| Mongodb Exporter: 监听端口
+| 1025~65535
+| 表示 Mongodb Exporter 监听端口。默认为 `9001`。
+|===
+
+== 日志参数
+
+[cols="2,1,3"]
+|===
+| 参数 | 取值范围 | 参数说明
+
+| Caddy: 用户名
+| -
+| 表示 Caddy Server 登录用户名。 +
+默认为 `caddy`。
+
+| Caddy: 密码
+| -
+| 表示 Caddy Server 登录密码。 +
+默认为 `caddy`。
+
+| Caddy: 是否开启
+| 是，否
+| 表示是否开启 Caddy Server，用于同步日志服务。 +
+默认为``否``。
+|===

@@ -1,0 +1,51 @@
+---
+title: 硬盘
+linkTitle: 硬盘
+weight: 1
+collapsible: true
+type: product
+description: 硬盘是云平台为云服务器提供的块存储设备，支持多种规格和类型，并可弹性扩展，可满足不同场景的业务需求，并且支持硬盘多副本及定时备份。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 硬盘简介
+            url: intro/introduction/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 包年包月转按需
+            url: billing/change_mode/change1/
+          - title: 按需转包年包月
+            url: billing/change_mode/change2/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建硬盘
+            url: quickstart/create_disk/
+          - title: 加载硬盘
+            url: quickstart/load/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 硬盘基本操作
+            url: manual/basic_operation/
+          - title: 扩容系统盘
+            url: manual/expand/expan_linux_sys/
+          - title: 自动挂载 Linux 硬盘
+            url: manual/auto_mount/linux_auto_mount/
+          - title: 备份硬盘
+            url: manual/create_snapshot/
+          - title: 卸载硬盘
+            url: manual/unload/
+          - title: 互斥卷组
+            url: manual/mutex_volumegroup/
+linkkey: storage_disk_volumes_guide
+---

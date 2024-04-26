@@ -1,0 +1,8 @@
+---
+title: "产品优势"
+weight: 5
+draft: false
+keywords: 公网 IP
+---
+
+include::../../../../../_cloud_service/eip/advantage.adoc[]

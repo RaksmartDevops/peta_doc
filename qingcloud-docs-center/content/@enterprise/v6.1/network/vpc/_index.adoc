@@ -1,0 +1,66 @@
+---
+title: VPC 网络
+linkTitle: VPC 网络
+weight: 2
+description: VPC 网络是用户在云上的专属私有网络空间，为用户在云上创建的云资源提供隔离的虚拟网络环境。在 VPC 网络内，您可以自定义 IP
+  地址范围、创建子网，并在子网内创建云服务器、数据库、大数据等各种云资源。
+bannerImage: /images/pic-banner.png
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 VPC 网络
+            url: intro/10_intro/
+          - title: 产品优势
+            url: intro/15_advantage/
+          - title: 应用场景
+            url: intro/16_apply/
+          - title: 产品功能
+            url: intro/20_function/
+      - title: 计费指南
+        children:
+          - title: VPC 网络计费说明
+            url: billing/price/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 网络规划
+            url: quick-start/10_qs_net_plan/
+          - title: 搭建 IPv4 VPC 网络
+            url: quick-start/20_qs_ipv4/
+          - title: 搭建 IPv6 VPC 网络
+            url: quick-start/30_qs_ipv6/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 操作指南
+        children:
+          - title: 创建 VPC 网络
+            url: manual/vpcnet/10_create_vpc/
+          - title: 创建私有网络
+            url: manual/vxnet/05_create_vxnet/
+          - title: 使用路由表
+            url: manual/routing/02_route_function/
+          - title: 使用 OpenVPN
+            url: manual/vpn/use_openvpn/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 搭建星型拓扑 IPSec 隧道
+            url: best-practices/ipsec_star_topology/
+          - title: 跨 VPC 大规模组网
+            url: best-practices/large_net_across_vpc/
+          - title: 多可用区搭建 GRE 隧道
+            url: best-practices/how_to_build_gre_tunnel/
+linkkey: network_vpc_shared_guide,network_vpc_guide
+---
+
+
+
+

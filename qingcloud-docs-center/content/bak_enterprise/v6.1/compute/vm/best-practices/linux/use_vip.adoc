@@ -1,0 +1,101 @@
+---
+title: "虚拟 VIP 如何使用"
+weight: 110
+---
+
+== 概述
+
+虚拟 IP（Virtul_IP）是 VPC 网络中的一种 IP 地址，通常用于不同云服务器之间的切换，达到高可用的需求。本文为您介绍如何使用高可用虚拟 IP 。
+
+== 使用方法
+
+. 在 VPC 的私有网络中申请一个 VIP ，将这个 IP 从该网段中隔离出来，防止其它资源使用这个 IP。 
++
+image::/images/cloud_service/compute/vm/bestp_linux_use_vip01.jpg[]
++
+image::/images/cloud_service/compute/vm/bestp_linux_use_vip02.png[]
+
+. 在云服务器上面安装 keepalived。
++
+[source,shell]
+----
+yum install keepalived
+----
+
+. 配置 keepalived 参数。
++
+[source,shell]
+----
+vi /etc/keepalived/keepalived.conf
+----
++
+主服务器配置如下：
++
+[source,shell]
+----
+! Configuration File for keepalived
+
+global_defs {
+    router_id lb01     # 标识信息
+}
+
+vrrp_instance VI_1 {
+    state MASTER                      # 主为 MASTER，备为 BACKUP
+    priority 150                      # 优先级，主的参数要比备的参数大
+    interface eth0                    # 绑定的网卡
+    virtual_router_id 50              # 同一个虚拟的路由
+    advert_int 1                      # 心跳的间隔时间
+    authentication {
+        auth_type PASS          # 两个云服务器之间的密语
+        auth_pass 1111          # 心跳密码
+}
+    virtual_ipaddress {
+        192.168.1.100     # 虚拟 IP 地址（可以绑定多个虚拟 IP 地址）
+    }
+}
+----
++
+备服务器配置如下：
++
+[source,shell]
+----
+! Configuration File for keepalived
+
+global_defs {
+    router_id lb01     # 标识信息
+}
+
+vrrp_instance VI_1 {
+    state BACKUP                      # 主为 MASTER，备为 BACKUP
+    priority 140                      # 优先级，主的参数要比备的参数大
+    interface eth0                    # 绑定的网卡
+    virtual_router_id 50              # 同一个虚拟的路由
+    advert_int 1                      # 心跳的间隔时间
+    authentication {
+        auth_type PASS      # 两个云服务器之间的密语
+        auth_pass 1111          # 心跳密码
+}
+    virtual_ipaddress {
+        192.168.1.100     # 虚拟 IP 地址（可以绑定多个虚拟 IP 地址）
+    }
+}
+----
+
+. 启动 keepalived。
++
+[source,shell]
+----
+systemctl start keepalived
+----
+
+. 使用 `ip a` 命令查看网卡是否绑定了虚拟 IP。
++
+image::/images/cloud_service/compute/vm/bestp_linux_use_vip03.jpg[]
++
+
+include::../../../../../../_components/attention.adoc[]
+
+如果云服务器绑定了安全组，则需要在安全组中放行 VRRP 协议。
+
+include::../../../../../../_components/table_footer.adoc[]
+

@@ -1,0 +1,243 @@
+---
+title: 使用 aws_s3 插件
+description: 本小节主要介绍 aws_s3 插件使用示例。 
+keyword: aws_s3,S3,PostgreSQL,关系型数据库,数据库
+weight: 30
+collapsible: false
+draft: false
+---
+
+通过 aws_s3 插件，可以连接兼容 AWS S3 的对象存储，将 PostgreSQL 的数据导出到对象存储，或将对象存储的数据导入到 PostgreSQL 中。
+
+== 约束限制
+
+PostgreSQL 应用版本为 V2.2.0-高可用版、V2.2.0-基础版，及以上版本。
+
+== 注意事项
+
+导入/导出均需要生成临时文件，请在 PostgreSQL 节点上预留足够的磁盘空间。
+
+* 如果导出数据过大，无法一次性导出，可以通过 limit 语句限制导出数据量。
+* 如果导入数据过大，无法一次性导入，可以通过切割源文件并分批导入。
+
+== 安装 aws_s3 插件
+
+. 使用高级权限账号，通过高可用写 IP link:../../mgt_connect/access_pg[连接数据库]。
++
+include::../../../../../../_components/note.adoc[]
+若没有满足要求的账号，请参考link:../../mgt_account/create_account/[添加账号]进行创建。
+include::../../../../../../_components/table_footer.adoc[]
+. 执行以下命令，安装 plpython3u 插件和 aws_s3 插件。
++
+[source,sql]
+----
+CREATE EXTENSION plpython3u;
+CREATE EXTENSION aws_s3;
+----
++
+include::../../../../../../_components/note.adoc[]
+安装 aws_s3 插件时，需要先安装 plpython3u 插件。
+include::../../../../../../_components/table_footer.adoc[]
+
+== 插件函数介绍
+
+=== query_export_to_s3
+
+该函数用于导出 PostgreSQL 数据到 S3 对象存储。
+
+函数的所有参数语法如下：
+
+[source]
+----
+aws_s3.query_export_to_s3(
+    query text,    
+    bucket text,    
+    file_path text,
+    region text default null,
+    access_key text default null,
+    secret_key text default null,
+    session_token text default null,
+    options text default null, 
+    endpoint_url text default null,
+    read_timeout integer default 60,
+    override boolean default false,
+    tempfile_dir text default '/var/lib/postgresql/data/',
+)
+----
+
+参数说明：
+
+[cols='1,3a,2'] 
+|===
+| 参数 | 说明    | 示例 
+
+| query        | 查询需要导出的数据。| select * from animals。
+| bucket       | 对象存储的 Bucket 名称。| postgresql                                       
+| file_path     | 导出文件在对象存储中的文件名称及路径。 | postgres-aws-s3/14/animals-export.csv
+| region        | 对象存储桶所在的区域。 | -
+| access_key   | 访问对象存储的 Access Key ID。   | -
+| secret_key   | 访问对象存储的 Secret Access Key。   | -                                      
+| session_token | 可选参数，会话令牌。 | -           
+| options      | 传递给 PostgreSQL 中的 COPY 命令的选项。| FORMAT CSV, HEADER true                     
+| endpoint_url  | 对象存储的 Endpoint 地址。 | \http://localhost:4566             
+| read_timeout  | 可选参数，配置导出超时时间，从读取 PostgreSQL 数据时开始计算。单位为妙，默认值为 60 秒。  | 60
+| override      | 可选参数，导出时是否覆盖对象存储中已有的同名文件。默认值为 false。
+
+* true：覆盖同名文件。 
+* false：不覆盖同名文件，自动新建一个文件，文件名称后自动添加 `_part{n}` 后缀。
+
+| false
+
+| tempfile_dir  | 可选参数，指定导出时临时文件的路径。默认为 `/var/lib/postgresql/data/`。 | /var/lib/postgresql/data/                    
+|===
+
+
+=== table_import_from_s3
+
+该函数用于从 S3 对象存储导入数据到 PostgreSQL 数据库。
+
+函数所有参数语法如下：
+
+[source]
+----
+aws_s3.table_import_from_s3 (
+   table_name text,
+   column_list text,
+   options text,
+   bucket text,
+   file_path text,
+   region text,
+   access_key text,
+   secret_key text,
+   session_token text,
+   endpoint_url text default null,
+   read_timeout integer default 60,
+   override boolean default false,
+   tempfile_dir text default '/var/lib/postgresql/data/'
+) 
+----
+
+参数说明：
+
+[cols='1,3a,2'] 
+|===
+| 参数 | 说明    | 示例 
+
+| table_name    | 导入数据到 PostgreSQL 数据库后的表名称。数据库表需要提前创建。    | animals                                             
+| column_list   | 要复制的列。       | name,age                                         
+| options       | 传递给 Postgres 中的 COPY 命令的选项。           | (FORMAT CSV, DELIMITER '','', HEADER true)            
+| bucket        | 对象存储的 Bucket 名称。| postgresql         
+| file_path     | 对象存储的文件路径。
+
+支持多文件或路径下所有文件导入，以 "," 作为分隔符。| postgres-aws-s3/14/animals-export.csv
+| region        | 对象存储桶所在的区域。| -
+| access_key   | 访问对象存储的 Access Key ID。   | -
+| secret_key   | 访问对象存储的 Secret Access Key。   | -                                      
+| session_token | 可选参数，会话令牌。 | -                                           
+| endpoint_url  | 对象存储的 Endpoint 地址。 | \http://localhost:4566   
+| read_timeout  | 可选参数，配置导入超时时间。单位为妙，默认值为 60 秒。  | 60
+| override      | 可选参数，导入时是否覆盖表中已有的数据。默认值为 false。
+
+* true：覆盖数据，在导入前会运行 `TRUNCATE TABLE <table_name> RESTRICT`。 
+* false：不覆盖数据，将导入的数据追加到已有表中。
+
+| false
+
+| tempfile_dir  | 可选参数，指定导出时临时文件的路径。默认为 `/var/lib/postgresql/data/`。 | /var/lib/postgresql/data/                         
+|===
+
+== 使用示例
+
+=== 创建测试表
+
+. 使用高级权限账号，通过高可用写 IP link:../../mgt_connect/access_pg[连接数据库]。
+. 执行以下命令，创建测试表 `animals`。
++
+[source,sql]
+----
+CREATE TABLE animals (
+    name TEXT,
+    age INT
+);
+----
+
+. 执行以下命令，在表中插入测试数据。
++
+[source,sql]
+----
+insert into animals(name, age) values
+('dog', 12),
+('cat', 15),
+('parrot', 103),
+('tortoise', 205);
+----
+
+=== 导出 PostgreSQL 数据到 S3
+
+以下示例表示，使用 `query_export_to_s3` 函数将测试表 `animals` 中的所有数据导出到所配置的对象存储桶 `postgresql` 中，导出文件名为 `animals-export.csv`。
+
+[source,sql]
+----
+SELECT * FROM aws_s3.query_export_to_s3(
+   'select * from animals',
+   'postgresql',
+   'postgres-aws-s3/14/animals-export.csv',
+   access_key:='FHTHACVRUXMXRRQSELAB',
+   secret_key:='cHyI5SiaMcdx5QMfiCJrDMUwxarVuyx5ZTcsLjab',
+   options:='FORMAT CSV, HEADER true',
+   endpoint_url:='https://s3.pek3b.qingstor.com'
+);
+----
+
+回显信息如下，表示导出成功。
+
+[source,sql]
+----
+ rows_uploaded | files_uploaded | bytes_uploaded
+---------------+----------------+----------------
+             4 |              1 |             47
+(1 row)
+----
+
+导出成功后，可以在对象存储中查看导出的文件，文件位置为 `s3://postgresql/postgres-aws-s3/14/animals-export.csv`。
+
+image::/images/cloud_service/database/postgresql/plugin_s3.png[]
+
+=== 从 S3 导入数据到 PostgreSQL
+
+以下示例表示，使用 `table_import_from_s3` 函数将对象存储桶 `postgresql` 中的文件 `animals-export.csv` 导入到 PostgreSQL 的表 `animals` 中。
+
+[source,sql]
+----
+SELECT aws_s3.table_import_from_s3 (
+   'animals',
+   'name,age',
+   '(FORMAT CSV, DELIMITER '','', HEADER true)',
+   'postgresql',
+   'postgres-aws-s3/14/animals-export.csv',
+   'pek3',
+   access_key:='FHTHACVRUXMXRRQSELAB',
+   secret_key:='cHyI5SiaMcdx5QMfiCJrDMUwxarVuyx5ZTcsLjab',
+   endpoint_url:='https://s3.pek3b.qingstor.com'
+);
+----
+
+回显信息如下，表示导入成功。
+
+[source,sql]
+----
+ table_import_from_s3
+----------------------
+                    4
+(1 row)
+----
+
+导入成功后，在数据库中执行如下命令即可查看导入的数据。
+
+[source,sql]
+----
+select * from animals_new;
+----
+
+
+

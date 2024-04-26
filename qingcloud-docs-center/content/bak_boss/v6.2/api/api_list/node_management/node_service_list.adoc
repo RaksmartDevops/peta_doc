@@ -1,0 +1,208 @@
+---
+title: 节点服务列表（Boss2GetNodeServiceMonitor）
+weight: 12
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetNodeServiceMonitor
+
+=== Method
+POST
+
+=== 接口描述
+用于计算节点和管理节点上运行的服务运行状态，数据来自cronus。
+
+|===
+| 参数 | 必须 | 默认值 | 用途 | 备注
+
+| zone
+| 是
+| 无
+| 指定zone
+|
+
+| hostnames
+| 是
+| 无
+| 指定要查询的节点hostname列表，如[tr02n01]
+|
+
+| type
+| 否
+| 无
+a|
+指定节点类型：
+
+1. mgmt 指管理节点
+2. compute指计算节点
+|
+
+| role
+| 否
+| 无
+| 指定服务角色列表
+|
+
+| service
+| 否
+| 无
+| 指定服务列表
+|
+
+| status
+| 否
+| 无
+| 指定服务状态列表
+|
+
+| limit
+| 否
+| 20
+| 分页数
+|
+
+| offset
+| 否
+| 0
+| 分页偏移量
+|
+|===
+
+默认按照 hypernode 名称升序排列，暂时不支持自定义排序。
+
+响应数据：
+
+|===
+| 参数名称 | 描述 | 备注
+
+| status
+| 服务状态
+a|
+响应中的 status 取自 supervisord 中的 status，代表了服务的状态，可能有以下的值：
+
+* STOPPED - 已停止
+* STARTING - 启动中
+* RUNNING - 正常
+* BACKOFF - 启动失败
+* STOPPING - 停止中
+* EXITED - 退出
+* FATAL - 致命错误
+* UNKNOWN - 未知状态
+
+| hostname
+| 服务所在主机的主机名
+|
+
+| service
+| 服务名称
+|
+
+| pid
+| 服务的pid
+|
+
+| uptime
+| 服务的持续运行时长
+|
+
+| role
+| 服务角色
+|
+
+| hypernode
+| 服务所在的物理主机， +
+如果服务部署在虚拟机中，可使用该参数获取到虚拟机所在的物理机
+|
+
+| hostname_ip
+| 服务所在主机的ip
+|
+
+| hypernode_ip
+| 服务所在物理主机的ip
+|
+
+| zone
+| 服务所在zone
+|
+
+| zone_id
+| 服务所在zone
+|
+
+| region_id
+| 服务所在region
+|
+
+| log_paths
+| 如果指定了with_log_paths则会返回服务关联的日志路径，可使用这些路径进行日志的查询
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2GetNodeServiceMonitor",
+  "zone": "test",
+  "hostnames": ["tr02n23"], // 可传入多个节点的hostname，如不指定hostname，则返回所有节点的服务
+  "type": "mgmt", // 如果为管理节点，可设置为mgmt，如果为计算节点，则设置为compute, 不设置的情况下默认为mgmt
+  "role": ["计算服务"], // 指定服务角色进行过滤
+  "service": ["libvirtd"], // 指定需要过滤的单个服务，用于服务的详情展示，该选项需要配合hostnames来使用，否则可能返回多条结果
+  "status": ["RUNNING"], // 指定状态进行过滤
+  "limit": 10,
+  "offset": 1,
+  "search_word": "xxx",   // 支持搜索 服务名称和服务角色
+  "with_log_paths": false // 是否获取服务日志路径，默认为false
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "status_time": "2020-05-19T06:08:01Z",
+         "hostname": "s-webservice0",
+         "service": "fg_server",
+         "status": "RUNNING",
+         "pid": "16576",
+         "uptime": 227739,
+         "role": "核心管理服务",
+         "hypernode": "sr01n14",
+         "hostname_ip": "172.31.11.208",
+         "hypernode_ip": "172.31.11.46",
+         "zone": "staging",
+         "zone_id": "staging",
+         "region_id": "staging",
+         "log_paths": {
+            "fg_server.log.wf": "/pitrix/log/fg_server.log.wf",
+            "fg_server.log": "/pitrix/log/fg_server.log"
+         }
+      }
+   ],
+   "total_count": 2,
+   "ret_code": 0,
+   "action": "Boss2GetNodeServiceMonitorResponse"
+}
+----

@@ -1,0 +1,3 @@
+// :ks_include_id: 28a65f11229c45f0bcd1b632d006acbb
+
+* 在列表右上角点击 image:/images/ks-qkcp/en/icons/refresh-light.svg[refresh,18,18] 可刷新列表信息。

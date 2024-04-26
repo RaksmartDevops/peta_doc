@@ -1,0 +1,32 @@
+---
+title: 查看资源
+description: 
+keywords: 
+weight: 10
+collapsible: false
+draft: false
+linkkey: vdc_resource_management
+---
+
+在资源管理中，可通过区域、服务、部门等筛选条件查询企业/部门已创建的资源。
+
+== 前提条件
+
+用户已创建可用资源。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 在左侧导航中，选择**资源与项目** > **资源管理**，进入资源管理页面。
+. 选择查询条件：支持区域、服务、所属部门、资源名称/ID。
++
+
+include::../../../../../../../_components/note.adoc[]
+* **所属部门**为可选，若不选择，则查询企业下所有的资源。
+* 选择一个部门后，部门查询结果中，默认不包含子部门的数据。若需查询所选部门以及子部门的总数据，请勾选**含子部门数据**。
+
+include::../../../../../../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/services/vdc/resource_01.png[]
+. 点击**查询**，即可看到筛选结果。

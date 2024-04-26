@@ -1,0 +1,66 @@
+---
+title: 创建销售（Boss2CreateSales）
+weight: 33
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateSales
+
+=== Method
+POST
+
+=== 接口描述
+该接口将boss用户添加为销售人员。
+响应数据
+
+|===
+| 字段 | 说明 | 备注
+
+| total_users
+| 有效用户数
+|
+
+| success
+| 添加成功的用户数
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2CreateSales",
+    "users": [1,2, 3], // [必须]需要添加为销售的用户列表，为boss用户的id
+    "sales_dept": 99 // 需要加入的部门id
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_users": 3,
+   "success": 2,
+   "ret_code": 0,
+   "action": "Boss2CreateSalesResponse"
+}
+----

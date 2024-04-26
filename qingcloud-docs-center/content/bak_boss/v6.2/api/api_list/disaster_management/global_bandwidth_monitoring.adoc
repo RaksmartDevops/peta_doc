@@ -1,0 +1,99 @@
+---
+title: 全局带宽监控（Boss2GetGlobalBandwidthMonitor）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalBandwidthMonitor
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取各个region(或单zone)的连通带宽情况。
+返回字段：
+
+|===
+| 字段 | 说明 | 备注
+
+| src_zone
+| 发起带宽检测的zone id
+|
+
+| dest_type
+a|
+带宽检测的目标：
+
+* internet: 与公网的带宽情况
+* zone_id: 与region中其他zone的带宽情况
+
+|
+
+| inbound
+| 入站带宽，单位为bps
+|
+
+| outbound
+| 出站带宽，单位为bps
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetGlobalBandwidthMonitor",
+    "zones": ["dsry1"], // [可选]指定需要检查的region id
+    "src_zones": ["dsry1a", "dsry1b"], // [可选]可通过发起带宽检测的源zone进行过滤
+    "dest_types": ["internet", "dsry1b"] // [可选]可过滤带宽检测的对象
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "data": [
+      {
+         "src_zone": "dsry1a",
+         "dest_type": "internet",
+         "inbound": 34045.6,
+         "outbound": 30611.2
+      },
+      {
+         "src_zone": "dsry1b",
+         "dest_type": "internet",
+         "inbound": 1171391.2,
+         "outbound": 1417148
+      },
+      {
+         "src_zone": "dsry1",
+         "dest_type": "internet",
+         "inbound": 1205436.8,
+         "outbound": 1447759.2
+      }
+   ],
+   "total_count": 0,
+   "ret_code": 0,
+   "action": "Boss2GetGlobalBandwidthMonitorResponse"
+}
+----

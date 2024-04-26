@@ -1,0 +1,87 @@
+// 绑定/解绑安全组
+
+创建安全组后，可以将云服务器、负载均衡器、VPC 网络等资源实例加入到该安全组，使这些实例受到安全组的保护。当实例不需要该安全组时，也可以从安全组中移出对应的实例。
+
+== 背景信息
+
+ifdef::pub[]
+* 云服务器支持在安全组页面及云服务器页面进行安全组的关联管理，本文介绍如何在安全组管理页面为云服务器绑定/解绑安全组。如何在云服务器管理页面进行安全组的绑定，请参见link:../../../../../compute/vm/manual/security/10_add_security/[云服务器文档]。
+endif::pub[]
+
+ifdef::ep[]
+* 云服务器支持在安全组页面及云服务器页面进行安全组的关联管理，本文介绍如何在安全组管理页面为云服务器绑定/解绑安全组。如何在云服务器管理页面进行安全组的绑定，请参见云服务器文档。
+endif::ep[]
+
+* 负载均衡器、VPC 网络、NAT 网关等其他资源仅支持在资源对应的管理页面进行安全组的关联管理，详细操作请参见各产品对应的产品文档。
+
+
+== 云服务器绑定安全组
+
+[discrete]
+=== 方法一
+
+include::./common_operation.adoc/[tag=sg]
+
+. 在安全组列表，右键点击需要与云服务器进行绑定的安全组，在快捷菜单中选择**云服务器** > **绑定**。
++
+image::/images/cloud_service/network/sg/sg_bind_vm_1.png[]
+
+. 在弹出的云服务器选择窗口中，选择需要绑定的云服务器，点击**提交**，等待绑定成功即可。
++
+include::../../_components/note.adoc[]
+云服务器可绑定一个或多个安全组，默认情况下，最多不能超过5个安全组。
+include::../../_components/table_footer.adoc[]
+
+
+[discrete]
+=== 方法二
+
+include::./common_operation.adoc/[tag=sg]
+
+. 在安全组列表，点击待绑定安全组的 ID，进入该安全组的详情页面。
+. 点击**关联资源**页签，可以查看到与当前安全组关联的所有资源。
++
+image::/images/cloud_service/network/sg/sg_bind_vm_2.png[]
+. 点击**绑定**，弹出云服务器选择窗口。
+. 选择需要绑定的云服务器，点击**提交**，等待绑定成功即可。
++
+include::../../_components/note.adoc[]
+云服务器可绑定一个或多个安全组，默认情况下，最多不能超过五个安全组。
+include::../../_components/table_footer.adoc[]
+
+
+== 云服务器解绑安全组
+
+[discrete]
+=== 方法一
+
+include::./common_operation.adoc/[tag=sg]
+
+. 在安全组列表，右键点击需要与云服务器进行绑定的安全组，在快捷菜单中选择**云服务器** > **解绑**。
+
+. 在弹出的云服务选择窗口，选择需要解绑的云服务器，点击**提交**，等待解绑成功即可。
++
+include::../../_components/note.adoc[]
+仅解除当前安全组与选定资源之间的绑定关系。
+include::../../_components/table_footer.adoc[]
++
+image::/images/cloud_service/network/sg/sg_unbind_vm_1.png[]
+
+[discrete]
+=== 方法二
+
+include::./common_operation.adoc/[tag=sg]
+
+. 在安全组列表，点击需要与云服务器进行绑定的安全组 ID，进入其详情页面。
+
+. 点击**关联资源**页签，可以查看到与当前安全组关联的所有资源。
++
+image::/images/cloud_service/network/sg/sg_bind_vm_2.png[]
+
+. 点击**解绑**，弹出云服务器选择窗口。选择需要解绑安全组的云服务器，点击**提交**，等待解绑成功即可。
++
+include::../../_components/note.adoc[]
+仅解除当前安全组与选定资源之间的绑定关系。
+include::../../_components/table_footer.adoc[]
+
+

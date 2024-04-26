@@ -1,0 +1,50 @@
+{{- $FirstSection := partial "get-first-section.html" . -}}
+{{$VersionName := (path.Base $FirstSection.RelPermalink)}}
+{{- $Sidebar := partial "get-search-sidebar.html" . -}}
+{{if .Site.Data.sidebar}}
+  {{with index .Site.Data.sidebar $VersionName}}
+    {{$Sidebar = .}}
+  {{end}}
+{{end}}
+<div class="search search-sidebar">
+  <div class="control has-icons-left has-icons-right docs-search-input">
+    <span class="icon is-left">
+      <img src="/images/icons/magnifier_duotone.svg" />
+    </span>
+    <input class="input" name="q" type="input" placeholder="请输入关键字快速获取帮助" autocomplete="off" />
+    <span class="icon is-right"> </span>
+  </div>
+  <img class="clear-search-input" src="/images/icons/close_duotone.svg" />
+</div>
+<div class="search-sidebar-result columns">
+  {{with $Sidebar}}
+    <div class="column">
+      {{range $index,$element := .}}
+        {{if eq (mod $index 4) 0}}
+          {{partial "get-search-sidebar-item.html" $element}}
+        {{end}}
+      {{end}}
+    </div>
+    <div class="column">
+      {{range $index,$element := .}}
+      {{if eq (mod $index 4) 1}}
+      {{partial "get-search-sidebar-item.html" $element}}
+      {{end}}
+      {{end}}
+    </div>
+    <div class="column">
+      {{range $index,$element := .}}
+      {{if eq (mod $index 4) 2}}
+      {{partial "get-search-sidebar-item.html" $element}}
+      {{end}}
+      {{end}}
+    </div>
+    <div class="column">
+      {{range $index,$element := .}}
+      {{if eq (mod $index 4) 3}}
+      {{partial "get-search-sidebar-item.html" $element}}
+      {{end}}
+      {{end}}
+    </div>
+  {{end}}
+</div>

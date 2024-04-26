@@ -1,0 +1,19 @@
+---
+title: "查看组织树"
+weight: 2
+---
+
+组织创建完成后，可查看整个企业空间的组织树。
+
+== 操作步骤
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 点击组织管理右侧的image:/images/cloud_service/services/vdc/org_tree.png[]，弹出**查看组织树**界面。
++
+image::/images/cloud_service/services/vdc/view_org_tree_1.png[,50%]
+
+
+
+
+

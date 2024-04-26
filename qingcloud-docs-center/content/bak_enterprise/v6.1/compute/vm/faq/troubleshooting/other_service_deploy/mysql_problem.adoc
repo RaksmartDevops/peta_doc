@@ -1,0 +1,89 @@
+---
+title: "自建 MySQL 无法远程访问排查思路"
+weight: 10
+
+---
+
+== 概述
+
+使用云平台云服务器安装的 MySQL 无法远程访问，可通过本文检查处理
+
+=== Liunx 云服务器排查思路
+
+. 执行命令查看 MySQL 服务状态是否正常，running 状态表示 MySQL 服务正常
++
+[source,shell]
+----
+systcmctl status mysqld
+----
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem01.jpg[]
+
+. 执行命令查看 MySQL 服务是否被监听
++
+[source,shell]
+----
+ss -nutlp ｜grep mysql
+----
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem02.jpg[]
+
+. 查看云服务器内部防火墙是否已关闭，dead 状态表示防火墙已关闭，如果是开启状态，使用命令关闭防火墙
++
+[source,shell]
+----
+systemctl stop firewalld
+----
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem03.png[]
+
+. 查看管理控制台云服务器绑定的安全组中是否放行了 3306 端口，路径如下：*计算* > *云服务器* > *i-xxxxxxx* > *安全组*
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem04.jpg[]
+
+. 查看是否在安全组中放行了 3306 端口，如果没过放行，则通过如下步骤放行：添加 *规则* > *提交* > *应用修改*，规则模版如下图
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem05.png[]
+
+. 如云服务器是通过 VPC 网络进行访问，则修改 VPC 绑定的安全组，并添加端口转发规则，路径如下：*网络* > *VPC 网络* > *rtr-xxxxxxx* > *管理配置* > *添加规则* > *提交* > *应用修改*，端口转发规则如下图
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem06.jpg[]
+
+. 使用客户端工具验证登录
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem07.jpg[]
+
+=== Windows云服务器排查思路
+
+. 右键开始 *菜单* > *运行* > *输入 services.msc*，在服务界面查看 MySQL 服务的运行状态
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem08.jpg[]
+
+. 右键开始 *菜单* > *运行* > *输入 cmd*，进入命令行界面使用命令查看 MySQL 服务端口是否被监听
++
+[source,shell]
+----
+netstat -ano | findstr :3306
+----
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem09.jpg[]
+
+. 查看防火墙是否已关闭，防火墙路径：*控制面板* > *系统和安全* > *Windows Defender 防火墙* > *启用或关闭 Windows Defender 防火墙*
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem10.jpg[]
+
+. 查看管理控制台云服务器绑定的安全组中是否放行了 3306 端口，路径如下：*计算* > *云服务器* > *i-xxxxxxx* > *安全组*
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem04.jpg[]
+
+. 查看是否在安全组中放行了 3306 端口，如果没过放行，则通过如下步骤放行：*添加规则* > *提交* > *应用修改*，规则模版如下图
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem05.png[]
+
+. 如主机是通过 VPC 网络进行访问，则修改 VPC 绑定的安全组，并添加端口转发规则，路径如下：*网络* > *VPC网络* > *rtr-xxxxxxx* > *管理配置* > *添加规则* > *提交* > *应用修改*，端口转发规则如下图
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem06.jpg[]
+
+. 使用客户端工具验证登录
++
+image::/images/cloud_service/compute/vm/faq_trouble_mysql_problem07.jpg[]

@@ -1,0 +1,107 @@
+---
+title: "IP 组"
+weight: 130
+---
+
+
+== 场景描述
+
+该任务指导管理员进入 IP 组页面，查看 IP 组相关信息，并执行创建、修改、启用/禁用、注销的操作。
+
+== 功能描述
+
+IP 组为针对 IP 资源的可见性权限控制实现，同一个 IP 组内的云用户对 IP 组所对应的 IP 池有相同的可见权限。
+
+IP 组列表展示 IP 组状态、名称/ID、可见范围、IP 类型、创建时间信息。此页面可直接创建新的 IP 组。
+
+== 前提条件
+
+已获取 BOSS 的登录账号和密码。
+
+== 操作步骤
+
+. 使用浏览器登录 BOSS。
+. 在左侧导航栏选择 *资源管理* > *网路* > *IP 组*，在面板左上角选择区域或可用区。
++
+image::/images/boss/manual/resource_mgt/eip_group_operations.png[]
+
+. 点击 IP 组的名称，可查看 IP 组的详细信息。
+
+=== 创建 IP 分组
+
+. 在 *网络：IP 分组* 页面右上角点击 *创建*。
++
+弹出 *创建 IP 分组* 对话框。
+
+. 根据提示信息输入和选择参数，输入操作原因。
++
+
+include::../../../../../_components/note.adoc[]
+可见范围选择 *管理员可见* 或 *所有用户可见* 时，后续不可再为该 IP 组添加可见用户。若需添加可见用户，可将可见范围修改为 *部分用户可见*。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 点击 *创建*。
+
+=== 为 IP 组添加可见范围
+
+include::../../../../../_components/note.adoc[]
+当 IP 组的可见范围为 *部分用户可见* 时，可执行本操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：IP 组* 页面搜索框中搜索待操作 IP 组的 ID 或名称，按 *Enter*，找到待操作的 IP 组。
+. 点击 IP 组的名称。
++
+进入 IP 组详情页面。
+
+. 在 IP 组详情页面，点击 *添加*。
+. 勾选待添加用户，输入操作原因。
+. 点击 *添加*。
+
+=== 修改 IP 组
+
+. 在 *网络：IP 组* 页面搜索框中搜索待操作 IP 组的 ID 或名称，按 *Enter*，找到待操作的 IP 组。
+. 在待操作的 IP 组所在行点击image:/images/boss/manual/icon.png[]，点击 *修改*。
++
+弹出 *修改 IP 组* 对话框。
+
+. 输入名称，选择可见范围，输入备注和操作原因。
+. 点击 *修改*。
+
+=== 禁用 IP 组
+
+include::../../../../../_components/note.adoc[]
+当 IP 组状态为 *可用* 时，可执行禁用 IP 组操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：IP 组* 页面搜索框中搜索待操作 IP 组的 ID 或名称，按 *Enter*，找到待操作的 IP 组。
+. 在待操作的 IP 组所在行点击image:/images/boss/manual/icon.png[]，点击 *禁用*。
++
+弹出 *禁用 IP 组* 对话框。
+
+. 输入操作原因，点击 *禁用*。
+
+=== 启用 IP 组
+
+include::../../../../../_components/note.adoc[]
+当 IP 组状态为 *已禁用* 时，可执行启用 IP 组操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+. 在 *网络：IP 组* 页面搜索框中搜索待操作 IP 组的 ID 或名称，按 *Enter*，找到待操作的 IP 组。
+. 在待操作的 IP 组所在行点击image:/images/boss/manual/icon.png[]，点击 *启用*。
++
+弹出 *启用 IP 组* 对话框。
+
+. 输入操作原因，点击 *启用*。
+
+=== 注销 IP 组
+
+. 在 *网络：IP 组* 页面搜索框中搜索待操作 IP 组的 ID 或名称，按 *Enter*，找到待操作的 IP 组。
+. 在待操作的 IP 组所在行点击image:/images/boss/manual/icon.png[]，点击 *注销*。
++
+弹出 *注销 IP 组* 对话框。
+
+. 输入操作原因，点击 *注销*。

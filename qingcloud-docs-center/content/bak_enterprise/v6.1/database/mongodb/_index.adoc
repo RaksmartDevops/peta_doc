@@ -1,0 +1,70 @@
+---
+title: 文档数据库 MongoDB
+linkTitle: MongoDB
+weight: 6
+description: MongoDB 是一款开源的文档型数据库，具有高性能、高可用等优点。
+study_section:
+  - title: 了解
+    icon: icon-note_tree_duotone
+    children:
+      - title: 产品简介
+        children:
+          - title: 什么是 MongoDB
+            url: intro/introduction/
+          - title: 功能特性
+            url: intro/function/
+          - title: 实例规格
+            url: intro/specification/
+      - title: 计费指南
+        children:
+          - title: 计费说明
+            url: billing/price/
+          - title: 费用变更
+            url: billing/change_price/
+          - title: 到期与欠费
+            url: billing/charge/
+          - title: 退款说明
+            url: billing/refund/
+  - title: 上手
+    icon: icon-gamepad_2_duotone
+    children:
+      - title: 快速入门
+        children:
+          - title: 创建集群
+            url: quickstart/create_cluster/
+          - title: 访问数据库
+            url: quickstart/access_mongodb/
+  - title: 使用
+    icon: icon-apps_2_duotone
+    children:
+      - title: 集群管理
+        children:
+          - title: 连接集群
+            url: manual/mgt_connect/access_mongodb/
+          - title: 查看集群
+            url: manual/cluster_lifecycle/check_cluster/
+          - title: 升级集群
+            url: manual/cluster_lifecycle/upgrade/
+          - title: 迁移集群
+            url: manual/migration/mongo_shake/
+          - title: 备份集群
+            url: manual/backup_restoration/backup_info/
+          - title: 删除集群
+            url: manual/cluster_lifecycle/delete_cluster/
+      - title: 集群监控
+        children:
+          - title: 设置监控告警
+            url: manual/metrics_alarm/set_alarm_rules/
+          - title: 启用 Zabbix Agent 服务
+            url: manual/metrics_alarm/zabbix_client_service/
+          - title: 启动日志服务
+            url: manual/mgt_log/enable_log_service/
+  - title: 实践
+    icon: icon-simulation_duotone
+    children:
+      - title: 最佳实践
+        children:
+          - title: 分配 oplog 空间
+            url: best-practices/oplog_size/
+linkkey: database_mongodb_guide
+---

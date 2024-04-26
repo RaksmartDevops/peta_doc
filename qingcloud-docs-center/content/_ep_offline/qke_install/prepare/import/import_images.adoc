@@ -1,0 +1,98 @@
+// 导入 QKE 应用
+
+参考应用 App 导入方法导入 QKE 应用。
+
+. 将link:../../resources/#_qke_应用安装包[下载的 QKE 应用安装包]上传到{product_name}的任意一台物理服务器上，记录节点信息和上传的路径。
++
+例如，上传到了 demo1r01n02:/pitrix/migrate_appcenter2_qingcloud 目录。
+
+. 登录{product_name}任一 Webservice 节点。
++
+include::../../../../_components/note.adoc[]
+可以在 FirstBox 节点上执行 ``cat /etc/hosts \| grep webservice`` 命令查看 webservice 节点名称。
+include::../../../../_components/table_footer.adoc[]
+. 执行以下命令，开启 tmux。
++
+[source]
+----
+tmux
+----
++
+
+include::../../../../_components/note.adoc[]
+开启 tmux 后，在命令执行操作过程中，若网络断连，命令会在后台继续执行。恢复连接后，执行 `tmux attach` 即可恢复到之前的操作界面。
+include::../../../../_components/table_footer.adoc[]
+
+. 执行以下命令，进入 /pitrix/lib/pitrix-scripts/appcenter2/ 目录。
++
+[source]
+----
+cd /pitrix/lib/pitrix-scripts/appcenter2/
+----
+. 执行以下命令，导入 QKE 应用。
++
+[source]
+----
+./import_apps -s <QKE 应用安装包路径> -y -c <console_id> -C kvm --isolate_billing 1 --instance_class "INSTANCE_CLASS" --volume_class "VOLUME_CLASS"
+----
++
+**示例**：
++
+[source]
+----
+./import_apps -s root@demo1r01n02:/pitrix/migrate_appcenter2_qingcloud -y -c democloud -C kvm --isolate_billing 1 --instance_class "6" --volume_class "5"
+----
++
+**参数说明**：
++
+以下非必选参数可以不输入，命令执行后，系统会进入应用导入交互页面，用户需根据实际情况再进行配置。
++
+[cols='1,1,3'] 
+|===
+| 参数 | 是否必选 |  说明
+
+| -c | 否 | 请填写环境的 Console ID，根据环境规划获取，或在{product_name}的 FirstBox 节点执行命令 ``cat /pitrix/conf/variables/variables.yaml`` 查看。
+| -C | 否 | 虚拟机类型，支持 KVM、LXC。
+| -s | 是 a| 请填写 QKE 应用安装包的路径。
+
+路径需包含镜像包所在的节点信息，例如 root@demo1r01n02:/pitrix/migrate_appcenter2_qingcloud。
+
+// 从 migrate_appcenter2_recommend 目录下载的文件可以配置以下三种目录：
+
+// * 导入当前环境推荐的全部 App：root@testing1a-proxy0:/root/export_apps/test/all_app/6_1
+// * 单个 App：root@testing1a-proxy0:/root/export_apps/test/all_app/6_1/app-xxxxx
+// * 单个 App 版本：root@testing1a-proxy0:/root/export_apps/test/all_app/6_1/app-xxxxx/appv-xxxxxx
+
+// include::../../../../../_components/attention_in_table.adoc[]
+
+// 从其他目录下载的文件只能配置到包含 meta_data.json 文件的目录，再通过 **-S 参数**来指定具体需要导入的 App 或 App 版本。
+
+// include::../../../../../_components/footer_in_table.adoc[]
+
+| -S | 否 | app_ids or version_ids，若需要导入多个 App 或 App 版本，可用逗号隔开。
+| -r | 否 | 请填写环境的 region_id。
+| -z | 否 | 请填写环境的 zone_id。
+| --instance_class | 否 a| 创建 APP 可用的主机类型。
+
+* 如果 NeonSAN 环境是纯 SSD 环境，则配置为 6。
+* 如果 NeonSAN 环境为混插型硬盘，则配置为 7。
+| --volume_class | 否 a| 创建 APP 可用的磁盘类型。
+
+* 如果 NeonSAN 环境是纯 SSD 环境，则配置为 5。
+* 如果 NeonSAN 环境为混插型硬盘，则配置为 6。
+|===
++
+回显信息类似如下，表示操作成功。
++
+image::/images/ep_offline/qke_install/install_service_import_images.png[]
++
+include::../../../../_components/note.adoc[]
+若导入失败，请先查看link:../../../faq/01[常见问题]进行解决。
+
+include::../../../../_components/table_footer.adoc[]
+. 导入任务完成后，执行以下命令，重启 billing_resource 服务。
++
+[source]
+----
+supervisorctl restart billing_resource
+----

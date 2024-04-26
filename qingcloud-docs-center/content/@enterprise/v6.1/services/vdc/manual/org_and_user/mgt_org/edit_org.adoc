@@ -1,0 +1,48 @@
+---
+title: 修改组织
+description:
+keywords:
+weight: 20
+collapsible: false
+draft: false
+---
+
+== 修改组织基本信息
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 在组织树中，选择需要修改信息的组织，点击右侧**更多操作** > *修改*，弹出修改组织对话框。
++
+image::/images/cloud_service/services/vdc/edit_org.png[修改组织]
+. 根据需要修改组织的名称、上级组织、组织负责人和描述信息。
++
+
+include::../../../../../../../_components/note.adoc[]
+
+修改上级组织，会变更组织关系，以创建的下级组织也会随组织关系转移。
+
+include::../../../../../../../_components/table_footer.adoc[]
+. 点击**确定**，修改组织。
++
+修改组织成功后，返回组织管理页面。
+
+== 修改组织成员
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 在组织树中，选择目标组织，在**成员**页签，可以看到该组织下的成员列表。
++
+image::/images/cloud_service/services/vdc/change_members.png[修改组织成员]
+. 找到需要删除的成员，记录成员名称。
+. 点击**去增减成员**，进入用户管理页面，可以link:../../mgt_user/create_user[新增成员]、link:../../mgt_user/delete_user[删除成员]。
+
+== 修改组织配额
+
+组织默认共享租户的配额，可以根据实际情况进行修改。
+
+. 登录管理控制台。
+. 点击页面右上方的**企业**，默认进入组织管理页面。
+. 在组织树中，选择目标组织，在**配额**页签，可以看到该组织的配额信息。
++
+image::/images/cloud_service/services/vdc/change_quota.png[修改组织配额]
+. 点击**限制组织配额**，进入组织配额页面，可以link:../../mgt_quota/custom[限制组织配额]、link:../../mgt_quota/reset[回收独立配额]。

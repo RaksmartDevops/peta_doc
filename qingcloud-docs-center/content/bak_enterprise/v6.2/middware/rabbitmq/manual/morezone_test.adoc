@@ -1,0 +1,59 @@
+---
+title: "多可用区（同城多活）测试"
+description: 本小节主要介绍多可用区，同城双活的测试方法。
+keywords: 云计算,大数据,消息队列,中间件,RabbitMQ,rabbitmq,消息队列服务,消息中间件,操作指南,多可用区,同城多活
+weight: 29
+draft: false
+
+---
+
+== 背景
+
+升级区域（Region）架构轻松实现同城多活。
+
+== 测试结果
+
+针对基础配置的三节点集群，在设置消息队列持久化并开启镜像队列到所有节点的情况下，多可用区部署的集群性能没有明显的下降，参见下表：
+
+[cols="2,2,1"]
+|===
+| 集群 / 指标 | 网络延时 Ping | 消费吞吐量 TPS
+
+| 多可用区部署（pek3 b/c/d，主节点在 b）
+| pek3c：1.5ms，pek3b：2.6ms
+| ~4518
+
+| 多可用区部署（pek3 b/c/d，主节点在 c）
+| pek3c：1.5ms，pek3b：2.6ms
+| ~4408
+
+| 多可用区部署（pek3 b/c/d，主节点在 d）
+| pek3c：1.5ms，pek3b：2.6ms
+| ~4528
+
+| 单可用区部署（pek3d）
+| 0.3ms
+| ~4657
+|===
+
+include::../../../../../_components/note.adoc[]
+网络延时视情况而定，同可用区可能在 ``0.1ms~0.5ms`` 之间波动，不同可用区之间波动更大一些，一般在 ``1ms`` 以上。
+
+include::../../../../../_components/table_footer.adoc[]
+
+== 测试环境
+
+* 区域：北京3区
+* RabbitMQ磁盘节点 (*3)：1CPU， 1G内存，性能型
+* 测试节点：pek3d区，8CPU， 8G内存，基础型，Ubuntu Server 18.04.1 LTS 64bit
+
+== 测试方法
+
+使用link:https://github.com/rabbitmq/rabbitmq-perf-test/[官方工具]，分别针对位于不同可用区的主节点发/收消息，官方工具统计得到 TPS 。
+
+== 测试代码
+
+[source]
+----
+bin/runjava com.rabbitmq.perf.PerfTest -u perf.test.ha -f persistent -X 1 -Y 1 -z 30 -H amqp://192.168.3.3
+----

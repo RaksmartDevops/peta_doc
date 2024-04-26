@@ -1,0 +1,60 @@
+---
+title: 关闭当前用户二次认证（Boss2DisableCurrentTOTP）
+weight: 8
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DisableCurrentTOTP
+
+=== Method
+POST
+
+=== 接口描述
+关闭当前用户的二次认证
+响应数据：
+
+|===
+| 参数名称 | 类型 | 描述 | 备注
+
+| id
+| Integer
+| 用户id
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DisableCurrentTOTP"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 1,
+   "ret_code": 0,
+   "action": "Boss2DisableTOTPResponse"
+}
+----

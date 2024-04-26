@@ -1,0 +1,69 @@
+---
+title: 通用管理
+linkTitle: 通用管理
+description: 通用管理介绍
+draft: false
+weight: 6
+keywords: 云服务器, 安全，云防火墙，通用介绍，服务端口，应用组
+linkkey: security_cfw_applications_guide,security_cfw_address_book_guide,security_cfw_service_port_local_guide
+---
+
+
+
+== 地址簿
+
+云防火墙支持将多个IP地址指定成一个地址簿，便于在配置云防火墙访问控制策略时灵活引用多个IP地址的信息。
+
+[discrete]
+==== 操作步骤
+
+. 在控制台产品服务列表打开 *安全服务* 中的 *云防火墙 CFW* 进入**云防火墙控制台**。
+. 在**云防火墙控制台**左侧导航栏，单击**安全策略** > *通用管理* > *地址簿*。
+. 在**地址簿**页面，单击**新增**。
++
+image::/images/cloud_service/security/firewall/address.png[]
+
+. 在**新增地址簿**对话框中，按照以下步骤新增地址簿。
++
+image::/images/cloud_service/security/firewall/add_address.png[新增地址簿]
+
+. 单击**新增**完成创建。
+
+== 服务端口
+
+在配置云防火墙访问控制策略时，自定义针对不同场景的服务合集叫做服务端口。服务端口支持用户自定义，满足不同业务场景需求。
+
+include::../../../../../_components/note.adoc[]
+
+如果使用平台默认服务端口，则无需进行该操作。
+
+include::../../../../../_components/table_footer.adoc[]
+
+[discrete]
+==== 操作步骤
+
+. 在控制台产品服务列表打开 *安全服务* 中的 *云防火墙 CFW* 进入**云防火墙控制台**。
+. 在**云防火墙控制台**左侧导航栏，单击**安全策略** > *通用管理* > *服务端口*。
+. 在**服务端口**页面，选择**自定义服务端口**。
++
+image::/images/cloud_service/security/firewall/server.png[]
+
+. 在**新增自定义服务端口**对话框中，按照以下步骤新增自定义服务端口。
++
+image::/images/cloud_service/security/firewall/default_port.png[]
+
+. 单击**新增**完成创建。
+
+== 应用组
+
+在配置云防火墙访问控制策略时，针对不同场景的进行自定义应用组合集叫做应用组。
+
+[discrete]
+==== 操作步骤
+
+. 在控制台产品服务列表打开 *安全服务* 中的 *云防火墙 CFW* 进入**云防火墙控制台**。
+. 在**云防火墙控制台**左侧导航栏，单击**安全策略** > *通用管理* > *应用组*。
+. 在**应用组**页面，查看应用组集合。
++
+image::/images/cloud_service/security/firewall/app_group.png[]
+

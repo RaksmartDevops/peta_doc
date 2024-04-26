@@ -1,0 +1,47 @@
+---
+title: 吊销证书（Boss2SSLCertShopRevokeCert）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2SSLCertShopRevokeCert
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2SSLCertShopRevokeCert",
+    "order_id": "oid-216c6ee4ae0e" // 必须是DV证书，且状态为订单完成
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "Boss2SSLCertShopRevokeCertResponse",
+   "ret_code": 5000,
+   "message": "TrustAsia 错误信息：[当前状态不允许进行吊销操作!]"
+}
+----

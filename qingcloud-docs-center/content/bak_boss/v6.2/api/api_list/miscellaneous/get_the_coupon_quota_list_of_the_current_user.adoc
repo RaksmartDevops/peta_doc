@@ -1,0 +1,65 @@
+---
+title: 获取当前用户的优惠券配额列表（Boss2DescribeMyCouponQuotas）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeMyCouponQuotas
+
+=== Method
+POST
+
+=== 接口描述
+本接口封装了原有的DescribeCouponQuotas接口，仅返回分配给当前用户的优惠券配额。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeMyCouponQuotas",
+   "limit": 20,
+   "offset": 0
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "action": "DescribeCouponQuotasResponse",
+   "total_count": 4,
+   "coupon_quota_set": [
+      {
+         "update_time": "2021-06-24T23:22:18",
+         "creator": "admin",
+         "coupon_type_id": "cpt-iR3Abb1K",
+         "console_id": "alphacloud",
+         "total_money": "50",
+         "create_time": "2021-06-24T23:22:18",
+         "total_count": 50,
+         "conditions": "",
+         "dispatcher": "admin@alphacloud.com"
+      }
+   ],
+   "ret_code": 0
+}
+----

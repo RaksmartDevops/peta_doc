@@ -1,0 +1,221 @@
+---
+title: 获取全局KS服务巡检结果（Boss2GetGlobalKSInspection）
+weight: 11
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2GetGlobalKSInspection
+
+=== Method
+POST
+
+=== 接口描述
+该接口用于获取全局KS服务的巡检结果。
+
+由于完成巡检需要耗费一定的时间，因此该接口的数据为每5分钟定时检查的最新数据。
+
+如果需要立即发起检查，请使用"`Boss2StartGlobalKSInspection`"接口。
+
+
+|===
+| 字段 | 说明 | 备注
+
+| status
+a|
+检测状态:
+
+* finished: 最近检测已结束，结果数据为最新数据
+* running: 最近发起的检测仍在进行中，结果数据可能不是最新的
+|
+
+| status_time
+| 数据更新时间
+|
+
+| service
+a|
+巡检的KS服务，目前巡检服务有：
+
+* webservice: web服务
+* account: 账号服务
+* billing: 计费服务
+* nf: 通知服务
+|
+
+| seq
+| 巡检顺序
+|
+
+| status
+a|
+巡检结果:
+
+* normal: 正常
+abnormal：异常
+
+* skipped: 已跳过
+* warning: 警告
+|
+
+| message
+| 如有异常，怎会有异常信息展示
+|
+
+| related_services
+| 该服务关联的具体服务，这些服务可在基础设施--基础服务中可以看到
+|
+
+| log_paths
+| 该服务关联的日志文件，用于错误日志查询
+|
+
+| extra_info
+| 存储在检查中获取到的额外信息
+|
+
+| extra_info.service_hosts
+| 该服务在哪些节点上运行
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+    "action": "Boss2GetGlobalKSInspection",
+    "services": ["webservice", "account", "billing", "nf"] // [可选]可按巡检服务进行过滤
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "status": "finished",
+   "data": [
+      {
+         "service": "webservice",
+         "seq": 0,
+         "status": "normal",
+         "message": null,
+         "log_paths": {
+            "ws_server.log": "/pitrix/log/ws_server.log",
+            "ws_server.log.wf": "/pitrix/log/ws_server.log.wf"
+         },
+         "extra_info": {
+            "service_hosts": [
+               {
+                  "zone_id": "dsry1a",
+                  "hostname": "dsry1a-ks1",
+                  "hostname_ip": "172.31.47.61"
+               }
+            ]
+         },
+         "related_services": [
+            "ws_server"
+         ]
+      },
+      {
+         "service": "account",
+         "seq": 1,
+         "status": "normal",
+         "message": null,
+         "log_paths": {
+            "account_server.log": "/pitrix/log/account_server.log",
+            "account_server.log.wf": "/pitrix/log/account_server.log.wf"
+         },
+         "extra_info": {
+            "service_hosts": [
+               {
+                  "zone_id": "dsry1a",
+                  "hostname": "dsry1a-ks1",
+                  "hostname_ip": "172.31.47.61"
+               }
+            ]
+         },
+         "related_services": [
+            "account_server"
+         ]
+      },
+      {
+         "service": "billing",
+         "seq": 2,
+         "status": "normal",
+         "message": null,
+         "log_paths": {
+            "billing_api.log": "/pitrix/log/billing_api.log",
+            "billing_user.log": "/pitrix/log/billing_user.log",
+            "billing_api.log.wf": "/pitrix/log/billing_api.log.wf",
+            "billing_broker.log": "/pitrix/log/billing_broker.log",
+            "billing_daemon.log": "/pitrix/log/billing_daemon.log",
+            "billing_user.log.wf": "/pitrix/log/billing_user.log.wf",
+            "billing_resource.log": "/pitrix/log/billing_resource.log",
+            "billing_broker.log.wf": "/pitrix/log/billing_broker.log.wf",
+            "billing_daemon.log.wf": "/pitrix/log/billing_daemon.log.wf",
+            "billing_resource.log.wf": "/pitrix/log/billing_resource.log.wf"
+         },
+         "extra_info": {
+            "service_hosts": [
+               {
+                  "zone_id": "dsry1a",
+                  "hostname": "dsry1a-ks1",
+                  "hostname_ip": "172.31.47.61"
+               }
+            ]
+         },
+         "related_services": [
+            "billing_api_gateway",
+            "billing_broker",
+            "billing_daemon",
+            "billing_resource",
+            "billing_user"
+         ]
+      },
+      {
+         "service": "nf",
+         "seq": 3,
+         "status": "normal",
+         "message": null,
+         "log_paths": {
+            "nf_server.log": "/pitrix/log/nf_server.log",
+            "nf_server.log.wf": "/pitrix/log/nf_server.log.wf"
+         },
+         "extra_info": {
+            "service_hosts": [
+               {
+                  "zone_id": "dsry1a",
+                  "hostname": "dsry1a-ks1",
+                  "hostname_ip": "172.31.47.61"
+               }
+            ]
+         },
+         "related_services": [
+            "nf_server"
+         ]
+      }
+   ],
+   "status_time": "2020-07-28T06:32:36.104Z",
+   "total_count": 4,
+   "ret_code": 0,
+   "action": "Boss2GetGlobalKSInspectionResponse"
+}
+----

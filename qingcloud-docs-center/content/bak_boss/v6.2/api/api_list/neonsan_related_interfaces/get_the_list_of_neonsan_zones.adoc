@@ -1,0 +1,55 @@
+---
+title: 获取NeonSAN zone列表（Boss2DescribeNeonSANZones）
+weight: 1
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeNeonSANZones
+
+=== Method
+POST
+
+=== 接口描述
+NeonSAN 是每个zone 部署一个，所以这个模式有点像v2v，返回zone列表的格式与v2v保持一致了。
+需要注意的是，这里的zone名称依然可能与 IAAS 的 zone 对应不起来。
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeNeonSANZones"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "zone_set": [
+      {
+         "name": "neonsantest"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeNeonSANZonesResponse"
+}
+----

@@ -1,0 +1,83 @@
+baseURL: "/"
+copyright: "©2022 QingCloud, Inc. All rights reserved"
+defaultContentLanguage: "zh"
+theme: "qing-theme"
+title: "青云文档中心"
+timeout: 2000
+
+enableRobotsTXT: true
+
+ignorefiles: [ ".*/_custom" ]
+
+# 代码高亮
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  asciidocExt:
+    backend: "html5"
+    extensions: []
+    failureLevel: "fatal"
+    noHeaderOrFooter: true
+    preserveTOC: false
+    safeMode: "unsafe"
+    sectionNumbers: false
+    trace: false
+    verbose: false
+    workingFolderCurrent: true
+    attributes:
+      toc:
+      toclevels: 2
+      file_output_type: html
+
+security:
+  enableInlineShortcodes: false
+  exec:
+    allow:
+      - "^dart-sass-embedded$"
+      - "^go$"
+      - "^npx$"
+      - "^postcss$"
+      - "^asciidoctor$"
+    osEnv: ["(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM|RUBYLIB)$"]
+  funcs:
+    getenv: ["^HUGO_"]
+  http:
+    methods: ["(?i)GET|POST"]
+    urls: [".*"]
+
+params:
+  description: "这是青云云计算文档页面"
+  favicon: "/images/favicon.ico"
+  # isEmbed: true
+  keywords: "云计算,青云,QingCloud,文档"
+  logo: "/images/qingcloud-logo.svg"
+  logoInfo: "青云文档中心"
+  logoLink: "/"
+  disableVersions: false
+  disablePdf: false
+
+  # PDF 配置
+  pdf:
+    pdf_projectName: 云易捷
+    pdf_docVersion: '01'
+    pdf_copyright: 版权所有 © 北京青云科技股份有限公司
+    pdf_legalInfo: 版权所有 © 北京青云科技股份有限公司 2022。保留所有权利。
+    pdf_projectVersion: v1.2.2
+    pdf_companyFullName: 北京青云科技股份有限公司
+    pdf_companyName: 青云
+    pdf_companyUrl: https://www.qingcloud.com
+    pdf_companyIcon: /images/pdf/qingcloud-logo-icon.png
+    pdf_coverDocName: QingCloud 云易捷
+    pdf_coverDocLogo: /images/pdf/qingcloud-logo-color.png
+    pdf_coverDocImage: /images/pdf/cover_doc_image.svg
+    pdf_exclude: []
+
+frontmatter:
+  lastmod:
+    - 'lastmod'
+    - ':fileModTime'
+    - 'publishDate'
+
+outputs:
+  home: ["HTML", "RSS", "JSON"]

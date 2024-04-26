@@ -1,0 +1,16 @@
+---
+title: "更改节点配置"
+description: 介绍如何更改 QKE 集群节点配置
+draft: false
+weight: 30
+keywords: 云计算, QKE, 节点, 扩容
+---
+您可以随时根据实际需求增强节点配置来进行集群扩容。
+
+include::../../../../../../_components/note.adoc[]
+
+仅支持增强节点配置，不可降低节点配置。
+
+include::../../../../../../_components/table_footer.adoc[]
+
+具体操作说明请参见link:../../mgt_cluster/change_cluster_scale/#_纵向扩容[集群扩容]。

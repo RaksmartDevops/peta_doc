@@ -1,0 +1,9 @@
+---
+title: "消费预估"
+weight: 15
+keywords: 费用中心,消费账单,账单总览,消费明细, 消费预估
+linkkey: services_estimated_manual[[note]]
+draft: true
+---
+// 企业云中暂未交付-0703
+include::../../../../../../_cloud_service/bill/um_consump_bill.adoc[tag=forecast]

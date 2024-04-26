@@ -1,0 +1,47 @@
+---
+title: 创建通知组（Boss2CreateNotifyGroup）
+weight: 6
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateNotifyGroup
+
+=== Method
+POST
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+  "action": "Boss2CreateNotifyGroup",
+  "name": "test1"   // 通知组名称，必传，不能与已有通知组名称重复
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "id": 1,
+   "ret_code": 0,
+   "action": "Boss2CreateNotifyGroupResponse"
+}
+----

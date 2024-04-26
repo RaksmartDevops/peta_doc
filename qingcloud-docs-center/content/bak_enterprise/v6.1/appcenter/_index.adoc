@@ -1,0 +1,5 @@
+---
+title: "AppCenter"
+weight: 4
+icon: icon-apps_5_duotone
+---

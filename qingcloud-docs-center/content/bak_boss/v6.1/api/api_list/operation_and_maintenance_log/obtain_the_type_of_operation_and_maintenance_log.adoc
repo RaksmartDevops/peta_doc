@@ -1,0 +1,142 @@
+---
+title: 获取运维日志类型（Boss2DescribeOperationalLogTypes）
+weight: 7
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2DescribeOperationalLogTypes
+
+=== Method
+POST
+
+=== 接口描述
+此接口用于获取运维日志类型
+请求参数说明
+
+|===
+| 字段 | 类型 | 是否必须 | 说明 | 备注
+
+| action
+| string
+| 是
+| Boss2DescribeOperationalLogTypes
+|
+
+| sort_key
+| string
+| 否
+| 排序字段
+| 目前为status_time
+
+| reverse
+| integer
+| 否
+| 排序规则
+|
+
+| limit
+| integer
+| 否
+| 分页字段
+|
+
+| offset
+| integer
+| 否
+| 分页字段
+|
+
+| status
+| string
+| 否
+| 类型状态
+|
+
+| log_type
+| string
+| 否
+| 精确匹配日志类型字段
+|
+
+| search_word
+| string
+| 否
+| 模糊查询日志类型字段
+|
+|===
+
+返回参数说明
+
+|===
+| 参数 | 类型 | 说明 | 备注
+
+| total_count
+| integer
+| 日志类型总数量
+|
+
+| operational_log_types_set
+| array
+| 日志类型数据集
+|
+
+| log_type_id
+| integer
+| 日志类型id
+|
+
+| log_type
+| string
+| 日志类型
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2DescribeOperationalLogTypes",
+   "sort_key": "status_time",
+   "limit": 20,
+   "offset": 0,
+   "reverse": 1,
+   "status": "active",
+   "log_type": "财务类",
+   "search_word": "财务"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "total_count": 1,
+   "operational_log_types_set": [
+      {
+         "log_type_id": 2,
+         "log_type": "财务类"
+      }
+   ],
+   "ret_code": 0,
+   "action": "Boss2DescribeOperationalLogTypesResponse"
+}
+----

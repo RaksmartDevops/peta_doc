@@ -1,0 +1,22 @@
+---
+title: "订单管理"
+description: 介绍如何管理云应用订单。
+keywords: 云平台, AppCenter, 云应用开发平台
+draft: false
+collapsible: false
+weight: 3
+---
+
+== 订单处理
+
+在用户下单并购买支付后，应用开发者会收到待处理订单。
+
+image::/images/cloud_service/appcenter/order-manager.png[用户订单处理]
+
+待处理订单列表，可看到用户下单时间、购买信息，应用开发者需在**交付截止时间**前处理完成该订单。
+
+image::/images/cloud_service/appcenter/order-list.png[订单列表]
+
+提交 License 支持文本方式、与上传文件附件方式。
+
+image::/images/cloud_service/appcenter/order-proc.png[订单处理]

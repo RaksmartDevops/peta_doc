@@ -1,0 +1,39 @@
+---
+title: "安装可视化控制台"
+description: 本小节介绍在 QKE 集群上安装 KubeSphere的方法。
+draft: false
+weight: 5
+keywords: 容器,QKE,KubeSphere,KSE
+---
+QKE 支持在创建集群时或创建集群后一键安装 KubeSphere 或 KSE 可视化控制台。
+
+== 创建集群时安装
+
+创建集群时，在**对接服务**区域，选择安装可视化控制台 KubeSphere 或 KSE。具体操作请参见link:../../../quickstart/create_selfmgt_cluster/[创建集群]。
+
+image::/images/cloud_service/container/qke/install_ks_on_creation_ep.png[]
+
+== 创建集群后安装
+
+. 登录管理控制台。
+. 在控制台顶部的导航菜单中，选择**产品与服务** > *容器服务* > *{k8s_engine_fullname}*，进入 QKE 集群列表页面。
+. 在集群列表，点击目标集群名称，进入**集群概览**页面。
+. 在左侧导航栏，点击**可视化控制台**，进入**可视化控制台**页面。
+. 点击**安装 KubeSphere 可视化控制台**或**安装 KSE 可视化控制台**，弹出提示框。
++
+image::/images/cloud_service/container/qke/install_ks_after_creation.png[]
+
+. 设置是否开启**通过外部网络访问**。
++
+* 若开启外部网络访问，系统将自动为可视化控制台创建一个负载均衡器，并为负载均衡器创建和绑定一个公网 IP，实现通过外网访问可视化控制台。或者您也可以点击**选择已有EIP**与负载均衡器进行绑定。
+* 若不开启外部网络访问，将默认为可视化控制台创建一个负载均衡器，实现可通过集群内部网络访问可视化控制台。
+. 点击**确定**，开始进行安装。耐心等待安装完成即可。
++
+安装过程中，集群状态为``更新中``，待状态变为``活跃``，则安装完成。
++
+
+include::../../../../../../_components/note.adoc[]
+
+默认最小化安装，若需要安装更多内置组件，请在控制台安装完成后，按需进行安装。具体操作请参见link:../install_component/[安装 KubeSphere/KSE 内置组件]。
+
+include::../../../../../../_components/table_footer.adoc[]

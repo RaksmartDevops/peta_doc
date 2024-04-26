@@ -1,0 +1,78 @@
+
+//title: "CreateSecurityGroupIPSet"
+
+
+创建安全组IP/端口集合。
+
+您可以借助 "`IP/端口集合`" 功能把具有相同特征的一组 IP 或者一组端口设置成为 "`IP/端口集合`"，并且在安全组规则中进行添加，实现批量管理功能。
+
+== 请求参数
+
+|===
+| 参数 | 参数类型 | 说明 | 是否必选
+
+| security_group_ipset_name
+| String
+| 名称
+| No
+
+| ipset_type
+| Integer
+| 类型 (0:IP, 1:端口)
+| Yes
+
+| val
+| String
+| 值 (例如: 192.168.1.0/24 或 10000-15000）
+| Yes
+
+| zone
+| String
+| 区域 ID，注意要小写
+| Yes
+|===
+
+link:../../get_api/parameters/[_公共参数_]
+
+== 返回数据
+
+|===
+| 参数 | 参数类型 | 说明
+
+| action
+| String
+| 响应动作
+
+| security_group_id
+| String
+| 创建成功的资源 ID
+
+| ret_code
+| Integer
+| 执行成功与否，0 表示成功，其他值则为错误代码
+|===
+
+== 示例
+
+*请求示例*：
+
+[,json]
+----
+https://api.qingcloud.com/iaas/?action=CreateSecurityGroupIPSet
+&ipset_type=1
+&val=10000-15000
+&zone=pek3a
+&COMMON_PARAMS
+----
+
+*返回示例*：
+
+[,json]
+----
+{
+  "action":"CreateSecurityGroupIPSetResponse",
+  "security_group_ipset_id":"sgi-sptxtjg9"
+  "ret_code":0
+}
+----
+

@@ -1,0 +1,54 @@
+---
+title: "Windows 云服务器多用户配置管理"
+weight: 120
+---
+== 项目概览
+
+在本项目中，您将了解如何配置 Windows 云服务器多用户、多终端同时办公。
+
+== 环境准备
+
+本实验以 Windows Server 2012 版本为例，其他版本可以此为参考，开始本实验前，请您先配置好 link:../win_loggin/[Windows 云服务器配置多用户同时登录]。
+
+== 配置步骤
+
+=== 多系统用户多终端配置
+
+. 添加用户。
++
+登录 Administrator 用户在 Windows PowerShell 执行。
++
+[source,powershell]
+----
+net user demo /add				        # 创建用户
+net user demo pa$$w0rd				        # 设置密码
+net localgroup Administrators demo /add			# 给用户添加管理员权限（按需操作）
+----
+
+. 允许用户远程登录。
++
+选择 *文件资源管理器* > *这台电脑* > *属性* > *远程设置* > *选择用户*。
++
+image::/images/cloud_service/compute/vm/bestp_windows_multi_user_1.gif[]
+
+=== 单系统用户多终端配置
+
+这里的系统用户指的是默认的 Administrator 管理员账户，配置好多用户同时登录后，可以直接多终端登录，但同时使用某些软件时会产生错误。
+
+==== 故障原因
+
+用户数据存储在多终端同时使用时出现问题。
+
+==== 解决方案
+
+. 为谷歌浏览器创建一个新的快捷方式。
++
+image::/images/cloud_service/compute/vm/bestp_windows_multi_user_2.png[]
+
+. 鼠标右键选择新建的快捷方式选择属性。
++
+image::/images/cloud_service/compute/vm/bestp_windows_multi_user_3.png[]
+
+. 在目标栏的 firefox.exe 后面添加参数 `--user-data-dir="C:\UserData"`。
++
+image::/images/cloud_service/compute/vm/bestp_windows_multi_user_4.png[]

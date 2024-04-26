@@ -1,0 +1,68 @@
+---
+title: 添加运维日志类型（Boss2CreateOperationalLogType）
+weight: 4
+---
+
+== 基本信息
+
+=== Path
+/api/?action=Boss2CreateOperationalLogType
+
+=== Method
+POST
+
+=== 接口描述
+此接口用于创建运维日志类型
+请求参数说明
+
+|===
+| 字段 | 类型 | 是否必须 | 说明 | 备注
+
+| action
+| string
+| 是
+| Boss2CreateOperationalLogType
+|
+
+| log_type
+| string
+| 是
+| 类型文本
+|
+|===
+
+
+== 请求参数
+
+*Headers*
+
+[cols="3*", options="header"]
+
+|===
+| 参数名称 | 参数值 | 是否必须
+
+| Content-Type
+| application/json
+| 是
+|===
+
+*Body*
+
+[,javascript]
+----
+{
+   "action": "Boss2CreateOperationalLogType",
+   "log_type": "运维类"
+}
+----
+
+== 返回数据
+
+[,javascript]
+----
+{
+   "log_type_id": 3,
+   "ret_code": 0,
+   "action": "Boss2CreateOperationalLogTypeResponse"
+}
+----
